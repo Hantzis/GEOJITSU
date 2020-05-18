@@ -10,15 +10,83 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="" />
+    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/.eslintignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/.eslintrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/.postcssrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/.vscode/launch.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/.vscode/settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/babel.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/jsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/quasar.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-cordova/config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-cordova/cordova-flag.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-cordova/hooks/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-cordova/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-cordova/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-electron/electron-flag.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-electron/icons/icon.icns" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-electron/icons/icon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-electron/icons/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-electron/main-process/electron-main.dev.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-electron/main-process/electron-main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/assets/quasar-logo-full.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/assets/sad.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/boot/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/boot/axios.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/boot/firebase.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/boot/i18n.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/components/EssentialLink.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/css/app.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/css/quasar.variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/i18n/en-us/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/i18n/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/index.template.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/layouts/MainLayout.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/pages/Error404.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/pages/Index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/router/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/router/routes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/statics/icons/favicon-128x128.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/statics/icons/favicon-16x16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/statics/icons/favicon-32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/statics/icons/favicon-96x96.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/statics/icons/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/store/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/store/module-example/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/store/module-example/getters.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/store/module-example/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/store/module-example/mutations.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/store/module-example/state.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JupyterTrust" id="8c0006e2-9678-43bd-9248-182e5da57afa" />
   <component name="ProjectId" id="1brpjoU3qPMdCHzdMa7TbauiuZY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -29,11 +97,72 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/windows-todo" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PyCharm 2020.1.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Nizhi\PycharmProjects\GEOJITSU\frontend\windows-todo\src\boot" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Node.js.quasar build -m electron">
+    <configuration name="quasar build -m electron" type="NodeJSConfigurationType" application-parameters="build -m electron" path-to-js-file="$USER_HOME$/AppData/Roaming/npm/node_modules/@quasar/cli/bin/quasar" working-dir="$PROJECT_DIR$/frontend/windows-todo">
+      <method v="2" />
+    </configuration>
+    <configuration name="quasar dev" type="NodeJSConfigurationType" application-parameters="dev" path-to-js-file="$USER_HOME$/AppData/Roaming/npm/node_modules/@quasar/cli/bin/quasar" working-dir="$PROJECT_DIR$/frontend/windows-todo">
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <module name="GEOJITSU" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\WPy64-3810\python-3.8.1.amd64\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="127.0.0.12" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/windows-todo/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.quasar dev" />
+      <item itemvalue="Node.js.quasar build -m electron" />
+      <item itemvalue="npm.serve" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.serve" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -46,6 +175,9 @@
       <option name="presentableId" value="Default" />
       <updated>1589400204431</updated>
       <workItem from="1589400207404" duration="1398000" />
+      <workItem from="1589510981538" duration="8986000" />
+      <workItem from="1589655452685" duration="8049000" />
+      <workItem from="1589687582190" duration="19658000" />
     </task>
     <servers />
   </component>
@@ -62,19 +194,54 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="463" y="105" key="FileChooserDialogImpl" timestamp="1589400893789">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="828" y="412" key="#ESLint" timestamp="1589701671621">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="828" y="412" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1589701671621" />
+    <state x="586" y="198" key="#Inspections" timestamp="1589693698835">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="586" y="198" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1589693698835" />
+    <state x="339" y="158" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589695560784">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="339" y="158" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589695560784" />
+    <state x="651" y="150" key="FileChooserDialogImpl" timestamp="1589695538794">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1589400893789" />
+    <state x="651" y="150" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589695538794" />
     <state x="300" y="262" width="504" height="244" key="Github.ShareDialog" timestamp="1589400788629">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="300" y="262" width="504" height="244" key="Github.ShareDialog/0.0.1366.728@0.0.1366.728" timestamp="1589400788629" />
-    <state x="492" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589400592612">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1876" height="395" key="GridCell.Tab.0.bottom" timestamp="1589752031778">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1876" height="395" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589752031778" />
+    <state width="1876" height="395" key="GridCell.Tab.0.center" timestamp="1589752031778">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1876" height="395" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589752031778" />
+    <state width="1876" height="395" key="GridCell.Tab.0.left" timestamp="1589752031778">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1876" height="395" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589752031778" />
+    <state width="1876" height="395" key="GridCell.Tab.0.right" timestamp="1589752031778">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1876" height="395" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589752031778" />
+    <state x="403" y="129" key="SettingsEditor" timestamp="1589657319540">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="403" y="129" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589657319540" />
+    <state x="692" y="397" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589558723776">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="492" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1589400592612" />
+    <state x="692" y="397" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1589558723776" />
   </component>
 </project>
