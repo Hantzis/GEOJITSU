@@ -11,62 +11,104 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/.eslintignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/.eslintrc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/.postcssrc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/.vscode/extensions.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/.vscode/launch.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/.vscode/settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/babel.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/jsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/quasar.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-cordova/config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-cordova/cordova-flag.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-cordova/hooks/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-cordova/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-cordova/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-electron/electron-flag.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-electron/icons/icon.icns" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-electron/icons/icon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-electron/icons/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-electron/main-process/electron-main.dev.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src-electron/main-process/electron-main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/assets/quasar-logo-full.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/assets/sad.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/boot/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/boot/axios.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/boot/firebase.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/boot/i18n.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/components/EssentialLink.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/css/app.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/css/quasar.variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/i18n/en-us/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/i18n/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/index.template.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/layouts/MainLayout.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/pages/Error404.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/pages/Index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/router/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/router/routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/statics/icons/favicon-128x128.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/statics/icons/favicon-16x16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/statics/icons/favicon-32x32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/statics/icons/favicon-96x96.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/statics/icons/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/store/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/store/module-example/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/store/module-example/getters.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/store/module-example/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/store/module-example/mutations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/src/store/module-example/state.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/windows-todo/yarn.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/.eslintignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/.eslintrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/.postcssrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/.vscode/extensions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/babel.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/jsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/quasar.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/assets/quasar-logo-full.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/assets/sad.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/boot/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/boot/axios.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/boot/i18n.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/components/EssentialLink.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/css/app.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/css/quasar.variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/i18n/en-us/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/i18n/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/index.template.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/layouts/MainLayout.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/pages/Error404.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/pages/Index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/router/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/router/routes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/statics/icons/favicon-128x128.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/statics/icons/favicon-16x16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/statics/icons/favicon-32x32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/statics/icons/favicon-96x96.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/statics/icons/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/store/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/store/module-example/actions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/store/module-example/getters.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/store/module-example/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/store/module-example/mutations.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/store/module-example/state.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/store/store-flag.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/.eslintignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/.eslintrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/.postcssrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/.vscode/extensions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/babel.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/jsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/quasar.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-cordova/config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-cordova/cordova-flag.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-cordova/hooks/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-cordova/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-cordova/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-electron/electron-flag.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-electron/icons/icon.icns" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-electron/icons/icon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-electron/icons/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-electron/main-process/electron-main.dev.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-electron/main-process/electron-main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/assets/quasar-logo-full.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/assets/sad.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/boot/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/boot/axios.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/boot/firebase.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/boot/i18n.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/components/EssentialLink.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/css/app.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/css/quasar.variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/i18n/en-us/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/i18n/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/index.template.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/layouts/MainLayout.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/pages/Error404.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/pages/Index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/router/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/router/routes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/statics/icons/favicon-128x128.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/statics/icons/favicon-16x16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/statics/icons/favicon-32x32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/statics/icons/favicon-96x96.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/statics/icons/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/store/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/store/module-example/actions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/store/module-example/getters.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/store/module-example/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/store/module-example/mutations.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/store/module-example/state.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/yarn.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +139,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/windows-todo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/geojitsu" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -113,11 +155,11 @@
       <recent name="C:\Users\Nizhi\PycharmProjects\GEOJITSU\frontend\windows-todo\src\boot" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.quasar build -m electron">
-    <configuration name="quasar build -m electron" type="NodeJSConfigurationType" application-parameters="build -m electron" path-to-js-file="$USER_HOME$/AppData/Roaming/npm/node_modules/@quasar/cli/bin/quasar" working-dir="$PROJECT_DIR$/frontend/windows-todo">
+  <component name="RunManager" selected="npm.serve">
+    <configuration name="quasar build -m electron" type="NodeJSConfigurationType" application-parameters="build -m electron" path-to-js-file="$USER_HOME$/AppData/Roaming/npm/node_modules/@quasar/cli/bin/quasar" working-dir="$PROJECT_DIR$/frontend/geojitsu">
       <method v="2" />
     </configuration>
-    <configuration name="quasar dev" type="NodeJSConfigurationType" application-parameters="dev" path-to-js-file="$USER_HOME$/AppData/Roaming/npm/node_modules/@quasar/cli/bin/quasar" working-dir="$PROJECT_DIR$/frontend/windows-todo">
+    <configuration name="quasar dev" type="NodeJSConfigurationType" application-parameters="serve --modern" path-to-js-file="$USER_HOME$/AppData/Roaming/npm/node_modules/@quasar/cli/bin/quasar" working-dir="$PROJECT_DIR$/frontend/geojitsu">
       <method v="2" />
     </configuration>
     <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
@@ -144,7 +186,7 @@
       <method v="2" />
     </configuration>
     <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/frontend/windows-todo/package.json" />
+      <package-json value="$PROJECT_DIR$/frontend/geojitsu/package.json" />
       <command value="run" />
       <scripts>
         <script value="serve" />
@@ -178,6 +220,7 @@
       <workItem from="1589510981538" duration="8986000" />
       <workItem from="1589655452685" duration="8049000" />
       <workItem from="1589687582190" duration="19658000" />
+      <workItem from="1592332700175" duration="1412000" />
     </task>
     <servers />
   </component>
@@ -205,34 +248,44 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="586" y="198" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1589693698835" />
-    <state x="339" y="158" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589695560784">
+    <state x="55" y="85" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592334136535">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="55" y="85" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592334136535" />
     <state x="339" y="158" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589695560784" />
-    <state x="651" y="150" key="FileChooserDialogImpl" timestamp="1589695538794">
+    <state x="585" y="88" key="CommitChangelistDialog2" timestamp="1592333417635">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="585" y="88" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592333417635" />
+    <state x="349" y="290" key="FileChooserDialogImpl" timestamp="1592334088077">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1589400893789" />
+    <state x="349" y="290" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592334088077" />
     <state x="651" y="150" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589695538794" />
     <state x="300" y="262" width="504" height="244" key="Github.ShareDialog" timestamp="1589400788629">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="300" y="262" width="504" height="244" key="Github.ShareDialog/0.0.1366.728@0.0.1366.728" timestamp="1589400788629" />
-    <state width="1876" height="395" key="GridCell.Tab.0.bottom" timestamp="1589752031778">
+    <state width="1877" height="493" key="GridCell.Tab.0.bottom" timestamp="1592333350338">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="493" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592333350338" />
     <state width="1876" height="395" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589752031778" />
-    <state width="1876" height="395" key="GridCell.Tab.0.center" timestamp="1589752031778">
+    <state width="1877" height="493" key="GridCell.Tab.0.center" timestamp="1592333350337">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="493" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592333350337" />
     <state width="1876" height="395" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589752031778" />
-    <state width="1876" height="395" key="GridCell.Tab.0.left" timestamp="1589752031778">
+    <state width="1877" height="493" key="GridCell.Tab.0.left" timestamp="1592333350337">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="493" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592333350337" />
     <state width="1876" height="395" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589752031778" />
-    <state width="1876" height="395" key="GridCell.Tab.0.right" timestamp="1589752031778">
+    <state width="1877" height="493" key="GridCell.Tab.0.right" timestamp="1592333350338">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="493" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592333350338" />
     <state width="1876" height="395" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589752031778" />
     <state x="403" y="129" key="SettingsEditor" timestamp="1589657319540">
       <screen x="0" y="0" width="1920" height="1040" />
