@@ -63,13 +63,14 @@
                     auto-close
                     flat
                     unelevated
-                    icon="mdi-map-search"
+                    icon="mdi-select-search"
                     @click="onMainClick"
+                    class="q-btn__desplegable"
                   >
                     <q-list dense>
                       <q-item clickable v-close-popup @click="onItemClick">
                         <q-item-section side style="padding-right: 6px;">
-                          <q-icon name="mdi-circle-expand" color="primary"/>
+                          <q-icon name="mdi-select-search" color="primary"/>
                         </q-item-section>
                         <q-item-section>
                           <q-item-label>Zoom a la selección</q-item-label>
@@ -191,4 +192,11 @@
   .q-btn-dropdown--split .q-btn-dropdown__arrow-container .q-btn__wrapper {
     padding: 0;
   }
+  .material-icons.q-icon.notranslate.q-btn-dropdown__arrow {
+    width: 0.6em;
+    padding-left: 0.1em; /* posiblemente quitar */
+  }
+  .q-btn__desplegable.q-btn--dense.q-btn__wrapper {
+  padding: 0;
+}
 </style>
