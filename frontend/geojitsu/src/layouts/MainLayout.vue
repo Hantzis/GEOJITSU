@@ -47,7 +47,7 @@
                 :options="[
                   {value: 'mover', slot: 'mover'},
                   {value: 'info', slot: 'info'},
-                  {value: 'zoom', slot: 'zoom'},
+                  {value: 'zoom', slot: 'zoom', class: 'qqqq', style: 'padding: 20px;'},
                   {value: 'three', slot: 'three'}
                 ]"
               >
@@ -57,45 +57,45 @@
                 <template v-slot:info>
                   <q-icon name="info"/>
                 </template>
-                <template v-slot:zoom>
-                  <q-btn-dropdown
-                    split
-                    auto-close
-                    flat
-                    unelevated
-                    icon="mdi-select-search"
-                    @click="onMainClick"
-                    class="q-btn__desplegable"
-                  >
-                    <q-list dense>
-                      <q-item clickable v-close-popup @click="onItemClick">
-                        <q-item-section side style="padding-right: 6px;">
-                          <q-icon name="mdi-select-search" color="primary"/>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>Zoom a la selección</q-item-label>
-                        </q-item-section>
-                      </q-item>
+                <template v-slot:zoom style="padding: 0">
+                  <div class="qqqq">
+                    <q-btn-dropdown
+                      split
+                      flat
+                      icon="mdi-select-search"
+                      @click="onMainClick"
+                      class="q-btn__desplegable no-border-radius"
+                      style="margin: 0 -0.14em;"
+                    >
+                      <q-list dense>
+                        <q-item clickable v-close-popup @click="onItemClick">
+                          <q-item-section side style="padding-right: 6px;">
+                            <q-icon name="mdi-select-search" color="primary"/>
+                          </q-item-section>
+                          <q-item-section>
+                            <q-item-label>Zoom a la selección</q-item-label>
+                          </q-item-section>
+                        </q-item>
 
-                      <q-item clickable v-close-popup @click="onItemClick">
-                        <q-item-section side style="padding-right: 6px;">
-                          <q-icon name="mdi-arrow-expand-all" color="primary"/>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>Zoom general</q-item-label>
-                        </q-item-section>
-                      </q-item>
-                      <q-item clickable v-close-popup @click="onItemClick">
-                        <q-item-section side style="padding-right: 6px;">
-                          <q-icon name="mdi-layers-search" color="primary"/>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>Zoom a la capa activa</q-item-label>
-                        </q-item-section>
-                      </q-item>
-                    </q-list>
-                  </q-btn-dropdown>
-
+                        <q-item clickable v-close-popup @click="onItemClick">
+                          <q-item-section side style="padding-right: 6px;">
+                            <q-icon name="mdi-arrow-expand-all" color="primary"/>
+                          </q-item-section>
+                          <q-item-section>
+                            <q-item-label>Zoom general</q-item-label>
+                          </q-item-section>
+                        </q-item>
+                        <q-item clickable v-close-popup @click="onItemClick">
+                          <q-item-section side style="padding-right: 6px;">
+                            <q-icon name="mdi-layers-search" color="primary"/>
+                          </q-item-section>
+                          <q-item-section>
+                            <q-item-label>Zoom a la capa activa</q-item-label>
+                          </q-item-section>
+                        </q-item>
+                      </q-list>
+                    </q-btn-dropdown>
+                  </div>
                 </template>
 
                 <template v-slot:three>
@@ -192,11 +192,34 @@
   .q-btn-dropdown--split .q-btn-dropdown__arrow-container .q-btn__wrapper {
     padding: 0;
   }
+
   .material-icons.q-icon.notranslate.q-btn-dropdown__arrow {
     width: 0.6em;
-    padding-left: 0.1em; /* posiblemente quitar */
+    /* padding-left: 0.1em;  posiblemente quitar */
   }
-  .q-btn__desplegable.q-btn--dense.q-btn__wrapper {
-  padding: 0;
-}
+
+  .q-btn__desplegable .q-btn--dense.q-btn__wrapper {
+     padding: 0;
+  }
+  .q-btn__desplegable.no-border-radius .q-btn.q-btn-item.non-selectable.no-outline.q-btn--flat.q-btn--rectangle.q-btn--actionable.q-focusable.q-hoverable.q-btn-dropdown--current {
+    padding: 0 0.14em;
+  }
+
+  .qqqq .q-btn__wrapper.col.row.q-anchor--skip {
+    padding: 0;
+  }
+
+  .q-btn.q-btn-item.non-selectable.no-outline.q-btn--flat.q-btn--rectangle.q-btn--actionable.q-focusable.q-hoverable.q-btn-dropdown--current {
+    padding: 0;
+  }
+
+  .qqqq .material-icons.q-icon.notranslate.q-btn-dropdown__arrow {
+    font-size: 1em;
+    padding: 0 2.5px 0 2px;
+  }
+
+  .q-menu {
+    border-radius: 0;
+  }
+
 </style>
