@@ -41,13 +41,17 @@
                 style="border-radius: 0;"
                 v-model="model"
                 dense
+                glossy
                 color="white"
                 text-color="primary"
                 toggle-color="light-blue"
                 :options="[
                   {value: 'mover', slot: 'mover'},
                   {value: 'info', slot: 'info'},
-                  {value: 'zoom', slot: 'zoom', class: 'qqqq', style: 'padding: 20px;'},
+                  {value: 'zoom', slot: 'zoom'},
+                  {value: 'seleccion', slot: 'seleccion'},
+                  {value: 'estadistica', slot: 'estadistica'},
+                  {value: 'medicion', slot: 'medicion'},
                   {value: 'three', slot: 'three'}
                 ]"
               >
@@ -62,21 +66,12 @@
                     <q-btn-dropdown
                       split
                       flat
-                      icon="mdi-select-search"
+                      icon="mdi-arrow-expand-all"
                       @click="onMainClick"
                       class="q-btn__desplegable no-border-radius"
                       style="margin: 0 -0.14em;"
                     >
                       <q-list dense>
-                        <q-item clickable v-close-popup @click="onItemClick">
-                          <q-item-section side style="padding-right: 6px;">
-                            <q-icon name="mdi-select-search" color="primary"/>
-                          </q-item-section>
-                          <q-item-section>
-                            <q-item-label>Zoom a la selección</q-item-label>
-                          </q-item-section>
-                        </q-item>
-
                         <q-item clickable v-close-popup @click="onItemClick">
                           <q-item-section side style="padding-right: 6px;">
                             <q-icon name="mdi-arrow-expand-all" color="primary"/>
@@ -93,11 +88,93 @@
                             <q-item-label>Zoom a la capa activa</q-item-label>
                           </q-item-section>
                         </q-item>
+                        <q-item clickable v-close-popup @click="onItemClick">
+                          <q-item-section side style="padding-right: 6px;">
+                            <q-icon name="mdi-select-search" color="primary"/>
+                          </q-item-section>
+                          <q-item-section>
+                            <q-item-label>Zoom a la selección</q-item-label>
+                          </q-item-section>
+                        </q-item>
+                      </q-list>
+                    </q-btn-dropdown>
+                  </div>
+                </template>
+                <template v-slot:seleccion style="padding: 0">
+                  <div class="qqqq">
+                    <q-btn-dropdown
+                      split
+                      flat
+                      icon="mdi-selection-drag"
+                      @click="onMainClick"
+                      class="q-btn__desplegable no-border-radius"
+                      style="margin: 0 -0.14em;"
+                    >
+                      <q-list dense>
+                        <q-item clickable v-close-popup @click="onItemClick">
+                          <q-item-section side style="padding-right: 6px;">
+                            <q-icon name="mdi-selection-drag" color="primary"/>
+                          </q-item-section>
+                          <q-item-section>
+                            <q-item-label>Seleccionar objetos</q-item-label>
+                          </q-item-section>
+                        </q-item>
+                        <q-item clickable v-close-popup @click="onItemClick">
+                          <q-item-section side style="padding-right: 6px;">
+                            <q-icon name="mdi-shape-polygon-plus" color="primary"/>
+                          </q-item-section>
+                          <q-item-section>
+                            <q-item-label>Seleccionar dibujando un polígono</q-item-label>
+                          </q-item-section>
+                        </q-item>
+                        <q-item clickable v-close-popup @click="onItemClick">
+                          <q-item-section side style="padding-right: 6px;">
+                            <q-icon name="mdi-gesture" color="primary"/>
+                          </q-item-section>
+                          <q-item-section>
+                            <q-item-label>Seleccionar a mano alzada</q-item-label>
+                          </q-item-section>
+                        </q-item>
+                        <q-item clickable v-close-popup @click="onItemClick">
+                          <q-item-section side style="padding-right: 6px;">
+                            <q-icon name="mdi-form-textbox-password" color="primary"/>
+                          </q-item-section>
+                          <q-item-section>
+                            <q-item-label>Seleccionar por atributos</q-item-label>
+                          </q-item-section>
+                        </q-item>
+                        <q-item clickable v-close-popup @click="onItemClick">
+                          <q-item-section side style="padding-right: 6px;">
+                            <q-icon name="mdi-select-all" color="primary"/>
+                          </q-item-section>
+                          <q-item-section>
+                            <q-item-label>Seleccionar todos</q-item-label>
+                          </q-item-section>
+                        </q-item>
+                        <q-item clickable v-close-popup @click="onItemClick">
+                          <q-item-section side style="padding-right: 6px;">
+                            <q-icon name="mdi-select-inverse" color="primary"/>
+                          </q-item-section>
+                          <q-item-section>
+                            <q-item-label>Invertir selección</q-item-label>
+                          </q-item-section>
+                        </q-item>
+                        <q-item clickable v-close-popup @click="onItemClick">
+                          <q-item-section side style="padding-right: 6px;">
+                            <q-icon name="mdi-selection-off" color="primary"/>
+                          </q-item-section>
+                          <q-item-section>
+                            <q-item-label>Eliminar selección</q-item-label>
+                          </q-item-section>
+                        </q-item>
                       </q-list>
                     </q-btn-dropdown>
                   </div>
                 </template>
 
+                <template v-slot:estadistica>
+                  <q-icon name="mdi-sigma"/>
+                </template>
                 <template v-slot:three>
                   <q-icon name="mdi-map-search"/>
                 </template>
