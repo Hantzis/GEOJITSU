@@ -171,9 +171,47 @@
                     </q-btn-dropdown>
                   </div>
                 </template>
-
                 <template v-slot:estadistica>
                   <q-icon name="mdi-sigma"/>
+                </template>
+                <template v-slot:medicion style="padding: 0">
+                  <div class="qqqq">
+                    <q-btn-dropdown
+                      split
+                      flat
+                      icon="mdi-ruler"
+                      @click="onMainClick"
+                      class="q-btn__desplegable no-border-radius"
+                      style="margin: 0 -0.14em;"
+                    >
+                      <q-list dense>
+                        <q-item clickable v-close-popup @click="onItemClick">
+                          <q-item-section side style="padding-right: 6px;">
+                            <q-icon name="mdi-ruler" color="primary"/>
+                          </q-item-section>
+                          <q-item-section>
+                            <q-item-label>Medir distancia</q-item-label>
+                          </q-item-section>
+                        </q-item>
+                        <q-item clickable v-close-popup @click="onItemClick">
+                          <q-item-section side style="padding-right: 6px;">
+                            <q-icon name="mdi-texture-box" color="primary"/>
+                          </q-item-section>
+                          <q-item-section>
+                            <q-item-label>Medir área</q-item-label>
+                          </q-item-section>
+                        </q-item>
+                        <q-item clickable v-close-popup @click="onItemClick">
+                          <q-item-section side style="padding-right: 6px;">
+                            <q-icon name="mdi-angle-acute" color="primary"/>
+                          </q-item-section>
+                          <q-item-section>
+                            <q-item-label>Medir ángulo</q-item-label>
+                          </q-item-section>
+                        </q-item>
+                      </q-list>
+                    </q-btn-dropdown>
+                  </div>
                 </template>
                 <template v-slot:three>
                   <q-icon name="mdi-map-search"/>
