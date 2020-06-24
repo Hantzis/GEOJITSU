@@ -5,10 +5,7 @@
         <q-btn dense flat round icon="menu" @click="left = !left"/>
 
         <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo/svg/quasar-logo.svg">
-          </q-avatar>
-          Title
+          Maptitude XYZ
         </q-toolbar-title>
         <q-btn dense flat round icon="help" @click="testa('help')"/>
         <q-btn dense flat round icon="mdi-login" @click="testa('login')"/>
@@ -224,24 +221,24 @@
                     </template>
                   </q-btn-toggle>
                 </div>
-                <div class="col-auto q-pa-xs">
+                <div class="col-auto q-pa-xs q-pb-sm">
                   <q-btn-toggle
                     style="border-radius: 0;"
-                    v-model="model"
+                    v-model="toggle_drawers_model"
                     dense
                     glossy
                     color="white"
                     text-color="primary"
                     toggle-color="light-blue"
                     :options="[
-                  {value: 'mover', slot: 'mover'},
-                  {value: 'info', slot: 'info'},
-                  {value: 'grid', slot: 'grid'},
-                  {value: 'stats', slot: 'stats'},
-                  {value: 'chart', slot: 'chart'}
-                ]"
+                      {value: 'hide', slot: 'hide'},
+                      {value: 'layers', slot: 'layers'},
+                      {value: 'grid', slot: 'grid'},
+                      {value: 'stats', slot: 'stats'},
+                      {value: 'charts', slot: 'charts'}
+                    ]"
                   >
-                    <template v-slot:mover>
+                    <template v-slot:hide>
                       <q-icon name="mdi-eye-off">
                         <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle"
                                    self="bottom middle">
@@ -249,7 +246,7 @@
                         </q-tooltip>
                       </q-icon>
                     </template>
-                    <template v-slot:info>
+                    <template v-slot:layers>
                       <q-icon name="mdi-layers">
                         <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle"
                                    self="bottom middle">
@@ -273,7 +270,7 @@
                         </q-tooltip>
                       </q-icon>
                     </template>
-                    <template v-slot:chart>
+                    <template v-slot:charts>
                       <q-icon name="mdi-chart-bar">
                         <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle"
                                    self="bottom middle">
@@ -293,12 +290,57 @@
 
     </q-header>
 
-    <q-drawer v-model="left" side="left" bordered :breakpoint="355">
+    <q-drawer v-model="left" side="left" bordered overlay behavior="mobile">
       <!-- drawer content -->
     </q-drawer>
 
-    <q-drawer v-model="right" side="right" bordered :breakpoint="319">
+    <q-drawer v-model="right" side="right" bordered :breakpoint="319" overlay >
       <!-- drawer content -->
+    </q-drawer>
+
+    <q-drawer v-model="drawer_layers" side="right" bordered :breakpoint="319" overlay>
+      <q-tabs
+          v-model="layers_tabs"
+          dense
+          class="text-grey-14"
+          active-color="primary"
+          indicator-color="primary"
+        >
+          <q-tab name="layers" icon="mail" label="Capas" />
+          <q-tab name="servers" icon="mail" label="Servidores" />
+          <q-tab name="basemaps" icon="mail" label="Mapas base" />
+        </q-tabs>
+
+        <q-separator />
+
+        <q-tab-panels v-model="layers_tabs" animated>
+          <q-tab-panel name="layers">
+            <div class="text-h6">Mails</div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </q-tab-panel>
+
+          <q-tab-panel name="servers">
+            <div class="text-h6">Alarms</div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </q-tab-panel>
+
+          <q-tab-panel name="basemaps">
+            <div class="text-h6">Movies</div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </q-tab-panel>
+        </q-tab-panels>
+    </q-drawer>
+
+    <q-drawer v-model="drawer_grid" side="right" bordered :breakpoint="319" overlay>
+      Drawer de atributos
+    </q-drawer>
+
+    <q-drawer v-model="drawer_stats" side="right" bordered :breakpoint="319" overlay>
+      Drawer de stats
+    </q-drawer>
+
+    <q-drawer v-model="drawer_charts" side="right" bordered :breakpoint="319" overlay>
+      Drawer de charts
     </q-drawer>
 
     <q-page-container>
@@ -322,7 +364,13 @@
       return {
         left: false,
         right: false,
-        model: 'one'
+        drawer_layers: false,
+        drawer_grid: false,
+        drawer_stats: false,
+        drawer_charts: false,
+        model: 'mover',
+        toggle_drawers_model: 'hide',
+        layers_tabs: 'layers'
       }
     },
     methods: {
@@ -340,6 +388,39 @@
     watch: {
       model() {
         console.log(this.model)
+      },
+      toggle_drawers_model() {
+        console.log(this.toggle_drawers_model)
+        if (this.toggle_drawers_model == 'hide') {
+          this.drawer_layers = false;
+          this.drawer_grid = false;
+          this.drawer_stats = false;
+          this.drawer_charts = false;
+        }
+        if (this.toggle_drawers_model == 'layers') {
+          this.drawer_layers = true;
+          this.drawer_grid = false;
+          this.drawer_stats = false;
+          this.drawer_charts = false;
+        }
+        if (this.toggle_drawers_model == 'grid') {
+          this.drawer_layers = false;
+          this.drawer_grid = true;
+          this.drawer_stats = false;
+          this.drawer_charts = false;
+        }
+        if (this.toggle_drawers_model == 'stats') {
+          this.drawer_layers = false;
+          this.drawer_grid = false;
+          this.drawer_stats = true;
+          this.drawer_charts = false;
+        }
+        if (this.toggle_drawers_model == 'charts') {
+          this.drawer_layers = false;
+          this.drawer_grid = false;
+          this.drawer_stats = false;
+          this.drawer_charts = true;
+        }
       }
     }
   }
@@ -349,6 +430,10 @@
   .q-drawer--right {
     z-index: 999;
     border-left: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .btn {
+    padding: 3px; /* qyutar ? */
   }
 
   .q-btn--dense .q-btn__wrapper {
