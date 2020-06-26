@@ -2,7 +2,7 @@
   <q-page style="background-color: #90caea;">
     <div class="full-map">
       <vl-map ref="map" :load-tiles-while-animating="true" :load-tiles-while-interacting="true"
-              data-projection="EPSG:4326" style="min-height: inherit; width: 100%;">
+              data-projection="EPSG:3857" style="min-height: inherit; width: 100%;">
         <vl-view ref="map_view" :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation"></vl-view>
 
         <vl-geoloc @update:position="geolocPosition = $event">
@@ -39,9 +39,10 @@
     data () {
       return {
         zoom: 12,
-        center: [-101.22977709999999, 19.6453138],
+        center4326: [-101.22977709999999, 19.6453138],
+        center: [-11268847.24, 2231060.47],
         rotation: 0,
-        geolocPosition: [-101.22977709999999, 19.6453138],
+        geolocPosition: [-11268847.24, 2231060.47],
       }
     }
   }
