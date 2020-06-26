@@ -22,7 +22,7 @@ class BaseMapProvider(models.Model):
 
 class BaseMapLayer(models.Model):
     name = models.CharField(max_length=255)
-    privider = models.ForeignKey(BaseMapProvider, on_delete=models.PROTECT)
+    provider = models.ForeignKey(BaseMapProvider, on_delete=models.PROTECT)
     server = models.URLField()
 
     def __str__(self):
