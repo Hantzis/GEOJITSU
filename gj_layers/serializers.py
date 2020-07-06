@@ -1,6 +1,6 @@
 from rest_framework_gis.serializers import ModelSerializer
 from rest_framework.serializers import StringRelatedField, RelatedField
-from . models import WMSServer, WMSLayer, WMSCRS
+from . models import WMSServer, WMSLayer, CRS
 
 
 class WMSServerSerializer(ModelSerializer):
@@ -23,5 +23,5 @@ class WMSLayerSerializer(ModelSerializer):
 
 class WMSCRSSerializer(ModelSerializer):
     class Meta:
-        model = WMSCRS
+        model = CRS
         fields = '__all__'

@@ -23,10 +23,10 @@ class BaseMapProvider(models.Model):
 class BaseMapLayer(models.Model):
     name = models.CharField(max_length=255)
     provider = models.ForeignKey(BaseMapProvider, on_delete=models.PROTECT)
-    server = models.URLField()
+    url = models.URLField()
 
     def __str__(self):
-        return self.layer_name
+        return self.name
 
     class Meta:
         ordering = ['provider', 'name']
@@ -73,15 +73,15 @@ class WMSServer(models.Model):
             raise ValidationError(error)
 
 
-class WMSCRS(models.Model):
-    crs = models.CharField(max_length=20, unique=True, primary_key=True)
+class CRS(models.Model):
+    name = models.CharField(max_length=20, unique=True, primary_key=True)
     description = models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):
-        return "{} - {}".format(self.crs, self.description)
+        return "{} - {}".format(self.name, self.description)
 
     class Meta:
-        ordering = ['crs']
+        ordering = ['name']
 
 
 class WMSLayer(models.Model):
@@ -97,7 +97,7 @@ class WMSLayer(models.Model):
     version = models.CharField(max_length=5, choices=(('', 'WMS Version'), ('1.1.1', '1.1.1'), ('1.3.0', '1.3.0')))
     layers = models.CharField(max_length=255)
     styles = models.CharField(max_length=255, blank=True, null=True)
-    crs = models.ForeignKey(WMSCRS, on_delete=models.PROTECT, default='EPSG:4326')
+    crs = models.ForeignKey(CRS, on_delete=models.PROTECT, default='EPSG:4326')
     format = models.CharField(max_length=50, choices=(('', 'Image Format'), ('image/gif', 'image/gif'),
                                                       ('image/jpeg', 'image/jpeg'), ('image/png', 'image/png'),
                                                       ('image/png8', 'image/png8 (Recommended)'),

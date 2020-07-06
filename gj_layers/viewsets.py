@@ -1,5 +1,5 @@
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
-from . models import WMSServer, WMSLayer, WMSCRS
+from . models import WMSServer, WMSLayer, CRS
 from . serializers import WMSServerSerializer, WMSLayerSerializer, WMSCRSSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter
@@ -19,5 +19,5 @@ class WMSLayerViewSet(ModelViewSet):
 
 
 class WMSCRSViewSet(ReadOnlyModelViewSet):
-    queryset = WMSCRS.objects.all()
+    queryset = CRS.objects.all()
     serializer_class = WMSCRSSerializer
