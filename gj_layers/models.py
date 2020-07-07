@@ -71,17 +71,20 @@ class WMSServer(models.Model):
             super(WMSServer, self).save(*args, **kwargs)
         except Exception as error:
             raise ValidationError(error)
-
+from django.db.models import F
 
 class CRS(models.Model):
-    name = models.CharField(max_length=20, unique=True, primary_key=True)
+    name = models.CharField(max_length=20, primary_key=True)
     description = models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):
         return "{} - {}".format(self.name, self.description)
 
     class Meta:
-        ordering = ['name']
+        ordering  = ['name']
+        # ordering = [F('name').asc(nulls_last=True)]
+        verbose_name_plural = "CRS"
+        verbose_name = "CRS"
 
 
 class WMSLayer(models.Model):
