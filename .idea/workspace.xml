@@ -10,105 +10,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="">
+    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="init">
+      <change afterPath="$PROJECT_DIR$/gj_layers/migrations/0002_auto_20200706_1557.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gj_layers/migrations/0003_auto_20200706_1612.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/onsses45/migrations/0001_initial.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/.editorconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/.eslintignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/.eslintrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/.postcssrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/.vscode/extensions.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/.vscode/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/babel.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/jsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/quasar.conf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/App.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/assets/quasar-logo-full.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/assets/sad.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/boot/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/boot/axios.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/boot/i18n.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/components/EssentialLink.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/css/app.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/css/quasar.variables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/i18n/en-us/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/i18n/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/index.template.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/layouts/MainLayout.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/pages/Error404.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/pages/Index.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/router/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/router/routes.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/statics/icons/favicon-128x128.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/statics/icons/favicon-16x16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/statics/icons/favicon-32x32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/statics/icons/favicon-96x96.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/statics/icons/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/store/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/store/module-example/actions.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/store/module-example/getters.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/store/module-example/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/store/module-example/mutations.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/store/module-example/state.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/store/store-flag.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/.editorconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/.eslintignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/.eslintrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/.postcssrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/.vscode/extensions.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/.vscode/launch.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/.vscode/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/babel.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/jsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/quasar.conf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-cordova/config.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-cordova/cordova-flag.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-cordova/hooks/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-cordova/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-cordova/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-electron/electron-flag.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-electron/icons/icon.icns" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-electron/icons/icon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-electron/icons/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-electron/main-process/electron-main.dev.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src-electron/main-process/electron-main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/App.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/assets/quasar-logo-full.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/assets/sad.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/boot/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/boot/axios.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/boot/firebase.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/boot/i18n.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/components/EssentialLink.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/css/app.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/css/quasar.variables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/i18n/en-us/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/i18n/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/index.template.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/layouts/MainLayout.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/pages/Error404.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/pages/Index.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/router/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/router/routes.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/statics/icons/favicon-128x128.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/statics/icons/favicon-16x16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/statics/icons/favicon-32x32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/statics/icons/favicon-96x96.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/statics/icons/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/store/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/store/module-example/actions.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/store/module-example/getters.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/store/module-example/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/store/module-example/mutations.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/src/store/module-example/state.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/windows-todo/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GEOJITSU/settings/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/GEOJITSU/settings/base.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,9 +33,14 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JupyterTrust" id="8c0006e2-9678-43bd-9248-182e5da57afa" />
+  <component name="JupyterTrust" id="2deade1e-e8eb-4038-99ff-8bbad172df19" />
   <component name="ProjectId" id="1brpjoU3qPMdCHzdMa7TbauiuZY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -136,10 +48,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="java.sql.Driver" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/geojitsu" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -147,19 +60,140 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PyCharm 2020.1.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PyCharm 2020.1.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Nizhi\PycharmProjects\GEOJITSU\frontend\windows-todo\src\boot" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mathe\PycharmProjects\GEOJITSU" />
+    </key>
   </component>
-  <component name="RunManager" selected="npm.serve">
+  <component name="RestClientSettings">
+    <option name="REQUEST_HISTORY">
+      <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://www.mofuss.unam.mx/Mapps/Global/updateTemp.php" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://www.mofuss.unam.mx" />
+          <option name="urlPath" value="/Mapps/Global/updateTemp.php" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="idVariable" />
+                <option name="value" value="1" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://www.mofuss.unam.mx" />
+          <option name="urlPath" value="/Mapps/Global/updateTemp.php" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://www.mofuss.unam.mx" />
+          <option name="urlPath" value="/Mapps/Global/updateTemp.php" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Django Server.GEOJITSU">
     <configuration name="quasar build -m electron" type="NodeJSConfigurationType" application-parameters="build -m electron" path-to-js-file="$USER_HOME$/AppData/Roaming/npm/node_modules/@quasar/cli/bin/quasar" working-dir="$PROJECT_DIR$/frontend/geojitsu">
       <method v="2" />
     </configuration>
     <configuration name="quasar dev" type="NodeJSConfigurationType" application-parameters="serve --modern" path-to-js-file="$USER_HOME$/AppData/Roaming/npm/node_modules/@quasar/cli/bin/quasar" working-dir="$PROJECT_DIR$/frontend/geojitsu">
+      <method v="2" />
+    </configuration>
+    <configuration name="GEOJITSU" type="Python.DjangoServer" factoryName="Django server">
+      <module name="GEOJITSU" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="GEOJITSU.settings.dev" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="127.0.0.12" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
@@ -196,6 +230,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Django Server.GEOJITSU" />
       <item itemvalue="Node.js.quasar dev" />
       <item itemvalue="Node.js.quasar build -m electron" />
       <item itemvalue="npm.serve" />
@@ -220,8 +255,118 @@
       <workItem from="1589510981538" duration="8986000" />
       <workItem from="1589655452685" duration="8049000" />
       <workItem from="1589687582190" duration="19658000" />
-      <workItem from="1592332700175" duration="1412000" />
+      <workItem from="1592332700175" duration="27215000" />
+      <workItem from="1592453510312" duration="898000" />
+      <workItem from="1592503841473" duration="27329000" />
+      <workItem from="1592759698718" duration="26871000" />
+      <workItem from="1593048072767" duration="21015000" />
+      <workItem from="1593229703564" duration="2699000" />
+      <workItem from="1593239646723" duration="970000" />
+      <workItem from="1593242854972" duration="2626000" />
+      <workItem from="1593899085272" duration="2370000" />
+      <workItem from="1594051154993" duration="327000" />
+      <workItem from="1594065922096" duration="3360000" />
+      <workItem from="1594071751127" duration="17146000" />
     </task>
+    <task id="LOCAL-00001" summary="init">
+      <created>1592334223726</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1592334223726</updated>
+    </task>
+    <task id="LOCAL-00002" summary="init">
+      <created>1592374757612</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1592374757612</updated>
+    </task>
+    <task id="LOCAL-00003" summary="init">
+      <created>1592415839608</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1592415839608</updated>
+    </task>
+    <task id="LOCAL-00004" summary="init">
+      <created>1592544954786</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1592544954786</updated>
+    </task>
+    <task id="LOCAL-00005" summary="init">
+      <created>1592687429523</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1592687429523</updated>
+    </task>
+    <task id="LOCAL-00006" summary="init">
+      <created>1592687972806</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1592687972806</updated>
+    </task>
+    <task id="LOCAL-00007" summary="init">
+      <created>1592800818527</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1592800818527</updated>
+    </task>
+    <task id="LOCAL-00008" summary="init">
+      <created>1593029595450</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1593029595450</updated>
+    </task>
+    <task id="LOCAL-00009" summary="init">
+      <created>1593105426283</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1593105426283</updated>
+    </task>
+    <task id="LOCAL-00010" summary="init">
+      <created>1593204189349</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1593204189349</updated>
+    </task>
+    <task id="LOCAL-00011" summary="init">
+      <created>1593204866178</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1593204866178</updated>
+    </task>
+    <task id="LOCAL-00012" summary="init">
+      <created>1594081269554</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1594081269554</updated>
+    </task>
+    <task id="LOCAL-00013" summary="init">
+      <created>1594136477546</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1594136477546</updated>
+    </task>
+    <task id="LOCAL-00014" summary="init">
+      <created>1594403360477</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1594403360477</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,6 +384,10 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="828" y="412" key="#ESLint" timestamp="1589701671621">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -248,53 +397,67 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="586" y="198" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1589693698835" />
-    <state x="55" y="85" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592334136535">
+    <state x="55" y="85" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593202610117">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="55" y="85" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592334136535" />
+    <state x="55" y="85" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593202610117" />
     <state x="339" y="158" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589695560784" />
-    <state x="585" y="88" key="CommitChangelistDialog2" timestamp="1592333417635">
+    <state x="423" y="97" key="CommitChangelistDialog2" timestamp="1594403359636">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="88" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592333417635" />
-    <state x="349" y="290" key="FileChooserDialogImpl" timestamp="1592334088077">
+    <state x="423" y="97" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1594403359636" />
+    <state x="349" y="290" key="FileChooserDialogImpl" timestamp="1593031981650">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1589400893789" />
-    <state x="349" y="290" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592334088077" />
+    <state x="349" y="290" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593031981650" />
     <state x="651" y="150" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589695538794" />
     <state x="300" y="262" width="504" height="244" key="Github.ShareDialog" timestamp="1589400788629">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="300" y="262" width="504" height="244" key="Github.ShareDialog/0.0.1366.728@0.0.1366.728" timestamp="1589400788629" />
-    <state width="1877" height="493" key="GridCell.Tab.0.bottom" timestamp="1592333350338">
+    <state width="1877" height="327" key="GridCell.Tab.0.bottom" timestamp="1594405394295">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="493" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592333350338" />
+    <state width="1877" height="327" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1594405394295" />
     <state width="1876" height="395" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589752031778" />
-    <state width="1877" height="493" key="GridCell.Tab.0.center" timestamp="1592333350337">
+    <state width="1877" height="327" key="GridCell.Tab.0.center" timestamp="1594405394295">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="493" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592333350337" />
+    <state width="1877" height="327" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1594405394295" />
     <state width="1876" height="395" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589752031778" />
-    <state width="1877" height="493" key="GridCell.Tab.0.left" timestamp="1592333350337">
+    <state width="1877" height="327" key="GridCell.Tab.0.left" timestamp="1594405394294">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="493" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592333350337" />
+    <state width="1877" height="327" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1594405394294" />
     <state width="1876" height="395" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589752031778" />
-    <state width="1877" height="493" key="GridCell.Tab.0.right" timestamp="1592333350338">
+    <state width="1877" height="327" key="GridCell.Tab.0.right" timestamp="1594405394295">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="493" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592333350338" />
+    <state width="1877" height="327" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1594405394295" />
     <state width="1876" height="395" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589752031778" />
-    <state x="403" y="129" key="SettingsEditor" timestamp="1589657319540">
+    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1593016800833">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593016800833" />
+    <state x="184" y="86" key="MergeDialog" timestamp="1594068922828">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="184" y="86" key="MergeDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1594068922828" />
+    <state x="403" y="129" key="SettingsEditor" timestamp="1594404997750">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="403" y="129" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1594404997750" />
     <state x="403" y="129" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589657319540" />
-    <state x="692" y="397" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589558723776">
+    <state x="384" y="251" key="Vcs.Push.Dialog.v2" timestamp="1594403362112">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="384" y="251" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1594403362112" />
+    <state x="692" y="397" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594175937044">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="492" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1589400592612" />
+    <state x="692" y="397" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1594175937044" />
     <state x="692" y="397" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1589558723776" />
   </component>
 </project>
