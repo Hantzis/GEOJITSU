@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'gj_layers',
+    'onsses45',
 ]
 
 MIDDLEWARE = [
@@ -162,3 +163,12 @@ WAGTAIL_SITE_NAME = "GEOJITSU"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
+
+
+
+OSGEO_VENV = r'C:\WPy64-3830\python-3.8.3.amd64\Lib\site-packages\osgeo'
+GEOS_LIBRARY_PATH = OSGEO_VENV + r'\geos_c.dll'
+GDAL_LIBRARY_PATH = OSGEO_VENV + r'\gdal300.dll'
+GDAL_DRIVER_PATH = OSGEO_VENV + r'\gdalplugins'
+GDAL_DATA = OSGEO_VENV + r'\data'
+PROJ_LIB = GDAL_DATA + r'\proj'
