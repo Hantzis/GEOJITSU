@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'gj_layers',
-    'onsses45',
+    #'onsses45',
 ]
 
 MIDDLEWARE = [
@@ -93,8 +93,8 @@ WSGI_APPLICATION = 'GEOJITSU.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        'ENGINE': 'django.contrib.gis.db.backends.spatialite',
+        'ENGINE': 'django.db.backends.sqlite3',
+        # 'ENGINE': 'django.contrib.gis.db.backends.spatialite',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
@@ -174,6 +174,6 @@ GDAL_DRIVER_PATH = OSGEO_VENV + r'\gdalplugins'
 GDAL_DATA = OSGEO_VENV + r'\data'
 PROJ_LIB = GDAL_DATA + r'\proj'
 
-SPATIALITE_LIBRARY_PATH = OSGEO_VENV + r'\mod_spatialite.dll'
+# SPATIALITE_LIBRARY_PATH = OSGEO_VENV + r'\mod_spatialite.dll'
 # SPATIALITE_LIBRARY_PATH = 'mod_spatialite.dll'
 
