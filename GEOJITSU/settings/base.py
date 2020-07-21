@@ -42,12 +42,21 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
 
+    'gj_layers',
+    'conflictos',
+
+    'django_select2',
+    'graphos',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django.contrib.gis',
+    'djgeojson',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +72,19 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'GEOJITSU.urls'
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
+
+
+SELECT2_CACHE_BACKEND = 'default'
+SELECT2_CSS = 'select2/select2.css'
+SELECT2_JS = 'select2/select2.js'
 
 TEMPLATES = [
     {

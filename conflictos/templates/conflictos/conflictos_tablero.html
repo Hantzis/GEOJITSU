@@ -1,0 +1,358 @@
+{% extends "conflictos/conflictos_base.html" %}
+{% load wagtailimages_tags wagtailcore_tags static %}
+
+{% block content %}
+<style>
+.masonry.grid {
+  display: block;
+}
+
+@media only screen and (min-width: 768px) {
+  .masonry.grid {
+    -webkit-column-count: 2;
+       -moz-column-count: 2;
+            column-count: 2;
+    -webkit-column-gap: 0;
+       -moz-column-gap: 0;
+            column-gap: 0;
+  }
+
+  .ui.doubling.masonry.grid[class*="three column"] > .column {
+    width: 100% !important;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .masonry.grid {
+    -webkit-column-count: 3;
+       -moz-column-count: 3;
+            column-count: 3;
+  }
+}
+th.sorted.ascending:after {
+		content: " \2191";
+			white-space: nowrap;
+}
+
+th.sorted.descending:after {
+		content: " \2193";
+			white-space: nowrap;
+}
+</style>
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'c3js/c3.css' %}">
+<script type="text/javascript" src="{% static 'c3js/c3.js' %}"></script>
+<script type="text/javascript" src="{% static 'c3js/d3.v5.js' %}"></script>
+
+
+
+<div class="ui container">
+<h1>{{ page.title }}</h1>
+{{ page.cuerpo }}
+<hr />
+<p></p>
+
+<div class="ui three column doubling stackable relaxed masonry grid">
+  
+  <div class="column">
+    <div class="ui card" style="width: 100%;">
+      <div class="content">
+        <div class="header">Tipos de conflictos</div>
+      </div>
+      <div class="content">
+        <div class="ui top attached tabular menu">
+          <a class="item active" data-tab="tipos-grafica">
+            Gráfica
+          </a>
+          <a class="item" data-tab="tipos-datos">
+            Datos
+          </a>
+        </div>
+
+        <div class="ui bottom attached tab segment active" data-tab="tipos-grafica">
+	{{ page.get_conflictos_tipos_grafica.as_html }}
+        </div>
+
+        <div class="ui bottom attached tab segment" data-tab="tipos-datos">
+
+          <table class="ui right aligned celled table striped selectable">
+            <thead><tr><th class="left aligned descending">Tipo de conflicto</th><th class="right aligned descending">Cantidad</th></tr></thead>
+            <tbody>
+              {% for i in page.get_conflictos_tipos_datos %}
+              <tr>
+                {% for j in i %}
+		<td data-sort-value={{ j }}>{{ j }}</td>
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="ui card" style="width: 100%;">
+      <div class="content">
+        <div class="header">Conflictos por Entidad federativa</div>
+      </div>
+      <div class="content">
+        <div class="ui top attached tabular menu">
+          <a class="item active" data-tab="estados-grafica">
+            Gráfica
+          </a>
+          <a class="item" data-tab="estados-datos">
+            Datos
+          </a>
+        </div>
+
+        <div class="ui bottom attached tab segment active" data-tab="estados-grafica">
+        {{ page.get_conflictos_estados.grafica.as_html }}
+        </div>
+
+        <div class="ui bottom attached tab segment" data-tab="estados-datos">
+
+          <table class="ui right aligned celled table striped selectable">
+            <thead><tr><th class="left aligned descending">Estado</th><th class="right aligned descending">Cantidad</th></tr></thead>
+            <tbody>
+              {% for i in page.get_conflictos_estados.datos %}
+              <tr>
+                {% for j in i %}
+                <td data-sort-value={{ j }}>{{ j }}</td>
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="ui card" style="width: 100%;">
+      <div class="content">
+        <div class="header">Conflictos por Municipio</div>
+      </div>
+      <div class="content">
+        <div class="ui top attached tabular menu">
+          <a class="item active" data-tab="municipios-grafica">
+            Gráfica
+          </a>
+          <a class="item" data-tab="municipios-datos">
+            Datos
+          </a>
+        </div>
+
+        <div class="ui bottom attached tab segment active" data-tab="municipios-grafica">
+        {{ page.get_conflictos_municipios.grafica.as_html }}
+        </div>
+
+        <div class="ui bottom attached tab segment" data-tab="municipios-datos">
+
+	  <div class="scrolling content">
+          <table class="ui right aligned celled table striped selectable">
+            <thead><tr><th class="left aligned descending">Municipio</th><th class="right aligned descending">Cantidad</th></tr></thead>
+            <tbody>
+              {% for i in page.get_conflictos_municipios.datos %}
+              <tr>
+                {% for j in i %}
+                <td data-sort-value={{ j }}>{{ j }}</td>
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+	  </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="ui card" style="width: 100%;">
+      <div class="content">
+        <div class="header">Conflictos por Organización</div>
+      </div>
+      <div class="content">
+        <div class="ui top attached tabular menu">
+          <a class="item active" data-tab="organizaciones-grafica">
+            Gráfica
+          </a>
+          <a class="item" data-tab="organizaciones-datos">
+            Datos
+          </a>
+        </div>
+
+        <div class="ui bottom attached tab segment active" data-tab="organizaciones-grafica">
+        {{ page.get_organizaciones.grafica.as_html }}
+        </div>
+
+        <div class="ui bottom attached tab segment" data-tab="organizaciones-datos">
+
+          <div class="scrolling content">
+          <table class="ui right aligned celled table striped selectable">
+            <thead><tr><th class="left aligned descending">Organización</th><th class="right aligned descending">Cantidad</th></tr></thead>
+            <tbody>
+              {% for i in page.get_organizaciones.datos %}
+              <tr>
+                {% for j in i %}
+                <td data-sort-value={{ j }}>{{ j }}</td>
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="ui card" style="width: 100%;">
+      <div class="content">
+        <div class="header">Conflictos por Empresa</div>
+      </div>
+      <div class="content">
+        <div class="ui top attached tabular menu">
+          <a class="item active" data-tab="empresas-grafica">
+            Gráfica
+          </a>
+          <a class="item" data-tab="empresas-datos">
+            Datos
+          </a>
+        </div>
+
+        <div class="ui bottom attached tab segment active" data-tab="empresas-grafica">
+        {{ page.get_empresas.grafica.as_html }}
+        </div>
+
+        <div class="ui bottom attached tab segment" data-tab="empresas-datos">
+
+          <div class="scrolling content">
+          <table class="ui right aligned celled table striped selectable">
+            <thead><tr><th class="left aligned descending">Organización</th><th class="right aligned descending">Cantidad</th></tr></thead>
+            <tbody>
+              {% for i in page.get_empresas.datos %}
+              <tr>
+                {% for j in i %}
+                <td data-sort-value={{ j }}>{{ j }}</td>
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="ui card" style="width: 100%;">
+      <div class="content">
+        <div class="header">Conflictos por Secretaría</div>
+      </div>
+      <div class="content">
+        <div class="ui top attached tabular menu">
+          <a class="item active" data-tab="secretarias-grafica">
+            Gráfica
+          </a>
+          <a class="item" data-tab="secretarias-datos">
+            Datos
+          </a>
+        </div>
+
+        <div class="ui bottom attached tab segment active" data-tab="secretarias-grafica">
+        {{ page.get_secretarias.grafica.as_html }}
+        </div>
+
+        <div class="ui bottom attached tab segment" data-tab="secretarias-datos">
+
+          <div class="scrolling content">
+          <table class="ui right aligned celled table striped selectable">
+            <thead><tr><th class="left aligned descending">Organización</th><th class="right aligned descending">Cantidad</th></tr></thead>
+            <tbody>
+              {% for i in page.get_secretarias.datos %}
+              <tr>
+                {% for j in i %}
+                <td data-sort-value={{ j }}>{{ j }}</td>
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="ui card" style="width: 100%;">
+      <div class="content">
+        <div class="header">Conflictos por pueblos originarios</div>
+      </div>
+      <div class="content">
+        <div class="ui top attached tabular menu">
+          <a class="item active" data-tab="pueblos-grafica">
+            Gráfica
+          </a>
+          <a class="item" data-tab="pueblos-datos">
+            Datos
+          </a>
+        </div>
+
+        <div class="ui bottom attached tab segment active" data-tab="pueblos-grafica">
+        {{ page.get_pueblos.grafica.as_html }}
+        </div>
+
+        <div class="ui bottom attached tab segment" data-tab="pueblos-datos">
+
+          <div class="scrolling content">
+          <table class="ui right aligned celled table striped selectable">
+            <thead><tr><th class="left aligned descending">Pueblos originario</th><th class="right aligned descending">Cantidad</th></tr></thead>
+            <tbody>
+              {% for i in page.get_pueblos.datos %}
+              <tr>
+                {% for j in i %}
+                <td data-sort-value={{ j }}>{{ j }}</td>
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+</div>
+</div>
+
+
+
+<script src="{% static 'js/jquery.tablesort.js' %}"></script>
+<script>
+$(function() {
+  $('.menu .item').tab()
+  $('table').tablesort()
+})
+</script>
+{% endblock %}
