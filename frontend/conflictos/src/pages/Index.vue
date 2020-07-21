@@ -66,10 +66,16 @@
     },
     methods: {
       pointsStyleFunc() {
-        const conflictos_styles = {
+        let cache = {}
+        console.log("puntostyle")
+
+        return (feature, resolution) => {
+          console.log(feature)
+          console.log(resolution)
+          const conflictos_styles = {
             '1': new IconStyle({src: "https://conflictossocioambientales.iies.unam.mx/media/images/agri.2e16d0ba.fill-40x40.png"}),
             '2': new IconStyle({src: "https://conflictossocioambientales.iies.unam.mx/media/images/bio.2e16d0ba.fill-40x40.png"}),
-            '3': new IconStyle({src: "https://conflictossocioambientales.iies.unam.mx/media/images/carre.2e16d0ba.fill-40x40.png"}),
+            /*'3': new IconStyle({src: "https://conflictossocioambientales.iies.unam.mx/media/images/carre.2e16d0ba.fill-40x40.png"}),
             '4': new IconStyle({src: "https://conflictossocioambientales.iies.unam.mx/media/images/energy_SL4BInB.2e16d0ba.fill-40x40.png"}),
             '5': new IconStyle({src: "https://conflictossocioambientales.iies.unam.mx/media/images/forest.2e16d0ba.fill-40x40.png"}),
             '6': new IconStyle({src: "https://conflictossocioambientales.iies.unam.mx/media/images/agua.2e16d0ba.fill-40x40.png"}),
@@ -78,9 +84,12 @@
             '9': new IconStyle({src: "https://conflictossocioambientales.iies.unam.mx/media/images/relleno.2e16d0ba.fill-40x40.png"}),
             '10': new IconStyle({src: "https://conflictossocioambientales.iies.unam.mx/media/images/turismo.2e16d0ba.fill-40x40.png"}),
             '11': new IconStyle({src: "https://conflictossocioambientales.iies.unam.mx/media/images/urbano.2e16d0ba.fill-40x40.png"}),
-            '12': new IconStyle({src: "https://conflictossocioambientales.iies.unam.mx/media/images/Politico.2e16d0ba.fill-40x40.jpg"})
+            '12': new IconStyle({src: "https://conflictossocioambientales.iies.unam.mx/media/images/Politico.2e16d0ba.fill-40x40.jpg"})*/
+          }
+          console.log("return styles")
+          console.log(conflictos_styles);
+          return conflictos_styles
         }
-        return conflictos_styles
       }
     },
     watch: {
@@ -95,6 +104,5 @@
 .full-map {
   min-height: inherit;
   height: 100%;
-  margin-bottom: -200px;
 }
 </style>
