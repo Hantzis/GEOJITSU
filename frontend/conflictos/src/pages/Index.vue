@@ -97,6 +97,7 @@
         console.log(this.conflictos_selectedFeatures[0])
       }
     }
+
   }
 </script>
 
