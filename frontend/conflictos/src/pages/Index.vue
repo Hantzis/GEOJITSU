@@ -1,8 +1,8 @@
 <template>
-  <q-page style="background-color: green; height: 100px">
+  <q-page style="height: 100px">
     <div class="full-map">
       <vl-map ref="map" :load-tiles-while-animating="true" :load-tiles-while-interacting="true"
-              data-projection="EPSG:4326" style="min-height: inherit; width: 100%; background-color: #75CFF0;">
+              data-projection="EPSG:4326" style="background-color: #75CFF0;">
         <vl-view ref="map_view" :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation"></vl-view>
 
         <!-- <vl-geoloc @update:position="geolocPosition = $event">
@@ -70,7 +70,7 @@
         console.log("puntostyle")
 
         return (feature, resolution) => {
-          console.log(feature)
+          console.log(feature.values_.tipo)
           console.log(resolution)
           const conflictos_styles = {
             '1': new IconStyle({src: "https://conflictossocioambientales.iies.unam.mx/media/images/agri.2e16d0ba.fill-40x40.png"}),
