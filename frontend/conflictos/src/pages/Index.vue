@@ -4,7 +4,6 @@
       <vl-map ref="map" :load-tiles-while-animating="true" :load-tiles-while-interacting="true"
               data-projection="EPSG:4326" style="background-color: #75CFF0;">
         <vl-view ref="map_view" :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation"></vl-view>
-
         <!-- <vl-geoloc @update:position="geolocPosition = $event">
           <template slot-scope="geoloc">
             <vl-feature v-if="geoloc.position" id="position-feature">
@@ -15,7 +14,6 @@
             </vl-feature>
           </template>
         </vl-geoloc> -->
-
         <!-- <vl-layer-tile id="osm">
           <vl-source-osm></vl-source-osm>
         </vl-layer-tile> -->
