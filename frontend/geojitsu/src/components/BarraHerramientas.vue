@@ -146,7 +146,7 @@
         </div>
       </template>
       <template v-slot:medicion style="padding: 0">
-        <div class="qqqq">
+        <div>
           <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle"
                      self="bottom middle">
             Medir distancia
@@ -157,7 +157,6 @@
             icon="mdi-ruler"
             @click="onMainClick"
             class="q-btn__desplegable no-border-radius"
-            style="margin: 0 -0.14em;"
           >
             <q-list dense>
               <q-item clickable v-close-popup @click="onItemClick">
@@ -229,5 +228,15 @@
   .q-btn__wrapper {
     min-height: 2.6em;
     min-width: 2.6em;
+  }
+
+
+  .prueba .q-btn-group button:nth-child(3) span:nth-child(2) button:nth-child(2) span.q-btn__wrapper,
+
+  .prueba .q-btn-group button:nth-child(4) span:nth-child(2) button:nth-child(2) span.q-btn__wrapper,
+
+  .prueba .q-btn-group button:nth-child(5) span:nth-child(2) button:nth-child(2) span.q-btn__wrapper {
+    min-width: 18px;
+    width: 28px;
   }
 </style>
