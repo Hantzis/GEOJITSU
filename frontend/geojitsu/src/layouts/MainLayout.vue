@@ -121,10 +121,6 @@ export default {
     testa(val) {
       alert(val);
     },
-
-    onItemClick() {
-      console.log('Clicked on an Item')
-    }
   },
   watch: {
     model() {
@@ -167,7 +163,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .q-drawer--right {
   z-index: 999;
   border-left: 1px solid rgba(0, 0, 0, 0.12);
