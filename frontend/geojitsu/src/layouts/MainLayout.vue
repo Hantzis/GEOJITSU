@@ -17,7 +17,7 @@
           <div class="row q-pt-sm q-pr-sm justify-between">
             <div class="col" /> <!-- esta es para hacer espacio entre el menu y los botones -->
             <div class="col-auto">
-              <div class="row justify-end" style="margin-right: -5px;">
+              <div class="row justify-end" style="margin-right: -8px;">
                 <barra-herramientas />
                 <barra-visualizacion />
               </div>
@@ -168,6 +168,5 @@ export default {
   z-index: 999;
   border-left: 1px solid rgba(0, 0, 0, 0.12);
 }
-
 
 </style>

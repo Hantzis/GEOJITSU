@@ -6,10 +6,11 @@
 
         <q-toolbar-title>
           Maptitude XYZ
-        </q-toolbar-title>
+        </q-toolbar-title>Zoom general
         <q-btn dense flat round icon="help" @click="testa('help')"/>
         <q-btn dense flat round icon="mdi-login" @click="testa('login')"/>
       </q-toolbar>
+
 
       <div class="row justify-between">
         <div class="col-xs-12 col-sm-7">
