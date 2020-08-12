@@ -210,32 +210,30 @@
   }
 </script>
 
-<style lang="scss">
-
-
-  .prueba .q-btn-group button:nth-child(3) span:nth-child(2) {
+<style lang="css" scoped>
+  .prueba >>> .q-btn-group button:nth-child(3) span:nth-child(2) {
     padding: 0;
   }
 
-  .prueba .q-btn-group button:nth-child(4) span:nth-child(2) {
+  .prueba >>> .q-btn-group button:nth-child(4) span:nth-child(2) {
     padding: 0;
   }
 
-  .prueba .q-btn-group button:nth-child(5) span:nth-child(2) {
+  .prueba >>> .q-btn-group button:nth-child(5) span:nth-child(2) {
     padding: 0;
   }
 
-  .q-btn__wrapper {
+  .prueba >>> .q-btn__wrapper {
     min-height: 2.6em;
     min-width: 2.6em;
   }
 
 
-  .prueba .q-btn-group button:nth-child(3) span:nth-child(2) button:nth-child(2) span.q-btn__wrapper,
+  .prueba >>> .q-btn-group button:nth-child(3) span:nth-child(2) button:nth-child(2) span.q-btn__wrapper,
 
-  .prueba .q-btn-group button:nth-child(4) span:nth-child(2) button:nth-child(2) span.q-btn__wrapper,
+  .prueba >>> .q-btn-group button:nth-child(4) span:nth-child(2) button:nth-child(2) span.q-btn__wrapper,
 
-  .prueba .q-btn-group button:nth-child(5) span:nth-child(2) button:nth-child(2) span.q-btn__wrapper {
+  .prueba >>> .q-btn-group button:nth-child(5) span:nth-child(2) button:nth-child(2) span.q-btn__wrapper {
     min-width: 18px;
     width: 28px;
   }
