@@ -237,8 +237,6 @@
     min-width: 2.6em;
   }
 
-
-
   .prueba >>> .q-btn-group button:nth-child(3) span:nth-child(2) button:nth-child(2) span.q-btn__wrapper,
   .prueba >>> .q-btn-group button:nth-child(4) span:nth-child(2) button:nth-child(2) span.q-btn__wrapper,
   .prueba >>> .q-btn-group button:nth-child(5) span:nth-child(2) button:nth-child(2) span.q-btn__wrapper {
