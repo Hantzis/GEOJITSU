@@ -10,11 +10,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="mac">
-      <change afterPath="$PROJECT_DIR$/frontend/geojitsu/src/components/BarraHerramientas/MenuBarraHerramientas.vue" afterDir="false" />
+    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/geojitsu/src/components/MenuZoom.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/components/BarraHerramientas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/components/BarraHerramientas.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/components/BarraHerramientas/BotonBarraHerramientas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/components/BarraHerramientas/BotonBarraHerramientas.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/components/BarraHerramientas/MenuBarraHerramientas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/components/BarraHerramientas/MenuBarraHerramientas.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/layouts/MainLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/layouts/MainLayout.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +153,7 @@
       <workItem from="1595365903270" duration="3195000" />
       <workItem from="1595380471741" duration="572000" />
       <workItem from="1597184837251" duration="22428000" />
-      <workItem from="1597272331629" duration="1886000" />
+      <workItem from="1597272331629" duration="11708000" />
     </task>
     <task id="LOCAL-00001" summary="mac">
       <created>1595444550203</created>
@@ -189,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597257059802</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="mac">
+      <created>1597277948894</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1597277948894</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,11 +236,11 @@
     <state x="55" y="85" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592334136535" />
     <state x="339" y="158" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589695560784" />
     <state x="39" y="84" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1366.745@0.23.1366.745" timestamp="1597192083983" />
-    <state x="416" y="23" key="CommitChangelistDialog2" timestamp="1597257059614">
+    <state x="416" y="23" key="CommitChangelistDialog2" timestamp="1597277948472">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state x="585" y="88" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592333417635" />
-    <state x="416" y="23" key="CommitChangelistDialog2/0.23.1366.745@0.23.1366.745" timestamp="1597257059614" />
+    <state x="416" y="23" key="CommitChangelistDialog2/0.23.1366.745@0.23.1366.745" timestamp="1597277948472" />
     <state x="349" y="290" key="FileChooserDialogImpl" timestamp="1592334088077">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -243,30 +251,30 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="300" y="262" width="504" height="244" key="Github.ShareDialog/0.0.1366.728@0.0.1366.728" timestamp="1589400788629" />
-    <state width="1324" height="225" key="GridCell.Tab.0.bottom" timestamp="1597272155041">
+    <state width="1324" height="225" key="GridCell.Tab.0.bottom" timestamp="1597327038385">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1877" height="493" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592333350338" />
     <state width="1876" height="395" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589752031778" />
-    <state width="1324" height="225" key="GridCell.Tab.0.bottom/0.23.1366.745@0.23.1366.745" timestamp="1597272155041" />
-    <state width="1324" height="225" key="GridCell.Tab.0.center" timestamp="1597272155039">
+    <state width="1324" height="225" key="GridCell.Tab.0.bottom/0.23.1366.745@0.23.1366.745" timestamp="1597327038385" />
+    <state width="1324" height="225" key="GridCell.Tab.0.center" timestamp="1597327038381">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1877" height="493" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592333350337" />
     <state width="1876" height="395" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589752031778" />
-    <state width="1324" height="225" key="GridCell.Tab.0.center/0.23.1366.745@0.23.1366.745" timestamp="1597272155039" />
-    <state width="1324" height="225" key="GridCell.Tab.0.left" timestamp="1597272155038">
+    <state width="1324" height="225" key="GridCell.Tab.0.center/0.23.1366.745@0.23.1366.745" timestamp="1597327038381" />
+    <state width="1324" height="225" key="GridCell.Tab.0.left" timestamp="1597327038380">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1877" height="493" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592333350337" />
     <state width="1876" height="395" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589752031778" />
-    <state width="1324" height="225" key="GridCell.Tab.0.left/0.23.1366.745@0.23.1366.745" timestamp="1597272155038" />
-    <state width="1324" height="225" key="GridCell.Tab.0.right" timestamp="1597272155040">
+    <state width="1324" height="225" key="GridCell.Tab.0.left/0.23.1366.745@0.23.1366.745" timestamp="1597327038380" />
+    <state width="1324" height="225" key="GridCell.Tab.0.right" timestamp="1597327038382">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state width="1877" height="493" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592333350338" />
     <state width="1876" height="395" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589752031778" />
-    <state width="1324" height="225" key="GridCell.Tab.0.right/0.23.1366.745@0.23.1366.745" timestamp="1597272155040" />
+    <state width="1324" height="225" key="GridCell.Tab.0.right/0.23.1366.745@0.23.1366.745" timestamp="1597327038382" />
     <state x="399" y="118" key="MultipleFileMergeDialog" timestamp="1597256967979">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
@@ -279,10 +287,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="403" y="129" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589657319540" />
-    <state x="283" y="124" key="Vcs.Push.Dialog.v2" timestamp="1597257062541">
+    <state x="283" y="124" key="Vcs.Push.Dialog.v2" timestamp="1597277951055">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
-    <state x="283" y="124" key="Vcs.Push.Dialog.v2/0.23.1366.745@0.23.1366.745" timestamp="1597257062541" />
+    <state x="283" y="124" key="Vcs.Push.Dialog.v2/0.23.1366.745@0.23.1366.745" timestamp="1597277951055" />
     <state x="376" y="228" key="com.intellij.ide.util.TipDialog" timestamp="1597272373066">
       <screen x="0" y="23" width="1366" height="745" />
     </state>

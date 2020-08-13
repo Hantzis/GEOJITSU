@@ -14,14 +14,14 @@
         {value: 'zoom', slot: 'zoom', opciones: [1,2,3]},
         {value: 'seleccion', slot: 'seleccion'},
         {value: 'medicion', slot: 'medicion'},
+        {value: 'menu', slot: 'menu'},
       ]"
     >
       <template v-slot:mover>
         <boton-barra-herramientas tooltip_message="Desplazar mapa" icon="mdi-hand-right"/>
       </template>
-      <q-separator vertical/>
       <template v-slot:info>
-        <boton-barra-herramientas tooltip_message="Mostrar información" icon="info" />
+        <boton-barra-herramientas tooltip_message="Mostrar información" icon="info"/>
       </template>
       <template v-slot:zoom>
         <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle" self="bottom middle">
@@ -136,7 +136,7 @@
           </q-btn-dropdown>
         </div>
       </template>
-      <template v-slot:medicion style="padding: 0">
+      <template v-slot:medicion>
         <div>
           <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle"
                      self="bottom middle">
@@ -178,6 +178,9 @@
           </q-btn-dropdown>
         </div>
       </template>
+      <template v-slot:menu>
+          <menu-barra-herramientas />
+      </template>
     </q-btn-toggle>
   </div>
 
@@ -185,10 +188,11 @@
 
 <script>
   import BotonBarraHerramientas from "./BarraHerramientas/BotonBarraHerramientas";
+  import MenuBarraHerramientas from "./BarraHerramientas/MenuBarraHerramientas";
 
   export default {
     name: "BarraHerramientas",
-    components: {BotonBarraHerramientas},
+    components: {MenuBarraHerramientas, BotonBarraHerramientas},
     data() {
       return {
         opcion: 'mover',
@@ -212,13 +216,8 @@
 
   .prueba >>> .q-btn-group button:nth-child(3) span:nth-child(2),
   .prueba >>> .q-btn-group button:nth-child(4) span:nth-child(2),
-  .prueba >>> .q-btn-group button:nth-child(5) span:nth-child(2) {
+  .prueba >>> .q-btn-group button:nth-child(5) span:nth-child(2){
     padding: 0;
-  }
-
-  .prueba >>> .q-btn__wrapper {
-    min-height: 2.6em;
-    min-width: 2.6em;
   }
 
   .prueba >>> .q-btn-group button:nth-child(3) span:nth-child(2) button:nth-child(2) span.q-btn__wrapper,
