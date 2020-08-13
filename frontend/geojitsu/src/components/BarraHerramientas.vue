@@ -14,27 +14,14 @@
         {value: 'zoom', slot: 'zoom', opciones: [1,2,3]},
         {value: 'seleccion', slot: 'seleccion'},
         {value: 'medicion', slot: 'medicion'},
-        {value: 'mover2', slot: 'mover2'}
-
       ]"
     >
       <template v-slot:mover>
-        <q-icon name="mdi-hand-right">
-          <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle"
-                     self="bottom middle">
-            Desplazar mapa
-          </q-tooltip>
-        </q-icon>
+        <boton-barra-herramientas tooltip_message="Desplazar mapa" icon="mdi-hand-right"/>
       </template>
-
       <q-separator vertical/>
       <template v-slot:info>
-        <q-icon name="info">
-          <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle"
-                     self="bottom middle">
-            Mostrar info
-          </q-tooltip>
-        </q-icon>
+        <boton-barra-herramientas tooltip_message="Mostrar información" icon="info" />
       </template>
       <template v-slot:zoom>
         <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle" self="bottom middle">
@@ -190,9 +177,6 @@
             </q-list>
           </q-btn-dropdown>
         </div>
-      </template>
-      <template v-slot:mover2>
-        <boton-barra-herramientas/>
       </template>
     </q-btn-toggle>
   </div>

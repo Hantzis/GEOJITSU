@@ -1,18 +1,33 @@
 <template>
-  <q-icon name="mdi-hand-right">
-    <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle"
+  <q-icon :name="my_icon">
+    <q-tooltip v-if="tooltip_message"
+               content-class="bg-black"
+               content-style="font-size: 16px"
+               anchor="top middle"
                self="bottom middle">
-      Desplazar mapa
+      {{ tooltip_message }}
     </q-tooltip>
   </q-icon>
 </template>
 
 <script>
   export default {
-    name: "BotonHerramienta"
+    name: "BotonHerramienta",
+    props: {
+      'tooltip_message': String,
+      'icon': String
+    },
+    computed: {
+      my_icon() {
+        if (this.icon) {
+          return this.icon
+        } else
+          return "default"
+      }
+    },
+    data() {
+      return {
+      }
+    },
   }
 </script>
-
-<style scoped>
-
-</style>
