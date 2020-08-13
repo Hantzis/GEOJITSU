@@ -1,5 +1,5 @@
 <template>
-  <q-page >
+  <q-page>
     <div class="full-map">
       <vl-map ref="map" :load-tiles-while-animating="true" :load-tiles-while-interacting="true"
               data-projection="EPSG:3857" style="min-height: inherit; width: 100%; background-color: #75CFF0;">

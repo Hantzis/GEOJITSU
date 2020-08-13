@@ -11,21 +11,9 @@
         <q-btn dense flat round icon="mdi-login" @click="testa('login')"/>
       </q-toolbar>
 
-      <div class="row justify-between">
-        <principal-tab/>
-        <div class="col-xs-12 col-sm-5">
-          <div class="row q-pt-sm q-pr-sm justify-between">
-            <div class="col"/> <!-- esta es para hacer espacio entre el menu y los botones -->
-            <div class="col-auto">
-              <div class="row justify-end" style="margin-right: -8px;">
-                <barra-herramientas/>
-                <menu-zoom/>
-                <barra-visualizacion/>
-              </div>
-
-            </div>
-
-          </div>
+      <div class="row">
+        <div class="col">
+          <principal-tab/>
         </div>
       </div>
 
@@ -100,76 +88,73 @@
 </template>
 
 <script>
-  import PrincipalTab from "components/PrincipalTab";
-  import BarraHerramientas from "components/BarraHerramientas";
-  import BarraVisualizacion from "components/BarraVisualizacion";
-  import MenuZoom from "../components/MenuZoom";
+import PrincipalTab from "components/PrincipalTab";
 
-  export default {
-    components: {MenuZoom, BarraVisualizacion, BarraHerramientas, PrincipalTab},
-    data() {
-      return {
-        left: false,
-        right: false,
-        drawer_layers: false,
-        drawer_grid: false,
-        drawer_stats: false,
-        drawer_charts: false,
-        toggle_drawers_model: 'hide',
-        layers_tabs: 'layers',
-        cake: 'cake'
+export default {
+  components: {PrincipalTab},
+  data() {
+    return {
+      left: false,
+      right: false,
+      drawer_layers: false,
+      drawer_grid: false,
+      drawer_stats: false,
+      drawer_charts: false,
+      toggle_drawers_model: 'hide',
+      layers_tabs: 'layers',
+      cake: 'cake'
+    }
+  },
+  methods: {
+    testa(val) {
+      alert(val);
+    },
+  },
+  watch: {
+    model() {
+      console.log(this.model)
+    },
+    toggle_drawers_model() {
+      console.log(this.toggle_drawers_model)
+      if (this.toggle_drawers_model == 'hide') {
+        this.drawer_layers = false;
+        this.drawer_grid = false;
+        this.drawer_stats = false;
+        this.drawer_charts = false;
       }
-    },
-    methods: {
-      testa(val) {
-        alert(val);
-      },
-    },
-    watch: {
-      model() {
-        console.log(this.model)
-      },
-      toggle_drawers_model() {
-        console.log(this.toggle_drawers_model)
-        if (this.toggle_drawers_model == 'hide') {
-          this.drawer_layers = false;
-          this.drawer_grid = false;
-          this.drawer_stats = false;
-          this.drawer_charts = false;
-        }
-        if (this.toggle_drawers_model == 'layers') {
-          this.drawer_layers = true;
-          this.drawer_grid = false;
-          this.drawer_stats = false;
-          this.drawer_charts = false;
-        }
-        if (this.toggle_drawers_model == 'grid') {
-          this.drawer_layers = false;
-          this.drawer_grid = true;
-          this.drawer_stats = false;
-          this.drawer_charts = false;
-        }
-        if (this.toggle_drawers_model == 'stats') {
-          this.drawer_layers = false;
-          this.drawer_grid = false;
-          this.drawer_stats = true;
-          this.drawer_charts = false;
-        }
-        if (this.toggle_drawers_model == 'charts') {
-          this.drawer_layers = false;
-          this.drawer_grid = false;
-          this.drawer_stats = false;
-          this.drawer_charts = true;
-        }
+      if (this.toggle_drawers_model == 'layers') {
+        this.drawer_layers = true;
+        this.drawer_grid = false;
+        this.drawer_stats = false;
+        this.drawer_charts = false;
+      }
+      if (this.toggle_drawers_model == 'grid') {
+        this.drawer_layers = false;
+        this.drawer_grid = true;
+        this.drawer_stats = false;
+        this.drawer_charts = false;
+      }
+      if (this.toggle_drawers_model == 'stats') {
+        this.drawer_layers = false;
+        this.drawer_grid = false;
+        this.drawer_stats = true;
+        this.drawer_charts = false;
+      }
+      if (this.toggle_drawers_model == 'charts') {
+        this.drawer_layers = false;
+        this.drawer_grid = false;
+        this.drawer_stats = false;
+        this.drawer_charts = true;
       }
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
-  .q-drawer--right {
-    z-index: 999;
-    border-left: 1px solid rgba(0, 0, 0, 0.12);
-  }
+.q-drawer--right {
+  z-index: 999;
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
 
 </style>
