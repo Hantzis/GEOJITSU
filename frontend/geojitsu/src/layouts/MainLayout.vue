@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh LpR fFf">
-    <q-header elevated class="bg-black text-white" height-hint="98">
+    <q-header elevated class="bg-black text-white">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="left = !left"/>
 
@@ -11,13 +11,10 @@
         <q-btn dense flat round icon="mdi-login" @click="testa('login')"/>
       </q-toolbar>
 
-      <div class="row">
-        <div class="col">
-          <principal-tab/>
-        </div>
-      </div>
+      <principal-tab/>
 
     </q-header>
+
 
     <q-drawer v-model="left" side="left" bordered overlay behavior="mobile">
       <!-- drawer content -->
