@@ -4,10 +4,11 @@
       style="border-radius: 0;"
       v-model="toggle_drawers_model"
       dense
-      glossy
-      color="white"
-      text-color="primary"
-      toggle-color="light-blue"
+      unelevated
+      text-color="grey-6"
+      toggle-text-color="white"
+      toggle-color="primary"
+      size="md"
       :options="[
         {value: 'hide', slot: 'hide'},
         {value: 'layers', slot: 'layers'},

@@ -6,10 +6,9 @@
     <q-btn-dropdown
       split
       flat
-      glossy
       dense
       color="primary"
-      text-color="white"
+      text-color="grey-6"
       backgound-color="white"
       icon="mdi-arrow-expand-all"
       @click="onMainClick"
