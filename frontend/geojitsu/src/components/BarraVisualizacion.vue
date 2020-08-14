@@ -1,5 +1,5 @@
 <template>
-  <div class="row q-pt-xs q-pl-xs q-pr-xs">
+  <div class="row q-pa-xs q-pt-xs1 q-pl-xs q-pr-xs">
     <q-btn-toggle
       style="border-radius: 0;"
       v-model="toggle_drawers_model"

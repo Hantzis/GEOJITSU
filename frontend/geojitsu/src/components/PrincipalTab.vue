@@ -109,6 +109,7 @@
         </div>
       </q-tab-panel>
     </q-tab-panels>
+    <q-separator color="grey-5"/>
   </div>
 </template>
 
