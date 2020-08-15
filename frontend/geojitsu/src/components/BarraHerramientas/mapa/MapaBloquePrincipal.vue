@@ -10,7 +10,7 @@
         <div class="col-auto">
           <div class="row q-px-sm" />
         </div>
-        <div class="col-auto items-end">
+        <div class="col-auto">
           Principal
         </div>
         <div class="col-auto">

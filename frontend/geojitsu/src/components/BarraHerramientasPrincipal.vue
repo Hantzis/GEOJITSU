@@ -20,49 +20,49 @@
     >
       <template v-slot:desplazar>
         <q-icon name="mdi-hand-right">
-          <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle"
+          <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px" anchor="top middle"
                      self="bottom middle">
-            Ocultar panel
+            Desplazar
           </q-tooltip>
         </q-icon>
       </template>
       <template v-slot:zoom-in>
         <q-icon name="mdi-magnify-plus">
-          <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle"
+          <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px" anchor="top middle"
                      self="bottom middle">
-            Capas de información
+            Acercar
           </q-tooltip>
         </q-icon>
       </template>
       <template v-slot:seleccion>
         <q-icon name="mdi-selection-drag">
-          <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle"
+          <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px" anchor="top middle"
                      self="bottom middle">
-            Tabla de atributos
+            Selección
           </q-tooltip>
         </q-icon>
       </template>
       <template v-slot:info>
         <q-icon name="mdi-information">
-          <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle"
+          <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px" anchor="top middle"
                      self="bottom middle">
-            Resumen
+            Información
           </q-tooltip>
         </q-icon>
       </template>
       <template v-slot:zoom-out>
         <q-icon name="mdi-magnify-minus">
-          <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle"
+          <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px" anchor="top middle"
                      self="bottom middle">
-            Gráficas
+            Alejar
           </q-tooltip>
         </q-icon>
       </template>
       <template v-slot:medicion>
         <q-icon name="mdi-ruler">
-          <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle"
+          <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px" anchor="top middle"
                      self="bottom middle">
-            Gráficas
+            Medición
           </q-tooltip>
         </q-icon>
       </template>

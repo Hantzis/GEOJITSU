@@ -8,8 +8,8 @@
       indicator-color="primary"
       active-bg-color="grey-1"
       align="left">
-      <q-tab v-if="false" name="proyecto" label="Proyecto" class="q-tab--no-caps tabs-title" />
-      <q-tab name="mapa" label="Mapa" class="q-tab--no-caps tabs-title" />
+      <q-tab v-if="false" name="proyecto" label="Proyecto" class="q-tab--no-caps tabs-title"/>
+      <q-tab name="mapa" label="Mapa" class="q-tab--no-caps tabs-title"/>
       <!-- <q-tab name="vectorial" label="Vectorial" class="q-tab--no-caps tabs-title" />
       <q-tab name="raster" label="Raster" class="q-tab--no-caps tabs-title" />
       <q-tab name="herramientas" label="Herramientas" class="q-tab--no-caps tabs-title" /> -->
@@ -41,7 +41,11 @@
 
       <q-tab-panel name="mapa" class="no-padding">
         <div class="row no-wrap">
-          <mapa-bloque-principal />
+          <mapa-bloque-principal/>
+
+          <q-separator vertical style="flex-shrink: 0"/>
+
+          <mapa-bloque-seleccion/>
 
           <q-separator vertical style="flex-shrink: 0"/>
 
@@ -77,16 +81,18 @@
 </template>
 
 <script>
-  import BarraHerramientas from "components/BarraHerramientas";
-  import MenuZoom from "components/MenuZoom";
   import BarraVisualizacion from "components/BarraVisualizacion";
-  import BarraHerramientasPrincipal from "./BarraHerramientasPrincipal";
   import MapaBloquePrincipal from "./BarraHerramientas/mapa/MapaBloquePrincipal";
+  import MapaBloqueSeleccion from "./BarraHerramientas/mapa/MapaBloqueSeleccion";
 
   export default {
     name: "PrincipalTab",
     // eslint-disable-next-line vue/no-unused-components
-    components: {MapaBloquePrincipal, BarraHerramientasPrincipal, BarraVisualizacion, MenuZoom, BarraHerramientas},
+    components: {
+      MapaBloquePrincipal,
+      MapaBloqueSeleccion,
+      BarraVisualizacion,
+    },
     data() {
       return {
         tab: 'mapa'
