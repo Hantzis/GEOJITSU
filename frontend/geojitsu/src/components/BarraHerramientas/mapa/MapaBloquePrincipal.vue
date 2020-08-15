@@ -21,7 +21,7 @@
 </template>
 
 <script>
-  import BarraHerramientasPrincipal from "../../BarraHerramientasPrincipal";
+  import BarraHerramientasPrincipal from "./BarraHerramientasPrincipal";
   export default {
     name: "MapaBloquePrincipal",
     components: {BarraHerramientasPrincipal}

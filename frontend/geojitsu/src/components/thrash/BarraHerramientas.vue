@@ -187,8 +187,8 @@
 </template>
 
 <script>
-  import BotonBarraHerramientas from "./BarraHerramientas/BotonBarraHerramientas";
-  import MenuBarraHerramientas from "./BarraHerramientas/MenuBarraHerramientas";
+  import BotonBarraHerramientas from "../BarraHerramientas/mapa/BotonBarraHerramientas";
+  import MenuBarraHerramientas from "../BarraHerramientas/mapa/MenuBarraHerramientas";
 
   export default {
     name: "BarraHerramientas",
@@ -208,23 +208,3 @@
     }
   }
 </script>
-
-<style lang="css" scoped>
-  .q-menu > .q-list--dense > .q-item--dense {
-    padding: 4px 12px 4px 4px;
-  }
-
-  .prueba >>> .q-btn-group button:nth-child(3) span:nth-child(2),
-  .prueba >>> .q-btn-group button:nth-child(4) span:nth-child(2),
-  .prueba >>> .q-btn-group button:nth-child(5) span:nth-child(2){
-    padding: 0;
-  }
-
-  .prueba >>> .q-btn-group button:nth-child(3) span:nth-child(2) button:nth-child(2) span.q-btn__wrapper,
-  .prueba >>> .q-btn-group button:nth-child(4) span:nth-child(2) button:nth-child(2) span.q-btn__wrapper,
-  .prueba >>> .q-btn-group button:nth-child(5) span:nth-child(2) button:nth-child(2) span.q-btn__wrapper {
-    min-width: 19px;
-    width: 19px;
-  }
-</style>
-

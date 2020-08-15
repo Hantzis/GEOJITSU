@@ -93,7 +93,7 @@ export default {
     return {
       left: false,
       right: false,
-      drawer_layers: true,
+      drawer_layers: false,
       drawer_grid: false,
       drawer_stats: false,
       drawer_charts: false,

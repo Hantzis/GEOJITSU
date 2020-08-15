@@ -81,7 +81,7 @@
 </template>
 
 <script>
-  import BarraVisualizacion from "components/BarraVisualizacion";
+  import BarraVisualizacion from "components/BarraHerramientas/mapa/BarraVisualizacion";
   import MapaBloquePrincipal from "./BarraHerramientas/mapa/MapaBloquePrincipal";
   import MapaBloqueSeleccion from "./BarraHerramientas/mapa/MapaBloqueSeleccion";
 
