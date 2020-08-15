@@ -8,13 +8,13 @@
       <!-- <div class="row" style="padding: 20px;"></div> -->
       <div class="row justify-between">
         <div class="col-auto">
-          <div class="row q-px-sm"/>
+          <div class="row q-px-sm" />
         </div>
         <div class="col-auto items-end">
           Principal
         </div>
         <div class="col-auto">
-          <q-btn dense size="xs" flat icon="mdi-arrow-bottom-right"/>
+          <q-btn dense size="xs" flat icon="mdi-arrow-bottom-right" />
         </div>
       </div>
     </div>
