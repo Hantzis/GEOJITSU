@@ -7,11 +7,49 @@
         <q-toolbar-title>
           Maptitude XYZ
         </q-toolbar-title>
-        <q-btn dense flat round icon="help" @click="testa('help')"/>
-        <q-btn dense flat round icon="mdi-login" @click="testa('login')"/>
+        <q-btn v-if="this.$route.path==='/'" dense flat round icon="mdi-arrow-collapse-up" @click="testa('help')"/>
+
+        <q-btn dense flat round icon="mdi-dots-vertical">
+          <q-menu content-style="border-radius: 2px;">
+            <q-list style="min-width: 130px;">
+              <q-item dense clickable v-close-popup style="padding: 0;">
+                <q-avatar>
+                  <q-icon name="info"/>
+                </q-avatar>
+                <q-item-section>Acerca de</q-item-section>
+              </q-item>
+              <q-item dense clickable v-close-popup style="padding: 0;">
+                <q-avatar>
+                  <q-icon name="mdi-clippy"/>
+                </q-avatar>
+                <q-item-section>Ayuda</q-item-section>
+              </q-item>
+              <q-separator/>
+              <q-item dense clickable v-close-popup style="padding: 0;">
+                <q-avatar>
+                  <q-icon name="login"/>
+                </q-avatar>
+                <q-item-section>Ingresar</q-item-section>
+              </q-item>
+              <q-item dense clickable v-close-popup style="padding: 0;">
+                <q-avatar>
+                  <q-icon name="logout"/>
+                </q-avatar>
+                <q-item-section>Salir</q-item-section>
+              </q-item>
+              <q-separator/>
+              <q-item dense clickable v-close-popup style="padding: 0;">
+                <q-avatar>
+                  <q-icon name="mdi-cog"/>
+                </q-avatar>
+                <q-item-section>Ajustes</q-item-section>
+              </q-item>
+            </q-list>
+          </q-menu>
+        </q-btn>
       </q-toolbar>
 
-      <principal-tab/>
+
 
     </q-header>
 
@@ -85,10 +123,8 @@
 </template>
 
 <script>
-import PrincipalTab from "components/PrincipalTab";
 
 export default {
-  components: {PrincipalTab},
   data() {
     return {
       left: false,
@@ -99,7 +135,6 @@ export default {
       drawer_charts: false,
       toggle_drawers_model: 'hide',
       layers_tabs: 'layers',
-      cake: 'cake'
     }
   },
   methods: {
@@ -113,45 +148,51 @@ export default {
     },
     toggle_drawers_model() {
       console.log(this.toggle_drawers_model)
-      if (this.toggle_drawers_model == 'hide') {
+      if (this.toggle_drawers_model === 'hide') {
         this.drawer_layers = false;
         this.drawer_grid = false;
         this.drawer_stats = false;
         this.drawer_charts = false;
       }
-      if (this.toggle_drawers_model == 'layers') {
+      if (this.toggle_drawers_model === 'layers') {
         this.drawer_layers = true;
         this.drawer_grid = false;
         this.drawer_stats = false;
         this.drawer_charts = false;
       }
-      if (this.toggle_drawers_model == 'grid') {
+      if (this.toggle_drawers_model === 'grid') {
         this.drawer_layers = false;
         this.drawer_grid = true;
         this.drawer_stats = false;
         this.drawer_charts = false;
       }
-      if (this.toggle_drawers_model == 'stats') {
+      if (this.toggle_drawers_model === 'stats') {
         this.drawer_layers = false;
         this.drawer_grid = false;
         this.drawer_stats = true;
         this.drawer_charts = false;
       }
-      if (this.toggle_drawers_model == 'charts') {
+      if (this.toggle_drawers_model === 'charts') {
         this.drawer_layers = false;
         this.drawer_grid = false;
         this.drawer_stats = false;
         this.drawer_charts = true;
       }
     }
+  },
+  mounted() {
+    console.log(this.$route.path)
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 .q-drawer--right {
   z-index: 999;
   border-left: 1px solid rgba(0, 0, 0, 0.12);
 }
 
+.top-menu {
+  border-radius: 0;
+}
 </style>

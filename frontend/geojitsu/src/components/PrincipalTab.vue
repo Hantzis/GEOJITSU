@@ -10,6 +10,7 @@
       align="left">
       <q-tab v-if="false" name="proyecto" label="Proyecto" class="q-tab--no-caps tabs-title"/>
       <q-tab name="mapa" label="Mapa" class="q-tab--no-caps tabs-title"/>
+      <q-tab name="herramientas" label="Herramientas" class="q-tab--no-caps tabs-title"/>
       <!-- <q-tab name="vectorial" label="Vectorial" class="q-tab--no-caps tabs-title" />
       <q-tab name="raster" label="Raster" class="q-tab--no-caps tabs-title" />
       <q-tab name="herramientas" label="Herramientas" class="q-tab--no-caps tabs-title" /> -->
@@ -74,6 +75,11 @@
 
       </q-tab-panel>
 
+      <q-tab-panel name="herramientas" class="no-padding">
+        <div class="row no-wrap" style="padding: 46.5px;">
+        </div>
+
+      </q-tab-panel>
 
     </q-tab-panels>
     <q-separator color="grey-5"/>
