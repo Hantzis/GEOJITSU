@@ -187,8 +187,8 @@
 </template>
 
 <script>
-  import BotonBarraHerramientas from "../BarraHerramientas/mapa/BotonBarraHerramientas";
-  import MenuBarraHerramientas from "../BarraHerramientas/mapa/MenuBarraHerramientas";
+  import BotonBarraHerramientas from "../gisribbon_components/mapa/BotonBarraHerramientas";
+  import MenuBarraHerramientas from "../gisribbon_components/mapa/MenuBarraHerramientas";
 
   export default {
     name: "BarraHerramientas",

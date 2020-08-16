@@ -2,7 +2,7 @@
   <q-page>
         <div class="row">
           <div class="col">
-            <principal-tab/>
+            <GISRibbon />
           </div>
         </div>
         <div class="row">
@@ -38,13 +38,13 @@
 import Vue from 'vue'
 import VueLayers from 'vuelayers'
 import 'vuelayers/lib/style.css'
-import PrincipalTab from "components/PrincipalTab"; // needs css-loader
+import GISRibbon from "components/GISRibbon"; // needs css-loader
 Vue.use(VueLayers)
 
 
 export default {
   name: 'PageIndex',
-  components: {PrincipalTab},
+  components: {GISRibbon},
   data() {
     return {
       zoom: 12,

@@ -67,7 +67,6 @@
         </q-icon>
       </template>
     </q-btn-toggle>
-
   </div>
 </template>
 
