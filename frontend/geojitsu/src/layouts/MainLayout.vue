@@ -7,7 +7,14 @@
         <q-toolbar-title>
           Maptitude XYZ
         </q-toolbar-title>
-        <q-btn v-if="this.$route.path==='/'" dense flat round icon="mdi-arrow-collapse-up" @click="testa('help')"/>
+        <q-btn v-if="this.$route.path==='/'" dense flat round
+               :icon="showGISRibbon ? 'mdi-arrow-collapse-up' : 'mdi-arrow-collapse-down'"
+               @click="showGISRibbon = !showGISRibbon">
+          <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px" anchor="top middle"
+                     self="bottom middle">
+            {{ showGISRibbon ? "Ocultar cinta" : "Mostrar cinta" }}
+          </q-tooltip>
+        </q-btn>
 
         <q-btn dense flat round icon="mdi-dots-vertical">
           <q-menu content-style="border-radius: 2px;">
@@ -48,8 +55,6 @@
           </q-menu>
         </q-btn>
       </q-toolbar>
-
-
 
     </q-header>
 
@@ -123,6 +128,8 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+import {mapActions} from 'vuex'
 
 export default {
   data() {
@@ -137,15 +144,25 @@ export default {
       layers_tabs: 'layers',
     }
   },
+  computed: {
+    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter']),
+
+    showGISRibbon: {
+      get() {
+        return this.GISRibbonIsOpenGetter
+      },
+      set(value) {
+        this.GISRibbonIsOpenAction(value)
+      }
+    }
+  },
   methods: {
+    ...mapActions('geojitsu', ['GISRibbonIsOpenAction']),
     testa(val) {
       alert(val);
     },
   },
   watch: {
-    model() {
-      console.log(this.model)
-    },
     toggle_drawers_model() {
       console.log(this.toggle_drawers_model)
       if (this.toggle_drawers_model === 'hide') {

@@ -8,11 +8,11 @@
       indicator-color="primary"
       active-bg-color="grey-1"
       align="left">
-      <q-tab v-for="(tab, index) in GISRibbonTabsEnabled" :key="index" :name="tab.name" :label="tab.label"
-             class="q-tab--no-caps tabs-title"/>
+      <q-tab v-for="(tab, index) in GISRibbonEnabledTabs" :key="index" :name="tab[0]" :label="tab[1].label"
+             class="q-tab--no-caps tabs-title" @click="showGISRibbon = true"/>
     </q-tabs>
 
-    <q-tab-panels v-model="activeTab" class="bg-grey-1 text-grey-9">
+    <q-tab-panels v-show="showGISRibbon" v-model="activeTab" class="bg-grey-1 text-grey-9">
 
       <q-tab-panel name="proyecto" class="no-padding">
         <div class="row no-wrap">
@@ -39,22 +39,22 @@
 
       <q-tab-panel name="mapa" class="no-padding">
         <div class="row no-wrap q-px-sm">
-          <q-separator vertical />
-          <mapa-bloque-principal />
+          <q-separator vertical/>
+          <mapa-bloque-principal/>
 
-          <q-separator vertical />
+          <q-separator vertical/>
 
-          <mapa-bloque-seleccion />
+          <mapa-bloque-seleccion/>
 
-          <q-separator vertical />
+          <q-separator vertical/>
 
-          <mapa-bloque-seleccion />
+          <mapa-bloque-seleccion/>
 
-          <q-separator vertical />
+          <q-separator vertical/>
 
-          <mapa-bloque-seleccion />
+          <mapa-bloque-seleccion/>
 
-          <q-separator vertical />
+          <q-separator vertical/>
 
         </div>
 
@@ -72,62 +72,74 @@
 </template>
 
 <script>
-  import BarraVisualizacion from "components/gisribbon_components/mapa/BarraVisualizacion";
-  import MapaBloquePrincipal from "./gisribbon_components/mapa/MapaBloquePrincipal";
-  import MapaBloqueSeleccion from "./gisribbon_components/mapa/MapaBloqueSeleccion";
+import {mapActions, mapGetters} from 'vuex'
 
-  export default {
-    name: "GISRibbon",
-    // eslint-disable-next-line vue/no-unused-components
-    components: {
-      MapaBloquePrincipal,
-      MapaBloqueSeleccion,
-      BarraVisualizacion,
-    },
-    data() {
-      return {
-        activeTab: 'mapa',
-        GISRibbonTabs: {
-          proyecto: {label: "Proyecto", is_enabled: false },
-          mapa: { label: "Mapa", is_enabled: true},
-          herramientas: { label: "Herramientas", is_enabled: true},
-        }
-      }
-    },
-    mounted() {
-      console.log(this.GISRibbonTabsEnabled)
-    },
-    computed: {
-      GISRibbonTabsEnabled() {
-        let enabled_tabs = [];
-          for (let tab of this.GISRibbonTabs) {
-            if (tab.is_enabled) {
-              enabled_tabs.push(tab)
-              console.log(tab)
-            }
-        }
-        return enabled_tabs
-      }
-    },
-    methods: {
-      onMainClick(e) {
-        console.log(e);
-        console.log("onMainClick")
-      },
-      onItemClick(e) {
-        console.log(e);
-        console.log("onItemClick")
+import BarraVisualizacion from "components/gisribbon_components/mapa/BarraVisualizacion";
+import MapaBloquePrincipal from "./gisribbon_components/mapa/MapaBloquePrincipal";
+import MapaBloqueSeleccion from "./gisribbon_components/mapa/MapaBloqueSeleccion";
+
+export default {
+  name: "GISRibbon",
+  // eslint-disable-next-line vue/no-unused-components
+  components: {
+    MapaBloquePrincipal,
+    MapaBloqueSeleccion,
+    BarraVisualizacion,
+  },
+  data() {
+    return {
+      activeTab: 'mapa',
+      GISRibbonTabs: {
+        proyecto: {label: "Proyecto", is_enabled: false},
+        mapa: {label: "Mapa", is_enabled: true},
+        herramientas: {label: "Herramientas", is_enabled: true},
       }
     }
+  },
+  mounted() {
+    console.log("mounted", this.GISRibbonEnabledTabs)
+  },
+  computed: {
+    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter']),
+    showGISRibbon: {
+      get() {
+        return this.GISRibbonIsOpenGetter
+      },
+      set(value) {
+        this.GISRibbonIsOpenAction(value)
+      }
+    },
+    GISRibbonEnabledTabs() {
+      let enabled_tabs = [];
+      for (let tab of Object.entries(this.GISRibbonTabs)) {
+        if (tab[1].is_enabled) {
+          enabled_tabs.push(tab)
+        }
+      }
+      return enabled_tabs
+    }
+  },
+  methods: {
+    ...mapActions('geojitsu', ['GISRibbonIsOpenAction']),
+    onMainClick(e) {
+      console.log(e);
+      console.log("onMainClick")
+    },
+    onItemClick(e) {
+      console.log(e);
+      console.log("onItemClick")
+    }
   }
+}
 </script>
 
 <style lang="css" scoped>
-  .tabs-title >>> .q-tab__label {
-    font-size: 16px;
-    font-weight: 300;
-  }
-  .q-separator--vertical {
-    flex-shrink: 0;
-  }
+.tabs-title >>> .q-tab__label {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.q-separator--vertical {
+  flex-shrink: 0;
+}
 </style>

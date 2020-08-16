@@ -88,13 +88,12 @@
 </template>
 
 <script>
-
-  export default {
-    name: "MapaBloquePrincipal",
-    data() {
-      return {
-        herramienta_estandar_activa: "desplazar"
-      }
+export default {
+  name: "MapaBloquePrincipal",
+  data() {
+    return {
+      herramienta_estandar_activa: "desplazar"
     }
   }
+}
 </script>

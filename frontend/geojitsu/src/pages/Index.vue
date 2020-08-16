@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class="col" :style="{'min-height': mapHeight}">
-              <vl-map ref="map" :load-tiles-while-animating="true" :load-tiles-while-interacting="true"
+              <vl-map ref="olmap" :load-tiles-while-animating="true" :load-tiles-while-interacting="true"
                       data-projection="EPSG:4326" style="min-height: inherit; max-height: 1px; width: 100%; background-color: #75CFF0;">
                 <vl-view ref="map_view" :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation"></vl-view>
 
@@ -23,7 +23,7 @@
                 </vl-geoloc>
                 <vl-layer-tile>
                   <vl-source-xyz
-                    url="https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY2p0MG01MXRqMW45cjQzb2R6b2ptc3J4MSJ9.zA2W0IkI0c6KaAhJfk9bWg"
+                    url="https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoibml6aGlzYWViYSIsImEiOiJjanZwZXNpeWYwZDcxNDlwOXVhejg1Yno3In0.kqEaQSkVaFMpKKtx0FyNRA"
                     attributions="Mapbox"/>
                 </vl-layer-tile>
               </vl-map>
@@ -35,12 +35,13 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 import Vue from 'vue'
 import VueLayers from 'vuelayers'
 import 'vuelayers/lib/style.css'
 import GISRibbon from "components/GISRibbon"; // needs css-loader
 Vue.use(VueLayers)
-
 
 export default {
   name: 'PageIndex',
@@ -54,9 +55,22 @@ export default {
       geolocPosition: [-101.22977709999999, 19.6453138],
     }
   },
-  computed: {
+  watch: {
     mapHeight() {
-      return this.$q.screen.height - 180 + "px"
+      this.$refs["olmap"].remount()
+    }
+  },
+  computed: {
+    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter']),
+    showGISRibbon: {
+      get() {
+        return this.GISRibbonIsOpenGetter
+      }
+    },
+    mapHeight() {
+      let ribbon_height = 87
+      if (this.showGISRibbon) ribbon_height = 180
+      return this.$q.screen.height - ribbon_height + "px"
     }
   },
 }
