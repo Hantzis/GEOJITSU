@@ -4,22 +4,21 @@
       <div class="col">
         <div class="row q-pa-xs q-pt-xs1 q-pl-xs q-pr-xs">
           <q-btn-toggle
-            class="wrapp"
             style="border-radius: 0; flex-wrap: wrap; max-width: 96px"
             v-model="herramienta_estandar_activa"
             dense
             unelevated
-            text-color="grey-6"
+            text-color="grey-7"
             toggle-text-color="white"
             toggle-color="primary"
             :options="[
-        {value: 'desplazar', slot: 'desplazar'},
-        {value: 'info', slot: 'info'},
-        {value: 'zoom-in', slot: 'zoom-in'},
-        {value: 'seleccion', slot: 'seleccion'},
-        {value: 'medicion', slot: 'medicion'},
-        {value: 'zoom-out', slot: 'zoom-out'},
-      ]"
+              {value: 'desplazar', slot: 'desplazar'},
+              {value: 'info', slot: 'info'},
+              {value: 'zoom-in', slot: 'zoom-in'},
+              {value: 'seleccion', slot: 'seleccion'},
+              {value: 'medicion', slot: 'medicion'},
+              {value: 'zoom-out', slot: 'zoom-out'},
+            ]"
           >
             <template v-slot:desplazar>
               <q-icon name="mdi-hand-right">
@@ -97,3 +96,4 @@ export default {
   }
 }
 </script>
+

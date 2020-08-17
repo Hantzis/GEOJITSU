@@ -6,7 +6,7 @@
       v-model="herramienta_seleccion_activa"
       dense
       unelevated
-      text-color="grey-6"
+      text-color="grey-7"
       toggle-text-color="white"
       toggle-color="primary"
       :options="[
@@ -69,7 +69,6 @@
         </q-icon>
       </template>
     </q-btn-toggle>
-
   </div>
 </template>
 

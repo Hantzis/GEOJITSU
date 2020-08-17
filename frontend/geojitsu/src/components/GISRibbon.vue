@@ -40,15 +40,12 @@
       <q-tab-panel name="mapa" class="no-padding">
         <div class="row no-wrap q-px-sm">
           <q-separator vertical/>
+
           <mapa-bloque-principal/>
 
           <q-separator vertical/>
 
-          <mapa-bloque-seleccion/>
-
-          <q-separator vertical/>
-
-          <mapa-bloque-seleccion/>
+          <mapa-bloque-capas/>
 
           <q-separator vertical/>
 
@@ -77,11 +74,13 @@ import {mapActions, mapGetters} from 'vuex'
 import BarraVisualizacion from "components/gisribbon_components/mapa/BarraVisualizacion";
 import MapaBloquePrincipal from "./gisribbon_components/mapa/MapaBloquePrincipal";
 import MapaBloqueSeleccion from "./gisribbon_components/mapa/MapaBloqueSeleccion";
+import MapaBloqueCapas from "components/gisribbon_components/mapa/MapaBloqueCapas";
 
 export default {
   name: "GISRibbon",
   // eslint-disable-next-line vue/no-unused-components
   components: {
+    MapaBloqueCapas,
     MapaBloquePrincipal,
     MapaBloqueSeleccion,
     BarraVisualizacion,
