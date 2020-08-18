@@ -5,10 +5,9 @@
         <div class="row q-pa-xs" style="padding-bottom: 12px;">
           <q-select outlined name="archivo" label="Capa activa" :options="capas" v-model="capa_activa">
             <template v-slot:prepend>
-              <q-icon name="mdi-layers"/>
+              <q-icon name="mdi-layers-triple"/>
             </template>
           </q-select>
-
         </div>
       </div>
     </div>
@@ -44,14 +43,3 @@ export default {
   }
 }
 </script>
-
-<style lang="css" scoped>
-
-.bloque >>> .disabled,
-.bloque >>> .disabled *,
-.bloque >>> [disabled],
-.bloque >>> [disabled] * {
-  cursor: initial !important;
-}
-
-</style>

@@ -38,10 +38,14 @@
       </q-tab-panel>
 
       <q-tab-panel name="mapa" class="no-padding">
-        <div class="row no-wrap q-px-sm">
+        <div class="row no-wrap">
           <q-separator vertical/>
 
           <mapa-bloque-principal/>
+
+          <q-separator vertical/>
+
+          <mapa-bloque-seleccion/>
 
           <q-separator vertical/>
 
@@ -49,9 +53,11 @@
 
           <q-separator vertical/>
 
-          <mapa-bloque-seleccion/>
+          <mapa-bloque-mapa-base />
 
           <q-separator vertical/>
+
+
 
         </div>
 
@@ -75,6 +81,7 @@ import BarraVisualizacion from "components/gisribbon_components/mapa/BarraVisual
 import MapaBloquePrincipal from "./gisribbon_components/mapa/MapaBloquePrincipal";
 import MapaBloqueSeleccion from "./gisribbon_components/mapa/MapaBloqueSeleccion";
 import MapaBloqueCapas from "components/gisribbon_components/mapa/MapaBloqueCapas";
+import MapaBloqueMapaBase from "components/gisribbon_components/mapa/MapaBloqueMapaBase";
 
 export default {
   name: "GISRibbon",
@@ -84,6 +91,7 @@ export default {
     MapaBloquePrincipal,
     MapaBloqueSeleccion,
     BarraVisualizacion,
+    MapaBloqueMapaBase,
   },
   data() {
     return {

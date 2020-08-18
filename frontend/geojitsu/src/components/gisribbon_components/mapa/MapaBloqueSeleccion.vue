@@ -4,70 +4,101 @@
       <div class="col">
         <div class="row q-pa-xs q-pt-xs1 q-pl-xs q-pr-xs">
           <q-btn-toggle
-            class="wrapp"
-            style="border-radius: 0; flex-wrap: wrap; max-width: 128px;"
-            v-model="herramienta_seleccion_activa"
+            class="bloque"
+            v-model="herramientaSeleccion"
             dense
+            :disable="!BloqueSeleccionIsEnabled"
             unelevated
             text-color="grey-7"
             toggle-text-color="white"
             toggle-color="primary"
             :options="[
-        {value: 'seleccion-objetos', slot: 'seleccion-objetos'},
-        {value: 'info', slot: 'info'},
-        {value: 'zoom-in', slot: 'zoom-in'},
-        {value: 'seleccion', slot: 'seleccion'},
-        {value: 'medicion', slot: 'medicion'},
-        {value: 'zoom-out', slot: 'zoom-out'},
-        {value: 'zoom-out', slot: 'zoom-out'},
-        {value: 'zoom-out', slot: 'zoom-out'},
-      ]"
+              {value: 'rectangulo', slot: 'rectangulo'},
+              {value: 'poligono', slot: 'poligono'},
+              {value: 'atributos', slot: 'atributos'},
+              {value: 'limpiar', slot: 'limpiar'},
+              {value: 'lazo', slot: 'lazo'},
+              {value: 'seleccionar-todo', slot: 'seleccionar-todo'},
+              {value: 'invertir', slot: 'invertir'},
+              {value: 'limpiar-todo', slot: 'limpiar-todo'},
+            ]"
           >
-            <template v-slot:seleccion-objetos>
+            <template v-slot:rectangulo>
               <q-icon name="mdi-selection-drag">
-                <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle"
+                <q-tooltip v-if="BloqueSeleccionIsEnabled" content-class="bg-black"
+                           content-style="font-size: 16px; border-radius: 0;" anchor="top middle"
                            self="bottom middle">
-                  Ocultar panel
+                  Seleccionar objetos
                 </q-tooltip>
               </q-icon>
             </template>
-            <template v-slot:zoom-in>
-              <q-icon name="mdi-magnify-plus">
-                <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle"
+            <template v-slot:poligono>
+              <q-icon name="mdi-shape-polygon-plus">
+                <q-tooltip v-if="BloqueSeleccionIsEnabled" content-class="bg-black"
+                           content-style="font-size: 16px; border-radius: 0;"
+                           anchor="top middle"
                            self="bottom middle">
-                  Capas de información
+                  Seleccionar con polígono
                 </q-tooltip>
               </q-icon>
             </template>
-            <template v-slot:seleccion>
-              <q-icon name="mdi-selection-drag">
-                <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle"
+            <template v-slot:atributos>
+              <q-icon name="mdi-form-textbox">
+                <q-tooltip v-if="BloqueSeleccionIsEnabled" content-class="bg-black"
+                           content-style="font-size: 16px; border-radius: 0;"
+                           anchor="top middle"
                            self="bottom middle">
-                  Tabla de atributos
+                  Seleccionar por atributos
                 </q-tooltip>
               </q-icon>
             </template>
-            <template v-slot:info>
-              <q-icon name="mdi-information">
-                <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle"
+            <template v-slot:limpiar>
+              <q-icon name="mdi-selection-off">
+                <q-tooltip v-if="BloqueSeleccionIsEnabled" content-class="bg-black"
+                           content-style="font-size: 16px; border-radius: 0;"
+                           anchor="top middle"
                            self="bottom middle">
-                  Resumen
+                  Limpiar selección
                 </q-tooltip>
               </q-icon>
             </template>
-            <template v-slot:zoom-out>
-              <q-icon name="mdi-magnify-minus">
-                <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle"
+            <template v-slot:lazo>
+              <q-icon name="mdi-sine-wave">
+                <q-tooltip v-if="BloqueSeleccionIsEnabled" content-class="bg-black"
+                           content-style="font-size: 16px; border-radius: 0;"
+                           anchor="top middle"
                            self="bottom middle">
-                  Gráficas
+                  Seleccionar a mano alzada
                 </q-tooltip>
               </q-icon>
             </template>
-            <template v-slot:medicion>
-              <q-icon name="mdi-ruler">
-                <q-tooltip content-class="bg-black" content-style="font-size: 16px" anchor="top middle"
+            <template v-slot:seleccionar-todo>
+              <q-icon name="mdi-select-all">
+                <q-tooltip v-if="BloqueSeleccionIsEnabled" content-class="bg-black"
+                           content-style="font-size: 16px; border-radius: 0;"
+                           anchor="top middle"
                            self="bottom middle">
-                  Gráficas
+                  Seleccionar todo
+                </q-tooltip>
+              </q-icon>
+            </template>
+            <template v-slot:invertir>
+              <q-icon name="mdi-select-inverse">
+                <q-tooltip v-if="BloqueSeleccionIsEnabled" content-class="bg-black"
+                           content-style="font-size: 16px; border-radius: 0;"
+                           anchor="top middle"
+                           self="bottom middle">
+                  Invertir selección
+                </q-tooltip>
+              </q-icon>
+            </template>
+            <template v-slot:limpiar-todo>
+              <q-icon name="mdi-square-off">
+                <q-tooltip v-if="BloqueSeleccionIsEnabled" content-class="bg-black"
+                           content-style="font-size: 16px; border-radius: 0;"
+                           anchor="top middle"
+                           self="bottom middle">
+                  Limpiar selección (todas las capas)
                 </q-tooltip>
               </q-icon>
             </template>
@@ -97,8 +128,24 @@ export default {
   name: "MapaBloquePrincipal",
   data() {
     return {
-      herramienta_estandar_activa: "desplazar"
+      herramientaSeleccion: undefined,
+      BloqueSeleccionIsEnabled: true
     }
   }
 }
 </script>
+
+<style lang="css" scoped>
+.bloque {
+  border-radius: 0;
+  flex-wrap: wrap;
+  max-width: 128px;
+}
+
+.bloque >>> .disabled,
+.bloque >>> .disabled *,
+.bloque >>> [disabled],
+.bloque >>> [disabled] * {
+  cursor: initial !important;
+}
+</style>

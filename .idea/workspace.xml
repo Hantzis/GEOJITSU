@@ -10,19 +10,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="mac">
+    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/geojitsu/src/components/gisribbon_components/mapa/MapaBloqueMapaBase.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/components/BarraHerramientas/mapa/BarraHerramientasPrincipal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/components/thrash/BarraHerramientasPrincipal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/components/BarraHerramientas/mapa/BarraHerramientasSeleccion.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/components/gisribbon_components/mapa/BarraHerramientasSeleccion.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/components/BarraHerramientas/mapa/BarraVisualizacion.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/components/gisribbon_components/mapa/BarraVisualizacion.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/components/BarraHerramientas/mapa/BotonBarraHerramientas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/components/gisribbon_components/mapa/BotonBarraHerramientas.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/components/BarraHerramientas/mapa/MapaBloquePrincipal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/components/gisribbon_components/mapa/MapaBloquePrincipal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/components/BarraHerramientas/mapa/MapaBloqueSeleccion.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/components/gisribbon_components/mapa/MapaBloqueSeleccion.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/components/BarraHerramientas/mapa/MenuBarraHerramientas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/components/gisribbon_components/mapa/MenuBarraHerramientas.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/components/PrincipalTab.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/components/GISRibbon.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/components/GISRibbon.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/components/GISRibbon.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/components/gisribbon_components/mapa/MapaBloqueCapas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/components/gisribbon_components/mapa/MapaBloqueCapas.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/components/gisribbon_components/mapa/MapaBloqueSeleccion.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/components/gisribbon_components/mapa/MapaBloqueSeleccion.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/components/thrash/BarraHerramientas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/components/thrash/BarraHerramientas.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/components/thrash/BarraHerramientasBak.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/components/thrash/BarraHerramientasBak.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/pages/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/store/geojitsu/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/store/geojitsu/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/store/geojitsu/getters.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/store/geojitsu/getters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/store/geojitsu/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/store/geojitsu/mutations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/geojitsu/src/store/geojitsu/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/geojitsu/src/store/geojitsu/state.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,21 +46,19 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
-  <component name="JupyterTrust" id="8c0006e2-9678-43bd-9248-182e5da57afa" />
+  <component name="JupyterTrust" id="3cd4cfd5-c415-4edb-b92a-61267500af49" />
   <component name="ProjectId" id="1brpjoU3qPMdCHzdMa7TbauiuZY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/geojitsu/src/components/BarraHerramientas/mapa" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/geojitsu/src/components/gisribbon_components/mapa" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -70,15 +67,17 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PyCharm 2020.1.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PyCharm 2020.1.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/frontend/geojitsu/src/components/BarraHerramientas/mapa" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/frontend/geojitsu/src/components/thrash" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\geojitsu\src\components\thrash" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\geojitsu\src\components\BarraHerramientas\mapa" />
       <recent name="C:\Users\Nizhi\PycharmProjects\GEOJITSU\frontend\windows-todo\src\boot" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\geojitsu\src\components\gisribbon_components\mapa" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\geojitsu\src\components" />
     </key>
   </component>
   <component name="RunManager" selected="npm.serve geojitsu">
@@ -133,8 +132,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Node.js.quasar dev" />
       <item itemvalue="Node.js.quasar build -m electron" />
+      <item itemvalue="Node.js.quasar dev" />
       <item itemvalue="npm.serve geojitsu" />
       <item itemvalue="npm.serve" />
     </list>
@@ -144,6 +143,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -164,7 +164,11 @@
       <workItem from="1595365903270" duration="3195000" />
       <workItem from="1595380471741" duration="572000" />
       <workItem from="1597184837251" duration="22428000" />
-      <workItem from="1597272331629" duration="30459000" />
+      <workItem from="1597272331629" duration="11708000" />
+      <workItem from="1597422000538" duration="24673000" />
+      <workItem from="1597598602646" duration="28321000" />
+      <workItem from="1597694350451" duration="5077000" />
+      <workItem from="1597702267622" duration="10138000" />
     </task>
     <task id="LOCAL-00001" summary="mac">
       <created>1595444550203</created>
@@ -209,62 +213,98 @@
       <updated>1597277948894</updated>
     </task>
     <task id="LOCAL-00007" summary="mac">
-      <created>1597337834016</created>
+      <created>1597347908929</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1597337834018</updated>
+      <updated>1597347908929</updated>
     </task>
-    <task id="LOCAL-00008" summary="mac">
-      <created>1597455898503</created>
+    <task id="LOCAL-00008" summary="m$">
+      <created>1597365210401</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1597455898504</updated>
+      <updated>1597365210401</updated>
     </task>
-    <task id="LOCAL-00009" summary="mac">
-      <created>1597466181470</created>
+    <task id="LOCAL-00009" summary="m$">
+      <created>1597427045436</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1597466181474</updated>
+      <updated>1597427045436</updated>
     </task>
-    <task id="LOCAL-00010" summary="mac">
-      <created>1597505785384</created>
+    <task id="LOCAL-00010" summary="m$">
+      <created>1597433074559</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1597505785384</updated>
+      <updated>1597433074559</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="m$">
+      <created>1597512693541</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1597512693541</updated>
+    </task>
+    <task id="LOCAL-00012" summary="m$">
+      <created>1597522745489</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1597522745489</updated>
+    </task>
+    <task id="LOCAL-00013" summary="m$">
+      <created>1597530018439</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1597530018439</updated>
+    </task>
+    <task id="LOCAL-00014" summary="m$">
+      <created>1597611996917</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1597611996917</updated>
+    </task>
+    <task id="LOCAL-00015" summary="m$">
+      <created>1597627176757</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1597627176757</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="mac" />
-    <option name="LAST_COMMIT_MESSAGE" value="mac" />
+    <MESSAGE value="m$" />
+    <option name="LAST_COMMIT_MESSAGE" value="m$" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="566" y="99" key="#ESLint" timestamp="1597538974571">
-      <screen x="0" y="23" width="1366" height="745" />
+    <state x="796" y="106" key="#ESLint" timestamp="1597358616262">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="796" y="106" key="#ESLint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597358616262" />
     <state x="828" y="412" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1589701671621" />
-    <state x="566" y="99" key="#ESLint/0.23.1366.745@0.23.1366.745" timestamp="1597538974571" />
+    <state x="566" y="99" key="#ESLint/0.23.1366.745@0.23.1366.745" timestamp="1594160452064" />
     <state x="586" y="198" key="#Inspections" timestamp="1589693698835">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -275,11 +315,11 @@
     <state x="55" y="85" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592334136535" />
     <state x="339" y="158" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589695560784" />
     <state x="39" y="84" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1366.745@0.23.1366.745" timestamp="1597192083983" />
-    <state x="416" y="23" key="CommitChangelistDialog2" timestamp="1597508916934">
-      <screen x="0" y="23" width="1366" height="745" />
+    <state x="585" y="88" key="CommitChangelistDialog2" timestamp="1597627174747">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="88" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592333417635" />
-    <state x="416" y="23" key="CommitChangelistDialog2/0.23.1366.745@0.23.1366.745" timestamp="1597508916934" />
+    <state x="585" y="88" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597627174747" />
+    <state x="416" y="23" key="CommitChangelistDialog2/0.23.1366.745@0.23.1366.745" timestamp="1597277948472" />
     <state x="349" y="290" key="FileChooserDialogImpl" timestamp="1592334088077">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -290,59 +330,75 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="300" y="262" width="504" height="244" key="Github.ShareDialog/0.0.1366.728@0.0.1366.728" timestamp="1589400788629" />
-    <state width="1324" height="215" key="GridCell.Tab.0.bottom" timestamp="1597539474546">
-      <screen x="0" y="23" width="1366" height="745" />
+    <state width="1877" height="301" key="GridCell.Tab.0.bottom" timestamp="1597706244683">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="493" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592333350338" />
+    <state width="1877" height="301" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597604973142" />
+    <state width="1877" height="301" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1597706244683" />
     <state width="1876" height="395" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589752031778" />
-    <state width="1324" height="215" key="GridCell.Tab.0.bottom/0.23.1366.745@0.23.1366.745" timestamp="1597539474546" />
-    <state width="1324" height="215" key="GridCell.Tab.0.center" timestamp="1597539474545">
-      <screen x="0" y="23" width="1366" height="745" />
+    <state width="1324" height="225" key="GridCell.Tab.0.bottom/0.23.1366.745@0.23.1366.745" timestamp="1597327038385" />
+    <state width="1877" height="301" key="GridCell.Tab.0.center" timestamp="1597706244683">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="493" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592333350337" />
+    <state width="1877" height="301" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597604973142" />
+    <state width="1877" height="301" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1597706244683" />
     <state width="1876" height="395" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589752031778" />
-    <state width="1324" height="215" key="GridCell.Tab.0.center/0.23.1366.745@0.23.1366.745" timestamp="1597539474545" />
-    <state width="1324" height="215" key="GridCell.Tab.0.left" timestamp="1597539474544">
-      <screen x="0" y="23" width="1366" height="745" />
+    <state width="1324" height="225" key="GridCell.Tab.0.center/0.23.1366.745@0.23.1366.745" timestamp="1597327038381" />
+    <state width="1877" height="301" key="GridCell.Tab.0.left" timestamp="1597706244682">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="493" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592333350337" />
+    <state width="1877" height="301" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597604973141" />
+    <state width="1877" height="301" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1597706244682" />
     <state width="1876" height="395" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589752031778" />
-    <state width="1324" height="215" key="GridCell.Tab.0.left/0.23.1366.745@0.23.1366.745" timestamp="1597539474544" />
-    <state width="1324" height="215" key="GridCell.Tab.0.right" timestamp="1597539474546">
-      <screen x="0" y="23" width="1366" height="745" />
+    <state width="1324" height="225" key="GridCell.Tab.0.left/0.23.1366.745@0.23.1366.745" timestamp="1597327038380" />
+    <state width="1877" height="301" key="GridCell.Tab.0.right" timestamp="1597706244683">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="493" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592333350338" />
+    <state width="1877" height="301" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597604973142" />
+    <state width="1877" height="301" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1597706244683" />
     <state width="1876" height="395" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589752031778" />
-    <state width="1324" height="215" key="GridCell.Tab.0.right/0.23.1366.745@0.23.1366.745" timestamp="1597539474546" />
-    <state x="399" y="118" key="MultipleFileMergeDialog" timestamp="1597530372900">
+    <state width="1324" height="225" key="GridCell.Tab.0.right/0.23.1366.745@0.23.1366.745" timestamp="1597327038382" />
+    <state x="0" y="113" key="MergeDialog" timestamp="1597595230577">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="0" y="113" key="MergeDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597595230577" />
+    <state x="399" y="118" key="MultipleFileMergeDialog" timestamp="1597256967979">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
-    <state x="399" y="118" key="MultipleFileMergeDialog/0.23.1366.745@0.23.1366.745" timestamp="1597530372900" />
+    <state x="399" y="118" key="MultipleFileMergeDialog/0.23.1366.745@0.23.1366.745" timestamp="1597256967979" />
     <state x="475" y="113" key="RollbackChangesDialog" timestamp="1597271685610">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state x="475" y="113" key="RollbackChangesDialog/0.23.1366.745@0.23.1366.745" timestamp="1597271685610" />
-    <state x="403" y="129" key="SettingsEditor" timestamp="1589657319540">
+    <state x="403" y="129" key="SettingsEditor" timestamp="1597598665894">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="403" y="129" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597598665894" />
     <state x="403" y="129" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589657319540" />
-    <state x="283" y="124" key="Vcs.Push.Dialog.v2" timestamp="1597505789733">
-      <screen x="0" y="23" width="1366" height="745" />
+    <state x="398" y="141" key="Vcs.Push.Dialog.v2" timestamp="1597627178174">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="283" y="124" key="Vcs.Push.Dialog.v2/0.23.1366.745@0.23.1366.745" timestamp="1597505789733" />
+    <state x="398" y="141" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597627178174" />
+    <state x="283" y="124" key="Vcs.Push.Dialog.v2/0.23.1366.745@0.23.1366.745" timestamp="1597277951055" />
     <state x="376" y="228" key="com.intellij.ide.util.TipDialog" timestamp="1597272373066">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state x="376" y="228" key="com.intellij.ide.util.TipDialog/0.23.1366.745@0.23.1366.745" timestamp="1597272373066" />
-    <state x="492" y="307" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597530356864">
-      <screen x="0" y="23" width="1366" height="745" />
+    <state x="692" y="396" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597595172848">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="492" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1589400592612" />
+    <state x="692" y="396" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597595172848" />
     <state x="692" y="397" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1589558723776" />
-    <state x="492" y="307" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1366.745@0.23.1366.745" timestamp="1597530356864" />
+    <state x="492" y="307" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1366.745@0.23.1366.745" timestamp="1597257042383" />
     <state x="457" y="115" key="git4idea.branch.GitSmartOperationDialog" timestamp="1595366977469">
       <screen x="0" y="23" width="1366" height="745" />
     </state>
     <state x="457" y="115" key="git4idea.branch.GitSmartOperationDialog/0.23.1366.745@0.23.1366.745" timestamp="1595366977469" />
+    <state x="363" y="266" width="672" height="678" key="search.everywhere.popup" timestamp="1597706699922">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="363" y="266" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597521664119" />
+    <state x="363" y="266" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1597706699922" />
   </component>
 </project>

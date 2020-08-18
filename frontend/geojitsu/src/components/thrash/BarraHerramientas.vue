@@ -92,6 +92,7 @@
                   <q-item-label>Seleccionar dibujando un polígono</q-item-label>
                 </q-item-section>
               </q-item>
+
               <q-item dense clickable v-close-popup @click="onItemClick">
                 <q-item-section side style="padding-right: 6px;">
                   <q-icon name="mdi-gesture" color="primary"/>
