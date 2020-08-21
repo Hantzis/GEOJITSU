@@ -56,8 +56,6 @@ export default {
   },
   methods: {
     ...mapActions('geojitsu', ['mapaBaseAction']),
-  },
-  updated() {
   }
 }
 </script>

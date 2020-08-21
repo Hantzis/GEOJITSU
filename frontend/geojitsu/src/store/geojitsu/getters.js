@@ -14,3 +14,11 @@ export const mapasBaseGetter = (state) => {
 export const mapaBaseGetter = (state) => {
   return state.mapaBase
 }
+
+export const capasMapaGetter = (state) => {
+  return state.capasMapa
+}
+
+export const capaActivaGetter = (state) => {
+  return state.capaActiva
+}

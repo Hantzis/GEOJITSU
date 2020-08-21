@@ -10,3 +10,7 @@ export const GISRibbonIsOpenMutation = (state, is_open) => {
 export const mapaBaseMutation = (state, value) => {
   state.mapaBase = value
 }
+
+export const capaActivaMutation = (state, value) => {
+  state.capaActiva = value
+}
