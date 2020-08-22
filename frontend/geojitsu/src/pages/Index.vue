@@ -44,7 +44,7 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple>
+            <q-item clickable v-ripple @click="drawer_capas = !drawer_capas">
               <q-item-section avatar>
                 <q-icon name="drafts"/>
               </q-item-section>
@@ -166,7 +166,11 @@ export default {
       this.$refs["olmap"].remount()
     },
     mapaBase() {
-      this.$refs["olmap"].remount()
+      this.$refs["olmap"].updateSize()
+    },
+    drawer_capas() {
+      setTimeout(() => { this.$refs["olmap"].updateSize() }, 100);
+
     },
     conflictos_selectedFeatures() {
       if (this.conflictos_selectedFeatures.length > 0) {
