@@ -76,7 +76,7 @@ export default function () {
       {value: "conflictos", label: "Conflictos Socioambientales", type: "vector", opacity: 1,
         url: "https://conflictossocioambientales.iies.unam.mx/conflictos/conflictos.geojson",
         attribution: ", <a href='http://www.iies.unam.mx' target='_blank'>IIES</a> (UNAM)",
-        visible: false,
+        visible: true,
       },
     ]
   }

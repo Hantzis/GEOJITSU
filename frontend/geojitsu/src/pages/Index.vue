@@ -103,7 +103,7 @@
                       :attributions="capa.attribution"
                       :ext-params="capa.params"/>
                   </vl-layer-tile>
-                  <vl-layer-vector v-if="capa.type==='vector'" :opacity="capa.opacity">
+                  <vl-layer-vector v-if="capa.type==='vector'" :opacity="capa.opacity" :visible="capa.visible">
                     <vl-source-vector :url="capa.url" :features.sync="conflictos_features"
                                       :attributions="capa.attribution"/>
                     <vl-style-func :factory="pointsStyleFunc"/>
