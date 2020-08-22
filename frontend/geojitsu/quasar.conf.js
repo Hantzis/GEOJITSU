@@ -117,9 +117,9 @@ cfg.module.rules.push({
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'GeoJitsu',
-        short_name: 'GeoJitsu',
-        description: 'A Quasar Framework app',
+        name: 'Maptitude.XYZ',
+        short_name: 'Maptitude',
+        description: 'Maptitude XYZ',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
