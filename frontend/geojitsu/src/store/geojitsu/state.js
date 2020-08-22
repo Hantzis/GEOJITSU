@@ -24,7 +24,7 @@ export default function () {
         }
       },
       {value: "municipios", label: "Municipios", type: "wms", url: "https://gs.maptitude.xyz/geoserver/CONFLICTOS/wms?",
-        layers: "CONFLICTOS:municipios", visible: true,
+        layers: "CONFLICTOS:municipios", visible: false,
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
         opacity: 1,
         server_type: "geoserver",
@@ -34,7 +34,7 @@ export default function () {
         }
       },
       {value: "anpnov17gw", label: "Áreas naturales protegidas", type: "wms", url: "https://gs.maptitude.xyz/geoserver/CONFLICTOS/wms?",
-        layers: "CONFLICTOS:anpnov17gw", visible: true,
+        layers: "CONFLICTOS:anpnov17gw", visible: false,
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
         opacity: 0.4,
         server_type: "geoserver",
@@ -44,7 +44,7 @@ export default function () {
         }
       },
       {value: "cue250kgw", label: "Cuencas", type: "wms", url: "https://gs.maptitude.xyz/geoserver/CONFLICTOS/wms?",
-        layers: "CONFLICTOS:cue250kgw", visible: true,
+        layers: "CONFLICTOS:cue250kgw", visible: false,
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
         opacity: 0.4,
         server_type: "geoserver",
@@ -54,7 +54,7 @@ export default function () {
         }
       },
       {value: "ecort08gw", label: "Ecorregiones", type: "wms", url: "https://gs.maptitude.xyz/geoserver/CONFLICTOS/wms?",
-        layers: "CONFLICTOS:ecort08gw", visible: true,
+        layers: "CONFLICTOS:ecort08gw", visible: false,
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
         opacity: 0.4,
         server_type: "geoserver",
@@ -75,7 +75,8 @@ export default function () {
       },
       {value: "conflictos", label: "Conflictos Socioambientales", type: "vector", opacity: 1,
         url: "https://conflictossocioambientales.iies.unam.mx/conflictos/conflictos.geojson",
-        attribution: ", <a href='http://www.iies.unam.mx' target='_blank'>IIES</a> (UNAM)"
+        attribution: ", <a href='http://www.iies.unam.mx' target='_blank'>IIES</a> (UNAM)",
+        visible: false,
       },
     ]
   }

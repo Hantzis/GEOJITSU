@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh LpR fFf">
+  <q-layout view="LHH LPR FFF">
     <q-header class="bg-black text-white">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="left = !left"/>
@@ -58,13 +58,13 @@
 
     </q-header>
 
-
+    <!--
     <q-drawer v-model="left" side="left" bordered overlay behavior="mobile">
-      <!-- drawer content -->
+      drawer content
     </q-drawer>
 
     <q-drawer v-model="right" side="right" bordered :breakpoint="319" overlay>
-      <!-- drawer content -->
+      - drawer content -
     </q-drawer>
 
     <q-drawer v-model="drawer_layers" side="right" bordered :breakpoint="319" overlay>
@@ -111,6 +111,7 @@
     <q-drawer v-model="drawer_charts" side="right" bordered :breakpoint="319" overlay>
       Drawer de charts
     </q-drawer>
+    -->
 
     <q-page-container>
       <router-view/>

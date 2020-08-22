@@ -1,58 +1,128 @@
 <template>
   <q-page>
-    <div class="row">
-      <div class="col">
+    <q-layout view="lHh Lpr lff" container :style="{height: screenHeight}">
+      <q-header>
         <GISRibbon/>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col" :style="{'min-height': mapHeight}">
-        <vl-map @click="clic" ref="olmap" :load-tiles-while-animating="true" :load-tiles-while-interacting="true"
-                data-projection="EPSG:4326"
-                :style="{'min-height': 'inherit', 'max-height': '1px', 'width': '100%', 'background-color': mapaBase.bgcolor}">
-          <vl-view ref="map_view" :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation"></vl-view>
-          <vl-geoloc @update:position="geolocPosition = $event">
-            <template slot-scope="geoloc">
-              <vl-feature v-if="geoloc.position" id="position-feature">
-                <vl-geom-point :coordinates="geoloc.position"></vl-geom-point>
-                <vl-style-box>
-                  <vl-style-icon src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png"
-                                 :scale="0.1" :anchor="[0.5, 1]"></vl-style-icon>
-                </vl-style-box>
-              </vl-feature>
-            </template>
-          </vl-geoloc>
-          <vl-layer-tile>
-            <vl-source-xyz
-              :url="mapaBase.url"
-              attributions="Mapbox, <a href='https://www.saeba.click' target='_blank'>Saeba</a>"/>
-          </vl-layer-tile>
+      </q-header>
 
-          <div v-for="capa of capasMapa" :key="capa.value">
-            <vl-layer-tile v-if="capa.type==='wms'" :opacity="capa.opacity" :visible="capa.visible">
-              <vl-source-wms
-                :url="capa.url"
-                :format="capa.format"
-                :serverType="capa.server_type"
-                :layers="capa.layers"
-                :attributions="capa.attribution"
-                :ext-params="capa.params" />
-            </vl-layer-tile>
-            <vl-layer-vector v-if="capa.type==='vector'" :opacity="capa.opacity">
-              <vl-source-vector :url="capa.url" :features.sync="conflictos_features"
-                                :attributions="capa.attribution" />
-              <vl-style-func :factory="pointsStyleFunc"/>
-            </vl-layer-vector>
+      <q-drawer
+        elevated
+        v-model="drawer_capas"
+        show-if-above
+        side="right"
+        bordered :breakpoint="319"
+      >
+        <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
+          <q-list padding>
+            <q-item clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="inbox"/>
+              </q-item-section>
+
+              <q-item-section>
+                Inbox
+              </q-item-section>
+            </q-item>
+
+            <q-item active clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="star"/>
+              </q-item-section>
+
+              <q-item-section>
+                Star
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="send"/>
+              </q-item-section>
+
+              <q-item-section>
+                Send
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="drafts"/>
+              </q-item-section>
+
+              <q-item-section>
+                Drafts
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-scroll-area>
+
+        <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
+          <div class="absolute-bottom bg-transparent">
+            <q-avatar size="56px" class="q-mb-sm">
+              <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+            </q-avatar>
+            <div class="text-weight-bold">Razvan Stoenescu</div>
+            <div>@rstoenescu</div>
+          </div>
+        </q-img>
+      </q-drawer>
+
+      <q-page-container>
+        <q-page>
+          <div class="row">
+            <div class="col" :style="{'min-height': mapHeight}">
+              <vl-map @click="clic" ref="olmap" :load-tiles-while-animating="true" :load-tiles-while-interacting="true"
+                      data-projection="EPSG:4326"
+                      :style="{'min-height': 'inherit', 'max-height': '1px', 'width': '100%', 'background-color': mapaBase.bgcolor}">
+                <vl-view ref="map_view" :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation"></vl-view>
+                <vl-geoloc @update:position="geolocPosition = $event">
+                  <template slot-scope="geoloc">
+                    <vl-feature v-if="geoloc.position" id="position-feature">
+                      <vl-geom-point :coordinates="geoloc.position"></vl-geom-point>
+                      <vl-style-box>
+                        <vl-style-icon
+                          src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png"
+                          :scale="0.1" :anchor="[0.5, 1]"></vl-style-icon>
+                      </vl-style-box>
+                    </vl-feature>
+                  </template>
+                </vl-geoloc>
+                <vl-layer-tile>
+                  <vl-source-xyz
+                    :url="mapaBase.url"
+                    attributions="Mapbox, <a href='https://www.saeba.click' target='_blank'>Saeba</a>"/>
+                </vl-layer-tile>
+
+                <div v-for="capa of capasMapa" :key="capa.value">
+                  <vl-layer-tile v-if="capa.type==='wms'" :opacity="capa.opacity" :visible="capa.visible">
+                    <vl-source-wms
+                      :url="capa.url"
+                      :format="capa.format"
+                      :serverType="capa.server_type"
+                      :layers="capa.layers"
+                      :attributions="capa.attribution"
+                      :ext-params="capa.params"/>
+                  </vl-layer-tile>
+                  <vl-layer-vector v-if="capa.type==='vector'" :opacity="capa.opacity">
+                    <vl-source-vector :url="capa.url" :features.sync="conflictos_features"
+                                      :attributions="capa.attribution"/>
+                    <vl-style-func :factory="pointsStyleFunc"/>
+                  </vl-layer-vector>
+
+                </div>
+
+
+                <vl-interaction-select :features.sync="conflictos_selectedFeatures"/>
+
+
+              </vl-map>
+
+            </div>
 
           </div>
-
-
-          <vl-interaction-select :features.sync="conflictos_selectedFeatures"/>
-
-
-        </vl-map>
-      </div>
-    </div>
+        </q-page>
+      </q-page-container>
+    </q-layout>
   </q-page>
 </template>
 
@@ -78,7 +148,7 @@ export default {
     return {
       clickCoords: undefined,
       zoom: 5.7,
-      center: [-101.22977709999999, 24.02],
+      center: [-102.02, 24.02],
       center3857: [-11268847.24, 2231060.47],
       rotation: 0,
       geolocPosition: [-101.22977709999999, 19.6453138],
@@ -87,7 +157,8 @@ export default {
       conflictos_geojson_url: "https://conflictossocioambientales.iies.unam.mx/conflictos/conflictos.geojson",
       conflictos_features: [],
       conflictos_selectedFeatures: [],
-      conflictos_styles: {}
+      conflictos_styles: {},
+      drawer_capas: true,
     }
   },
   watch: {
@@ -147,6 +218,9 @@ export default {
       let ribbon_height = 87
       if (this.showGISRibbon) ribbon_height = 180
       return this.$q.screen.height - ribbon_height + "px"
+    },
+    screenHeight() {
+      return this.$q.screen.height + "px"
     }
   },
   methods: {
