@@ -20,7 +20,7 @@
         Capas
       </div>
       <div class="col-auto">
-        <q-btn dense size="xs" flat icon="mdi-arrow-bottom-right"
+        <q-btn dense size="xs" flat icon="mdi-arrow-bottom-right" @click="drawerCapas = !drawerCapas"
                style="border-radius: 0; margin-bottom: -3px; margin-right: -1px;"/>
       </div>
     </div>
@@ -35,11 +35,11 @@ export default {
   data() {
     return {
       bloqueIsEnabled: false,
-      capa_activa: 'Nwh',
+      capa_activa: '',
     }
   },
   computed: {
-    ...mapGetters('geojitsu', ['capasMapaGetter', 'capaActivaGetter']),
+    ...mapGetters('geojitsu', ['capasMapaGetter', 'capaActivaGetter', 'getDrawerCapas']),
     capasMapa: {
       get() {
         console.log("this.capasMapaGetter", this.capasMapaGetter)
@@ -54,9 +54,17 @@ export default {
         this.capaActivaAction(value)
       }
     },
+    drawerCapas: {
+      get() {
+        return this.getDrawerCapas
+      },
+      set(value) {
+        this.setDrawerCapas(value)
+      }
+    },
   },
   methods: {
-    ...mapActions('geojitsu', ['capaActivaAction']),
+    ...mapActions('geojitsu', ['capaActivaAction', 'setDrawerCapas']),
   },
 }
 </script>

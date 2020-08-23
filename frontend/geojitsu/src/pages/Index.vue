@@ -7,11 +7,12 @@
 
       <q-drawer
         elevated
-        v-model="drawer_capas"
+        v-model="drawerCapas"
         show-if-above
         side="right"
         bordered :breakpoint="319"
       >
+        <!--
         <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
           <q-list padding>
             <q-item clickable v-ripple>
@@ -44,7 +45,7 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple @click="drawer_capas = !drawer_capas">
+            <q-item clickable v-ripple @click="drawerCapas = !drawerCapas">
               <q-item-section avatar>
                 <q-icon name="drafts"/>
               </q-item-section>
@@ -54,9 +55,9 @@
               </q-item-section>
             </q-item>
           </q-list>
-        </q-scroll-area>
+        </q-scroll-area> -->
 
-        <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
+        <!-- <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
           <div class="absolute-bottom bg-transparent">
             <q-avatar size="56px" class="q-mb-sm">
               <img src="https://cdn.quasar.dev/img/boy-avatar.png">
@@ -64,7 +65,34 @@
             <div class="text-weight-bold">Razvan Stoenescu</div>
             <div>@rstoenescu</div>
           </div>
-        </q-img>
+        </q-img> -->
+
+        <div>
+          <q-layout view="lHh lpr lFf"  style="height: 400px">
+            <q-header >
+              <q-bar class="bg-black text-white">
+                <q-icon name="mdi-layers-triple"/>
+                <div>Capas</div>
+
+                <q-space/>
+
+                <q-btn dense flat icon="close"/>
+              </q-bar>
+
+
+            </q-header>
+
+            <q-page-container>
+              <q-page class="q-pa-md">
+                <p v-for="n in 1" :key="n">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit nihil praesentium molestias a adipisci,
+                  dolore vitae odit, quidem consequatur optio voluptates asperiores pariatur eos numquam rerum delectus
+                  commodi perferendis voluptate?
+                </p>
+              </q-page>
+            </q-page-container>
+          </q-layout>
+        </div>
       </q-drawer>
 
       <q-page-container>
@@ -127,139 +155,147 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
-import turf from '@turf/turf'
+  import {mapGetters, mapActions} from 'vuex'
+  import turf from '@turf/turf'
 
+  import Vue from 'vue'
+  import VueLayers from 'vuelayers'
+  import 'vuelayers/lib/style.css'
+  import GISRibbon from "components/GISRibbon"; // needs css-loader
+  import Style from 'ol/style/Style'
+  import Icon from 'ol/style/Icon'
 
-import axios from 'axios'
-import Vue from 'vue'
-import VueLayers from 'vuelayers'
-import 'vuelayers/lib/style.css'
-import GISRibbon from "components/GISRibbon"; // needs css-loader
-import Style from 'ol/style/Style'
-import Icon from 'ol/style/Icon'
+  Vue.use(VueLayers)
 
-Vue.use(VueLayers)
-
-export default {
-  name: 'PageIndex',
-  components: {GISRibbon},
-  data() {
-    return {
-      clickCoords: undefined,
-      zoom: 5.7,
-      center: [-102.02, 24.02],
-      center3857: [-11268847.24, 2231060.47],
-      rotation: 0,
-      geolocPosition: [-101.22977709999999, 19.6453138],
-      conflictos: [],
-      loading: false,
-      conflictos_geojson_url: "https://conflictossocioambientales.iies.unam.mx/conflictos/conflictos.geojson",
-      conflictos_features: [],
-      conflictos_selectedFeatures: [],
-      conflictos_styles: {},
-      drawer_capas: true,
-    }
-  },
-  watch: {
-    mapHeight() {
-      this.$refs["olmap"].remount()
-    },
-    mapaBase() {
-      this.$refs["olmap"].updateSize()
-    },
-    drawer_capas() {
-      setTimeout(() => { this.$refs["olmap"].updateSize() }, 100);
-
-    },
-    conflictos_selectedFeatures() {
-      if (this.conflictos_selectedFeatures.length > 0) {
-        console.log("clic", this.conflictos_selectedFeatures)
-        for (let feat of this.conflictos_selectedFeatures) {
-          console.log("feat: ", feat)
-          console.log("feat coordinates: ", feat.geometry.coordinates)
-          console.log("this.clickCoords: ", this.clickCoords)
-        }
-        let collection = []
-        for (let point of this.conflictos_selectedFeatures[0].geometry.coordinates) {
-          console.log("point", point)
-          collection.push(turf.point(point))
-        }
-        let featureCoords = turf.featureCollection(collection)
-        let cercano = turf.nearestPoint(this.clickCoords, featureCoords)
-        console.log("cercano: ", cercano)
-      }
-    }
-  },
-  computed: {
-    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'mapaBaseGetter', 'mapasBaseGetter', 'capasMapaGetter']),
-    showGISRibbon: {
-      get() {
-        return this.GISRibbonIsOpenGetter
+  export default {
+    name: 'PageIndex',
+    components: {GISRibbon},
+    data() {
+      return {
+        clickCoords: undefined,
+        zoom: 5.7,
+        center: [-102.02, 24.02],
+        center3857: [-11268847.24, 2231060.47],
+        rotation: 0,
+        geolocPosition: [-101.22977709999999, 19.6453138],
+        conflictos: [],
+        loading: false,
+        conflictos_geojson_url: "https://conflictossocioambientales.iies.unam.mx/conflictos/conflictos.geojson",
+        conflictos_features: [],
+        conflictos_selectedFeatures: [],
+        conflictos_styles: {},
+        drawer_capas: true,
       }
     },
-    mapaBase: {
-      get() {
-        let base
-        for (let map of this.mapasBaseGetter) {
-          if (map.value === this.mapaBaseGetter) {
-            base = map
+    watch: {
+      mapHeight() {
+        this.$refs["olmap"].remount()
+      },
+      mapaBase() {
+        this.$refs["olmap"].updateSize()
+      },
+      drawerCapas() {
+        setTimeout(() => {
+          this.$refs["olmap"].remount()
+        }, 200);
+      },
+      conflictos_selectedFeatures() {
+        if (this.conflictos_selectedFeatures.length > 0) {
+          console.log("clic", this.conflictos_selectedFeatures)
+          for (let feat of this.conflictos_selectedFeatures) {
+            console.log("feat: ", feat)
+            console.log("feat coordinates: ", feat.geometry.coordinates)
+            console.log("this.clickCoords: ", this.clickCoords)
           }
+          let collection = []
+          for (let point of this.conflictos_selectedFeatures[0].geometry.coordinates) {
+            console.log("point", point)
+            collection.push(turf.point(point))
+          }
+          let featureCoords = turf.featureCollection(collection)
+          let cercano = turf.nearestPoint(this.clickCoords, featureCoords)
+          console.log("cercano: ", cercano)
         }
-        if (!base) base = {
-          bgcolor: "#75cff0",
-          url: "https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoibml6aGlzYWViYSIsImEiOiJjanZwZXNpeWYwZDcxNDlwOXVhejg1Yno3In0.kqEaQSkVaFMpKKtx0FyNRA"
+      }
+    },
+    computed: {
+      ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'mapaBaseGetter', 'mapasBaseGetter', 'capasMapaGetter', 'getDrawerCapas']),
+      showGISRibbon: {
+        get() {
+          return this.GISRibbonIsOpenGetter
         }
-        return base
+      },
+      mapaBase: {
+        get() {
+          let base
+          for (let map of this.mapasBaseGetter) {
+            if (map.value === this.mapaBaseGetter) {
+              base = map
+            }
+          }
+          if (!base) base = {
+            bgcolor: "#75cff0",
+            url: "https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoibml6aGlzYWViYSIsImEiOiJjanZwZXNpeWYwZDcxNDlwOXVhejg1Yno3In0.kqEaQSkVaFMpKKtx0FyNRA"
+          }
+          return base
+        }
+      },
+      drawerCapas: {
+        get() {
+          return this.getDrawerCapas
+        },
+        set(value) {
+          this.setDrawerCapas(value)
+        }
+      },
+      capasMapa: {
+        get() {
+          return this.capasMapaGetter
+        }
+      },
+      mapHeight() {
+        let ribbon_height = 87
+        if (this.showGISRibbon) ribbon_height = 180
+        return this.$q.screen.height - ribbon_height + "px"
+      },
+      screenHeight() {
+        return this.$q.screen.height  -50 + "px"
       }
     },
-    capasMapa: {
-      get() {
-        return this.capasMapaGetter
-      }
-    },
-    mapHeight() {
-      let ribbon_height = 87
-      if (this.showGISRibbon) ribbon_height = 180
-      return this.$q.screen.height - ribbon_height + "px"
-    },
-    screenHeight() {
-      return this.$q.screen.height + "px"
-    }
-  },
-  methods: {
-    clic(evt) {
-      console.log("clic event", evt)
-      this.clickCoords = evt.coordinate
-    },
-    pointsStyleFunc() {
-      return (feature, resolution) => {
-        let img_url = "https://conflictossocioambientales.iies.unam.mx" + feature.values_.tipo[2]
-        let style = new Style({image: new Icon({src: img_url})})
-        /*let baseStyle = new Style({
-          image: new Circle({
-            radius: 10,
-            fill: new Fill({
-              color: '#fff',
+    methods: {
+      ...mapActions('geojitsu', ['setDrawerCapas']),
+      clic(evt) {
+        console.log("clic event", evt)
+        this.clickCoords = evt.coordinate
+      },
+      pointsStyleFunc() {
+        return (feature, resolution) => {
+          let img_url = "https://conflictossocioambientales.iies.unam.mx" + feature.values_.tipo[2]
+          let style = new Style({image: new Icon({src: img_url})})
+          /*let baseStyle = new Style({
+            image: new Circle({
+              radius: 10,
+              fill: new Fill({
+                color: '#fff',
+              }),
+              stroke: new Stroke({
+                color: '#F44336',
+              }),
             }),
-            stroke: new Stroke({
-              color: '#F44336',
+            text: new Text({
+              text: "yeet", // get feature property
             }),
-          }),
-          text: new Text({
-            text: "yeet", // get feature property
-          }),
-        }) */
-        return style
+          }) */
+          return style
+        }
       }
-    }
-  },
-  mounted() {
-    for (let i of this.capasMapa) {
-      console.log("capasMapa: ", i)
+    },
+    mounted() {
+      for (let i of this.capasMapa) {
+        console.log("capasMapa: ", i)
+      }
     }
   }
-}
 </script>
 
 <style lang="scss">

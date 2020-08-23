@@ -57,8 +57,6 @@
 
           <q-separator vertical/>
 
-
-
         </div>
 
       </q-tab-panel>

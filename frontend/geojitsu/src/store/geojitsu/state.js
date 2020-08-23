@@ -2,6 +2,7 @@ export default function () {
   return {
     //
     GISRibbonIsOpen: true,
+    drawerCapas: true,
     mapaBase: "mapbox-outdoors-v11",
     mapasBase: [
       {value: "mapbox-streets-v11", label: "Mapbox Streets", bgcolor: "#75cff0", url: "https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoibml6aGlzYWViYSIsImEiOiJjanZwZXNpeWYwZDcxNDlwOXVhejg1Yno3In0.kqEaQSkVaFMpKKtx0FyNRA"},

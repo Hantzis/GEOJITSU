@@ -14,3 +14,7 @@ export const mapaBaseMutation = (state, value) => {
 export const capaActivaMutation = (state, value) => {
   state.capaActiva = value
 }
+
+export const drawerCapasMutation = (state, value) => {
+  state.drawerCapas = value
+}

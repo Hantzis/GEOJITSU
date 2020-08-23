@@ -14,3 +14,7 @@ export const mapaBaseAction = ({commit}, payload) => {
 export const capaActivaAction = ({commit}, payload) => {
   commit('capaActivaMutation', payload)
 }
+
+export const setDrawerCapas = ({commit}, payload) => {
+  commit('drawerCapasMutation', payload)
+}
