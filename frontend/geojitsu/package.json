@@ -18,6 +18,7 @@
     "@turf/turf": "^5.1.6",
     "axios": "^0.18.1",
     "quasar": "^1.0.0",
+    "vue-truncate-filter": "^1.1.7",
     "vuelayers": "^0.11.26"
   },
   "devDependencies": {

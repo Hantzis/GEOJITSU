@@ -15,7 +15,7 @@ export default function () {
     capaActiva: "conflictos",
     capasMapa: [
       {value: "estados", label: "Estados", type: "wms", url: "https://gs.maptitude.xyz/geoserver/CONFLICTOS/wms?",
-        layers: "CONFLICTOS:estados", visible: true,
+        layers: "CONFLICTOS:estados", visible: true, children: [{}],
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
         opacity: 1,
         server_type: "geoserver",
@@ -25,7 +25,7 @@ export default function () {
         }
       },
       {value: "municipios", label: "Municipios", type: "wms", url: "https://gs.maptitude.xyz/geoserver/CONFLICTOS/wms?",
-        layers: "CONFLICTOS:municipios", visible: false,
+        layers: "CONFLICTOS:municipios", visible: false, children: [{}],
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
         opacity: 1,
         server_type: "geoserver",
@@ -35,7 +35,7 @@ export default function () {
         }
       },
       {value: "anpnov17gw", label: "Áreas naturales protegidas", type: "wms", url: "https://gs.maptitude.xyz/geoserver/CONFLICTOS/wms?",
-        layers: "CONFLICTOS:anpnov17gw", visible: false,
+        layers: "CONFLICTOS:anpnov17gw", visible: false, children: [{}],
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
         opacity: 0.4,
         server_type: "geoserver",
@@ -45,7 +45,7 @@ export default function () {
         }
       },
       {value: "cue250kgw", label: "Cuencas", type: "wms", url: "https://gs.maptitude.xyz/geoserver/CONFLICTOS/wms?",
-        layers: "CONFLICTOS:cue250kgw", visible: false,
+        layers: "CONFLICTOS:cue250kgw", visible: false, children: [{}],
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
         opacity: 0.4,
         server_type: "geoserver",
@@ -55,7 +55,7 @@ export default function () {
         }
       },
       {value: "ecort08gw", label: "Ecorregiones", type: "wms", url: "https://gs.maptitude.xyz/geoserver/CONFLICTOS/wms?",
-        layers: "CONFLICTOS:ecort08gw", visible: false,
+        layers: "CONFLICTOS:ecort08gw", visible: false, children: [{}],
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
         opacity: 0.4,
         server_type: "geoserver",
@@ -65,7 +65,7 @@ export default function () {
         }
       },
       {value: "hidro4mgw", label: "Corrientes de agua", type: "wms", url: "https://gs.maptitude.xyz/geoserver/CONFLICTOS/wms?",
-        layers: "CONFLICTOS:hidro4mgw", visible: true,
+        layers: "CONFLICTOS:hidro4mgw", visible: true, children: [{}],
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
         opacity: 1,
         server_type: "geoserver",
@@ -77,7 +77,7 @@ export default function () {
       {value: "conflictos", label: "Conflictos Socioambientales", type: "vector", opacity: 1,
         url: "https://conflictossocioambientales.iies.unam.mx/conflictos/conflictos.geojson",
         attribution: ", <a href='http://www.iies.unam.mx' target='_blank'>IIES</a> (UNAM)",
-        visible: true,
+        visible: true, children: [{}],
       },
     ]
   }

@@ -101,9 +101,6 @@ export default {
       }
     }
   },
-  mounted() {
-    console.log("mounted", this.GISRibbonEnabledTabs)
-  },
   computed: {
     ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter']),
     showGISRibbon: {

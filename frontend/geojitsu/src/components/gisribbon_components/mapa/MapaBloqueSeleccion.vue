@@ -116,7 +116,7 @@
       </div>
       <div class="col-auto">
         <q-btn dense size="xs" flat icon="mdi-arrow-bottom-right"
-               style="border-radius: 0; margin-bottom: -3px; margin-right: -1px;"/>
+               style="border-radius: 0; margin-bottom: 0; margin-right: 1px;"/>
       </div>
     </div>
   </div>

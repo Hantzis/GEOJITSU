@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col">
         <div class="row q-pa-xs" style="padding-bottom: 12px;">
-          <q-select outlined name="archivo" label="Capa activa" :options="capasMapa" v-model="capaActiva" emit-value
+          <q-select outlined name="archivo" label="Capa seleccionada" :options="capasMapa" v-model="capaActiva" emit-value
                     map-options>
             <template v-slot:prepend>
               <q-icon name="mdi-layers-triple"/>
@@ -21,7 +21,7 @@
       </div>
       <div class="col-auto">
         <q-btn dense size="xs" flat icon="mdi-arrow-bottom-right" @click="drawerCapas = !drawerCapas"
-               style="border-radius: 0; margin-bottom: -3px; margin-right: -1px;"/>
+               style="border-radius: 0; margin-bottom: 0; margin-right: 1px;"/>
       </div>
     </div>
   </div>
@@ -42,7 +42,6 @@ export default {
     ...mapGetters('geojitsu', ['capasMapaGetter', 'capaActivaGetter', 'getDrawerCapas']),
     capasMapa: {
       get() {
-        console.log("this.capasMapaGetter", this.capasMapaGetter)
         return this.capasMapaGetter
       }
     },
