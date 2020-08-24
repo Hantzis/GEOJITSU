@@ -12,7 +12,12 @@
           <q-icon name="mdi-layers-triple"/>
           <div>Capas</div>
           <q-space/>
-          <q-btn dense flat icon="close" @click="drawerCapas = false"/>
+          <q-btn dense flat icon="close" @click="drawerCapas = false">
+            <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px" anchor="top middle"
+                       self="bottom middle">
+              Cerrar panel de capas
+            </q-tooltip>
+          </q-btn>
         </q-bar>
       </q-header>
 
@@ -21,10 +26,20 @@
 
           <q-input
             ref="filter"
-            filled
+            square
+            outlined
             v-model="filter"
-            label="Filtrar - labels that have also '(*)'"
+            label="Filtrar"
+            style="padding-right: 0px;"
+            dense
           >
+            <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px" anchor="top middle"
+                       self="bottom middle">
+              Filtrar y listar solo las capas que coinciden
+            </q-tooltip>
+            <template v-slot:prepend>
+              <q-icon name="mdi-filter"/>
+            </template>
             <template v-slot:append>
               <q-icon v-if="filter !== ''" name="clear" class="cursor-pointer" @click="resetFilter"/>
             </template>
@@ -43,25 +58,77 @@
             selected-color="primary"
           >
             <template v-slot:default-header="prop">
-              <div class="row justify-between">
-                <div class="col" style="padding-top: 4px;">
-                  {{ prop.node.label }}
-                </div>
-                <div class="col">
-                  <q-btn-group dense flat>
-                    <q-btn dense flat icon="mdi-arrow-up"></q-btn>
-                    <q-btn dense flat icon="mdi-arrow-down"></q-btn>
-                  </q-btn-group>
-                </div>
-              </div>
-            </template>
-            <template v-slot:body-story="prop">
-              <span class="text-weight-thin">The story is:</span> {{ prop.node.story }}
+              {{ String(prop.node.label) | truncate(24, '...') }}
+              <q-space/>
+              <q-btn-group disable dense lg flat>
+                <q-btn dense flat icon="mdi-chevron-up" size="xs" @click.stop.prevent="print('arriba')"></q-btn>
+                <q-btn dense flat icon="mdi-chevron-down" size="xs" @click.stop.prevent="print('abajo')"></q-btn>
+                <q-btn dense flat color="red" icon="mdi-delete" size="xs" @click.stop.prevent="print('borrar')"></q-btn>
+              </q-btn-group>
             </template>
             <template v-slot:default-body="prop">
-              <div v-if="prop.node.children">
-                <span class="text-weight-light text-black">Contenido de la capa {{ prop.node }}</span>
-              </div>
+
+              <q-card square class="capas-qcard">
+                <q-img
+                  src="https://cdn.quasar.dev/img/parallax2.jpg"
+                  basic
+                >
+
+                  <div class="absolute-bottom text-h6" style="padding: 0 20px; background: initial">
+                    <q-slider
+                      v-model="smallStep"
+                      label
+                      color="primary"
+
+                      label-color="primary"
+                      :min="0.0"
+                      :max="1"
+                      :step="0.1"
+                    />
+                  </div>
+                </q-img>
+                <q-tabs
+                  v-model="tab"
+                  dense
+                  class="text-grey"
+                  active-color="black"
+                  indicator-color="primary"
+                  align="justify"
+                >
+                  <q-tab name="mails" dense icon="mdi-texture" />
+                  <q-tab name="alarms" dense icon="mdi-information"/>
+                  <q-tab name="movies" dense icon="mdi-filter"/>
+                  <q-tab name="alarms2" dense icon="mdi-cog"/>
+                  <q-tab name="movies3" dense icon="mdi-cloud-download"/>
+                </q-tabs>
+
+                <q-separator/>
+
+                <q-tab-panels v-model="tab" animated>
+                  <q-tab-panel name="mails">
+                    <div class="text-h6">Mails</div>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </q-tab-panel>
+
+                  <q-tab-panel name="alarms">
+                    <div class="text-h6">Alarms</div>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </q-tab-panel>
+
+                  <q-tab-panel name="movies">
+                    <div class="text-h6">Movies</div>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </q-tab-panel>
+                </q-tab-panels>
+
+
+                <q-separator/>
+                <q-card-section>
+                  <header>{{ prop.node.label }}</header>
+                </q-card-section>
+
+              </q-card>
+
             </template>
           </q-tree>
 
@@ -75,16 +142,22 @@
 import {mapActions, mapGetters} from "vuex";
 import Vue from 'vue'
 
-Vue.filter('truncarCapas', (value) => {
-  console.log("value, ", value)
-  return value.substring(0, 10);
-})
-
+/** Vue Filters Start */
+Vue.filter('truncate', function (text, length, suffix) {
+  if (text.length > length) {
+    return text.substring(0, length) + suffix;
+  } else {
+    return text;
+  }
+});
+/** Vue Filters End */
 
 export default {
   name: "MapaDrawerCapas",
   data() {
     return {
+      tab: 'mails',
+      smallStep: 0.3,
       expanded: [],
       ticked: [],
       selected: 'conflictos',
@@ -157,36 +230,36 @@ export default {
     },
   },
   methods: {
+    print(value) {
+      console.log(value)
+    },
     ...mapActions('geojitsu', ['setDrawerCapas']),
-
     myFilterMethod(node, filter) {
       const filt = filter.toLowerCase()
       return node.label && node.label.toLowerCase().indexOf(filt) > -1
     },
-
     resetFilter() {
       this.filter = ''
       this.$refs.filter.focus()
     }
   },
 }
-
-
 </script>
 
 <style lang="css" scoped>
-/*
-.capas-qtree >>> .q-tree__node-collapsible .q-mr-xs.q-checkbox.cursor-pointer.no-outline.row.inline.no-wrap.items-center.q-checkbox--dense {
-  display: none;
-}
-.capas-qtree >>> .q-tree__node-collapsible .q-tree__node--link {
-  cursor: initial;
-}
-.capas-qtree >>> .q-tree__node-collapsible .q-focus-helper {
-  display: none;
-}
-*/
 .capas-qtree >>> .q-tree__children {
   display: none;
+}
+
+.capas-qtree >>> .q-tree__node-body {
+  padding-right: 6px;
+}
+
+.capas-qtree >>> .q-tab {
+  padding: 0;
+}
+.capas-qtree >>> .q-tab__icon {
+  height: 30px;
+  font-size: 26px;
 }
 </style>

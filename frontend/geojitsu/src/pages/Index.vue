@@ -129,7 +129,7 @@ export default {
       setTimeout(() => {
         console.log("remount")
         this.$refs["olmap"].remount()
-      }, 200);
+      }, 250);
     },
   },
   computed: {
