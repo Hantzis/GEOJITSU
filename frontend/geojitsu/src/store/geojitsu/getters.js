@@ -19,8 +19,8 @@ export const capasMapaGetter = (state) => {
   return state.capasMapa
 }
 
-export const capaActivaGetter = (state) => {
-  return state.capaActiva
+export const capaSeleccionadaGetter = (state) => {
+  return state.capaSeleccionada
 }
 
 export const getDrawerCapas = (state) => {

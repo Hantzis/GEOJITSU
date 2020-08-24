@@ -11,10 +11,14 @@ export const mapaBaseAction = ({commit}, payload) => {
   commit('mapaBaseMutation', payload)
 }
 
-export const capaActivaAction = ({commit}, payload) => {
-  commit('capaActivaMutation', payload)
+export const capaSeleccionadaAction = ({commit}, payload) => {
+  commit('capaSeleccionadaMutation', payload)
 }
 
 export const setDrawerCapas = ({commit}, payload) => {
   commit('drawerCapasMutation', payload)
+}
+
+export const setCapasTicked = ({commit}, payload) => {
+  commit('CapasTickedMutation', payload)
 }

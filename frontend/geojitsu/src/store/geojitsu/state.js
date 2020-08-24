@@ -12,7 +12,7 @@ export default function () {
       {value: "mapbox-satellite-v9", label: "Mapbox Satellite", bgcolor: "#050c16", url: "https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoibml6aGlzYWViYSIsImEiOiJjanZwZXNpeWYwZDcxNDlwOXVhejg1Yno3In0.kqEaQSkVaFMpKKtx0FyNRA"},
       {value: "mapbox-satellite-streets-v11", label: "Mapbox Satellite", bgcolor: "#050c16", url: "https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v11/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoibml6aGlzYWViYSIsImEiOiJjanZwZXNpeWYwZDcxNDlwOXVhejg1Yno3In0.kqEaQSkVaFMpKKtx0FyNRA"},
     ],
-    capaActiva: "conflictos",
+    capaSeleccionada: "conflictos",
     capasMapa: [
       {value: "estados", label: "Estados", type: "wms", url: "https://gs.maptitude.xyz/geoserver/CONFLICTOS/wms?",
         layers: "CONFLICTOS:estados", visible: true, children: [{}],
@@ -25,7 +25,7 @@ export default function () {
         }
       },
       {value: "municipios", label: "Municipios", type: "wms", url: "https://gs.maptitude.xyz/geoserver/CONFLICTOS/wms?",
-        layers: "CONFLICTOS:municipios", visible: false, children: [{}],
+        layers: "CONFLICTOS:municipios", visible: true, children: [{}],
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
         opacity: 1,
         server_type: "geoserver",

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col">
         <div class="row q-pa-xs" style="padding-bottom: 12px;">
-          <q-select outlined name="archivo" label="Capa seleccionada" :options="capasMapa" v-model="capaActiva" emit-value
+          <q-select outlined name="archivo" label="Capa seleccionada" :options="capasMapa" v-model="capaSeleccionada" emit-value
                     map-options>
             <template v-slot:prepend>
               <q-icon name="mdi-layers-triple"/>
@@ -34,23 +34,21 @@ export default {
   name: "MapaBloqueCapas",
   data() {
     return {
-      bloqueIsEnabled: false,
-      capa_activa: '',
     }
   },
   computed: {
-    ...mapGetters('geojitsu', ['capasMapaGetter', 'capaActivaGetter', 'getDrawerCapas']),
+    ...mapGetters('geojitsu', ['capasMapaGetter', 'capaSeleccionadaGetter', 'getDrawerCapas']),
     capasMapa: {
       get() {
         return this.capasMapaGetter
       }
     },
-    capaActiva: {
+    capaSeleccionada: {
       get() {
-        return this.capaActivaGetter
+        return this.capaSeleccionadaGetter
       },
       set(value) {
-        this.capaActivaAction(value)
+        this.capaSeleccionadaAction(value)
       }
     },
     drawerCapas: {
@@ -63,7 +61,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions('geojitsu', ['capaActivaAction', 'setDrawerCapas']),
+    ...mapActions('geojitsu', ['capaSeleccionadaAction', 'setDrawerCapas']),
   },
 }
 </script>

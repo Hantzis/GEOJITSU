@@ -46,12 +46,13 @@
           </q-input>
 
           <q-tree
+            color="grey-8"
             class="q-pt-xs capas-qtree"
             :nodes="capasMapa"
             node-key="value"
             tick-strategy="strict"
-            :selected.sync="selected"
-            :ticked.sync="ticked"
+            :selected.sync="capaSeleccionada"
+            :ticked.sync="capasTicked"
             :expanded.sync="expanded"
             :filter="filter"
             :filter-method="myFilterMethod"
@@ -60,41 +61,28 @@
             <template v-slot:default-header="prop">
               {{ String(prop.node.label) | truncate(24, '...') }}
               <q-space/>
-              <q-btn-group disable dense lg flat>
-                <q-btn dense flat icon="mdi-chevron-up" size="xs" @click.stop.prevent="print('arriba')"></q-btn>
-                <q-btn dense flat icon="mdi-chevron-down" size="xs" @click.stop.prevent="print('abajo')"></q-btn>
+              <q-btn-group flat >
+                <q-btn dense flat color="grey-8"  icon="mdi-chevron-up" size="xs" @click.stop.prevent="print('arriba')"></q-btn>
+                <q-btn dense flat color="grey-8" icon="mdi-chevron-down" size="xs" @click.stop.prevent="print('abajo')"></q-btn>
                 <q-btn dense flat color="red" icon="mdi-delete" size="xs" @click.stop.prevent="print('borrar')"></q-btn>
               </q-btn-group>
             </template>
             <template v-slot:default-body="prop">
-
-              <q-card square class="capas-qcard">
-                <q-img
-                  src="https://cdn.quasar.dev/img/parallax2.jpg"
-                  basic
-                >
-                  <div class="absolute-bottom text-h6" style="padding: 0 20px; background: initial">
-                    <q-slider
-                      v-model="smallStep"
-                      label
-                      :label-value="value * 100 + '%'"
-                      color="primary"
-                      label-color="primary"
-                      :min="0.0"
-                      :max="1"
-                      :step="0.1"
-                    />
+              <q-card square class="capas-qcard text-grey-10">
+                <q-img src="https://cdn.quasar.dev/img/parallax2.jpg" basic>
+                  <div class="absolute-bottom" style="background: initial">
+                    <q-slider v-model="smallStep" dense label :label-value="parseInt(smallStep * 100) + '%'"
+                              color="primary" label-color="primary" :min="0.0" :max="1" :step="0.05"/>
                   </div>
                 </q-img>
                 <q-tabs
                   v-model="tab"
-                  dense
                   class="text-grey"
                   active-color="black"
                   indicator-color="primary"
                   align="justify"
                 >
-                  <q-tab name="mails" dense icon="mdi-texture" />
+                  <q-tab name="mails" dense icon="mdi-texture"/>
                   <q-tab name="alarms" dense icon="mdi-information"/>
                   <q-tab name="movies" dense icon="mdi-filter"/>
                   <q-tab name="alarms2" dense icon="mdi-cog"/>
@@ -105,17 +93,17 @@
 
                 <q-tab-panels v-model="tab" animated>
                   <q-tab-panel name="mails">
-                    <div class="text-h6">Mails</div>
+                    <p class="text-h6">Simbología</p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </q-tab-panel>
 
                   <q-tab-panel name="alarms">
-                    <div class="text-h6">Alarms</div>
+                    <p class="text-h6">Metadatos</p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </q-tab-panel>
 
                   <q-tab-panel name="movies">
-                    <div class="text-h6">Movies</div>
+                    <p class="text-h6">Filtrado</p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </q-tab-panel>
                 </q-tab-panels>
@@ -158,52 +146,47 @@ export default {
       tab: 'mails',
       smallStep: 0.3,
       expanded: [],
-      ticked: [],
-      selected: 'conflictos',
       filter: '',
-      simple: [
-        {
-          label: 'Good food (with icon)',
-          icon: 'restaurant_menu',
-          children: [
-            {label: 'Quality ingredients'},
-            {label: 'Good recipe'}
-          ]
-        },
-        {
-          label: 'Good service (disabled node with icon) ',
-          icon: 'room_service',
-          disabled: true,
-          children: [
-            {label: 'Prompt attention'},
-            {label: 'Professional waiter'}
-          ]
-        },
-        {
-          label: 'Pleasant surroundings (with icon)',
-          icon: 'photo',
-          children: [
-            {
-              label: 'Happy atmosphere (with image)',
-              img: 'https://cdn.quasar.dev/img/logo_calendar_128px.png'
-            },
-            {label: 'Good table presentation'},
-            {label: 'Pleasing decor'}
-          ]
-        }
-      ]
     }
   },
   watch: {
-    selected() {
-      console.log("selected", this.selected)
-      if (!this.selected) {
-        this.selected = 'conflictos'
+    capaSeleccionada() {
+      console.log("selected", this.capaSeleccionada)
+      if (!this.capaSeleccionada) {
+        this.capaSeleccionada = 'conflictos'
       }
-    }
+    },
+    expanded() {
+      console.log("expanded", this.expanded)
+    },
+    ticked() {
+      console.log("ticked", this.ticked)
+    },
   },
   computed: {
-    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getDrawerCapas', 'capasMapaGetter']),
+    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getDrawerCapas', 'capasMapaGetter', 'capaSeleccionadaGetter']),
+
+    capaSeleccionada: {
+      get() {
+        return this.capaSeleccionadaGetter
+      },
+      set(value) {
+        this.capaSeleccionadaAction(value)
+      }
+    },
+    capasTicked: {
+      get() {
+        let ticked = []
+        for (let capa of this.capasMapaGetter) {
+          if (capa.visible) ticked.push(capa.value)
+        }
+        return ticked
+      },
+      set(value) {
+        this.setCapasTicked(value)
+      }
+    },
+
     showGISRibbon: {
       get() {
         return this.GISRibbonIsOpenGetter
@@ -229,10 +212,10 @@ export default {
     },
   },
   methods: {
+    ...mapActions('geojitsu', ['capaSeleccionadaAction', 'setDrawerCapas', 'setCapasTicked']),
     print(value) {
       console.log(value)
     },
-    ...mapActions('geojitsu', ['setDrawerCapas']),
     myFilterMethod(node, filter) {
       const filt = filter.toLowerCase()
       return node.label && node.label.toLowerCase().indexOf(filt) > -1
@@ -257,8 +240,14 @@ export default {
 .capas-qtree >>> .q-tab {
   padding: 0;
 }
+
 .capas-qtree >>> .q-tab__icon {
   height: 30px;
   font-size: 26px;
+}
+
+
+.capas-qtree >>> .q-card1 {
+  color: #424242;
 }
 </style>
