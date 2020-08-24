@@ -73,13 +73,12 @@
                   src="https://cdn.quasar.dev/img/parallax2.jpg"
                   basic
                 >
-
                   <div class="absolute-bottom text-h6" style="padding: 0 20px; background: initial">
                     <q-slider
                       v-model="smallStep"
                       label
+                      :label-value="value * 100 + '%'"
                       color="primary"
-
                       label-color="primary"
                       :min="0.0"
                       :max="1"
