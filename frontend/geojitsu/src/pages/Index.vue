@@ -33,23 +33,23 @@
                     attributions="Mapbox, <a href='https://www.saeba.click' target='_blank'>Saeba</a>"/>
                 </vl-layer-tile>
 
-                <div v-for="capa of capasMapa" :key="capa.value">
+                <span v-for="(capa, idx) of capasMapa" :key="idx">
                   <vl-layer-tile v-if="capa.type==='wms'" :opacity="capa.opacity" :visible="capa.visible">
                     <vl-source-wms
                       :url="capa.url"
                       :format="capa.format"
-                      :serverType="capa.server_type"
+                      :server_type="capa.server_type"
                       :layers="capa.layers"
                       :attributions="capa.attribution"
-                      :ext-params="capa.params"/>
+                      :ext-params="capa.params" />
                   </vl-layer-tile>
                   <vl-layer-vector v-if="capa.type==='vector'" :opacity="capa.opacity" :visible="capa.visible">
-                    <vl-source-vector :url="capa.url" :features.sync="conflictos_features"
-                                      :attributions="capa.attribution"/>
+                    <vl-source-vector :url="capa.url" :features.sync="conflictos_features" :server_type="capa.server_type"
+                                      :attributions="capa.attribution" />
                     <vl-style-func :factory="pointsStyleFunc"/>
                   </vl-layer-vector>
 
-                </div>
+                </span>
 
 
                 <vl-interaction-select :features.sync="conflictos_selectedFeatures"/>
@@ -76,7 +76,7 @@ import 'vuelayers/lib/style.css'
 import GISRibbon from "components/GISRibbon"; // needs css-loader
 import Style from 'ol/style/Style'
 import Icon from 'ol/style/Icon'
-import MapaDrawerCapas from "components/gisribbon_components/mapa/MapaDrawerCapas";
+import MapaDrawerCapas from "components/drawer_components/MapaDrawerCapas";
 
 Vue.use(VueLayers)
 
@@ -98,6 +98,7 @@ export default {
       conflictos_selectedFeatures: [],
       conflictos_styles: {},
       drawer_capas: true,
+      keymap: 0,
     }
   },
   watch: {
@@ -127,7 +128,6 @@ export default {
     },
     drawerCapas() {
       setTimeout(() => {
-        console.log("remount")
         this.$refs["olmap"].remount()
       }, 250);
     },
@@ -182,7 +182,7 @@ export default {
       this.clickCoords = evt.coordinate
     },
     pointsStyleFunc() {
-      return (feature, resolution) => {
+      return (feature) => {
         let img_url = "https://conflictossocioambientales.iies.unam.mx" + feature.values_.tipo[2]
         let style = new Style({image: new Icon({src: img_url})})
         /*let baseStyle = new Style({
@@ -203,9 +203,9 @@ export default {
       }
     }
   },
+  updated() {
+    console.log("updated")
+    console.log("conflictos_features", this.conflictos_features)
+  }
 }
 </script>
-
-<style lang="scss">
-
-</style>

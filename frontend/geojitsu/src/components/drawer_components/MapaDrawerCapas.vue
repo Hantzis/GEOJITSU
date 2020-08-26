@@ -35,7 +35,7 @@
           >
             <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px" anchor="top middle"
                        self="bottom middle">
-              Filtrar y listar solo las capas que coinciden
+              Listar solo las capas que coinciden con la busqueda del filtro
             </q-tooltip>
             <template v-slot:prepend>
               <q-icon name="mdi-filter"/>
@@ -46,7 +46,6 @@
           </q-input>
 
           <q-tree
-            color="grey-8"
             class="q-pt-xs capas-qtree"
             :nodes="capasMapa"
             node-key="value"
@@ -61,61 +60,16 @@
             <template v-slot:default-header="prop">
               {{ String(prop.node.label) | truncate(24, '...') }}
               <q-space/>
-              <q-btn-group flat >
-                <q-btn dense flat color="grey-8"  icon="mdi-chevron-up" size="xs" @click.stop.prevent="print('arriba')"></q-btn>
-                <q-btn dense flat color="grey-8" icon="mdi-chevron-down" size="xs" @click.stop.prevent="print('abajo')"></q-btn>
-                <q-btn dense flat color="red" icon="mdi-delete" size="xs" @click.stop.prevent="print('borrar')"></q-btn>
+              <q-btn-group flat>
+                <q-btn :disabled="capasMapa.indexOf(prop.node) === 0" dense flat color="grey-8" icon="mdi-chevron-up" size="xs"
+                       @click.stop.prevent="subirCapa(prop.node)"></q-btn>
+                <q-btn :disabled="capasMapa.indexOf(prop.node) === capasMapa.length-1" dense flat color="grey-8" icon="mdi-chevron-down" size="xs"
+                       @click.stop.prevent="bajarCapa(prop.node)"></q-btn>
+                <q-btn :disabled="prop.node.permanent" dense flat color="red" icon="mdi-delete" size="xs" @click.stop.prevent="print('borrar')"></q-btn>
               </q-btn-group>
             </template>
             <template v-slot:default-body="prop">
-              <q-card square class="capas-qcard text-grey-10">
-                <q-img src="https://cdn.quasar.dev/img/parallax2.jpg" basic>
-                  <div class="absolute-bottom" style="background: initial">
-                    <q-slider v-model="smallStep" dense label :label-value="parseInt(smallStep * 100) + '%'"
-                              color="primary" label-color="primary" :min="0.0" :max="1" :step="0.05"/>
-                  </div>
-                </q-img>
-                <q-tabs
-                  v-model="tab"
-                  class="text-grey"
-                  active-color="black"
-                  indicator-color="primary"
-                  align="justify"
-                >
-                  <q-tab name="mails" dense icon="mdi-texture"/>
-                  <q-tab name="alarms" dense icon="mdi-information"/>
-                  <q-tab name="movies" dense icon="mdi-filter"/>
-                  <q-tab name="alarms2" dense icon="mdi-cog"/>
-                  <q-tab name="movies3" dense icon="mdi-cloud-download"/>
-                </q-tabs>
-
-                <q-separator/>
-
-                <q-tab-panels v-model="tab" animated>
-                  <q-tab-panel name="mails">
-                    <p class="text-h6">Simbología</p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  </q-tab-panel>
-
-                  <q-tab-panel name="alarms">
-                    <p class="text-h6">Metadatos</p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  </q-tab-panel>
-
-                  <q-tab-panel name="movies">
-                    <p class="text-h6">Filtrado</p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  </q-tab-panel>
-                </q-tab-panels>
-
-
-                <q-separator/>
-                <q-card-section>
-                  <header>{{ prop.node.label }}</header>
-                </q-card-section>
-
-              </q-card>
-
+              <card-capa :capa="prop.node" />
             </template>
           </q-tree>
 
@@ -128,6 +82,7 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 import Vue from 'vue'
+import CardCapa from "components/drawer_components/CardCapa";
 
 /** Vue Filters Start */
 Vue.filter('truncate', function (text, length, suffix) {
@@ -141,26 +96,24 @@ Vue.filter('truncate', function (text, length, suffix) {
 
 export default {
   name: "MapaDrawerCapas",
+  components: {CardCapa},
   data() {
     return {
-      tab: 'mails',
-      smallStep: 0.3,
       expanded: [],
       filter: '',
     }
   },
   watch: {
     capaSeleccionada() {
-      console.log("selected", this.capaSeleccionada)
       if (!this.capaSeleccionada) {
         this.capaSeleccionada = 'conflictos'
       }
     },
     expanded() {
-      console.log("expanded", this.expanded)
+      // console.log("expanded", this.expanded)
     },
     ticked() {
-      console.log("ticked", this.ticked)
+      // console.log("ticked", this.ticked)
     },
   },
   computed: {
@@ -186,7 +139,6 @@ export default {
         this.setCapasTicked(value)
       }
     },
-
     showGISRibbon: {
       get() {
         return this.GISRibbonIsOpenGetter
@@ -212,7 +164,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions('geojitsu', ['capaSeleccionadaAction', 'setDrawerCapas', 'setCapasTicked']),
+    ...mapActions('geojitsu', ['capaSeleccionadaAction', 'setDrawerCapas', 'setCapasTicked', 'bajarCapaAction', 'subirCapaAction']),
     print(value) {
       console.log(value)
     },
@@ -223,6 +175,14 @@ export default {
     resetFilter() {
       this.filter = ''
       this.$refs.filter.focus()
+    },
+    bajarCapa(node) {
+      let idx = this.capasMapaGetter.indexOf(node)
+      this.bajarCapaAction(idx)
+    },
+    subirCapa(node) {
+      let idx = this.capasMapaGetter.indexOf(node)
+      this.subirCapaAction(idx)
     }
   },
 }
@@ -246,8 +206,4 @@ export default {
   font-size: 26px;
 }
 
-
-.capas-qtree >>> .q-card1 {
-  color: #424242;
-}
 </style>

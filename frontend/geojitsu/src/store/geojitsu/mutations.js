@@ -20,12 +20,19 @@ export const drawerCapasMutation = (state, value) => {
 }
 
 export const CapasTickedMutation = (state, value) => {
-  console.log("CapasTickedMutation", value)
   for (let capa of state.capasMapa) {
-    console.log("capa: ",capa.value, capa.visible)
-    capa.visible = false
-    if (value.includes(capa.value))
-      capa.visible = true
+    capa.visible = !!value.includes(capa.value);
   }
-  console.log("state.capasMapa", state.capasMapa)
+}
+
+export const CapaOpacityMutation = (state, value) => {
+  state.capasMapa[value.capa].opacity = value.value
+}
+
+export const SubirCapaMutation = (state, value) => {
+  state.capasMapa.splice(value-1,0,state.capasMapa.splice(value,1)[0])
+}
+
+export const BajarCapaMutation = (state, value) => {
+  state.capasMapa.splice(value+1,0,state.capasMapa.splice(value,1)[0])
 }

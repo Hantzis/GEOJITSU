@@ -22,3 +22,15 @@ export const setDrawerCapas = ({commit}, payload) => {
 export const setCapasTicked = ({commit}, payload) => {
   commit('CapasTickedMutation', payload)
 }
+
+export const setCapaOpacity = ({commit}, payload) => {
+  commit('CapaOpacityMutation', payload)
+}
+
+export const subirCapaAction  = ({commit}, payload) => {
+  commit('SubirCapaMutation', payload)
+}
+
+export const bajarCapaAction  = ({commit}, payload) => {
+  commit('BajarCapaMutation', payload)
+}
