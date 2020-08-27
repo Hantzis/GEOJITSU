@@ -5,6 +5,7 @@
     show-if-above
     side="right"
     :breakpoint="319"
+    overlay
   >
     <q-layout view="lHh lpr lFf" :style="{'min-height': mapHeight, 'max-height': mapHeight}">
       <q-header>

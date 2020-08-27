@@ -58,6 +58,51 @@
 
     </q-header>
 
+    <q-drawer v-model="left" side="left" elevated overlay behavior="mobile">
+      <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
+        <q-list padding>
+          <q-item to="/" clickable v-ripple exact>
+            <q-item-section avatar>
+              <q-icon name="home"/>
+            </q-item-section>
+
+            <q-item-section>
+              Mapa
+            </q-item-section>
+
+          </q-item>
+
+          <q-item to="acerca" clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="mdi-information"/>
+            </q-item-section>
+
+            <q-item-section>
+              Acerca de
+            </q-item-section>
+          </q-item>
+
+          <q-item to="metodologia" clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="mdi-file-edit"/>
+            </q-item-section>
+
+            <q-item-section>
+              Metodología
+            </q-item-section>
+          </q-item>
+
+        </q-list>
+      </q-scroll-area>
+      <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
+        <div class="absolute-bottom bg-transparent">
+          <q-avatar size="56px" class="q-mb-sm">
+            <img src="~assets/logo_unam.jpg" alt="UNAM">
+          </q-avatar>
+          <div class="text-weight-bold">Conflictos Socioambientales de México</div>
+        </div>
+      </q-img>
+    </q-drawer>
 
     <q-page-container>
       <router-view/>
@@ -83,13 +128,6 @@ export default {
   data() {
     return {
       left: false,
-      right: false,
-      drawer_layers: false,
-      drawer_grid: false,
-      drawer_stats: false,
-      drawer_charts: false,
-      toggle_drawers_model: 'hide',
-      layers_tabs: 'layers',
     }
   },
   computed: {
@@ -109,41 +147,6 @@ export default {
     testa(val) {
       alert(val);
     },
-  },
-  watch: {
-    toggle_drawers_model() {
-      console.log(this.toggle_drawers_model)
-      if (this.toggle_drawers_model === 'hide') {
-        this.drawer_layers = false;
-        this.drawer_grid = false;
-        this.drawer_stats = false;
-        this.drawer_charts = false;
-      }
-      if (this.toggle_drawers_model === 'layers') {
-        this.drawer_layers = true;
-        this.drawer_grid = false;
-        this.drawer_stats = false;
-        this.drawer_charts = false;
-      }
-      if (this.toggle_drawers_model === 'grid') {
-        this.drawer_layers = false;
-        this.drawer_grid = true;
-        this.drawer_stats = false;
-        this.drawer_charts = false;
-      }
-      if (this.toggle_drawers_model === 'stats') {
-        this.drawer_layers = false;
-        this.drawer_grid = false;
-        this.drawer_stats = true;
-        this.drawer_charts = false;
-      }
-      if (this.toggle_drawers_model === 'charts') {
-        this.drawer_layers = false;
-        this.drawer_grid = false;
-        this.drawer_stats = false;
-        this.drawer_charts = true;
-      }
-    }
   },
 }
 </script>

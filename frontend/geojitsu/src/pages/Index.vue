@@ -61,6 +61,13 @@
         </q-page>
       </q-page-container>
     </q-layout>
+    <q-ajax-bar
+      ref="bar"
+      position="top"
+      color="primary"
+      size="4px"
+      skip-hijack
+    />
   </q-page>
 </template>
 
@@ -84,6 +91,7 @@ export default {
   components: {MapaDrawerCapas, GISRibbon},
   data() {
     return {
+      loadingBar: undefined,
       clickCoords: undefined,
       zoom: 5.7,
       center: [-102.02, 24.02],
@@ -128,11 +136,11 @@ export default {
         console.log("cercano: ", cercano)
       }
     },
-    drawerCapas() {
+    /* drawerCapas() {
       setTimeout(() => {
         this.$refs["olmap"].remount()
       }, 400);
-    },
+    }, */
   },
   computed: {
     ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'mapaBaseGetter', 'mapasBaseGetter', 'capasMapaGetter', 'getDrawerCapas']),
@@ -181,6 +189,10 @@ export default {
       if (this.capasMapa[capa].features.length == 0) {
         axios.get(this.capasMapa[capa].url).then(response => {
           this.setCapaFeatures({capa: capa, features: response.data.features})
+        }).catch(error => {
+          console.log(error)
+        }).finally(()=> {
+          this.loadingBar.stop()
         })
       }
     },
@@ -209,6 +221,10 @@ export default {
         return style
       }
     }
+  },
+  mounted() {
+    this.loadingBar = this.$refs.bar
+    this.loadingBar.start()
   }
 }
 </script>
