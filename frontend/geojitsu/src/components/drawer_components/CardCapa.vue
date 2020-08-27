@@ -52,7 +52,6 @@
     <q-separator/>
     <q-card-section>
       <span style="font-weight: 300; font-size: 17px;">{{ capa.label }}</span>
-      dsadsad
     </q-card-section>
 
   </q-card>
@@ -75,7 +74,7 @@ export default {
     capasMapa: {
       get() {
         return this.capasMapaGetter
-      },
+      }
     },
     opacityStep: {
       get() {

@@ -58,70 +58,17 @@
 
     </q-header>
 
-    <!--
-    <q-drawer v-model="left" side="left" bordered overlay behavior="mobile">
-      drawer content
-    </q-drawer>
-
-    <q-drawer v-model="right" side="right" bordered :breakpoint="319" overlay>
-      - drawer content -
-    </q-drawer>
-
-    <q-drawer v-model="drawer_layers" side="right" bordered :breakpoint="319" overlay>
-      <q-tabs
-        v-model="layers_tabs"
-        dense
-        class="text-grey-14"
-        active-color="primary"
-        indicator-color="primary"
-      >
-        <q-tab name="layers" icon="mail" label="Capas"/>
-        <q-tab name="servers" icon="mail" label="Servidores"/>
-        <q-tab name="basemaps" icon="mail" label="Mapas base"/>
-      </q-tabs>
-
-      <q-separator/>
-
-      <q-tab-panels v-model="layers_tabs" animated>
-        <q-tab-panel name="layers">
-          <div class="text-h6">Mails</div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        </q-tab-panel>
-
-        <q-tab-panel name="servers">
-          <div class="text-h6">Alarms</div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        </q-tab-panel>
-
-        <q-tab-panel name="basemaps">
-          <div class="text-h6">Movies</div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        </q-tab-panel>
-      </q-tab-panels>
-    </q-drawer>
-
-    <q-drawer v-model="drawer_grid" side="right" bordered :breakpoint="319" overlay>
-      Drawer de atributos
-    </q-drawer>
-
-    <q-drawer v-model="drawer_stats" side="right" bordered :breakpoint="319" overlay>
-      Drawer de stats
-    </q-drawer>
-
-    <q-drawer v-model="drawer_charts" side="right" bordered :breakpoint="319" overlay>
-      Drawer de charts
-    </q-drawer>
-    -->
 
     <q-page-container>
       <router-view/>
     </q-page-container>
 
-    <!--- <q-footer elevated class="bg-grey-8 text-white">
-      <q-toolbar>
-        <q-toolbar-title>
+    <!---
+    <q-footer elevated class="bg-grey-9 text-grey-4">
+      <q-toolbar style="min-height: 22px; font-size: 11px;">
+          Geojitsu
+        <q-space/>
           2020 &copy; Maptitude XYZ
-        </q-toolbar-title>
       </q-toolbar>
     </q-footer> -->
 

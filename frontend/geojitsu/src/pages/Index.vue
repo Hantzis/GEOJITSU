@@ -5,7 +5,7 @@
         <GISRibbon/>
       </q-header>
 
-      <mapa-drawer-capas />
+      <mapa-drawer-capas/>
 
       <q-page-container>
         <q-page>
@@ -33,28 +33,26 @@
                     attributions="Mapbox, <a href='https://www.saeba.click' target='_blank'>Saeba</a>"/>
                 </vl-layer-tile>
 
-                <span v-for="(capa, idx) of capasMapa" :key="idx">
-                  <vl-layer-tile v-if="capa.type==='wms'" :opacity="capa.opacity" :visible="capa.visible">
-                    <vl-source-wms
-                      :url="capa.url"
-                      :format="capa.format"
-                      :server_type="capa.server_type"
-                      :layers="capa.layers"
-                      :attributions="capa.attribution"
-                      :ext-params="capa.params" />
-                  </vl-layer-tile>
-                  <vl-layer-vector v-if="capa.type==='vector'" :opacity="capa.opacity" :visible="capa.visible">
-                    <vl-source-vector :url="capa.url" :features.sync="conflictos_features" :server_type="capa.server_type"
-                                      :attributions="capa.attribution" />
-                    <vl-style-func :factory="pointsStyleFunc"/>
-                  </vl-layer-vector>
-
-                </span>
-
-
+                <div :key="mapkey">
+                  <div v-for="(capa, idx) of capasMapa" :key="capa.value">
+                    <vl-layer-tile v-if="capa.type==='wms'" :opacity="capa.opacity" :visible="capa.visible">
+                      <vl-source-wms
+                        :url="capa.url"
+                        :format="capa.format"
+                        :server_type="capa.server_type"
+                        :layers="capa.layers"
+                        :attributions="capa.attribution"
+                        :ext-params="capa.params"/>
+                    </vl-layer-tile>
+                    <vl-layer-vector v-if="capa.type==='vector'" :opacity="capa.opacity" :visible="capa.visible">
+                      <vl-source-vector :loaderFactory="loaderFactory(idx)" :features="capa.features"
+                                        :server_type="capa.server_type"
+                                        :attributions="capa.attribution"/>
+                      <vl-style-func :factory="pointsStyleFunc"/>
+                    </vl-layer-vector>
+                  </div>
+                </div>
                 <vl-interaction-select :features.sync="conflictos_selectedFeatures"/>
-
-
               </vl-map>
 
             </div>
@@ -69,6 +67,7 @@
 <script>
 import {mapGetters, mapActions} from 'vuex'
 import turf from '@turf/turf'
+import axios from 'axios'
 
 import Vue from 'vue'
 import VueLayers from 'vuelayers'
@@ -98,10 +97,13 @@ export default {
       conflictos_selectedFeatures: [],
       conflictos_styles: {},
       drawer_capas: true,
-      keymap: 0,
+      mapkey: 0,
     }
   },
   watch: {
+    capasMapa() {
+      this.mapkey++
+    },
     mapHeight() {
       this.$refs["olmap"].remount()
     },
@@ -129,7 +131,7 @@ export default {
     drawerCapas() {
       setTimeout(() => {
         this.$refs["olmap"].remount()
-      }, 250);
+      }, 400);
     },
   },
   computed: {
@@ -162,13 +164,10 @@ export default {
     drawerCapas: {
       get() {
         return this.getDrawerCapas
-      },
-      set(value) {
-        this.setDrawerCapas(value)
       }
     },
     mapHeight() {
-      let ribbon_height = 93
+      let ribbon_height = 87
       if (this.showGISRibbon) ribbon_height = 180
       return this.$q.screen.height - ribbon_height + "px"
     },
@@ -177,6 +176,14 @@ export default {
     }
   },
   methods: {
+    ...mapActions('geojitsu', ['capasMapaAction', 'setCapaFeatures']),
+    loaderFactory(capa) {
+      if (this.capasMapa[capa].features.length == 0) {
+        axios.get(this.capasMapa[capa].url).then(response => {
+          this.setCapaFeatures({capa: capa, features: response.data.features})
+        })
+      }
+    },
     clic(evt) {
       console.log("clic event", evt)
       this.clickCoords = evt.coordinate
@@ -202,10 +209,6 @@ export default {
         return style
       }
     }
-  },
-  updated() {
-    console.log("updated")
-    console.log("conflictos_features", this.conflictos_features)
   }
 }
 </script>

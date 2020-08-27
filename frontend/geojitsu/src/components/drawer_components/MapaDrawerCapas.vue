@@ -155,6 +155,9 @@ export default {
     capasMapa: {
       get() {
         return this.capasMapaGetter
+      },
+      set(value) {
+        console.log("AQUI DRWAERRSE", value)
       }
     },
     mapHeight() {
