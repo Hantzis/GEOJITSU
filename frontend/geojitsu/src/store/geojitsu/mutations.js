@@ -23,10 +23,15 @@ export const capasMapaMutation = (state, value) => {
   state.capasMapa = value
 }
 
+
 export const CapasTickedMutation = (state, value) => {
   for (let capa of state.capasMapa) {
     capa.visible = !!value.includes(capa.value);
   }
+}
+
+export const CapaTickedMutation = (state, value) => {
+  state.capasMapa[state.capasMapa.indexOf(value.capa)].visible = value.visible
 }
 
 export const CapaOpacityMutation = (state, value) => {

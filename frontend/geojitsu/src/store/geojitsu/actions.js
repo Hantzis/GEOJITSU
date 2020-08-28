@@ -28,6 +28,10 @@ export const setCapasTicked = ({commit}, payload) => {
   commit('CapasTickedMutation', payload)
 }
 
+export const setCapaTicked = ({commit}, payload) => {
+  commit('CapaTickedMutation', payload)
+}
+
 export const setCapaOpacity = ({commit}, payload) => {
   commit('CapaOpacityMutation', payload)
 }

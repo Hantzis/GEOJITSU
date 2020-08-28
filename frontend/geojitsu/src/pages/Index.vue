@@ -52,7 +52,37 @@
                     </vl-layer-vector>
                   </div>
                 </div>
-                <vl-interaction-select :features.sync="conflictos_selectedFeatures"/>
+
+                <vl-interaction-select :features.sync="conflictos_selectedFeatures">
+                  <vl-overlay v-if="conflictos_selectedFeatures.length > 0" :position="position" :auto-pan="false"
+                              style="background: white; padding: 8px">
+                    <div style="max-width: 300px; min-width: 300px;">
+                      <q-table
+                        class="detalles"
+                        style="max-height: 400px"
+                        :title="conflictos_selectedFeatures[0].properties.tipo[1] + ' (id:' + conflictos_selectedFeatures[0].properties.pk + ')'"
+                        square
+                        wrap-cells
+                        dense
+                        :rows-per-page-options="[15]"
+                        virtual-scroll
+                        separator="cell"
+                        :data="getEntries(conflictos_selectedFeatures[0].properties)"
+                      >
+                        <template v-slot:header>
+                          <q-th colspan="2" align="left">
+                            <q-td style="padding: 0">{{ conflictos_selectedFeatures[0].properties.resumen }}</q-td>
+                          </q-th>
+                        </template>
+                        <template v-slot:top-right>
+                          <q-btn flat dense size="sm" style="margin-right: -11px;">
+                            <q-icon name="close"/>
+                          </q-btn>
+                        </template>
+                      </q-table>
+                    </div>
+                  </vl-overlay>
+                </vl-interaction-select>
               </vl-map>
 
             </div>
@@ -73,8 +103,8 @@
 
 <script>
 import {mapGetters, mapActions} from 'vuex'
-import turf from '@turf/turf'
 import axios from 'axios'
+import * as turf from '@turf/turf'
 
 import Vue from 'vue'
 import VueLayers from 'vuelayers'
@@ -83,6 +113,7 @@ import GISRibbon from "components/GISRibbon"; // needs css-loader
 import Style from 'ol/style/Style'
 import Icon from 'ol/style/Icon'
 import MapaDrawerCapas from "components/drawer_components/MapaDrawerCapas";
+import {Point as turfPoint, Coord as turfCoord, FeatureCollection as turfFeatureCollection} from '@turf/helpers'
 
 Vue.use(VueLayers)
 
@@ -93,6 +124,7 @@ export default {
     return {
       loadingBar: undefined,
       clickCoords: undefined,
+      position: undefined,
       zoom: 5.7,
       center: [-102.02, 24.02],
       center3857: [-11268847.24, 2231060.47],
@@ -120,20 +152,21 @@ export default {
     },
     conflictos_selectedFeatures() {
       if (this.conflictos_selectedFeatures.length > 0) {
-        console.log("clic", this.conflictos_selectedFeatures)
+        //console.log("clic", this.conflictos_selectedFeatures)
         for (let feat of this.conflictos_selectedFeatures) {
-          console.log("feat: ", feat)
+          /*console.log("feat: ", feat)
           console.log("feat coordinates: ", feat.geometry.coordinates)
-          console.log("this.clickCoords: ", this.clickCoords)
+          console.log("this.clickCoords: ", this.clickCoords)*/
         }
         let collection = []
         for (let point of this.conflictos_selectedFeatures[0].geometry.coordinates) {
-          console.log("point", point)
-          collection.push(turf.point(point))
+          let a = turf.point(point)
+          collection.push(a)
         }
         let featureCoords = turf.featureCollection(collection)
         let cercano = turf.nearestPoint(this.clickCoords, featureCoords)
-        console.log("cercano: ", cercano)
+        this.position = cercano.geometry.coordinates
+
       }
     },
     /* drawerCapas() {
@@ -184,15 +217,30 @@ export default {
     }
   },
   methods: {
-    ...mapActions('geojitsu', ['capasMapaAction', 'setCapaFeatures']),
+    ...mapActions('geojitsu', ['capasMapaAction', 'setCapaFeatures', 'setCapaTicked']),
+    getEntries(properties) {
+      let limpio = []
+      Object.entries(properties).forEach((row) => {
+        if (row[1] && row[1].length > 0 && row[0] !== 'resumen' && row[0] !== 'tipo' && row[0] !== 'pk' && row[0] !== 'bibliografia') {
+          if (Array.isArray(row[1])) {
+            row[1] = row[1].join(", ")
+          }
+          row[0] = row[0].split("_").join(" ")
+          if (row[0] === 'secretarias')  row[0] = 'secretarías'
+          limpio.push(row)
+        }
+      })
+      return limpio
+    },
     loaderFactory(capa) {
       if (this.capasMapa[capa].features.length == 0) {
         axios.get(this.capasMapa[capa].url).then(response => {
           this.setCapaFeatures({capa: capa, features: response.data.features})
         }).catch(error => {
           console.log(error)
-        }).finally(()=> {
+        }).finally(() => {
           this.loadingBar.stop()
+          this.setCapaTicked({capa: this.capasMapa[capa], visible: true})
         })
       }
     },
@@ -228,3 +276,10 @@ export default {
   }
 }
 </script>
+
+<style lang="css" scoped>
+.detalles >>> .q-table__top.relative-position.row.items-center {
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+</style>
