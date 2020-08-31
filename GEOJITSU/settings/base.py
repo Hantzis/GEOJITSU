@@ -42,8 +42,9 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
 
-    'gj_layers',
-    'conflictos',
+    # 'gj_layers',
+    # 'conflictos',
+    'casos_exito',
 
     'django_select2',
     'graphos',
@@ -73,14 +74,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'GEOJITSU.urls'
 
-
+"""
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
         'LOCATION': '127.0.0.1:11211',
     }
 }
-
+"""
 
 SELECT2_CACHE_BACKEND = 'default'
 SELECT2_CSS = 'select2/select2.css'
@@ -110,13 +111,23 @@ WSGI_APPLICATION = 'GEOJITSU.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.contrib.gis.db.backends.mysql',
+        'HOST': 'localhost',
+        'NAME': 'onsses',
+        'USER': 'root',
+        'PASSWORD': 'qwerty',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -140,9 +151,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-mx'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Mexico_City'
 
 USE_I18N = True
 
@@ -182,3 +193,16 @@ WAGTAIL_SITE_NAME = "GEOJITSU"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
+
+
+OSGEO_VENV = r'C:\WPy64-3830\python-3.8.3.amd64\Lib\site-packages\osgeo'
+GEOS_LIBRARY_PATH = OSGEO_VENV + r'\geos_c.dll'
+GDAL_LIBRARY_PATH = OSGEO_VENV + r'\gdal300.dll'
+GDAL_DRIVER_PATH = OSGEO_VENV + r'\gdalplugins'
+GDAL_DATA = OSGEO_VENV + r'\data'
+PROJ_LIB = GDAL_DATA + r'\proj'
+# PROJ_LIB = r'C:\WPy64-3810\python-3.8.1.amd64\Lib\site-packages\pyproj\proj_dir\share\proj'
+
+# os.environ["PATH"] += os.pathsep + str(OSGEO_VENV)
+# os.environ["PATH"] += os.pathsep + str(GDAL_DATA)
+# os.environ["PATH"] += os.pathsep + str(PROJ_LIB)
