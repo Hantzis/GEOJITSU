@@ -1,0 +1,43 @@
+{
+  "name": "geojitsu",
+  "version": "0.0.1",
+  "description": "A Quasar Framework app",
+  "productName": "GeoJitsu",
+  "cordovaId": "xyz.maptitude.quasar.app",
+  "capacitorId": "xyz.maptitude.quasar.app",
+  "author": "César Benjamín García Martínez <cesar.benjamin@maptitude.xyz>",
+  "private": true,
+  "scripts": {
+    "eslint": "eslint --ext .js,.vue ./",
+    "lint": "vue-cli-service lint",
+    "test": "echo \"No test specified\" && exit 0",
+    "serve": "quasar dev --modern"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.0.0",
+    "@turf/turf": "^5.1.6",
+    "axios": "^0.18.1",
+    "quasar": "^1.0.0",
+    "vue-truncate-filter": "^1.1.7",
+    "vuelayers": "^0.11.26"
+  },
+  "devDependencies": {
+    "@quasar/app": "^1.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-vue": "^6.1.2"
+  },
+  "engines": {
+    "node": ">= 10.18.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  },
+  "browserslist": [
+    "last 1 version, not dead, ie >= 11"
+  ],
+  "resolutions": {
+    "@babel/parser": "7.7.5"
+  }
+}
