@@ -121,6 +121,8 @@ import MapaDrawerCapas from "components/drawer_components/MapaDrawerCapas";
 
 //import {Point as turfPoint, Coord as turfCoord, FeatureCollection as turfFeatureCollection} from '@turf/helpers'
 import wmsSource from 'vuelayers/lib/mixin/wms-source'
+import * as olProj from 'ol/proj';
+import {transform} from 'ol/proj';
 
 Vue.use(VueLayers)
 
@@ -148,6 +150,7 @@ export default {
       conflictos_styles: {},
       drawer_capas: true,
       mapkey: 0,
+      info: {}
     }
   },
   watch: {
@@ -223,6 +226,12 @@ export default {
         return this.capaSeleccionadaGetter
       }
     },
+    capasVisibles() {
+      const capas_visibles = []
+      for (let capa of this.capasMapa) {
+        if (capa.visible) console.log("capa: ", capa.value)
+      }
+    },
     mapHeight() {
       let ribbon_height = 87
       if (this.showGISRibbon) ribbon_height = 180
@@ -261,17 +270,20 @@ export default {
       }
     },
     clic(evt) {
-      console.log("clic event", evt)
-      this.clickCoords = evt.coordinate
-      let viewResolution = /** @type {number} */ this.$refs.map_view.$view.values_.resolution;
-      console.log("viewResolution", viewResolution)
-      console.log(this.capaSeleccionada)
-      console.log(this.$refs[this.capaSeleccionada][0].getFeatureInfoUrl)
-      let capa = this.$refs[this.capaSeleccionada][0].getFeatureInfoUrl(evt.coordinate)
-      console.log("capa", capa)
-      let feature_url = capa(evt.coordinate)(
-        evt.coordinate
-      );
+      const coord = transform(evt.coordinate, 'EPSG:4326', 'EPSG:3857')
+      const viewResolution = /** @type {number} */ this.$refs.map_view.$view.values_.resolution;
+      const map = this.$refs.olmap
+      console.log("map: ", map)
+      console.log("map.getLayers: ", map.getLayers())
+      console.log("capasMapa", this.capasMapa)
+      console.log("capasVisibles", this.capasVisibles)
+      for (let capa of this.capasMapa) {
+        if (capa.visible) console.log("capa: ", capa.value)
+      }
+      const feature_url = this.$refs[this.capaSeleccionada][0]
+        .getFeatureInfoUrl(coord, viewResolution, 'EPSG:3857', {'INFO_FORMAT': 'application/json'})
+      console.log("capa", feature_url)
+
       if (feature_url) {
         fetch(feature_url)
           .then(function (response) {
