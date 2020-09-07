@@ -45,10 +45,23 @@ export default {
     },
     capaSeleccionada: {
       get() {
+        console.log(this.capasMapa)
         return this.capaSeleccionadaGetter
       },
       set(value) {
         this.capaSeleccionadaAction(value)
+      }
+    },
+    capasTicked: {
+      get() {
+        let ticked = []
+        for (let capa of this.capasMapaGetter) {
+          if (capa.visible) ticked.push(capa.value)
+        }
+        return ticked
+      },
+      set(value) {
+        this.setCapasTicked(value)
       }
     },
     drawerCapas: {
@@ -61,7 +74,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions('geojitsu', ['capaSeleccionadaAction', 'setDrawerCapas']),
+    ...mapActions('geojitsu', ['capaSeleccionadaAction', 'setDrawerCapas', 'setCapasTicked']),
   },
 }
 </script>
