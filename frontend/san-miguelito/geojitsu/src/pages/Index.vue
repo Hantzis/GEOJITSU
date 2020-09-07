@@ -229,8 +229,12 @@ export default {
     capasVisibles() {
       const capas_visibles = []
       for (let capa of this.capasMapa) {
-        if (capa.visible) console.log("capa: ", capa.value)
+        if (capa.visible) {
+          capas_visibles.push(capa.value)
+        }
       }
+      console.log("capa: ", capas_visibles)
+      return capas_visibles
     },
     mapHeight() {
       let ribbon_height = 87
@@ -274,9 +278,8 @@ export default {
       const viewResolution = /** @type {number} */ this.$refs.map_view.$view.values_.resolution;
       const map = this.$refs.olmap
       console.log("map: ", map)
-      console.log("map.getLayers: ", map.getLayers())
-      console.log("capasMapa", this.capasMapa)
       console.log("capasVisibles", this.capasVisibles)
+      console.log("capasSeleccionada", this.capaSeleccionada)
       for (let capa of this.capasMapa) {
         if (capa.visible) console.log("capa: ", capa.value)
       }

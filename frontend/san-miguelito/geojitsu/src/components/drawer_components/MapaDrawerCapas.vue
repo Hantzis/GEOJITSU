@@ -51,15 +51,16 @@
             :nodes="capasMapa"
             node-key="value"
             tick-strategy="strict"
-            :selected.sync="capaSeleccionada"
+            :selected="capaSeleccionada"
             :ticked.sync="capasTicked"
             :expanded.sync="expanded"
             :filter="filter"
             :filter-method="myFilterMethod"
             selected-color="primary"
+            @update:selected="updateSelected"
           >
             <template v-slot:default-header="prop">
-              {{ String(prop.node.label) | truncate(21, '...') }}
+              {{ String(prop.node.label) | truncate(20, '...') }}
               <q-space/>
               <q-btn-group flat>
                 <q-btn :disabled="capasMapa.indexOf(prop.node) === 0" dense flat color="grey-8" icon="mdi-chevron-up" size="xs"
@@ -105,7 +106,7 @@ export default {
     }
   },
   watch: {
-    capaSeleccionada() {
+    capaSeleccionada12() {
       if (!this.capaSeleccionada) {
         this.capaSeleccionada = 'conflictos'
       }
@@ -169,6 +170,15 @@ export default {
     print(value) {
       console.log(value)
     },
+    updateSelected (key) {
+      console.log("updateSelected", this.capaSeleccionada)
+      console.log("key", key)
+      console.log("capasTicked", this.capasTicked)
+
+      if (key !== null && this.capasTicked.includes(key)) {
+        this.capaSeleccionada = key
+      }
+    },
     myFilterMethod(node, filter) {
       const filt = filter.toLowerCase()
       return node.label && node.label.toLowerCase().indexOf(filt) > -1
@@ -184,8 +194,8 @@ export default {
     subirCapa(node) {
       let idx = this.capasMapaGetter.indexOf(node)
       this.subirCapaAction(idx)
-    }
-  },
+    },
+  }
 }
 </script>
 
