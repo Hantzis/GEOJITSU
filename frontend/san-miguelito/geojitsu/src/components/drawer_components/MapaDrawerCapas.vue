@@ -58,20 +58,24 @@
             :filter-method="myFilterMethod"
             selected-color="primary"
             @update:selected="updateSelected"
+            @update:ticked="updateTicked"
           >
             <template v-slot:default-header="prop">
               {{ String(prop.node.label) | truncate(20, '...') }}
               <q-space/>
               <q-btn-group flat>
-                <q-btn :disabled="capasMapa.indexOf(prop.node) === 0" dense flat color="grey-8" icon="mdi-chevron-up" size="xs"
+                <q-btn :disabled="capasMapa.indexOf(prop.node) === 0" dense flat color="grey-8" icon="mdi-chevron-up"
+                       size="xs"
                        @click.stop.prevent="subirCapa(prop.node)"></q-btn>
-                <q-btn :disabled="capasMapa.indexOf(prop.node) === capasMapa.length-1" dense flat color="grey-8" icon="mdi-chevron-down" size="xs"
+                <q-btn :disabled="capasMapa.indexOf(prop.node) === capasMapa.length-1" dense flat color="grey-8"
+                       icon="mdi-chevron-down" size="xs"
                        @click.stop.prevent="bajarCapa(prop.node)"></q-btn>
-                <q-btn :disabled="prop.node.permanent" dense flat color="red" icon="mdi-delete" size="xs" @click.stop.prevent="print('borrar')"></q-btn>
+                <q-btn :disabled="prop.node.permanent" dense flat color="red" icon="mdi-delete" size="xs"
+                       @click.stop.prevent="print('borrar')"></q-btn>
               </q-btn-group>
             </template>
             <template v-slot:default-body="prop">
-              <card-capa :capa="prop.node" />
+              <card-capa :capa="prop.node"/>
             </template>
           </q-tree>
 
@@ -82,139 +86,143 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from "vuex";
-import Vue from 'vue'
-import CardCapa from "components/drawer_components/CardCapa";
+  import {mapActions, mapGetters} from "vuex";
+  import Vue from 'vue'
+  import CardCapa from "components/drawer_components/CardCapa";
 
-/** Vue Filters Start */
-Vue.filter('truncate', function (text, length, suffix) {
-  if (text.length > length) {
-    return text.substring(0, length) + suffix;
-  } else {
-    return text;
-  }
-});
-/** Vue Filters End */
-
-export default {
-  name: "MapaDrawerCapas",
-  components: {CardCapa},
-  data() {
-    return {
-      expanded: [],
-      filter: '',
+  /** Vue Filters Start */
+  Vue.filter('truncate', function (text, length, suffix) {
+    if (text.length > length) {
+      return text.substring(0, length) + suffix;
+    } else {
+      return text;
     }
-  },
-  watch: {
-    capaSeleccionada12() {
-      if (!this.capaSeleccionada) {
-        this.capaSeleccionada = 'conflictos'
-      }
-    },
-    expanded() {
-      // console.log("expanded", this.expanded)
-    },
-    ticked() {
-      // console.log("ticked", this.ticked)
-    },
-  },
-  computed: {
-    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getDrawerCapas', 'capasMapaGetter', 'capaSeleccionadaGetter']),
+  });
+  /** Vue Filters End */
 
-    capaSeleccionada: {
-      get() {
-        return this.capaSeleccionadaGetter
-      },
-      set(value) {
-        this.capaSeleccionadaAction(value)
+  export default {
+    name: "MapaDrawerCapas",
+    components: {CardCapa},
+    data() {
+      return {
+        expanded: [],
+        filter: '',
       }
     },
-    capasTicked: {
-      get() {
-        let ticked = []
-        for (let capa of this.capasMapaGetter) {
-          if (capa.visible) ticked.push(capa.value)
+    watch: {
+      capaSeleccionada12() {
+        if (!this.capaSeleccionada) {
+          this.capaSeleccionada = 'conflictos'
         }
-        return ticked
       },
-      set(value) {
-        this.setCapasTicked(value)
-      }
-    },
-    showGISRibbon: {
-      get() {
-        return this.GISRibbonIsOpenGetter
-      }
-    },
-    drawerCapas: {
-      get() {
-        return this.getDrawerCapas
+      expanded() {
+        // console.log("expanded", this.expanded)
       },
-      set(value) {
-        this.setDrawerCapas(value)
-      }
+      ticked() {
+        // console.log("ticked", this.ticked)
+      },
     },
-    capasMapa: {
-      get() {
-        return this.capasMapaGetter
-      }
+    computed: {
+      ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getDrawerCapas', 'capasMapaGetter', 'capaSeleccionadaGetter']),
+      capaSeleccionada: {
+        get() {
+          return this.capaSeleccionadaGetter
+        },
+        set(value) {
+          this.capaSeleccionadaAction(value)
+        }
+      },
+      capasTicked: {
+        get() {
+          let ticked = []
+          for (let capa of this.capasMapaGetter) {
+            if (capa.visible) ticked.push(capa.value)
+          }
+          return ticked
+        },
+        set(value) {
+          this.setCapasTicked(value)
+        }
+      },
+      showGISRibbon: {
+        get() {
+          return this.GISRibbonIsOpenGetter
+        }
+      },
+      drawerCapas: {
+        get() {
+          return this.getDrawerCapas
+        },
+        set(value) {
+          this.setDrawerCapas(value)
+        }
+      },
+      capasMapa: {
+        get() {
+          return this.capasMapaGetter
+        }
+      },
+      mapHeight() {
+        let ribbon_height = 93
+        if (this.showGISRibbon) ribbon_height = 180
+        return this.$q.screen.height - ribbon_height + "px"
+      },
     },
-    mapHeight() {
-      let ribbon_height = 93
-      if (this.showGISRibbon) ribbon_height = 180
-      return this.$q.screen.height - ribbon_height + "px"
-    },
-  },
-  methods: {
-    ...mapActions('geojitsu', ['capaSeleccionadaAction', 'setDrawerCapas', 'setCapasTicked', 'bajarCapaAction', 'subirCapaAction']),
-    print(value) {
-      console.log(value)
-    },
-    updateSelected (key) {
-      console.log("updateSelected", this.capaSeleccionada)
-      console.log("key", key)
-      console.log("capasTicked", this.capasTicked)
-
-      if (key !== null && this.capasTicked.includes(key)) {
-        this.capaSeleccionada = key
-      }
-    },
-    myFilterMethod(node, filter) {
-      const filt = filter.toLowerCase()
-      return node.label && node.label.toLowerCase().indexOf(filt) > -1
-    },
-    resetFilter() {
-      this.filter = ''
-      this.$refs.filter.focus()
-    },
-    bajarCapa(node) {
-      let idx = this.capasMapaGetter.indexOf(node)
-      this.bajarCapaAction(idx)
-    },
-    subirCapa(node) {
-      let idx = this.capasMapaGetter.indexOf(node)
-      this.subirCapaAction(idx)
-    },
+    methods: {
+      ...mapActions('geojitsu', ['capaSeleccionadaAction', 'setDrawerCapas', 'setCapasTicked', 'bajarCapaAction', 'subirCapaAction']),
+      print(value) {
+        console.log(value)
+      },
+      updateSelected(key) {
+        if (key !== null && this.capasTicked.includes(key)) {
+          this.capaSeleccionada = key
+        }
+      },
+      updateTicked(capasTicked) {
+        if (capasTicked.length > 0) {
+          if (!capasTicked.includes(this.capaSeleccionada)) {
+            this.capaSeleccionada = capasTicked[0]
+          }
+        } else {
+          this.capaSeleccionada = null
+        }
+      },
+      myFilterMethod(node, filter) {
+        const filt = filter.toLowerCase()
+        return node.label && node.label.toLowerCase().indexOf(filt) > -1
+      },
+      resetFilter() {
+        this.filter = ''
+        this.$refs.filter.focus()
+      },
+      bajarCapa(node) {
+        let idx = this.capasMapaGetter.indexOf(node)
+        this.bajarCapaAction(idx)
+      },
+      subirCapa(node) {
+        let idx = this.capasMapaGetter.indexOf(node)
+        this.subirCapaAction(idx)
+      },
+    }
   }
-}
 </script>
 
 <style lang="css" scoped>
-.capas-qtree >>> .q-tree__children {
-  display: none;
-}
+  .capas-qtree >>> .q-tree__children {
+    display: none;
+  }
 
-.capas-qtree >>> .q-tree__node-body {
-  padding-right: 6px;
-}
+  .capas-qtree >>> .q-tree__node-body {
+    padding-right: 6px;
+  }
 
-.capas-qtree >>> .q-tab {
-  padding: 0;
-}
+  .capas-qtree >>> .q-tab {
+    padding: 0;
+  }
 
-.capas-qtree >>> .q-tab__icon {
-  height: 30px;
-  font-size: 26px;
-}
+  .capas-qtree >>> .q-tab__icon {
+    height: 30px;
+    font-size: 26px;
+  }
 
 </style>
