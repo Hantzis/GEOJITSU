@@ -3,10 +3,14 @@
     <div class="row">
       <div class="col">
         <div class="row q-pa-xs" style="padding-bottom: 12px;">
-          <q-select outlined name="archivo" label="Capa seleccionada" :options="capasTicked" v-model="capaSeleccionada" emit-value
-                    map-options>
+          <q-select style="width: 240px" outlined name="archivo" label="Capa seleccionada"
+                    :options="capasTicked" v-model="capaSeleccionada" emit-value
+                    map-options truncate>
             <template v-slot:prepend>
               <q-icon name="mdi-layers-triple"/>
+            </template>
+            <template v-slot:selected-item="scope">
+              <span class="ellipsis">{{ scope.opt.label }}</span>
             </template>
           </q-select>
         </div>
@@ -33,8 +37,7 @@ import {mapActions, mapGetters} from "vuex";
 export default {
   name: "MapaBloqueCapas",
   data() {
-    return {
-    }
+    return {}
   },
   computed: {
     ...mapGetters('geojitsu', ['capasMapaGetter', 'capaSeleccionadaGetter', 'getDrawerCapas']),

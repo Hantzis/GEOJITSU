@@ -61,7 +61,10 @@
             @update:ticked="updateTicked"
           >
             <template v-slot:default-header="prop">
-              {{ String(prop.node.label) | truncate(20, '...') }}
+              <q-item-label class="ellipsis">
+              {{ String(prop.node.label)}}
+              </q-item-label>
+
               <q-space/>
               <q-btn-group flat>
                 <q-btn :disabled="capasMapa.indexOf(prop.node) === 0" dense flat color="grey-8" icon="mdi-chevron-up"

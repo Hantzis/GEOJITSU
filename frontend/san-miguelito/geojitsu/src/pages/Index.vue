@@ -127,8 +127,6 @@ import {transform} from 'ol/proj';
 Vue.use(VueLayers)
 
 
-
-
 export default {
   name: 'PageIndex',
   components: {MapaDrawerCapas, GISRibbon},
@@ -190,7 +188,7 @@ export default {
   },
   computed: {
     ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'mapaBaseGetter', 'mapasBaseGetter', 'capasMapaGetter',
-                               'getDrawerCapas', 'capaSeleccionadaGetter']),
+      'getDrawerCapas', 'capaSeleccionadaGetter']),
     showGISRibbon: {
       get() {
         return this.GISRibbonIsOpenGetter
@@ -268,7 +266,6 @@ export default {
         }).catch(error => {
           console.log(error)
         }).finally(() => {
-          this.loadingBar.stop()
           this.setCapaTicked({capa: this.capasMapa[capa], visible: true})
         })
       }
@@ -309,6 +306,10 @@ export default {
   mounted() {
     this.loadingBar = this.$refs.bar
     this.loadingBar.start()
+    setTimeout(() => {
+      this.loadingBar.stop()
+    }, 3000)
+
   }
 }
 </script>
