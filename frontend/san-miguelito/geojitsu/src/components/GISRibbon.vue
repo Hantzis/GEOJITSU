@@ -14,38 +14,15 @@
 
     <q-tab-panels v-show="showGISRibbon" v-model="activeTab" class="bg-grey-1 text-grey-9">
 
-      <q-tab-panel name="proyecto" class="no-padding">
-        <div class="row no-wrap">
-          <div class="col-auto">
-            <barra-visualizacion/>
-            <barra-visualizacion/>
-            <div class="row no-wrap">
-              <div class="col">
-                Panel de datos
-              </div>
-              <div class="col">
-                <q-btn dense size="xs" flat icon="mdi-arrow-bottom-right"/>
-              </div>
-            </div>
-          </div>
-          <q-separator vertical style="flex-shrink: 0"/>
-          <div class="col-auto">
-            <barra-visualizacion/>
-            <barra-visualizacion/>
-          </div>
-        </div>
-
-      </q-tab-panel>
-
       <q-tab-panel name="mapa" class="no-padding">
         <div class="row no-wrap">
           <q-separator vertical/>
 
           <mapa-bloque-principal/>
 
-          <q-separator vertical/>
+          <!-- <q-separator vertical/>
 
-          <mapa-bloque-seleccion/>
+          <mapa-bloque-seleccion/> -->
 
           <q-separator vertical/>
 
@@ -75,9 +52,9 @@
 <script>
 import {mapActions, mapGetters} from 'vuex'
 
-import BarraVisualizacion from "components/gisribbon_components/mapa/BarraVisualizacion";
+//import BarraVisualizacion from "components/gisribbon_components/mapa/BarraVisualizacion";
 import MapaBloquePrincipal from "./gisribbon_components/mapa/MapaBloquePrincipal";
-import MapaBloqueSeleccion from "./gisribbon_components/mapa/MapaBloqueSeleccion";
+//import MapaBloqueSeleccion from "./gisribbon_components/mapa/MapaBloqueSeleccion";
 import MapaBloqueCapas from "components/gisribbon_components/mapa/MapaBloqueCapas";
 import MapaBloqueMapaBase from "components/gisribbon_components/mapa/MapaBloqueMapaBase";
 
@@ -87,8 +64,8 @@ export default {
   components: {
     MapaBloqueCapas,
     MapaBloquePrincipal,
-    MapaBloqueSeleccion,
-    BarraVisualizacion,
+//    MapaBloqueSeleccion,
+//    BarraVisualizacion,
     MapaBloqueMapaBase,
   },
   data() {
@@ -97,7 +74,7 @@ export default {
       GISRibbonTabs: {
         proyecto: {label: "Proyecto", is_enabled: false},
         mapa: {label: "Mapa", is_enabled: true},
-        herramientas: {label: "Herramientas", is_enabled: true},
+        //herramientas: {label: "Herramientas", is_enabled: true},
       }
     }
   },

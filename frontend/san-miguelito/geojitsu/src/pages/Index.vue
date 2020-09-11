@@ -277,8 +277,15 @@ export default {
       console.log("map: ", map)
       console.log("capasVisibles", this.capasVisibles)
       console.log("capasSeleccionada", this.capaSeleccionada)
+      console.log("capasSeleccionada", this.$refs[this.capaSeleccionada][0])
+
       for (let capa of this.capasMapa) {
-        if (capa.visible) console.log("capa: ", capa.value)
+
+        if (capa.visible) {
+          let projection = this.$refs[capa.value][0].$olObject.projection_.code_
+          console.log("projection: ", projection)
+          console.log("capa: ", capa.value)
+        }
       }
       const feature_url = this.$refs[this.capaSeleccionada][0]
         .getFeatureInfoUrl(coord, viewResolution, 'EPSG:3857', {'INFO_FORMAT': 'application/json'})
