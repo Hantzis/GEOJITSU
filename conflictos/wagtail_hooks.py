@@ -3,13 +3,8 @@ from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register, 
 from . models import *
 from django.contrib.gis.admin import OSMGeoAdmin
 from django.contrib.gis.forms.widgets import OSMWidget
-
 from wagtail.contrib.modeladmin.mixins import ThumbnailMixin
-    
 from django_select2.forms import Select2MultipleWidget, ModelSelect2MultipleWidget
-
-
-
 from wagtail.core import hooks
 
 """
@@ -24,7 +19,6 @@ class ConflictoAdmin(ModelAdmin):
     menu_label = 'Conflictos'
     search_fields = ('id', 'resumen')
     list_display = ('id', 'resumen')
-
     formfield_overrides = {
             models.ManyToManyField: {'widget': ModelSelect2MultipleWidget},
             }
@@ -39,7 +33,6 @@ class ConflictoTipoAdmin(ThumbnailMixin, ModelAdmin):
     menu_label = 'Tipos de conflicto'
     search_fields = ('conflictotipo_nombre', 'conflictotipo_descripcion')
     list_display = ('admin_thumb', 'conflictotipo_nombre', 'conflictotipo_descripcion')
-
     thumb_image_field_name = 'conflictotipo_imagen'
     thumb_col_header_text = 'Ícono'
 
@@ -50,7 +43,6 @@ class OrganizacionAdmin(ThumbnailMixin, ModelAdmin):
     menu_label = 'Organizaciones'
     search_fields = ('organizacion_nombre', 'organizacion_descripcion')
     list_display = ('admin_thumb', 'organizacion_nombre', 'organizacion_descripcion')
-
     thumb_image_field_name = 'organizacion_imagen'
     thumb_col_header_text = 'Logo'
 
@@ -61,7 +53,6 @@ class EmpresaAdmin(ThumbnailMixin, ModelAdmin):
     menu_label = 'Empresas'
     search_fields = ('empresa_nombre', 'empresa_descripcion')
     list_display = ('admin_thumb', 'empresa_nombre', 'empresa_descripcion')
-
     thumb_image_field_name = 'empresa_imagen'
     thumb_col_header_text = 'Logo'
 
@@ -72,7 +63,6 @@ class SecretariaAdmin(ThumbnailMixin, ModelAdmin):
     menu_label = 'Secretarías'
     search_fields = ('secretaria_nombre', 'secretaria_descripcion')
     list_display = ('admin_thumb', 'secretaria_nombre', 'secretaria_descripcion')
-
     thumb_image_field_name = 'secretaria_imagen'
     thumb_col_header_text = 'Logo'
 
@@ -97,7 +87,6 @@ class CamposConflictosModelAdminGroup(ModelAdminGroup):
     menu_label = 'Campos conflictos'
     menu_icon = 'folder-open-inverse' 
     items = (ConflictoTipoAdmin, OrganizacionAdmin, EmpresaAdmin, SecretariaAdmin, PuebloAdmin, PublicacionAdmin)
-
 
 
 modeladmin_register(CamposConflictosModelAdminGroup)
