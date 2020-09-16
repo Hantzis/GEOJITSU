@@ -1,9 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-full.svg"
-    >
+    <img alt="Logo UNAM" src="~assets/universidad-nacional-autonoma-de-mexico-unam-vector-logo.png" height="500" width="900"/>
   </q-page>
 </template>
 
