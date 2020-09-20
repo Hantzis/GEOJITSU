@@ -216,6 +216,26 @@
 import md5 from 'crypto-md5';
 import axios from 'axios'
 import {mapGetters, mapActions} from 'vuex'
+import Vue from 'vue'
+import Router from '../router/index'
+import * as router2 from '../router/index'
+//import * as auth_store from '../store/auth'
+import { VueJwtAuth, AxiosHttpDriver } from '@mspiderv/vuejwtauth'
+
+const router = new Router()
+
+const vuejwtauth = new VueJwtAuth({
+  Vue, // required
+  router2, // required
+  options: { // optional
+    drivers: {
+      http: new AxiosHttpDriver({
+        // Your API URL here
+        apiBaseURL: 'https://onsses45.maptitude.xyz/api/v1/rest-auth/'
+      })
+    }
+  }
+})
 
 export default {
   components: {},
@@ -229,6 +249,7 @@ export default {
       open_resetpassword_dialog: false,
       login_username: undefined,
       login_password: undefined,
+      login_rememberme: false,
       recover_username: undefined,
       recover_email: undefined,
     }
@@ -277,6 +298,21 @@ export default {
     ...mapActions('base', ['setKeyToken', 'setUsuario', 'setAccessToken', 'setRefreshToken']),
     login() {
       console.log("login")
+      vuejwtauth.attemptLogin(
+        {
+          username: this.login_username,
+          password: this.login_password
+        }, this.login_rememberme
+      ).then((response) => {
+        console.log("response", response)
+        console.log('You were logged in')
+      }).catch(error => {
+        console.log(error && error.response && error.response.status === 401
+          ? 'Wrong e-mail or password'
+          : 'Something went wrong'
+        )
+      })
+      /*
       axios.post("https://onsses45.maptitude.xyz/api/v1/rest-auth/login/", {
         username: this.login_username,
         password: this.login_password
@@ -295,34 +331,38 @@ export default {
         this.login_failure = true
         console.log("error", error)
         console.log("response", error.response)
-      })
+      }) */
     },
-    resetPassword() {
-      this.open_resetpassword_dialog = true
-      this.open_login_dialog = false
-      this.login_failure = false
-    },
-    get_gravatar(email, argsize) {
-      const size = argsize
-      return 'https://www.gravatar.com/avatar/' + md5(email.trim().toLowerCase(), 'hex') + '.jpg?s=' + size;
-    },
-  },
-  watch: {
-    open_login_dialog() {
-      if (!this.open_login_dialog) {
-        this.login_username = undefined
-        this.login_password = undefined
+      resetPassword()
+      {
+        this.open_resetpassword_dialog = true
+        this.open_login_dialog = false
+        this.login_failure = false
       }
-    },
-    open_resetpassword_dialog() {
-      if (!this.open_login_dialog) {
-        this.recover_username = undefined
-        this.login_password = undefined
+    ,
+      get_gravatar(email, argsize)
+      {
+        const size = argsize
+        return 'https://www.gravatar.com/avatar/' + md5(email.trim().toLowerCase(), 'hex') + '.jpg?s=' + size;
       }
+    ,
     },
+    watch: {
+      open_login_dialog() {
+        if (!this.open_login_dialog) {
+          this.login_username = undefined
+          this.login_password = undefined
+        }
+      },
+      open_resetpassword_dialog() {
+        if (!this.open_login_dialog) {
+          this.recover_username = undefined
+          this.login_password = undefined
+        }
+      },
 
+    }
   }
-}
 </script>
 
 
