@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 // import example from './module-example'
 import base from './base'
-import auth from './auth'
+import auth from '@mspiderv/vuejwtauth/src/store'
 
 Vue.use(Vuex)
 
@@ -19,8 +19,8 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
+      auth,
       base,
-      auth
     },
 
     // enable strict mode (adds overhead!)

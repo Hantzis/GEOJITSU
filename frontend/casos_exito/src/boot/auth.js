@@ -6,15 +6,16 @@
   // something to do
 //}
 //import Vue from 'vue'
-//import router from '../router'
-//import base from '../store/base'
+//import Router from '../router'
+//const router = Router()
+
+//console.log(router)
 
 import { VueJwtAuth, AxiosHttpDriver } from '@mspiderv/vuejwtauth'
 
-//export default ({ Vue, store, router }) => new VueJwtAuth({
-export default ({ Vue, store, router }) => new VueJwtAuth({
-  Vue,
-  router,
+export default ({ Vue, router, store }) =>  new VueJwtAuth({
+  Vue, // required
+  router, // required
   store,
   options: { // optional
     drivers: {
@@ -25,3 +26,6 @@ export default ({ Vue, store, router }) => new VueJwtAuth({
     }
   }
 })
+
+
+//Vue.prototype.$auth = jwtauth
