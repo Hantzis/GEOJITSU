@@ -286,7 +286,6 @@
               emit-value
               map-options
               style="min-width: 328px; max-width: 328px"
-
               use-input
             />
           </div>
