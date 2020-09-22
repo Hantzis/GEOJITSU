@@ -11,7 +11,7 @@
         <q-btn color="primary" @click="getProyectos()">
           <q-icon left dense size="2em" name="mdi-sync" style="margin-right: -10px; margin-left: -10px;"/>
         </q-btn>
-        <q-btn no-caps v-if="!es_usuario" style="margin-left: 8px;" color="green" @click="addProyectoDialog()">
+        <q-btn no-caps v-if="auth_logged" style="margin-left: 8px;" color="green" @click="add_proyecto_dialog = true">
           <q-icon left size="2em" name="mdi-plus"/>
           <div style="margin-top: 2px;">Agregar Proyecto</div>
         </q-btn>
@@ -28,7 +28,7 @@
         no-caps
       >
         <q-tab name="todos" label="Todos los proyectos"/>
-        <q-tab name="mios" label="Proyectos registrados por mí"/>
+        <q-tab v-if="auth_logged" name="mios" label="Proyectos registrados por mí"/>
       </q-tabs>
 
       <q-separator/>
@@ -90,9 +90,9 @@
                     <q-td auto-width>
                       <q-btn dense round flat color="primary"
                              icon="mdi-eye"></q-btn>
-                      <q-btn v-if="es_usuario" dense round flat color="primary" @click="editRegistroDialog(props)"
+                      <q-btn v-if="auth_logged" dense round flat color="primary" @click="editRegistroDialog(props)"
                              icon="edit"></q-btn>
-                      <q-btn v-if="es_usuario" dense round flat color="red" @click="deleteRegistroDialog(props)"
+                      <q-btn v-if="auth_logged" dense round flat color="red" @click="deleteRegistroDialog(props)"
                              icon="delete"></q-btn>
                     </q-td>
                   </q-tr>
@@ -103,12 +103,12 @@
           </div>
         </q-tab-panel>
 
-        <q-tab-panel name="mios">
+        <q-tab-panel v-if="auth_logged" name="mios">
           <div class="row">
             <div class="col">
               <q-table
                 title="Proyectos registrados por mí"
-                :data.sync="datos_proyectos"
+                :data.sync="datos_proyectos_mios"
                 :columns="columnas"
                 :visible-columns="visible_columns"
                 row-key="id"
@@ -159,9 +159,9 @@
                     <q-td auto-width>
                       <q-btn dense round disable flat color="accent"
                              :icon="props.expand ? 'edit' : 'add'"></q-btn>
-                      <q-btn v-if="es_usuario" dense round flat color="primary" @click="editRegistroDialog(props)"
+                      <q-btn v-if="auth_logged" dense round flat color="primary" @click="editRegistroDialog(props)"
                              icon="edit"></q-btn>
-                      <q-btn v-if="es_usuario" dense round flat color="red" @click="deleteRegistroDialog(props)"
+                      <q-btn v-if="auth_logged" dense round flat color="red" @click="deleteRegistroDialog(props)"
                              icon="delete"></q-btn>
                     </q-td>
                   </q-tr>
@@ -174,18 +174,143 @@
       </q-tab-panels>
     </q-card>
 
+    <q-dialog ref="add_proyecto_dialog" full-width full-height v-model="add_proyecto_dialog" persistent>
+      <q-card>
+        <q-card-section class="row items-center">
+          <q-avatar icon="mdi-user" color="primary" text-color="white"/>
+          <q-toolbar-title>Agregar proyecto</q-toolbar-title>
+          <q-btn icon="close" flat round dense v-close-popup/>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section style="max-height: 79vh" class="scroll">
+          <div class="row q-py-xs">
+            <q-input outlined class="full-width" name="username" v-model="proyecto_data.username"
+                     :rules="[val => !!val || 'Nombre del proyecto']"
+                     label="Nombre del proyecto"/>
+          </div>
+          <div class="row q-py-xs">
+            <q-input outlined class="full-width" name="first_name" v-model="proyecto_data.first_name"
+                     :rules="[val => !!val || 'Nombre corto obligatorio']"
+                     label="Nombre corto (del proyecto)"/>
+          </div>
+          <div class="row q-py-xs">
+            <q-input outlined class="full-width" name="last_name" v-model="proyecto_data.last_name"
+                     :rules="[val => !!val || 'Apellidos obligatorio']"
+                     label="Apellidos"/>
+          </div>
+          <div class="row q-py-xs">
+            <q-input outlined class="full-width" name="email" v-model="proyecto_data.email"
+                     :rules="[isValidEmail]"
+                     label="Email"/>
+          </div>
+          <div class="row q-py-xs">
+            <q-input outlined class="full-width" name="fecha_nacimiento" v-model="user_fecha_nacimiento"
+                     :rules="['date']"
+                     label="Fecha de nacimiento">
+              <template v-slot:append>
+                <q-icon name="event" class="cursor-pointer">
+                  <q-popup-proxy ref="qDateProxy" transition-show="scale" mask="date" transition-hide="scale">
+                    <q-date v-model="user_fecha_nacimiento">
+                      <div class="row items-center justify-end">
+                        <q-btn v-close-popup label="Cerrar" color="primary" flat/>
+                      </div>
+                    </q-date>
+                  </q-popup-proxy>
+                </q-icon>
+              </template>
+            </q-input>
+          </div>
+          <div class="row q-py-xs">
+            <q-select
+              name="genero"
+              label="Género"
+              outlined
+              v-model="proyecto_data.genero"
+              :options="user_genero_options"
+              style="min-width: 311px; max-width: 311px"
+              use-input
+              new-value-mode="add"
+              :rules="[val => !!val || 'Género obligatorio']"
+            />
+          </div>
+          <div class="row q-py-xs">
+            <q-select
+              name="escolaridad"
+              label="Escolaridad"
+              outlined
+              v-model="proyecto_data.escolaridad"
+              :options="user_escolaridad_options"
+              style="min-width: 311px; max-width: 311px"
+              use-input
+              :rules="[val => !!val || 'Escolaridad obligatoria']"
+            />
+          </div>
+          <div class="row q-py-xs">
+            <q-input outlined class="full-width" name="area_conocimiento" v-model="proyecto_data.area_conocimiento"
+                     :rules="[val => !!val || 'Área de conocimiento obligatoria']"
+                     label="Área de conocimiento"/>
+          </div>
+          <div class="row q-py-xs">
+            <q-input outlined class="full-width" name="fecha_nacimiento" v-model="user_fecha_adscripcion_onsses"
+                     :rules="['date']"
+                     label="Fecha de adscripción a ONSSES">
+              <template v-slot:append>
+                <q-icon name="event" class="cursor-pointer">
+                  <q-popup-proxy ref="qDateProxy" transition-show="scale" mask="date" transition-hide="scale">
+                    <q-date v-model="user_fecha_adscripcion_onsses">
+                      <div class="row items-center justify-end">
+                        <q-btn v-close-popup label="Cerrar" color="primary" flat/>
+                      </div>
+                    </q-date>
+                  </q-popup-proxy>
+                </q-icon>
+              </template>
+            </q-input>
+          </div>
+          <div class="row q-py-xs">
+            <q-select
+              name="actividad_economica"
+              label="Actividad económica"
+              outlined
+              v-model="proyecto_data.actividad_economica"
+              :options="user_actividad_economica_options"
+              style="min-width: 311px; max-width: 311px"
+              use-input
+              :rules="[val => !!val || 'Actividad económica obligatorio']"
+              emit-value
+              map-options
+              option-value="id"
+              option-label="nombre"
+            />
+          </div>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section>
+          <div class="row">
+            <div class="col">
+              <q-btn @click="updateProfile()" color="green"
+                     label="Actualizar datos" no-caps class="full-width"/>
+            </div>
+          </div>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
 
   </q-page>
 </template>
 
 <script>
 import axios from 'axios'
+import cookies from 'browser-cookies'
+import {mapGetters, mapActions} from 'vuex'
+
 export default {
   name: 'casosExito',
   data() {
     return {
       filter: '',
-      es_usuario: false,
+      add_proyecto_dialog: false,
+      proyecto_data: {},
       datos_proyectos: undefined,
       datos_proyectos_mios: undefined,
       tabla_loading: true,
@@ -205,31 +330,88 @@ export default {
         {name: 'email', align: 'left', label: 'e-mail', field: 'email', sortable: true},
         {name: 'representante', align: 'left', label: 'Representante', field: 'representante', sortable: true},
         {name: 'url', align: 'left', label: 'URL', field: 'url', sortable: true},
-        {name: 'tipo_organizacion_display', align: 'left', label: 'Tipo de organizacion', field: 'tipo_organizacion_display', sortable: true},
-        {name: 'grupo_etnico_display', align: 'left', label: 'Grupo étnico', field: 'grupo_etnico_display', sortable: true},
+        {
+          name: 'tipo_organizacion_display',
+          align: 'left',
+          label: 'Tipo de organizacion',
+          field: 'tipo_organizacion_display',
+          sortable: true
+        },
+        {
+          name: 'grupo_etnico_display',
+          align: 'left',
+          label: 'Grupo étnico',
+          field: 'grupo_etnico_display',
+          sortable: true
+        },
         {name: 'numero_hombres', align: 'left', label: 'Número de hombres', field: 'numero_hombres', sortable: true},
         {name: 'numero_mujeres', align: 'left', label: 'Número de mujeres', field: 'numero_mujeres', sortable: true},
-        {name: 'inclusion_genero_display', align: 'left', label: 'Inclusión de género', field: 'inclusion_genero_display', sortable: true},
-        {name: 'actividad_principal_display', align: 'left', label: 'Actividad económica principal', field: 'actividad_principal_display', sortable: true},
-        {name: 'actividad_secundaria_display', align: 'left', label: 'Actividad económica secundaria', field: 'actividad_secundaria_display', sortable: true},
-        {name: 'actividad_otra_display', align: 'left', label: 'Otra actividad económica', field: 'actividad_otra_display', sortable: true},
+        {
+          name: 'inclusion_genero_display',
+          align: 'left',
+          label: 'Inclusión de género',
+          field: 'inclusion_genero_display',
+          sortable: true
+        },
+        {
+          name: 'actividad_principal_display',
+          align: 'left',
+          label: 'Actividad económica principal',
+          field: 'actividad_principal_display',
+          sortable: true
+        },
+        {
+          name: 'actividad_secundaria_display',
+          align: 'left',
+          label: 'Actividad económica secundaria',
+          field: 'actividad_secundaria_display',
+          sortable: true
+        },
+        {
+          name: 'actividad_otra_display',
+          align: 'left',
+          label: 'Otra actividad económica',
+          field: 'actividad_otra_display',
+          sortable: true
+        },
         {name: 'promovente_display', align: 'left', label: 'Promovente', field: 'promovente_display', sortable: true},
 
       ],
       visible_columns: ['id', 'nombre_proyecto', 'fecha_inicio', 'etapa_display', 'escala_display', 'actividad_principal_display', 'representante'],
     }
   },
+  computed: {
+    ...mapGetters('base', ['getUserData']),
+    ...mapGetters('auth', ['logged', 'user']),
+    auth_user: {
+      get() {
+
+        return this.user
+      }
+    },
+    auth_logged: {
+      get() {
+        console.log("auth_user", this.user)
+        return this.logged
+      }
+    }
+  },
   methods: {
     getProyectos() {
-      axios.get("https://onsses45.maptitude.xyz/api/v1/casos_exito/proyectos/").then(response => {
+      const token = cookies.get("access_token")
+      axios.get("https://onsses45.maptitude.xyz/api/v1/ce/proyectos/").then(response => {
         console.log("response: ", response.data)
         this.datos_proyectos = response.data
       }).then(() => {
-        axios.get("https://onsses45.maptitude.xyz/api/v1/casos_exito/proyectos/").then(response => {
-          this.datos_proyectos_mios = response.data
-        }).catch(error => {
-          console.log(error)
-        })
+
+        if (token) {
+          axios.get(`https://onsses45.maptitude.xyz/api/v1/ce/proyectos/?promovente=${this.auth_user.pk}`,
+            {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
+            this.datos_proyectos_mios = response.data
+          }).catch(error => {
+            console.log(error)
+          })
+        }
       }).catch(error => {
         console.log(error)
       }).finally(() => {
@@ -237,8 +419,16 @@ export default {
       })
     }
   },
-  created() {
-    this.getProyectos()
+  mounted() {
+    const token = cookies.get("access_token")
+    if (token) {
+    this.$auth.refreshToken().then(response => {
+      console.log("refreshToken", response)
+      this.getProyectos()
+    })
+      } else  {
+      this.getProyectos()
+    }
   }
 }
 </script>

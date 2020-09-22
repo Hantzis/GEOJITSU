@@ -81,8 +81,8 @@
           </q-avatar>
           <div class="text-weight-bold">
             {{
-            auth_user.first_name === "" || auth_user.last_name === "" ? auth_user.username : auth_user.first_name + " "
-            + auth_user.last_name
+              auth_user.first_name === "" || auth_user.last_name === "" ? auth_user.username : auth_user.first_name + " "
+                + auth_user.last_name
             }}
           </div>
           <div>
@@ -108,7 +108,7 @@
       <router-view/>
     </q-page-container>
 
-    <q-dialog ref="open_login_dialog" v-model="login_dialog" persistent>
+    <q-dialog ref="login_dialog" v-model="login_dialog" persistent>
       <q-card style="width: 360px">
         <q-card-section class="row items-center">
           <q-avatar icon="mdi-login-variant" color="primary" text-color="white"/>
@@ -150,7 +150,7 @@
         </q-card-section>
       </q-card>
     </q-dialog>
-    <q-dialog ref="open_logout_dialog" v-model="logout_dialog">
+    <q-dialog ref="logout_dialog" v-model="logout_dialog">
       <q-card>
         <q-card-section class="row items-center">
           <q-avatar icon="mdi-key-variant" color="red" text-color="white"/>
@@ -182,7 +182,7 @@
         </q-card-section>
       </q-card>
     </q-dialog>
-    <q-dialog ref="login_dialog" v-model="resetpassword_dialog" persistent>
+    <q-dialog ref="resetpassword_dialog" v-model="resetpassword_dialog" persistent>
       <q-card style="width: 360px">
         <q-card-section class="row items-center">
           <q-avatar icon="mdi-key-variant" color="primary" text-color="white"/>
@@ -206,7 +206,7 @@
         </q-card-section>
       </q-card>
     </q-dialog>
-    <q-dialog ref="login_dialog" v-model="resetpassworddone_dialog" persistent>
+    <q-dialog ref="resetpassworddone_dialog" v-model="resetpassworddone_dialog" persistent>
       <q-card style="width: 360px">
         <q-card-section class="row items-center">
           <q-avatar icon="mdi-key-variant" color="primary" text-color="white"/>
@@ -229,10 +229,33 @@
         </q-card-section>
       </q-card>
     </q-dialog>
-    <q-dialog ref="login_dialog" v-model="profile_dialog" persistent>
+    <q-dialog ref="profileupdated_dialog" v-model="profileupdated_dialog" persistent>
       <q-card style="width: 360px">
         <q-card-section class="row items-center">
-          <q-avatar icon="mdi-key-variant" color="primary" text-color="white"/>
+          <q-avatar icon="mdi-user" color="primary" text-color="white"/>
+          <q-toolbar-title>Actualización de datos</q-toolbar-title>
+          <q-btn icon="close" flat round dense v-close-popup/>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section>
+          <div class="row q-py-xs">
+            <br/>
+            <p>Se han actualizado sus datos.</p>
+            <br/>
+          </div>
+          <div class="row">
+            <div class="col">
+              <q-btn @click="profileupdated_dialog = false" color="green"
+                     label="Cerrar" no-caps class="full-width"/>
+            </div>
+          </div>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+    <q-dialog ref="profile_dialog" v-model="profile_dialog" persistent>
+      <q-card style="width: 360px">
+        <q-card-section class="row items-center">
+          <q-avatar icon="mdi-user" color="primary" text-color="white"/>
           <q-toolbar-title>Perfil de usuario</q-toolbar-title>
           <q-btn icon="close" flat round dense v-close-popup/>
         </q-card-section>
@@ -282,7 +305,7 @@
               outlined
               v-model="full_user_data.genero"
               :options="user_genero_options"
-              style="min-width: 328px; max-width: 328px"
+              style="min-width: 311px; max-width: 311px"
               use-input
               new-value-mode="add"
               :rules="[val => !!val || 'Género obligatorio']"
@@ -295,7 +318,7 @@
               outlined
               v-model="full_user_data.escolaridad"
               :options="user_escolaridad_options"
-              style="min-width: 328px; max-width: 328px"
+              style="min-width: 311px; max-width: 311px"
               use-input
               :rules="[val => !!val || 'Escolaridad obligatoria']"
             />
@@ -329,7 +352,7 @@
               outlined
               v-model="full_user_data.actividad_economica"
               :options="user_actividad_economica_options"
-              style="min-width: 328px; max-width: 328px"
+              style="min-width: 311px; max-width: 311px"
               use-input
               :rules="[val => !!val || 'Actividad económica obligatorio']"
               emit-value
@@ -343,7 +366,7 @@
         <q-card-section>
           <div class="row">
             <div class="col">
-              <q-btn :disabled="(isValidEmail(reset_email) === true)" @click="resetPassword()" color="green"
+              <q-btn @click="updateProfile()" color="green"
                      label="Actualizar datos" no-caps class="full-width"/>
             </div>
           </div>
@@ -355,214 +378,202 @@
 </template>
 
 <script>
-  import md5 from 'crypto-md5';
-  import axios from 'axios'
-  import {mapGetters, mapActions} from 'vuex'
-  import cookies from 'browser-cookies'
+import md5 from 'crypto-md5';
+import axios from 'axios'
+import {mapGetters, mapActions} from 'vuex'
+import cookies from 'browser-cookies'
 
-  export default {
-    components: {},
-    data() {
-      return {
-        drawer_left: false,
-        login_failure: false,
-        login_dialog: false,
-        logout_dialog: false,
-        register_dialog: false,
-        resetpassword_dialog: false,
-        resetpassworddone_dialog: false,
-        profile_dialog: false,
-        login_username: undefined,
-        login_password: undefined,
-        login_rememberme: false,
-        reset_email: undefined,
-        full_user_data: {},
-        user_fecha_nacimiento: undefined,
-        user_fecha_adscripcion_onsses: undefined,
-        user_genero_options: ['Masculino', 'Femenino', 'Otro'],
-        user_escolaridad_options: ['Primaria', 'Secundaria', 'Preparatoria', 'Licenciatura', 'Maestría', 'Doctorado'],
-        user_actividad_economica_options: [],
+export default {
+  components: {},
+  data() {
+    return {
+      drawer_left: false,
+      login_failure: false,
+      login_dialog: false,
+      logout_dialog: false,
+      register_dialog: false,
+      resetpassword_dialog: false,
+      resetpassworddone_dialog: false,
+      profile_dialog: false,
+      profileupdated_dialog: false,
+      login_username: undefined,
+      login_password: undefined,
+      login_rememberme: false,
+      reset_email: undefined,
+      full_user_data: {},
+      user_fecha_nacimiento: undefined,
+      user_fecha_adscripcion_onsses: undefined,
+      user_genero_options: ['Masculino', 'Femenino', 'Otro'],
+      user_escolaridad_options: ['Primaria', 'Secundaria', 'Preparatoria', 'Licenciatura', 'Maestría', 'Doctorado'],
+      user_actividad_economica_options: [],
+    }
+  },
+  computed: {
+    ...mapGetters('base', ['getUserData']),
+    ...mapGetters('auth', ['logged', 'user']),
+    auth_user: {
+      get() {
+        console.log(this.user)
+        return this.user
       }
     },
-    computed: {
-      ...mapGetters('base', ['getUserData']),
-      ...mapGetters('auth', ['logged', 'user']),
-      auth_user: {
-        get() {
-          console.log(this.user)
-          return this.user
-        }
-      },
-      auth_logged: {
-        get() {
-          return this.logged
-        }
-      },
-      keyToken: {
-        get() {
-          return this.getKeyToken
-        },
-        set(value) {
-          this.setKeyToken(value)
-        }
-      },
-      accessToken: {
-        get() {
-          return this.getAccessToken
-        },
-        set(value) {
-          this.setAccessToken(value)
-        }
-      },
-      refreshToken: {
-        get() {
-          return this.getRefreshToken
-        },
-        set(value) {
-          this.setRefreshToken(value)
-        }
-      },
-      authorization: {
-        get() {
-          return {headers: {"Authorization": `Bearer ${this.accessToken}`}}
-        }
+    auth_logged: {
+      get() {
+        return this.logged
       }
-    },
-    methods: {
-      ...mapActions('base', ['setUserData']),
-      createValue(val, done) {
-        // specific logic to eventually call done(...) -- or not
-        done(val)
+    }
+  },
+  methods: {
+    ...mapActions('base', ['setUserData']),
+    ...mapActions('auth', ['setUser']),
+    createValue(val, done) {
+      // specific logic to eventually call done(...) -- or not
+      done(val)
 
-        // done callback has two optional parameters:
-        //  - the value to be added
-        //  - the behavior (same values of new-value-mode prop,
-        //    and when it is specified it overrides that prop –
-        //    if it is used); default behavior (if not using
-        //    new-value-mode) is to add the value even if it would
-        //    be a duplicate
-      },
-      login() {
-        this.$auth.attemptLogin(
-          {
-            username: this.login_username,
-            password: this.login_password
-          }, this.login_rememberme
-        ).then(response => {
-          console.log('You were logged in')
-          this.login_dialog = false
-          this.auth_user = response
-        }).catch(error => {
-          console.log(error && error.response && error.response.status === 401
-            ? 'Wrong e-mail or password'
-            : 'Something went wrong'
-          )
-          this.login_failure = true
-        })
-      },
-      logout() {
-        this.$auth.logout(
-        ).then(() => {
-          console.log('You were logged out')
-          this.logout_dialog = false
-        }).catch(error => {
-          console.log(error && error.response && error.response.status === 401
-            ? 'Wrong e-mail or password'
-            : 'Something went wrong'
-          )
-        })
-      },
-      open_resetpassword_dialog() {
+      // done callback has two optional parameters:
+      //  - the value to be added
+      //  - the behavior (same values of new-value-mode prop,
+      //    and when it is specified it overrides that prop –
+      //    if it is used); default behavior (if not using
+      //    new-value-mode) is to add the value even if it would
+      //    be a duplicate
+    },
+    login() {
+      this.$auth.attemptLogin(
+        {
+          username: this.login_username,
+          password: this.login_password
+        }, this.login_rememberme
+      ).then(response => {
+        console.log('You were logged in')
         this.login_dialog = false
-        this.resetpassword_dialog = true
-        this.login_failure = false
+        //this.auth_user = response
+      }).catch(error => {
+        console.log(error && error.response && error.response.status === 401
+          ? 'Wrong e-mail or password'
+          : 'Something went wrong'
+        )
+        this.login_failure = true
+      })
+    },
+    logout() {
+      this.$auth.logout(
+      ).then(() => {
+        console.log('You were logged out')
+        this.logout_dialog = false
+      }).catch(error => {
+        console.log(error && error.response && error.response.status === 401
+          ? 'Wrong e-mail or password'
+          : 'Something went wrong'
+        )
+      })
+    },
+    open_resetpassword_dialog() {
+      this.login_dialog = false
+      this.resetpassword_dialog = true
+      this.login_failure = false
+      this.login_username = undefined
+      this.login_password = undefined
+    },
+    isValidEmail(val) {
+      const emailPattern = /^(?=[a-zA-Z0-9@.%+-]{6,254}$)[a-zA-Z0-9.%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
+      return emailPattern.test(val) || 'La dirección email no tiene formato correcto.';
+    },
+    resetPassword() {
+      axios.post("https://onsses45.maptitude.xyz/api/v1/rest-auth/password/reset/", {email: this.reset_email})
+        .then(response => {
+          this.resetpassword_dialog = false
+          this.resetpassworddone_dialog = true
+        })
+    },
+    updateProfile() {
+      const token = cookies.get("access_token")
+      axios.put(`https://onsses45.maptitude.xyz/api/v1/ce/usuarios-registrado/${this.auth_user.pk}/`,
+        this.full_user_data, {headers: {'Authorization': `Bearer ${token}`}})
+        .then(response => {
+          console.log(response);
+          this.profile_dialog = false
+          this.profileupdated_dialog = true
+        })
+    },
+    get_gravatar(email, argsize) {
+      let mail = "default@gravatar.com"
+      if (email) {
+        mail = email
+      }
+      return 'https://www.gravatar.com/avatar/' + md5(mail.trim().toLowerCase(), 'hex') + '.jpg?s=' + argsize;
+    },
+    actividadFilterFn(val, update) {
+      if (val === '') {
+        update(() => {
+          this.user_actividad_economica_options = "stringOptions"
+        })
+        return
+      }
+      update(() => {
+        const needle = val.toLowerCase()
+        this.user_actividad_economica_options = user_actividad_economica_options.filter(v => v.toLowerCase().indexOf(needle) > -1)
+      })
+    }
+  },
+  watch: {
+    login_dialog() {
+      if (!this.login_dialog) {
         this.login_username = undefined
         this.login_password = undefined
-      },
-      isValidEmail(val) {
-        const emailPattern = /^(?=[a-zA-Z0-9@.%+-]{6,254}$)[a-zA-Z0-9.%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
-        return emailPattern.test(val) || 'La dirección email no tiene formato correcto.';
-      },
-      resetPassword() {
-        axios.post("https://onsses45.maptitude.xyz/api/v1/rest-auth/password/reset/", {email: this.reset_email})
-          .then(response => {
-            this.resetpassword_dialog = false
-            this.resetpassworddone_dialog = true
-          })
-      },
-      get_gravatar(email, argsize) {
-        let mail = "default@gravatar.com"
-        if (email) {
-          mail = email
-        }
-        return 'https://www.gravatar.com/avatar/' + md5(mail.trim().toLowerCase(), 'hex') + '.jpg?s=' + argsize;
-      },
-      actividadFilterFn(val, update) {
-        if (val === '') {
-          update(() => {
-            this.user_actividad_economica_options = "stringOptions"
-          })
-          return
-        }
-        update(() => {
-          const needle = val.toLowerCase()
-          this.user_actividad_economica_options = user_actividad_economica_options.filter(v => v.toLowerCase().indexOf(needle) > -1)
+      }
+    },
+    resetpassword_dialog() {
+      if (!this.resetpassword_dialog) {
+        this.reset_email = undefined
+      }
+    },
+    profile_dialog() {
+      if (this.profile_dialog) {
+        const token = cookies.get("access_token")
+        axios.get(`https://onsses45.maptitude.xyz/api/v1/ce/usuarios-registrado/${this.auth_user.pk}/`,
+          {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
+          this.full_user_data = response.data
+          if (this.full_user_data.fecha_nacimiento) {
+            this.user_fecha_nacimiento = this.full_user_data.fecha_nacimiento.split("-").join('/')
+          }
+          if (this.full_user_data.fecha_adscripcion_onsses) {
+            this.user_fecha_adscripcion_onsses = this.full_user_data.fecha_adscripcion_onsses.split("-").join('/')
+          }
+        }).catch(error => {
+          console.log(error)
         })
       }
     },
-    watch: {
-      login_dialog() {
-        if (!this.login_dialog) {
-          this.login_username = undefined
-          this.login_password = undefined
-        }
-      },
-      resetpassword_dialog() {
-        if (!this.resetpassword_dialog) {
-          this.reset_email = undefined
-        }
-      },
-      profile_dialog() {
-        if (this.profile_dialog) {
-          const token = cookies.get("access_token")
-          axios.get(`https://onsses45.maptitude.xyz/api/v1/ce/usuarios-registrado/${this.auth_user.pk}/`,
-            {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
-            this.full_user_data = response.data
-            if (this.full_user_data.fecha_nacimiento) {
-              this.user_fecha_nacimiento = this.full_user_data.fecha_nacimiento.split("-").join('/')
-            }
-            if (this.full_user_data.fecha_adscripcion_onsses) {
-              this.user_fecha_adscripcion_onsses = this.full_user_data.fecha_adscripcion_onsses.split("-").join('/')
-            }
-          }).catch(error => {
-            console.log(error)
-          })
-        }
-      },
-      user_fecha_nacimiento() {
-        if (this.user_fecha_nacimiento) {
-          this.full_user_data.fecha_nacimiento = this.user_fecha_nacimiento.split("/").join('-')
-        }
-      },
-      user_fecha_adscripcion_onsses() {
-        if (this.user_fecha_adscripcion_onsses) {
-          this.full_user_data.fecha_adscripcion_onsses = this.user_fecha_adscripcion_onsses.split("/").join('-')
-        }
-      },
-      full_user_data() {
-        console.log("ffff", this.full_user_data)
-        console.log("ffff", Object.keys(this.full_user_data).length)
-        if (Object.keys(this.full_user_data).length > 0 && this.user_actividad_economica_options.length == 0) {
-          const token = cookies.get("access_token")
-          axios.get("https://onsses45.maptitude.xyz/api/v1/ce/actividades-economicas/",
-            {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
-            this.user_actividad_economica_options = response.data
-            console.log("economicas", this.user_actividad_economica_options)
-          })
-        }
+    user_fecha_nacimiento() {
+      if (this.user_fecha_nacimiento) {
+        this.full_user_data.fecha_nacimiento = this.user_fecha_nacimiento.split("/").join('-')
       }
     },
+    user_fecha_adscripcion_onsses() {
+      if (this.user_fecha_adscripcion_onsses) {
+        this.full_user_data.fecha_adscripcion_onsses = this.user_fecha_adscripcion_onsses.split("/").join('-')
+      }
+    },
+    full_user_data() {
+      console.log("ffff", this.full_user_data)
+      console.log("ffff", Object.keys(this.full_user_data).length)
+      if (Object.keys(this.full_user_data).length > 0 && this.user_actividad_economica_options.length == 0) {
+        const token = cookies.get("access_token")
+        axios.get("https://onsses45.maptitude.xyz/api/v1/ce/actividades-economicas/",
+          {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
+          this.user_actividad_economica_options = response.data
+          console.log("economicas", this.user_actividad_economica_options)
+        })
+      }
+    }
+  },
+  mounted() {
+    this.$auth.refreshToken().then(response => {
+      console.log(response)
+    })
   }
+}
 </script>
 
 
