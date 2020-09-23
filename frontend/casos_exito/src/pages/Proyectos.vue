@@ -184,112 +184,76 @@
         <q-separator/>
         <q-card-section style="max-height: 79vh" class="scroll">
           <div class="row q-py-xs">
-            <q-input outlined class="full-width" name="username" v-model="proyecto_data.username"
+            <q-input outlined class="full-width" name="username" v-model="proyecto_data.nombre_proyecto"
                      :rules="[val => !!val || 'Nombre del proyecto']"
                      label="Nombre del proyecto"/>
           </div>
           <div class="row q-py-xs">
-            <q-input outlined class="full-width" name="first_name" v-model="proyecto_data.first_name"
-                     :rules="[val => !!val || 'Nombre corto obligatorio']"
-                     label="Nombre corto (del proyecto)"/>
+            <div class="col-3 q-pr-md">
+              <q-input outlined class="full-width" name="nombre_corto" v-model="proyecto_data.nombre_corto"
+                       :rules="[val => !!val || 'Nombre corto obligatorio']"
+                       label="Nombre corto (del proyecto)"/>
+            </div>
+            <div class="col-3 q-pr-md">
+              <q-input outlined name="fecha_inicio" v-model="proyecto_data.fecha_inicio"
+                       :rules="['date']"
+                       label="Fecha de inicio">
+                <template v-slot:default >
+                    <q-popup-proxy  ref="fecha_inicio" transition-show="scale" mask="date" transition-hide="scale">
+                      <q-date v-model="proyecto_data.fecha_inicio">
+                        <div class="row items-center justify-end">
+                          <q-btn v-close-popup label="Cerrar" color="primary" flat/>
+                        </div>
+                      </q-date>
+                    </q-popup-proxy>
+                </template>
+                <template v-slot:append>
+                  <q-icon name="event">
+                  </q-icon>
+                </template>
+              </q-input>
+            </div>
+            <div class="col-3 q-pr-md">
+              <q-input outlined class="full-width" name="fecha_registro" v-model="proyecto_data.fecha_registro"
+                       :rules="['date']"
+                       label="Fecha de registro a ONSSES">
+                <template v-slot:append>
+                  <q-icon name="event" class="cursor-pointer">
+                    <q-popup-proxy ref="qDateProxy" transition-show="scale" mask="date" transition-hide="scale">
+                      <q-date v-model="proyecto_data.fecha_registro">
+                        <div class="row items-center justify-end">
+                          <q-btn v-close-popup label="Cerrar" color="primary" flat/>
+                        </div>
+                      </q-date>
+                    </q-popup-proxy>
+                  </q-icon>
+                </template>
+              </q-input>
+            </div>
+            <div class="col-3">
+              <q-select
+                name="etapa"
+                label="Etapa"
+                outlined
+                v-model="proyecto_data.etapa"
+                :options="['Inicial', 'Intermedio', 'Consolidado']"
+                :rules="[val => !!val || 'Género obligatorio']"
+              />
+            </div>
           </div>
-          <div class="row q-py-xs">
-            <q-input outlined class="full-width" name="last_name" v-model="proyecto_data.last_name"
-                     :rules="[val => !!val || 'Apellidos obligatorio']"
-                     label="Apellidos"/>
-          </div>
-          <div class="row q-py-xs">
-            <q-input outlined class="full-width" name="email" v-model="proyecto_data.email"
-                     :rules="[isValidEmail]"
-                     label="Email"/>
-          </div>
-          <div class="row q-py-xs">
-            <q-input outlined class="full-width" name="fecha_nacimiento" v-model="user_fecha_nacimiento"
-                     :rules="['date']"
-                     label="Fecha de nacimiento">
-              <template v-slot:append>
-                <q-icon name="event" class="cursor-pointer">
-                  <q-popup-proxy ref="qDateProxy" transition-show="scale" mask="date" transition-hide="scale">
-                    <q-date v-model="user_fecha_nacimiento">
-                      <div class="row items-center justify-end">
-                        <q-btn v-close-popup label="Cerrar" color="primary" flat/>
-                      </div>
-                    </q-date>
-                  </q-popup-proxy>
-                </q-icon>
-              </template>
-            </q-input>
-          </div>
-          <div class="row q-py-xs">
-            <q-select
-              name="genero"
-              label="Género"
-              outlined
-              v-model="proyecto_data.genero"
-              :options="user_genero_options"
-              style="min-width: 311px; max-width: 311px"
-              use-input
-              new-value-mode="add"
-              :rules="[val => !!val || 'Género obligatorio']"
-            />
-          </div>
-          <div class="row q-py-xs">
-            <q-select
-              name="escolaridad"
-              label="Escolaridad"
-              outlined
-              v-model="proyecto_data.escolaridad"
-              :options="user_escolaridad_options"
-              style="min-width: 311px; max-width: 311px"
-              use-input
-              :rules="[val => !!val || 'Escolaridad obligatoria']"
-            />
-          </div>
-          <div class="row q-py-xs">
-            <q-input outlined class="full-width" name="area_conocimiento" v-model="proyecto_data.area_conocimiento"
-                     :rules="[val => !!val || 'Área de conocimiento obligatoria']"
-                     label="Área de conocimiento"/>
-          </div>
-          <div class="row q-py-xs">
-            <q-input outlined class="full-width" name="fecha_nacimiento" v-model="user_fecha_adscripcion_onsses"
-                     :rules="['date']"
-                     label="Fecha de adscripción a ONSSES">
-              <template v-slot:append>
-                <q-icon name="event" class="cursor-pointer">
-                  <q-popup-proxy ref="qDateProxy" transition-show="scale" mask="date" transition-hide="scale">
-                    <q-date v-model="user_fecha_adscripcion_onsses">
-                      <div class="row items-center justify-end">
-                        <q-btn v-close-popup label="Cerrar" color="primary" flat/>
-                      </div>
-                    </q-date>
-                  </q-popup-proxy>
-                </q-icon>
-              </template>
-            </q-input>
-          </div>
-          <div class="row q-py-xs">
-            <q-select
-              name="actividad_economica"
-              label="Actividad económica"
-              outlined
-              v-model="proyecto_data.actividad_economica"
-              :options="user_actividad_economica_options"
-              style="min-width: 311px; max-width: 311px"
-              use-input
-              :rules="[val => !!val || 'Actividad económica obligatorio']"
-              emit-value
-              map-options
-              option-value="id"
-              option-label="nombre"
-            />
-          </div>
+
+
         </q-card-section>
         <q-separator/>
         <q-card-section>
           <div class="row">
-            <div class="col">
+            <div class="col-auto q-pr-xs">
+              <q-btn @click="updateProfile()" color="grey-7"
+                     label="Cancelar" no-caps class=""/>
+            </div>
+            <div class="col-auto q-pl-xs">
               <q-btn @click="updateProfile()" color="green"
-                     label="Actualizar datos" no-caps class="full-width"/>
+                     label="Guardar" no-caps class=""/>
             </div>
           </div>
         </q-card-section>
@@ -422,13 +386,19 @@ export default {
   mounted() {
     const token = cookies.get("access_token")
     if (token) {
-    this.$auth.refreshToken().then(response => {
-      console.log("refreshToken", response)
-      this.getProyectos()
-    })
-      } else  {
+      this.$auth.refreshToken().then(response => {
+        console.log("refreshToken", response)
+        this.getProyectos()
+      })
+    } else {
       this.getProyectos()
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.q-menu.q-position-engine.scroll {
+  min-width: initial;
+}
+</style>
