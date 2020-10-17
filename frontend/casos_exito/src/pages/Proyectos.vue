@@ -255,7 +255,7 @@
                   label="Escala del proyecto"
                   outlined
                   v-model="proyecto_data.escala"
-                  :options="['Regional', 'Municipal', 'Local', 'Comunitario', 'Familiar', 'Escolar',  'Otro']"
+                  :options="['Nacional', 'Estatal', 'Municipal', 'Intermunicipal', 'Comunitaria/Local']"
                   :rules="[val => !!val || 'Género obligatorio']"
                 />
               </div>
@@ -341,7 +341,8 @@
                   outlined
                   v-model="proyecto_data.tipo_organizacion"
                   :options="['Gubernamental federal', 'Gubernamental estatal', 'Gubernamental municipal',
-                'Organismo descentalizado', 'Sociedad civil', 'Privado', 'Comunitario', 'Organización productiva', 'Otro']"
+                              'Organismo descentalizado', 'Organizaciones sociales (Comunitaria/Ejidal)',
+                              'Organización productiva', 'Organización de la sociedad civil', 'Otra']"
                   :rules="[val => !!val || 'Tipo de organización obligatorio']"
                 />
               </div>
@@ -393,10 +394,10 @@
             <div class="row q-py-xs">
               <q-select
                 class="full-width"
-                name="actividad_principal"
+                name="rama_actividad_principal"
                 label="Actividad económica principal"
                 outlined
-                v-model="proyecto_data.actividad_principal"
+                v-model="proyecto_data.rama_actividad_principal"
                 :options="datos_actividades_economicas"
                 emit-value
                 map-options
@@ -408,10 +409,10 @@
             <div class="row q-py-xs" style="margin-bottom: 10px">
               <q-select
                 class="full-width"
-                name="actividad_secundaria"
+                name="rama_actividad_secundaria"
                 label="Actividad económica secundaria"
                 outlined
-                v-model="proyecto_data.actividad_secundaria"
+                v-model="proyecto_data.rama_actividad_secundaria"
                 :options="datos_actividades_economicas"
                 emit-value
                 map-options
@@ -424,14 +425,18 @@
                        label="Otra actividad económica"/>
             </div>
             <div class="row q-py-xs">
+              <div class="col-2">
+                <q-btn label="Territorio" size="lg" icon="mdi-vector-polygon" no-caps color="grey-9"
+                       @click="openTerritorioDialog()"/>
+              </div>
+              <div class="col-4 q-pr-md items-baseline">
+                <q-input disable outlined v-model="proyecto_data.territorio" label="Coordenadas territorio"/>
+              </div>
               <div class="col-2 q-pr-md items-baseline">
                 <q-btn label="Ubicación" size="lg" class="full-width" icon="mdi-map-marker" no-caps color="grey-9"/>
               </div>
               <div class="col-4 q-pr-md items-baseline">
                 <q-input disable outlined v-model="proyecto_data.ubicacion" label="Coordenadas ubicación"/>
-              </div>
-              <div class="col-6">
-                <q-btn label="Territorio" size="lg" icon="mdi-vector-polygon" no-caps color="grey-9"/>
               </div>
             </div>
             <div class="row q-py-md">
@@ -453,6 +458,36 @@
       </q-card>
     </q-dialog>
 
+    <q-dialog v-model="territorioDialog" persistent>
+      <q-card style="width: 600px">
+        <q-card-section class="row items-center">
+          <q-avatar icon="mdi-vector-polygon" color="primary" text-color="white"/>
+          <q-toolbar-title>Territorio</q-toolbar-title>
+          <q-btn icon="close" flat round dense @click="territorioDialog = false"/>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section>
+          <p>Suba un archivo de tipo GeoJSON.</p>
+          <q-uploader
+            style="width: 100%"
+            url="https://onsses45.maptitude.xyz/api/v1/ce/subir-geojson/"
+            label="Sólo archivo en formato GeoJSON"
+            :factory="factoryGeoJSON"
+            :headers="[{name: 'Authorization', value: `Bearer ${this.token}`}]"
+            auto-upload
+            :max-files="1"
+            accept=".geojson, application/vnd.geo+json"
+            @rejected="onRejectedGeoJSON"
+          />
+        </q-card-section>
+
+        <q-card-actions align="right" class="bg-white text-teal">
+          <q-btn flat label="Cancelar" v-close-popup/>
+          <q-btn flat label="OK" v-close-popup/>
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+
   </q-page>
 </template>
 
@@ -466,7 +501,9 @@ export default {
   data() {
     return {
       filter: '',
+      token: "",
       add_proyecto_dialog: false,
+      territorioDialog: false,
       proyecto_data: {inclusion_genero: false},
       datos_proyectos: undefined,
       datos_proyectos_mios: undefined,
@@ -523,17 +560,17 @@ export default {
           sortable: true
         },
         {
-          name: 'actividad_principal_display',
+          name: 'rama_actividad_principal_display',
           align: 'left',
           label: 'Actividad económica principal',
-          field: 'actividad_principal_display',
+          field: 'rama_actividad_principal_display',
           sortable: true
         },
         {
-          name: 'actividad_secundaria_display',
+          name: 'rama_actividad_secundaria_display',
           align: 'left',
           label: 'Actividad económica secundaria',
-          field: 'actividad_secundaria_display',
+          field: 'rama_actividad_secundaria_display',
           sortable: true
         },
         {
@@ -546,7 +583,7 @@ export default {
         {name: 'promovente_display', align: 'left', label: 'Promovente', field: 'promovente_display', sortable: true},
 
       ],
-      visible_columns: ['id', 'nombre_proyecto', 'fecha_inicio', 'etapa_display', 'escala_display', 'actividad_principal_display', 'representante'],
+      visible_columns: ['id', 'nombre_proyecto', 'fecha_inicio', 'etapa_display', 'escala_display', 'rama_actividad_principal_display', 'representante'],
     }
   },
   computed: {
@@ -565,6 +602,20 @@ export default {
     }
   },
   methods: {
+    factoryGeoJSON(file) {
+      this.token = cookies.get("access_token")
+      console.log("file")
+      console.log(file)
+      return file;
+    },
+    onRejectedGeoJSON (rejectedEntries) {
+      // Notify plugin needs to be installed
+      // https://quasar.dev/quasar-plugins/notify#Installation
+      this.$q.notify({
+        type: 'negative',
+        message: `El archivo no es válido`
+      })
+    },
     closeAddProyectoDialog() {
       this.add_proyecto_dialog = false
       this.proyecto_data = {inclusion_genero: false}
@@ -595,15 +646,19 @@ export default {
         }
       });
     },
+    openTerritorioDialog() {
+      this.token = cookies.get("access_token")
+      this.territorioDialog = true
+    },
     getProyectos() {
-      const token = cookies.get("access_token")
+      this.token = cookies.get("access_token")
       axios.get("https://onsses45.maptitude.xyz/api/v1/ce/proyectos/").then(response => {
         console.log("response: ", response.data)
         this.datos_proyectos = response.data
       }).then(() => {
-        if (token) {
+        if (this.token) {
           axios.get(`https://onsses45.maptitude.xyz/api/v1/ce/proyectos/?promovente=${this.auth_user.pk}`,
-            {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
+            {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
             this.datos_proyectos_mios = response.data
           }).catch(error => {
             console.log(error)
@@ -645,7 +700,7 @@ export default {
     },
     getActividadesEconomicas() {
       if (!this.datos_actividades_economicas) {
-        axios.get(`https://onsses45.maptitude.xyz/api/v1/ce/actividades-economicas/`).then(response => {
+        axios.get(`https://onsses45.maptitude.xyz/api/v1/ce/ramas-actividades-economicas/`).then(response => {
           console.log("datos_actividades_economicas: ", response.data)
           this.datos_actividades_economicas = response.data
         }).catch(error => {
