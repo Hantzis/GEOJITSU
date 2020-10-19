@@ -433,15 +433,16 @@
                 <q-input disable outlined v-model="proyecto_data.territorio" label="Coordenadas territorio"/>
               </div>
               <div class="col-2 q-pr-md items-baseline">
-                <q-btn label="Ubicación" size="lg" class="full-width" icon="mdi-map-marker" no-caps color="grey-9"/>
+                <q-btn label="Ubicación" size="lg" class="full-width" icon="mdi-map-marker" no-caps color="grey-9"
+                @click="openUbicacionDialog()"/>
               </div>
               <div class="col-4 q-pr-md items-baseline">
                 <q-input disable outlined v-model="proyecto_data.ubicacion" label="Coordenadas ubicación"/>
               </div>
             </div>
             <div class="row q-py-md">
-              <q-input outlined class="full-width" name="lugares_influencia" v-model="proyecto_data.lugares_influencia"
-                       label="Lugares de influencia" :rules="[val => !!val || 'Lugares de influencia obligatorio']"/>
+              <q-input outlined class="full-width" name="area_influencia" v-model="proyecto_data.area_influencia"
+                       label="Área de influencia" :rules="[val => !!val || 'Área de influencia obligatorio']"/>
             </div>
           </q-form>
           <div class="row justify-end q-py-md">
@@ -472,13 +473,38 @@
             style="width: 100%"
             url="https://onsses45.maptitude.xyz/api/v1/ce/subir-geojson/"
             label="Sólo archivo en formato GeoJSON"
-            :factory="factoryGeoJSON"
             :headers="[{name: 'Authorization', value: `Bearer ${this.token}`}]"
+            @uploaded="onUploaded"
             auto-upload
             :max-files="1"
             accept=".geojson, application/vnd.geo+json"
             @rejected="onRejectedGeoJSON"
           />
+        </q-card-section>
+
+        <q-card-actions align="right" class="bg-white text-teal">
+          <q-btn flat label="Cancelar" v-close-popup/>
+          <q-btn flat label="OK" v-close-popup/>
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+
+    <q-dialog v-model="ubicacionDialog" persistent>
+      <q-card style="width: 600px">
+        <q-card-section class="row items-center">
+          <q-avatar icon="mdi-map-marker" color="primary" text-color="white"/>
+          <q-toolbar-title>Ubicación</q-toolbar-title>
+          <q-btn icon="close" flat round dense @click="ubicacionDialog = false"/>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section>
+          <vl-map :load-tiles-while-animating="true" :load-tiles-while-interacting="true"
+                  data-projection="EPSG:4326" :style="{'min-height': 'inherit', 'width': '526px', 'height': '400px'}">
+            <vl-view :zoom="5" :center="[-102, 20]"></vl-view>
+            <vl-layer-tile id="osm">
+              <vl-source-osm></vl-source-osm>
+            </vl-layer-tile>
+          </vl-map>
         </q-card-section>
 
         <q-card-actions align="right" class="bg-white text-teal">
@@ -495,6 +521,11 @@
 import axios from 'axios'
 import cookies from 'browser-cookies'
 import {mapGetters, mapActions} from 'vuex'
+import Vue from 'vue'
+import VueLayers from 'vuelayers'
+import 'vuelayers/lib/style.css'
+
+Vue.use(VueLayers)
 
 export default {
   name: 'casosExito',
@@ -504,6 +535,7 @@ export default {
       token: "",
       add_proyecto_dialog: false,
       territorioDialog: false,
+      ubicacionDialog: false,
       proyecto_data: {inclusion_genero: false},
       datos_proyectos: undefined,
       datos_proyectos_mios: undefined,
@@ -602,13 +634,25 @@ export default {
     }
   },
   methods: {
+    onUploaded(evt) {
+      console.log("uploaded", evt)
+      console.log("response", evt.xhr.response)
+      this.proyecto_data.territorio = evt.xhr.response
+    },
     factoryGeoJSON(file) {
       this.token = cookies.get("access_token")
-      console.log("file")
-      console.log(file)
-      return file;
+      console.log("file", file)
+
+      let meh = new Promise((resolve, reject) => {
+        // simulating a delay of 2 seconds
+        resolve({url: 'https://onsses45.maptitude.xyz/api/v1/ce/subir-geojson/'})
+      })
+      meh.then(response => {
+        console.log("aqui", response)
+      })
+      return meh
     },
-    onRejectedGeoJSON (rejectedEntries) {
+    onRejectedGeoJSON(rejectedEntries) {
       // Notify plugin needs to be installed
       // https://quasar.dev/quasar-plugins/notify#Installation
       this.$q.notify({
@@ -649,6 +693,10 @@ export default {
     openTerritorioDialog() {
       this.token = cookies.get("access_token")
       this.territorioDialog = true
+    },
+    openUbicacionDialog() {
+      this.token = cookies.get("access_token")
+      this.ubicacionDialog = true
     },
     getProyectos() {
       this.token = cookies.get("access_token")
