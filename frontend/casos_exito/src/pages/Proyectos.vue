@@ -434,7 +434,7 @@
               </div>
               <div class="col-2 q-pr-md items-baseline">
                 <q-btn label="Ubicación" size="lg" class="full-width" icon="mdi-map-marker" no-caps color="grey-9"
-                @click="openUbicacionDialog()"/>
+                       @click="openUbicacionDialog()"/>
               </div>
               <div class="col-4 q-pr-md items-baseline">
                 <q-input disable outlined v-model="proyecto_data.ubicacion" label="Coordenadas ubicación"/>
@@ -444,6 +444,107 @@
               <q-input outlined class="full-width" name="area_influencia" v-model="proyecto_data.area_influencia"
                        label="Área de influencia" :rules="[val => !!val || 'Área de influencia obligatorio']"/>
             </div>
+            <div class="row q-py-xs">
+              <q-list bordered class="rounded-borders" style="width: 100%;">
+                <q-expansion-item
+                  expand-separator
+                  label="Logros"
+                >
+                  <q-card>
+                    <q-card-section>
+                      <div class="row">
+                        <div class="col" :align="'right'">
+                          <q-btn color="green">Agregar logro</q-btn>
+                        </div>
+                      </div>
+                    </q-card-section>
+                    <q-card-section>
+                      <q-list bordered separator>
+                        <q-item clickable v-ripple>
+                          <q-item-section>Single line item</q-item-section>
+                        </q-item>
+
+                        <q-item clickable v-ripple>
+                          <q-item-section>
+                            <q-item-label>Item with caption</q-item-label>
+                            <q-item-label caption>Caption</q-item-label>
+                          </q-item-section>
+                        </q-item>
+
+                        <q-item clickable v-ripple>
+                          <q-item-section>
+                            <q-item-label overline>OVERLINE</q-item-label>
+                            <q-item-label>Item with caption</q-item-label>
+                          </q-item-section>
+                        </q-item>
+                      </q-list>
+                    </q-card-section>
+                  </q-card>
+                </q-expansion-item>
+
+                <q-separator/>
+
+                <q-expansion-item
+                  expand-separator
+                  label="Certificaciones"
+                >
+                  <q-card>
+                    <q-card-section>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
+                      commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
+                      eveniet doloribus ullam aliquid.
+                    </q-card-section>
+                  </q-card>
+                </q-expansion-item>
+
+                <q-separator/>
+
+                <q-expansion-item
+                  expand-separator
+                  label="Reconocimientos"
+                >
+                  <q-card>
+                    <q-card-section>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
+                      commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
+                      eveniet doloribus ullam aliquid.
+                    </q-card-section>
+                  </q-card>
+                </q-expansion-item>
+
+                <q-separator/>
+
+                <q-expansion-item
+                  expand-separator
+                  label="Redes"
+                >
+                  <q-card>
+                    <q-card-section>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
+                      commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
+                      eveniet doloribus ullam aliquid.
+                    </q-card-section>
+                  </q-card>
+                </q-expansion-item>
+
+                <q-separator/>
+
+                <q-expansion-item
+                  expand-separator
+                  label="Financiamientos"
+                >
+                  <q-card>
+                    <q-card-section>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
+                      commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
+                      eveniet doloribus ullam aliquid.
+                    </q-card-section>
+                  </q-card>
+                </q-expansion-item>
+
+              </q-list>
+            </div>
+
           </q-form>
           <div class="row justify-end q-py-md">
             <div class="col-auto q-pr-xs">
@@ -483,8 +584,7 @@
         </q-card-section>
 
         <q-card-actions align="right" class="bg-white text-teal">
-          <q-btn flat label="Cancelar" v-close-popup/>
-          <q-btn flat label="OK" v-close-popup/>
+          <q-btn flat label="Cerrar" v-close-popup/>
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -494,22 +594,38 @@
         <q-card-section class="row items-center">
           <q-avatar icon="mdi-map-marker" color="primary" text-color="white"/>
           <q-toolbar-title>Ubicación</q-toolbar-title>
-          <q-btn icon="close" flat round dense @click="ubicacionDialog = false"/>
+          <q-btn icon="close" flat round dense @click="closeUbicacionDialog()"/>
         </q-card-section>
         <q-separator/>
         <q-card-section>
-          <vl-map :load-tiles-while-animating="true" :load-tiles-while-interacting="true"
-                  data-projection="EPSG:4326" :style="{'min-height': 'inherit', 'width': '526px', 'height': '400px'}">
-            <vl-view :zoom="5" :center="[-102, 20]"></vl-view>
-            <vl-layer-tile id="osm">
-              <vl-source-osm></vl-source-osm>
-            </vl-layer-tile>
-          </vl-map>
+          <div :key="mapkey">
+            <vl-map ref="olmap" :load-tiles-while-animating="true" :load-tiles-while-interacting="true"
+                    data-projection="EPSG:4326" :style="{'min-height': 'inherit', 'width': '526px', 'height': '400px'}">
+              <vl-view ref="olview" :zoom="5" :center="[-102, 20]"></vl-view>
+              <vl-layer-tile id="osm">
+                <vl-source-osm></vl-source-osm>
+              </vl-layer-tile>
+
+
+              <vl-layer-vector ref="vl-ubicacion">
+                <vl-source-vector :features.sync="ubicacion" :ident="mapkey.toString()"></vl-source-vector>
+
+
+                <vl-interaction-draw type="Point" :source="mapkey.toString()">
+                  <vl-style-box>
+                    <vl-style-stroke color="red"></vl-style-stroke>
+                    <vl-style-fill color="rgba(255,255,255,0.9)"></vl-style-fill>
+                  </vl-style-box>
+                </vl-interaction-draw>
+
+              </vl-layer-vector>
+
+            </vl-map>
+          </div>
         </q-card-section>
 
         <q-card-actions align="right" class="bg-white text-teal">
-          <q-btn flat label="Cancelar" v-close-popup/>
-          <q-btn flat label="OK" v-close-popup/>
+          <q-btn flat label="Cerrar" @click="closeUbicacionDialog()"/>
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -524,8 +640,12 @@ import {mapGetters, mapActions} from 'vuex'
 import Vue from 'vue'
 import VueLayers from 'vuelayers'
 import 'vuelayers/lib/style.css'
+import {DrawInteraction} from 'vuelayers'
+
 
 Vue.use(VueLayers)
+Vue.use(DrawInteraction)
+
 
 export default {
   name: 'casosExito',
@@ -533,6 +653,8 @@ export default {
     return {
       filter: '',
       token: "",
+      ubicacion: [],
+      mapkey: 0,
       add_proyecto_dialog: false,
       territorioDialog: false,
       ubicacionDialog: false,
@@ -690,18 +812,26 @@ export default {
         }
       });
     },
+    closeUbicacionDialog() {
+      this.ubicacionDialog = false
+      console.log(this.ubicacion)
+    },
     openTerritorioDialog() {
       this.token = cookies.get("access_token")
       this.territorioDialog = true
     },
     openUbicacionDialog() {
+      this.ubicacion = []
+      //this.ubicacion.splice(0,this.ubicacion.length)
+      this.mapkey++
+      console.log(this.mapkey)
       this.token = cookies.get("access_token")
       this.ubicacionDialog = true
     },
     getProyectos() {
       this.token = cookies.get("access_token")
       axios.get("https://onsses45.maptitude.xyz/api/v1/ce/proyectos/").then(response => {
-        console.log("response: ", response.data)
+        console.log("response proyectos: ", response.data)
         this.datos_proyectos = response.data
       }).then(() => {
         if (this.token) {
@@ -774,6 +904,14 @@ export default {
     this.getActividadesEconomicas()
   },
   watch: {
+    ubicacion() {
+      if (this.ubicacion.length > 1) {
+        this.ubicacion.shift()
+        const punto = "SRID=4326;POINT (" + this.ubicacion[0].geometry.coordinates[0] + " " + this.ubicacion[0].geometry.coordinates[1] + ")"
+        console.log(punto)
+        this.proyecto_data.ubicacion = punto
+      }
+    },
     'proyecto_data.estado': function (newVal, oldVal) {
       console.log(newVal)
       console.log(oldVal)
