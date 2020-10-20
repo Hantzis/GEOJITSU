@@ -27,78 +27,11 @@
         align="left"
         no-caps
       >
-        <q-tab name="todos" label="Todos los proyectos"/>
         <q-tab v-if="auth_logged" name="mios" label="Proyectos registrados por mí"/>
+        <q-tab name="todos" label="Todos los proyectos"/>
       </q-tabs>
       <q-separator/>
       <q-tab-panels v-model="tab" animated>
-        <q-tab-panel name="todos">
-          <div class="row">
-            <div class="col">
-              <q-table
-                title="Todos los proyectos"
-                :data.sync="datos_proyectos"
-                :columns="columnas"
-                :visible-columns="visible_columns"
-                row-key="id"
-                :loading="tabla_loading"
-                :filter="filter"
-                square
-              >
-                <template v-slot:top-right>
-                  <q-input borderless dense debounce="300" v-model="filter" placeholder="Buscar"
-                           style="margin-right: 12px;">
-                    <template v-slot:append>
-                      <q-icon name="search"/>
-                    </template>
-                  </q-input>
-                  <q-select
-                    v-model="visible_columns"
-                    multiple
-                    outlined
-                    dense
-                    options-dense
-                    :display-value1="$q.lang.table.columnas"
-                    display-value="Mostrar columnas..."
-                    emit-value
-                    map-options
-                    :options="columnas"
-                    option-value="name"
-                    options-cover
-                    style="min-width: 150px"
-                  />
-                </template>
-
-                <template v-slot:header="props">
-                  <q-tr :props="props">
-                    <q-th
-                      v-for="col in props.cols"
-                      :key="col.name"
-                      :props="props"
-                    >
-                      {{ col.label }}
-                    </q-th>
-                    <q-th auto-width/>
-                  </q-tr>
-                </template>
-
-                <template v-slot:body="props">
-                  <q-tr :props="props">
-                    <q-td v-for="col in props.cols" :key="col.name" :props="props">{{ col.value }}</q-td>
-                    <q-td auto-width>
-                      <!-- <q-btn v-if="auth_logged" dense round flat color="primary" @click="editRegistroDialog(props)"
-                             icon="edit"></q-btn>
-                      <q-btn v-if="auth_logged" dense round flat color="red" @click="deleteRegistroDialog(props)"
-                             icon="delete"></q-btn> -->
-                    </q-td>
-                  </q-tr>
-                </template>
-
-              </q-table>
-            </div>
-          </div>
-        </q-tab-panel>
-
         <q-tab-panel v-if="auth_logged" name="mios">
           <div class="row">
             <div class="col">
@@ -159,6 +92,72 @@
                              icon="edit"></q-btn> -->
                       <q-btn v-if="auth_logged" dense round flat color="red" @click="deleteRegistroDialog(props)"
                              icon="delete"></q-btn>
+                    </q-td>
+                  </q-tr>
+                </template>
+
+              </q-table>
+            </div>
+          </div>
+        </q-tab-panel>
+        <q-tab-panel name="todos">
+          <div class="row">
+            <div class="col">
+              <q-table
+                title="Todos los proyectos"
+                :data.sync="datos_proyectos"
+                :columns="columnas"
+                :visible-columns="visible_columns"
+                row-key="id"
+                :loading="tabla_loading"
+                :filter="filter"
+                square
+              >
+                <template v-slot:top-right>
+                  <q-input borderless dense debounce="300" v-model="filter" placeholder="Buscar"
+                           style="margin-right: 12px;">
+                    <template v-slot:append>
+                      <q-icon name="search"/>
+                    </template>
+                  </q-input>
+                  <q-select
+                    v-model="visible_columns"
+                    multiple
+                    outlined
+                    dense
+                    options-dense
+                    :display-value1="$q.lang.table.columnas"
+                    display-value="Mostrar columnas..."
+                    emit-value
+                    map-options
+                    :options="columnas"
+                    option-value="name"
+                    options-cover
+                    style="min-width: 150px"
+                  />
+                </template>
+
+                <template v-slot:header="props">
+                  <q-tr :props="props">
+                    <q-th
+                      v-for="col in props.cols"
+                      :key="col.name"
+                      :props="props"
+                    >
+                      {{ col.label }}
+                    </q-th>
+                    <q-th auto-width/>
+                  </q-tr>
+                </template>
+
+                <template v-slot:body="props">
+                  <q-tr :props="props">
+                    <q-td v-for="col in props.cols" :key="col.name" :props="props">{{ col.value }}</q-td>
+                    <q-td auto-width>
+                      <!-- <q-btn v-if="auth_logged" dense round flat color="primary" @click="editRegistroDialog(props)"
+                             icon="edit"></q-btn>
+                      <q-btn v-if="auth_logged" dense round flat color="red" @click="deleteRegistroDialog(props)"
+                             icon="delete"></q-btn> -->
                     </q-td>
                   </q-tr>
                 </template>
@@ -982,7 +981,7 @@ export default {
       datos_actividades_economicas: undefined,
 
       tabla_loading: true,
-      tab: 'todos',
+      tab: 'mios',
       estado_options: [],
       columnas: [
         {name: 'id', align: 'left', label: 'ID', field: 'id', sortable: true},
