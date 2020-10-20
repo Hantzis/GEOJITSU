@@ -454,29 +454,29 @@
                     <q-card-section>
                       <div class="row">
                         <div class="col" :align="'right'">
-                          <q-btn color="green">Agregar logro</q-btn>
+                          <q-btn color="green" @click="logroDialog = true">Agregar logro</q-btn>
                         </div>
                       </div>
                     </q-card-section>
                     <q-card-section>
                       <q-list bordered separator>
-                        <q-item clickable v-ripple>
-                          <q-item-section>Single line item</q-item-section>
-                        </q-item>
 
-                        <q-item clickable v-ripple>
+                        <q-item clickable v-ripple v-for="(item, idx) in nuevos_logros" :key="idx">
                           <q-item-section>
-                            <q-item-label>Item with caption</q-item-label>
-                            <q-item-label caption>Caption</q-item-label>
+                            <div class="row no-wrap justify-between">
+                              <div class="col-11">
+                                <span>{{ item.nombre }} ({{ item.fecha }})</span>
+                              </div>
+                              <div class="col-1 " style="text-align: right;">
+                                <div class="row no-wrap">
+                                  <!-- <q-btn flat dense @click.stop="console.log(22)" icon="edit" color="primary"></q-btn> -->
+                                  <q-btn flat dense @click.stop="deleteLogro(idx)" icon="delete" color="red"></q-btn>
+                                </div>
+                              </div>
+                            </div>
                           </q-item-section>
                         </q-item>
 
-                        <q-item clickable v-ripple>
-                          <q-item-section>
-                            <q-item-label overline>OVERLINE</q-item-label>
-                            <q-item-label>Item with caption</q-item-label>
-                          </q-item-section>
-                        </q-item>
                       </q-list>
                     </q-card-section>
                   </q-card>
@@ -490,9 +490,33 @@
                 >
                   <q-card>
                     <q-card-section>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
-                      commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-                      eveniet doloribus ullam aliquid.
+                      <div class="row">
+                        <div class="col" :align="'right'">
+                          <q-btn color="green" @click="certificacionDialog = true">Agregar certificación</q-btn>
+                        </div>
+                      </div>
+                    </q-card-section>
+                    <q-card-section>
+                      <q-list bordered separator>
+
+                        <q-item clickable v-ripple v-for="(item, idx) in nuevas_certificaciones" :key="idx">
+                          <q-item-section>
+                            <div class="row no-wrap justify-between">
+                              <div class="col-11">
+                                <span>{{ item.nombre }} ({{ item.fecha }}, {{ item.fuente }})</span>
+                              </div>
+                              <div class="col-1 " style="text-align: right;">
+                                <div class="row no-wrap">
+                                  <!-- <q-btn flat dense @click.stop="console.log(22)" icon="edit" color="primary"></q-btn> -->
+                                  <q-btn flat dense @click.stop="deleteCertificacion(idx)" icon="delete"
+                                         color="red"></q-btn>
+                                </div>
+                              </div>
+                            </div>
+                          </q-item-section>
+                        </q-item>
+
+                      </q-list>
                     </q-card-section>
                   </q-card>
                 </q-expansion-item>
@@ -505,9 +529,33 @@
                 >
                   <q-card>
                     <q-card-section>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
-                      commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-                      eveniet doloribus ullam aliquid.
+                      <div class="row">
+                        <div class="col" :align="'right'">
+                          <q-btn color="green" @click="reconocimientoDialog = true">Agregar Reconocimiento</q-btn>
+                        </div>
+                      </div>
+                    </q-card-section>
+                    <q-card-section>
+                      <q-list bordered separator>
+
+                        <q-item clickable v-ripple v-for="(item, idx) in nuevos_reconocimientos" :key="idx">
+                          <q-item-section>
+                            <div class="row no-wrap justify-between">
+                              <div class="col-11">
+                                <span>{{ item.nombre }} ({{ item.fecha }}, {{ item.fuente }})</span>
+                              </div>
+                              <div class="col-1 " style="text-align: right;">
+                                <div class="row no-wrap">
+                                  <!-- <q-btn flat dense @click.stop="console.log(22)" icon="edit" color="primary"></q-btn> -->
+                                  <q-btn flat dense @click.stop="deleteReconocimiento(idx)" icon="delete"
+                                         color="red"></q-btn>
+                                </div>
+                              </div>
+                            </div>
+                          </q-item-section>
+                        </q-item>
+
+                      </q-list>
                     </q-card-section>
                   </q-card>
                 </q-expansion-item>
@@ -520,9 +568,30 @@
                 >
                   <q-card>
                     <q-card-section>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
-                      commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-                      eveniet doloribus ullam aliquid.
+                      <div class="row">
+                        <div class="col" :align="'right'">
+                          <q-btn color="green" @click="redDialog = true">Agregar Red</q-btn>
+                        </div>
+                      </div>
+                    </q-card-section>
+                    <q-card-section>
+                      <q-list bordered separator>
+                        <q-item clickable v-ripple v-for="(item, idx) in nuevas_redes" :key="idx">
+                          <q-item-section>
+                            <div class="row no-wrap justify-between">
+                              <div class="col-11">
+                                <span>{{ item.nombre }}</span>
+                              </div>
+                              <div class="col-1 " style="text-align: right;">
+                                <div class="row no-wrap">
+                                  <!-- <q-btn flat dense @click.stop="console.log(22)" icon="edit" color="primary"></q-btn> -->
+                                  <q-btn flat dense @click.stop="deleteRed(idx)" icon="delete" color="red"></q-btn>
+                                </div>
+                              </div>
+                            </div>
+                          </q-item-section>
+                        </q-item>
+                      </q-list>
                     </q-card-section>
                   </q-card>
                 </q-expansion-item>
@@ -535,9 +604,30 @@
                 >
                   <q-card>
                     <q-card-section>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
-                      commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-                      eveniet doloribus ullam aliquid.
+                      <div class="row">
+                        <div class="col" :align="'right'">
+                          <q-btn color="green" @click="financiamientoDialog = true">Agregar Red</q-btn>
+                        </div>
+                      </div>
+                    </q-card-section>
+                    <q-card-section>
+                      <q-list bordered separator>
+                        <q-item clickable v-ripple v-for="(item, idx) in nuevos_financiamientos" :key="idx">
+                          <q-item-section>
+                            <div class="row no-wrap justify-between">
+                              <div class="col-11">
+                                <span>{{ item.nombre }} ({{ item.fuente }})</span>
+                              </div>
+                              <div class="col-1 " style="text-align: right;">
+                                <div class="row no-wrap">
+                                  <!-- <q-btn flat dense @click.stop="console.log(22)" icon="edit" color="primary"></q-btn> -->
+                                  <q-btn flat dense @click.stop="deleteFinanciamiento(idx)" icon="delete" color="red"></q-btn>
+                                </div>
+                              </div>
+                            </div>
+                          </q-item-section>
+                        </q-item>
+                      </q-list>
                     </q-card-section>
                   </q-card>
                 </q-expansion-item>
@@ -630,6 +720,220 @@
       </q-card>
     </q-dialog>
 
+    <q-dialog v-model="logroDialog" persistent>
+      <q-card style="width: 600px">
+        <q-card-section class="row items-center">
+          <q-avatar icon="mdi-plus" color="primary" text-color="white"/>
+          <q-toolbar-title>Logro</q-toolbar-title>
+          <q-btn icon="close" flat round dense @click="logroDialog = false"/>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section>
+          <div class="row">
+            <div class="col">
+              <div class="row q-py-xs">
+                <q-input outlined class="full-width" name="nombre_logro" v-model="nuevo_logro.nombre"
+                         :rules="[val => !!val || 'Nombre obligatorio']"
+                         label="Nombre del logro"/>
+              </div>
+              <div class="row q-py-xs">
+                <q-input outlined name="fecha_logro" v-model="nuevo_logro.fecha" class="full-width"
+                         label="Fecha">
+                  <template v-slot:default>
+                    <q-popup-proxy ref="fecha_logro" transition-show="scale" transition-hide="scale">
+                      <q-date v-model="nuevo_logro.fecha">
+                        <div class="row items-center justify-end">
+                          <q-btn v-close-popup label="Cerrar" color="primary" flat/>
+                        </div>
+                      </q-date>
+                    </q-popup-proxy>
+                  </template>
+                  <template v-slot:append>
+                    <q-icon name="event">
+                    </q-icon>
+                  </template>
+                </q-input>
+              </div>
+            </div>
+          </div>
+        </q-card-section>
+        <q-card-actions align="right" class="bg-white text-teal">
+          <q-btn flat label="Cancelar" color="grey-8" @click="cancelarLogro()"/>
+          <q-btn flat label="Agregar" @click="addLogro()"
+                 :disable="nuevo_logro.nombre ==='' || nuevo_logro.fecha === ''"/>
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+
+    <q-dialog v-model="certificacionDialog" persistent>
+      <q-card style="width: 600px">
+        <q-card-section class="row items-center">
+          <q-avatar icon="mdi-plus" color="primary" text-color="white"/>
+          <q-toolbar-title>Certificación</q-toolbar-title>
+          <q-btn icon="close" flat round dense @click="certificacionDialog = false"/>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section>
+          <div class="row">
+            <div class="col">
+              <div class="row q-py-xs">
+                <q-input outlined class="full-width" name="nombre_certificacion" v-model="nueva_certificacion.nombre"
+                         :rules="[val => !!val || 'Nombre obligatorio']"
+                         label="Nombre de la certificación"/>
+              </div>
+              <div class="row q-py-xs">
+                <q-input outlined name="fecha_certificacion" v-model="nueva_certificacion.fecha" class="full-width"
+                         label="Fecha">
+                  <template v-slot:default>
+                    <q-popup-proxy ref="fecha_certificacion" transition-show="scale" transition-hide="scale">
+                      <q-date v-model="nueva_certificacion.fecha">
+                        <div class="row items-center justify-end">
+                          <q-btn v-close-popup label="Cerrar" color="primary" flat/>
+                        </div>
+                      </q-date>
+                    </q-popup-proxy>
+                  </template>
+                  <template v-slot:append>
+                    <q-icon name="event">
+                    </q-icon>
+                  </template>
+                </q-input>
+              </div>
+              <div class="row q-py-xs">
+                <q-input outlined class="full-width" name="fuente_certificacion" v-model="nueva_certificacion.fuente"
+                         :rules="[val => !!val || 'Fuente obligatoria']"
+                         label="Fuente que certifica"/>
+              </div>
+            </div>
+          </div>
+        </q-card-section>
+        <q-card-actions align="right" class="bg-white text-teal">
+          <q-btn flat label="Cancelar" color="grey-8" @click="cancelarCertificacion()"/>
+          <q-btn flat label="Agregar" @click="addCertificacion()"
+                 :disable="nueva_certificacion.nombre ==='' || nueva_certificacion.fecha === '' || nueva_certificacion.fuente === ''"/>
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+
+    <q-dialog v-model="reconocimientoDialog" persistent>
+      <q-card style="width: 600px">
+        <q-card-section class="row items-center">
+          <q-avatar icon="mdi-plus" color="primary" text-color="white"/>
+          <q-toolbar-title>Reconocimiento</q-toolbar-title>
+          <q-btn icon="close" flat round dense @click="reconocimientoDialog = false"/>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section>
+          <div class="row">
+            <div class="col">
+              <div class="row q-py-xs">
+                <q-input outlined class="full-width" name="nombre_reconocimiento" v-model="nuevo_reconocimiento.nombre"
+                         :rules="[val => !!val || 'Nombre obligatorio']"
+                         label="Nombre del reconocimiento"/>
+              </div>
+              <div class="row q-py-xs">
+                <q-input outlined name="fecha_reconocimiento" v-model="nuevo_reconocimiento.fecha" class="full-width"
+                         label="Fecha">
+                  <template v-slot:default>
+                    <q-popup-proxy ref="fecha_reconocimiento" transition-show="scale" transition-hide="scale">
+                      <q-date v-model="nuevo_reconocimiento.fecha">
+                        <div class="row items-center justify-end">
+                          <q-btn v-close-popup label="Cerrar" color="primary" flat/>
+                        </div>
+                      </q-date>
+                    </q-popup-proxy>
+                  </template>
+                  <template v-slot:append>
+                    <q-icon name="event">
+                    </q-icon>
+                  </template>
+                </q-input>
+              </div>
+              <div class="row q-py-xs">
+                <q-input outlined class="full-width" name="fuente_reconocimiento" v-model="nuevo_reconocimiento.fuente"
+                         :rules="[val => !!val || 'Fuente obligatoria']"
+                         label="Fuente que da el reconocimiento"/>
+              </div>
+            </div>
+          </div>
+        </q-card-section>
+        <q-card-actions align="right" class="bg-white text-teal">
+          <q-btn flat label="Cancelar" color="grey-8" @click="cancelarReconocimiento()"/>
+          <q-btn flat label="Agregar" @click="addReconocimiento()"
+                 :disable="nuevo_reconocimiento.nombre ==='' || nuevo_reconocimiento.fecha === '' || nuevo_reconocimiento.fuente === ''"/>
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+
+    <q-dialog v-model="redDialog" persistent>
+      <q-card style="width: 600px">
+        <q-card-section class="row items-center">
+          <q-avatar icon="mdi-plus" color="primary" text-color="white"/>
+          <q-toolbar-title>Red</q-toolbar-title>
+          <q-btn icon="close" flat round dense @click="redDialog = false"/>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section>
+          <div class="row">
+            <div class="col">
+              <div class="row q-py-xs">
+                <q-input outlined class="full-width" name="nombre_red" v-model="nueva_red.nombre"
+                         :rules="[val => !!val || 'Nombre obligatorio']"
+                         label="Nombre de la red"/>
+              </div>
+              <div class="row q-py-xs">
+                <q-input outlined class="full-width" name="integrantes_red" v-model="nueva_red.integrantes"
+                         :rules="[val => !!val || 'Integrandes obligatorio']"
+                         label="Integrantes de la red"/>
+              </div>
+            </div>
+          </div>
+        </q-card-section>
+        <q-card-actions align="right" class="bg-white text-teal">
+          <q-btn flat label="Cancelar" color="grey-8" @click="cancelarRed()"/>
+          <q-btn flat label="Agregar" @click="addRed()"
+                 :disable="nueva_red.nombre ==='' || nueva_red.integrantes === ''"/>
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+
+    <q-dialog v-model="financiamientoDialog" persistent>
+      <q-card style="width: 600px">
+        <q-card-section class="row items-center">
+          <q-avatar icon="mdi-plus" color="primary" text-color="white"/>
+          <q-toolbar-title>Financiamiento</q-toolbar-title>
+          <q-btn icon="close" flat round dense @click="financiamientoDialog = false"/>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section>
+          <div class="row">
+            <div class="col">
+              <div class="row q-py-xs">
+                <q-input outlined class="full-width" name="nombre_financiamiento" v-model="nuevo_financiamiento.nombre"
+                         :rules="[val => !!val || 'Nombre obligatorio']"
+                         label="Nombre del financiamiento"/>
+              </div>
+              <div class="row q-py-xs">
+                <q-input outlined class="full-width" name="monto_financiamiento" v-model="nuevo_financiamiento.monto"
+                         :rules="[val => !!val || 'Monto obligatorio']"
+                         label="Monto del financiamiento"/>
+              </div>
+              <div class="row q-py-xs">
+                <q-input outlined class="full-width" name="fuente_financiamiento" v-model="nuevo_financiamiento.fuente"
+                         :rules="[val => !!val || 'Fuente obligatoria']"
+                         label="Fuente del financiamiento"/>
+              </div>
+            </div>
+          </div>
+        </q-card-section>
+        <q-card-actions align="right" class="bg-white text-teal">
+          <q-btn flat label="Cancelar" color="grey-8" @click="cancelarFinanciamiento()"/>
+          <q-btn flat label="Agregar" @click="addFinanciamiento()"
+                 :disable="nuevo_financiamiento.nombre ==='' || nuevo_financiamiento.monto === '' || nuevo_financiamiento.fuente === ''"/>
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+
   </q-page>
 </template>
 
@@ -658,7 +962,22 @@ export default {
       add_proyecto_dialog: false,
       territorioDialog: false,
       ubicacionDialog: false,
-      proyecto_data: {inclusion_genero: false},
+      logroDialog: false,
+      certificacionDialog: false,
+      reconocimientoDialog: false,
+      redDialog: false,
+      financiamientoDialog: false,
+      proyecto_data: {inclusion_genero: false, fecha_inicio: "", fecha_registro: ""},
+      nuevo_logro: {nombre: "", fecha: ""},
+      nuevos_logros: [],
+      nueva_certificacion: {nombre: "", fuente: "", fecha: ""},
+      nuevas_certificaciones: [],
+      nuevo_reconocimiento: {nombre: "", fuente: "", fecha: ""},
+      nuevos_reconocimientos: [],
+      nueva_red: {nombre: "", integrantes: ""},
+      nuevas_redes: [],
+      nuevo_financiamiento: {nombre: "", fuente: "", monto: ""},
+      nuevos_financiamientos: [],
       datos_proyectos: undefined,
       datos_proyectos_mios: undefined,
       datos_estados: undefined,
@@ -756,6 +1075,26 @@ export default {
     }
   },
   methods: {
+    deleteLogro(val) {
+      console.log(val)
+      this.nuevos_logros.splice(val, 1)
+    },
+    deleteCertificacion(val) {
+      console.log(val)
+      this.nuevas_certificaciones.splice(val, 1)
+    },
+    deleteReconocimiento(val) {
+      console.log(val)
+      this.nuevos_reconocimientos.splice(val, 1)
+    },
+    deleteRed(val) {
+      console.log(val)
+      this.nuevas_redes.splice(val, 1)
+    },
+    deleteFinanciamiento(val) {
+      console.log(val)
+      this.nuevos_financiamientos.splice(val, 1)
+    },
     onUploaded(evt) {
       console.log("uploaded", evt)
       console.log("response", evt.xhr.response)
@@ -784,7 +1123,7 @@ export default {
     },
     closeAddProyectoDialog() {
       this.add_proyecto_dialog = false
-      this.proyecto_data = {inclusion_genero: false}
+      this.proyecto_data = {inclusion_genero: false, fecha_inicio: "", fecha_registro: ""}
     },
     isValidEmail(val) {
       if (val) {
@@ -795,22 +1134,126 @@ export default {
       }
     },
     addProyecto() {
-      const token = cookies.get("access_token")
+      this.token = cookies.get("access_token")
       this.proyecto_data.promovente = this.auth_user.pk
       this.$refs.form_add.validate().then(valid => {
         if (valid) {
           axios.post(`https://onsses45.maptitude.xyz/api/v1/ce/proyectos/`, this.proyecto_data,
-            {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
+            {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
             console.log(response.data)
-            this.add_proyecto_dialog = false
+            this.token = cookies.get("access_token")
+            let proyecto_id = response.data.id
+            if (this.nuevos_logros.length > 0) {
+              this.nuevos_logros.forEach(item => {
+                item.proyecto = proyecto_id
+                axios.post(`https://onsses45.maptitude.xyz/api/v1/ce/logros/`, item,
+                  {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
+                    console.log(response.data)
+                }).catch(error => console.log(error))
+              })
+            }
+            if (this.nuevas_certificaciones.length > 0) {
+              this.nuevas_certificaciones.forEach(item => {
+                item.proyecto = proyecto_id
+                axios.post(`https://onsses45.maptitude.xyz/api/v1/ce/certificaciones/`, item,
+                  {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
+                    console.log(response.data)
+                }).catch(error => console.log(error))
+              })
+            }
+            if (this.nuevos_reconocimientos.length > 0) {
+              this.nuevos_reconocimientos.forEach(item => {
+                item.proyecto = proyecto_id
+                axios.post(`https://onsses45.maptitude.xyz/api/v1/ce/reconocimientos/`, item,
+                  {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
+                    console.log(response.data)
+                }).catch(error => console.log(error))
+              })
+            }
+            if (this.nuevas_redes.length > 0) {
+              this.nuevas_redes.forEach(item => {
+                item.proyecto = proyecto_id
+                axios.post(`https://onsses45.maptitude.xyz/api/v1/ce/redes/`, item,
+                  {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
+                    console.log(response.data)
+                }).catch(error => console.log(error))
+              })
+            }
+            if (this.nuevos_financiamientos.length > 0) {
+              this.nuevos_financiamientos.forEach(item => {
+                item.proyecto = proyecto_id
+                axios.post(`https://onsses45.maptitude.xyz/api/v1/ce/financiamientos/`, item,
+                  {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
+                    console.log(response.data)
+                }).catch(error => console.log(error))
+              })
+            }
           }).catch(error => {
             console.log(error)
+          }).finally(() => {
+            this.add_proyecto_dialog = false
+            this.proyecto_data = {inclusion_genero: false, fecha_inicio: "", fecha_registro: ""}
+            this.nuevo_logro = {nombre: "", fecha: ""}
+            this.nueva_certificacion = {nombre: "", fuente: "", fecha: ""}
+            this.nuevo_reconocimiento = {nombre: "", fuente: "", fecha: ""}
+            this.nueva_red = {nombre: "", integrantes: ""}
+            this.nuevo_financiamiento = {nombre: "", fuente: "", monto: ""}
           })
         } else {
           console.log('error submit!!');
           return false;
         }
       });
+    },
+    addLogro() {
+      this.nuevos_logros.push(this.nuevo_logro)
+      this.logroDialog = false
+      this.nuevo_logro = {nombre: "", fecha: ""}
+      console.log(this.nuevos_logros)
+    },
+    cancelarLogro() {
+      this.logroDialog = false
+      this.nuevo_logro = {nombre: "", fecha: ""}
+    },
+    addCertificacion() {
+      this.nuevas_certificaciones.push(this.nueva_certificacion)
+      this.certificacionDialog = false
+      this.nueva_certificacion = {nombre: "", fuente: "", fecha: ""}
+      console.log(this.nuevas_certificaciones)
+    },
+    cancelarCertificacion() {
+      this.certificacionDialog = false
+      this.nueva_certificacion = {nombre: "", fuente: "", fecha: ""}
+    },
+    addReconocimiento() {
+      this.nuevos_reconocimientos.push(this.nuevo_reconocimiento)
+      this.reconocimientoDialog = false
+      this.nuevo_reconocimiento = {nombre: "", fuente: "", fecha: ""}
+      console.log(this.nuevos_reconocimientos)
+    },
+    cancelarReconocimiento() {
+      this.reconocimientoDialog = false
+      this.nuevo_reconocimiento = {nombre: "", fuente: "", fecha: ""}
+    },
+    addRed() {
+      this.nuevas_redes.push(this.nueva_red)
+      this.redDialog = false
+      this.nueva_red = {nombre: "", integrantes: ""}
+      console.log(this.nuevas_redes)
+    },
+    cancelarRed() {
+      this.redDialog = false
+      this.nueva_red = {nombre: "", integrantes: ""}
+    },
+    addFinanciamiento() {
+      this.nuevos_financiamientos.push(this.nuevo_financiamiento)
+      this.financiamientoDialog = false
+      this.nuevo_financiamiento = {nombre: "", fuente: "", monto: ""}
+      console.log(this.nuevos_financiamientos)
+    },
+    cancelarFinanciamiento() {
+      this.financiamientoDialog = false
+      this.nuevo_financiamiento = {nombre: "", fuente: "", monto: ""}
     },
     closeUbicacionDialog() {
       this.ubicacionDialog = false
@@ -922,7 +1365,22 @@ export default {
     },
     'proyecto_data.fecha_registro': function (newVal, oldVal) {
       this.proyecto_data.fecha_registro = this.proyecto_data.fecha_registro.split("/").join("-")
-    }
+    },
+    'nuevo_logro.fecha': function (newVal, oldVal) {
+      this.nuevo_logro.fecha = this.nuevo_logro.fecha.split("/").join("-")
+    },
+    'nueva_certificacion.fecha': function (newVal, oldVal) {
+      this.nueva_certificacion.fecha = this.nueva_certificacion.fecha.split("/").join("-")
+    },
+    'nuevo_reconocimiento.fecha': function (newVal, oldVal) {
+      this.nuevo_reconocimiento.fecha = this.nuevo_reconocimiento.fecha.split("/").join("-")
+    },
+    'nueva_red.fecha': function (newVal, oldVal) {
+      this.nueva_red.fecha = this.nueva_red.fecha.split("/").join("-")
+    },
+    'nuevo_financiamiento.fecha': function (newVal, oldVal) {
+      this.nuevo_financiamiento.fecha = this.nuevo_financiamiento.fecha.split("/").join("-")
+    },
   }
 }
 </script>
