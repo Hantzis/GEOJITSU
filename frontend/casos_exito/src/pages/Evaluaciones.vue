@@ -11,7 +11,7 @@
         <q-btn color="primary" @click="getEvaluaciones()">
           <q-icon left dense size="2em" name="mdi-sync" style="margin-right: -10px; margin-left: -10px;"/>
         </q-btn>
-        <q-btn no-caps v-if="!es_usuario" style="margin-left: 8px;" color="green" @click="addEvaluacionDialog()">
+        <q-btn no-caps v-if="auth_logged" style="margin-left: 8px;" color="green" @click="add_evaluacion_dialog = true">
           <q-icon left size="2em" name="mdi-plus"/>
           <div style="margin-top: 2px;">Nueva evaluación</div>
         </q-btn>
@@ -27,23 +27,20 @@
         align="left"
         no-caps
       >
-        <q-tab name="todos" label="Todos los casos"/>
-        <q-tab name="dictaminados" label="Casos dictaminados por expertos"/>
-        <q-tab name="pendientes" label="Casos pendientes de revisión"/>
+        <q-tab name="todas" label="Todas las evaluaciones"/>
         <q-tab name="mios" label="Casos promovidos por mí"/>
       </q-tabs>
 
       <q-separator/>
 
       <q-tab-panels v-model="tab" animated>
-        <q-tab-panel name="todos">
+        <q-tab-panel name="todas">
           <div class="row">
             <div class="col">
               <q-table
-                title="Todos los casos"
-                :data.sync="datos_registros"
+                title="Todas las evaluaciones"
+                :data.sync="datos_evaluaciones"
                 :columns="columnas"
-                :visible-columns="visible_columnas"
                 row-key="id"
                 :loading="tabla_loading"
                 :filter="filter"
@@ -56,21 +53,6 @@
                       <q-icon name="search"/>
                     </template>
                   </q-input>
-                  <q-select
-                    v-model="visible_columnas"
-                    multiple
-                    outlined
-                    dense
-                    options-dense
-                    :display-value1="$q.lang.table.columnas"
-                    display-value="Mostrar columnas..."
-                    emit-value
-                    map-options
-                    :options="columnas"
-                    option-value="name"
-                    options-cover
-                    style="min-width: 150px"
-                  />
                 </template>
 
 
@@ -91,56 +73,12 @@
                   <q-tr :props="props">
                     <q-td v-for="col in props.cols" :key="col.name" :props="props">{{ col.value }}</q-td>
                     <q-td auto-width>
-                      <q-btn dense round flat color="accent" @click="props.expand = !props.expand"
+                      <!-- <q-btn dense round flat color="accent" @click="props.expand = !props.expand"
                              :icon="props.expand ? 'remove' : 'add'"></q-btn>
                       <q-btn v-if="es_usuario" dense round flat color="primary" @click="editRegistroDialog(props)"
                              icon="edit"></q-btn>
                       <q-btn v-if="es_usuario" dense round flat color="red" @click="deleteRegistroDialog(props)"
-                             icon="delete"></q-btn>
-                    </q-td>
-                  </q-tr>
-                  <q-tr v-show="props.expand" :props="props">
-                    <q-td colspan="100%">
-                      <div class="text-left">
-                        <q-tr>
-                          <q-td>Encabezado</q-td>
-                          <q-td>
-                            <q-tr>
-                              <q-td style="height: initial; border-bottom-width: 0;">{{ props.row.encabezado }}</q-td>
-                            </q-tr>
-                          </q-td>
-                        </q-tr>
-                        <q-tr>
-                          <q-td>Transcripción</q-td>
-                          <q-td>
-                            <q-tr>
-                              <q-td style="height: initial; border-bottom-width: 0;">
-                                <pre>{{ props.row.transcripcion }}</pre>
-                              </q-td>
-                            </q-tr>
-                          </q-td>
-                        </q-tr>
-                        <q-tr>
-                          <q-td>Observaciones</q-td>
-                          <q-td>
-                            <q-tr>
-                              <q-td style="height: initial; border-bottom-width: 0;">
-                                <pre>{{ props.row.observaciones }}</pre>
-                              </q-td>
-                            </q-tr>
-                          </q-td>
-                        </q-tr>
-                        <q-tr v-if="es_usuario">
-                          <q-td>Notas</q-td>
-                          <q-td>
-                            <q-tr>
-                              <q-td style="height: initial; border-bottom-width: 0;">
-                                <pre>{{ props.row.notas }}</pre>
-                              </q-td>
-                            </q-tr>
-                          </q-td>
-                        </q-tr>
-                      </div>
+                             icon="delete"></q-btn> -->
                     </q-td>
                   </q-tr>
                 </template>
@@ -150,16 +88,6 @@
           </div>
 
 
-        </q-tab-panel>
-
-        <q-tab-panel name="dictaminados">
-          <div class="text-h6">Alarms</div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        </q-tab-panel>
-
-        <q-tab-panel name="pendientes">
-          <div class="text-h6">Movies</div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </q-tab-panel>
 
         <q-tab-panel name="mios">
@@ -174,40 +102,86 @@
 </template>
 
 <script>
+import axios from 'axios'
+import cookies from 'browser-cookies'
+import {mapGetters} from "vuex";
+
 export default {
   name: 'casosExito',
   data() {
     return {
-      tab: 'todos',
+      filter: '',
+      token: "",
+      add_evaluacion_dialog: false,
+      tab: 'todas',
+      datos_evaluaciones_mias: undefined,
+      datos_evaluaciones: undefined,
       columnas: [
         {name: 'id', align: 'left', label: 'ID', field: 'id', sortable: true},
-        {name: 'archivo', align: 'left', label: 'Archivo', field: 'archivo', sortable: true},
-        {name: 'fondo', align: 'left', label: 'Fondo', field: 'fondo', sortable: true},
-        {name: 'tipo_documento', align: 'left', label: 'Tipo de documento', field: 'tipo_documento', sortable: true},
-        {name: 'libro', align: 'left', label: 'Libro', field: 'libro', sortable: true},
-        {name: 'foja', align: 'left', label: 'Foja', field: 'foja', sortable: true},
-        {name: 'caja', align: 'left', label: 'Caja', field: 'caja', sortable: true},
-        {name: 'expediente', align: 'left', label: 'Expediente', field: 'expediente', sortable: true},
-        {name: 'años', align: 'left', label: 'Años', field: 'años', sortable: true},
-        {name: 'lugar', align: 'left', label: 'Lugar', field: 'lugar', sortable: true},
-        {name: 'ramo', align: 'left', label: 'Ramo', field: 'ramo', sortable: true},
-        {name: 'encabezado', align: 'left', label: 'Encabezado', field: 'encabezado', sortable: true},
         {
-          name: 'personas_involucradas',
+          name: 'proyecto_display',
           align: 'left',
-          label: 'Personas involucradas',
-          field: 'personas_involucradas',
+          label: 'Nombre de proyecto',
+          field: 'proyecto_display',
           sortable: true
         },
-        {name: 'transcripcion', align: 'left', label: 'Transcripcion', field: 'transcripcion', sortable: true},
-        {name: 'observaciones', align: 'left', label: 'Observaciones', field: 'observaciones', sortable: true},
-        {name: 'creacion', align: 'left', label: 'Creación', field: 'creacion', sortable: true},
-        {name: 'crea', align: 'left', label: 'Crea', field: 'crea', sortable: true},
-        {name: 'actualizacion', align: 'left', label: 'Actualización', field: 'actualizacion', sortable: true},
-        {name: 'actualiza', align: 'left', label: 'Actualiza', field: 'actualiza', sortable: true},
+        {name: 'fecha', align: 'left', label: 'Fecha de evaluación', field: 'fecha', sortable: true},
       ],
-      visible_columns: ['archivo', 'fondo', 'libro', 'foja', 'años', 'lugar', 'ramo', 'crea'],
+      tabla_loading: true,
+
     }
-  }
+  },
+  computed: {
+    ...mapGetters('base', ['getUserData']),
+    ...mapGetters('auth', ['logged', 'user']),
+    auth_user: {
+      get() {
+        return this.user
+      }
+    },
+    auth_logged: {
+      get() {
+        console.log("auth_user", this.user)
+        return this.logged
+      }
+    }
+  },
+  methods: {
+    getEvaluaciones() {
+      this.token = cookies.get("access_token")
+      axios.get("https://onsses45.maptitude.xyz/api/v1/ce/evaluaciones/").then(response => {
+        console.log("response evaluaciones: ", response.data)
+        this.datos_evaluaciones = response.data
+      }).then(() => {
+        if (this.token) {
+          axios.get(`https://onsses45.maptitude.xyz/api/v1/ce/evaluaciones/?promovente=${this.auth_user.pk}`,
+            {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
+            this.datos_evaluaciones_mias = response.data
+          }).catch(error => {
+            console.log(error)
+          })
+        }
+      }).catch(error => {
+        console.log(error)
+      }).finally(() => {
+        this.tabla_loading = false
+      })
+    },
+  },
+  mounted() {
+    try {
+      this.token = cookies.get("access_token")
+    } catch (error) {
+      console.log(error)
+    }
+    if (this.token) {
+      this.$auth.refreshToken().then(response => {
+        console.log("refreshToken", response)
+        this.getEvaluaciones()
+      })
+    } else {
+      this.getEvaluaciones()
+    }
+  },
 }
 </script>

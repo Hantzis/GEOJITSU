@@ -16,7 +16,7 @@
         <q-route-tab to="/" label="Inicio"/>
         <q-route-tab to="/proyectos" label="Proyectos"/>
         <q-route-tab to="/evaluaciones" label="Evaluaciones"/>
-        <q-route-tab to="/casos-exito" label="Casos de éxito"/>
+        <!-- <q-route-tab to="/casos-validados" label="Casos validados"/> -->
         <q-route-tab to="/acerca-de" label="Acerca de"/>
       </q-tabs>
     </q-header>
@@ -54,14 +54,14 @@
             </q-item-section>
           </q-item>
 
-          <q-item to="/casos-exito" clickable v-ripple>
+          <!-- <q-item to="/casos-validados" clickable v-ripple>
             <q-item-section avatar>
               <q-icon name="mdi-checkbox-marked-outline"/>
             </q-item-section>
             <q-item-section>
-              Casos de éxito
+              Casos validados
             </q-item-section>
-          </q-item>
+          </q-item> -->
 
           <q-item to="/acerca-de" clickable v-ripple>
             <q-item-section avatar>

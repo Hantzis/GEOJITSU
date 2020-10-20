@@ -175,7 +175,7 @@
 
 <script>
 export default {
-  name: 'casosExito',
+  name: 'casosValidados',
   data() {
     return {
       tab: 'todos',

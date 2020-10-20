@@ -30,9 +30,7 @@
         <q-tab name="todos" label="Todos los proyectos"/>
         <q-tab v-if="auth_logged" name="mios" label="Proyectos registrados por mí"/>
       </q-tabs>
-
       <q-separator/>
-
       <q-tab-panels v-model="tab" animated>
         <q-tab-panel name="todos">
           <div class="row">
@@ -88,12 +86,10 @@
                   <q-tr :props="props">
                     <q-td v-for="col in props.cols" :key="col.name" :props="props">{{ col.value }}</q-td>
                     <q-td auto-width>
-                      <q-btn dense round flat color="primary"
-                             icon="mdi-eye"></q-btn>
-                      <q-btn v-if="auth_logged" dense round flat color="primary" @click="editRegistroDialog(props)"
+                      <!-- <q-btn v-if="auth_logged" dense round flat color="primary" @click="editRegistroDialog(props)"
                              icon="edit"></q-btn>
                       <q-btn v-if="auth_logged" dense round flat color="red" @click="deleteRegistroDialog(props)"
-                             icon="delete"></q-btn>
+                             icon="delete"></q-btn> -->
                     </q-td>
                   </q-tr>
                 </template>
@@ -157,10 +153,10 @@
                   <q-tr :props="props">
                     <q-td v-for="col in props.cols" :key="col.name" :props="props">{{ col.value }}</q-td>
                     <q-td auto-width>
-                      <q-btn dense round disable flat color="accent"
+                      <!-- <q-btn dense round disable flat color="accent"
                              :icon="props.expand ? 'edit' : 'add'"></q-btn>
                       <q-btn v-if="auth_logged" dense round flat color="primary" @click="editRegistroDialog(props)"
-                             icon="edit"></q-btn>
+                             icon="edit"></q-btn> -->
                       <q-btn v-if="auth_logged" dense round flat color="red" @click="deleteRegistroDialog(props)"
                              icon="delete"></q-btn>
                     </q-td>
@@ -454,7 +450,7 @@
                     <q-card-section>
                       <div class="row">
                         <div class="col" :align="'right'">
-                          <q-btn color="green" @click="logroDialog = true">Agregar logro</q-btn>
+                          <q-btn no-caps color="green" @click="logroDialog = true">Agregar logro</q-btn>
                         </div>
                       </div>
                     </q-card-section>
@@ -492,7 +488,7 @@
                     <q-card-section>
                       <div class="row">
                         <div class="col" :align="'right'">
-                          <q-btn color="green" @click="certificacionDialog = true">Agregar certificación</q-btn>
+                          <q-btn no-caps color="green" @click="certificacionDialog = true">Agregar certificación</q-btn>
                         </div>
                       </div>
                     </q-card-section>
@@ -531,7 +527,7 @@
                     <q-card-section>
                       <div class="row">
                         <div class="col" :align="'right'">
-                          <q-btn color="green" @click="reconocimientoDialog = true">Agregar Reconocimiento</q-btn>
+                          <q-btn no-caps color="green" @click="reconocimientoDialog = true">Agregar reconocimiento</q-btn>
                         </div>
                       </div>
                     </q-card-section>
@@ -570,7 +566,7 @@
                     <q-card-section>
                       <div class="row">
                         <div class="col" :align="'right'">
-                          <q-btn color="green" @click="redDialog = true">Agregar Red</q-btn>
+                          <q-btn no-caps color="green" @click="redDialog = true">Agregar red</q-btn>
                         </div>
                       </div>
                     </q-card-section>
@@ -606,7 +602,7 @@
                     <q-card-section>
                       <div class="row">
                         <div class="col" :align="'right'">
-                          <q-btn color="green" @click="financiamientoDialog = true">Agregar Red</q-btn>
+                          <q-btn no-caps color="green" @click="financiamientoDialog = true">Agregar financiamiento</q-btn>
                         </div>
                       </div>
                     </q-card-section>
@@ -724,7 +720,7 @@
       <q-card style="width: 600px">
         <q-card-section class="row items-center">
           <q-avatar icon="mdi-plus" color="primary" text-color="white"/>
-          <q-toolbar-title>Logro</q-toolbar-title>
+          <q-toolbar-title>Agregar logro</q-toolbar-title>
           <q-btn icon="close" flat round dense @click="logroDialog = false"/>
         </q-card-section>
         <q-separator/>
@@ -769,7 +765,7 @@
       <q-card style="width: 600px">
         <q-card-section class="row items-center">
           <q-avatar icon="mdi-plus" color="primary" text-color="white"/>
-          <q-toolbar-title>Certificación</q-toolbar-title>
+          <q-toolbar-title>Agregar certificación</q-toolbar-title>
           <q-btn icon="close" flat round dense @click="certificacionDialog = false"/>
         </q-card-section>
         <q-separator/>
@@ -819,7 +815,7 @@
       <q-card style="width: 600px">
         <q-card-section class="row items-center">
           <q-avatar icon="mdi-plus" color="primary" text-color="white"/>
-          <q-toolbar-title>Reconocimiento</q-toolbar-title>
+          <q-toolbar-title>Agregar reconocimiento</q-toolbar-title>
           <q-btn icon="close" flat round dense @click="reconocimientoDialog = false"/>
         </q-card-section>
         <q-separator/>
@@ -869,7 +865,7 @@
       <q-card style="width: 600px">
         <q-card-section class="row items-center">
           <q-avatar icon="mdi-plus" color="primary" text-color="white"/>
-          <q-toolbar-title>Red</q-toolbar-title>
+          <q-toolbar-title>Agregar red</q-toolbar-title>
           <q-btn icon="close" flat round dense @click="redDialog = false"/>
         </q-card-section>
         <q-separator/>
@@ -901,7 +897,7 @@
       <q-card style="width: 600px">
         <q-card-section class="row items-center">
           <q-avatar icon="mdi-plus" color="primary" text-color="white"/>
-          <q-toolbar-title>Financiamiento</q-toolbar-title>
+          <q-toolbar-title>Agregar financiamiento</q-toolbar-title>
           <q-btn icon="close" flat round dense @click="financiamientoDialog = false"/>
         </q-card-section>
         <q-separator/>
@@ -1331,13 +1327,16 @@ export default {
     }
   },
   mounted() {
-    const token = cookies.get("access_token")
-    if (token) {
+    try {
+      this.token = cookies.get("access_token")
+    } catch (error) {
+      console.log(error)
+    }
+    if (this.token) {
       this.$auth.refreshToken().then(response => {
         console.log("refreshToken", response)
         this.getProyectos()
         this.getEstados()
-
       })
     } else {
       this.getProyectos()
