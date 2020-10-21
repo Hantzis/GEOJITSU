@@ -196,56 +196,151 @@
                     <q-card-section>
                       <div class="row">
                         <div class="col">
-                          <q-toggle v-model="evaluacion_data.generacion_conocimiento.aplica">
-                            <span>{{ evaluacion_data.generacion_conocimiento.aplica ? 'Aplica' : 'No aplica' }}</span>
+                          <q-toggle v-model="eval_generacion_conocimiento.aplica">
+                            <span>{{ eval_generacion_conocimiento.aplica ? 'Aplica' : 'No aplica' }}</span>
                           </q-toggle>
                         </div>
                       </div>
                     </q-card-section>
-                    <q-card-section v-if="evaluacion_data.generacion_conocimiento.aplica" class="align-center">
-
-                      <q-expansion-item
-                        label="Formación de investigadores comunitarios"
-                      >
-                        <q-card>
-                          <q-card-section>
-                            <div class="row justify-center">
-                              <q-rating
-                                v-model="evaluacion_data.generacion_conocimiento.test"
-                                size="3.5em"
-                                color="grey"
-                                :color-selected="ratingColors"
-                              >
-                                <template v-slot:tip-1>
-                                  <q-tooltip>Not bad</q-tooltip>
-                                </template>
-                                <template v-slot:tip-2>
-                                  <q-tooltip max-width="76%" anchor="top middle" self="bottom middle" :offset="[10, 10]"
-                                             content-class="bg-black"
-                                             content-style="font-size: 16px">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Asperiores cum debitis doloribus eius in perferendis quibusdam quis rem repellat
-                                    saepe.
-                                    Commodi corporis, harum magni nisi officia quidem reiciendis ullam voluptatum.
-                                  </q-tooltip>
-
-                                </template>
-                                <template v-slot:tip-3>
-                                  <q-tooltip>Very good!</q-tooltip>
-                                </template>
-                                <template v-slot:tip-4>
-                                  <q-tooltip>Very good!</q-tooltip>
-                                </template>
-                                <template v-slot:tip-5>
-                                  <q-tooltip>Very good!</q-tooltip>
-                                </template>
-
-                              </q-rating>
-                            </div>
-                          </q-card-section>
-                        </q-card>
-                      </q-expansion-item>
-
+                    <q-card-section v-if="eval_generacion_conocimiento.aplica" class="align-center">
+                      <q-list bordered class="rounded-borders" >
+                        <q-expansion-item
+                          label="Formación de investigadores comunitarios"
+                        >
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_generacion_conocimiento.formacion_investigadores_comunitarios.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColors"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[1]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[eval_generacion_conocimiento.formacion_investigadores_comunitarios.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                        <q-separator/>
+                        <q-expansion-item
+                          :label="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.label">
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColorsGreens"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{ eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[1] }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                      </q-list>
 
                     </q-card-section>
                   </q-card>
@@ -438,7 +533,8 @@ export default {
       token: "",
       add_evaluacion_dialog: false,
       tab: 'mias',
-      ratingColors: ['light-green-3', 'light-green-6', 'green', 'green-9', 'green-10'],
+      ratingColorsGreens: ['light-green-3', 'light-green-6', 'green', 'green-9', 'green-10'],
+      ratingColors: ['red', 'orange', 'yellow', 'green', 'blue'],
       evaluacion_data_template: {generacion_conocimiento: {aplica: false, test: 0}},
       evaluacion_data: {generacion_conocimiento: {aplica: false, test: 0}},
       datos_proyectos: undefined,
@@ -467,7 +563,32 @@ export default {
         {name: 'fecha', align: 'left', label: 'Fecha de evaluación', field: 'fecha', sortable: true},
       ],
       tabla_loading: true,
-
+      eval_generacion_conocimiento:
+        {
+          aplica: false,
+          formacion_investigadores_comunitarios: {
+            label: "Formación de investigadores comunitarios",
+            value: 0, options: [
+              "No Aplica",
+              "No se reconoce la necesidad de la  formación de investigadores comunitarios",
+              "Se reconoce la necesidad formación de investigadores comunitarios, sin embargo no hay estrategias ni un plan",
+              "Existe la formación de investigadores comunitarios pero sin estrategias ni planes concretos",
+              "Existe la  formación de investigadores comunitarios a través de la propuesta de una estrategia y un plan, pero aún en elaboración",
+              "Existen procesos de formación de investigadores comunitarios con un plan y una estrategia implementada y en funcionamiento"
+            ]
+          },
+          gestion_documental_generacion_conocimiento: {
+            label: "Gestión documental de los procesos de generación conocimiento o saberes locales",
+            value: 0, options: [
+              "No Aplica",
+              "No se reconoce la necesidad de documentar o registrar el conocimiento o saberes locales",
+              "Se reconoce la necesidad de documentar el conocimiento o saberes locales, sin embargo, no hay inicativas al respecto",
+              "Existen algunas iniciativas encaminadas a la documentación de saberes locales, pero sin alguna estrategia o plan",
+              "Existen procesos de gestión documental sobre la generación del conocimientro o saberes locales, pero aún sin algun resultado",
+              "Existen procesos de gestión documental sobre la generación del conocimientro o saberes locales, con un plan y una estrategia implementada y con resultados",
+            ]
+          },
+        }
     }
   },
   computed: {
