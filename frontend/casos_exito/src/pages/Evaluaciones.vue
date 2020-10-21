@@ -196,12 +196,14 @@
                     <q-card-section>
                       <div class="row">
                         <div class="col">
+                          <p>Estrategias para el diálogo de saberes y sistematización del conocimiento generado.</p>
                           <q-toggle v-model="eval_generacion_conocimiento.aplica">
                             <span>{{ eval_generacion_conocimiento.aplica ? 'Aplica' : 'No aplica' }}</span>
                           </q-toggle>
                         </div>
                       </div>
                     </q-card-section>
+
                     <q-card-section v-if="eval_generacion_conocimiento.aplica" class="align-center">
                       <q-list bordered class="rounded-borders" >
                         <q-expansion-item
@@ -275,6 +277,73 @@
                         </q-expansion-item>
                         <q-separator/>
                         <q-expansion-item
+                          :label="eval_generacion_conocimiento.inovacion_saberes_locales.label">
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_generacion_conocimiento.inovacion_saberes_locales.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColorsGreens"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{ eval_generacion_conocimiento.inovacion_saberes_locales.options[1] }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_generacion_conocimiento.inovacion_saberes_locales.options[eval_generacion_conocimiento.inovacion_saberes_locales.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                        <q-separator/>
+                        <q-expansion-item
                           :label="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.label">
                           <q-card>
                             <q-card-section>
@@ -334,6 +403,142 @@
                                 <div class="col">
                                   {{
                                     eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+
+                        <q-separator/>
+                        <q-expansion-item
+                          :label="eval_generacion_conocimiento.eventos_intercambio_saberes.label">
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_generacion_conocimiento.eventos_intercambio_saberes.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColorsGreens"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{ eval_generacion_conocimiento.eventos_intercambio_saberes.options[1] }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_generacion_conocimiento.eventos_intercambio_saberes.options[eval_generacion_conocimiento.eventos_intercambio_saberes.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+
+                        <q-separator/>
+                        <q-expansion-item
+                          :label="eval_generacion_conocimiento.monitoreo_generacion_conocimiento.label">
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_generacion_conocimiento.monitoreo_generacion_conocimiento.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColorsGreens"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{ eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[1] }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[eval_generacion_conocimiento.monitoreo_generacion_conocimiento.value]
                                   }}
                                 </div>
                               </div>
@@ -569,7 +774,7 @@ export default {
           formacion_investigadores_comunitarios: {
             label: "Formación de investigadores comunitarios",
             value: 0, options: [
-              "No Aplica",
+              "No aplica",
               "No se reconoce la necesidad de la  formación de investigadores comunitarios",
               "Se reconoce la necesidad formación de investigadores comunitarios, sin embargo no hay estrategias ni un plan",
               "Existe la formación de investigadores comunitarios pero sin estrategias ni planes concretos",
@@ -577,15 +782,48 @@ export default {
               "Existen procesos de formación de investigadores comunitarios con un plan y una estrategia implementada y en funcionamiento"
             ]
           },
+          inovacion_saberes_locales: {
+            label: "Procesos de innovación a partir de los saberes locales",
+            value: 0, options: [
+              "No aplica",
+              "No se reconoce la necesidad de innovar",
+              "Se reconoce la necesidad innovar, sin embargo no hay iniciativas al respecto",
+              "Existen algunas iniciativas de innovación sustentadas en saberes locales, pero sin estrategias ni planes concretos",
+              "Existen procesos de innovación a partir de los saberes locales y a través de la propuesta de una estrategia y un plan, pero aún en elaboración",
+              "Existen procesos de innovación a partir de los saberes locales y con un plan y una estrategia implementada y en funcionamiento",
+            ]
+          },
           gestion_documental_generacion_conocimiento: {
             label: "Gestión documental de los procesos de generación conocimiento o saberes locales",
             value: 0, options: [
-              "No Aplica",
+              "No aplica",
               "No se reconoce la necesidad de documentar o registrar el conocimiento o saberes locales",
               "Se reconoce la necesidad de documentar el conocimiento o saberes locales, sin embargo, no hay inicativas al respecto",
               "Existen algunas iniciativas encaminadas a la documentación de saberes locales, pero sin alguna estrategia o plan",
               "Existen procesos de gestión documental sobre la generación del conocimientro o saberes locales, pero aún sin algun resultado",
               "Existen procesos de gestión documental sobre la generación del conocimientro o saberes locales, con un plan y una estrategia implementada y con resultados",
+            ]
+          },
+          eventos_intercambio_saberes: {
+            label: "Se realizan periódicamente eventos o reuniones de intercambio de saberes con otros grupos u organizaciones locales, regionales o nacionales",
+            value: 0, options: [
+              "No aplica",
+              "No se reconoce la necesidad de realizar eventos o reuniones de intercambio de saberes con otros grupos u organizaciones locales, regionales o nacionales",
+              "Se reconoce la necesidad de realizar eventos o reuniones de intercambio de saberes con otros grupos u organizaciones locales, regionales o nacionales, sin embargo, no hay inicativas al respecto",
+              "Ocacionalmente se realizan eventos o reuniones de intercambio de saberes con otros grupos u organizaciones locales, regionales o nacionales, pero sin alguna estrategia o plan",
+              "Se realizan de manera frecuente eventos y/o reuniones de intercambio de saberes con otros grupos u organizaciones locales, regionales o nacionales, aunque no se cuenta con un plan",
+              "Existe un plan para la realización de eventos y/o reuniones de intercambio de saberes con otros grupos u organizaciones locales, regionales o nacionales y se llevan a cabo permanentemente",
+            ]
+          },
+          monitoreo_generacion_conocimiento: {
+            label: "Se cuenta con un plan de evaluación y monitoreo de la estrategia de generación del conocimiento",
+            value: 0, options: [
+              "No aplica",
+              "No se reconoce la importancia de contar con un plan de evaluación y monitoreo de la estrategia de generación del conocimiento",
+              "Se reconoce la importancia de contar con un plan de evaluación y monitoreo del programa de la estrategia de generación del conocimiento, pero no se ha generado",
+              "El proyecto cuenta con un plan de evaluación y monitoreo de la estrategia de generación del conocimiento y se lleva a cabo ocasionalmente",
+              "El proyecto cuenta con un plan de evaluación y monitoreo de la estrategia de generación del conocimiento y se lleva a cabo frecuentemente",
+              "Siempre se realizan las acciones del plan de evaluación y monitoreo de la estrategia de generación del conocimiento",
             ]
           },
         }
