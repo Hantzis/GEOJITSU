@@ -189,12 +189,12 @@
             <div class="row q-py-xs">
               <q-list bordered class="rounded-borders" style="width: 100%;">
 
-                <q-expansion-item expand-separator label="eval_integridad_territorial">
+                <q-expansion-item expand-separator label="Integridad territorial">
                   <q-card>
                     <q-card-section>
                       <div class="row">
                         <div class="col">
-                          <p>Estrategias para el diálogo de saberes y sistematización del conocimiento generado.</p>
+                          <p>Incorporado a una estrategia de ordenamiento del territorio, local, y/o regional que considere un plan de vida o proyecto de resiliencia, y es reconocido en el territorio.</p>
                           <q-toggle v-model="eval_integridad_territorial.aplica">
                             <span>{{ eval_integridad_territorial.aplica ? 'Aplica' : 'No aplica' }}</span>
                           </q-toggle>
@@ -221,7 +221,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_integridad_territorial.formacion_investigadores_comunitarios.options[1]
+                                        eval_integridad_territorial.alineado_programas_ordenamiento.options[1]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -230,7 +230,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_integridad_territorial.formacion_investigadores_comunitarios.options[2]
+                                        eval_integridad_territorial.alineado_programas_ordenamiento.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -239,7 +239,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_integridad_territorial.formacion_investigadores_comunitarios.options[3]
+                                        eval_integridad_territorial.alineado_programas_ordenamiento.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -248,7 +248,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_integridad_territorial.formacion_investigadores_comunitarios.options[4]
+                                        eval_integridad_territorial.alineado_programas_ordenamiento.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -257,7 +257,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_integridad_territorial.formacion_investigadores_comunitarios.options[5]
+                                        eval_integridad_territorial.alineado_programas_ordenamiento.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -266,7 +266,7 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_integridad_territorial.formacion_investigadores_comunitarios.options[eval_generacion_conocimiento.formacion_investigadores_comunitarios.value]
+                                    eval_integridad_territorial.alineado_programas_ordenamiento.options[eval_integridad_territorial.alineado_programas_ordenamiento.value]
                                   }}
                                 </div>
                               </div>
@@ -275,12 +275,12 @@
                         </q-expansion-item>
                         <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.inovacion_saberes_locales.label">
+                          :label="eval_integridad_territorial.alineado_programas_ordenamiento_comunitario.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.inovacion_saberes_locales.value"
+                                  v-model="eval_integridad_territorial.alineado_programas_ordenamiento_comunitario.value"
                                   size="3.5em"
                                   color="grey"
                                   :color-selected="ratingColorsGreens"
@@ -289,7 +289,7 @@
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.inovacion_saberes_locales.options[1] }}
+                                      {{ eval_integridad_territorial.alineado_programas_ordenamiento_comunitario.options[1] }}
                                     </q-tooltip>
                                   </template>
                                   <template v-slot:tip-2>
@@ -297,7 +297,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[2]
+                                        eval_integridad_territorial.alineado_programas_ordenamiento_comunitario.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -306,7 +306,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[3]
+                                        eval_integridad_territorial.alineado_programas_ordenamiento_comunitario.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -315,7 +315,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[4]
+                                        eval_integridad_territorial.alineado_programas_ordenamiento_comunitario.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -324,7 +324,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[5]
+                                        eval_integridad_territorial.alineado_programas_ordenamiento_comunitario.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -333,7 +333,7 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.inovacion_saberes_locales.options[eval_generacion_conocimiento.inovacion_saberes_locales.value]
+                                    eval_integridad_territorial.alineado_programas_ordenamiento_comunitario.options[eval_integridad_territorial.alineado_programas_ordenamiento_comunitario.value]
                                   }}
                                 </div>
                               </div>
@@ -342,12 +342,12 @@
                         </q-expansion-item>
                         <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.label">
+                          :label="eval_integridad_territorial.aporta_beneficios_comunidad.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value"
+                                  v-model="eval_integridad_territorial.aporta_beneficios_comunidad.value"
                                   size="3.5em"
                                   color="grey"
                                   :color-selected="ratingColorsGreens"
@@ -357,7 +357,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[1]
+                                        eval_integridad_territorial.aporta_beneficios_comunidad.options[1]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -366,7 +366,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[2]
+                                        eval_integridad_territorial.aporta_beneficios_comunidad.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -375,7 +375,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[3]
+                                        eval_integridad_territorial.aporta_beneficios_comunidad.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -384,7 +384,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[4]
+                                        eval_integridad_territorial.aporta_beneficios_comunidad.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -393,7 +393,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[5]
+                                        eval_integridad_territorial.aporta_beneficios_comunidad.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -402,7 +402,7 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value]
+                                    eval_integridad_territorial.aporta_beneficios_comunidad.options[eval_integridad_territorial.aporta_beneficios_comunidad.value]
                                   }}
                                 </div>
                               </div>
@@ -415,31 +415,395 @@
                   </q-card>
                 </q-expansion-item>
 
-                <q-separator/>
-
-                <q-expansion-item expand-separator label="eval_identidad_biocultural">
+                <q-expansion-item expand-separator label="Identidad biocultural">
                   <q-card>
                     <q-card-section>
                       <div class="row">
                         <div class="col">
-                          <p>Estrategias para el diálogo de saberes y sistematización del conocimiento generado.</p>
-                          <q-toggle v-model="eval_generacion_conocimiento.aplica">
-                            <span>{{ eval_generacion_conocimiento.aplica ? 'Aplica' : 'No aplica' }}</span>
+                          <p>El proyecto respeta los usos y costumbres locales.</p>
+                          <q-toggle v-model="eval_identidad_biocultural.aplica">
+                            <span>{{ eval_identidad_biocultural.aplica ? 'Aplica' : 'No aplica' }}</span>
                           </q-toggle>
                         </div>
                       </div>
                     </q-card-section>
 
-                    <q-card-section v-if="eval_generacion_conocimiento.aplica" class="align-center">
+                    <q-card-section v-if="eval_identidad_biocultural.aplica" class="align-center">
                       <q-list bordered class="rounded-borders">
                         <q-expansion-item
-                          label="Formación de investigadores comunitarios"
+                          :label="eval_identidad_biocultural.fomenta_lengua_local.label"
                         >
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.formacion_investigadores_comunitarios.value"
+                                  v-model="eval_identidad_biocultural.fomenta_lengua_local.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColorsGreens"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.fomenta_lengua_local.options[1]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.fomenta_lengua_local.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.fomenta_lengua_local.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.fomenta_lengua_local.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.fomenta_lengua_local.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_identidad_biocultural.fomenta_lengua_local.options[eval_identidad_biocultural.fomenta_lengua_local.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                        <q-expansion-item
+                          :label="eval_identidad_biocultural.participacion_celebraciones_locales.label"
+                        >
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_identidad_biocultural.participacion_celebraciones_locales.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColorsGreens"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.participacion_celebraciones_locales.options[1]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.participacion_celebraciones_locales.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.participacion_celebraciones_locales.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.participacion_celebraciones_locales.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.participacion_celebraciones_locales.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_identidad_biocultural.participacion_celebraciones_locales.options[eval_identidad_biocultural.participacion_celebraciones_locales.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                        <q-expansion-item
+                          :label="eval_identidad_biocultural.participacion_intercambio_saberes_locales.label"
+                        >
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_identidad_biocultural.participacion_intercambio_saberes_locales.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColorsGreens"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.participacion_intercambio_saberes_locales.options[1]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.participacion_intercambio_saberes_locales.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.participacion_intercambio_saberes_locales.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.participacion_intercambio_saberes_locales.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.participacion_intercambio_saberes_locales.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_identidad_biocultural.participacion_intercambio_saberes_locales.options[eval_identidad_biocultural.participacion_intercambio_saberes_locales.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                        <q-expansion-item
+                          :label="eval_identidad_biocultural.conservacion_patrimonio_biocultural.label"
+                        >
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_identidad_biocultural.conservacion_patrimonio_biocultural.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColorsGreens"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.conservacion_patrimonio_biocultural.options[1]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.conservacion_patrimonio_biocultural.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.conservacion_patrimonio_biocultural.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.conservacion_patrimonio_biocultural.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.conservacion_patrimonio_biocultural.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_identidad_biocultural.conservacion_patrimonio_biocultural.options[eval_identidad_biocultural.conservacion_patrimonio_biocultural.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                        <q-expansion-item
+                          :label="eval_identidad_biocultural.promocion_practicas_tradicionales.label"
+                        >
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_identidad_biocultural.promocion_practicas_tradicionales.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColorsGreens"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.promocion_practicas_tradicionales.options[1]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.promocion_practicas_tradicionales.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.promocion_practicas_tradicionales.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.promocion_practicas_tradicionales.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_identidad_biocultural.promocion_practicas_tradicionales.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_identidad_biocultural.promocion_practicas_tradicionales.options[eval_identidad_biocultural.promocion_practicas_tradicionales.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                      </q-list>
+
+                    </q-card-section>
+                  </q-card>
+                </q-expansion-item>
+
+                <q-expansion-item expand-separator label="Gestión ambiental">
+                  <q-card>
+                    <q-card-section>
+                      <div class="row">
+                        <div class="col">
+                          <p>Manejo sustentable de flora y fauna silvestre, residuos sólidos, gestión del agua tanto para uso doméstico como tratamiento y disposición de aguas servidas y estrategias de conservación de suelo.</p>
+                          <q-toggle v-model="eval_gestion_ambiental.aplica">
+                            <span>{{ eval_gestion_ambiental.aplica ? 'Aplica' : 'No aplica' }}</span>
+                          </q-toggle>
+                        </div>
+                      </div>
+                    </q-card-section>
+
+                    <q-card-section v-if="eval_gestion_ambiental.aplica" class="align-center">
+                      <q-list bordered class="rounded-borders">
+                        <q-expansion-item
+                          :label="eval_gestion_ambiental.gestion_agua.label"
+                        >
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_gestion_ambiental.gestion_agua.value"
                                   size="3.5em"
                                   color="grey"
                                   :color-selected="ratingColors"
@@ -449,7 +813,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[1]
+                                        eval_gestion_ambiental.gestion_agua.options[1]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -458,7 +822,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[2]
+                                        eval_gestion_ambiental.gestion_agua.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -467,7 +831,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[3]
+                                        eval_gestion_ambiental.gestion_agua.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -476,7 +840,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[4]
+                                        eval_gestion_ambiental.gestion_agua.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -485,7 +849,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[5]
+                                        eval_gestion_ambiental.gestion_agua.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -494,316 +858,21 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[eval_generacion_conocimiento.formacion_investigadores_comunitarios.value]
+                                    eval_gestion_ambiental.gestion_agua.options[eval_gestion_ambiental.gestion_agua.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.inovacion_saberes_locales.label">
-                          <q-card>
-                            <q-card-section>
-                              <div class="row justify-center">
-                                <q-rating
-                                  v-model="eval_generacion_conocimiento.inovacion_saberes_locales.value"
-                                  size="3.5em"
-                                  color="grey"
-                                  :color-selected="ratingColorsGreens"
-                                >
-                                  <template v-slot:tip-1>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.inovacion_saberes_locales.options[1] }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-2>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[2]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-3>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[3]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-4>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[4]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-5>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[5]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                </q-rating>
-                              </div>
-                              <div class="row justify-center">
-                                <div class="col">
-                                  {{
-                                    eval_generacion_conocimiento.inovacion_saberes_locales.options[eval_generacion_conocimiento.inovacion_saberes_locales.value]
-                                  }}
-                                </div>
-                              </div>
-                            </q-card-section>
-                          </q-card>
-                        </q-expansion-item>
-                        <q-separator/>
-                        <q-expansion-item
-                          :label="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.label">
-                          <q-card>
-                            <q-card-section>
-                              <div class="row justify-center">
-                                <q-rating
-                                  v-model="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value"
-                                  size="3.5em"
-                                  color="grey"
-                                  :color-selected="ratingColorsGreens"
-                                >
-                                  <template v-slot:tip-1>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[1]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-2>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[2]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-3>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[3]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-4>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[4]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-5>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[5]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                </q-rating>
-                              </div>
-                              <div class="row justify-center">
-                                <div class="col">
-                                  {{
-                                    eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value]
-                                  }}
-                                </div>
-                              </div>
-                            </q-card-section>
-                          </q-card>
-                        </q-expansion-item>
-
-                        <q-separator/>
-                        <q-expansion-item
-                          :label="eval_generacion_conocimiento.eventos_intercambio_saberes.label">
-                          <q-card>
-                            <q-card-section>
-                              <div class="row justify-center">
-                                <q-rating
-                                  v-model="eval_generacion_conocimiento.eventos_intercambio_saberes.value"
-                                  size="3.5em"
-                                  color="grey"
-                                  :color-selected="ratingColorsGreens"
-                                >
-                                  <template v-slot:tip-1>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.eventos_intercambio_saberes.options[1] }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-2>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[2]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-3>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[3]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-4>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[4]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-5>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[5]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                </q-rating>
-                              </div>
-                              <div class="row justify-center">
-                                <div class="col">
-                                  {{
-                                    eval_generacion_conocimiento.eventos_intercambio_saberes.options[eval_generacion_conocimiento.eventos_intercambio_saberes.value]
-                                  }}
-                                </div>
-                              </div>
-                            </q-card-section>
-                          </q-card>
-                        </q-expansion-item>
-
-                        <q-separator/>
-                        <q-expansion-item
-                          :label="eval_generacion_conocimiento.monitoreo_generacion_conocimiento.label">
-                          <q-card>
-                            <q-card-section>
-                              <div class="row justify-center">
-                                <q-rating
-                                  v-model="eval_generacion_conocimiento.monitoreo_generacion_conocimiento.value"
-                                  size="3.5em"
-                                  color="grey"
-                                  :color-selected="ratingColorsGreens"
-                                >
-                                  <template v-slot:tip-1>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[1] }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-2>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[2]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-3>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[3]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-4>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[4]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-5>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[5]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                </q-rating>
-                              </div>
-                              <div class="row justify-center">
-                                <div class="col">
-                                  {{
-                                    eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[eval_generacion_conocimiento.monitoreo_generacion_conocimiento.value]
-                                  }}
-                                </div>
-                              </div>
-                            </q-card-section>
-                          </q-card>
-                        </q-expansion-item>
-                      </q-list>
-
-                    </q-card-section>
-                  </q-card>
-                </q-expansion-item>
-
-                <q-separator/>
-
-                <q-expansion-item expand-separator label="eval_gestion_ambiental">
-                  <q-card>
-                    <q-card-section>
-                      <div class="row">
-                        <div class="col">
-                          <p>Estrategias para el diálogo de saberes y sistematización del conocimiento generado.</p>
-                          <q-toggle v-model="eval_generacion_conocimiento.aplica">
-                            <span>{{ eval_generacion_conocimiento.aplica ? 'Aplica' : 'No aplica' }}</span>
-                          </q-toggle>
-                        </div>
-                      </div>
-                    </q-card-section>
-
-                    <q-card-section v-if="eval_generacion_conocimiento.aplica" class="align-center">
-                      <q-list bordered class="rounded-borders">
-                        <q-expansion-item
-                          label="Formación de investigadores comunitarios"
+                          :label="eval_gestion_ambiental.gestion_residuos_solidos.label"
                         >
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.formacion_investigadores_comunitarios.value"
+                                  v-model="eval_gestion_ambiental.gestion_residuos_solidos.value"
                                   size="3.5em"
                                   color="grey"
                                   :color-selected="ratingColors"
@@ -813,7 +882,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[1]
+                                        eval_gestion_ambiental.gestion_residuos_solidos.options[1]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -822,7 +891,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[2]
+                                        eval_gestion_ambiental.gestion_residuos_solidos.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -831,7 +900,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[3]
+                                        eval_gestion_ambiental.gestion_residuos_solidos.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -840,7 +909,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[4]
+                                        eval_gestion_ambiental.gestion_residuos_solidos.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -849,7 +918,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[5]
+                                        eval_gestion_ambiental.gestion_residuos_solidos.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -858,316 +927,21 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[eval_generacion_conocimiento.formacion_investigadores_comunitarios.value]
+                                    eval_gestion_ambiental.gestion_residuos_solidos.options[eval_gestion_ambiental.gestion_residuos_solidos.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.inovacion_saberes_locales.label">
-                          <q-card>
-                            <q-card-section>
-                              <div class="row justify-center">
-                                <q-rating
-                                  v-model="eval_generacion_conocimiento.inovacion_saberes_locales.value"
-                                  size="3.5em"
-                                  color="grey"
-                                  :color-selected="ratingColorsGreens"
-                                >
-                                  <template v-slot:tip-1>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.inovacion_saberes_locales.options[1] }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-2>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[2]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-3>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[3]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-4>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[4]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-5>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[5]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                </q-rating>
-                              </div>
-                              <div class="row justify-center">
-                                <div class="col">
-                                  {{
-                                    eval_generacion_conocimiento.inovacion_saberes_locales.options[eval_generacion_conocimiento.inovacion_saberes_locales.value]
-                                  }}
-                                </div>
-                              </div>
-                            </q-card-section>
-                          </q-card>
-                        </q-expansion-item>
-                        <q-separator/>
-                        <q-expansion-item
-                          :label="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.label">
-                          <q-card>
-                            <q-card-section>
-                              <div class="row justify-center">
-                                <q-rating
-                                  v-model="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value"
-                                  size="3.5em"
-                                  color="grey"
-                                  :color-selected="ratingColorsGreens"
-                                >
-                                  <template v-slot:tip-1>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[1]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-2>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[2]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-3>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[3]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-4>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[4]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-5>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[5]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                </q-rating>
-                              </div>
-                              <div class="row justify-center">
-                                <div class="col">
-                                  {{
-                                    eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value]
-                                  }}
-                                </div>
-                              </div>
-                            </q-card-section>
-                          </q-card>
-                        </q-expansion-item>
-
-                        <q-separator/>
-                        <q-expansion-item
-                          :label="eval_generacion_conocimiento.eventos_intercambio_saberes.label">
-                          <q-card>
-                            <q-card-section>
-                              <div class="row justify-center">
-                                <q-rating
-                                  v-model="eval_generacion_conocimiento.eventos_intercambio_saberes.value"
-                                  size="3.5em"
-                                  color="grey"
-                                  :color-selected="ratingColorsGreens"
-                                >
-                                  <template v-slot:tip-1>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.eventos_intercambio_saberes.options[1] }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-2>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[2]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-3>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[3]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-4>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[4]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-5>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[5]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                </q-rating>
-                              </div>
-                              <div class="row justify-center">
-                                <div class="col">
-                                  {{
-                                    eval_generacion_conocimiento.eventos_intercambio_saberes.options[eval_generacion_conocimiento.eventos_intercambio_saberes.value]
-                                  }}
-                                </div>
-                              </div>
-                            </q-card-section>
-                          </q-card>
-                        </q-expansion-item>
-
-                        <q-separator/>
-                        <q-expansion-item
-                          :label="eval_generacion_conocimiento.monitoreo_generacion_conocimiento.label">
-                          <q-card>
-                            <q-card-section>
-                              <div class="row justify-center">
-                                <q-rating
-                                  v-model="eval_generacion_conocimiento.monitoreo_generacion_conocimiento.value"
-                                  size="3.5em"
-                                  color="grey"
-                                  :color-selected="ratingColorsGreens"
-                                >
-                                  <template v-slot:tip-1>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[1] }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-2>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[2]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-3>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[3]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-4>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[4]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                  <template v-slot:tip-5>
-                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
-                                               :offset="[10, 10]"
-                                               content-class="bg-black" content-style="font-size: 16px">
-                                      {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[5]
-                                      }}
-                                    </q-tooltip>
-                                  </template>
-                                </q-rating>
-                              </div>
-                              <div class="row justify-center">
-                                <div class="col">
-                                  {{
-                                    eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[eval_generacion_conocimiento.monitoreo_generacion_conocimiento.value]
-                                  }}
-                                </div>
-                              </div>
-                            </q-card-section>
-                          </q-card>
-                        </q-expansion-item>
-                      </q-list>
-
-                    </q-card-section>
-                  </q-card>
-                </q-expansion-item>
-
-                <q-separator/>
-
-                <q-expansion-item expand-separator label="eval_buen_gobierno_interno">
-                  <q-card>
-                    <q-card-section>
-                      <div class="row">
-                        <div class="col">
-                          <p>Estrategias para el diálogo de saberes y sistematización del conocimiento generado.</p>
-                          <q-toggle v-model="eval_generacion_conocimiento.aplica">
-                            <span>{{ eval_generacion_conocimiento.aplica ? 'Aplica' : 'No aplica' }}</span>
-                          </q-toggle>
-                        </div>
-                      </div>
-                    </q-card-section>
-
-                    <q-card-section v-if="eval_generacion_conocimiento.aplica" class="align-center">
-                      <q-list bordered class="rounded-borders">
-                        <q-expansion-item
-                          label="Formación de investigadores comunitarios"
+                          :label="eval_gestion_ambiental.gestion_residuos_peligrosos.label"
                         >
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.formacion_investigadores_comunitarios.value"
+                                  v-model="eval_gestion_ambiental.gestion_residuos_peligrosos.value"
                                   size="3.5em"
                                   color="grey"
                                   :color-selected="ratingColors"
@@ -1177,7 +951,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[1]
+                                        eval_gestion_ambiental.gestion_residuos_peligrosos.options[1]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1186,7 +960,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[2]
+                                        eval_gestion_ambiental.gestion_residuos_peligrosos.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1195,7 +969,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[3]
+                                        eval_gestion_ambiental.gestion_residuos_peligrosos.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1204,7 +978,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[4]
+                                        eval_gestion_ambiental.gestion_residuos_peligrosos.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1213,7 +987,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[5]
+                                        eval_gestion_ambiental.gestion_residuos_peligrosos.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1222,30 +996,32 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[eval_generacion_conocimiento.formacion_investigadores_comunitarios.value]
+                                    eval_gestion_ambiental.gestion_residuos_peligrosos.options[eval_gestion_ambiental.gestion_residuos_peligrosos.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.inovacion_saberes_locales.label">
+                          :label="eval_gestion_ambiental.materiales_regionales.label"
+                        >
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.inovacion_saberes_locales.value"
+                                  v-model="eval_gestion_ambiental.materiales_regionales.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.inovacion_saberes_locales.options[1] }}
+                                      {{
+                                        eval_gestion_ambiental.materiales_regionales.options[1]
+                                      }}
                                     </q-tooltip>
                                   </template>
                                   <template v-slot:tip-2>
@@ -1253,7 +1029,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[2]
+                                        eval_gestion_ambiental.materiales_regionales.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1262,7 +1038,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[3]
+                                        eval_gestion_ambiental.materiales_regionales.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1271,7 +1047,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[4]
+                                        eval_gestion_ambiental.materiales_regionales.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1280,7 +1056,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[5]
+                                        eval_gestion_ambiental.materiales_regionales.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1289,31 +1065,31 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.inovacion_saberes_locales.options[eval_generacion_conocimiento.inovacion_saberes_locales.value]
+                                    eval_gestion_ambiental.materiales_regionales.options[eval_gestion_ambiental.materiales_regionales.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.label">
+                          :label="eval_gestion_ambiental.materiales_amigables_ambiente.label"
+                        >
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value"
+                                  v-model="eval_gestion_ambiental.materiales_amigables_ambiente.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[1]
+                                        eval_gestion_ambiental.materiales_amigables_ambiente.options[1]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1322,7 +1098,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[2]
+                                        eval_gestion_ambiental.materiales_amigables_ambiente.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1331,7 +1107,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[3]
+                                        eval_gestion_ambiental.materiales_amigables_ambiente.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1340,7 +1116,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[4]
+                                        eval_gestion_ambiental.materiales_amigables_ambiente.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1349,7 +1125,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[5]
+                                        eval_gestion_ambiental.materiales_amigables_ambiente.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1358,31 +1134,32 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value]
+                                    eval_gestion_ambiental.materiales_amigables_ambiente.options[eval_gestion_ambiental.materiales_amigables_ambiente.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.eventos_intercambio_saberes.label">
+                          :label="eval_gestion_ambiental.certificacion_manejo_ambiental.label"
+                        >
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.eventos_intercambio_saberes.value"
+                                  v-model="eval_gestion_ambiental.certificacion_manejo_ambiental.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.eventos_intercambio_saberes.options[1] }}
+                                      {{
+                                        eval_gestion_ambiental.certificacion_manejo_ambiental.options[1]
+                                      }}
                                     </q-tooltip>
                                   </template>
                                   <template v-slot:tip-2>
@@ -1390,7 +1167,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[2]
+                                        eval_gestion_ambiental.certificacion_manejo_ambiental.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1399,7 +1176,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[3]
+                                        eval_gestion_ambiental.certificacion_manejo_ambiental.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1408,7 +1185,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[4]
+                                        eval_gestion_ambiental.certificacion_manejo_ambiental.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1417,7 +1194,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[5]
+                                        eval_gestion_ambiental.certificacion_manejo_ambiental.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1426,31 +1203,32 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.eventos_intercambio_saberes.options[eval_generacion_conocimiento.eventos_intercambio_saberes.value]
+                                    eval_gestion_ambiental.certificacion_manejo_ambiental.options[eval_gestion_ambiental.certificacion_manejo_ambiental.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.monitoreo_generacion_conocimiento.label">
+                          :label="eval_gestion_ambiental.programa_manejo_flora.label"
+                        >
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.monitoreo_generacion_conocimiento.value"
+                                  v-model="eval_gestion_ambiental.programa_manejo_flora.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[1] }}
+                                      {{
+                                        eval_gestion_ambiental.programa_manejo_flora.options[1]
+                                      }}
                                     </q-tooltip>
                                   </template>
                                   <template v-slot:tip-2>
@@ -1458,7 +1236,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[2]
+                                        eval_gestion_ambiental.programa_manejo_flora.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1467,7 +1245,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[3]
+                                        eval_gestion_ambiental.programa_manejo_flora.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1476,7 +1254,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[4]
+                                        eval_gestion_ambiental.programa_manejo_flora.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1485,7 +1263,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[5]
+                                        eval_gestion_ambiental.programa_manejo_flora.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1494,7 +1272,214 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[eval_generacion_conocimiento.monitoreo_generacion_conocimiento.value]
+                                    eval_gestion_ambiental.programa_manejo_flora.options[eval_gestion_ambiental.programa_manejo_flora.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                        <q-expansion-item
+                          :label="eval_gestion_ambiental.programa_manejo_ambiental_avalado.label"
+                        >
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_gestion_ambiental.programa_manejo_ambiental_avalado.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColors"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_gestion_ambiental.programa_manejo_ambiental_avalado.options[1]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_gestion_ambiental.programa_manejo_ambiental_avalado.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_gestion_ambiental.programa_manejo_ambiental_avalado.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_gestion_ambiental.programa_manejo_ambiental_avalado.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_gestion_ambiental.programa_manejo_ambiental_avalado.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_gestion_ambiental.programa_manejo_ambiental_avalado.options[eval_gestion_ambiental.programa_manejo_ambiental_avalado.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                        <q-expansion-item
+                          :label="eval_gestion_ambiental.estrategia_trafico_especies_riesgo.label"
+                        >
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_gestion_ambiental.estrategia_trafico_especies_riesgo.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColors"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_gestion_ambiental.estrategia_trafico_especies_riesgo.options[1]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_gestion_ambiental.estrategia_trafico_especies_riesgo.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_gestion_ambiental.estrategia_trafico_especies_riesgo.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_gestion_ambiental.estrategia_trafico_especies_riesgo.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_gestion_ambiental.estrategia_trafico_especies_riesgo.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_gestion_ambiental.estrategia_trafico_especies_riesgo.options[eval_gestion_ambiental.estrategia_trafico_especies_riesgo.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                        <q-expansion-item
+                          :label="eval_gestion_ambiental.monitoreo_gestion_ambiental.label"
+                        >
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_gestion_ambiental.monitoreo_gestion_ambiental.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColors"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_gestion_ambiental.monitoreo_gestion_ambiental.options[1]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_gestion_ambiental.monitoreo_gestion_ambiental.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_gestion_ambiental.monitoreo_gestion_ambiental.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_gestion_ambiental.monitoreo_gestion_ambiental.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_gestion_ambiental.monitoreo_gestion_ambiental.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_gestion_ambiental.monitoreo_gestion_ambiental.options[eval_gestion_ambiental.monitoreo_gestion_ambiental.value]
                                   }}
                                 </div>
                               </div>
@@ -1507,7 +1492,511 @@
                   </q-card>
                 </q-expansion-item>
 
-                <q-separator/>
+                <q-expansion-item expand-separator label="Procesos de gobernanza del proyecto en la organización o el proyecto">
+                  <q-card>
+                    <q-card-section>
+                      <div class="row">
+                        <div class="col">
+                          <p>Gobernanza para la mejora del buen gobierno en la toma de decisiones internas.</p>
+                          <q-toggle v-model="eval_buen_gobierno_interno.aplica">
+                            <span>{{ eval_buen_gobierno_interno.aplica ? 'Aplica' : 'No aplica' }}</span>
+                          </q-toggle>
+                        </div>
+                      </div>
+                    </q-card-section>
+
+                    <q-card-section v-if="eval_buen_gobierno_interno.aplica" class="align-center">
+                      <q-list bordered class="rounded-borders">
+                        <q-expansion-item
+                          :label="eval_buen_gobierno_interno.regulacion_actores_externos.label"
+                        >
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_buen_gobierno_interno.regulacion_actores_externos.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColors"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.regulacion_actores_externos.options[1]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.regulacion_actores_externos.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.regulacion_actores_externos.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.regulacion_actores_externos.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.regulacion_actores_externos.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_buen_gobierno_interno.regulacion_actores_externos.options[eval_buen_gobierno_interno.regulacion_actores_externos.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                        <q-expansion-item
+                          :label="eval_buen_gobierno_interno.decisiones_internas_colectivas.label"
+                        >
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_buen_gobierno_interno.decisiones_internas_colectivas.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColors"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.decisiones_internas_colectivas.options[1]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.decisiones_internas_colectivas.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.decisiones_internas_colectivas.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.decisiones_internas_colectivas.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.decisiones_internas_colectivas.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_buen_gobierno_interno.decisiones_internas_colectivas.options[eval_buen_gobierno_interno.decisiones_internas_colectivas.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                        <q-expansion-item
+                          :label="eval_buen_gobierno_interno.acuerdos_comunes_resolucion_conflictos.label"
+                        >
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_buen_gobierno_interno.acuerdos_comunes_resolucion_conflictos.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColors"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.acuerdos_comunes_resolucion_conflictos.options[1]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.acuerdos_comunes_resolucion_conflictos.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.acuerdos_comunes_resolucion_conflictos.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.acuerdos_comunes_resolucion_conflictos.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.acuerdos_comunes_resolucion_conflictos.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_buen_gobierno_interno.acuerdos_comunes_resolucion_conflictos.options[eval_buen_gobierno_interno.acuerdos_comunes_resolucion_conflictos.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                        <q-expansion-item
+                          :label="eval_buen_gobierno_interno.espacios_participacion.label"
+                        >
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_buen_gobierno_interno.espacios_participacion.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColors"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.espacios_participacion.options[1]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.espacios_participacion.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.espacios_participacion.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.espacios_participacion.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.espacios_participacion.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_buen_gobierno_interno.espacios_participacion.options[eval_buen_gobierno_interno.espacios_participacion.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                        <q-expansion-item
+                          :label="eval_buen_gobierno_interno.incorpora_cosmovision_local.label"
+                        >
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_buen_gobierno_interno.incorpora_cosmovision_local.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColors"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.incorpora_cosmovision_local.options[1]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.incorpora_cosmovision_local.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.incorpora_cosmovision_local.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.incorpora_cosmovision_local.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.incorpora_cosmovision_local.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_buen_gobierno_interno.incorpora_cosmovision_local.options[eval_buen_gobierno_interno.incorpora_cosmovision_local.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                        <q-expansion-item
+                          :label="eval_buen_gobierno_interno.mecanismos_rendicion_cuentas.label"
+                        >
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_buen_gobierno_interno.mecanismos_rendicion_cuentas.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColors"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.mecanismos_rendicion_cuentas.options[1]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.mecanismos_rendicion_cuentas.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.mecanismos_rendicion_cuentas.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.mecanismos_rendicion_cuentas.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.mecanismos_rendicion_cuentas.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_buen_gobierno_interno.mecanismos_rendicion_cuentas.options[eval_buen_gobierno_interno.mecanismos_rendicion_cuentas.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                        <q-expansion-item
+                          :label="eval_buen_gobierno_interno.monitoreo_gestion_gobernanza.label"
+                        >
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_buen_gobierno_interno.monitoreo_gestion_gobernanza.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColors"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.monitoreo_gestion_gobernanza.options[1]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.monitoreo_gestion_gobernanza.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.monitoreo_gestion_gobernanza.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.monitoreo_gestion_gobernanza.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_buen_gobierno_interno.monitoreo_gestion_gobernanza.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_buen_gobierno_interno.monitoreo_gestion_gobernanza.options[eval_buen_gobierno_interno.monitoreo_gestion_gobernanza.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                      </q-list>
+
+                    </q-card-section>
+                  </q-card>
+                </q-expansion-item>
+
+
 
                 <q-expansion-item expand-separator label="eval_buen_gobierno_externo">
                   <q-card>
@@ -1515,23 +2004,23 @@
                       <div class="row">
                         <div class="col">
                           <p>Estrategias para el diálogo de saberes y sistematización del conocimiento generado.</p>
-                          <q-toggle v-model="eval_generacion_conocimiento.aplica">
-                            <span>{{ eval_generacion_conocimiento.aplica ? 'Aplica' : 'No aplica' }}</span>
+                          <q-toggle v-model="eval_buen_gobierno_externo.aplica">
+                            <span>{{ eval_buen_gobierno_externo.aplica ? 'Aplica' : 'No aplica' }}</span>
                           </q-toggle>
                         </div>
                       </div>
                     </q-card-section>
 
-                    <q-card-section v-if="eval_generacion_conocimiento.aplica" class="align-center">
+                    <q-card-section v-if="eval_buen_gobierno_externo.aplica" class="align-center">
                       <q-list bordered class="rounded-borders">
                         <q-expansion-item
-                          label="Formación de investigadores comunitarios"
+                          :label="eval_buen_gobierno_externo.participacion_activa_reglamentos.label"
                         >
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.formacion_investigadores_comunitarios.value"
+                                  v-model="eval_buen_gobierno_externo.participacion_activa_reglamentos.value"
                                   size="3.5em"
                                   color="grey"
                                   :color-selected="ratingColors"
@@ -1541,7 +2030,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[1]
+                                        eval_buen_gobierno_externo.participacion_activa_reglamentos.options[1]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1550,7 +2039,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[2]
+                                        eval_buen_gobierno_externo.participacion_activa_reglamentos.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1559,7 +2048,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[3]
+                                        eval_buen_gobierno_externo.participacion_activa_reglamentos.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1568,7 +2057,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[4]
+                                        eval_buen_gobierno_externo.participacion_activa_reglamentos.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1577,7 +2066,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[5]
+                                        eval_buen_gobierno_externo.participacion_activa_reglamentos.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1586,30 +2075,32 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[eval_generacion_conocimiento.formacion_investigadores_comunitarios.value]
+                                    eval_buen_gobierno_externo.participacion_activa_reglamentos.options[eval_buen_gobierno_externo.participacion_activa_reglamentos.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.inovacion_saberes_locales.label">
+                          :label="eval_buen_gobierno_externo.participacion_equitativa_reglamentos.label"
+                        >
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.inovacion_saberes_locales.value"
+                                  v-model="eval_buen_gobierno_externo.participacion_equitativa_reglamentos.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.inovacion_saberes_locales.options[1] }}
+                                      {{
+                                        eval_buen_gobierno_externo.participacion_equitativa_reglamentos.options[1]
+                                      }}
                                     </q-tooltip>
                                   </template>
                                   <template v-slot:tip-2>
@@ -1617,7 +2108,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[2]
+                                        eval_buen_gobierno_externo.participacion_equitativa_reglamentos.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1626,7 +2117,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[3]
+                                        eval_buen_gobierno_externo.participacion_equitativa_reglamentos.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1635,7 +2126,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[4]
+                                        eval_buen_gobierno_externo.participacion_equitativa_reglamentos.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1644,7 +2135,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[5]
+                                        eval_buen_gobierno_externo.participacion_equitativa_reglamentos.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1653,31 +2144,31 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.inovacion_saberes_locales.options[eval_generacion_conocimiento.inovacion_saberes_locales.value]
+                                    eval_buen_gobierno_externo.participacion_equitativa_reglamentos.options[eval_buen_gobierno_externo.participacion_equitativa_reglamentos.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.label">
+                          :label="eval_buen_gobierno_externo.participacion_previa_libre_informada.label"
+                        >
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value"
+                                  v-model="eval_buen_gobierno_externo.participacion_previa_libre_informada.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[1]
+                                        eval_buen_gobierno_externo.participacion_previa_libre_informada.options[1]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1686,7 +2177,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[2]
+                                        eval_buen_gobierno_externo.participacion_previa_libre_informada.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1695,7 +2186,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[3]
+                                        eval_buen_gobierno_externo.participacion_previa_libre_informada.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1704,7 +2195,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[4]
+                                        eval_buen_gobierno_externo.participacion_previa_libre_informada.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1713,7 +2204,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[5]
+                                        eval_buen_gobierno_externo.participacion_previa_libre_informada.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1722,31 +2213,32 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value]
+                                    eval_buen_gobierno_externo.participacion_previa_libre_informada.options[eval_buen_gobierno_externo.participacion_previa_libre_informada.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.eventos_intercambio_saberes.label">
+                          :label="eval_buen_gobierno_externo.participacion_otros_actores.label"
+                        >
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.eventos_intercambio_saberes.value"
+                                  v-model="eval_buen_gobierno_externo.participacion_otros_actores.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.eventos_intercambio_saberes.options[1] }}
+                                      {{
+                                        eval_buen_gobierno_externo.participacion_otros_actores.options[1]
+                                      }}
                                     </q-tooltip>
                                   </template>
                                   <template v-slot:tip-2>
@@ -1754,7 +2246,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[2]
+                                        eval_buen_gobierno_externo.participacion_otros_actores.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1763,7 +2255,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[3]
+                                        eval_buen_gobierno_externo.participacion_otros_actores.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1772,7 +2264,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[4]
+                                        eval_buen_gobierno_externo.participacion_otros_actores.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1781,7 +2273,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[5]
+                                        eval_buen_gobierno_externo.participacion_otros_actores.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1790,31 +2282,32 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.eventos_intercambio_saberes.options[eval_generacion_conocimiento.eventos_intercambio_saberes.value]
+                                    eval_buen_gobierno_externo.participacion_otros_actores.options[eval_buen_gobierno_externo.participacion_otros_actores.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.monitoreo_generacion_conocimiento.label">
+                          :label="eval_buen_gobierno_externo.monitoreo_gestion_gobernanza.label"
+                        >
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.monitoreo_generacion_conocimiento.value"
+                                  v-model="eval_buen_gobierno_externo.monitoreo_gestion_gobernanza.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[1] }}
+                                      {{
+                                        eval_buen_gobierno_externo.monitoreo_gestion_gobernanza.options[1]
+                                      }}
                                     </q-tooltip>
                                   </template>
                                   <template v-slot:tip-2>
@@ -1822,7 +2315,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[2]
+                                        eval_buen_gobierno_externo.monitoreo_gestion_gobernanza.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1831,7 +2324,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[3]
+                                        eval_buen_gobierno_externo.monitoreo_gestion_gobernanza.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1840,7 +2333,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[4]
+                                        eval_buen_gobierno_externo.monitoreo_gestion_gobernanza.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1849,7 +2342,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[5]
+                                        eval_buen_gobierno_externo.monitoreo_gestion_gobernanza.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -1858,7 +2351,7 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[eval_generacion_conocimiento.monitoreo_generacion_conocimiento.value]
+                                    eval_buen_gobierno_externo.monitoreo_gestion_gobernanza.options[eval_buen_gobierno_externo.monitoreo_gestion_gobernanza.value]
                                   }}
                                 </div>
                               </div>
@@ -1871,7 +2364,7 @@
                   </q-card>
                 </q-expansion-item>
 
-                <q-separator/>
+
 
                 <q-expansion-item expand-separator label="Generación de conocimiento">
                   <q-card>
@@ -2235,7 +2728,7 @@
                   </q-card>
                 </q-expansion-item>
 
-                <q-separator/>
+
 
                 <q-expansion-item expand-separator label="eval_manejo_riesgo">
                   <q-card>
@@ -2243,22 +2736,22 @@
                       <div class="row">
                         <div class="col">
                           <p>Estrategias para el diálogo de saberes y sistematización del conocimiento generado.</p>
-                          <q-toggle v-model="eval_generacion_conocimiento.aplica">
-                            <span>{{ eval_generacion_conocimiento.aplica ? 'Aplica' : 'No aplica' }}</span>
+                          <q-toggle v-model="eval_manejo_riesgo.aplica">
+                            <span>{{ eval_manejo_riesgo.aplica ? 'Aplica' : 'No aplica' }}</span>
                           </q-toggle>
                         </div>
                       </div>
                     </q-card-section>
 
-                    <q-card-section v-if="eval_generacion_conocimiento.aplica" class="align-center">
+                    <q-card-section v-if="eval_manejo_riesgo.aplica" class="align-center">
                       <q-list bordered class="rounded-borders">
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.inovacion_saberes_locales.label">
+                          :label="eval_manejo_riesgo.alineado_diagnostico_riesgo.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.formacion_investigadores_comunitarios.value"
+                                  v-model="eval_manejo_riesgo.alineado_diagnostico_riesgo.value"
                                   size="3.5em"
                                   color="grey"
                                   :color-selected="ratingColors"
@@ -2268,7 +2761,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[1]
+                                        eval_manejo_riesgo.alineado_diagnostico_riesgo.options[1]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2277,7 +2770,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[2]
+                                        eval_manejo_riesgo.alineado_diagnostico_riesgo.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2286,7 +2779,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[3]
+                                        eval_manejo_riesgo.alineado_diagnostico_riesgo.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2295,7 +2788,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[4]
+                                        eval_manejo_riesgo.alineado_diagnostico_riesgo.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2304,7 +2797,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[5]
+                                        eval_manejo_riesgo.alineado_diagnostico_riesgo.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2313,30 +2806,31 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[eval_generacion_conocimiento.formacion_investigadores_comunitarios.value]
+                                    eval_manejo_riesgo.alineado_diagnostico_riesgo.options[eval_manejo_riesgo.alineado_diagnostico_riesgo.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.inovacion_saberes_locales.label">
+                          :label="eval_manejo_riesgo.programa_contingencia_riesgo.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.inovacion_saberes_locales.value"
+                                  v-model="eval_manejo_riesgo.programa_contingencia_riesgo.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.inovacion_saberes_locales.options[1] }}
+                                      {{
+                                        eval_manejo_riesgo.programa_contingencia_riesgo.options[1]
+                                      }}
                                     </q-tooltip>
                                   </template>
                                   <template v-slot:tip-2>
@@ -2344,7 +2838,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[2]
+                                        eval_manejo_riesgo.programa_contingencia_riesgo.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2353,7 +2847,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[3]
+                                        eval_manejo_riesgo.programa_contingencia_riesgo.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2362,7 +2856,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[4]
+                                        eval_manejo_riesgo.programa_contingencia_riesgo.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2371,7 +2865,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[5]
+                                        eval_manejo_riesgo.programa_contingencia_riesgo.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2380,31 +2874,30 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.inovacion_saberes_locales.options[eval_generacion_conocimiento.inovacion_saberes_locales.value]
+                                    eval_manejo_riesgo.programa_contingencia_riesgo.options[eval_manejo_riesgo.programa_contingencia_riesgo.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.label">
+                          :label="eval_manejo_riesgo.participa_comites_proteccion_civil.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value"
+                                  v-model="eval_manejo_riesgo.participa_comites_proteccion_civil.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[1]
+                                        eval_manejo_riesgo.participa_comites_proteccion_civil.options[1]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2413,7 +2906,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[2]
+                                        eval_manejo_riesgo.participa_comites_proteccion_civil.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2422,7 +2915,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[3]
+                                        eval_manejo_riesgo.participa_comites_proteccion_civil.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2431,7 +2924,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[4]
+                                        eval_manejo_riesgo.participa_comites_proteccion_civil.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2440,7 +2933,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[5]
+                                        eval_manejo_riesgo.participa_comites_proteccion_civil.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2449,31 +2942,31 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value]
+                                    eval_manejo_riesgo.participa_comites_proteccion_civil.options[eval_manejo_riesgo.participa_comites_proteccion_civil.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.eventos_intercambio_saberes.label">
+                          :label="eval_manejo_riesgo.fondo_ahorro_contingencia.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.eventos_intercambio_saberes.value"
+                                  v-model="eval_manejo_riesgo.fondo_ahorro_contingencia.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.eventos_intercambio_saberes.options[1] }}
+                                      {{
+                                        eval_manejo_riesgo.fondo_ahorro_contingencia.options[1]
+                                      }}
                                     </q-tooltip>
                                   </template>
                                   <template v-slot:tip-2>
@@ -2481,7 +2974,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[2]
+                                        eval_manejo_riesgo.fondo_ahorro_contingencia.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2490,7 +2983,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[3]
+                                        eval_manejo_riesgo.fondo_ahorro_contingencia.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2499,7 +2992,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[4]
+                                        eval_manejo_riesgo.fondo_ahorro_contingencia.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2508,7 +3001,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[5]
+                                        eval_manejo_riesgo.fondo_ahorro_contingencia.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2517,31 +3010,31 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.eventos_intercambio_saberes.options[eval_generacion_conocimiento.eventos_intercambio_saberes.value]
+                                    eval_manejo_riesgo.fondo_ahorro_contingencia.options[eval_manejo_riesgo.fondo_ahorro_contingencia.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.monitoreo_generacion_conocimiento.label">
+                          :label="eval_manejo_riesgo.programas_capacitacion_riesgo.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.monitoreo_generacion_conocimiento.value"
+                                  v-model="eval_manejo_riesgo.programas_capacitacion_riesgo.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[1] }}
+                                      {{
+                                        eval_manejo_riesgo.programas_capacitacion_riesgo.options[1]
+                                      }}
                                     </q-tooltip>
                                   </template>
                                   <template v-slot:tip-2>
@@ -2549,7 +3042,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[2]
+                                        eval_manejo_riesgo.programas_capacitacion_riesgo.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2558,7 +3051,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[3]
+                                        eval_manejo_riesgo.programas_capacitacion_riesgo.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2567,7 +3060,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[4]
+                                        eval_manejo_riesgo.programas_capacitacion_riesgo.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2576,7 +3069,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[5]
+                                        eval_manejo_riesgo.programas_capacitacion_riesgo.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2585,7 +3078,75 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[eval_generacion_conocimiento.monitoreo_generacion_conocimiento.value]
+                                    eval_manejo_riesgo.programas_capacitacion_riesgo.options[eval_manejo_riesgo.programas_capacitacion_riesgo.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                        <q-expansion-item
+                          :label="eval_manejo_riesgo.monitoreo_gestion_riesgo.label">
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_manejo_riesgo.monitoreo_gestion_riesgo.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColors"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_manejo_riesgo.monitoreo_gestion_riesgo.options[1]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_manejo_riesgo.monitoreo_gestion_riesgo.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_manejo_riesgo.monitoreo_gestion_riesgo.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_manejo_riesgo.monitoreo_gestion_riesgo.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_manejo_riesgo.monitoreo_gestion_riesgo.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_manejo_riesgo.monitoreo_gestion_riesgo.options[eval_manejo_riesgo.monitoreo_gestion_riesgo.value]
                                   }}
                                 </div>
                               </div>
@@ -2598,7 +3159,7 @@
                   </q-card>
                 </q-expansion-item>
 
-                <q-separator/>
+
 
                 <q-expansion-item expand-separator label="eval_produccion_social_ambiental_amigable">
                   <q-card>
@@ -2606,22 +3167,22 @@
                       <div class="row">
                         <div class="col">
                           <p>Estrategias para el diálogo de saberes y sistematización del conocimiento generado.</p>
-                          <q-toggle v-model="eval_generacion_conocimiento.aplica">
-                            <span>{{ eval_generacion_conocimiento.aplica ? 'Aplica' : 'No aplica' }}</span>
+                          <q-toggle v-model="eval_produccion_social_ambiental_amigable.aplica">
+                            <span>{{ eval_produccion_social_ambiental_amigable.aplica ? 'Aplica' : 'No aplica' }}</span>
                           </q-toggle>
                         </div>
                       </div>
                     </q-card-section>
 
-                    <q-card-section v-if="eval_generacion_conocimiento.aplica" class="align-center">
+                    <q-card-section v-if="eval_produccion_social_ambiental_amigable.aplica" class="align-center">
                       <q-list bordered class="rounded-borders">
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.inovacion_saberes_locales.label">
+                          :label="eval_produccion_social_ambiental_amigable.insumos_bajo_impacto_ambiental.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.formacion_investigadores_comunitarios.value"
+                                  v-model="eval_produccion_social_ambiental_amigable.insumos_bajo_impacto_ambiental.value"
                                   size="3.5em"
                                   color="grey"
                                   :color-selected="ratingColors"
@@ -2631,7 +3192,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[1]
+                                        eval_produccion_social_ambiental_amigable.insumos_bajo_impacto_ambiental.options[1]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2640,7 +3201,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[2]
+                                        eval_produccion_social_ambiental_amigable.insumos_bajo_impacto_ambiental.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2649,7 +3210,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[3]
+                                        eval_produccion_social_ambiental_amigable.insumos_bajo_impacto_ambiental.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2658,7 +3219,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[4]
+                                        eval_produccion_social_ambiental_amigable.insumos_bajo_impacto_ambiental.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2667,7 +3228,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[5]
+                                        eval_produccion_social_ambiental_amigable.insumos_bajo_impacto_ambiental.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2676,30 +3237,31 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[eval_generacion_conocimiento.formacion_investigadores_comunitarios.value]
+                                    eval_produccion_social_ambiental_amigable.insumos_bajo_impacto_ambiental.options[eval_produccion_social_ambiental_amigable.insumos_bajo_impacto_ambiental.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.inovacion_saberes_locales.label">
+                          :label="eval_produccion_social_ambiental_amigable.tecnologia_respetuosa_naturaleza.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.inovacion_saberes_locales.value"
+                                  v-model="eval_produccion_social_ambiental_amigable.tecnologia_respetuosa_naturaleza.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.inovacion_saberes_locales.options[1] }}
+                                      {{
+                                        eval_produccion_social_ambiental_amigable.tecnologia_respetuosa_naturaleza.options[1]
+                                      }}
                                     </q-tooltip>
                                   </template>
                                   <template v-slot:tip-2>
@@ -2707,7 +3269,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[2]
+                                        eval_produccion_social_ambiental_amigable.tecnologia_respetuosa_naturaleza.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2716,7 +3278,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[3]
+                                        eval_produccion_social_ambiental_amigable.tecnologia_respetuosa_naturaleza.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2725,7 +3287,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[4]
+                                        eval_produccion_social_ambiental_amigable.tecnologia_respetuosa_naturaleza.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2734,7 +3296,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[5]
+                                        eval_produccion_social_ambiental_amigable.tecnologia_respetuosa_naturaleza.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2743,31 +3305,30 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.inovacion_saberes_locales.options[eval_generacion_conocimiento.inovacion_saberes_locales.value]
+                                    eval_produccion_social_ambiental_amigable.tecnologia_respetuosa_naturaleza.options[eval_produccion_social_ambiental_amigable.tecnologia_respetuosa_naturaleza.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.label">
+                          :label="eval_produccion_social_ambiental_amigable.respeta_saberes_locales.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value"
+                                  v-model="eval_produccion_social_ambiental_amigable.respeta_saberes_locales.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[1]
+                                        eval_produccion_social_ambiental_amigable.respeta_saberes_locales.options[1]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2776,7 +3337,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[2]
+                                        eval_produccion_social_ambiental_amigable.respeta_saberes_locales.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2785,7 +3346,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[3]
+                                        eval_produccion_social_ambiental_amigable.respeta_saberes_locales.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2794,7 +3355,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[4]
+                                        eval_produccion_social_ambiental_amigable.respeta_saberes_locales.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2803,7 +3364,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[5]
+                                        eval_produccion_social_ambiental_amigable.respeta_saberes_locales.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2812,31 +3373,31 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value]
+                                    eval_produccion_social_ambiental_amigable.respeta_saberes_locales.options[eval_produccion_social_ambiental_amigable.respeta_saberes_locales.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.eventos_intercambio_saberes.label">
+                          :label="eval_produccion_social_ambiental_amigable.privilegia_trabajo_local.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.eventos_intercambio_saberes.value"
+                                  v-model="eval_produccion_social_ambiental_amigable.privilegia_trabajo_local.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.eventos_intercambio_saberes.options[1] }}
+                                      {{
+                                        eval_produccion_social_ambiental_amigable.privilegia_trabajo_local.options[1]
+                                      }}
                                     </q-tooltip>
                                   </template>
                                   <template v-slot:tip-2>
@@ -2844,7 +3405,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[2]
+                                        eval_produccion_social_ambiental_amigable.privilegia_trabajo_local.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2853,7 +3414,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[3]
+                                        eval_produccion_social_ambiental_amigable.privilegia_trabajo_local.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2862,7 +3423,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[4]
+                                        eval_produccion_social_ambiental_amigable.privilegia_trabajo_local.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2871,7 +3432,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[5]
+                                        eval_produccion_social_ambiental_amigable.privilegia_trabajo_local.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2880,31 +3441,31 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.eventos_intercambio_saberes.options[eval_generacion_conocimiento.eventos_intercambio_saberes.value]
+                                    eval_produccion_social_ambiental_amigable.privilegia_trabajo_local.options[eval_produccion_social_ambiental_amigable.privilegia_trabajo_local.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.monitoreo_generacion_conocimiento.label">
+                          :label="eval_produccion_social_ambiental_amigable.monitoreo_estrategias_produccion.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.monitoreo_generacion_conocimiento.value"
+                                  v-model="eval_produccion_social_ambiental_amigable.monitoreo_estrategias_produccion.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[1] }}
+                                      {{
+                                        eval_produccion_social_ambiental_amigable.monitoreo_estrategias_produccion.options[1]
+                                      }}
                                     </q-tooltip>
                                   </template>
                                   <template v-slot:tip-2>
@@ -2912,7 +3473,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[2]
+                                        eval_produccion_social_ambiental_amigable.monitoreo_estrategias_produccion.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2921,7 +3482,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[3]
+                                        eval_produccion_social_ambiental_amigable.monitoreo_estrategias_produccion.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2930,7 +3491,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[4]
+                                        eval_produccion_social_ambiental_amigable.monitoreo_estrategias_produccion.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2939,7 +3500,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[5]
+                                        eval_produccion_social_ambiental_amigable.monitoreo_estrategias_produccion.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -2948,7 +3509,7 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[eval_generacion_conocimiento.monitoreo_generacion_conocimiento.value]
+                                    eval_produccion_social_ambiental_amigable.monitoreo_estrategias_produccion.options[eval_produccion_social_ambiental_amigable.monitoreo_estrategias_produccion.value]
                                   }}
                                 </div>
                               </div>
@@ -2961,7 +3522,7 @@
                   </q-card>
                 </q-expansion-item>
 
-                <q-separator/>
+
 
                 <q-expansion-item expand-separator label="Economía social y solidaria">
                   <q-card>
@@ -2969,22 +3530,22 @@
                       <div class="row">
                         <div class="col">
                           <p>Estrategias para el diálogo de saberes y sistematización del conocimiento generado.</p>
-                          <q-toggle v-model="eval_generacion_conocimiento.aplica">
-                            <span>{{ eval_generacion_conocimiento.aplica ? 'Aplica' : 'No aplica' }}</span>
+                          <q-toggle v-model="eval_economia_social_solidaria.aplica">
+                            <span>{{ eval_economia_social_solidaria.aplica ? 'Aplica' : 'No aplica' }}</span>
                           </q-toggle>
                         </div>
                       </div>
                     </q-card-section>
 
-                    <q-card-section v-if="eval_generacion_conocimiento.aplica" class="align-center">
+                    <q-card-section v-if="eval_economia_social_solidaria.aplica" class="align-center">
                       <q-list bordered class="rounded-borders">
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.inovacion_saberes_locales.label">
+                          :label="eval_economia_social_solidaria.cooperacion_colaboracion.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.formacion_investigadores_comunitarios.value"
+                                  v-model="eval_economia_social_solidaria.cooperacion_colaboracion.value"
                                   size="3.5em"
                                   color="grey"
                                   :color-selected="ratingColors"
@@ -2994,7 +3555,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[1]
+                                        eval_economia_social_solidaria.cooperacion_colaboracion.options[1]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3003,7 +3564,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[2]
+                                        eval_economia_social_solidaria.cooperacion_colaboracion.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3012,7 +3573,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[3]
+                                        eval_economia_social_solidaria.cooperacion_colaboracion.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3021,7 +3582,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[4]
+                                        eval_economia_social_solidaria.cooperacion_colaboracion.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3030,7 +3591,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[5]
+                                        eval_economia_social_solidaria.cooperacion_colaboracion.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3039,30 +3600,31 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.formacion_investigadores_comunitarios.options[eval_generacion_conocimiento.formacion_investigadores_comunitarios.value]
+                                    eval_economia_social_solidaria.cooperacion_colaboracion.options[eval_economia_social_solidaria.cooperacion_colaboracion.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.inovacion_saberes_locales.label">
+                          :label="eval_economia_social_solidaria.intercambio_organizaciones.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.inovacion_saberes_locales.value"
+                                  v-model="eval_economia_social_solidaria.intercambio_organizaciones.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.inovacion_saberes_locales.options[1] }}
+                                      {{
+                                        eval_economia_social_solidaria.intercambio_organizaciones.options[1]
+                                      }}
                                     </q-tooltip>
                                   </template>
                                   <template v-slot:tip-2>
@@ -3070,7 +3632,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[2]
+                                        eval_economia_social_solidaria.intercambio_organizaciones.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3079,7 +3641,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[3]
+                                        eval_economia_social_solidaria.intercambio_organizaciones.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3088,7 +3650,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[4]
+                                        eval_economia_social_solidaria.intercambio_organizaciones.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3097,7 +3659,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.inovacion_saberes_locales.options[5]
+                                        eval_economia_social_solidaria.intercambio_organizaciones.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3106,31 +3668,30 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.inovacion_saberes_locales.options[eval_generacion_conocimiento.inovacion_saberes_locales.value]
+                                    eval_economia_social_solidaria.intercambio_organizaciones.options[eval_economia_social_solidaria.intercambio_organizaciones.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.label">
+                          :label="eval_economia_social_solidaria.intercambio_local.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value"
+                                  v-model="eval_economia_social_solidaria.intercambio_local.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[1]
+                                        eval_economia_social_solidaria.intercambio_local.options[1]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3139,7 +3700,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[2]
+                                        eval_economia_social_solidaria.intercambio_local.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3148,7 +3709,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[3]
+                                        eval_economia_social_solidaria.intercambio_local.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3157,7 +3718,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[4]
+                                        eval_economia_social_solidaria.intercambio_local.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3166,7 +3727,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[5]
+                                        eval_economia_social_solidaria.intercambio_local.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3175,31 +3736,31 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.options[eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value]
+                                    eval_economia_social_solidaria.intercambio_local.options[eval_economia_social_solidaria.intercambio_local.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.eventos_intercambio_saberes.label">
+                          :label="eval_economia_social_solidaria.insumos_locales.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.eventos_intercambio_saberes.value"
+                                  v-model="eval_economia_social_solidaria.insumos_locales.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.eventos_intercambio_saberes.options[1] }}
+                                      {{
+                                        eval_economia_social_solidaria.insumos_locales.options[1]
+                                      }}
                                     </q-tooltip>
                                   </template>
                                   <template v-slot:tip-2>
@@ -3207,7 +3768,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[2]
+                                        eval_economia_social_solidaria.insumos_locales.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3216,7 +3777,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[3]
+                                        eval_economia_social_solidaria.insumos_locales.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3225,7 +3786,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[4]
+                                        eval_economia_social_solidaria.insumos_locales.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3234,7 +3795,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.eventos_intercambio_saberes.options[5]
+                                        eval_economia_social_solidaria.insumos_locales.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3243,31 +3804,31 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.eventos_intercambio_saberes.options[eval_generacion_conocimiento.eventos_intercambio_saberes.value]
+                                    eval_economia_social_solidaria.insumos_locales.options[eval_economia_social_solidaria.insumos_locales.value]
                                   }}
                                 </div>
                               </div>
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-
-                        <q-separator/>
                         <q-expansion-item
-                          :label="eval_generacion_conocimiento.monitoreo_generacion_conocimiento.label">
+                          :label="eval_economia_social_solidaria.autonomia_financiera.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
                                 <q-rating
-                                  v-model="eval_generacion_conocimiento.monitoreo_generacion_conocimiento.value"
+                                  v-model="eval_economia_social_solidaria.autonomia_financiera.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[1] }}
+                                      {{
+                                        eval_economia_social_solidaria.autonomia_financiera.options[1]
+                                      }}
                                     </q-tooltip>
                                   </template>
                                   <template v-slot:tip-2>
@@ -3275,7 +3836,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[2]
+                                        eval_economia_social_solidaria.autonomia_financiera.options[2]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3284,7 +3845,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[3]
+                                        eval_economia_social_solidaria.autonomia_financiera.options[3]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3293,7 +3854,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[4]
+                                        eval_economia_social_solidaria.autonomia_financiera.options[4]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3302,7 +3863,7 @@
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
                                       {{
-                                        eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[5]
+                                        eval_economia_social_solidaria.autonomia_financiera.options[5]
                                       }}
                                     </q-tooltip>
                                   </template>
@@ -3311,7 +3872,143 @@
                               <div class="row justify-center">
                                 <div class="col">
                                   {{
-                                    eval_generacion_conocimiento.monitoreo_generacion_conocimiento.options[eval_generacion_conocimiento.monitoreo_generacion_conocimiento.value]
+                                    eval_economia_social_solidaria.autonomia_financiera.options[eval_economia_social_solidaria.autonomia_financiera.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                        <q-expansion-item
+                          :label="eval_economia_social_solidaria.economia_circular.label">
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_economia_social_solidaria.economia_circular.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColors"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_economia_social_solidaria.economia_circular.options[1]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_economia_social_solidaria.economia_circular.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_economia_social_solidaria.economia_circular.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_economia_social_solidaria.economia_circular.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_economia_social_solidaria.economia_circular.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_economia_social_solidaria.economia_circular.options[eval_economia_social_solidaria.economia_circular.value]
+                                  }}
+                                </div>
+                              </div>
+                            </q-card-section>
+                          </q-card>
+                        </q-expansion-item>
+                        <q-expansion-item
+                          :label="eval_economia_social_solidaria.monitoreo_emprendimientos.label">
+                          <q-card>
+                            <q-card-section>
+                              <div class="row justify-center">
+                                <q-rating
+                                  v-model="eval_economia_social_solidaria.monitoreo_emprendimientos.value"
+                                  size="3.5em"
+                                  color="grey"
+                                  :color-selected="ratingColors"
+                                >
+                                  <template v-slot:tip-1>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_economia_social_solidaria.monitoreo_emprendimientos.options[1]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-2>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_economia_social_solidaria.monitoreo_emprendimientos.options[2]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-3>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_economia_social_solidaria.monitoreo_emprendimientos.options[3]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-4>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_economia_social_solidaria.monitoreo_emprendimientos.options[4]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                  <template v-slot:tip-5>
+                                    <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
+                                               :offset="[10, 10]"
+                                               content-class="bg-black" content-style="font-size: 16px">
+                                      {{
+                                        eval_economia_social_solidaria.monitoreo_emprendimientos.options[5]
+                                      }}
+                                    </q-tooltip>
+                                  </template>
+                                </q-rating>
+                              </div>
+                              <div class="row justify-center">
+                                <div class="col">
+                                  {{
+                                    eval_economia_social_solidaria.monitoreo_emprendimientos.options[eval_economia_social_solidaria.monitoreo_emprendimientos.value]
                                   }}
                                 </div>
                               </div>
@@ -3324,7 +4021,7 @@
                   </q-card>
                 </q-expansion-item>
 
-                <q-separator/>
+
 
 
               </q-list>
@@ -3474,14 +4171,14 @@ export default {
           ]
         },
         promocion_practicas_tradicionales: {
-          label: "El proyecto realiza estrategias encaminadas a la conservación del patrimonio biocultural (conocimiento, usos y manejo de la flora)",
+          label: "El proyecto promociona y promueve el mejoramiento de prácticas tradicionales en los procesos productivos y uso de la naturaleza",
           value: 0, options: [
             "No aplica",
-            "No se reconoce la importancia del patrimonio biocultural",
-            "Se reconoce el patrimonio biocultural pero no es considerado para el proyecto",
-            "El proyecto realiza ocasionalmente estrategias encaminadas a la conservación del patrimonio biocultural",
-            "El proyecto frecuentemente realiza estrategias encaminadas a la conservación del patrimonio biocultural",
-            "En el proyecto siempre se realizan estrategias que incorporan la conservación del patrimonio biocultural",
+            "No se reconoce la importancia de las prácticas tradicionales en los procesos productivos y uso de la naturaleza",
+            "Se reconocen las prácticas tradicionales en los procesos productivos y uso de la naturaleza, pero no son considerados por el proyecto",
+            "El proyecto reconoce las prácticas tradicionales en los procesos productivos y uso de la naturaleza y los incorpora ocasionalmente",
+            "El proyecto reconoce las prácticas tradicionales en procesos productivos y uso de la naturaleza y los incorpora constantemente",
+            "El proyecto promueve y mejora las prácticas tradicionales en los procesos productivos y uso de la naturaleza"
           ]
         },
       },
@@ -3565,7 +4262,7 @@ export default {
           ]
         },
         programa_manejo_ambiental_avalado: {
-          label: "h)\tEl proyecto cuenta con un programa de manejo ambiental (silvícola y/o vida silvestre) avalado por alguna dependencia local o federal",
+          label: "El proyecto cuenta con un programa de manejo ambiental (silvícola y/o vida silvestre) avalado por alguna dependencia local o federal",
           value: 0, options: [
             "No aplica",
             "No se reconoce la importancia de que el proyecto cuente con un programa de manejo ambiental (silvícola y/o vida silvestre)",
@@ -3576,7 +4273,7 @@ export default {
           ]
         },
         estrategia_trafico_especies_riesgo: {
-          label: "i)\tExiste un plan o estrategia para el control del aprovechamiento y en su caso la comercialización de especies con alguna categoría de riesgo (flora y fauna) y/o sus derivados (tierra de hoja y PFNM, etc.)",
+          label: "Existe un plan o estrategia para el control del aprovechamiento y en su caso la comercialización de especies con alguna categoría de riesgo (flora y fauna) y/o sus derivados (tierra de hoja y PFNM, etc.)",
           value: 0, options: [
             "No aplica",
             "No se reconoce la importancia de un plan o estrategia para el control del aprovechamiento y en su caso la comercialización de especies con alguna categoría de riesgo (flora y fauna) y/o sus derivados (tierra de hoja y PFNM, etc.)",
@@ -3692,7 +4389,7 @@ export default {
           ]
         },
         participacion_equitativa_reglamentos: {
-          label: "",
+          label: "En el proyecto existe participación equitativa en la elaboración de reglamentos y/o en la toma de decisiones",
           value: 0, options: [
             "No aplica",
             "No se reconoce la importancia de la participación equitativa en la elaboración de reglamentos y/o en la toma de decisiones",
@@ -3725,7 +4422,7 @@ export default {
           ]
         },
         monitoreo_gestion_gobernanza: {
-          label: "e)\tSe cuenta con un plan de evaluación y monitoreo de la gobernanza para el acceso al bien común",
+          label: "Se cuenta con un plan de evaluación y monitoreo de la gobernanza para el acceso al bien común",
           value: 0, options: [
             "No aplica",
             "No se reconoce la importancia de contar con un plan de evaluación y monitoreo de la gobernanza para el acceso al bien común",
@@ -3866,48 +4563,58 @@ export default {
       eval_produccion_social_ambiental_amigable: {
         aplica: false,
         insumos_bajo_impacto_ambiental: {
-          label: "",
+          label: "Para procesos productivos, se utilizan insumos de bajo impacto ambiental (orgánicos y locales)",
           value: 0, options: [
             "No aplica",
+            "No se reconoce la importancia de utilizar insumos de bajo impacto ambiental en los procesos productivos",
+            "Se reconoce la importancia de manejar insumos de bajo impacto ambiental en los procesos productivos, pero no se llevan a cabo",
+            "En ocasiones se utilizan insumos de bajo impacto ambiental para realizar procesos productivos",
+            "Frecuentemente se utilizan insumos de bajo impacto ambiental para realizar procesos productivos",
+            "Siempre se realizan acciones para el uso de insumos de bajo impacto ambiental en procesos productivos"
           ]
         },
         tecnologia_respetuosa_naturaleza: {
-          label: "",
+          label: "Las prácticas y tecnología empleada para la producción son respetuosas de la naturaleza y el ser humano (reciclaje de agua, conservación de suelos, etc.…)",
           value: 0, options: [
             "No aplica",
+            "No se reconoce la importancia de utilizar tecnología respetuosa de la naturaleza y el ser humano.en los procesos productivos",
+            "Se reconoce la importancia de prácticas y tecnología que sean respetuosas con la naturaleza y el ser humano, pero no utiliza este tipo de tecnología",
+            "Ocasionalmente las prácticas y tecnología empleada para la producción son respetuosa de la naturaleza y el ser humano",
+            "Frecuentemente las prácticas y tecnología empleada para la producción son respetuosa de la naturaleza y el ser humano",
+            "Siempre se realizan acciones para que las prácticas y tecnología empleada para la producción sean respetuosas de la naturaleza y el ser humano"
           ]
         },
         respeta_saberes_locales: {
-          label: "",
+          label: "Los procesos de producción respetan los saberes locales incorporando tecnologías apropiadas",
           value: 0, options: [
             "No aplica",
-            "",
-            "",
-            "",
-            "",
-            ""
+            "En el proyecto no se reconoce la importancia de los saberes locales por lo tanto no incorpora tecnologías apropiadas",
+            "Se reconoce la importancia de respetar los saberes locales incorporando tecnologías apropiadas para ello",
+            "En ocasiones se incorporan tecnologías apropiadas que respetan los saberes locales",
+            "Frecuentemente se incorporan tecnologías apropiadas que respetan los saberes locales",
+            "Siempre se incorporan tecnologías apropiadas que respetan los saberes locales  "
           ]
         },
         privilegia_trabajo_local: {
-          label: "",
+          label: "Los procesos de producción y servicios privilegian el trabajo local",
           value: 0, options: [
             "No aplica",
-            "",
-            "",
-            "",
-            "",
-            ""
+            "No se reconoce la importancia de privilegiar el trabajo local",
+            "El proyecto reconoce la importancia del trabajo local pero no lo incorpora",
+            "El proyecto incorpora en algunos de sus procesos de producción el trabajo local",
+            "El proyecto incorpora en la mayoría de sus procesos de producción el trabajo local",
+            "El proyecto incorpora y privilegia en todos sus procesos de producción el trabajo local y está respaldado por un acuerdo entre los miembros del proyecto"
           ]
         },
         monitoreo_estrategias_produccion: {
-          label: "",
+          label: "Se cuenta con un plan de evaluación y monitoreo de las estrategias de producción para que sean social y ambientalmente amigables",
           value: 0, options: [
             "No aplica",
-            "",
-            "",
-            "",
-            "",
-            ""
+            "No se reconoce la importancia de contar con un plan de evaluación y monitoreo de las estrategias de producción para que sean social y ambientalmente amigables",
+            "Se reconoce la importancia de contar con un plan de evaluación y monitoreo de las estrategias de producción para que sean social y ambientalmente amigables, pero no se ha elaborado",
+            "El proyecto cuenta con un plan de evaluación y monitoreo de las estrategias de producción para que sean social y ambientalmente amigables y se lleva a cabo ocasionalmente",
+            "El proyecto cuenta con un plan de evaluación y monitoreo de las estrategias de producción para que sean social y ambientalmente amigables y se lleva a cabo frecuentemente",
+            "Siempre se realizan las acciones del plan de evaluación y monitoreo de las estrategias de producción para que sean social y ambientalmente amigables"
           ]
         },
       },
