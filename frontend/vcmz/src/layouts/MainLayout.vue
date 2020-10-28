@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar>
+      <q-toolbar class="bg-pink text-white">
         <q-btn
           flat
           dense
@@ -12,11 +12,50 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Mapa Zapopan
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <q-btn dense flat round icon="mdi-dots-vertical">
+          <q-menu content-style="border-radius: 2px;">
+            <q-list style="min-width: 130px;">
+              <q-item dense clickable v-close-popup style="padding: 0;">
+                <q-avatar>
+                  <q-icon name="mdi-clippy"/>
+                </q-avatar>
+                <q-item-section>Ayuda</q-item-section>
+              </q-item>
+              <q-separator/>
+              <q-item dense clickable v-close-popup style="padding: 0;">
+                <q-avatar>
+                  <q-icon name="login"/>
+                </q-avatar>
+                <q-item-section>Ingresar</q-item-section>
+              </q-item>
+              <q-item dense clickable v-close-popup style="padding: 0;">
+                <q-avatar>
+                  <q-icon name="logout"/>
+                </q-avatar>
+                <q-item-section>Salir</q-item-section>
+              </q-item>
+              <q-separator/>
+              <q-item dense clickable v-close-popup style="padding: 0;">
+                <q-avatar>
+                  <q-icon name="mdi-cog"/>
+                </q-avatar>
+                <q-item-section>Ajustes</q-item-section>
+              </q-item>
+            </q-list>
+          </q-menu>
+        </q-btn>
       </q-toolbar>
+
+      <q-tabs align="right" no-caps class="bg-pink text-white">
+        <q-route-tab to="/" label="Inicio"/>
+        <q-route-tab to="/" label="Proyectos"/>
+        <q-route-tab to="/" label="Evaluaciones"/>
+        <q-route-tab to="/" label="Acerca de"/>
+      </q-tabs>
+
     </q-header>
 
     <q-drawer
