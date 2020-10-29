@@ -66,7 +66,6 @@
                        @click.stop.prevent="subirCapa(prop.node)"></q-btn>
                 <q-btn :disabled="capasMapa.indexOf(prop.node) === capasMapa.length-1" dense flat color="grey-8" icon="mdi-chevron-down" size="xs"
                        @click.stop.prevent="bajarCapa(prop.node)"></q-btn>
-                <q-btn :disabled="prop.node.permanent" dense flat color="red" icon="mdi-delete" size="xs" @click.stop.prevent="print('borrar')"></q-btn>
               </q-btn-group>
             </template>
             <template v-slot:default-body="prop">

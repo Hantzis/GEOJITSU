@@ -17,12 +17,11 @@
         <div class="row q-px-sm"/>
       </div>
       <div class="col-auto">
-        Mapa base
+        Capas
       </div>
       <div class="col-auto">
-        <div class="col-auto">
-          <div class="row q-px-sm"/>
-        </div>
+        <q-btn dense size="xs" flat icon="mdi-arrow-bottom-right" @click="drawerCapas = !drawerCapas"
+               style="border-radius: 0; margin-bottom: 0; margin-right: 1px;"/>
       </div>
     </div>
   </div>
@@ -39,7 +38,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('geojitsu', ['mapasBaseGetter', 'mapaBaseGetter']),
+    ...mapGetters('geojitsu', ['mapasBaseGetter', 'mapaBaseGetter', 'getDrawerCapas']),
     mapasBase: {
       get() {
         return this.mapasBaseGetter
@@ -53,9 +52,17 @@ export default {
         this.mapaBaseAction(value)
       }
     },
+    drawerCapas: {
+      get() {
+        return this.getDrawerCapas
+      },
+      set(value) {
+        this.setDrawerCapas(value)
+      }
+    },
   },
   methods: {
-    ...mapActions('geojitsu', ['mapaBaseAction']),
+    ...mapActions('geojitsu', ['mapaBaseAction', 'setDrawerCapas']),
   }
 }
 </script>

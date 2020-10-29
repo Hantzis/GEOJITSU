@@ -32,10 +32,14 @@
                     :url="mapaBase.url"
                     attributions="Mapbox, <a href='https://www.saeba.click' target='_blank'>Saeba</a>"/>
                 </vl-layer-tile>
+                <vl-layer-vector>
+                  <vl-source-vector :features.sync="zapopan"></vl-source-vector>
+                </vl-layer-vector>
 
                 <div :key="mapkey">
-                  <div v-for="(capa, idx) of capasMapa" :key="capa.value">
-                    <vl-layer-tile v-if="capa.type==='wms'" :opacity="capa.opacity" :visible="capa.visible">
+                  <!-- <div v-for="(capa, idx) of capasMapa" :key="capa.value"> -->
+                  <div v-for="capa of capasMapa" :key="capa.value">
+                    <vl-layer-tile v-if="capa.type==='wms' && capa.tiled===true" :opacity="capa.opacity" :visible="capa.visible">
                       <vl-source-wms
                         :url="capa.url"
                         :format="capa.format"
@@ -44,12 +48,23 @@
                         :attributions="capa.attribution"
                         :ext-params="capa.params"/>
                     </vl-layer-tile>
+                    <vl-layer-image v-if="capa.type==='wms' && capa.tiled===false" :opacity="capa.opacity" :visible="capa.visible">
+                      <vl-source-image-wms
+                        :url="capa.url"
+                        :format="capa.format"
+                        :server_type="capa.server_type"
+                        :layers="capa.layers"
+                        :attributions="capa.attribution"
+                        :ext-params="capa.params"/>
+                    </vl-layer-image>
+                    <!--
                     <vl-layer-vector v-if="capa.type==='vector'" :opacity="capa.opacity" :visible="capa.visible">
                       <vl-source-vector :loaderFactory="loaderFactory(idx)" :features="capa.features"
                                         :server_type="capa.server_type"
                                         :attributions="capa.attribution"/>
                       <vl-style-func :factory="pointsStyleFunc"/>
                     </vl-layer-vector>
+                    -->
                   </div>
                 </div>
 
@@ -123,10 +138,11 @@ export default {
   components: {MapaDrawerCapas, GISRibbon},
   data() {
     return {
+      zapopan: [],
       loadingBar: undefined,
       clickCoords: undefined,
       position: undefined,
-      zoom: 14,
+      zoom: 15,
       center: [-103.38890075683594, 20.72561197927564],
       center3857: [-11268847.24, 2231060.47],
       rotation: 0,
@@ -137,7 +153,6 @@ export default {
       conflictos_features: [],
       conflictos_selectedFeatures: [],
       conflictos_styles: {},
-      drawer_capas: true,
       mapkey: 0,
     }
   },
@@ -209,12 +224,12 @@ export default {
       }
     },
     mapHeight() {
-      let ribbon_height = 87
-      if (this.showGISRibbon) ribbon_height = 180
+      let ribbon_height = 99 + 24
+      if (this.showGISRibbon) ribbon_height = 192 + 24
       return this.$q.screen.height - ribbon_height + "px"
     },
     screenHeight() {
-      return this.$q.screen.height - 50 + "px"
+      return this.$q.screen.height - 98 - 24 + "px"
     }
   },
   methods: {
@@ -253,30 +268,16 @@ export default {
       return (feature) => {
         let img_url = "https://conflictossocioambientales.iies.unam.mx" + feature.values_.tipo[2]
         let style = new Style({image: new Icon({src: img_url})})
-        /*let baseStyle = new Style({
-          image: new Circle({
-            radius: 10,
-            fill: new Fill({
-              color: '#fff',
-            }),
-            stroke: new Stroke({
-              color: '#F44336',
-            }),
-          }),
-          text: new Text({
-            text: "yeet", // get feature property
-          }),
-        }) */
         return style
       }
     }
   },
-  created() {
-    this.loadingBar = this.$refs.bar
-    this.loadingBar.start()
-  },
   mounted() {
     this.loadingBar = this.$refs.bar
+    axios.get('statics/zapopan.geojson').then(res => {
+      console.log(res.data.features)
+      this.zapopan = res.data.features
+    })
     this.loadingBar.stop()
   }
 }

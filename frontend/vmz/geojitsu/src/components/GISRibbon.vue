@@ -6,14 +6,6 @@
       <div name="mapa" class="no-padding">
         <div class="row no-wrap">
 
-          <mapa-bloque-principal/>
-
-          <q-separator vertical/>
-
-          <mapa-bloque-capas/>
-
-          <q-separator vertical/>
-
           <mapa-bloque-mapa-base />
 
           <q-separator vertical/>
@@ -21,8 +13,6 @@
         </div>
 
       </div>
-
-
 
     </q-toolbar>
     <q-separator color="grey-5"/>
@@ -32,16 +22,12 @@
 <script>
 import {mapActions, mapGetters} from 'vuex'
 
-import MapaBloquePrincipal from "./gisribbon_components/mapa/MapaBloquePrincipal";
-import MapaBloqueCapas from "components/gisribbon_components/mapa/MapaBloqueCapas";
 import MapaBloqueMapaBase from "components/gisribbon_components/mapa/MapaBloqueMapaBase";
 
 export default {
   name: "GISRibbon",
   // eslint-disable-next-line vue/no-unused-components
   components: {
-    MapaBloqueCapas,
-    MapaBloquePrincipal,
     MapaBloqueMapaBase,
   },
   data() {

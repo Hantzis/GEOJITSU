@@ -2,7 +2,7 @@ export default function () {
   return {
     //
     GISRibbonIsOpen: true,
-    drawerCapas: true,
+    drawerCapas: false,
     mapaBase: "mapbox-outdoors-v11",
     mapasBase: [
       {value: "mapbox-streets-v11", label: "Mapbox Streets", bgcolor: "#75cff0", url: "https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoibml6aGlzYWViYSIsImEiOiJjanZwZXNpeWYwZDcxNDlwOXVhejg1Yno3In0.kqEaQSkVaFMpKKtx0FyNRA"},
@@ -14,22 +14,24 @@ export default function () {
     ],
     capaSeleccionada: "conflictos",
     capasMapa: [
-      {value: "estados", label: "Estados", type: "wms", url: "https://gs.maptitude.xyz/geoserver/CONFLICTOS/wms?",
-        layers: "CONFLICTOS:estados", visible: true, children: [{}],
+      {value: "colonias_zapopan", label: "Colonias Zapopan", type: "wms", url: "https://gs.maptitude.xyz/geoserver/wms?",
+        layers: "VMZ:colonias_zapopan", visible: true, children: [{}],
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
-        opacity: 1, permanent: true,
+        opacity: 1.0, permanent: true,
         server_type: "geoserver",
         format: "image/png8",
+        tiled: false,
         params: {
           crs: "EPSG:4326",
         }
       },
-      {value: "reportes", label: "Reportes", type: "wms", url: "https://gs.maptitude.xyz/geoserver/VMZ/ows?",
+      {value: "reportes", label: "Reportes", type: "wms", url: "https://gs.maptitude.xyz/geoserver/wms?",
         layers: "VMZ:reportes", visible: true, children: [{}],
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>ICVCM</a>",
-        opacity: 0.8, permanent: true,
+        opacity: 1.0, permanent: true,
         server_type: "geoserver",
         format: "image/png8",
+        tiled: true,
         params: {
           crs: "EPSG:4326",
         }

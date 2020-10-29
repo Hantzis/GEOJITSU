@@ -115,7 +115,8 @@
     </q-page-container>
 
 
-    <q-footer elevated class="bg-grey-9 text-grey-4">
+
+    <q-footer elevated class="bg-grey-10 text-grey-4">
       <q-toolbar style="min-height: 24px; font-size: 14px;">
           Geojitsu
         <q-space/>
