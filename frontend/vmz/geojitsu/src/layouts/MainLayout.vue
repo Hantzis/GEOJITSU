@@ -58,8 +58,7 @@
 
       <q-tabs align="right" no-caps class="bg-pink text-white" indicator-color="black">
         <q-route-tab to="/" label="Inicio"/>
-        <q-route-tab to="/" label="Proyectos"/>
-        <q-route-tab to="/" label="Evaluaciones"/>
+        <q-route-tab to="/" label="Link 1"/>
         <q-route-tab to="/" label="Acerca de"/>
       </q-tabs>
 

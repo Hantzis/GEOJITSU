@@ -95,7 +95,7 @@
     <q-ajax-bar
       ref="bar"
       position="top"
-      color="primary"
+      color="black"
       size="4px"
       skip-hijack
     />
@@ -126,8 +126,8 @@ export default {
       loadingBar: undefined,
       clickCoords: undefined,
       position: undefined,
-      zoom: 5.7,
-      center: [-102.02, 24.02],
+      zoom: 14,
+      center: [-103.38890075683594, 20.72561197927564],
       center3857: [-11268847.24, 2231060.47],
       rotation: 0,
       geolocPosition: [-101.22977709999999, 19.6453138],
@@ -271,9 +271,13 @@ export default {
       }
     }
   },
-  mounted() {
+  created() {
     this.loadingBar = this.$refs.bar
     this.loadingBar.start()
+  },
+  mounted() {
+    this.loadingBar = this.$refs.bar
+    this.loadingBar.stop()
   }
 }
 </script>
