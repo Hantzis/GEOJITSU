@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -10,68 +13,75 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="i">
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/.browserslistrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/angular.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/e2e/protractor.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/e2e/src/app.e2e-spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/e2e/src/app.po.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/e2e/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/karma.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/src/app/app-routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/src/app/app.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/src/app/app.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/src/app/app.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/src/app/app.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/src/app/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/src/assets/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/src/environments/environment.prod.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/src/environments/environment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/src/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/src/polyfills.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/src/styles.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/src/test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/tsconfig.app.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/tsconfig.spec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular-hello-world/tslint.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/.browserslistrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/angular.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/e2e/protractor.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/e2e/src/app.e2e-spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/e2e/src/app.po.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/e2e/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/karma.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/src/app/app-routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/src/app/app.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/src/app/app.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/src/app/app.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/src/app/app.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/src/app/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/src/assets/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/src/environments/environment.prod.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/src/environments/environment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/src/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/src/polyfills.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/src/styles.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/src/test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/tsconfig.app.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/tsconfig.spec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tutorial/tslint.json" afterDir="false" />
+    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="m$">
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/.eslintignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/.eslintrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/.postcssrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/.vscode/settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/babel.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/jsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/nnn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/quasar.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/assets/geojson_conflictos.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/assets/logo_unam.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/assets/quasar-logo-full.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/assets/sad.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/boot/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/boot/axios.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/GISRibbon.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/LeftMenu.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/drawer_components/CardCapa.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/drawer_components/MapaDrawerCapas.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/gisribbon_components/mapa/BarraVisualizacion.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/gisribbon_components/mapa/BotonBarraHerramientas.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/gisribbon_components/mapa/MapaBloqueCapas.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/gisribbon_components/mapa/MapaBloqueMapaBase.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/gisribbon_components/mapa/MapaBloquePrincipal.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/gisribbon_components/mapa/MapaBloqueSeleccion.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/gisribbon_components/mapa/MenuBarraHerramientas.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/thrash/BarraHerramientas.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/thrash/BarraHerramientasBak.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/thrash/BarraHerramientasPrincipal.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/thrash/BarraHerramientasSeleccion.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/thrash/EssentialLink.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/thrash/MenuZoom.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/css/app.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/css/quasar.variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/index.template.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/CopyMainLayout.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Acerca.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Error404.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Metodologia.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Prueba.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/router/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/router/routes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/icons/favicon-128x128.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/icons/favicon-16x16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/icons/favicon-32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/icons/favicon-96x96.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/icons/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/reflects/geojson_conflictos.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/getters.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/mutations.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/state.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/module-example/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/module-example/getters.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/module-example/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/module-example/mutations.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/module-example/state.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/store-flag.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,6 +92,26 @@
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -90,6 +120,7 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JupyterTrust" id="3cd4cfd5-c415-4edb-b92a-61267500af49" />
   <component name="ProjectId" id="1brpjoU3qPMdCHzdMa7TbauiuZY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -97,16 +128,571 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mariadb" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/casos_exito/src/pages" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PyCharm 2020.1.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\assets" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\components" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\components" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\geojitsu\src\assets" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\geojitsu\src\components\drawer_components" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\pages" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\geojitsu\src\pages" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\geojitsu\src\components" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\geojitsu\src\statics\reflects" />
+    </key>
+  </component>
+  <component name="RestClientSettings">
+    <option name="REQUEST_HISTORY">
+      <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz/api/v1/casos_exito/proyectos/2" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz/api/v1/casos_exito/proyectos/1" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz/api/v1/casos_exito/proyectos/" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz" />
+          <option name="urlPath" value="api/v1/casos_exito/proyectos/" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="admin" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="unam2020" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz" />
+          <option name="urlPath" value="api/v1/casos_exito/estados/" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="admin" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="unam2020" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz" />
+          <option name="urlPath" value="api/v1/estados/" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="admin" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="unam2020" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz/api/v1/generate_token/" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="admin" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="unam2020" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;username&quot;: &quot;admin&quot;,&#10;  &quot;password&quot;: &quot;unam2020&quot;&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz/api/v1/generate_token/" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="admin" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="unam2020" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="Content-Type: application/json&#10;&#10;{&#10;  &quot;username&quot;: &quot;admin&quot;,&#10;  &quot;password&quot;: &quot;unam2020&quot;&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz/api/v1/generate_token/" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="admin" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="unam2020" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;username&quot;: &quot;admin&quot;,&#10;  &quot;password&quot;: &quot;unam2020&quot;&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz/api/v1/generate_token/" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="admin" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="unam2020" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz" />
+          <option name="urlPath" value="api/v1/generate_token/" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="admin" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="unam2020" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz" />
+          <option name="urlPath" value="api/v1/generate_token/" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="admin" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="dsad" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz" />
+          <option name="urlPath" value="api/v1/generate_token/" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="admin" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz" />
+          <option name="urlPath" value="api/v1/generate_token/" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="npm.serve">
+    <configuration name="rest-api#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="rest-api_1#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="quasar build -m electron" type="NodeJSConfigurationType" application-parameters="build -m electron" path-to-js-file="$USER_HOME$/AppData/Roaming/npm/node_modules/@quasar/cli/bin/quasar" working-dir="$PROJECT_DIR$/frontend/geojitsu">
+      <method v="2" />
+    </configuration>
+    <configuration name="SERVER" type="Python.DjangoServer" factoryName="Django server">
+      <module name="GEOJITSU" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="GEOJITSU.settings.dev" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="192.168.1.66" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <module name="GEOJITSU" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\WPy64-3810\python-3.8.1.amd64\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="127.0.0.12" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="serve casos_exito" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/frontend/casos_exito/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="serve conflictos" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/frontend/conflictos/geojitsu/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <arguments value="--modern" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="serve san-miguelito" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <arguments value="--modern" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="serve vcmz" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/frontend/vcmz/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="serve" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/vmz/geojitsu/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Django Server.SERVER" />
+      <item itemvalue="HTTP Request.rest-api#1" />
+      <item itemvalue="HTTP Request.rest-api_1#1" />
+      <item itemvalue="Node.js.quasar build -m electron" />
+      <item itemvalue="npm.serve casos_exito" />
+      <item itemvalue="npm.serve conflictos" />
+      <item itemvalue="npm.serve san-miguelito" />
+      <item itemvalue="npm.serve vcmz" />
+      <item itemvalue="npm.serve" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.rest-api_1#1" />
+        <item itemvalue="HTTP Request.rest-api#1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -117,25 +703,431 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1589400204431</updated>
-      <workItem from="1589400207404" duration="2252000" />
-      <workItem from="1589516198118" duration="883000" />
-      <workItem from="1589607534178" duration="1342000" />
-      <workItem from="1591141272109" duration="140000" />
-      <workItem from="1601590205824" duration="5725000" />
-      <workItem from="1601607219386" duration="3095000" />
+      <workItem from="1589400207404" duration="1398000" />
+      <workItem from="1589510981538" duration="8986000" />
+      <workItem from="1589655452685" duration="8049000" />
+      <workItem from="1589687582190" duration="19658000" />
+      <workItem from="1592332700175" duration="1412000" />
+      <workItem from="1594159199700" duration="935000" />
+      <workItem from="1594232138027" duration="1439000" />
+      <workItem from="1595365903270" duration="3195000" />
+      <workItem from="1595380471741" duration="572000" />
+      <workItem from="1597184837251" duration="22428000" />
+      <workItem from="1597272331629" duration="11708000" />
+      <workItem from="1597422000538" duration="24673000" />
+      <workItem from="1597598602646" duration="28321000" />
+      <workItem from="1597694350451" duration="5077000" />
+      <workItem from="1597702267622" duration="42929000" />
+      <workItem from="1598036186884" duration="58565000" />
+      <workItem from="1598295165945" duration="20848000" />
+      <workItem from="1598391206978" duration="11749000" />
+      <workItem from="1598404944897" duration="20804000" />
+      <workItem from="1598508930607" duration="25311000" />
+      <workItem from="1598719702251" duration="9272000" />
+      <workItem from="1598740724472" duration="4452000" />
+      <workItem from="1598917361978" duration="2675000" />
+      <workItem from="1599074522500" duration="5543000" />
+      <workItem from="1599255707362" duration="1274000" />
+      <workItem from="1599261876798" duration="156000" />
+      <workItem from="1599267459323" duration="28000" />
+      <workItem from="1599270071276" duration="80000" />
+      <workItem from="1599275853229" duration="10008000" />
+      <workItem from="1599342162600" duration="16842000" />
+      <workItem from="1599449991772" duration="706000" />
+      <workItem from="1599492846159" duration="12226000" />
+      <workItem from="1599591785848" duration="2076000" />
+      <workItem from="1599697882756" duration="19000" />
+      <workItem from="1599788161028" duration="829000" />
+      <workItem from="1599898529836" duration="8648000" />
+      <workItem from="1600108698259" duration="3904000" />
+      <workItem from="1600127829533" duration="2053000" />
+      <workItem from="1600190805816" duration="1627000" />
+      <workItem from="1600228033576" duration="22457000" />
+      <workItem from="1600359186780" duration="25579000" />
+      <workItem from="1600473998874" duration="813000" />
+      <workItem from="1600475399092" duration="100717000" />
+      <workItem from="1600881467226" duration="15406000" />
+      <workItem from="1600980249383" duration="18464000" />
+      <workItem from="1601300602731" duration="3718000" />
+      <workItem from="1601666372087" duration="296000" />
+      <workItem from="1601666693715" duration="618000" />
+      <workItem from="1601674763907" duration="595000" />
+      <workItem from="1601675862526" duration="1029000" />
+      <workItem from="1601677635847" duration="610000" />
+      <workItem from="1601679263559" duration="752000" />
+      <workItem from="1601682937123" duration="935000" />
+      <workItem from="1601687385047" duration="2703000" />
+      <workItem from="1601872722823" duration="638000" />
+      <workItem from="1601942574884" duration="1733000" />
+      <workItem from="1601996315580" duration="1113000" />
+      <workItem from="1602020666081" duration="3360000" />
+      <workItem from="1602108520675" duration="2491000" />
+      <workItem from="1602128090699" duration="3277000" />
+      <workItem from="1602287226490" duration="4974000" />
+      <workItem from="1602468462749" duration="1949000" />
+      <workItem from="1602605902965" duration="59000" />
+      <workItem from="1602797650161" duration="15083000" />
+      <workItem from="1602870267778" duration="2094000" />
+      <workItem from="1602903277107" duration="13640000" />
+      <workItem from="1603065400655" duration="313000" />
+      <workItem from="1603065772287" duration="8900000" />
+      <workItem from="1603103448409" duration="34049000" />
+      <workItem from="1603214926899" duration="42293000" />
+      <workItem from="1603393725247" duration="6538000" />
+      <workItem from="1603405164930" duration="2957000" />
+      <workItem from="1603479653879" duration="326000" />
+      <workItem from="1603725994054" duration="1762000" />
+      <workItem from="1603913750745" duration="3993000" />
+      <workItem from="1603948614934" duration="3117000" />
     </task>
-    <task id="LOCAL-00001">
-      <created>1589404303482</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
+    <task id="LOCAL-00014" summary="m$">
+      <created>1597611996917</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
       <option name="project" value="LOCAL" />
-      <updated>1589404303482</updated>
+      <updated>1597611996917</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00015" summary="m$">
+      <created>1597627176757</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1597627176757</updated>
+    </task>
+    <task id="LOCAL-00016" summary="m$">
+      <created>1597772254386</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1597772254386</updated>
+    </task>
+    <task id="LOCAL-00017" summary="m$">
+      <created>1598053591137</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1598053591137</updated>
+    </task>
+    <task id="LOCAL-00018" summary="m$">
+      <created>1598054443496</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1598054443496</updated>
+    </task>
+    <task id="LOCAL-00019" summary="m$">
+      <created>1598135270293</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1598135270293</updated>
+    </task>
+    <task id="LOCAL-00020" summary="m$">
+      <created>1598137751544</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1598137751544</updated>
+    </task>
+    <task id="LOCAL-00021" summary="m$">
+      <created>1598138717745</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1598138717745</updated>
+    </task>
+    <task id="LOCAL-00022" summary="m$">
+      <created>1598236592399</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1598236592399</updated>
+    </task>
+    <task id="LOCAL-00023" summary="m$">
+      <created>1598293418966</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1598293418966</updated>
+    </task>
+    <task id="LOCAL-00024" summary="m$">
+      <created>1598300940934</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1598300940934</updated>
+    </task>
+    <task id="LOCAL-00025" summary="m$">
+      <created>1598313249942</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1598313249942</updated>
+    </task>
+    <task id="LOCAL-00026" summary="m$">
+      <created>1598408354122</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1598408354122</updated>
+    </task>
+    <task id="LOCAL-00027" summary="m$">
+      <created>1598544738375</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1598544738375</updated>
+    </task>
+    <task id="LOCAL-00028" summary="m$">
+      <created>1598564618285</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1598564618285</updated>
+    </task>
+    <task id="LOCAL-00029" summary="m$">
+      <created>1598582314768</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1598582314768</updated>
+    </task>
+    <task id="LOCAL-00030" summary="m$">
+      <created>1598583537588</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1598583537588</updated>
+    </task>
+    <task id="LOCAL-00031" summary="m$">
+      <created>1599364230551</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1599364230551</updated>
+    </task>
+    <task id="LOCAL-00032" summary="m$">
+      <created>1599449762823</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1599449762823</updated>
+    </task>
+    <task id="LOCAL-00033" summary="m$">
+      <created>1599497897460</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1599497897461</updated>
+    </task>
+    <task id="LOCAL-00034" summary="m$">
+      <created>1599499198846</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1599499198846</updated>
+    </task>
+    <task id="LOCAL-00035" summary="m$">
+      <created>1599584191537</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1599584191537</updated>
+    </task>
+    <task id="LOCAL-00036" summary="m$">
+      <created>1599788182722</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1599788182722</updated>
+    </task>
+    <task id="LOCAL-00037" summary="m$">
+      <created>1600108829540</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1600108829540</updated>
+    </task>
+    <task id="LOCAL-00038" summary="m$">
+      <created>1600191503717</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1600191503717</updated>
+    </task>
+    <task id="LOCAL-00039" summary="m$">
+      <created>1600228821509</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1600228821509</updated>
+    </task>
+    <task id="LOCAL-00040" summary="m$">
+      <created>1600274588106</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1600274588106</updated>
+    </task>
+    <task id="LOCAL-00041" summary="m$">
+      <created>1600310545550</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1600310545550</updated>
+    </task>
+    <task id="LOCAL-00042" summary="m$">
+      <created>1600462740037</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1600462740037</updated>
+    </task>
+    <task id="LOCAL-00043" summary="m$">
+      <created>1600558808870</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1600558808870</updated>
+    </task>
+    <task id="LOCAL-00044" summary="m$">
+      <created>1600560418121</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1600560418121</updated>
+    </task>
+    <task id="LOCAL-00045" summary="m$">
+      <created>1600571986075</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1600571986075</updated>
+    </task>
+    <task id="LOCAL-00046" summary="m$">
+      <created>1600711334874</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1600711334874</updated>
+    </task>
+    <task id="LOCAL-00047" summary="m$">
+      <created>1600712756621</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1600712756621</updated>
+    </task>
+    <task id="LOCAL-00048" summary="m$">
+      <created>1600714905085</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1600714905085</updated>
+    </task>
+    <task id="LOCAL-00049" summary="m$">
+      <created>1600816148155</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1600816148156</updated>
+    </task>
+    <task id="LOCAL-00050" summary="m$">
+      <created>1600884143052</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1600884143052</updated>
+    </task>
+    <task id="LOCAL-00051" summary="m$">
+      <created>1601152966937</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1601152966937</updated>
+    </task>
+    <task id="LOCAL-00052" summary="m$">
+      <created>1601225107817</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1601225107817</updated>
+    </task>
+    <task id="LOCAL-00053" summary="m$">
+      <created>1602976593493</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1602976593494</updated>
+    </task>
+    <task id="LOCAL-00054" summary="m$">
+      <created>1603070432345</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1603070432345</updated>
+    </task>
+    <task id="LOCAL-00055" summary="m$">
+      <created>1603111311675</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1603111311676</updated>
+    </task>
+    <task id="LOCAL-00056" summary="m$">
+      <created>1603163482005</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1603163482005</updated>
+    </task>
+    <task id="LOCAL-00057" summary="m$">
+      <created>1603169884271</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1603169884271</updated>
+    </task>
+    <task id="LOCAL-00058" summary="m$">
+      <created>1603226605445</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1603226605445</updated>
+    </task>
+    <task id="LOCAL-00059" summary="m$">
+      <created>1603307036955</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1603307036955</updated>
+    </task>
+    <task id="LOCAL-00060" summary="m$">
+      <created>1603308690594</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1603308690594</updated>
+    </task>
+    <task id="LOCAL-00061" summary="m$">
+      <created>1603350128585</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1603350128585</updated>
+    </task>
+    <task id="LOCAL-00062" summary="m$">
+      <created>1603408956511</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1603408956511</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -150,45 +1142,128 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="i" />
-    <option name="LAST_COMMIT_MESSAGE" value="i" />
+    <MESSAGE value="mac" />
+    <MESSAGE value="m$" />
+    <option name="LAST_COMMIT_MESSAGE" value="m$" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="462" y="119" key="FileChooserDialogImpl" timestamp="1601607755363">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="796" y="106" key="#ESLint" timestamp="1597358616262">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="462" y="119" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1601607755363" />
-    <state width="1286" height="155" key="GridCell.Tab.0.bottom" timestamp="1601605907172">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="796" y="106" key="#ESLint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597358616262" />
+    <state x="552" y="161" key="#Plugins" timestamp="1599492743478">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1286" height="155" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1601605907172" />
-    <state width="1286" height="155" key="GridCell.Tab.0.center" timestamp="1601605907171">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="552" y="161" key="#Plugins/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1599492743478" />
+    <state x="449" y="110" width="1092" height="930" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603951738349">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1286" height="155" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1601605907171" />
-    <state width="1286" height="155" key="GridCell.Tab.0.left" timestamp="1601605907171">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="449" y="110" width="1092" height="930" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603951738349" />
+    <state x="39" y="84" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1366.745@0.23.1366.745" timestamp="1597192083983" />
+    <state x="623" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598053713756">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1286" height="155" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1601605907171" />
-    <state width="1286" height="155" key="GridCell.Tab.0.right" timestamp="1601605907172">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="623" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598053713756" />
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1600803114430">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1286" height="155" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1601605907172" />
-    <state x="129" y="55" key="MergeDialog" timestamp="1601593036642">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1600803114430" />
+    <state x="640" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1600395998532">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="129" y="55" key="MergeDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1601593036642" />
-    <state x="184" y="9" key="SettingsEditor" timestamp="1601608318647">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="640" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1600395998532" />
+    <state x="585" y="88" key="CommitChangelistDialog2" timestamp="1603953433938">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="9" key="SettingsEditor/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1601608318647" />
-    <state x="492" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601593016867">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="585" y="88" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603953433938" />
+    <state x="416" y="23" key="CommitChangelistDialog2/0.23.1366.745@0.23.1366.745" timestamp="1597277948472" />
+    <state width="254" height="195" key="DatabaseViewActions_Filter" timestamp="1598757130935">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="492" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1601593016867" />
-    <state x="463" y="77" key="git4idea.branch.GitSmartOperationDialog" timestamp="1601593029728">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="254" height="195" key="DatabaseViewActions_Filter/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1598757130935" />
+    <state x="520" y="411" key="FileChooserDialogImpl" timestamp="1603164034671">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="463" y="77" key="git4idea.branch.GitSmartOperationDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1601593029728" />
+    <state x="520" y="411" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603164034671" />
+    <state width="1877" height="343" key="GridCell.Tab.0.bottom" timestamp="1603952628469">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="343" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603952628469" />
+    <state width="1877" height="301" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1597706244683" />
+    <state width="1324" height="225" key="GridCell.Tab.0.bottom/0.23.1366.745@0.23.1366.745" timestamp="1597327038385" />
+    <state width="1877" height="343" key="GridCell.Tab.0.center" timestamp="1603952628469">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="343" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603952628469" />
+    <state width="1877" height="301" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1597706244683" />
+    <state width="1324" height="225" key="GridCell.Tab.0.center/0.23.1366.745@0.23.1366.745" timestamp="1597327038381" />
+    <state width="1877" height="343" key="GridCell.Tab.0.left" timestamp="1603952628468">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="343" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603952628468" />
+    <state width="1877" height="301" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1597706244682" />
+    <state width="1324" height="225" key="GridCell.Tab.0.left/0.23.1366.745@0.23.1366.745" timestamp="1597327038380" />
+    <state width="1877" height="343" key="GridCell.Tab.0.right" timestamp="1603952628469">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="343" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603952628469" />
+    <state width="1877" height="301" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1597706244683" />
+    <state width="1324" height="225" key="GridCell.Tab.0.right/0.23.1366.745@0.23.1366.745" timestamp="1597327038382" />
+    <state x="0" y="113" key="MergeDialog" timestamp="1601666531686">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="0" y="113" key="MergeDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601666531686" />
+    <state x="399" y="118" key="MultipleFileMergeDialog" timestamp="1597256967979">
+      <screen x="0" y="23" width="1366" height="745" />
+    </state>
+    <state x="399" y="118" key="MultipleFileMergeDialog/0.23.1366.745@0.23.1366.745" timestamp="1597256967979" />
+    <state x="668" y="126" key="RollbackChangesDialog" timestamp="1600558730099">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="668" y="126" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1600558730099" />
+    <state x="475" y="113" key="RollbackChangesDialog/0.23.1366.745@0.23.1366.745" timestamp="1597271685610" />
+    <state x="344" y="203" key="SettingsEditor" timestamp="1603735623610">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="344" y="203" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603735623610" />
+    <state width="580" height="446" key="SwitcherDM" timestamp="1603386938626">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="580" height="446" key="SwitcherDM/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603386938626" />
+    <state x="398" y="141" key="Vcs.Push.Dialog.v2" timestamp="1603409292460">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="398" y="141" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603409292460" />
+    <state x="283" y="124" key="Vcs.Push.Dialog.v2/0.23.1366.745@0.23.1366.745" timestamp="1597277951055" />
+    <state x="376" y="228" key="com.intellij.ide.util.TipDialog" timestamp="1597272373066">
+      <screen x="0" y="23" width="1366" height="745" />
+    </state>
+    <state x="376" y="228" key="com.intellij.ide.util.TipDialog/0.23.1366.745@0.23.1366.745" timestamp="1597272373066" />
+    <state x="565" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1597806903904">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="565" y="130" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597806903904" />
+    <state x="692" y="396" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601666502137">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="692" y="396" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601666502137" />
+    <state x="492" y="307" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1366.745@0.23.1366.745" timestamp="1597257042383" />
+    <state x="1920" y="0" width="1365" height="720" maximized="true" key="dock-window-1" timestamp="1603164734470">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1920" y="0" width="1365" height="720" maximized="true" key="dock-window-1/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603164734470" />
+    <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1600641265587">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="667" y="253" width="585" height="534" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1600641265587" />
+    <state x="457" y="115" key="git4idea.branch.GitSmartOperationDialog" timestamp="1595366977469">
+      <screen x="0" y="23" width="1366" height="745" />
+    </state>
+    <state x="457" y="115" key="git4idea.branch.GitSmartOperationDialog/0.23.1366.745@0.23.1366.745" timestamp="1595366977469" />
+    <state x="363" y="266" width="672" height="678" key="search.everywhere.popup" timestamp="1603164170914">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="363" y="266" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603164170914" />
+    <state x="363" y="266" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1597706699922" />
   </component>
 </project>
