@@ -5,7 +5,7 @@
         <q-btn dense flat round icon="menu" @click="left = !left"/>
 
         <q-toolbar-title>
-          Maptitude XYZ
+          Mapa VCM
         </q-toolbar-title>
         <q-btn v-if="this.$route.path==='/'" dense flat round
                :icon="showGISRibbon ? 'mdi-arrow-collapse-up' : 'mdi-arrow-collapse-down'"
@@ -65,7 +65,7 @@
     </q-header>
 
     <q-drawer v-model="left" side="left" elevated overlay behavior="mobile">
-      <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
+      <q-scroll-area style="height: calc(100% - 200px); margin-top: 200px; border-right: 1px solid #ddd">
         <q-list padding>
           <q-item to="/" clickable v-ripple exact>
             <q-item-section avatar>
@@ -73,12 +73,22 @@
             </q-item-section>
 
             <q-item-section>
-              Mapa
+              Inicio
             </q-item-section>
 
           </q-item>
 
-          <q-item to="acerca" clickable v-ripple>
+          <q-item to="/link" clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="mdi-file-edit"/>
+            </q-item-section>
+
+            <q-item-section>
+              Link 1
+            </q-item-section>
+          </q-item>
+
+          <q-item to="/acerca-de" clickable v-ripple>
             <q-item-section avatar>
               <q-icon name="mdi-information"/>
             </q-item-section>
@@ -88,24 +98,17 @@
             </q-item-section>
           </q-item>
 
-          <q-item to="metodologia" clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="mdi-file-edit"/>
-            </q-item-section>
 
-            <q-item-section>
-              Metodología
-            </q-item-section>
-          </q-item>
 
         </q-list>
       </q-scroll-area>
-      <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
+      <q-img class="absolute-top" src="~assets/material.png" style="height: 200px">
         <div class="absolute-bottom bg-transparent">
           <q-avatar size="56px" class="q-mb-sm">
-            <img src="~assets/logo_unam.jpg" alt="UNAM">
+            <img src="~assets/logo_zapopan.png" alt="Zapopan">
           </q-avatar>
-          <div class="text-weight-bold">Conflictos Socioambientales de México</div>
+          <div class="text-weight-bold">Gobierno de Zapopan</div>
+          <div class="text-weight-light">Consejo Municipal Contra Violencia Contra las Mujeres</div><br>
         </div>
       </q-img>
     </q-drawer>
@@ -115,12 +118,12 @@
     </q-page-container>
 
 
-
     <q-footer elevated class="bg-grey-10 text-grey-4">
       <q-toolbar style="min-height: 24px; font-size: 14px;">
-          Geojitsu
+        Consejo Municipal Contra Violencia Contra las Mujeres
         <q-space/>
-          2020 &copy; Maptitude XYZ
+        2020 &copy;&nbsp; <a style="text-decoration: none" class="text-grey-4 no-underline" href="https://saeba.click" target="_blank">
+        saeba.click</a>
       </q-toolbar>
     </q-footer>
 
