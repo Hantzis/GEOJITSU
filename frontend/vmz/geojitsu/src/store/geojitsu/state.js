@@ -14,7 +14,9 @@ export default function () {
     ],
     capaSeleccionada: "conflictos",
     capasMapa: [
-      {value: "colonias_zapopan", label: "Colonias Zapopan", type: "wms", url: "https://gs.maptitude.xyz/geoserver/wms?",
+      {
+        value: "colonias_zapopan", label: "Colonias Zapopan", type: "wms",
+        url: "https://gs.maptitude.xyz/geoserver/wms?",
         layers: "VMZ:colonias_zapopan", visible: true, children: [{}],
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
         opacity: 1.0, permanent: true,
@@ -25,7 +27,9 @@ export default function () {
           crs: "EPSG:4326",
         }
       },
-      {value: "reportes", label: "Reportes", type: "wms", url: "https://gs.maptitude.xyz/geoserver/wms?",
+      {
+        value: "reportes", label: "Reportes", type: "wms",
+        url: "https://gs.maptitude.xyz/geoserver/wms?",
         layers: "VMZ:reportes", visible: true, children: [{}],
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>ICVCM</a>",
         opacity: 1.0, permanent: true,
@@ -36,6 +40,7 @@ export default function () {
           crs: "EPSG:4326",
         }
       },
-    ]
+    ],
+    herramienta_activa: "desplazar",
   }
 }

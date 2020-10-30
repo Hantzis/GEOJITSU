@@ -68,37 +68,6 @@
                   </div>
                 </div>
 
-                <vl-interaction-select :features.sync="conflictos_selectedFeatures">
-                  <vl-overlay v-if="position && conflictos_selectedFeatures.length > 0" :position="position" :auto-pan="true"
-                              style="background: white; padding: 8px">
-                    <div style="max-width: 300px; min-width: 300px;">
-                      <q-table
-                        class="detalles"
-                        style="max-height: 400px; max-width: 300px"
-                        :title="conflictos_selectedFeatures[0].properties.tipo[1] + ' (id:' + conflictos_selectedFeatures[0].properties.pk + ')'"
-                        square
-                        wrap-cells
-                        dense
-                        :rows-per-page-options="[15]"
-                        virtual-scroll
-                        separator="cell"
-                        hide-bottom
-                        :data="getEntries(conflictos_selectedFeatures[0].properties)"
-                      >
-                        <template v-slot:header>
-                          <q-th colspan="2" align="left">
-                            <q-td style="padding: 0">{{ conflictos_selectedFeatures[0].properties.resumen }}</q-td>
-                          </q-th>
-                        </template>
-                        <template v-slot:top-right>
-                          <q-btn flat dense size="sm" style="margin-right: -11px;">
-                            <q-icon name="close" @click="position = undefined; conflictos_selectedFeatures = []"/>
-                          </q-btn>
-                        </template>
-                      </q-table>
-                    </div>
-                  </vl-overlay>
-                </vl-interaction-select>
               </vl-map>
 
             </div>
@@ -182,7 +151,6 @@ export default {
         let featureCoords = turf.featureCollection(collection)
         let cercano = turf.nearestPoint(this.clickCoords, featureCoords)
         this.position = cercano.geometry.coordinates
-
       }
     },
     /* drawerCapas() {
@@ -262,6 +230,7 @@ export default {
     },
     clic(evt) {
       console.log("clic event", evt)
+      console.log("clic event", evt.coordinate)
       this.clickCoords = evt.coordinate
     },
     pointsStyleFunc() {

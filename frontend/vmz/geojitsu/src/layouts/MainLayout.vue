@@ -99,7 +99,6 @@
           </q-item>
 
 
-
         </q-list>
       </q-scroll-area>
       <q-img class="absolute-top" src="~assets/material.png" style="height: 200px">
@@ -108,7 +107,8 @@
             <img src="~assets/logo_zapopan.png" alt="Zapopan">
           </q-avatar>
           <div class="text-weight-bold">Gobierno de Zapopan</div>
-          <div class="text-weight-light">Consejo Municipal Contra Violencia Contra las Mujeres</div><br>
+          <div class="text-weight-light">Consejo Municipal Contra Violencia Contra las Mujeres</div>
+          <br>
         </div>
       </q-img>
     </q-drawer>
@@ -120,10 +120,12 @@
 
     <q-footer elevated class="bg-grey-10 text-grey-4">
       <q-toolbar style="min-height: 24px; font-size: 14px;">
-        Consejo Municipal Contra Violencia Contra las Mujeres
+        <span class="ellipsis">Consejo Municipal Contra Violencia Contra las Mujeres</span>
         <q-space/>
-        2020 &copy;&nbsp; <a style="text-decoration: none" class="text-grey-4 no-underline" href="https://saeba.click" target="_blank">
-        saeba.click</a>
+        <span class="no-wrap">
+        <a style="text-decoration: none" class="text-grey-4 no-underline" href="https://saeba.click"
+                             target="_blank">2020&nbsp;&copy;&nbsp;saeba.click</a>
+        </span>
       </q-toolbar>
     </q-footer>
 
