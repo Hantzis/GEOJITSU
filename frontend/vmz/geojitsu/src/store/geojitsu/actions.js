@@ -3,6 +3,10 @@ export function someAction (/ * context * /) {
 }
 */
 
+export const setUserData = ({commit}, payload) => {
+  commit('UserData', payload)
+}
+
 export const GISRibbonIsOpenAction = ({commit}, payload) => {
   commit('GISRibbonIsOpenMutation', payload)
 }

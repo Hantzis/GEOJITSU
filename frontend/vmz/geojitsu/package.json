@@ -14,9 +14,11 @@
     "serve": "quasar dev --modern"
   },
   "dependencies": {
+    "@mspiderv/vuejwtauth": "^1.2.2",
     "@quasar/extras": "^1.0.0",
     "@turf/turf": "^5.1.6",
     "axios": "^0.18.1",
+    "crypto-md5": "^1.0.0",
     "quasar": "^1.0.0",
     "vue-truncate-filter": "^1.1.7",
     "vuelayers": "^0.11.26"

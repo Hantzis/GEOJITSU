@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 // import example from './module-example'
+import auth from '@mspiderv/vuejwtauth/src/store'
 import geojitsu from './geojitsu'
 
 Vue.use(Vuex)
@@ -18,6 +19,7 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
+      auth,
       geojitsu
     },
     // enable strict mode (adds overhead!)

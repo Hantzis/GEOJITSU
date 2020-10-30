@@ -42,5 +42,6 @@ export default function () {
       },
     ],
     herramienta_activa: "desplazar",
+    userData: undefined,
   }
 }

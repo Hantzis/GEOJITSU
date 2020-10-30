@@ -3,6 +3,10 @@ export function someGetter (/ * state * /) {
 }
 */
 
+export const getUserData = (state) => {
+  return state.UserData
+}
+
 export const GISRibbonIsOpenGetter = (state) => {
   return state.GISRibbonIsOpen
 }
