@@ -8,7 +8,7 @@
           Mapa VCM
         </q-toolbar-title>
         <q-btn v-if="this.$route.path==='/'" dense flat round
-               :icon="showGISRibbon ? 'mdi-arrow-collapse-up' : 'mdi-arrow-collapse-down'"
+               :icon="showGISRibbon ? 'mdi-chevron-up' : 'mdi-chevron-down'"
                @click="showGISRibbon = !showGISRibbon">
           <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px" anchor="top middle"
                      self="bottom middle">

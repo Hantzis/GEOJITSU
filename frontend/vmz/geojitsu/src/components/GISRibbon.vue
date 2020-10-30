@@ -1,94 +1,85 @@
 <template>
   <div>
 
-    <q-toolbar  style="padding: 0" v-show="showGISRibbon" v-model="activeTab" class="bg-white text-grey-9">
 
+    <q-toolbar style="padding: 0" v-show="showGISRibbon" v-model="activeTab" class="bg-white text-grey-9">
       <div name="mapa" class="no-padding">
-        <div class="row no-wrap">
 
-          <div class="col-auto" >
-            <div class="row">
-              <div class="col align-stretch">
-                <div class="row q-pa-xs q-pt-xs1 q-pl-xs q-pr-xs">
-                  <q-btn-toggle
-                    style="border-radius: 0;"
-                    v-model="herramienta_activa"
-                    unelevated
-                    text-color="grey-7"
-                    toggle-text-color="white"
-                    toggle-color="primary"
-                    :options="[
+          <div class="row no-wrap">
+
+            <div class="col-auto">
+              <div class="row">
+                <div class="col align-stretch">
+                  <div class="row q-pa-xs q-pt-xs1 q-pl-xs q-pr-xs">
+                    <q-btn-toggle
+                      style="border-radius: 0;"
+                      v-model="herramienta_activa"
+                      unelevated
+                      text-color="grey-7"
+                      toggle-text-color="white"
+                      toggle-color="primary"
+                      :options="[
                       {value: 'info', slot: 'info'},
-                      {value: 'seleccion', slot: 'seleccion'},
-                      {value: 'medicion', slot: 'medicion'},
-                      {value: 'agregar', slot: 'agregar'},
+                      {value: 'agregar_domicilio', slot: 'agregar_domicilio'},
+                      {value: 'agregar_marcador', slot: 'agregar_marcador'},
                     ]"
-                  >
-                    <template v-slot:seleccion>
-                      <q-icon name="mdi-selection-drag" size="lg" style="margin: -10px; margin-right: -10px;">
-                        <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px"
-                                   anchor="top middle"
-                                   self="bottom middle">
-                          Selección
-                        </q-tooltip>
-                      </q-icon>
-                    </template>
-                    <template v-slot:info>
-                      <q-icon name="mdi-information" size="lg" style="margin: -10px; margin-right: -10px;">
-                        <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px"
-                                   anchor="top middle"
-                                   self="bottom middle">
-                          Información
-                        </q-tooltip>
-                      </q-icon>
-                    </template>
-                    <template v-slot:medicion>
-                      <q-icon name="mdi-ruler" size="lg" style="margin: -10px; margin-right: -10px;">
-                        <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px"
-                                   anchor="top middle"
-                                   self="bottom middle">
-                          Medición
-                        </q-tooltip>
-                      </q-icon>
-                    </template>
-                    <template v-slot:agregar>
-                      <q-icon name="mdi-plus" size="lg" style="margin: -10px; margin-right: -10px;">
-                        <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px"
-                                   anchor="top middle"
-                                   self="bottom middle">
-                          Agregar nuevo reporte
-                        </q-tooltip>
-                      </q-icon>
-                    </template>
-                  </q-btn-toggle>
+                    >
+                      <template v-slot:info>
+                        <q-icon name="mdi-information" size="lg" style="margin: 0 -10px 0 -10px;">
+                          <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px"
+                                     anchor="top middle"
+                                     self="bottom middle">
+                            Obtener información de un punto
+                          </q-tooltip>
+                        </q-icon>
+                      </template>
+                      <template v-slot:agregar_domicilio>
+                        <q-icon name="mdi-playlist-plus" size="lg" style="margin: 0 -10px 0 -10px;">
+                          <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px"
+                                     anchor="top middle"
+                                     self="bottom middle">
+                            Agregar nuevo reporte mediante domicilio
+                          </q-tooltip>
+                        </q-icon>
+                      </template>
+                      <template v-slot:agregar_marcador>
+                        <q-icon name="mdi-map-marker-plus" size="lg" style="margin: 0 -10px 0 -10px;">
+                          <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px"
+                                     anchor="top middle"
+                                     self="bottom middle">
+                            Agregar nuevo reporte ubicando en el mapa
+                          </q-tooltip>
+                        </q-icon>
+                      </template>
+                    </q-btn-toggle>
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-between" style="margin-top: 18px;">
+                <div class="col-auto">
+                  <div class="row q-px-sm"/>
+                </div>
+                <div class="col-auto">
+                  Principal
+                </div>
+                <div class="col-auto">
+                  <div class="row q-px-sm"/>
                 </div>
               </div>
             </div>
-            <div class="row justify-between" style="margin-top: 28px;">
-              <div class="col-auto">
-                <div class="row q-px-sm"/>
-              </div>
-              <div class="col-auto">
-                Principal
-              </div>
-              <div class="col-auto">
-                <div class="row q-px-sm"/>
-              </div>
-            </div>
+
+            <q-separator vertical/>
+
+            <mapa-bloque-mapa-base/>
+
+            <q-separator vertical/>
+
           </div>
 
-          <q-separator vertical/>
-
-          <mapa-bloque-mapa-base/>
-
-          <q-separator vertical/>
-
-        </div>
-
       </div>
-
-
     </q-toolbar>
+
+
     <q-separator color="grey-5"/>
   </div>
 </template>
