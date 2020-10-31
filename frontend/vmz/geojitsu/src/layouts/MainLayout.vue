@@ -283,7 +283,7 @@
     <q-dialog ref="profile_dialog" v-model="profile_dialog" persistent>
       <q-card style="width: 360px">
         <q-card-section class="row items-center">
-          <q-avatar icon="mdi-user" color="pink" text-color="white"/>
+          <q-avatar icon="mdi-account" color="pink" text-color="white"/>
           <q-toolbar-title>Perfil de usuario</q-toolbar-title>
           <q-btn icon="close" flat round dense v-close-popup/>
         </q-card-section>
@@ -310,13 +310,13 @@
                      label="Email"/>
           </div>
           <div class="row q-py-xs">
-            <q-input outlined class="full-width" name="fecha_nacimiento" v-model="user_fecha_nacimiento"
+            <q-input outlined class="full-width" name="fecha_nacimiento" v-model="full_user_data.fecha_nacimiento"
                      :rules="['date']"
                      label="Fecha de nacimiento">
               <template v-slot:append>
                 <q-icon name="event" class="cursor-pointer">
                   <q-popup-proxy ref="qDateProxy" transition-show="scale" mask="date" transition-hide="scale">
-                    <q-date v-model="user_fecha_nacimiento">
+                    <q-date v-model="full_user_data.fecha_nacimiento">
                       <div class="row items-center justify-end">
                         <q-btn v-close-popup label="Cerrar" color="pink" flat/>
                       </div>
@@ -326,11 +326,27 @@
               </template>
             </q-input>
           </div>
-          <div class="row q-py-xs">
-            <q-input outlined class="full-width" name="area_conocimiento" v-model="full_user_data.area_conocimiento"
-                     :rules="[val => !!val || 'Área de conocimiento obligatoria']"
-                     label="Área de conocimiento"/>
+          <div class="row q-py-xs" style="padding-bottom: 22px;">
+            <q-select class="full-width" outlined v-model="full_user_data.sexo" clearable
+                      :options="['Masculino', 'Femenino', 'Otro']" label="Sexo" />
           </div>
+          <div class="row q-py-xs" style="padding-bottom: 22px;">
+            <q-select class="full-width" outlined v-model="full_user_data.etnia" :options="etnias" label="Etnia"
+              clearable emit-value map-options option-value="id" option-label="nombre" />
+          </div>
+          <div class="row q-py-xs" style="padding-bottom: 22px;">
+            <q-select class="full-width" outlined v-model="full_user_data.municipio" :options="municipios" label="Municipio"
+                      emit-value map-options option-value="id" option-label="nombre" />
+          </div>
+          <div class="row q-py-xs" style="padding-bottom: 22px;">
+            <q-select class="full-width" outlined v-model="full_user_data.colonia" :options="colonias" label="Colonia"
+                      emit-value map-options option-value="id" option-label="nombre" />
+          </div>
+          <div class="row q-py-xs" style="padding-bottom: 22px;">
+            <q-select class="full-width" outlined v-model="full_user_data.discapacidades" :options="discapacidades"
+                      multiple clearable use-chips label="Discapacidades" emit-value map-options option-value="id" option-label="nombre" />
+          </div>
+
 
         </q-card-section>
         <q-separator/>
@@ -351,7 +367,7 @@
         <q-space/>
         <span class="no-wrap">
         <a style="text-decoration: none" class="text-grey-4 no-underline" href="https://saeba.click"
-                             target="_blank">2020&nbsp;&copy;&nbsp;saeba.click</a>
+           target="_blank">2020&nbsp;&copy;&nbsp;saeba.click</a>
         </span>
       </q-toolbar>
     </q-footer>
@@ -381,16 +397,33 @@ export default {
       login_password: undefined,
       login_rememberme: false,
       reset_email: undefined,
-      user_fecha_nacimiento: undefined,
-      full_user_data: {},
+      full_user_data: {username: undefined, first_name: undefined, last_name: undefined, email: undefined,
+        is_staff: false, sexo: undefined, municipio: undefined, colonia: undefined, etnia: undefined,
+        discapacidades: []
+      },
+      etnias: undefined,
+      municipios: undefined,
+      colonias: undefined,
+      discapacidades: undefined,
     }
+  },
+  watch: {
+    auth_user() {
+      console.log("cambio")
+      console.log(this.auth_user)
+      this.getProfile(this.auth_user.pk)
+    },
+    'full_user_data.municipio': function (newVal, oldVal) {
+      console.log(newVal)
+      console.log(oldVal)
+      this.getColonias(newVal)
+    },
   },
   computed: {
     ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter']),
     ...mapGetters('auth', ['logged', 'user']),
     auth_user: {
       get() {
-        console.log(this.user)
         return this.user
       }
     },
@@ -453,15 +486,53 @@ export default {
       return emailPattern.test(val) || 'La dirección email no tiene formato correcto.';
     },
     resetPassword() {
-      axios.post("https://onsses45.maptitude.xyz/api/v1/rest-auth/password/reset/", {email: this.reset_email})
+      axios.post("https://repvmz.maptitude.xyz/back/api/v1/auth/password/reset/", {email: this.reset_email})
         .then(response => {
           this.resetpassword_dialog = false
           this.resetpassworddone_dialog = true
         })
     },
+    getEtnias() {
+      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/etnias/`).then(response => {
+        this.etnias = response.data
+        console.log("etnias", this.etnias)
+      }).catch(error => console.log(error))
+    },
+    getMunicipios() {
+      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/municipios/`).then(response => {
+        this.municipios = response.data
+        console.log("municipios", this.municipios)
+      }).catch(error => console.log(error))
+    },
+    getColonias(municipio) {
+      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/colonias/?municipio=${municipio}`).then(response => {
+        this.colonias = response.data
+        console.log("colonias", this.colonias)
+      }).catch(error => console.log(error))
+    },
+    getDiscapacidades() {
+      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/discapacidades/`).then(response => {
+        this.discapacidades = response.data
+        console.log("discapacidades", this.discapacidades)
+      }).catch(error => console.log(error))
+    },
+    getProfile(id) {
+      const token = cookies.get("access_token")
+      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-autenticado/${id}/`,
+        {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
+          console.log("getProfile");
+          console.log(response);
+          this.full_user_data.username = response.data.username
+          this.full_user_data.first_name = response.data.first_name
+          this.full_user_data.last_name = response.data.last_name
+          this.full_user_data.email = response.data.email
+          this.full_user_data.fecha_nacimiento = response.data.fecha_nacimiento
+        console.log(this.full_user_data)
+      }).catch(error => console.log(error))
+    },
     updateProfile() {
       const token = cookies.get("access_token")
-      axios.put(`https://onsses45.maptitude.xyz/api/v1/ce/usuarios-registrado/${this.auth_user.pk}/`,
+      axios.put(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-registrado/${this.auth_user.pk}/`,
         this.full_user_data, {headers: {'Authorization': `Bearer ${token}`}})
         .then(response => {
           console.log(response);
@@ -480,10 +551,18 @@ export default {
       alert(val);
     },
   },
+
   mounted() {
-    this.$auth.refreshToken().then(response => {
-      console.log(response)
-    })
+    if (this.auth_logged) {
+      console.log("mount")
+      this.$auth.refreshToken().then(response => {
+        console.log("refreshToken")
+        console.log(response)
+      }).catch(error => console.log("no auth", error))
+    }
+    this.getMunicipios();
+    this.getEtnias();
+    this.getDiscapacidades();
   }
 }
 </script>
