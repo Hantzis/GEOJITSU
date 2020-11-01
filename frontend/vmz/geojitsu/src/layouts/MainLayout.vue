@@ -109,8 +109,8 @@
           </q-avatar>
           <div class="text-weight-bold">
             {{
-              auth_user.first_name === "" || auth_user.last_name === "" ? auth_user.username : auth_user.first_name + " "
-                + auth_user.last_name
+            auth_user.first_name === "" || auth_user.last_name === "" ? auth_user.username : auth_user.first_name + " "
+            + auth_user.last_name
             }}
           </div>
           <div>
@@ -187,24 +187,10 @@
         </q-card-section>
         <q-separator/>
         <q-card-section class="row items-center">
-          <div class="row">
-            <div class="col">
-              <div class="row">
-                <div class="col" style="min-width: 256px;">
-                  <div class="row q-py-xs">
-                    <div class="col">
-                      <q-btn @click="logout()" no-caps color="red"
+          <div class="row full-width">
+            <div class="col full-width">
+              <q-btn @click="logout()" no-caps color="red"
                              label="Salir" class="full-width"/>
-                    </div>
-                  </div>
-                  <div class="row q-py-xs">
-                    <div class="col">
-                      <q-btn @click="logout_dialog=false" no-caps
-                             label="Cancelar" class="full-width"/>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </q-card-section>
@@ -328,23 +314,35 @@
           </div>
           <div class="row q-py-xs" style="padding-bottom: 22px;">
             <q-select class="full-width" outlined v-model="full_user_data.sexo" clearable
-                      :options="['Masculino', 'Femenino', 'Otro']" label="Sexo" />
+                      :options="['Masculino', 'Femenino', 'Otro']" label="Sexo"/>
           </div>
           <div class="row q-py-xs" style="padding-bottom: 22px;">
             <q-select class="full-width" outlined v-model="full_user_data.etnia" :options="etnias" label="Etnia"
-              clearable emit-value map-options option-value="id" option-label="nombre" />
+                      clearable emit-value map-options option-value="id" option-label="nombre"/>
           </div>
           <div class="row q-py-xs" style="padding-bottom: 22px;">
-            <q-select class="full-width" outlined v-model="full_user_data.municipio" :options="municipios" label="Municipio"
-                      emit-value map-options option-value="id" option-label="nombre" />
+            <q-select class="full-width" outlined v-model="full_user_data.municipio" :options="municipios"
+                      label="Municipio"
+                      emit-value map-options option-value="id" option-label="nombre"/>
           </div>
           <div class="row q-py-xs" style="padding-bottom: 22px;">
             <q-select class="full-width" outlined v-model="full_user_data.colonia" :options="colonias" label="Colonia"
-                      emit-value map-options option-value="id" option-label="nombre" />
+                      emit-value map-options option-value="id" option-label="nombre"/>
           </div>
           <div class="row q-py-xs" style="padding-bottom: 22px;">
             <q-select class="full-width" outlined v-model="full_user_data.discapacidades" :options="discapacidades"
-                      multiple clearable use-chips label="Discapacidades" emit-value map-options option-value="id" option-label="nombre" />
+                      multiple clearable use-chips label="Discapacidades" emit-value map-options option-value="id"
+                      option-label="nombre"/>
+          </div>
+
+          <div class="row q-py-xs" style="margin-bottom: 12px;">
+            <q-banner class="text-white bg-info">
+              Si desea cambiar su contraseña, de click en el botón 'Cambiar contraseña'.
+              <template v-slot:action>
+                <q-btn outline color="white" no-caps dense label=" Cambiar contraseña "
+                       @click.prevent="open_changepassword_dialog()"/>
+              </template>
+            </q-banner>
           </div>
 
 
@@ -355,6 +353,39 @@
             <div class="col">
               <q-btn @click="updateProfile()" color="green"
                      label="Actualizar datos" no-caps class="full-width"/>
+            </div>
+          </div>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
+    <q-dialog ref="changepassword_dialog" v-model="changepassword_dialog" persistent>
+      <q-card style="width: 360px">
+        <q-card-section class="row items-center">
+          <q-avatar icon="mdi-key-variant" color="pink" text-color="white"/>
+          <q-toolbar-title>Cambiar contraseña</q-toolbar-title>
+          <q-btn icon="close" flat round dense v-close-popup/>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section>
+          <div class="row q-py-xs">
+            <q-input type="password" outlined class="full-width" name="new_password1" v-model="new_password1"
+                     :rules="[val => !!val || 'Falta contraseña']"
+                     label="Nueva contraseña"/>
+          </div>
+          <div class="row q-py-xs">
+            <q-input type="password" outlined class="full-width" name="new_password2" v-model="new_password2"
+                     :rules="[val => !!val || 'Falta confirmación de contraseña']"
+                     label="Confirmar contraseña"/>
+          </div>
+          <div v-if="new_password1 && new_password2 && new_password1 != new_password2" class="row q-px-xs">
+            <p class="text-red">Las contraseñas no coinciden</p>
+          </div>
+          <br/>
+          <div class="row">
+            <div class="col">
+              <q-btn :disabled="new_password1 || !new_password2 || new_password1 != new_password2" @click="resetPassword()" color="green"
+                     label="Cambiar contraseña" no-caps class="full-width"/>
             </div>
           </div>
         </q-card-section>
@@ -376,150 +407,162 @@
 </template>
 
 <script>
-import md5 from 'crypto-md5';
-import axios from 'axios'
-import {mapGetters, mapActions} from 'vuex'
-import cookies from 'browser-cookies'
+  import md5 from 'crypto-md5';
+  import axios from 'axios'
+  import {mapGetters, mapActions} from 'vuex'
+  import cookies from 'browser-cookies'
 
-export default {
-  data() {
-    return {
-      drawer_left: false,
-      login_failure: false,
-      login_dialog: false,
-      logout_dialog: false,
-      register_dialog: false,
-      resetpassword_dialog: false,
-      resetpassworddone_dialog: false,
-      profile_dialog: false,
-      profileupdated_dialog: false,
-      login_username: undefined,
-      login_password: undefined,
-      login_rememberme: false,
-      reset_email: undefined,
-      full_user_data: {username: undefined, first_name: undefined, last_name: undefined, email: undefined,
-        is_staff: false, sexo: undefined, municipio: undefined, colonia: undefined, etnia: undefined,
-        discapacidades: []
+  export default {
+    data() {
+      return {
+        drawer_left: false,
+        login_failure: false,
+        login_dialog: false,
+        logout_dialog: false,
+        register_dialog: false,
+        resetpassword_dialog: false,
+        resetpassworddone_dialog: false,
+        profile_dialog: false,
+        profileupdated_dialog: false,
+        login_username: undefined,
+        login_password: undefined,
+        login_rememberme: false,
+        reset_email: undefined,
+        full_user_data: {
+          username: undefined, first_name: undefined, last_name: undefined, email: undefined,
+          is_staff: false, sexo: undefined, municipio: undefined, colonia: undefined, etnia: undefined,
+          discapacidades: []
+        },
+        etnias: undefined,
+        municipios: undefined,
+        colonias: undefined,
+        discapacidades: undefined,
+        changepassword_dialog: false,
+        new_password1: undefined,
+        new_password2: undefined,
+      }
+    },
+    watch: {
+      auth_user() {
+        if (this.auth_user.pk) {
+          console.log("cambio");
+          console.log(this.auth_user);
+          this.getProfile(this.auth_user.pk)
+        }
       },
-      etnias: undefined,
-      municipios: undefined,
-      colonias: undefined,
-      discapacidades: undefined,
-    }
-  },
-  watch: {
-    auth_user() {
-      console.log("cambio")
-      console.log(this.auth_user)
-      this.getProfile(this.auth_user.pk)
-    },
-    'full_user_data.municipio': function (newVal, oldVal) {
-      console.log(newVal)
-      console.log(oldVal)
-      this.getColonias(newVal)
-    },
-  },
-  computed: {
-    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter']),
-    ...mapGetters('auth', ['logged', 'user']),
-    auth_user: {
-      get() {
-        return this.user
-      }
-    },
-    auth_logged: {
-      get() {
-        return this.logged
-      }
-    },
-    showGISRibbon: {
-      get() {
-        return this.GISRibbonIsOpenGetter
+      'full_user_data.municipio': function (newVal, oldVal) {
+        console.log(newVal)
+        console.log(oldVal)
+        this.getColonias(newVal)
       },
-      set(value) {
-        this.GISRibbonIsOpenAction(value)
+    },
+    computed: {
+      ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter']),
+      ...mapGetters('auth', ['logged', 'user']),
+      auth_user: {
+        get() {
+          return this.user
+        }
+      },
+      auth_logged: {
+        get() {
+          return this.logged
+        }
+      },
+      showGISRibbon: {
+        get() {
+          return this.GISRibbonIsOpenGetter
+        },
+        set(value) {
+          this.GISRibbonIsOpenAction(value)
+        }
       }
-    }
-  },
-  methods: {
-    ...mapActions('geojitsu', ['GISRibbonIsOpenAction']),
-    ...mapActions('auth', ['setUser']),
-    login() {
-      this.$auth.attemptLogin(
-        {
-          username: this.login_username,
-          password: this.login_password
-        }, this.login_rememberme
-      ).then(response => {
-        console.log('You were logged in')
-        this.login_dialog = false
-        //this.auth_user = response
-      }).catch(error => {
-        console.log(error && error.response && error.response.status === 401
-          ? 'Wrong e-mail or password'
-          : 'Something went wrong'
-        )
-        this.login_failure = true
-      })
     },
-    logout() {
-      this.$auth.logout(
-      ).then(() => {
-        console.log('You were logged out')
-        this.logout_dialog = false
-      }).catch(error => {
-        console.log(error && error.response && error.response.status === 401
-          ? 'Wrong e-mail or password'
-          : 'Something went wrong'
-        )
-      })
-    },
-    open_resetpassword_dialog() {
-      this.login_dialog = false
-      this.resetpassword_dialog = true
-      this.login_failure = false
-      this.login_username = undefined
-      this.login_password = undefined
-    },
-    isValidEmail(val) {
-      const emailPattern = /^(?=[a-zA-Z0-9@.%+-]{6,254}$)[a-zA-Z0-9.%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
-      return emailPattern.test(val) || 'La dirección email no tiene formato correcto.';
-    },
-    resetPassword() {
-      axios.post("https://repvmz.maptitude.xyz/back/api/v1/auth/password/reset/", {email: this.reset_email})
-        .then(response => {
-          this.resetpassword_dialog = false
-          this.resetpassworddone_dialog = true
+    methods: {
+      ...mapActions('geojitsu', ['GISRibbonIsOpenAction']),
+      ...mapActions('auth', ['setUser']),
+      login() {
+        this.$auth.attemptLogin(
+          {
+            username: this.login_username,
+            password: this.login_password
+          }, this.login_rememberme
+        ).then(response => {
+          console.log('You were logged in')
+          this.login_dialog = false
+        }).catch(error => {
+          console.log(error && error.response && error.response.status === 401
+            ? 'Wrong e-mail or password'
+            : 'Something went wrong'
+          );
+          this.login_failure = true
         })
-    },
-    getEtnias() {
-      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/etnias/`).then(response => {
-        this.etnias = response.data
-        console.log("etnias", this.etnias)
-      }).catch(error => console.log(error))
-    },
-    getMunicipios() {
-      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/municipios/`).then(response => {
-        this.municipios = response.data
-        console.log("municipios", this.municipios)
-      }).catch(error => console.log(error))
-    },
-    getColonias(municipio) {
-      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/colonias/?municipio=${municipio}`).then(response => {
-        this.colonias = response.data
-        console.log("colonias", this.colonias)
-      }).catch(error => console.log(error))
-    },
-    getDiscapacidades() {
-      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/discapacidades/`).then(response => {
-        this.discapacidades = response.data
-        console.log("discapacidades", this.discapacidades)
-      }).catch(error => console.log(error))
-    },
-    getProfile(id) {
-      const token = cookies.get("access_token")
-      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-autenticado/${id}/`,
-        {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
+      },
+      logout() {
+        this.$auth.logout(
+        ).then(() => {
+          console.log('You were logged out')
+          this.logout_dialog = false
+        }).catch(error => {
+          console.log(error && error.response && error.response.status === 401
+            ? 'Wrong e-mail or password'
+            : 'Something went wrong'
+          )
+        })
+      },
+      open_resetpassword_dialog() {
+        this.login_dialog = false
+        this.resetpassword_dialog = true
+        this.login_failure = false
+        this.login_username = undefined
+        this.login_password = undefined
+      },
+      open_changepassword_dialog() {
+        this.profile_dialog = false;
+        this.changepassword_dialog = true;
+        this.new_password1 = undefined;
+        this.new_password2 = undefined;
+      },
+
+      isValidEmail(val) {
+        const emailPattern = /^(?=[a-zA-Z0-9@.%+-]{6,254}$)[a-zA-Z0-9.%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
+        return emailPattern.test(val) || 'La dirección email no tiene formato correcto.';
+      },
+      resetPassword() {
+        axios.post("https://repvmz.maptitude.xyz/back/api/v1/auth/password/reset/", {email: this.reset_email})
+          .then(response => {
+            this.resetpassword_dialog = false
+            this.resetpassworddone_dialog = true
+          })
+      },
+      getEtnias() {
+        axios.get(`https://repvmz.maptitude.xyz/back/api/v1/etnias/`).then(response => {
+          this.etnias = response.data
+          console.log("etnias", this.etnias)
+        }).catch(error => console.log(error))
+      },
+      getMunicipios() {
+        axios.get(`https://repvmz.maptitude.xyz/back/api/v1/municipios/`).then(response => {
+          this.municipios = response.data
+          console.log("municipios", this.municipios)
+        }).catch(error => console.log(error))
+      },
+      getColonias(municipio) {
+        axios.get(`https://repvmz.maptitude.xyz/back/api/v1/colonias/?municipio=${municipio}`).then(response => {
+          this.colonias = response.data
+          console.log("colonias", this.colonias)
+        }).catch(error => console.log(error))
+      },
+      getDiscapacidades() {
+        axios.get(`https://repvmz.maptitude.xyz/back/api/v1/discapacidades/`).then(response => {
+          this.discapacidades = response.data
+          console.log("discapacidades", this.discapacidades)
+        }).catch(error => console.log(error))
+      },
+      getProfile(id) {
+        const token = cookies.get("access_token");
+        axios.get(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-autenticado/${id}/`,
+          {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
           console.log("getProfile");
           console.log(response);
           this.full_user_data.username = response.data.username
@@ -527,53 +570,61 @@ export default {
           this.full_user_data.last_name = response.data.last_name
           this.full_user_data.email = response.data.email
           this.full_user_data.fecha_nacimiento = response.data.fecha_nacimiento
-        console.log(this.full_user_data)
-      }).catch(error => console.log(error))
+          this.full_user_data.sexo = response.data.sexo
+          this.full_user_data.etnia = response.data.etnia
+          this.full_user_data.municipio = response.data.municipio
+          this.full_user_data.colonia = response.data.colonia
+          this.full_user_data.discapacidades = response.data.discapacidades
+          console.log(this.full_user_data)
+        }).catch(error => console.log(error))
+      },
+      updateProfile() {
+        const token = cookies.get("access_token")
+        axios.patch(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-autenticado/${this.auth_user.pk}/`,
+          this.full_user_data, {headers: {'Authorization': `Bearer ${token}`}})
+          .then(response => {
+            console.log(response);
+            this.profile_dialog = false
+            this.profileupdated_dialog = true
+            this.$auth.refreshToken().then(response => {
+              console.log("refreshToken")
+              console.log(response)
+            }).catch(error => console.log("no auth", error))
+          })
+      },
+      get_gravatar(email, argsize) {
+        let mail = "default@gravatar.com"
+        if (email) {
+          mail = email
+        }
+        return 'https://www.gravatar.com/avatar/' + md5(mail.trim().toLowerCase(), 'hex') + '.jpg?s=' + argsize;
+      },
+      testa(val) {
+        alert(val);
+      },
     },
-    updateProfile() {
-      const token = cookies.get("access_token")
-      axios.put(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-registrado/${this.auth_user.pk}/`,
-        this.full_user_data, {headers: {'Authorization': `Bearer ${token}`}})
-        .then(response => {
-          console.log(response);
-          this.profile_dialog = false
-          this.profileupdated_dialog = true
-        })
-    },
-    get_gravatar(email, argsize) {
-      let mail = "default@gravatar.com"
-      if (email) {
-        mail = email
+    mounted() {
+      if (this.auth_logged) {
+        console.log("mount")
+        this.$auth.refreshToken().then(response => {
+          console.log("refreshToken")
+          console.log(response)
+        }).catch(error => console.log("no auth", error))
       }
-      return 'https://www.gravatar.com/avatar/' + md5(mail.trim().toLowerCase(), 'hex') + '.jpg?s=' + argsize;
-    },
-    testa(val) {
-      alert(val);
-    },
-  },
-
-  mounted() {
-    if (this.auth_logged) {
-      console.log("mount")
-      this.$auth.refreshToken().then(response => {
-        console.log("refreshToken")
-        console.log(response)
-      }).catch(error => console.log("no auth", error))
+      this.getMunicipios();
+      this.getEtnias();
+      this.getDiscapacidades();
     }
-    this.getMunicipios();
-    this.getEtnias();
-    this.getDiscapacidades();
   }
-}
 </script>
 
 <style lang="css" scoped>
-.q-drawer--right {
-  z-index: 999;
-  border-left: 1px solid rgba(0, 0, 0, 0.12);
-}
+  .q-drawer--right {
+    z-index: 999;
+    border-left: 1px solid rgba(0, 0, 0, 0.12);
+  }
 
-.top-menu {
-  border-radius: 0;
-}
+  .top-menu {
+    border-radius: 0;
+  }
 </style>
