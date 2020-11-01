@@ -65,7 +65,7 @@
     </q-header>
 
     <q-drawer v-model="drawer_left" side="left" elevated overlay behavior="mobile">
-      <q-scroll-area style="height: calc(100% - 200px); margin-top: 200px; border-right: 1px solid #ddd">
+      <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
         <q-list padding>
           <q-item to="/" clickable v-ripple exact>
             <q-item-section avatar>
@@ -101,7 +101,7 @@
 
         </q-list>
       </q-scroll-area>
-      <q-img class="absolute-top" src="~assets/material.png" style="height: 200px">
+      <q-img class="absolute-top" src="~assets/material.png" style="height: 150px">
 
         <div v-if="auth_logged" class="absolute-bottom bg-transparent">
           <q-avatar size="56px" class="q-mb-sm">
@@ -125,7 +125,7 @@
           <div class="text-weight-bold">Anónimo</div>
           <div>
             <a style="cursor: pointer; margin-right: 8px;" @click="login_dialog = true">Ingresar</a> |
-            <a style="cursor: pointer; margin-left: 8px;" @click="register_dialog = true">Registrar</a>
+            <a style="cursor: pointer; margin-left: 8px;" @click="create_account_dialog = true">Registrar</a>
           </div>
         </div>
 
@@ -190,7 +190,7 @@
           <div class="row full-width">
             <div class="col full-width">
               <q-btn @click="logout()" no-caps color="red"
-                             label="Salir" class="full-width"/>
+                     label="Salir" class="full-width"/>
             </div>
           </div>
         </q-card-section>
@@ -358,7 +358,6 @@
         </q-card-section>
       </q-card>
     </q-dialog>
-
     <q-dialog ref="changepassword_dialog" v-model="changepassword_dialog" persistent>
       <q-card style="width: 360px">
         <q-card-section class="row items-center">
@@ -384,8 +383,108 @@
           <br/>
           <div class="row">
             <div class="col">
-              <q-btn :disabled="new_password1 || !new_password2 || new_password1 != new_password2" @click="resetPassword()" color="green"
+              <q-btn :disabled="new_password1 || !new_password2 || new_password1 != new_password2"
+                     @click="resetPassword()" color="green"
                      label="Cambiar contraseña" no-caps class="full-width"/>
+            </div>
+          </div>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
+    <q-dialog ref="create_account_dialog" v-model="create_account_dialog" persistent>
+      <q-card style="width: 360px">
+        <q-card-section class="row items-center">
+          <q-avatar icon="mdi-account" color="pink" text-color="white"/>
+          <q-toolbar-title>Crear cuenta</q-toolbar-title>
+          <q-btn icon="close" flat round dense v-close-popup/>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section style="max-height: 50vh" class="scroll">
+          <div class="row q-py-xs">
+            <q-input outlined class="full-width" name="username" v-model="new_user_data.username"
+                     :rules="[val => !!val || 'Username obligatorio']"
+                     label="nombre de usuario"/>
+          </div>
+          <div class="row q-py-xs">
+            <q-input outlined class="full-width" name="first_name" v-model="new_user_data.first_name"
+                     :rules="[val => !!val || 'Nombre obligatorio']"
+                     label="Nombre(s)"/>
+          </div>
+          <div class="row q-py-xs">
+            <q-input outlined class="full-width" name="last_name" v-model="new_user_data.last_name"
+                     :rules="[val => !!val || 'Apellidos obligatorio']"
+                     label="Apellidos"/>
+          </div>
+          <div class="row q-py-xs">
+            <q-input outlined class="full-width" name="email" v-model="new_user_data.email"
+                     :rules="[isValidEmail]"
+                     label="Email"/>
+          </div>
+          <div class="row q-py-xs">
+            <q-input outlined class="full-width" name="fecha_nacimiento" v-model="new_user_data.fecha_nacimiento"
+                     :rules="['date']"
+                     label="Fecha de nacimiento">
+              <template v-slot:append>
+                <q-icon name="event" class="cursor-pointer">
+                  <q-popup-proxy ref="qDateProxy" transition-show="scale" mask="date" transition-hide="scale">
+                    <q-date v-model="new_user_data.fecha_nacimiento">
+                      <div class="row items-center justify-end">
+                        <q-btn v-close-popup label="Cerrar" color="pink" flat/>
+                      </div>
+                    </q-date>
+                  </q-popup-proxy>
+                </q-icon>
+              </template>
+            </q-input>
+          </div>
+          <div class="row q-py-xs" style="padding-bottom: 22px;">
+            <q-select class="full-width" outlined v-model="new_user_data.sexo" clearable
+                      :options="['Masculino', 'Femenino', 'Otro']" label="Sexo"/>
+          </div>
+          <div class="row q-py-xs" style="padding-bottom: 22px;">
+            <q-select class="full-width" outlined v-model="new_user_data.etnia" :options="etnias" label="Etnia"
+                      clearable emit-value map-options option-value="id" option-label="nombre"/>
+          </div>
+          <div class="row q-py-xs" style="padding-bottom: 22px;">
+            <q-select class="full-width" outlined v-model="new_user_data.municipio" :options="municipios"
+                      label="Municipio"
+                      emit-value map-options option-value="id" option-label="nombre"/>
+          </div>
+          <div class="row q-py-xs" style="padding-bottom: 22px;">
+            <q-select class="full-width" outlined v-model="new_user_data.colonia" :options="colonias" label="Colonia"
+                      emit-value map-options option-value="id" option-label="nombre"/>
+          </div>
+          <div class="row q-py-xs" style="padding-bottom: 22px;">
+            <q-select class="full-width" outlined v-model="new_user_data.discapacidades" :options="discapacidades"
+                      multiple clearable use-chips label="Discapacidades" emit-value map-options option-value="id"
+                      option-label="nombre"/>
+          </div>
+
+          <div class="row q-py-xs">
+            <q-input type="password" outlined class="full-width" name="new_password1" v-model="new_password1"
+                     :rules="[val => !!val || 'Falta contraseña']"
+                     label="Nueva contraseña"/>
+          </div>
+          <div class="row q-py-xs">
+            <q-input type="password" outlined class="full-width" name="new_password2" v-model="new_password2"
+                     :rules="[val => !!val || 'Falta confirmación de contraseña']"
+                     label="Confirmar contraseña"/>
+          </div>
+          <div v-if="new_password1 && new_password2 && new_password1 != new_password2" class="row q-px-xs">
+            <p class="text-red">Las contraseñas no coinciden</p>
+          </div>
+          <br/>
+
+
+
+        </q-card-section>
+        <q-separator/>
+        <q-card-section>
+          <div class="row">
+            <div class="col">
+              <q-btn @click="createAccount()" color="green"
+                     label="Crear Cuenta" no-caps class="full-width"/>
             </div>
           </div>
         </q-card-section>
@@ -433,11 +532,17 @@
           is_staff: false, sexo: undefined, municipio: undefined, colonia: undefined, etnia: undefined,
           discapacidades: []
         },
+        new_user_data: {
+          username: undefined, first_name: undefined, last_name: undefined, email: undefined,
+          sexo: undefined, municipio: undefined, colonia: undefined, etnia: undefined,
+          password: undefined
+        },
         etnias: undefined,
         municipios: undefined,
         colonias: undefined,
         discapacidades: undefined,
         changepassword_dialog: false,
+        create_account_dialog: false,
         new_password1: undefined,
         new_password2: undefined,
       }
@@ -523,10 +628,20 @@
         this.new_password1 = undefined;
         this.new_password2 = undefined;
       },
-
       isValidEmail(val) {
         const emailPattern = /^(?=[a-zA-Z0-9@.%+-]{6,254}$)[a-zA-Z0-9.%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
         return emailPattern.test(val) || 'La dirección email no tiene formato correcto.';
+      },
+      createAccount() {
+        if (this.new_password1 === this.new_password2) {
+          this.new_user_data.password = this.new_password1
+        }
+        axios.post("https://repvmz.maptitude.xyz/back/api/v1/accounts/register/", this.new_user_data)
+          .then(response => {
+            console.log(response)
+            this.create_account_dialog = false;
+            this.create_account_info_dialog = true;
+          })
       },
       resetPassword() {
         axios.post("https://repvmz.maptitude.xyz/back/api/v1/auth/password/reset/", {email: this.reset_email})
