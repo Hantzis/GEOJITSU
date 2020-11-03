@@ -766,22 +766,19 @@ export default {
           this.resetpassword_dialog = false
           this.resetpassworddone_dialog = true
         })
-    }
-    ,
+    },
     getEtnias() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/etnias/`).then(response => {
         this.etnias = response.data
         console.log("etnias", this.etnias)
       }).catch(error => console.log(error))
-    }
-    ,
+    },
     getMunicipios() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/municipios/`).then(response => {
         this.municipios = response.data
         console.log("municipios", this.municipios)
       }).catch(error => console.log(error))
-    }
-    ,
+    },
     getColonias(municipio) {
       if (municipio) {
         axios.get(`https://repvmz.maptitude.xyz/back/api/v1/colonias/?municipio=${municipio}`).then(response => {
@@ -789,15 +786,13 @@ export default {
           console.log("colonias", this.colonias)
         }).catch(error => console.log(error))
       }
-    }
-    ,
+    },
     getDiscapacidades() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/discapacidades/`).then(response => {
         this.discapacidades = response.data
         console.log("discapacidades", this.discapacidades)
       }).catch(error => console.log(error))
-    }
-    ,
+    },
     getProfile(id) {
       const token = cookies.get("access_token");
       if (this.new_user_data.username) {
@@ -833,8 +828,7 @@ export default {
         this.full_user_data.discapacidades = response.data.discapacidades
         console.log(this.full_user_data)
       }).catch(error => console.log(error))
-    }
-    ,
+    },
     updateProfile() {
       const token = cookies.get("access_token")
       if (this.full_user_data.discapacidades === null) {
@@ -858,20 +852,17 @@ export default {
           return false;
         }
       });
-    }
-    ,
+    },
     get_gravatar(email, argsize) {
       let mail = "default@gravatar.com"
       if (email) {
         mail = email
       }
       return 'https://www.gravatar.com/avatar/' + md5(mail.trim().toLowerCase(), 'hex') + '.jpg?s=' + argsize;
-    }
-    ,
+    },
     testa(val) {
       alert(val);
-    }
-    ,
+    },
   },
   mounted() {
     if (this.auth_logged) {
