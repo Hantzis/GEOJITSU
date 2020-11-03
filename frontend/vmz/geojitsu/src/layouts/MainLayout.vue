@@ -395,7 +395,7 @@
         <q-card-section class="row items-center">
           <q-avatar icon="mdi-account" color="pink" text-color="white"/>
           <q-toolbar-title>Crear cuenta</q-toolbar-title>
-          <q-btn icon="close" flat round dense v-close-popup/>
+          <q-btn icon="close" flat round dense v-close-popup @click="cleanRegisterForm()"/>
         </q-card-section>
         <q-separator/>
         <q-card-section style="max-height: 50vh" class="scroll">
@@ -403,6 +403,8 @@
             <div class="row q-py-xs">
               <q-input outlined class="full-width" name="username" v-model="new_user_data.username"
                        :rules="[val => !!val || 'Username obligatorio']"
+                       :error="usernameExists"
+                       error-message="El nombre de usuario ya existe"
                        label="nombre de usuario"/>
             </div>
             <div class="row q-py-xs">
@@ -439,8 +441,9 @@
                 </template>
               </q-input>
             </div>
-            <div class="row q-py-xs" style="padding-bottom: 22px;">
+            <div class="row q-py-xs">
               <q-select class="full-width" outlined v-model="new_user_data.sexo"
+                        :rules="[val => !!val || 'Sexo obligatorio']"
                         :options="['Femenino', 'Masculino', 'Otro']" label="Sexo"/>
             </div>
             <div class="row q-py-xs" style="padding-bottom: 22px;">
@@ -465,7 +468,7 @@
             <div class="row q-py-xs">
               <q-input type="password" outlined class="full-width" name="password1" v-model="new_user_data.password1"
                        :rules="[val => !!val || 'Falta contraseña', val => val.length >= 8 || 'Mínimo 8 caracteres']"
-                       label="Nueva contraseña"/>
+                       label="Contraseña"/>
             </div>
             <div class="row q-py-xs">
               <q-input type="password" outlined class="full-width" name="password2" v-model="new_user_data.password2"
@@ -486,7 +489,7 @@
           <div class="row">
             <div class="col">
               <q-btn @click="createAccount()" color="green"
-                     :disabled="new_user_data.password1 != new_user_data.password2"
+                     :disabled="!new_user_data.password1 || !new_user_data.password2 || new_user_data.password1 != new_user_data.password2"
                      label="Crear cuenta" no-caps class="full-width"/>
             </div>
           </div>
@@ -497,7 +500,7 @@
     <q-dialog ref="accountcreated_dialog" v-model="accountcreated_dialog" persistent>
       <q-card style="width: 360px">
         <q-card-section class="row items-center">
-          <q-avatar icon="mdi-user" color="pink" text-color="white"/>
+          <q-avatar icon="mdi-info" color="pink" text-color="white"/>
           <q-toolbar-title>Cuenta creada</q-toolbar-title>
           <q-btn icon="close" flat round dense v-close-popup/>
         </q-card-section>
@@ -573,6 +576,7 @@ export default {
       create_account_dialog: false,
       new_password1: undefined,
       new_password2: undefined,
+      registration_response_error: {username: undefined, email: undefined},
     }
   },
   watch: {
@@ -587,12 +591,14 @@ export default {
       console.log(newVal)
       console.log(oldVal)
       this.full_user_data.colonia = undefined
+      if (newVal)
       this.getColonias(newVal)
     },
     'new_user_data.municipio': function (newVal, oldVal) {
       console.log(newVal)
       console.log(oldVal)
       this.new_user_data.colonia = undefined
+      if (newVal)
       this.getColonias(newVal)
     },
     profile_dialog() {
@@ -636,7 +642,13 @@ export default {
       set(value) {
         this.GISRibbonIsOpenAction(value)
       }
-    }
+    },
+    usernameExists() {
+      return this.registration_response_error.username !== undefined
+    },
+    emailExists() {
+      return this.registration_response_error.email !== undefined
+    },
   },
   methods: {
     ...mapActions('geojitsu', ['GISRibbonIsOpenAction']),
@@ -689,9 +701,21 @@ export default {
     },
     isValidEmail(val) {
       const emailPattern = /^(?=[a-zA-Z0-9@.%+-]{6,254}$)[a-zA-Z0-9.%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
-      return emailPattern.test(val) || 'La dirección email no tiene formato correcto.';
+      if (this.emailExists) {
+        return "Ya existe una cuenta con el mismo email"
+      } else {
+        return emailPattern.test(val) || 'La dirección email no tiene formato correcto.';
+      }
+    },
+    cleanRegisterForm() {
+      this.new_user_data = {
+        username: undefined, first_name: undefined, last_name: undefined, email: undefined,
+        sexo: undefined, municipio: undefined, colonia: undefined, etnia: undefined,
+        fecha_nacimiento: undefined, password1: undefined, password2: undefined, discapacidades: undefined
+      }
     },
     createAccount() {
+      this.registration_response_error = {username: undefined, email: undefined}
       if (this.new_password1 === this.new_password2) {
         this.new_user_data.password = this.new_password1
       }
@@ -699,22 +723,30 @@ export default {
         this.new_user_data.discapacidades = []
       }
       this.$refs.form_register.validate().then(valid => {
-        if (valid) {
-          axios.post("https://repvmz.maptitude.xyz/back/api/v1/auth/registration/", this.new_user_data)
-            .then(response => {
-              console.log(response)
-              this.create_account_dialog = false;
-              this.create_account_info_dialog = true;
-              this.accountcreated_dialog = true;
-              this.login_username = this.new_user_data.username
-              this.login_password = this.new_user_data.password1
-              this.login()
-            }).catch(error => console.log(error))
-        } else {
-          console.log('error submit!!');
-          return false;
+          if (valid) {
+            axios.post("https://repvmz.maptitude.xyz/back/api/v1/auth/registration/", this.new_user_data)
+              .then(response => {
+                console.log(response)
+                this.create_account_dialog = false;
+                this.create_account_info_dialog = true;
+                this.accountcreated_dialog = true;
+                this.login_username = this.new_user_data.username
+                this.login_password = this.new_user_data.password1
+                // enviar los datos de usuario
+                this.login()
+              }).catch(error => {
+              console.log("registration error", error.response)
+              this.registration_response_error = error.response.data
+              this.$refs.form_register.validate()
+            }).finally(() => {
+              this.cleanRegisterForm()
+            })
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
         }
-      })
+      )
     },
     resetPassword() {
       axios.post("https://repvmz.maptitude.xyz/back/api/v1/auth/password/reset/", {email: this.reset_email})
@@ -722,31 +754,36 @@ export default {
           this.resetpassword_dialog = false
           this.resetpassworddone_dialog = true
         })
-    },
+    }
+    ,
     getEtnias() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/etnias/`).then(response => {
         this.etnias = response.data
         console.log("etnias", this.etnias)
       }).catch(error => console.log(error))
-    },
+    }
+    ,
     getMunicipios() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/municipios/`).then(response => {
         this.municipios = response.data
         console.log("municipios", this.municipios)
       }).catch(error => console.log(error))
-    },
+    }
+    ,
     getColonias(municipio) {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/colonias/?municipio=${municipio}`).then(response => {
         this.colonias = response.data
         console.log("colonias", this.colonias)
       }).catch(error => console.log(error))
-    },
+    }
+    ,
     getDiscapacidades() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/discapacidades/`).then(response => {
         this.discapacidades = response.data
         console.log("discapacidades", this.discapacidades)
       }).catch(error => console.log(error))
-    },
+    }
+    ,
     getProfile(id) {
       const token = cookies.get("access_token");
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-autenticado/${id}/`,
@@ -765,7 +802,8 @@ export default {
         this.full_user_data.discapacidades = response.data.discapacidades
         console.log(this.full_user_data)
       }).catch(error => console.log(error))
-    },
+    }
+    ,
     updateProfile() {
       const token = cookies.get("access_token")
       if (this.full_user_data.discapacidades === null) {
@@ -789,17 +827,20 @@ export default {
           return false;
         }
       });
-    },
+    }
+    ,
     get_gravatar(email, argsize) {
       let mail = "default@gravatar.com"
       if (email) {
         mail = email
       }
       return 'https://www.gravatar.com/avatar/' + md5(mail.trim().toLowerCase(), 'hex') + '.jpg?s=' + argsize;
-    },
+    }
+    ,
     testa(val) {
       alert(val);
-    },
+    }
+    ,
   },
   mounted() {
     if (this.auth_logged) {
