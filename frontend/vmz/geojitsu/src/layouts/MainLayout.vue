@@ -577,6 +577,7 @@ export default {
       new_password1: undefined,
       new_password2: undefined,
       registration_response_error: {username: undefined, email: undefined},
+      registration_response_data: undefined,
     }
   },
   watch: {
@@ -590,16 +591,23 @@ export default {
     'full_user_data.municipio': function (newVal, oldVal) {
       console.log(newVal)
       console.log(oldVal)
-      this.full_user_data.colonia = undefined
-      if (newVal)
-      this.getColonias(newVal)
+      console.log("full_user")
+      if (oldVal) {
+        this.getColonias(newVal)
+      }
+      if (newVal) {
+        if (!this.new_user_data.colonia)
+          this.full_user_data.colonia = undefined
+        this.getColonias(newVal)
+      }
     },
     'new_user_data.municipio': function (newVal, oldVal) {
       console.log(newVal)
       console.log(oldVal)
-      this.new_user_data.colonia = undefined
-      if (newVal)
-      this.getColonias(newVal)
+      if (newVal) {
+        this.new_user_data.colonia = undefined
+        this.getColonias(newVal)
+      }
     },
     profile_dialog() {
       if (this.profile_dialog) {
@@ -664,8 +672,10 @@ export default {
           password: this.login_password
         }, true
       ).then(response => {
+        console.log("then login", response)
         console.log('You were logged in')
         this.login_dialog = false
+        this.user_fecha_nacimiento = ""
       }).catch(error => {
         console.log(error && error.response && error.response.status === 401
           ? 'Wrong e-mail or password'
@@ -679,6 +689,7 @@ export default {
       ).then(() => {
         console.log('You were logged out')
         this.logout_dialog = false
+        this.user_fecha_nacimiento = ""
       }).catch(error => {
         console.log(error && error.response && error.response.status === 401
           ? 'Wrong e-mail or password'
@@ -713,6 +724,8 @@ export default {
         sexo: undefined, municipio: undefined, colonia: undefined, etnia: undefined,
         fecha_nacimiento: undefined, password1: undefined, password2: undefined, discapacidades: undefined
       }
+      this.registration_response_data = undefined
+      this.user_fecha_nacimiento = ""
     },
     createAccount() {
       this.registration_response_error = {username: undefined, email: undefined}
@@ -732,14 +745,13 @@ export default {
                 this.accountcreated_dialog = true;
                 this.login_username = this.new_user_data.username
                 this.login_password = this.new_user_data.password1
-                // enviar los datos de usuario
                 this.login()
               }).catch(error => {
-              console.log("registration error", error.response)
-              this.registration_response_error = error.response.data
-              this.$refs.form_register.validate()
-            }).finally(() => {
-              this.cleanRegisterForm()
+              console.log("registration error", error)
+              if (error.response) {
+                this.registration_response_error = error.response.data
+                this.$refs.form_register.validate()
+              }
             })
           } else {
             console.log('error submit!!');
@@ -771,10 +783,12 @@ export default {
     }
     ,
     getColonias(municipio) {
-      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/colonias/?municipio=${municipio}`).then(response => {
-        this.colonias = response.data
-        console.log("colonias", this.colonias)
-      }).catch(error => console.log(error))
+      if (municipio) {
+        axios.get(`https://repvmz.maptitude.xyz/back/api/v1/colonias/?municipio=${municipio}`).then(response => {
+          this.colonias = response.data
+          console.log("colonias", this.colonias)
+        }).catch(error => console.log(error))
+      }
     }
     ,
     getDiscapacidades() {
@@ -786,6 +800,23 @@ export default {
     ,
     getProfile(id) {
       const token = cookies.get("access_token");
+      if (this.new_user_data.username) {
+        this.full_user_data = this.new_user_data
+        console.log("this.full_user_data", this.full_user_data)
+        console.log("this.new_user_data", this.new_user_data)
+        axios.patch(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-autenticado/${this.auth_user.pk}/`,
+          this.full_user_data, {headers: {'Authorization': `Bearer ${token}`}})
+          .then(response => {
+            console.log(response);
+            this.profile_dialog = false
+            this.$auth.refreshToken().then(response => {
+              console.log("refreshToken")
+              console.log(response)
+            }).catch(error => console.log("error", error))
+          }).then(() => {
+          this.cleanRegisterForm()
+        })
+      }
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-autenticado/${id}/`,
         {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
         console.log("getProfile");
