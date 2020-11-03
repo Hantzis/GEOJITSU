@@ -41,7 +41,7 @@ export default function () {
         }
       },
     ],
-    herramienta_activa: "desplazar",
+    herramientaActiva: "info",
     userData: undefined,
   }
 }

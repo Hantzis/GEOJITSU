@@ -3,10 +3,6 @@ export function someGetter (/ * state * /) {
 }
 */
 
-export const getUserData = (state) => {
-  return state.UserData
-}
-
 export const GISRibbonIsOpenGetter = (state) => {
   return state.GISRibbonIsOpen
 }
@@ -29,4 +25,8 @@ export const capaSeleccionadaGetter = (state) => {
 
 export const getDrawerCapas = (state) => {
   return state.drawerCapas
+}
+
+export const getHerramientaActiva = (state) => {
+  return state.herramientaActiva
 }

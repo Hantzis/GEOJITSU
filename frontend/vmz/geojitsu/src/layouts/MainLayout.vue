@@ -389,7 +389,6 @@
         </q-card-section>
       </q-card>
     </q-dialog>
-
     <q-dialog ref="create_account_dialog" v-model="create_account_dialog" persistent>
       <q-card style="width: 360px">
         <q-card-section class="row items-center">
@@ -496,7 +495,6 @@
         </q-card-section>
       </q-card>
     </q-dialog>
-
     <q-dialog ref="accountcreated_dialog" v-model="accountcreated_dialog" persistent>
       <q-card style="width: 360px">
         <q-card-section class="row items-center">
@@ -631,7 +629,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter']),
+    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getHerramientaActiva']),
     ...mapGetters('auth', ['logged', 'user']),
     auth_user: {
       get() {
@@ -641,6 +639,14 @@ export default {
     auth_logged: {
       get() {
         return this.logged
+      }
+    },
+    herramientaActiva: {
+      get() {
+        return this.getHerramientaActiva
+      },
+      set(value) {
+        this.setHerramientaActiva(value)
       }
     },
     showGISRibbon: {
@@ -659,7 +665,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions('geojitsu', ['GISRibbonIsOpenAction']),
+    ...mapActions('geojitsu', ['GISRibbonIsOpenAction', 'setHerramientaActiva']),
     ...mapActions('auth', ['setUser']),
     openLogin() {
       // this.accountcreated_dialog = false
@@ -690,6 +696,7 @@ export default {
         console.log('You were logged out')
         this.logout_dialog = false
         this.user_fecha_nacimiento = ""
+        this.herramientaActiva = "info"
       }).catch(error => {
         console.log(error && error.response && error.response.status === 401
           ? 'Wrong e-mail or password'
