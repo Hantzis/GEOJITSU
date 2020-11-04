@@ -33,7 +33,8 @@
                     attributions="Mapbox, <a href='https://www.saeba.click' target='_blank'>Saeba</a>"/>
                 </vl-layer-tile>
                 <vl-layer-vector>
-                  <vl-source-vector :features.sync="zapopan"></vl-source-vector>
+                  <vl-source-vector :features.sync="zapopan">
+                  </vl-source-vector>
                 </vl-layer-vector>
 
                 <div :key="mapkey">
@@ -68,6 +69,38 @@
                     -->
                   </div>
                 </div>
+
+                <vl-interaction-select :features.sync="selectedFeatures" :layers="this.layers">
+                  <vl-overlay v-if="position && selectedFeatures.length > 0" :position="position" :auto-pan="true"
+                              style="background: white; padding: 8px">
+                    <div style="max-width: 300px; min-width: 300px;">
+                      <q-table
+                        class="detalles"
+                        style="max-height: 400px; max-width: 300px"
+                        :title="selectedFeatures[0].properties.tipo[1] + ' (id:' + selectedFeatures[0].properties.pk + ')'"
+                        square
+                        wrap-cells
+                        dense
+                        :rows-per-page-options="[15]"
+                        virtual-scroll
+                        separator="cell"
+                        hide-bottom
+                        :data="getEntries(selectedFeatures[0].properties)"
+                      >
+                        <template v-slot:header>
+                          <q-th colspan="2" align="left">
+                            <q-td style="padding: 0">{{ selectedFeatures[0].properties.resumen }}</q-td>
+                          </q-th>
+                        </template>
+                        <template v-slot:top-right>
+                          <q-btn flat dense size="sm" style="margin-right: -11px;">
+                            <q-icon name="close" @click="position = undefined; selectedFeatures = []"/>
+                          </q-btn>
+                        </template>
+                      </q-table>
+                    </div>
+                  </vl-overlay>
+                </vl-interaction-select>
 
               </vl-map>
 
@@ -111,6 +144,7 @@ export default {
   data() {
     return {
       zapopan: [],
+      layers: [],
       loadingBar: undefined,
       clickCoords: undefined,
       position: undefined,
@@ -124,6 +158,7 @@ export default {
       conflictos_geojson_url: "https://conflictossocioambientales.iies.unam.mx/conflictos/conflictos.geojson",
       conflictos_features: [],
       conflictos_selectedFeatures: [],
+      selectedFeatures: [],
       conflictos_styles: {},
       mapkey: 0,
     }
@@ -138,22 +173,25 @@ export default {
     mapaBase() {
       this.$refs["olmap"].updateSize()
     },
-    conflictos_selectedFeatures() {
-      if (this.conflictos_selectedFeatures.length > 0) {
+    selectedFeatures() {
+      console.log(this.selectedFeatures)
+      if (this.selectedFeatures.length > 0) {
+        this.layers = [this.$refs.reportes[0]]
         //console.log("clic", this.conflictos_selectedFeatures)
-        for (let feat of this.conflictos_selectedFeatures) {
+        for (let feat of this.selectedFeatures) {
           /*console.log("feat: ", feat)
           console.log("feat coordinates: ", feat.geometry.coordinates)
           console.log("this.clickCoords: ", this.clickCoords)*/
         }
-        let collection = []
-        for (let point of this.conflictos_selectedFeatures[0].geometry.coordinates) {
+        /*let collection = []
+        for (let point of this.selectedFeatures[0].geometry.coordinates) {
           let a = turf.point(point)
           collection.push(a)
-        }
-        let featureCoords = turf.featureCollection(collection)
-        let cercano = turf.nearestPoint(this.clickCoords, featureCoords)
-        this.position = cercano.geometry.coordinates
+        }*/
+        //let featureCoords = turf.featureCollection(collection)
+        //let cercano = turf.nearestPoint(this.clickCoords, featureCoords)
+        this.position = transform(this.selectedFeatures[0].geometry.coordinates, 'EPSG:3857', 'EPSG:4326')
+        console.log(this.position)
       }
     },
     /* drawerCapas() {
@@ -255,6 +293,7 @@ export default {
         axios.get(url).then(response => {
           console.log(response)
           console.log(response.data)
+          this.selectedFeatures = response.data.features
         }).catch(error => console.log(error))
       }
     },
