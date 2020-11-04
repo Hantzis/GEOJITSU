@@ -14,7 +14,7 @@
               <vl-map @click="clic" ref="olmap" :load-tiles-while-animating="true" :load-tiles-while-interacting="true"
                       data-projection="EPSG:4326"
                       :style="{'min-height': 'inherit', 'max-height': '1px', 'width': '100%', 'background-color': mapaBase.bgcolor}">
-                <vl-view ref="map_view" :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation"></vl-view>
+                <vl-view ref="olview" :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation"></vl-view>
                 <vl-geoloc @update:position="geolocPosition = $event">
                   <template slot-scope="geoloc">
                     <vl-feature v-if="geoloc.position" id="position-feature">
@@ -41,6 +41,7 @@
                   <div v-for="capa of capasMapa" :key="capa.value">
                     <vl-layer-tile v-if="capa.type==='wms' && capa.tiled===true" :opacity="capa.opacity" :visible="capa.visible">
                       <vl-source-wms
+                        :ref="capa.value"
                         :url="capa.url"
                         :format="capa.format"
                         :server_type="capa.server_type"
@@ -99,6 +100,8 @@ import Style from 'ol/style/Style'
 import Icon from 'ol/style/Icon'
 import MapaDrawerCapas from "components/drawer_components/MapaDrawerCapas";
 import {Point as turfPoint, Coord as turfCoord, FeatureCollection as turfFeatureCollection} from '@turf/helpers'
+import {transform} from 'ol/proj';
+
 
 Vue.use(VueLayers)
 
@@ -160,10 +163,18 @@ export default {
     }, */
   },
   computed: {
-    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'mapaBaseGetter', 'mapasBaseGetter', 'capasMapaGetter', 'getDrawerCapas']),
+    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getHerramientaActiva', 'mapaBaseGetter', 'mapasBaseGetter', 'capasMapaGetter', 'getDrawerCapas']),
     showGISRibbon: {
       get() {
         return this.GISRibbonIsOpenGetter
+      }
+    },
+    herramientaActiva: {
+      get() {
+        return this.getHerramientaActiva
+      },
+      set(value) {
+        this.setHerramientaActiva(value)
       }
     },
     mapaBase: {
@@ -201,7 +212,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('geojitsu', ['capasMapaAction', 'setCapaFeatures', 'setCapaTicked']),
+    ...mapActions('geojitsu', ['capasMapaAction', 'setCapaFeatures', 'setCapaTicked', 'setHerramientaActiva']),
     getEntries(properties) {
       let limpio = []
       Object.entries(properties).forEach((row) => {
@@ -231,7 +242,21 @@ export default {
     clic(evt) {
       console.log("clic event", evt)
       console.log("clic event", evt.coordinate)
+      console.log("herramientaActiva", this.herramientaActiva)
       this.clickCoords = evt.coordinate
+      if (this.herramientaActiva === 'info') {
+        console.log(this.$refs.olview)
+        console.log(this.$refs.olview.$view.values_.resolution)
+        const coord = transform(evt.coordinate, 'EPSG:4326', 'EPSG:3857')
+        const viewResolution = /** @type {number} */ this.$refs.olview.$view.values_.resolution;
+        let url = this.$refs.reportes[0].getFeatureInfoUrl(coord, viewResolution, 'EPSG:3857', {'INFO_FORMAT': 'application/json'})
+
+        console.log(url)
+        axios.get(url).then(response => {
+          console.log(response)
+          console.log(response.data)
+        }).catch(error => console.log(error))
+      }
     },
     pointsStyleFunc() {
       return (feature) => {

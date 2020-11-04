@@ -54,6 +54,7 @@
                     <q-btn unelevated dense size="lg" disable icon="mdi-map-marker-plus"/>
                   </q-btn-group>
                   <q-btn-toggle
+                    @click="showHerramientaActiva()"
                     v-if="auth_logged"
                     style="border-radius: 0;"
                     v-model="herramientaActiva"
@@ -169,20 +170,10 @@ export default {
   },
   methods: {
     ...mapActions('geojitsu', ['GISRibbonIsOpenAction', 'setHerramientaActiva']),
-    onMainClick(e) {
-      console.log(e);
-      console.log("onMainClick")
-    },
-    onItemClick(e) {
-      console.log(e);
-      console.log("onItemClick")
-    }
-  },
-  watch: {
-    herramientaActiva() {
+    showHerramientaActiva() {
       console.log(this.herramientaActiva)
-    }
-  }
+    },
+  },
 }
 </script>
 
