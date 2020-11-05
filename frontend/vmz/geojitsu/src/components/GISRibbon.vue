@@ -78,7 +78,8 @@
                       </q-icon>
                     </template>
                     <template v-slot:agregar_domicilio>
-                      <q-icon name="mdi-playlist-plus" size="lg" style="margin: 0 -10px 0 -10px;">
+                      <q-icon name="mdi-playlist-plus" size="lg" style="margin: 0 -10px 0 -10px;"
+                              @click="agregarreportedomicilio_dialog=true">
                         <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px"
                                    anchor="top middle"
                                    self="bottom middle">
@@ -123,6 +124,134 @@
       </div>
     </q-toolbar>
 
+    <q-dialog ref="agregarreportedomicilio_dialog" v-model="agregarreportedomicilio_dialog" persistent>
+      <q-card style="width: 680px">
+        <q-card-section class="row items-center">
+          <q-avatar icon="mdi-playlist-plus" color="pink" text-color="white"/>
+          <q-toolbar-title>Agregar reporte</q-toolbar-title>
+          <q-btn icon="close" flat round dense v-close-popup/>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section>
+          <div class="row q-py-xs">
+            <p>Agrear reporte utilizando el domicilio textual con calle y número o intersección de calle.</p>
+          </div>
+          <div class="row q-py-xs">
+            <div class="col-6">
+              <q-input outlined class="full-width" mask="date"
+                       name="fecha_reporte" v-model="fecha_reporte"
+                       label="Fecha" :rules="[val => !!val || 'Fecha obligatoria']">
+                <template v-slot:default>
+                  <q-popup-proxy ref="qDateProxy" transition-show="scale" mask="date" transition-hide="scale">
+                    <q-date v-model="fecha_reporte">
+                      <div class="row items-center justify-end">
+                        <q-btn v-close-popup label="Cerrar" color="primary" flat/>
+                      </div>
+                    </q-date>
+                  </q-popup-proxy>
+                </template>
+                <template v-slot:append>
+                  <q-icon name="event"/>
+                </template>
+              </q-input>
+            </div>
+            <div class="col-6" style="padding-left: 20px;">
+              <q-input outlined class="full-width" mask="time"
+                       name="hora_reporte" v-model="hora_reporte"
+                       label="Hora" :rules="[val => !!val || 'Hora obligatoria']">
+                <template v-slot:default>
+                  <q-popup-proxy transition-show="scale" mask="time" transition-hide="scale">
+                    <q-time v-model="hora_reporte" format24h>
+                      <div class="row items-center justify-end">
+                        <q-btn v-close-popup label="Cerrar" color="primary" flat/>
+                      </div>
+                    </q-time>
+                  </q-popup-proxy>
+                </template>
+                <template v-slot:append>
+                  <q-icon name="access_time"/>
+                </template>
+              </q-input>
+            </div>
+
+          </div>
+          <div class="row q-py-xs">
+            <q-select class="full-width" outlined name="colonia" v-model="reporte_domicilio_data.colonia"
+                      :options="colonias"
+                      label="Colonia" :rules="[val => !!val || 'Colonia obligatoria']"
+                      emit-value map-options option-value="id" option-label="nombre"/>
+          </div>
+          <div class="row q-py-xs">
+            <q-input outlined class="full-width" name="calle" v-model="reporte_domicilio_data.calle"
+                     :rules="[val => !!val || 'Calle obligatoria']"
+                     label="Calle"/>
+          </div>
+          <div class="row q-py-xs" style="padding-bottom: 20px;">
+            <q-input outlined class="full-width" name="calle" type="number" v-model="reporte_domicilio_data.numero"
+                     label="Número exterior"/>
+          </div>
+          <div class="row q-py-xs">
+            <q-input outlined class="full-width" name="entre_interseccion"
+                     v-model="reporte_domicilio_data.entre_interseccion"
+                     :rules="[val => !!val || 'Calle intersección obligatoria']"
+                     label="Calle intersección"/>
+          </div>
+          <div class="row q-py-xs">
+            <q-select class="full-width" outlined name="tipo" v-model="reporte_domicilio_data.tipo"
+                      :options="['Servicios', 'Situaciones']"
+                      label="Tipo de reporte" :rules="[val => !!val || 'Tipo obligatorio']"/>
+          </div>
+          <div v-if="reporte_domicilio_data.tipo === 'Servicios'">
+            <div class="row q-py-xs">
+              <q-select class="full-width" outlined name="tipo_servicio" v-model="reporte_domicilio_data.tipo_servicio"
+                        :options="tipos_servicio"
+                        label="Tipo de servicio" :rules="[val => !!val || 'Tipo de servicio obligatorio']"
+                        emit-value map-options option-value="id" option-label="nombre"/>
+            </div>
+            <div class="row q-py-xs">
+              <q-select v-if="reporte_domicilio_data.tipo_servicio < 1000000" class="full-width" outlined
+                        name="estado_servicio" v-model="reporte_domicilio_data.estado_servicio"
+                        :options="estados_servicio"
+                        :rules="[val => !!val || 'Estado de servicio obligatorio']"
+                        label="Estado de servicio"
+                        emit-value map-options option-value="id" option-label="nombre"/>
+              <q-input v-if="reporte_domicilio_data.tipo_servicio === 1000000" outlined class="full-width"
+                       name="estado_servicio_otro"
+                       v-model="reporte_domicilio_data.estado_servicio_otro"
+                       :rules="[val => !!val || 'Otro servicio obligatorio']"
+                       label="Otro tipo de servicio"/>
+            </div>
+          </div>
+          <div v-if="reporte_domicilio_data.tipo === 'Situaciones'">
+            <div class="row q-py-xs">
+              <q-select class="full-width" outlined name="situacion_peligrosa" v-model="reporte_domicilio_data.situacion_peligrosa"
+                        :options="situaciones_peligro"
+                        label="Situación de peligro" :rules="[val => !!val || 'Situación de peligro obligatoria']"
+                        emit-value map-options option-value="id" option-label="nombre"/>
+            </div>
+            <div class="row q-py-xs">
+              <q-input v-if="reporte_domicilio_data.situacion_peligrosa === 1000000" outlined class="full-width"
+                       name="situacion_peligrosa_otra"
+                       v-model="reporte_domicilio_data.situacion_peligrosa_otra"
+                       :rules="[val => !!val || 'Otra situación obligatorio']"
+                       label="Detalle de estado de servicio"/>
+            </div>
+          </div>
+          <div v-if="false" class="row q-px-xs">
+            <p class="text-red">Las contraseñas no coinciden</p>
+          </div>
+          <br/>
+          <div class="row">
+            <div class="col">
+              <q-btn :disabled="false"
+                     @click="saveReporteDomicilio()" color="green"
+                     label="Guardar reporte" no-caps class="full-width"/>
+            </div>
+          </div>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
 
     <q-separator color="grey-5"/>
   </div>
@@ -132,6 +261,7 @@
 import {mapActions, mapGetters} from 'vuex'
 
 import MapaBloqueMapaBase from "components/gisribbon_components/mapa/MapaBloqueMapaBase";
+import axios from "axios";
 
 export default {
   name: "GISRibbon",
@@ -141,6 +271,18 @@ export default {
   },
   data() {
     return {
+      colonias: undefined,
+      tipos_servicio: undefined,
+      estados_servicio: undefined,
+      situaciones_peligro: undefined,
+      fecha_reporte: "",
+      hora_reporte: "",
+      agregarreportedomicilio_dialog: false,
+      reporte_domicilio_data: {
+        colonia: undefined, calle: undefined, numero: undefined, entre_interseccion: undefined,
+        tipo: undefined, tipo_servicio: undefined, estado_servicio: undefined, estado_servicio_otro: undefined,
+        situacion_peligrosa: undefined, situacion_peligrosa_otra: undefined, comentarios: undefined,
+      }
     }
   },
   computed: {
@@ -173,7 +315,76 @@ export default {
     showHerramientaActiva() {
       console.log(this.herramientaActiva)
     },
+    getColonias() {
+      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/colonias/?municipio=120`).then(response => {
+        this.colonias = response.data
+        console.log("colonias", this.colonias)
+      }).catch(error => console.log(error))
+    },
+    getTiposServicio() {
+      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/tipos-servicio/`).then(response => {
+        this.tipos_servicio = response.data
+        this.tipos_servicio.push({id: 1000000, nombre: "Otro tipo de servicio"})
+        console.log("tipos_servicio", this.tipos_servicio)
+      }).catch(error => console.log(error))
+    },
+    getEstadosServicio(val) {
+      if (val && val < 1000000) {
+        axios.get(`https://repvmz.maptitude.xyz/back/api/v1/estados-servicio/?tipo=${val}`).then(response => {
+          this.estados_servicio = response.data
+          console.log("estados_servicio", this.estados_servicio)
+        }).catch(error => console.log(error))
+      } else {
+        this.estados_servicio = undefined
+      }
+    },
+    getSituacionesPeligrosas() {
+      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/situaciones-peligro/`).then(response => {
+        this.situaciones_peligro = response.data
+        this.situaciones_peligro.push({id: 1000000, nombre: "Otro tipo de situación de peligro"})
+        console.log("situaciones_peligrosas", this.situaciones_peligro)
+      }).catch(error => console.log(error))
+    },
+    saveReporteDomicilio() {
+      console.log(this.reporte_domicilio_data)
+      let domicilio = `${this.reporte_domicilio_data.calle}, `
+      if (this.reporte_domicilio_data.numero) {
+        domicilio += `${this.reporte_domicilio_data.numero}, `
+      } else if (this.reporte_domicilio_data.entre_interseccion) {
+        domicilio += `${this.reporte_domicilio_data.entre_interseccion}, `
+      }
+      for (let col of this.colonias)
+        if (col.id === this.reporte_domicilio_data.colonia)
+          domicilio += `${col.nombre}, `
+      domicilio += 'Zapopan'
+
+      axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${domicilio}&key=AIzaSyAPJOFYKRav1z3IxoK-URalWtPY4KKTAb0`)
+        .then(response => {
+        console.log("API", response)
+      })
+    }
+
   },
+  watch: {
+    agregarreportedomicilio_dialog() {
+      if (this.agregarreportedomicilio_dialog === false) {
+        this.herramientaActiva = 'info'
+      }
+    },
+    'reporte_domicilio_data.tipo_servicio': function (newVal, oldVal) {
+      console.log(newVal)
+      console.log(oldVal)
+      if (newVal) {
+        this.reporte_domicilio_data.estado_servicio = undefined
+        this.getEstadosServicio(newVal)
+      }
+    },
+  },
+  mounted() {
+    this.getColonias()
+    this.getTiposServicio()
+    this.getSituacionesPeligrosas()
+  }
 }
 </script>
 
