@@ -31,6 +31,10 @@ export const herramientaActivaMutation = (state, value) => {
   state.herramientaActiva = value
 }
 
+export const mapkeyMutation = (state, value) => {
+  state.mapkey = value
+}
+
 
 export const CapasTickedMutation = (state, value) => {
   for (let capa of state.capasMapa) {

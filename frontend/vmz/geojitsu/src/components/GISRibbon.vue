@@ -136,107 +136,116 @@
           <div class="row q-py-xs">
             <p>Agrear reporte utilizando el domicilio textual con calle y número o intersección de calle.</p>
           </div>
-          <div class="row q-py-xs">
-            <div class="col-6">
-              <q-input outlined class="full-width" mask="date"
-                       name="fecha_reporte" v-model="fecha_reporte"
-                       label="Fecha" :rules="[val => !!val || 'Fecha obligatoria']">
-                <template v-slot:default>
-                  <q-popup-proxy ref="qDateProxy" transition-show="scale" mask="date" transition-hide="scale">
-                    <q-date v-model="fecha_reporte">
-                      <div class="row items-center justify-end">
-                        <q-btn v-close-popup label="Cerrar" color="primary" flat/>
-                      </div>
-                    </q-date>
-                  </q-popup-proxy>
-                </template>
-                <template v-slot:append>
-                  <q-icon name="event"/>
-                </template>
-              </q-input>
-            </div>
-            <div class="col-6" style="padding-left: 20px;">
-              <q-input outlined class="full-width" mask="time"
-                       name="hora_reporte" v-model="hora_reporte"
-                       label="Hora" :rules="[val => !!val || 'Hora obligatoria']">
-                <template v-slot:default>
-                  <q-popup-proxy transition-show="scale" mask="time" transition-hide="scale">
-                    <q-time v-model="hora_reporte" format24h>
-                      <div class="row items-center justify-end">
-                        <q-btn v-close-popup label="Cerrar" color="primary" flat/>
-                      </div>
-                    </q-time>
-                  </q-popup-proxy>
-                </template>
-                <template v-slot:append>
-                  <q-icon name="access_time"/>
-                </template>
-              </q-input>
-            </div>
 
-          </div>
-          <div class="row q-py-xs">
-            <q-select class="full-width" outlined name="colonia" v-model="reporte_domicilio_data.colonia"
-                      :options="colonias"
-                      label="Colonia" :rules="[val => !!val || 'Colonia obligatoria']"
-                      emit-value map-options option-value="id" option-label="nombre"/>
-          </div>
-          <div class="row q-py-xs">
-            <q-input outlined class="full-width" name="calle" v-model="reporte_domicilio_data.calle"
-                     :rules="[val => !!val || 'Calle obligatoria']"
-                     label="Calle"/>
-          </div>
-          <div class="row q-py-xs" style="padding-bottom: 20px;">
-            <q-input outlined class="full-width" name="calle" type="number" v-model="reporte_domicilio_data.numero"
-                     label="Número exterior"/>
-          </div>
-          <div class="row q-py-xs">
-            <q-input outlined class="full-width" name="entre_interseccion"
-                     v-model="reporte_domicilio_data.entre_interseccion"
-                     :rules="[val => !!val || 'Calle intersección obligatoria']"
-                     label="Calle intersección"/>
-          </div>
-          <div class="row q-py-xs">
-            <q-select class="full-width" outlined name="tipo" v-model="reporte_domicilio_data.tipo"
-                      :options="['Servicios', 'Situaciones']"
-                      label="Tipo de reporte" :rules="[val => !!val || 'Tipo obligatorio']"/>
-          </div>
-          <div v-if="reporte_domicilio_data.tipo === 'Servicios'">
+          <q-form ref="form_reporte_domicilio" autocomplete="off" greedy>
             <div class="row q-py-xs">
-              <q-select class="full-width" outlined name="tipo_servicio" v-model="reporte_domicilio_data.tipo_servicio"
-                        :options="tipos_servicio"
-                        label="Tipo de servicio" :rules="[val => !!val || 'Tipo de servicio obligatorio']"
+              <div class="col-6">
+                <q-input outlined class="full-width" mask="date"
+                         name="fecha_reporte" v-model="fecha_reporte_domicilio"
+                         label="Fecha" :rules="[val => !!val || 'Fecha obligatoria']">
+                  <template v-slot:default>
+                    <q-popup-proxy ref="qDateProxy" transition-show="scale" mask="date" transition-hide="scale">
+                      <q-date v-model="fecha_reporte_domicilio">
+                        <div class="row items-center justify-end">
+                          <q-btn v-close-popup label="Cerrar" color="primary" flat/>
+                        </div>
+                      </q-date>
+                    </q-popup-proxy>
+                  </template>
+                  <template v-slot:append>
+                    <q-icon name="event"/>
+                  </template>
+                </q-input>
+              </div>
+              <div class="col-6" style="padding-left: 20px;">
+                <q-input outlined class="full-width" mask="time"
+                         name="hora_reporte" v-model="hora_reporte_domicilio"
+                         label="Hora" :rules="[val => !!val || 'Hora obligatoria']">
+                  <template v-slot:default>
+                    <q-popup-proxy transition-show="scale" mask="time" transition-hide="scale">
+                      <q-time v-model="hora_reporte_domicilio" format24h>
+                        <div class="row items-center justify-end">
+                          <q-btn v-close-popup label="Cerrar" color="primary" flat/>
+                        </div>
+                      </q-time>
+                    </q-popup-proxy>
+                  </template>
+                  <template v-slot:append>
+                    <q-icon name="access_time"/>
+                  </template>
+                </q-input>
+              </div>
+
+            </div>
+            <div class="row q-py-xs">
+              <q-select class="full-width" outlined name="colonia" v-model="reporte_domicilio_data.colonia"
+                        :options="colonias"
+                        label="Colonia" :rules="[val => !!val || 'Colonia obligatoria']"
                         emit-value map-options option-value="id" option-label="nombre"/>
             </div>
             <div class="row q-py-xs">
-              <q-select v-if="reporte_domicilio_data.tipo_servicio < 1000000" class="full-width" outlined
-                        name="estado_servicio" v-model="reporte_domicilio_data.estado_servicio"
-                        :options="estados_servicio"
-                        :rules="[val => !!val || 'Estado de servicio obligatorio']"
-                        label="Estado de servicio"
-                        emit-value map-options option-value="id" option-label="nombre"/>
-              <q-input v-if="reporte_domicilio_data.tipo_servicio === 1000000" outlined class="full-width"
-                       name="estado_servicio_otro"
-                       v-model="reporte_domicilio_data.estado_servicio_otro"
-                       :rules="[val => !!val || 'Otro servicio obligatorio']"
-                       label="Otro tipo de servicio"/>
+              <q-input outlined class="full-width" name="calle" v-model="reporte_domicilio_data.calle"
+                       :rules="[val => !!val || 'Calle obligatoria']"
+                       label="Calle"/>
             </div>
-          </div>
-          <div v-if="reporte_domicilio_data.tipo === 'Situaciones'">
-            <div class="row q-py-xs">
-              <q-select class="full-width" outlined name="situacion_peligrosa" v-model="reporte_domicilio_data.situacion_peligrosa"
-                        :options="situaciones_peligro"
-                        label="Situación de peligro" :rules="[val => !!val || 'Situación de peligro obligatoria']"
-                        emit-value map-options option-value="id" option-label="nombre"/>
+            <div class="row q-py-xs" style="padding-bottom: 20px;">
+              <q-input outlined class="full-width" name="calle" type="number" v-model="reporte_domicilio_data.numero"
+                       label="Número exterior"/>
+            </div>
+            <div class="row q-py-xs" style="padding-bottom: 20px;">
+              <q-input outlined class="full-width" name="entre_interseccion"
+                       v-model="reporte_domicilio_data.entre_interseccion"
+                       label="Calle intersección"/>
             </div>
             <div class="row q-py-xs">
-              <q-input v-if="reporte_domicilio_data.situacion_peligrosa === 1000000" outlined class="full-width"
-                       name="situacion_peligrosa_otra"
-                       v-model="reporte_domicilio_data.situacion_peligrosa_otra"
-                       :rules="[val => !!val || 'Otra situación obligatorio']"
-                       label="Detalle de estado de servicio"/>
+              <q-select class="full-width" outlined name="tipo" v-model="reporte_domicilio_data.tipo"
+                        :options="['Servicios', 'Situaciones']"
+                        label="Tipo de reporte" :rules="[val => !!val || 'Tipo obligatorio']"/>
             </div>
-          </div>
+            <div v-if="reporte_domicilio_data.tipo === 'Servicios'">
+              <div class="row q-py-xs">
+                <q-select class="full-width" outlined name="tipo_servicio"
+                          v-model="reporte_domicilio_data.tipo_servicio"
+                          :options="tipos_servicio"
+                          label="Tipo de servicio" :rules="[val => !!val || 'Tipo de servicio obligatorio']"
+                          emit-value map-options option-value="id" option-label="nombre"/>
+              </div>
+              <div class="row q-py-xs">
+                <q-select v-if="reporte_domicilio_data.tipo_servicio < 1000000" class="full-width" outlined
+                          name="estado_servicio" v-model="reporte_domicilio_data.estado_servicio"
+                          :options="estados_servicio"
+                          :rules="[val => !!val || 'Estado de servicio obligatorio']"
+                          label="Estado de servicio"
+                          emit-value map-options option-value="id" option-label="nombre"/>
+                <q-input v-if="reporte_domicilio_data.tipo_servicio === 1000000" outlined class="full-width"
+                         name="estado_servicio_otro"
+                         v-model="reporte_domicilio_data.estado_servicio_otro"
+                         :rules="[val => !!val || 'Otro servicio obligatorio']"
+                         label="Otro tipo de servicio"/>
+              </div>
+            </div>
+            <div v-if="reporte_domicilio_data.tipo === 'Situaciones'">
+              <div class="row q-py-xs">
+                <q-select class="full-width" outlined name="situacion_peligrosa"
+                          v-model="reporte_domicilio_data.situacion_peligrosa"
+                          :options="situaciones_peligro"
+                          label="Situación de peligro" :rules="[val => !!val || 'Situación de peligro obligatoria']"
+                          emit-value map-options option-value="id" option-label="nombre"/>
+              </div>
+              <div class="row q-py-xs">
+                <q-input v-if="reporte_domicilio_data.situacion_peligrosa === 1000000" outlined class="full-width"
+                         name="situacion_peligrosa_otra"
+                         v-model="reporte_domicilio_data.situacion_peligrosa_otra"
+                         :rules="[val => !!val || 'Otra situación obligatorio']"
+                         label="Detalle de estado de servicio"/>
+              </div>
+            </div>
+            <div class="row q-py-xs" style="padding-bottom: 20px;">
+              <q-input outlined class="full-width" name="comentarios" autogrow
+                       v-model="reporte_domicilio_data.comentarios"
+                       label="Comentarios adicionales"/>
+            </div>
+          </q-form>
           <div v-if="false" class="row q-px-xs">
             <p class="text-red">Las contraseñas no coinciden</p>
           </div>
@@ -262,6 +271,7 @@ import {mapActions, mapGetters} from 'vuex'
 
 import MapaBloqueMapaBase from "components/gisribbon_components/mapa/MapaBloqueMapaBase";
 import axios from "axios";
+import cookies from 'browser-cookies'
 
 export default {
   name: "GISRibbon",
@@ -275,19 +285,25 @@ export default {
       tipos_servicio: undefined,
       estados_servicio: undefined,
       situaciones_peligro: undefined,
-      fecha_reporte: "",
-      hora_reporte: "",
+      fecha_reporte_domicilio: "",
+      hora_reporte_domicilio: "",
       agregarreportedomicilio_dialog: false,
       reporte_domicilio_data: {
         colonia: undefined, calle: undefined, numero: undefined, entre_interseccion: undefined,
         tipo: undefined, tipo_servicio: undefined, estado_servicio: undefined, estado_servicio_otro: undefined,
         situacion_peligrosa: undefined, situacion_peligrosa_otra: undefined, comentarios: undefined,
+        fecha: "", hora: ""
       }
     }
   },
   computed: {
     ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getHerramientaActiva']),
-    ...mapGetters('auth', ['logged']),
+    ...mapGetters('auth', ['logged', 'user']),
+    auth_user: {
+      get() {
+        return this.user
+      }
+    },
     auth_logged: {
       get() {
         return this.logged
@@ -301,6 +317,14 @@ export default {
         this.setHerramientaActiva(value)
       }
     },
+    mapkey: {
+      get() {
+        return this.getMapkey
+      },
+      set(value) {
+        this.setMapkey(value)
+      }
+    },
     showGISRibbon: {
       get() {
         return this.GISRibbonIsOpenGetter
@@ -311,7 +335,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions('geojitsu', ['GISRibbonIsOpenAction', 'setHerramientaActiva']),
+    ...mapActions('geojitsu', ['GISRibbonIsOpenAction', 'setHerramientaActiva', 'setMapkey']),
     showHerramientaActiva() {
       console.log(this.herramientaActiva)
     },
@@ -346,22 +370,86 @@ export default {
       }).catch(error => console.log(error))
     },
     saveReporteDomicilio() {
-      console.log(this.reporte_domicilio_data)
-      let domicilio = `${this.reporte_domicilio_data.calle}, `
-      if (this.reporte_domicilio_data.numero) {
-        domicilio += `${this.reporte_domicilio_data.numero}, `
-      } else if (this.reporte_domicilio_data.entre_interseccion) {
-        domicilio += `${this.reporte_domicilio_data.entre_interseccion}, `
-      }
-      for (let col of this.colonias)
-        if (col.id === this.reporte_domicilio_data.colonia)
-          domicilio += `${col.nombre}, `
-      domicilio += 'Zapopan'
 
-      axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${domicilio}&key=AIzaSyAPJOFYKRav1z3IxoK-URalWtPY4KKTAb0`)
-        .then(response => {
-        console.log("API", response)
-      })
+
+      this.$refs.form_reporte_domicilio.validate().then(valid => {
+        if (valid) {
+
+          let domicilio = `${this.reporte_domicilio_data.calle}, `
+          if (this.reporte_domicilio_data.numero) {
+            domicilio += `${this.reporte_domicilio_data.numero}, `
+          } else if (this.reporte_domicilio_data.entre_interseccion) {
+            domicilio += `${this.reporte_domicilio_data.entre_interseccion}, `
+          }
+          for (let col of this.colonias)
+            if (col.id === this.reporte_domicilio_data.colonia)
+              domicilio += `${col.nombre}, `
+          domicilio += 'Zapopan'
+          this.token = cookies.get("access_token")
+
+          axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${domicilio}&key=AIzaSyAPJOFYKRav1z3IxoK-URalWtPY4KKTAb0`)
+            .then(response => {
+              console.log("API", response)
+
+              if (response.data.results[0]) {
+                let punto = response.data.results[0].geometry.location
+                this.reporte_domicilio_data.ubicacion = `SRID=4326;POINT (${punto.lng} ${punto.lat})`
+                if (this.reporte_domicilio_data.tipo_servicio === 1000000) {
+                  this.reporte_domicilio_data.tipo_servicio = undefined;
+                }
+                this.reporte_domicilio_data.reporta = this.auth_user.pk
+                console.log(this.reporte_domicilio_data)
+                this.token = cookies.get("access_token")
+                axios.post(`https://repvmz.maptitude.xyz/back/api/v1/reportes/`, this.reporte_domicilio_data,
+                  {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
+                  console.log(response.data)
+                  this.agregarreportedomicilio_dialog = false
+                  this.reporte_domicilio_data = {
+                    colonia: undefined,
+                    calle: undefined,
+                    numero: undefined,
+                    entre_interseccion: undefined,
+                    tipo: undefined,
+                    tipo_servicio: undefined,
+                    estado_servicio: undefined,
+                    estado_servicio_otro: undefined,
+                    situacion_peligrosa: undefined,
+                    situacion_peligrosa_otra: undefined,
+                    comentarios: undefined,
+                    fecha: "",
+                    hora: ""
+                  }
+                  this.herramientaActiva = 'info'
+                  console.log(this.$refs)
+                }).catch(error => {
+                  console.log(error)
+                  if (!this.reporte_domicilio_data.tipo_servicio) {
+                    this.reporte_domicilio_data.tipo_servicio = 1000000;
+                  }
+                })
+              }
+
+
+            }).then(() => {
+            console.log("despues")
+
+          }).catch(error => {
+            console.log(error)
+          }).finally(() => {
+            this.add_proyecto_dialog = false
+            this.proyecto_data = {inclusion_genero: false, fecha_inicio: "", fecha_registro: ""}
+            this.nuevo_logro = {nombre: "", fecha: ""}
+            this.nueva_certificacion = {nombre: "", fuente: "", fecha: ""}
+            this.nuevo_reconocimiento = {nombre: "", fuente: "", fecha: ""}
+            this.nueva_red = {nombre: "", integrantes: ""}
+            this.nuevo_financiamiento = {nombre: "", fuente: "", monto: ""}
+          })
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      });
+
     }
 
   },
@@ -378,6 +466,12 @@ export default {
         this.reporte_domicilio_data.estado_servicio = undefined
         this.getEstadosServicio(newVal)
       }
+    },
+    'fecha_reporte_domicilio': function () {
+      this.reporte_domicilio_data.fecha = this.fecha_reporte_domicilio.split("/").join("-")
+    },
+    'hora_reporte_domicilio': function () {
+      this.reporte_domicilio_data.hora = this.hora_reporte_domicilio
     },
   },
   mounted() {

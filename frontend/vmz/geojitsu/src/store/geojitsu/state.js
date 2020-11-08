@@ -43,5 +43,6 @@ export default function () {
     ],
     herramientaActiva: "info",
     userData: undefined,
+    mapkey: 0,
   }
 }

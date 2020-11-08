@@ -19,6 +19,10 @@ export const setHerramientaActiva = ({commit}, payload) => {
   commit('herramientaActivaMutation', payload)
 }
 
+export const setMapkey = ({commit}, payload) => {
+  commit('mapkeyMutation', payload)
+}
+
 export const capasMapaAction = ({commit}, payload) => {
   console.log("capasMapaAction", payload)
   commit('capasMapaMutation', payload)

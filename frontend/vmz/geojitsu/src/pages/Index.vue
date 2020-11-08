@@ -160,12 +160,11 @@ export default {
       conflictos_selectedFeatures: [],
       selectedFeatures: [],
       conflictos_styles: {},
-      mapkey: 0,
     }
   },
   watch: {
     capasMapa() {
-      this.mapkey++
+      this.mapkey = this.mapkey + 1
     },
     mapHeight() {
       this.$refs["olmap"].remount()
@@ -201,7 +200,8 @@ export default {
     }, */
   },
   computed: {
-    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getHerramientaActiva', 'mapaBaseGetter', 'mapasBaseGetter', 'capasMapaGetter', 'getDrawerCapas']),
+    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getHerramientaActiva', 'mapaBaseGetter', 'mapasBaseGetter',
+      'capasMapaGetter', 'getDrawerCapas', 'getMapkey']),
     showGISRibbon: {
       get() {
         return this.GISRibbonIsOpenGetter
@@ -213,6 +213,14 @@ export default {
       },
       set(value) {
         this.setHerramientaActiva(value)
+      }
+    },
+    mapkey: {
+      get() {
+        return this.getMapkey
+      },
+      set(value) {
+        this.setMapkey(value)
       }
     },
     mapaBase: {
@@ -250,7 +258,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('geojitsu', ['capasMapaAction', 'setCapaFeatures', 'setCapaTicked', 'setHerramientaActiva']),
+    ...mapActions('geojitsu', ['capasMapaAction', 'setCapaFeatures', 'setCapaTicked', 'setHerramientaActiva', 'setMapkey']),
     getEntries(properties) {
       let limpio = []
       Object.entries(properties).forEach((row) => {

@@ -30,3 +30,7 @@ export const getDrawerCapas = (state) => {
 export const getHerramientaActiva = (state) => {
   return state.herramientaActiva
 }
+
+export const getMapkey = (state) => {
+  return state.mapkey
+}
