@@ -348,7 +348,6 @@ export default {
     getTiposServicio() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/tipos-servicio/`).then(response => {
         this.tipos_servicio = response.data
-        this.tipos_servicio.push({id: 1000000, nombre: "Otro tipo de servicio"})
         console.log("tipos_servicio", this.tipos_servicio)
       }).catch(error => console.log(error))
     },
@@ -365,7 +364,6 @@ export default {
     getSituacionesPeligrosas() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/situaciones-peligro/`).then(response => {
         this.situaciones_peligro = response.data
-        this.situaciones_peligro.push({id: 1000000, nombre: "Otro tipo de situación de peligro"})
         console.log("situaciones_peligrosas", this.situaciones_peligro)
       }).catch(error => console.log(error))
     },
@@ -420,12 +418,12 @@ export default {
                     hora: ""
                   }
                   this.herramientaActiva = 'info'
-                  console.log(this.$refs)
+                  console.log("this.$refs", this.$refs)
+                  console.log("this.$root", this.$root)
+                  console.log("this.$parent", this.$parent)
+                  console.log("this.$parent.$parent", this.$parent.$parent)
                 }).catch(error => {
                   console.log(error)
-                  if (!this.reporte_domicilio_data.tipo_servicio) {
-                    this.reporte_domicilio_data.tipo_servicio = 1000000;
-                  }
                 })
               }
 
@@ -457,6 +455,14 @@ export default {
     agregarreportedomicilio_dialog() {
       if (this.agregarreportedomicilio_dialog === false) {
         this.herramientaActiva = 'info'
+        this.fecha_reporte_domicilio = ""
+        this.hora_reporte_domicilio = ""
+        this.reporte_domicilio_data = {
+          colonia: undefined, calle: undefined, numero: undefined, entre_interseccion: undefined,
+          tipo: undefined, tipo_servicio: undefined, estado_servicio: undefined, estado_servicio_otro: undefined,
+          situacion_peligrosa: undefined, situacion_peligrosa_otra: undefined, comentarios: undefined,
+          fecha: "", hora: ""
+        }
       }
     },
     'reporte_domicilio_data.tipo_servicio': function (newVal, oldVal) {
@@ -468,10 +474,14 @@ export default {
       }
     },
     'fecha_reporte_domicilio': function () {
-      this.reporte_domicilio_data.fecha = this.fecha_reporte_domicilio.split("/").join("-")
+      if (this.fecha_reporte_domicilio !== "") {
+        this.reporte_domicilio_data.fecha = this.fecha_reporte_domicilio.split("/").join("-")
+      }
     },
     'hora_reporte_domicilio': function () {
-      this.reporte_domicilio_data.hora = this.hora_reporte_domicilio
+      if (this.hora_reporte_domicilio !== "") {
+        this.reporte_domicilio_data.hora = this.hora_reporte_domicilio
+      }
     },
   },
   mounted() {

@@ -160,6 +160,12 @@ export default {
       conflictos_selectedFeatures: [],
       selectedFeatures: [],
       conflictos_styles: {},
+      reporte_marcador_data: {
+        colonia: undefined, calle: undefined, numero: undefined, entre_interseccion: undefined,
+        tipo: undefined, tipo_servicio: undefined, estado_servicio: undefined, estado_servicio_otro: undefined,
+        situacion_peligrosa: undefined, situacion_peligrosa_otra: undefined, comentarios: undefined,
+        fecha: "", hora: "", ubicacion: undefined
+      }
     }
   },
   watch: {
@@ -304,6 +310,15 @@ export default {
           this.selectedFeatures = response.data.features
         }).catch(error => console.log(error))
       }
+      if (this.herramientaActiva === 'agregar_marcador') {
+        console.log(this.$refs.olview)
+        console.log(this.$refs.olview.$view.values_.resolution)
+        console.log(evt.coordinate)
+        const coord = `SRID=4326;POINT (${evt.coordinate[0]} ${evt.coordinate[1]})`
+        const viewResolution = this.$refs.olview.$view.values_.resolution;
+      }
+
+
     },
     pointsStyleFunc() {
       return (feature) => {
