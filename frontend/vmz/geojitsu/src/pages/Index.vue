@@ -40,7 +40,8 @@
                 <div :key="mapkey">
                   <!-- <div v-for="(capa, idx) of capasMapa" :key="capa.value"> -->
                   <div v-for="capa of capasMapa" :key="capa.value">
-                    <vl-layer-tile v-if="capa.type==='wms' && capa.tiled===true" :opacity="capa.opacity" :visible="capa.visible">
+                    <vl-layer-tile v-if="capa.type==='wms' && capa.tiled===true" :opacity="capa.opacity"
+                                   :visible="capa.visible">
                       <vl-source-wms
                         :ref="capa.value"
                         :url="capa.url"
@@ -50,7 +51,8 @@
                         :attributions="capa.attribution"
                         :ext-params="capa.params"/>
                     </vl-layer-tile>
-                    <vl-layer-image v-if="capa.type==='wms' && capa.tiled===false" :opacity="capa.opacity" :visible="capa.visible">
+                    <vl-layer-image v-if="capa.type==='wms' && capa.tiled===false" :opacity="capa.opacity"
+                                    :visible="capa.visible">
                       <vl-source-image-wms
                         :url="capa.url"
                         :format="capa.format"
@@ -117,6 +119,144 @@
       size="4px"
       skip-hijack
     />
+
+    <q-dialog ref="agregarreportemarcador_dialog" v-model="agregarreportemarcador_dialog" persistent>
+      <q-card style="width: 680px">
+        <q-card-section class="row items-center">
+          <q-avatar icon="mdi-map-marker-plus" color="pink" text-color="white"/>
+          <q-toolbar-title>Agregar reporte</q-toolbar-title>
+          <q-btn icon="close" flat round dense v-close-popup/>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section>
+          <div class="row q-py-xs">
+            <p>Agrear reporte.</p>
+          </div>
+
+          <q-form ref="form_reporte_domicilio" autocomplete="off" greedy>
+            <div class="row q-py-xs">
+              <div class="col-6">
+                <q-input outlined class="full-width" mask="date"
+                         name="fecha_reporte" v-model="fecha_reporte_marcador"
+                         label="Fecha" :rules="[val => !!val || 'Fecha obligatoria']">
+                  <template v-slot:default>
+                    <q-popup-proxy ref="qDateProxy" transition-show="scale" mask="date" transition-hide="scale">
+                      <q-date v-model="fecha_reporte_marcador">
+                        <div class="row items-center justify-end">
+                          <q-btn v-close-popup label="Cerrar" color="primary" flat/>
+                        </div>
+                      </q-date>
+                    </q-popup-proxy>
+                  </template>
+                  <template v-slot:append>
+                    <q-icon name="event"/>
+                  </template>
+                </q-input>
+              </div>
+              <div class="col-6" style="padding-left: 20px;">
+                <q-input outlined class="full-width" mask="time"
+                         name="hora_reporte" v-model="hora_reporte_marcador"
+                         label="Hora" :rules="[val => !!val || 'Hora obligatoria']">
+                  <template v-slot:default>
+                    <q-popup-proxy transition-show="scale" mask="time" transition-hide="scale">
+                      <q-time v-model="hora_reporte_marcador" format24h>
+                        <div class="row items-center justify-end">
+                          <q-btn v-close-popup label="Cerrar" color="primary" flat/>
+                        </div>
+                      </q-time>
+                    </q-popup-proxy>
+                  </template>
+                  <template v-slot:append>
+                    <q-icon name="access_time"/>
+                  </template>
+                </q-input>
+              </div>
+
+            </div>
+            <div class="row q-py-xs">
+              <q-select class="full-width" outlined name="colonia" v-model="reporte_marcador_data.colonia"
+                        :options="colonias"
+                        label="Colonia" :rules="[val => !!val || 'Colonia obligatoria']"
+                        emit-value map-options option-value="id" option-label="nombre"/>
+            </div>
+            <div class="row q-py-xs">
+              <q-input outlined class="full-width" name="calle" v-model="reporte_marcador_data.calle"
+                       :rules="[val => !!val || 'Calle obligatoria']"
+                       label="Calle"/>
+            </div>
+            <div class="row q-py-xs" style="padding-bottom: 20px;">
+              <q-input outlined class="full-width" name="calle" type="number" v-model="reporte_marcador_data.numero"
+                       label="Número exterior"/>
+            </div>
+            <div class="row q-py-xs" style="padding-bottom: 20px;">
+              <q-input outlined class="full-width" name="entre_interseccion"
+                       v-model="reporte_marcador_data.entre_interseccion"
+                       label="Calle intersección"/>
+            </div>
+            <div class="row q-py-xs">
+              <q-select class="full-width" outlined name="tipo" v-model="reporte_marcador_data.tipo"
+                        :options="['Servicios', 'Situaciones']"
+                        label="Tipo de reporte" :rules="[val => !!val || 'Tipo obligatorio']"/>
+            </div>
+            <div v-if="reporte_marcador_data.tipo === 'Servicios'">
+              <div class="row q-py-xs">
+                <q-select class="full-width" outlined name="tipo_servicio"
+                          v-model="reporte_marcador_data.tipo_servicio"
+                          :options="tipos_servicio"
+                          label="Tipo de servicio" :rules="[val => !!val || 'Tipo de servicio obligatorio']"
+                          emit-value map-options option-value="id" option-label="nombre"/>
+              </div>
+              <div class="row q-py-xs">
+                <q-select v-if="reporte_marcador_data.tipo_servicio < 1000000" class="full-width" outlined
+                          name="estado_servicio" v-model="reporte_marcador_data.estado_servicio"
+                          :options="estados_servicio"
+                          :rules="[val => !!val || 'Estado de servicio obligatorio']"
+                          label="Estado de servicio"
+                          emit-value map-options option-value="id" option-label="nombre"/>
+                <q-input v-if="reporte_marcador_data.tipo_servicio === 1000000" outlined class="full-width"
+                         name="estado_servicio_otro"
+                         v-model="reporte_marcador_data.estado_servicio_otro"
+                         :rules="[val => !!val || 'Otro servicio obligatorio']"
+                         label="Otro tipo de servicio"/>
+              </div>
+            </div>
+            <div v-if="reporte_marcador_data.tipo === 'Situaciones'">
+              <div class="row q-py-xs">
+                <q-select class="full-width" outlined name="situacion_peligrosa"
+                          v-model="reporte_marcador_data.situacion_peligrosa"
+                          :options="situaciones_peligro"
+                          label="Situación de peligro" :rules="[val => !!val || 'Situación de peligro obligatoria']"
+                          emit-value map-options option-value="id" option-label="nombre"/>
+              </div>
+              <div class="row q-py-xs">
+                <q-input v-if="reporte_marcador_data.situacion_peligrosa === 1000000" outlined class="full-width"
+                         name="situacion_peligrosa_otra"
+                         v-model="reporte_marcador_data.situacion_peligrosa_otra"
+                         :rules="[val => !!val || 'Otra situación obligatorio']"
+                         label="Detalle de estado de servicio"/>
+              </div>
+            </div>
+            <div class="row q-py-xs" style="padding-bottom: 20px;">
+              <q-input outlined class="full-width" name="comentarios" autogrow
+                       v-model="reporte_marcador_data.comentarios"
+                       label="Comentarios adicionales"/>
+            </div>
+          </q-form>
+          <div v-if="false" class="row q-px-xs">
+            <p class="text-red">Las contraseñas no coinciden</p>
+          </div>
+          <br/>
+          <div class="row">
+            <div class="col">
+              <q-btn :disabled="false"
+                     @click="saveReporteDomicilio()" color="green"
+                     label="Guardar reporte" no-caps class="full-width"/>
+            </div>
+          </div>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
   </q-page>
 </template>
 
@@ -148,6 +288,9 @@ export default {
       loadingBar: undefined,
       clickCoords: undefined,
       position: undefined,
+      agregarreportemarcador_dialog: false,
+      fecha_reporte_marcador: "",
+      hora_reporte_marcador: "",
       zoom: 15,
       center: [-103.38890075683594, 20.72561197927564],
       center3857: [-11268847.24, 2231060.47],
@@ -160,6 +303,10 @@ export default {
       conflictos_selectedFeatures: [],
       selectedFeatures: [],
       conflictos_styles: {},
+      colonias: undefined,
+      tipos_servicio: undefined,
+      estados_servicio: undefined,
+      situaciones_peligro: undefined,
       reporte_marcador_data: {
         colonia: undefined, calle: undefined, numero: undefined, entre_interseccion: undefined,
         tipo: undefined, tipo_servicio: undefined, estado_servicio: undefined, estado_servicio_otro: undefined,
@@ -273,7 +420,7 @@ export default {
             row[1] = row[1].join(", ")
           }
           row[0] = row[0].split("_").join(" ")
-          if (row[0] === 'secretarias')  row[0] = 'secretarías'
+          if (row[0] === 'secretarias') row[0] = 'secretarías'
           limpio.push(row)
         }
       })
@@ -316,6 +463,13 @@ export default {
         console.log(evt.coordinate)
         const coord = `SRID=4326;POINT (${evt.coordinate[0]} ${evt.coordinate[1]})`
         const viewResolution = this.$refs.olview.$view.values_.resolution;
+        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${evt.coordinate[1]},${evt.coordinate[0]}&key=AIzaSyAPJOFYKRav1z3IxoK-URalWtPY4KKTAb0`)
+          .then(response => {
+            console.log(response)
+          })
+        this.agregarreportemarcador_dialog = true
+
+
       }
 
 

@@ -369,7 +369,6 @@ export default {
     },
     saveReporteDomicilio() {
 
-
       this.$refs.form_reporte_domicilio.validate().then(valid => {
         if (valid) {
 
