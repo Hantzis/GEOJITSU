@@ -169,7 +169,7 @@
               <q-select class="full-width" outlined name="colonia" v-model="reporte_marcador_data.colonia"
                         :options="colonias"
                         label="Colonia" :rules="[val => !!val || 'Colonia obligatoria']"
-                        emit-value map-options option-value="id" option-label="nombre"/>
+                        emit-value map-options option-value="id" option-label="nombre" />
             </div>
             <div class="row q-py-xs">
               <q-input outlined class="full-width" name="calle" v-model="reporte_marcador_data.calle"
@@ -318,7 +318,6 @@ export default {
       this.$refs["olmap"].updateSize()
     },
     selectedFeatures() {
-
       console.log(this.selectedFeatures)
       if (this.selectedFeatures.length > 0 && this.herramientaActiva == 'info') {
         this.layers = [this.$refs.reportes[0]]
@@ -328,11 +327,19 @@ export default {
         console.log(this.position)
       }
     },
-    /* drawerCapas() {
-      setTimeout(() => {
-        this.$refs["olmap"].remount()
-      }, 400);
-    }, */
+    'reporte_marcador_data.tipo': function (newVal, oldVal) {
+      this.reporte_marcador_data.estado_servicio = undefined
+      this.reporte_marcador_data.estado_servicio_otro = undefined
+      this.reporte_marcador_data.situacion_peligrosa = undefined
+      this.reporte_marcador_data.situacion_peligrosa_otra = undefined
+      console.log(this.reporte_marcador_data)
+    },
+    'reporte_marcador_data.tipo_servicio': function (newVal, oldVal) {
+      if (newVal) {
+        this.reporte_marcador_data.estado_servicio = undefined
+        this.getEstadosServicio(newVal)
+      }
+    },
   },
   computed: {
     ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getHerramientaActiva', 'mapaBaseGetter', 'mapasBaseGetter',
@@ -432,7 +439,6 @@ export default {
         const coord = transform(evt.coordinate, 'EPSG:4326', 'EPSG:3857')
         const viewResolution = /** @type {number} */ this.$refs.olview.$view.values_.resolution;
         let url = this.$refs.reportes[0].getFeatureInfoUrl(coord, viewResolution, 'EPSG:3857', {'INFO_FORMAT': 'application/json'})
-
         console.log(url)
         axios.get(url).then(response => {
           console.log(response)
@@ -441,26 +447,34 @@ export default {
         }).catch(error => console.log(error))
       }
       if (this.herramientaActiva === 'agregar_marcador') {
-        console.log(this.$refs.olview)
-        console.log(this.$refs.olview.$view.values_.resolution)
-        console.log(evt.coordinate)
         const coord = transform(evt.coordinate, 'EPSG:4326', 'EPSG:3857')
         const viewResolution = this.$refs.olview.$view.values_.resolution;
         axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${evt.coordinate[1]},${evt.coordinate[0]}&key=AIzaSyAPJOFYKRav1z3IxoK-URalWtPY4KKTAb0`)
           .then(response => {
             console.log("response", response)
-          })
-        this.agregarreportemarcador_dialog = true
-        let url = this.$refs.colonias_zapopan[0].getFeatureInfoUrl(coord, viewResolution, 'EPSG:3857', {'INFO_FORMAT': 'application/json'})
-        console.log("url", url)
-        console.log("coord", coord)
-        console.log("viewResolution", viewResolution)
-        axios.get(url).then(response => {
-          console.log(response)
-          console.log(response.data)
-          this.selectedFeatures = response.data.features
-        }).catch(error => console.log(error))
+            if (response.data.results.length > 0) {
 
+              const addr = response.data.results[0].address_components
+
+              console.log("addr", addr)
+              if (addr[0].types[0] === 'street_number') {
+                this.reporte_marcador_data.numero = parseInt(addr[0].long_name)
+              }
+              if (addr[1].types[0] === 'route') {
+                this.reporte_marcador_data.calle = addr[1].long_name
+              }
+
+              let url = this.$refs.colonias_zapopan[0].getFeatureInfoUrl(coord, viewResolution, 'EPSG:3857', {'INFO_FORMAT': 'application/json'})
+              axios.get(url).then(response => {
+                console.log(response)
+                const col = response.data.features[0]
+                this.reporte_marcador_data.colonia = col.id.split(".")[1]
+                // this.selectedFeatures = response.data.features
+              }).catch(error => console.log(error))
+
+              this.agregarreportemarcador_dialog = true
+            }
+          })
 
 
       }
@@ -489,6 +503,12 @@ export default {
         this.estados_servicio = undefined
       }
     },
+    getSituacionesPeligrosas() {
+      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/situaciones-peligro/`).then(response => {
+        this.situaciones_peligro = response.data
+        console.log("situaciones_peligrosas", this.situaciones_peligro)
+      }).catch(error => console.log(error))
+    },
     pointsStyleFunc() {
       return (feature) => {
         let img_url = "https://conflictossocioambientales.iies.unam.mx" + feature.values_.tipo[2]
@@ -503,9 +523,9 @@ export default {
       console.log(res.data.features)
       this.zapopan = res.data.features
     }).then(() => {
-    this.getColonias()
-    this.getTiposServicio()
-    this.getSituacionesPeligrosas()
+      this.getColonias()
+      this.getTiposServicio()
+      this.getSituacionesPeligrosas()
     }).finally(() => {
       this.loadingBar.stop()
     })

@@ -16,7 +16,7 @@
                     unelevated
                     text-color="grey-7"
                     toggle-text-color="white"
-                    toggle-color="primary"
+                    toggle-color="pink"
                     :options="[
                         {value: 'info', slot: 'info'},
                       ]"
@@ -61,7 +61,7 @@
                     unelevated
                     text-color="grey-7"
                     toggle-text-color="white"
-                    toggle-color="primary"
+                    toggle-color="pink"
                     :options="[
                         {value: 'info', slot: 'info'},
                         {value: 'agregar_domicilio', slot: 'agregar_domicilio'},
@@ -391,9 +391,6 @@ export default {
               if (response.data.results[0]) {
                 let punto = response.data.results[0].geometry.location
                 this.reporte_domicilio_data.ubicacion = `SRID=4326;POINT (${punto.lng} ${punto.lat})`
-                if (this.reporte_domicilio_data.tipo_servicio === 1000000) {
-                  this.reporte_domicilio_data.tipo_servicio = undefined;
-                }
                 this.reporte_domicilio_data.reporta = this.auth_user.pk
                 console.log(this.reporte_domicilio_data)
                 this.token = cookies.get("access_token")
@@ -463,6 +460,12 @@ export default {
           fecha: "", hora: ""
         }
       }
+    },
+    'reporte_domicilio_data.tipo': function () {
+      this.reporte_domicilio_data.estado_servicio = undefined
+      this.reporte_domicilio_data.estado_servicio_otro = undefined
+      this.reporte_domicilio_data.situacion_peligrosa = undefined
+      this.reporte_domicilio_data.situacion_peligrosa_otra = undefined
     },
     'reporte_domicilio_data.tipo_servicio': function (newVal, oldVal) {
       console.log(newVal)

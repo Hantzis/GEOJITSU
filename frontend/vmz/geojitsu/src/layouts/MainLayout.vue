@@ -1,7 +1,7 @@
 <template>
   <q-layout view="LHH LPR FFF">
     <q-header class="bg-black text-white">
-      <q-toolbar class="bg-pink text-white">
+      <q-toolbar class="text-white" style="background-color: #8564c8;">
         <q-btn dense flat round icon="menu" @click="drawer_left = !drawer_left"/>
 
         <q-toolbar-title>
@@ -56,7 +56,7 @@
         </q-btn>
       </q-toolbar>
 
-      <q-tabs align="right" no-caps class="bg-pink text-white" indicator-color="black">
+      <q-tabs align="right" no-caps class="text-white" indicator-color="cyan-4" style="background-color: #8564c8;">
         <q-route-tab to="/" label="Inicio"/>
         <q-route-tab to="/" label="Link 1"/>
         <q-route-tab to="/" label="Acerca de"/>
