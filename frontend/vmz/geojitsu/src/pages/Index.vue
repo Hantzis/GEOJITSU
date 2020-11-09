@@ -38,7 +38,6 @@
                 </vl-layer-vector>
 
                 <div :key="mapkey">
-                  <!-- <div v-for="(capa, idx) of capasMapa" :key="capa.value"> -->
                   <div v-for="capa of capasMapa" :key="capa.value">
                     <vl-layer-tile v-if="capa.type==='wms' && capa.tiled===true" :opacity="capa.opacity"
                                    :visible="capa.visible">
@@ -54,6 +53,7 @@
                     <vl-layer-image v-if="capa.type==='wms' && capa.tiled===false" :opacity="capa.opacity"
                                     :visible="capa.visible">
                       <vl-source-image-wms
+                        :ref="capa.value"
                         :url="capa.url"
                         :format="capa.format"
                         :server_type="capa.server_type"
@@ -61,14 +61,6 @@
                         :attributions="capa.attribution"
                         :ext-params="capa.params"/>
                     </vl-layer-image>
-                    <!--
-                    <vl-layer-vector v-if="capa.type==='vector'" :opacity="capa.opacity" :visible="capa.visible">
-                      <vl-source-vector :loaderFactory="loaderFactory(idx)" :features="capa.features"
-                                        :server_type="capa.server_type"
-                                        :attributions="capa.attribution"/>
-                      <vl-style-func :factory="pointsStyleFunc"/>
-                    </vl-layer-vector>
-                    -->
                   </div>
                 </div>
 
@@ -326,22 +318,12 @@ export default {
       this.$refs["olmap"].updateSize()
     },
     selectedFeatures() {
+
       console.log(this.selectedFeatures)
-      if (this.selectedFeatures.length > 0) {
+      if (this.selectedFeatures.length > 0 && this.herramientaActiva == 'info') {
         this.layers = [this.$refs.reportes[0]]
-        //console.log("clic", this.conflictos_selectedFeatures)
         for (let feat of this.selectedFeatures) {
-          /*console.log("feat: ", feat)
-          console.log("feat coordinates: ", feat.geometry.coordinates)
-          console.log("this.clickCoords: ", this.clickCoords)*/
         }
-        /*let collection = []
-        for (let point of this.selectedFeatures[0].geometry.coordinates) {
-          let a = turf.point(point)
-          collection.push(a)
-        }*/
-        //let featureCoords = turf.featureCollection(collection)
-        //let cercano = turf.nearestPoint(this.clickCoords, featureCoords)
         this.position = transform(this.selectedFeatures[0].geometry.coordinates, 'EPSG:3857', 'EPSG:4326')
         console.log(this.position)
       }
@@ -439,6 +421,7 @@ export default {
       }
     },
     clic(evt) {
+      this.selectedFeatures = []
       console.log("clic event", evt)
       console.log("clic event", evt.coordinate)
       console.log("herramientaActiva", this.herramientaActiva)
@@ -461,18 +444,50 @@ export default {
         console.log(this.$refs.olview)
         console.log(this.$refs.olview.$view.values_.resolution)
         console.log(evt.coordinate)
-        const coord = `SRID=4326;POINT (${evt.coordinate[0]} ${evt.coordinate[1]})`
+        const coord = transform(evt.coordinate, 'EPSG:4326', 'EPSG:3857')
         const viewResolution = this.$refs.olview.$view.values_.resolution;
         axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${evt.coordinate[1]},${evt.coordinate[0]}&key=AIzaSyAPJOFYKRav1z3IxoK-URalWtPY4KKTAb0`)
           .then(response => {
-            console.log(response)
+            console.log("response", response)
           })
         this.agregarreportemarcador_dialog = true
+        let url = this.$refs.colonias_zapopan[0].getFeatureInfoUrl(coord, viewResolution, 'EPSG:3857', {'INFO_FORMAT': 'application/json'})
+        console.log("url", url)
+        console.log("coord", coord)
+        console.log("viewResolution", viewResolution)
+        axios.get(url).then(response => {
+          console.log(response)
+          console.log(response.data)
+          this.selectedFeatures = response.data.features
+        }).catch(error => console.log(error))
+
 
 
       }
 
 
+    },
+    getColonias() {
+      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/colonias/?municipio=120`).then(response => {
+        this.colonias = response.data
+        console.log("colonias", this.colonias)
+      }).catch(error => console.log(error))
+    },
+    getTiposServicio() {
+      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/tipos-servicio/`).then(response => {
+        this.tipos_servicio = response.data
+        console.log("tipos_servicio", this.tipos_servicio)
+      }).catch(error => console.log(error))
+    },
+    getEstadosServicio(val) {
+      if (val && val < 1000000) {
+        axios.get(`https://repvmz.maptitude.xyz/back/api/v1/estados-servicio/?tipo=${val}`).then(response => {
+          this.estados_servicio = response.data
+          console.log("estados_servicio", this.estados_servicio)
+        }).catch(error => console.log(error))
+      } else {
+        this.estados_servicio = undefined
+      }
     },
     pointsStyleFunc() {
       return (feature) => {
@@ -487,8 +502,13 @@ export default {
     axios.get('statics/zapopan.geojson').then(res => {
       console.log(res.data.features)
       this.zapopan = res.data.features
+    }).then(() => {
+    this.getColonias()
+    this.getTiposServicio()
+    this.getSituacionesPeligrosas()
+    }).finally(() => {
+      this.loadingBar.stop()
     })
-    this.loadingBar.stop()
   }
 }
 </script>
