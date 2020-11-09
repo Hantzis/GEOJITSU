@@ -430,13 +430,6 @@ export default {
           }).catch(error => {
             console.log(error)
           }).finally(() => {
-            this.add_proyecto_dialog = false
-            this.proyecto_data = {inclusion_genero: false, fecha_inicio: "", fecha_registro: ""}
-            this.nuevo_logro = {nombre: "", fecha: ""}
-            this.nueva_certificacion = {nombre: "", fuente: "", fecha: ""}
-            this.nuevo_reconocimiento = {nombre: "", fuente: "", fecha: ""}
-            this.nueva_red = {nombre: "", integrantes: ""}
-            this.nuevo_financiamiento = {nombre: "", fuente: "", monto: ""}
           })
         } else {
           console.log('error submit!!');

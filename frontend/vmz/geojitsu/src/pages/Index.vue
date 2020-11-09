@@ -125,7 +125,7 @@
             <p>Agrear reporte.</p>
           </div>
 
-          <q-form ref="form_reporte_domicilio" autocomplete="off" greedy>
+          <q-form ref="form_reporte_marcador" autocomplete="off" greedy>
             <div class="row q-py-xs">
               <div class="col-6">
                 <q-input outlined class="full-width" mask="date"
@@ -169,7 +169,7 @@
               <q-select class="full-width" outlined name="colonia" v-model="reporte_marcador_data.colonia"
                         :options="colonias"
                         label="Colonia" :rules="[val => !!val || 'Colonia obligatoria']"
-                        emit-value map-options option-value="id" option-label="nombre" />
+                        emit-value map-options option-value="id" option-label="nombre"/>
             </div>
             <div class="row q-py-xs">
               <q-input outlined class="full-width" name="calle" v-model="reporte_marcador_data.calle"
@@ -241,7 +241,7 @@
           <div class="row">
             <div class="col">
               <q-btn :disabled="false"
-                     @click="saveReporteDomicilio()" color="green"
+                     @click="saveReporteMarcador()" color="green"
                      label="Guardar reporte" no-caps class="full-width"/>
             </div>
           </div>
@@ -266,7 +266,7 @@ import Icon from 'ol/style/Icon'
 import MapaDrawerCapas from "components/drawer_components/MapaDrawerCapas";
 import {Point as turfPoint, Coord as turfCoord, FeatureCollection as turfFeatureCollection} from '@turf/helpers'
 import {transform} from 'ol/proj';
-
+import cookies from 'browser-cookies'
 
 Vue.use(VueLayers)
 
@@ -340,10 +340,49 @@ export default {
         this.getEstadosServicio(newVal)
       }
     },
+    'reporte_marcador_data.colonia': function (newVal, oldVal) {
+      console.log(newVal)
+      console.log(oldVal)
+      console.log(this.reporte_marcador_data.colonia)
+    },
+    agregarreportemarcador_dialog() {
+      if (this.agregarreportemarcador_dialog === false) {
+        this.herramientaActiva = 'info'
+        this.fecha_reporte_marcador = ""
+        this.hora_reporte_marcador = ""
+        this.reporte_marcador_data = {
+          colonia: undefined, calle: undefined, numero: undefined, entre_interseccion: undefined,
+          tipo: undefined, tipo_servicio: undefined, estado_servicio: undefined, estado_servicio_otro: undefined,
+          situacion_peligrosa: undefined, situacion_peligrosa_otra: undefined, comentarios: undefined,
+          fecha: "", hora: "", ubicacion: undefined
+        }
+      }
+    },
+    'fecha_reporte_marcador': function () {
+      if (this.fecha_reporte_marcador !== "") {
+        this.reporte_marcador_data.fecha = this.fecha_reporte_marcador.split("/").join("-")
+      }
+    },
+    'hora_reporte_marcador': function () {
+      if (this.hora_reporte_marcador !== "") {
+        this.reporte_marcador_data.hora = this.hora_reporte_marcador
+      }
+    },
   },
   computed: {
     ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getHerramientaActiva', 'mapaBaseGetter', 'mapasBaseGetter',
       'capasMapaGetter', 'getDrawerCapas', 'getMapkey']),
+    ...mapGetters('auth', ['logged', 'user']),
+    auth_user: {
+      get() {
+        return this.user
+      }
+    },
+    auth_logged: {
+      get() {
+        return this.logged
+      }
+    },
     showGISRibbon: {
       get() {
         return this.GISRibbonIsOpenGetter
@@ -453,9 +492,8 @@ export default {
           .then(response => {
             console.log("response", response)
             if (response.data.results.length > 0) {
-
+              this.reporte_marcador_data.ubicacion = `SRID=4326;POINT (${evt.coordinate[0]} ${evt.coordinate[1]})`
               const addr = response.data.results[0].address_components
-
               console.log("addr", addr)
               if (addr[0].types[0] === 'street_number') {
                 this.reporte_marcador_data.numero = parseInt(addr[0].long_name)
@@ -463,23 +501,17 @@ export default {
               if (addr[1].types[0] === 'route') {
                 this.reporte_marcador_data.calle = addr[1].long_name
               }
-
               let url = this.$refs.colonias_zapopan[0].getFeatureInfoUrl(coord, viewResolution, 'EPSG:3857', {'INFO_FORMAT': 'application/json'})
               axios.get(url).then(response => {
                 console.log(response)
                 const col = response.data.features[0]
-                this.reporte_marcador_data.colonia = col.id.split(".")[1]
+                this.reporte_marcador_data.colonia = parseInt(col.id.split(".")[1])
                 // this.selectedFeatures = response.data.features
               }).catch(error => console.log(error))
-
               this.agregarreportemarcador_dialog = true
             }
-          })
-
-
+          }).catch(error => console.log(error))
       }
-
-
     },
     getColonias() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/colonias/?municipio=120`).then(response => {
@@ -508,6 +540,44 @@ export default {
         this.situaciones_peligro = response.data
         console.log("situaciones_peligrosas", this.situaciones_peligro)
       }).catch(error => console.log(error))
+    },
+    saveReporteMarcador() {
+
+      this.$refs.form_reporte_marcador.validate().then(valid => {
+        if (valid) {
+          this.token = cookies.get("access_token")
+          this.reporte_marcador_data.reporta = this.auth_user.pk
+          axios.post(`https://repvmz.maptitude.xyz/back/api/v1/reportes/`, this.reporte_marcador_data,
+            {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
+            console.log(response.data)
+            this.agregarreportemarcador_dialog = false
+            this.reporte_marcador_data = {
+              colonia: undefined,
+              ubicacion: undefined,
+              calle: undefined,
+              numero: undefined,
+              entre_interseccion: undefined,
+              tipo: undefined,
+              tipo_servicio: undefined,
+              estado_servicio: undefined,
+              estado_servicio_otro: undefined,
+              situacion_peligrosa: undefined,
+              situacion_peligrosa_otra: undefined,
+              comentarios: undefined,
+              fecha: "",
+              hora: ""
+            }
+            this.herramientaActiva = 'info'
+          }).catch(error => {
+            console.log(error)
+          })
+
+
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      });
     },
     pointsStyleFunc() {
       return (feature) => {
