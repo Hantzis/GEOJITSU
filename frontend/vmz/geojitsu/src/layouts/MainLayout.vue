@@ -110,7 +110,7 @@
         </div>
         <div v-else class="bg-transparent">
           <q-avatar size="56px" class="q-mb-sm">
-            <img src="~assets/logo_zapopan.png" alt="Zapopan">
+            <img src="~assets/logo_mujeres.png" alt="Zapopan">
           </q-avatar>
           <div class="text-weight-bold">Anónimo</div>
           <div>
