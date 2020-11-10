@@ -2,7 +2,7 @@
   <div>
 
 
-    <q-toolbar style="padding: 0" v-show="showGISRibbon" class="bg-white text-grey-9">
+    <q-tabs style="padding: 0" align="left" v-show="showGISRibbon" class="bg-white text-grey-9">
       <div name="mapa" class="no-padding">
         <div class="row no-wrap">
           <div class="col-auto">
@@ -122,7 +122,7 @@
         </div>
 
       </div>
-    </q-toolbar>
+    </q-tabs>
 
     <q-dialog ref="agregarreportedomicilio_dialog" v-model="agregarreportedomicilio_dialog" persistent>
       <q-card style="width: 680px">
