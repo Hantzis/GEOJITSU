@@ -124,6 +124,8 @@
       </div>
     </q-tabs>
 
+    <q-separator color="grey-5"/>
+
     <q-dialog ref="agregarreportedomicilio_dialog" v-model="agregarreportedomicilio_dialog" persistent>
       <q-card style="width: 680px">
         <q-card-section class="row items-center">
@@ -261,8 +263,34 @@
       </q-card>
     </q-dialog>
 
+    <q-dialog ref="reporte_agregado_dialog" v-model="reporte_agregado_dialog">
+      <q-card>
+        <q-card-section class="row items-center">
+          <q-avatar icon="mdi-plus" color="red" text-color="white"/>
+          <q-toolbar-title>Reporte agregado</q-toolbar-title>
+          <q-btn icon="close" flat round dense v-close-popup/>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section class="row items-center">
+          <div class="row full-width">
+            <div class="col full-width">
+              <p>El reporte se ha agregado satisfactoriamente, recargue la página en unos minutos para ver reflejado
+                su aporte</p>
+            </div>
+          </div>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section class="row items-center">
+          <div class="row full-width">
+            <div class="col full-width">
+              <q-btn @click="reporte_agregado_dialog = false" no-caps color="green"
+                     label="Aceptar" class="full-width"/>
+            </div>
+          </div>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
 
-    <q-separator color="grey-5"/>
   </div>
 </template>
 
@@ -288,6 +316,7 @@ export default {
       fecha_reporte_domicilio: "",
       hora_reporte_domicilio: "",
       agregarreportedomicilio_dialog: false,
+      reporte_agregado_dialog: false,
       reporte_domicilio_data: {
         colonia: undefined, calle: undefined, numero: undefined, entre_interseccion: undefined,
         tipo: undefined, tipo_servicio: undefined, estado_servicio: undefined, estado_servicio_otro: undefined,
@@ -397,6 +426,7 @@ export default {
                 axios.post(`https://repvmz.maptitude.xyz/back/api/v1/reportes/`, this.reporte_domicilio_data,
                   {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
                   console.log(response.data)
+                  this.reporte_agregado_dialog = true
                   this.agregarreportedomicilio_dialog = false
                   this.reporte_domicilio_data = {
                     colonia: undefined,
@@ -414,10 +444,6 @@ export default {
                     hora: ""
                   }
                   this.herramientaActiva = 'info'
-                  console.log("this.$refs", this.$refs)
-                  console.log("this.$root", this.$root)
-                  console.log("this.$parent", this.$parent)
-                  console.log("this.$parent.$parent", this.$parent.$parent)
                 }).catch(error => {
                   console.log(error)
                 })

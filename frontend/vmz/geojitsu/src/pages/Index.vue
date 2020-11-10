@@ -249,6 +249,34 @@
       </q-card>
     </q-dialog>
 
+    <q-dialog ref="reporte_agregado_dialog" v-model="reporte_agregado_dialog">
+      <q-card>
+        <q-card-section class="row items-center">
+          <q-avatar icon="mdi-plus" color="red" text-color="white"/>
+          <q-toolbar-title>Reporte agregado</q-toolbar-title>
+          <q-btn icon="close" flat round dense v-close-popup/>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section class="row items-center">
+          <div class="row full-width">
+            <div class="col full-width">
+              <p>El reporte se ha agregado satisfactoriamente, recargue la página en unos minutos para ver reflejado
+                su aporte</p>
+            </div>
+          </div>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section class="row items-center">
+          <div class="row full-width">
+            <div class="col full-width">
+              <q-btn @click="reporte_agregado_dialog = false" no-caps color="green"
+                     label="Aceptar" class="full-width"/>
+            </div>
+          </div>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
   </q-page>
 </template>
 
@@ -281,6 +309,7 @@ export default {
       clickCoords: undefined,
       position: undefined,
       agregarreportemarcador_dialog: false,
+      reporte_agregado_dialog: false,
       fecha_reporte_marcador: "",
       hora_reporte_marcador: "",
       zoom: 15,
@@ -506,7 +535,6 @@ export default {
                 console.log(response)
                 const col = response.data.features[0]
                 this.reporte_marcador_data.colonia = parseInt(col.id.split(".")[1])
-                // this.selectedFeatures = response.data.features
               }).catch(error => console.log(error))
               this.agregarreportemarcador_dialog = true
             }
@@ -542,7 +570,6 @@ export default {
       }).catch(error => console.log(error))
     },
     saveReporteMarcador() {
-
       this.$refs.form_reporte_marcador.validate().then(valid => {
         if (valid) {
           this.token = cookies.get("access_token")
@@ -551,6 +578,7 @@ export default {
             {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
             console.log(response.data)
             this.agregarreportemarcador_dialog = false
+            this.reporte_agregado_dialog = true
             this.reporte_marcador_data = {
               colonia: undefined,
               ubicacion: undefined,
