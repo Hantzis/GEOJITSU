@@ -24,7 +24,6 @@
 
       <q-page-container>
         <q-page style="height: inherit; min-height: inherit">
-
           <q-input
             ref="filter"
             square

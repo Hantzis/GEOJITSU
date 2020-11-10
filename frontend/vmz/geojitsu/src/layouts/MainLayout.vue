@@ -18,7 +18,7 @@
 
         <q-btn dense flat round icon="mdi-dots-vertical">
           <q-menu content-style="border-radius: 2px;">
-            <q-list style="min-width: 150px;">
+            <q-list style="min-width: 190px;">
 
               <q-item v-if="!auth_logged" dense clickable v-close-popup style="padding: 0;" @click="openLogin()">
                 <q-avatar>
@@ -46,12 +46,14 @@
                 <q-item-section>Mi perfil</q-item-section>
               </q-item>
               <q-separator/>
-              <q-item dense clickable v-close-popup style="padding: 0;" to="/acerca-de">
+
+              <q-item v-for="pagina of paginas.items" :to="'/v/' + pagina.meta.slug" :key="pagina.id"  dense clickable v-close-popup style="padding: 0;">
                 <q-avatar>
                   <q-icon name="info"/>
                 </q-avatar>
-                <q-item-section>Acerca de</q-item-section>
+                <q-item-section>{{ pagina.title }}</q-item-section>
               </q-item>
+
             </q-list>
           </q-menu>
         </q-btn>
@@ -59,7 +61,8 @@
 
       <q-tabs align="right" no-caps class="text-white" indicator-color="cyan-4" style="background-color: #8564c8;">
         <q-route-tab to="/" label="Inicio"/>
-        <q-route-tab to="/acerca-de" label="Acerca de"/>
+        <q-route-tab v-for="pagina of paginas.items" :to="'/v/' + pagina.meta.slug" :label="pagina.title" :key="pagina.id" />
+
       </q-tabs>
 
     </q-header>
@@ -77,14 +80,12 @@
             </q-item-section>
           </q-item>
 
-
-          <q-item to="/acerca-de" clickable v-ripple>
+          <q-item v-for="pagina of paginas.items" :to="'/v/' + pagina.meta.slug" :key="pagina.id" clickable v-ripple>
             <q-item-section avatar>
               <q-icon name="mdi-information"/>
             </q-item-section>
-
             <q-item-section>
-              Acerca de
+              {{ pagina.title }}
             </q-item-section>
           </q-item>
 
@@ -570,6 +571,7 @@ export default {
       municipios: undefined,
       colonias: undefined,
       discapacidades: undefined,
+      paginas: {items: [], meta: {total_count: 0}},
       create_account_dialog: false,
       old_password: undefined,
       new_password1: undefined,
@@ -581,15 +583,11 @@ export default {
   watch: {
     auth_user() {
       if (this.auth_user.pk) {
-        console.log("cambio");
         console.log(this.auth_user);
         this.getProfile(this.auth_user.pk)
       }
     },
     'full_user_data.municipio': function (newVal, oldVal) {
-      console.log(newVal)
-      console.log(oldVal)
-      console.log("full_user")
       if (oldVal) {
         this.getColonias(newVal)
       }
@@ -600,8 +598,6 @@ export default {
       }
     },
     'new_user_data.municipio': function (newVal, oldVal) {
-      console.log(newVal)
-      console.log(oldVal)
       if (newVal) {
         this.new_user_data.colonia = undefined
         this.getColonias(newVal)
@@ -617,7 +613,6 @@ export default {
             this.user_fecha_nacimiento = this.full_user_data.fecha_nacimiento.split("-").join('/')
           }
         }).catch(error => {
-          console.log(error)
         })
       }
     },
@@ -678,8 +673,8 @@ export default {
           password: this.login_password
         }, true
       ).then(response => {
-        console.log("then login", response)
-        console.log('You were logged in')
+        // console.log("then login", response)
+        // console.log('You were logged in')
         this.login_dialog = false
         this.user_fecha_nacimiento = ""
       }).catch(error => {
@@ -747,7 +742,6 @@ export default {
           if (valid) {
             axios.post("https://repvmz.maptitude.xyz/back/api/v1/auth/registration/", this.new_user_data)
               .then(response => {
-                console.log(response)
                 this.create_account_dialog = false;
                 this.create_account_info_dialog = true;
                 this.accountcreated_dialog = true;
@@ -781,7 +775,6 @@ export default {
         {old_password: this.old_password, new_password1: this.new_password1, new_password2: this.new_password2},
         {headers: {'Authorization': `Bearer ${token}`}})
         .then(response => {
-          console.log(response)
           this.changepassword_dialog = false
           this.changepassworddone_dialog = true
         })
@@ -789,52 +782,47 @@ export default {
     getEtnias() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/etnias/`).then(response => {
         this.etnias = response.data
-        console.log("etnias", this.etnias)
       }).catch(error => console.log(error))
     },
     getMunicipios() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/municipios/`).then(response => {
         this.municipios = response.data
-        console.log("municipios", this.municipios)
       }).catch(error => console.log(error))
     },
     getColonias(municipio) {
       if (municipio) {
         axios.get(`https://repvmz.maptitude.xyz/back/api/v1/colonias/?municipio=${municipio}`).then(response => {
           this.colonias = response.data
-          console.log("colonias", this.colonias)
         }).catch(error => console.log(error))
       }
     },
     getDiscapacidades() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/discapacidades/`).then(response => {
         this.discapacidades = response.data
-        console.log("discapacidades", this.discapacidades)
+      }).catch(error => console.log(error))
+    },
+    getPaginas() {
+      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/pages/?type=home.StandardPage`).then(response => {
+        this.paginas = response.data
+        console.log("paginas", this.paginas)
       }).catch(error => console.log(error))
     },
     getProfile(id) {
       const token = cookies.get("access_token");
       if (this.new_user_data.username) {
         this.full_user_data = this.new_user_data
-        console.log("this.full_user_data", this.full_user_data)
-        console.log("this.new_user_data", this.new_user_data)
         axios.patch(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-autenticado/${this.auth_user.pk}/`,
           this.full_user_data, {headers: {'Authorization': `Bearer ${token}`}})
           .then(response => {
-            console.log(response);
             this.profile_dialog = false
             this.$auth.refreshToken().then(response => {
-              console.log("refreshToken")
-              console.log(response)
-            }).catch(error => console.log("error", error))
+            }).catch(error => console.log(error))
           }).then(() => {
           this.cleanRegisterForm()
         })
       }
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-autenticado/${id}/`,
         {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
-        console.log("getProfile");
-        console.log(response);
         this.full_user_data.username = response.data.username
         this.full_user_data.first_name = response.data.first_name
         this.full_user_data.last_name = response.data.last_name
@@ -858,13 +846,11 @@ export default {
           axios.patch(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-autenticado/${this.auth_user.pk}/`,
             this.full_user_data, {headers: {'Authorization': `Bearer ${token}`}})
             .then(response => {
-              console.log(response);
+
               this.profile_dialog = false
               this.profileupdated_dialog = true
               this.$auth.refreshToken().then(response => {
-                console.log("refreshToken")
-                console.log(response)
-              }).catch(error => console.log("no auth", error))
+              }).catch(error => console.log(error))
             })
         } else {
           console.log('error submit!!');
@@ -885,15 +871,13 @@ export default {
   },
   mounted() {
     if (this.auth_logged) {
-      console.log("mount")
       this.$auth.refreshToken().then(response => {
-        console.log("refreshToken")
-        console.log(response)
-      }).catch(error => console.log("no auth", error))
+      }).catch(error => console.log(error))
     }
-    this.getMunicipios();
-    this.getEtnias();
-    this.getDiscapacidades();
+    this.getMunicipios()
+    this.getEtnias()
+    this.getDiscapacidades()
+    this.getPaginas()
   }
 }
 </script>

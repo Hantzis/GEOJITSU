@@ -21,21 +21,21 @@
       class="text-grey"
       active-color="black"
       indicator-color="primary"
-      align="justify"
+      align="left"
     >
-      <q-tab name="mails" dense icon="mdi-texture"/>
-      <q-tab name="alarms" dense icon="mdi-information"/>
+      <q-tab name="simbologia" dense icon="mdi-texture"/>
+      <!-- <q-tab name="alarms" dense icon="mdi-information"/>
       <q-tab name="movies" dense icon="mdi-filter"/>
       <q-tab name="alarms2" dense icon="mdi-cog"/>
-      <q-tab name="movies3" dense icon="mdi-cloud-download"/>
+      <q-tab name="movies3" dense icon="mdi-cloud-download"/> -->
     </q-tabs>
 
     <q-separator/>
 
     <q-tab-panels v-model="tab" animated>
-      <q-tab-panel name="mails">
+      <q-tab-panel name="simbologia">
         <p class="text-h6">Simbología</p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        <q-img :src="capa.url + 'REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&LAYER=' + capa.layers"></q-img>
       </q-tab-panel>
 
       <q-tab-panel name="alarms">
@@ -64,7 +64,7 @@ export default {
   name: "CardCapa",
   data() {
     return {
-      tab: 'mails',
+      tab: 'simbologia',
       smallStep: 0.3,
       capaIndex: undefined
     }
