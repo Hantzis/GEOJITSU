@@ -38,7 +38,8 @@
                 </q-avatar>
                 <q-item-section>Crear cuenta</q-item-section>
               </q-item>
-              <q-item v-if="auth_logged" dense clickable v-close-popup style="padding: 0;" @click="profile_dialog = true">
+              <q-item v-if="auth_logged" dense clickable v-close-popup style="padding: 0;"
+                      @click="profile_dialog = true">
                 <q-avatar>
                   <q-icon name="mdi-account"/>
                 </q-avatar>
@@ -97,7 +98,9 @@
             <img :src="get_gravatar(auth_user.email, 150)" :alt="auth_user.username">
           </q-avatar>
           <div class="text-weight-bold">
-            {{ auth_user.first_name === "" || auth_user.last_name === "" ? auth_user.username : auth_user.first_name + " " + auth_user.last_name }}
+            {{
+              auth_user.first_name === "" || auth_user.last_name === "" ? auth_user.username : auth_user.first_name + " " + auth_user.last_name
+            }}
           </div>
           <div>
             <a style="cursor: pointer; margin-right: 8px;" @click="profile_dialog = true">Mi perfil</a> |
@@ -356,13 +359,18 @@
         <q-separator/>
         <q-card-section>
           <div class="row q-py-xs">
+            <q-input type="password" outlined class="full-width" name="new_password1" v-model="old_password"
+                     :rules="[val => !!val || 'Falta contraseña antigua']"
+                     label="Nueva contraseña"/>
+          </div>
+          <div class="row q-py-xs">
             <q-input type="password" outlined class="full-width" name="new_password1" v-model="new_password1"
-                     :rules="[val => !!val || 'Falta contraseña']"
+                     :rules="[val => !!val || 'Falta contraseña nueva']"
                      label="Nueva contraseña"/>
           </div>
           <div class="row q-py-xs">
             <q-input type="password" outlined class="full-width" name="new_password2" v-model="new_password2"
-                     :rules="[val => !!val || 'Falta confirmación de contraseña']"
+                     :rules="[val => !!val || 'Falta contraseña de confirmación']"
                      label="Confirmar contraseña"/>
           </div>
           <div v-if="new_password1 && new_password2 && new_password1 != new_password2" class="row q-px-xs">
@@ -371,8 +379,8 @@
           <br/>
           <div class="row">
             <div class="col">
-              <q-btn :disabled="new_password1 || !new_password2 || new_password1 != new_password2"
-                     @click="resetPassword()" color="green"
+              <q-btn :disabled="!old_password || !new_password1 || !new_password2 || new_password1 != new_password2"
+                     @click="changePassword()" color="green"
                      label="Cambiar contraseña" no-caps class="full-width"/>
             </div>
           </div>
@@ -538,7 +546,9 @@ export default {
       logout_dialog: false,
       register_dialog: false,
       resetpassword_dialog: false,
+      changepassword_dialog: false,
       resetpassworddone_dialog: false,
+      changepassworddone_dialog: false,
       profile_dialog: false,
       profileupdated_dialog: false,
       accountcreated_dialog: false,
@@ -560,8 +570,8 @@ export default {
       municipios: undefined,
       colonias: undefined,
       discapacidades: undefined,
-      changepassword_dialog: false,
       create_account_dialog: false,
+      old_password: undefined,
       new_password1: undefined,
       new_password2: undefined,
       registration_response_error: {username: undefined, email: undefined},
@@ -704,6 +714,7 @@ export default {
     open_changepassword_dialog() {
       this.profile_dialog = false;
       this.changepassword_dialog = true;
+      this.old_password = undefined;
       this.new_password1 = undefined;
       this.new_password2 = undefined;
     },
@@ -758,10 +769,21 @@ export default {
       )
     },
     resetPassword() {
-      axios.post("https://repvmz.maptitude.xyz/back/api/v1/auth/password/reset/", {email: this.reset_email})
+        axios.post("https://repvmz.maptitude.xyz/back/api/v1/auth/password/reset/", {email: this.reset_email})
+          .then(response => {
+            this.resetpassword_dialog = false
+            this.resetpassworddone_dialog = true
+          })
+      },
+    changePassword() {
+      const token = cookies.get("access_token");
+      axios.post("https://repvmz.maptitude.xyz/back/api/v1/auth/password/change/",
+        {old_password: this.old_password, new_password1: this.new_password1, new_password2: this.new_password2},
+        {headers: {'Authorization': `Bearer ${token}`}})
         .then(response => {
-          this.resetpassword_dialog = false
-          this.resetpassworddone_dialog = true
+          console.log(response)
+          this.changepassword_dialog = false
+          this.changepassworddone_dialog = true
         })
     },
     getEtnias() {

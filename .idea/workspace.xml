@@ -13,10 +13,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="Commit Clutch">
+    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/GISRibbon.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/GISRibbon.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -719,98 +718,11 @@
       <workItem from="1604360231370" duration="9239000" />
       <workItem from="1604378832154" duration="24303000" />
       <workItem from="1604452946390" duration="1154000" />
-      <workItem from="1604460206999" duration="5007000" />
-    </task>
-    <task id="LOCAL-00027" summary="m$">
-      <created>1598544738375</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1598544738375</updated>
-    </task>
-    <task id="LOCAL-00028" summary="m$">
-      <created>1598564618285</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1598564618285</updated>
-    </task>
-    <task id="LOCAL-00029" summary="m$">
-      <created>1598582314768</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1598582314768</updated>
-    </task>
-    <task id="LOCAL-00030" summary="m$">
-      <created>1598583537588</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1598583537588</updated>
-    </task>
-    <task id="LOCAL-00031" summary="m$">
-      <created>1599364230551</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1599364230551</updated>
-    </task>
-    <task id="LOCAL-00032" summary="m$">
-      <created>1599449762823</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1599449762823</updated>
-    </task>
-    <task id="LOCAL-00033" summary="m$">
-      <created>1599497897460</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1599497897461</updated>
-    </task>
-    <task id="LOCAL-00034" summary="m$">
-      <created>1599499198846</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1599499198846</updated>
-    </task>
-    <task id="LOCAL-00035" summary="m$">
-      <created>1599584191537</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1599584191537</updated>
-    </task>
-    <task id="LOCAL-00036" summary="m$">
-      <created>1599788182722</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1599788182722</updated>
-    </task>
-    <task id="LOCAL-00037" summary="m$">
-      <created>1600108829540</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1600108829540</updated>
-    </task>
-    <task id="LOCAL-00038" summary="m$">
-      <created>1600191503717</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1600191503717</updated>
-    </task>
-    <task id="LOCAL-00039" summary="m$">
-      <created>1600228821509</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1600228821509</updated>
+      <workItem from="1604460206999" duration="9735000" />
+      <workItem from="1604525488164" duration="16951000" />
+      <workItem from="1604779890086" duration="29882000" />
+      <workItem from="1604905754454" duration="28454000" />
+      <workItem from="1604993830988" duration="2899000" />
     </task>
     <task id="LOCAL-00040" summary="m$">
       <created>1600274588106</created>
@@ -1064,7 +976,98 @@
       <option name="project" value="LOCAL" />
       <updated>1604445557538</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Commit Clutch">
+      <created>1604465590153</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1604465590154</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Commit Clutch">
+      <created>1604502255877</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1604502255877</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Commit Clutch">
+      <created>1604587381653</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1604587381654</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Commit Clutch">
+      <created>1604811149411</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1604811149412</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Commit Clutch">
+      <created>1604858879292</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1604858879292</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Commit Clutch">
+      <created>1604861710443</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1604861710443</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Commit Clutch">
+      <created>1604905812717</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1604905812718</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Commit Clutch">
+      <created>1604950803715</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1604950803715</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Commit Clutch">
+      <created>1604960237975</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1604960237975</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Commit Clutch">
+      <created>1604967617107</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1604967617108</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Commit Clutch">
+      <created>1604967894929</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1604967894929</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Commit Clutch">
+      <created>1604972042057</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1604972042058</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Commit Clutch">
+      <created>1604984144022</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1604984144023</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1114,10 +1117,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1600395998532" />
-    <state x="585" y="88" key="CommitChangelistDialog2" timestamp="1604445556452">
+    <state x="585" y="88" key="CommitChangelistDialog2" timestamp="1604984143034">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="88" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604445556452" />
+    <state x="585" y="88" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604984143034" />
     <state x="416" y="23" key="CommitChangelistDialog2/0.23.1366.745@0.23.1366.745" timestamp="1597277948472" />
     <state width="254" height="195" key="DatabaseViewActions_Filter" timestamp="1598757130935">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -1127,28 +1130,28 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="520" y="411" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603164034671" />
-    <state width="1877" height="225" key="GridCell.Tab.0.bottom" timestamp="1604445740952">
+    <state width="1877" height="357" key="GridCell.Tab.0.bottom" timestamp="1605003459065">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="225" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604445740952" />
+    <state width="1877" height="357" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1605003459065" />
     <state width="1877" height="301" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1597706244683" />
     <state width="1324" height="225" key="GridCell.Tab.0.bottom/0.23.1366.745@0.23.1366.745" timestamp="1597327038385" />
-    <state width="1877" height="225" key="GridCell.Tab.0.center" timestamp="1604445740952">
+    <state width="1877" height="357" key="GridCell.Tab.0.center" timestamp="1605003459065">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="225" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604445740952" />
+    <state width="1877" height="357" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1605003459065" />
     <state width="1877" height="301" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1597706244683" />
     <state width="1324" height="225" key="GridCell.Tab.0.center/0.23.1366.745@0.23.1366.745" timestamp="1597327038381" />
-    <state width="1877" height="225" key="GridCell.Tab.0.left" timestamp="1604445740952">
+    <state width="1877" height="357" key="GridCell.Tab.0.left" timestamp="1605003459064">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="225" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604445740952" />
+    <state width="1877" height="357" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1605003459064" />
     <state width="1877" height="301" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1597706244682" />
     <state width="1324" height="225" key="GridCell.Tab.0.left/0.23.1366.745@0.23.1366.745" timestamp="1597327038380" />
-    <state width="1877" height="225" key="GridCell.Tab.0.right" timestamp="1604445740952">
+    <state width="1877" height="357" key="GridCell.Tab.0.right" timestamp="1605003459065">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="225" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604445740952" />
+    <state width="1877" height="357" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1605003459065" />
     <state width="1877" height="301" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1597706244683" />
     <state width="1324" height="225" key="GridCell.Tab.0.right/0.23.1366.745@0.23.1366.745" timestamp="1597327038382" />
     <state x="0" y="113" key="MergeDialog" timestamp="1601666531686">
@@ -1172,10 +1175,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="580" height="446" key="SwitcherDM/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603386938626" />
-    <state x="398" y="141" key="Vcs.Push.Dialog.v2" timestamp="1604445558740">
+    <state x="398" y="141" key="Vcs.Push.Dialog.v2" timestamp="1604984145029">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="398" y="141" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604445558740" />
+    <state x="398" y="141" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604984145029" />
     <state x="283" y="124" key="Vcs.Push.Dialog.v2/0.23.1366.745@0.23.1366.745" timestamp="1597277951055" />
     <state x="376" y="228" key="com.intellij.ide.util.TipDialog" timestamp="1597272373066">
       <screen x="0" y="23" width="1366" height="745" />
