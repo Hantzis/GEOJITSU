@@ -71,7 +71,7 @@
                       <q-table
                         class="detalles"
                         style="max-height: 400px; max-width: 300px"
-                        :title="selectedFeatures[0].properties.tipo[1] + ' (id:' + selectedFeatures[0].properties.pk + ')'"
+                        :title="selectedFeatureInfo.tipo"
                         square
                         wrap-cells
                         dense
@@ -79,11 +79,10 @@
                         virtual-scroll
                         separator="cell"
                         hide-bottom
-                        :data="getEntries(selectedFeatures[0].properties)"
+                        :data="getEntries(selectedFeatureInfo)"
                       >
                         <template v-slot:header>
-                          <q-th colspan="2" align="left">
-                            <q-td style="padding: 0">{{ selectedFeatures[0].properties.resumen }}</q-td>
+                          <q-th colspan="2" style="padding: 0">
                           </q-th>
                         </template>
                         <template v-slot:top-right>
@@ -323,6 +322,7 @@ export default {
       conflictos_features: [],
       conflictos_selectedFeatures: [],
       selectedFeatures: [],
+      selectedFeatureInfo: {},
       conflictos_styles: {},
       colonias: undefined,
       tipos_servicio: undefined,
@@ -350,8 +350,6 @@ export default {
       console.log(this.selectedFeatures)
       if (this.selectedFeatures.length > 0 && this.herramientaActiva == 'info') {
         this.layers = [this.$refs.reportes[0]]
-        for (let feat of this.selectedFeatures) {
-        }
         this.position = transform(this.selectedFeatures[0].geometry.coordinates, 'EPSG:3857', 'EPSG:4326')
         console.log(this.position)
       }
@@ -471,16 +469,38 @@ export default {
     ...mapActions('geojitsu', ['capasMapaAction', 'setCapaFeatures', 'setCapaTicked', 'setHerramientaActiva', 'setMapkey']),
     getEntries(properties) {
       let limpio = []
+      limpio.push(["Fecha", properties.fecha])
+      limpio.push(["Hora", properties.hora])
+      let colonia = properties.colonia_display
+      if (properties.colonia_cp_display) colonia = colonia + " (" + properties.colonia_cp_display + ")"
+      limpio.push(["Colonia", colonia])
+      let calle = properties.calle
+      if (properties.numero) calle = calle + " #" + properties.numero
+      limpio.push(["Calle", calle])
+      if (properties.entre_interseccion) limpio.push(["Calle intersección", properties.entre_interseccion])
+      if (properties.tipo === "Servicios") {
+        if (properties.tipo_servicio && properties.tipo_servicio < 1000000) limpio.push(["Tipo de servicio", properties.tipo_servicio_display])
+        if (properties.estado_servicio && properties.tipo_servicio < 1000000) limpio.push(["Estado de servicio", properties.estado_servicio_display])
+        if (properties.estado_servicio_otro && properties.tipo_servicio !== 1000000) limpio.push(["Estado de servicio", properties.estado_servicio_otro])
+      }
+      if (properties.tipo === "Situaciones") {
+        if (properties.situacion_peligrosa && properties.situacion_peligrosa < 1000000) limpio.push(["Situación de peligro", properties.situacion_peligrosa_display])
+        if (properties.estado_servicio_otro && properties.situacion_peligrosa !== 1000000) limpio.push(["Situación de peligro", properties.situacion_peligrosa_otra])
+      }
+      if (properties.comentarios) limpio.push(["Comentarios", properties.comentarios])
+
+      /*
       Object.entries(properties).forEach((row) => {
         if (row[1] && row[1].length > 0 && row[0] !== 'resumen' && row[0] !== 'tipo' && row[0] !== 'pk' && row[0] !== 'bibliografia') {
           if (Array.isArray(row[1])) {
             row[1] = row[1].join(", ")
           }
-          row[0] = row[0].split("_").join(" ")
+          row[0] = row[0].split("display")[0].split("_").join(" ")
           if (row[0] === 'secretarias') row[0] = 'secretarías'
           limpio.push(row)
         }
       })
+      */
       return limpio
     },
     loaderFactory(capa) {
@@ -510,8 +530,15 @@ export default {
         console.log(url)
         axios.get(url).then(response => {
           console.log(response)
-          console.log(response.data)
-          this.selectedFeatures = response.data.features
+          console.log("aquii", response.data)
+          if (response.data.numberReturned > 0) {
+            this.selectedFeatures = response.data.features
+            axios.get(`https://repvmz.maptitude.xyz/back/api/v1/reportes/${response.data.features[0].id.split(".")[1]}/`)
+              .then(response => {
+                this.selectedFeatureInfo = response.data
+                console.log("reporte", response.data)
+              })
+          }
         }).catch(error => console.log(error))
       }
       if (this.herramientaActiva === 'agregar_marcador') {
