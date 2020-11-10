@@ -5,7 +5,7 @@
         <q-btn dense flat round icon="menu" @click="drawer_left = !drawer_left"/>
 
         <q-toolbar-title>
-          Mapa VCM
+          Ciudad÷Nosotras
         </q-toolbar-title>
         <q-btn v-if="this.$route.path==='/'" dense flat round
                :icon="showGISRibbon ? 'mdi-chevron-up' : 'mdi-chevron-down'"
@@ -18,38 +18,38 @@
 
         <q-btn dense flat round icon="mdi-dots-vertical">
           <q-menu content-style="border-radius: 2px;">
-            <q-list style="min-width: 130px;">
-              <q-item dense clickable v-close-popup style="padding: 0;">
-                <q-avatar>
-                  <q-icon name="info"/>
-                </q-avatar>
-                <q-item-section>Acerca de</q-item-section>
-              </q-item>
-              <q-item dense clickable v-close-popup style="padding: 0;">
-                <q-avatar>
-                  <q-icon name="mdi-clippy"/>
-                </q-avatar>
-                <q-item-section>Ayuda</q-item-section>
-              </q-item>
-              <q-separator/>
-              <q-item dense clickable v-close-popup style="padding: 0;">
+            <q-list style="min-width: 150px;">
+
+              <q-item v-if="!auth_logged" dense clickable v-close-popup style="padding: 0;" @click="openLogin()">
                 <q-avatar>
                   <q-icon name="login"/>
                 </q-avatar>
                 <q-item-section>Ingresar</q-item-section>
               </q-item>
-              <q-item dense clickable v-close-popup style="padding: 0;">
+              <q-item v-else dense clickable v-close-popup style="padding: 0;" @click="logout_dialog = true">
                 <q-avatar>
                   <q-icon name="logout"/>
                 </q-avatar>
                 <q-item-section>Salir</q-item-section>
               </q-item>
-              <q-separator/>
-              <q-item dense clickable v-close-popup style="padding: 0;">
+              <q-item v-if="!auth_logged" dense clickable v-close-popup style="padding: 0;" @click="openLogin()">
                 <q-avatar>
-                  <q-icon name="mdi-cog"/>
+                  <q-icon name="mdi-account-plus"/>
                 </q-avatar>
-                <q-item-section>Ajustes</q-item-section>
+                <q-item-section>Crear cuenta</q-item-section>
+              </q-item>
+              <q-item v-if="auth_logged" dense clickable v-close-popup style="padding: 0;" @click="profile_dialog = true">
+                <q-avatar>
+                  <q-icon name="mdi-account"/>
+                </q-avatar>
+                <q-item-section>Mi perfil</q-item-section>
+              </q-item>
+              <q-separator/>
+              <q-item dense clickable v-close-popup style="padding: 0;" to="/acerca-de">
+                <q-avatar>
+                  <q-icon name="info"/>
+                </q-avatar>
+                <q-item-section>Acerca de</q-item-section>
               </q-item>
             </q-list>
           </q-menu>
@@ -58,14 +58,13 @@
 
       <q-tabs align="right" no-caps class="text-white" indicator-color="cyan-4" style="background-color: #8564c8;">
         <q-route-tab to="/" label="Inicio"/>
-        <q-route-tab to="/" label="Link 1"/>
-        <q-route-tab to="/" label="Acerca de"/>
+        <q-route-tab to="/acerca-de" label="Acerca de"/>
       </q-tabs>
 
     </q-header>
 
     <q-drawer v-model="drawer_left" side="left" elevated overlay behavior="mobile">
-      <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
+      <q-scroll-area style="height: calc(100% - 200px); margin-top: 200px; border-right: 1px solid #ddd">
         <q-list padding>
           <q-item to="/" clickable v-ripple exact>
             <q-item-section avatar>
@@ -75,18 +74,8 @@
             <q-item-section>
               Inicio
             </q-item-section>
-
           </q-item>
 
-          <q-item to="/link" clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="mdi-file-edit"/>
-            </q-item-section>
-
-            <q-item-section>
-              Link 1
-            </q-item-section>
-          </q-item>
 
           <q-item to="/acerca-de" clickable v-ripple>
             <q-item-section avatar>
@@ -101,24 +90,21 @@
 
         </q-list>
       </q-scroll-area>
-      <q-img class="absolute-top" src="~assets/material.png" style="height: 150px">
+      <q-img class="absolute-top" src="~assets/material.png" style="height: 200px">
 
-        <div v-if="auth_logged" class="absolute-bottom bg-transparent">
+        <div v-if="auth_logged" class="bg-transparent">
           <q-avatar size="56px" class="q-mb-sm">
             <img :src="get_gravatar(auth_user.email, 150)" :alt="auth_user.username">
           </q-avatar>
           <div class="text-weight-bold">
-            {{
-              auth_user.first_name === "" || auth_user.last_name === "" ? auth_user.username : auth_user.first_name + " "
-                + auth_user.last_name
-            }}
+            {{ auth_user.first_name === "" || auth_user.last_name === "" ? auth_user.username : auth_user.first_name + " " + auth_user.last_name }}
           </div>
           <div>
             <a style="cursor: pointer; margin-right: 8px;" @click="profile_dialog = true">Mi perfil</a> |
             <a style="cursor: pointer; margin-left: 8px;" @click="logout_dialog = true">Salir</a>
           </div>
         </div>
-        <div v-else class="absolute-bottom bg-transparent">
+        <div v-else class="bg-transparent">
           <q-avatar size="56px" class="q-mb-sm">
             <img src="~assets/logo_zapopan.png" alt="Zapopan">
           </q-avatar>
@@ -127,6 +113,10 @@
             <a style="cursor: pointer; margin-right: 8px;" @click="openLogin()">Ingresar</a> |
             <a style="cursor: pointer; margin-left: 8px;" @click="create_account_dialog = true">Registrar</a>
           </div>
+        </div>
+        <div class="absolute-bottom bg-transparent">
+          <div class="text-right" style="font-size: 20px; font-weight: 300;">Ciudad÷nosotras</div>
+          <div class="text-right" style="font-size: 16px; font-weight: 300;">Zapopan para nosotras</div>
         </div>
 
       </q-img>
