@@ -280,15 +280,13 @@
       <q-card style="width: 1000px">
         <q-card-section class="row items-center">
           <q-avatar icon="info" color="red" text-color="white"/>
-          <q-toolbar-title>Te damos la bienvenida</q-toolbar-title>
+          <q-toolbar-title>{{ homeData.title }}</q-toolbar-title>
           <q-btn icon="close" flat round dense v-close-popup/>
         </q-card-section>
         <q-separator/>
         <q-card-section class="row items-center">
           <div class="row full-width">
             <div class="col full-width">
-              {{ homeData.contenido }}
-              <!-- <h4 style="margin: 12px 0 22px 0;">{{ homeData.title }}</h4>
               <div v-for="block of homeData.contenido" :key="block.id">
                 <div v-if="block.type === 'image'">
                   <div v-html="block.value"></div>
@@ -299,7 +297,7 @@
                 <div v-if="block.type === 'title'">
                   <h5>{{ block.value }}</h5>
                 </div>
-              </div> -->
+              </div>
 
             </div>
           </div>
@@ -347,7 +345,7 @@ export default {
       loadingBar: undefined,
       clickCoords: undefined,
       position: undefined,
-      homeData: undefined,
+      homeData: "",
       agregarreportemarcador_dialog: false,
       reporte_agregado_dialog: false,
       bienvenida_dialog: false,
