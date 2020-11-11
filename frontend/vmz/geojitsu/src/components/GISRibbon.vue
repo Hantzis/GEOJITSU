@@ -1,7 +1,5 @@
 <template>
   <div>
-
-
     <q-tabs style="padding: 0" align="left" v-show="showGISRibbon" class="bg-white text-grey-9">
       <div name="mapa" class="no-padding">
         <div class="row no-wrap">

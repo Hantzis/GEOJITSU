@@ -4,7 +4,7 @@
   <div>
     <div v-for="item of page_data" :key="item.id">
       <div v-if="item.meta.slug === urlPath">
-        <h4>{{ item.title }}</h4>
+        <h4 style="margin: 12px 0 22px 0;">{{ item.title }}</h4>
         <div v-for="block of item.contenido" :key="block.id">
           <div v-if="block.type === 'image'">
             <div v-html="block.value"></div>
@@ -59,6 +59,4 @@ export default {
 }
 </script>
 
-<style scoped>
 
-</style>
