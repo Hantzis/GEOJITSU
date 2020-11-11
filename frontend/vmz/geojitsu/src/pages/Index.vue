@@ -288,17 +288,17 @@
           <div class="row full-width">
             <div class="col full-width">
               <div v-for="block of homeData.contenido" :key="block.id">
+                {{ block }}
                 <div v-if="block.type === 'image'">
                   <div v-html="block.value"></div>
                 </div>
                 <div v-if="block.type === 'paragraph'">
-                  <div v-html="block.value"></div>
+                  <span v-html="block.value"></span>
                 </div>
                 <div v-if="block.type === 'title'">
                   <h5>{{ block.value }}</h5>
                 </div>
               </div>
-
             </div>
           </div>
         </q-card-section>
