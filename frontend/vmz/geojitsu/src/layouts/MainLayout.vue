@@ -15,7 +15,6 @@
             {{ showGISRibbon ? "Ocultar cinta" : "Mostrar cinta" }}
           </q-tooltip>
         </q-btn>
-
         <q-btn dense flat round icon="mdi-dots-vertical">
           <q-menu content-style="border-radius: 2px;">
             <q-list style="min-width: 190px;">
@@ -58,15 +57,11 @@
           </q-menu>
         </q-btn>
       </q-toolbar>
-
       <q-tabs align="right" no-caps class="text-white" indicator-color="cyan-4" style="background-color: #8564c8;">
         <q-route-tab to="/" label="Inicio"/>
         <q-route-tab v-for="pagina of paginas.items" :to="'/v/' + pagina.meta.slug" :label="pagina.title" :key="pagina.id" />
-
       </q-tabs>
-
     </q-header>
-
     <q-drawer v-model="drawer_left" side="left" elevated overlay behavior="mobile">
       <q-scroll-area style="height: calc(100% - 200px); margin-top: 200px; border-right: 1px solid #ddd">
         <q-list padding>
@@ -125,7 +120,6 @@
 
       </q-img>
     </q-drawer>
-
     <q-page-container>
       <router-view/>
     </q-page-container>
