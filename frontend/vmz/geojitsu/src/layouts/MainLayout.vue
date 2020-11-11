@@ -46,7 +46,8 @@
               </q-item>
               <q-separator/>
 
-              <q-item v-for="pagina of paginas.items" :to="'/v/' + pagina.meta.slug" :key="pagina.id"  dense clickable v-close-popup style="padding: 0;">
+              <q-item v-for="pagina of paginas.items" :to="'/v/' + pagina.meta.slug" :key="pagina.id" dense clickable
+                      v-close-popup style="padding: 0;">
                 <q-avatar>
                   <q-icon name="info"/>
                 </q-avatar>
@@ -59,7 +60,8 @@
       </q-toolbar>
       <q-tabs align="right" no-caps class="text-white" indicator-color="cyan-4" style="background-color: #8564c8;">
         <q-route-tab to="/" label="Inicio"/>
-        <q-route-tab v-for="pagina of paginas.items" :to="'/v/' + pagina.meta.slug" :label="pagina.title" :key="pagina.id" />
+        <q-route-tab v-for="pagina of paginas.items" :to="'/v/' + pagina.meta.slug" :label="pagina.title"
+                     :key="pagina.id"/>
       </q-tabs>
     </q-header>
     <q-drawer v-model="drawer_left" side="left" elevated overlay behavior="mobile">
@@ -139,9 +141,17 @@
                      v-model="login_username" label="Usuario"/>
           </div>
           <div class="row q-py-xs" style="margin-bottom: 12px;">
-            <q-input outlined class="full-width" name="password" v-model="login_password" type="password"
-                     :rules="[val => !!val || 'Falta contraseña']"
-                     label="Contraseña"/>
+            <q-input outlined class="full-width" name="password" v-model="login_password"
+                     :type="isPwd ? 'password' : 'text'"
+                     :rules="[val => !!val || 'Falta contraseña']" label="Contraseña">
+              <template v-slot:append>
+                <q-icon
+                  :name="isPwd ? 'visibility_off' : 'visibility'"
+                  class="cursor-pointer"
+                  @click="isPwd = !isPwd"
+                />
+              </template>
+            </q-input>
           </div>
           <div v-if="login_failure" class="row q-py-xs" style="margin-bottom: 12px;">
             <q-banner class="text-white bg-red">
@@ -354,19 +364,46 @@
         <q-separator/>
         <q-card-section>
           <div class="row q-py-xs">
-            <q-input type="password" outlined class="full-width" name="new_password1" v-model="old_password"
+            <q-input :type="isPwd ? 'password' : 'text'" outlined class="full-width" name="new_password1"
+                     v-model="old_password"
                      :rules="[val => !!val || 'Falta contraseña antigua']"
-                     label="Nueva contraseña"/>
+                     label="Nueva contraseña">
+            <template v-slot:append>
+                <q-icon
+                  :name="isPwd ? 'visibility_off' : 'visibility'"
+                  class="cursor-pointer"
+                  @click="isPwd = !isPwd"
+                />
+              </template>
+            </q-input>
           </div>
           <div class="row q-py-xs">
-            <q-input type="password" outlined class="full-width" name="new_password1" v-model="new_password1"
+            <q-input :type="isPwd ? 'password' : 'text'" outlined class="full-width" name="new_password1"
+                     v-model="new_password1"
                      :rules="[val => !!val || 'Falta contraseña nueva']"
-                     label="Nueva contraseña"/>
+                     label="Nueva contraseña">
+              <template v-slot:append>
+                <q-icon
+                  :name="isPwd ? 'visibility_off' : 'visibility'"
+                  class="cursor-pointer"
+                  @click="isPwd = !isPwd"
+                />
+              </template>
+            </q-input>
           </div>
           <div class="row q-py-xs">
-            <q-input type="password" outlined class="full-width" name="new_password2" v-model="new_password2"
+            <q-input :type="isPwd ? 'password' : 'text'" outlined class="full-width" name="new_password2"
+                     v-model="new_password2"
                      :rules="[val => !!val || 'Falta contraseña de confirmación']"
-                     label="Confirmar contraseña"/>
+                     label="Confirmar contraseña">
+              <template v-slot:append>
+                <q-icon
+                  :name="isPwd ? 'visibility_off' : 'visibility'"
+                  class="cursor-pointer"
+                  @click="isPwd = !isPwd"
+                />
+              </template>
+            </q-input>
           </div>
           <div v-if="new_password1 && new_password2 && new_password1 != new_password2" class="row q-px-xs">
             <p class="text-red">Las contraseñas no coinciden</p>
@@ -458,14 +495,32 @@
                         option-label="nombre"/>
             </div>
             <div class="row q-py-xs">
-              <q-input type="password" outlined class="full-width" name="password1" v-model="new_user_data.password1"
+              <q-input :type="isPwd ? 'password' : 'text'" outlined class="full-width" name="password1"
+                       v-model="new_user_data.password1"
                        :rules="[val => !!val || 'Falta contraseña', val => val.length >= 8 || 'Mínimo 8 caracteres']"
-                       label="Contraseña"/>
+                       label="Contraseña">
+                <template v-slot:append>
+                <q-icon
+                  :name="isPwd ? 'visibility_off' : 'visibility'"
+                  class="cursor-pointer"
+                  @click="isPwd = !isPwd"
+                />
+              </template>
+            </q-input>
             </div>
             <div class="row q-py-xs">
-              <q-input type="password" outlined class="full-width" name="password2" v-model="new_user_data.password2"
+              <q-input :type="isPwd ? 'password' : 'text'" outlined class="full-width" name="password2"
+                       v-model="new_user_data.password2"
                        :rules="[val => !!val || 'Falta confirmación de contraseña', val => val.length >= 8 || 'Mínimo 8 caracteres']"
-                       label="Confirmar contraseña"/>
+                       label="Confirmar contraseña">
+                <template v-slot:append>
+                <q-icon
+                  :name="isPwd ? 'visibility_off' : 'visibility'"
+                  class="cursor-pointer"
+                  @click="isPwd = !isPwd"
+                />
+              </template>
+            </q-input>
             </div>
             <div
               v-if="new_user_data.password1 && new_user_data.password2 && new_user_data.password1 != new_user_data.password2"
@@ -536,6 +591,7 @@ export default {
   data() {
     return {
       drawer_left: false,
+      isPwd: true,
       login_failure: false,
       login_dialog: false,
       logout_dialog: false,
@@ -757,12 +813,12 @@ export default {
       )
     },
     resetPassword() {
-        axios.post("https://repvmz.maptitude.xyz/back/api/v1/auth/password/reset/", {email: this.reset_email})
-          .then(response => {
-            this.resetpassword_dialog = false
-            this.resetpassworddone_dialog = true
-          })
-      },
+      axios.post("https://repvmz.maptitude.xyz/back/api/v1/auth/password/reset/", {email: this.reset_email})
+        .then(response => {
+          this.resetpassword_dialog = false
+          this.resetpassworddone_dialog = true
+        })
+    },
     changePassword() {
       const token = cookies.get("access_token");
       axios.post("https://repvmz.maptitude.xyz/back/api/v1/auth/password/change/",
