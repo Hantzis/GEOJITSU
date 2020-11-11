@@ -276,6 +276,46 @@
       </q-card>
     </q-dialog>
 
+    <q-dialog ref="reporte_agregado_dialog" v-model="bienvenida_dialog">
+      <q-card style="width: 1000px">
+        <q-card-section class="row items-center">
+          <q-avatar icon="info" color="red" text-color="white"/>
+          <q-toolbar-title>Te damos la bienvenida</q-toolbar-title>
+          <q-btn icon="close" flat round dense v-close-popup/>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section class="row items-center">
+          <div class="row full-width">
+            <div class="col full-width">
+              {{ homeData.contenido }}
+              <!-- <h4 style="margin: 12px 0 22px 0;">{{ homeData.title }}</h4>
+              <div v-for="block of homeData.contenido" :key="block.id">
+                <div v-if="block.type === 'image'">
+                  <div v-html="block.value"></div>
+                </div>
+                <div v-if="block.type === 'paragraph'">
+                  <div v-html="block.value"></div>
+                </div>
+                <div v-if="block.type === 'title'">
+                  <h5>{{ block.value }}</h5>
+                </div>
+              </div> -->
+
+            </div>
+          </div>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section class="row items-center">
+          <div class="row full-width">
+            <div class="col full-width">
+              <q-btn @click="bienvenida_dialog = false" no-caps color="green"
+                     label="Entendido" class="full-width"/>
+            </div>
+          </div>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
   </q-page>
 </template>
 
@@ -307,8 +347,10 @@ export default {
       loadingBar: undefined,
       clickCoords: undefined,
       position: undefined,
+      homeData: undefined,
       agregarreportemarcador_dialog: false,
       reporte_agregado_dialog: false,
+      bienvenida_dialog: false,
       fecha_reporte_marcador: "",
       hora_reporte_marcador: "",
       zoom: 15,
@@ -625,6 +667,17 @@ export default {
         }
       });
     },
+    getPaginaHome() {
+      // axios.get("https://repvmz.maptitude.xyz/back/api/v1/pages/?type=home.HomePage")
+      axios.get("https://repvmz.maptitude.xyz/back/api/v1/pages/3/")
+        .then(response => {
+          console.log("response getPagina", response)
+          this.homeData = response.data
+          response.data.items.forEach(row => {
+            console.log("row", row)
+          })
+        })
+    },
     pointsStyleFunc() {
       return (feature) => {
         let img_url = "https://conflictossocioambientales.iies.unam.mx" + feature.values_.tipo[2]
@@ -634,16 +687,22 @@ export default {
     }
   },
   mounted() {
+
     this.loadingBar = this.$refs.bar
     axios.get('statics/zapopan.geojson').then(res => {
       console.log(res.data.features)
       this.zapopan = res.data.features
     }).then(() => {
+      this.getPaginaHome()
       this.getColonias()
       this.getTiposServicio()
       this.getSituacionesPeligrosas()
     }).finally(() => {
       this.loadingBar.stop()
+      if (!this.auth_logged) {
+        this.bienvenida_dialog = true
+
+      }
     })
   }
 }
