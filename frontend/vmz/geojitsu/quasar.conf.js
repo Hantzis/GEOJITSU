@@ -117,9 +117,9 @@ cfg.module.rules.push({
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'Maptitude.XYZ',
-        short_name: 'Maptitude',
-        description: 'Maptitude XYZ',
+        name: 'Ciudad÷Nosotras',
+        short_name: 'CiudadEntreNosotras',
+        description: 'Ciudad÷Nosotras: Zapopan para nosotras',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',

@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-px-md q-pt-md">
-    <div class="column fit justify-between" style="min-height: inherit">
+    <div class="column fit justify-between" :style="{'min-height': getHeight}">
       <div class="col q-px-md">
         <router-view :page_data="pageData"/>
       </div>
@@ -43,6 +43,11 @@ export default {
       pageData: undefined
     }
   },
+  computed: {
+    getHeight() {
+      return this.$q.screen.height - 138 + "px"
+    },
+  },
   methods: {
     getPaginas() {
       axios.get("https://repvmz.maptitude.xyz/back/api/v1/pages/?type=home.StandardPage&fields=*")
@@ -65,15 +70,11 @@ export default {
       }
     }
   },
-
   mounted() {
     this.getPaginas()
   }
 }
 </script>
 
-<style lang="css" scoped>
-.q-page-container {
-  padding-bottom: 8px;
-}
+<style lang="scss" scoped>
 </style>

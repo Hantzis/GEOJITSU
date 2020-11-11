@@ -1,8 +1,8 @@
 {
   "name": "geojitsu",
   "version": "0.0.1",
-  "description": "A Quasar Framework app",
-  "productName": "GeoJitsu",
+  "description": "Ciudad÷Nosotras: Zapopan para nosotras",
+  "productName": "Ciudad÷Nosotras",
   "cordovaId": "xyz.maptitude.quasar.app",
   "capacitorId": "xyz.maptitude.quasar.app",
   "author": "César Benjamín García Martínez <cesar.benjamin@maptitude.xyz>",
@@ -11,7 +11,8 @@
     "eslint": "eslint --ext .js,.vue ./",
     "lint": "vue-cli-service lint",
     "test": "echo \"No test specified\" && exit 0",
-    "serve": "quasar dev --modern"
+    "serve": "quasar dev --modern",
+    "build": "quasar build --modern"
   },
   "dependencies": {
     "@mspiderv/vuejwtauth": "^1.2.2",

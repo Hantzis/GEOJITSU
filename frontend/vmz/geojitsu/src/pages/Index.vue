@@ -488,19 +488,6 @@ export default {
         if (properties.estado_servicio_otro && properties.situacion_peligrosa !== 1000000) limpio.push(["Situación de peligro", properties.situacion_peligrosa_otra])
       }
       if (properties.comentarios) limpio.push(["Comentarios", properties.comentarios])
-
-      /*
-      Object.entries(properties).forEach((row) => {
-        if (row[1] && row[1].length > 0 && row[0] !== 'resumen' && row[0] !== 'tipo' && row[0] !== 'pk' && row[0] !== 'bibliografia') {
-          if (Array.isArray(row[1])) {
-            row[1] = row[1].join(", ")
-          }
-          row[0] = row[0].split("display")[0].split("_").join(" ")
-          if (row[0] === 'secretarias') row[0] = 'secretarías'
-          limpio.push(row)
-        }
-      })
-      */
       return limpio
     },
     loaderFactory(capa) {
@@ -560,10 +547,14 @@ export default {
               let url = this.$refs.colonias_zapopan[0].getFeatureInfoUrl(coord, viewResolution, 'EPSG:3857', {'INFO_FORMAT': 'application/json'})
               axios.get(url).then(response => {
                 console.log(response)
-                const col = response.data.features[0]
-                this.reporte_marcador_data.colonia = parseInt(col.id.split(".")[1])
+                if (response.data.features.length > 0) {
+                  const col = response.data.features[0]
+                  this.reporte_marcador_data.colonia = parseInt(col.id.split(".")[1])
+                  this.agregarreportemarcador_dialog = true
+                } else {
+                  this.herramientaActiva = 'info'
+                }
               }).catch(error => console.log(error))
-              this.agregarreportemarcador_dialog = true
             }
           }).catch(error => console.log(error))
       }

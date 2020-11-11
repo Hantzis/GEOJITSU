@@ -1,7 +1,7 @@
 <template>
   <q-card square class="capas-qcard text-grey-10">
     <div v-if="capa.server_type === 'geoserver'">
-      <q-img :src="String(capa.url).slice(0, -1) + '/reflect?layers=' + capa.layers + '&format=image/png'">
+      <q-img :src="String(capa.url).slice(0, -1) + '/reflect?layers=' + capa.layers + ''">
         <div class="absolute-bottom" style="background: initial">
           <q-slider v-model="opacityStep" dense label :label-value="parseInt(opacityStep * 100) + '%'"
                     color="primary" label-color="primary" :min="0.0" :max="1" :step="0.05"/>
@@ -20,8 +20,9 @@
       v-model="tab"
       class="text-grey"
       active-color="black"
-      indicator-color="primary"
+      indicator-color="grey-13"
       align="left"
+      dense
     >
       <q-tab name="simbologia" dense icon="mdi-texture"/>
       <!-- <q-tab name="alarms" dense icon="mdi-information"/>
@@ -35,7 +36,7 @@
     <q-tab-panels v-model="tab" animated>
       <q-tab-panel name="simbologia">
         <p class="text-h6">Simbología</p>
-        <q-img :src="capa.url + 'REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&LAYER=' + capa.layers"></q-img>
+        <img :src="capa.url + 'SERVICE=WMS&REQUEST=GetLegendGraphic&VERSION=1.3.0&FORMAT=image/png&LAYER=' + capa.layers">
       </q-tab-panel>
 
       <q-tab-panel name="alarms">
@@ -81,7 +82,7 @@ export default {
         return this.capasMapaGetter[this.capasMapa.indexOf(this.capa)].opacity
       },
       set(value) {
-        this.setCapaOpacity({capa: this.capasMapa.indexOf(this.capa), value:value})
+        this.setCapaOpacity({capa: this.capasMapa.indexOf(this.capa), value: value})
       }
     }
   },
