@@ -14,7 +14,9 @@
 
       <q-tabs align="right" no-caps>
         <q-route-tab to="/" label="Inicio"/>
-        <q-route-tab to="/datos" label="Datos"/>
+        <q-route-tab to="/proyectos" label="Proyectos"/>
+        <q-route-tab to="/evaluaciones" label="Evaluaciones"/>
+        <!-- <q-route-tab to="/casos-validados" label="Casos validados"/> -->
         <q-route-tab to="/acerca-de" label="Acerca de"/>
       </q-tabs>
     </q-header>

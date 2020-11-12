@@ -27,66 +27,11 @@
         align="left"
         no-caps
       >
-        <q-tab name="mias" label="Evaluaciones promovidas por mí"/>
         <q-tab name="todas" label="Todas las evaluaciones"/>
+        <q-tab name="mias" label="Evaluaciones promovidas por mí"/>
       </q-tabs>
       <q-separator/>
       <q-tab-panels v-model="tab" animated>
-        <q-tab-panel name="mias">
-          <div class="row">
-            <div class="col">
-              <q-table
-                title="Evaluaciones promovidas por mí"
-                :data.sync="datos_evaluaciones_mias"
-                :columns="columnas"
-                row-key="id"
-                :loading="tabla_loading"
-                :filter="filter"
-                square
-              >
-                <template v-slot:top-right>
-                  <q-input borderless dense debounce="300" v-model="filter" placeholder="Buscar"
-                           style="margin-right: 12px;">
-                    <template v-slot:append>
-                      <q-icon name="search"/>
-                    </template>
-                  </q-input>
-                </template>
-
-
-                <template v-slot:header="props">
-                  <q-tr :props="props">
-                    <q-th
-                      v-for="col in props.cols"
-                      :key="col.name"
-                      :props="props"
-                    >
-                      {{ col.label }}
-                    </q-th>
-                    <q-th auto-width/>
-                  </q-tr>
-                </template>
-
-                <template v-slot:body="props">
-                  <q-tr :props="props">
-                    <q-td v-for="col in props.cols" :key="col.name" :props="props">{{ col.value }}</q-td>
-                    <q-td auto-width>
-                      <!-- <q-btn dense round flat color="accent" @click="props.expand = !props.expand"
-                             :icon="props.expand ? 'remove' : 'add'"></q-btn>
-                      <q-btn v-if="es_usuario" dense round flat color="primary" @click="editRegistroDialog(props)"
-                             icon="edit"></q-btn>
-                      <q-btn v-if="es_usuario" dense round flat color="red" @click="deleteRegistroDialog(props)"
-                             icon="delete"></q-btn> -->
-                    </q-td>
-                  </q-tr>
-                </template>
-
-              </q-table>
-            </div>
-          </div>
-
-
-        </q-tab-panel>
         <q-tab-panel name="todas">
           <div class="row">
             <div class="col">
@@ -126,12 +71,55 @@
                   <q-tr :props="props">
                     <q-td v-for="col in props.cols" :key="col.name" :props="props">{{ col.value }}</q-td>
                     <q-td auto-width>
-                      <!-- <q-btn dense round flat color="accent" @click="props.expand = !props.expand"
-                             :icon="props.expand ? 'remove' : 'add'"></q-btn>
-                      <q-btn v-if="es_usuario" dense round flat color="primary" @click="editRegistroDialog(props)"
-                             icon="edit"></q-btn>
-                      <q-btn v-if="es_usuario" dense round flat color="red" @click="deleteRegistroDialog(props)"
-                             icon="delete"></q-btn> -->
+                    </q-td>
+                  </q-tr>
+                </template>
+
+              </q-table>
+            </div>
+          </div>
+
+
+        </q-tab-panel>
+        <q-tab-panel name="mias">
+          <div class="row">
+            <div class="col">
+              <q-table
+                title="Evaluaciones promovidas por mí"
+                :data.sync="datos_evaluaciones_mias"
+                :columns="columnas"
+                row-key="id"
+                :loading="tabla_loading"
+                :filter="filter"
+                square
+              >
+                <template v-slot:top-right>
+                  <q-input borderless dense debounce="300" v-model="filter" placeholder="Buscar"
+                           style="margin-right: 12px;">
+                    <template v-slot:append>
+                      <q-icon name="search"/>
+                    </template>
+                  </q-input>
+                </template>
+
+
+                <template v-slot:header="props">
+                  <q-tr :props="props">
+                    <q-th
+                      v-for="col in props.cols"
+                      :key="col.name"
+                      :props="props"
+                    >
+                      {{ col.label }}
+                    </q-th>
+                    <q-th auto-width/>
+                  </q-tr>
+                </template>
+
+                <template v-slot:body="props">
+                  <q-tr :props="props">
+                    <q-td v-for="col in props.cols" :key="col.name" :props="props">{{ col.value }}</q-td>
+                    <q-td auto-width>
                     </q-td>
                   </q-tr>
                 </template>
@@ -194,7 +182,8 @@
                     <q-card-section>
                       <div class="row">
                         <div class="col">
-                          <p>Incorporado a una estrategia de ordenamiento del territorio, local, y/o regional que considere un plan de vida o proyecto de resiliencia, y es reconocido en el territorio.</p>
+                          <p>Incorporado a una estrategia de ordenamiento del territorio, local, y/o regional que
+                            considere un plan de vida o proyecto de resiliencia, y es reconocido en el territorio.</p>
                           <q-toggle v-model="eval_integridad_territorial.aplica">
                             <span>{{ eval_integridad_territorial.aplica ? 'Aplica' : 'No aplica' }}</span>
                           </q-toggle>
@@ -289,7 +278,9 @@
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
                                                :offset="[10, 10]"
                                                content-class="bg-black" content-style="font-size: 16px">
-                                      {{ eval_integridad_territorial.alineado_programas_ordenamiento_comunitario.options[1] }}
+                                      {{
+                                        eval_integridad_territorial.alineado_programas_ordenamiento_comunitario.options[1]
+                                      }}
                                     </q-tooltip>
                                   </template>
                                   <template v-slot:tip-2>
@@ -786,7 +777,9 @@
                     <q-card-section>
                       <div class="row">
                         <div class="col">
-                          <p>Manejo sustentable de flora y fauna silvestre, residuos sólidos, gestión del agua tanto para uso doméstico como tratamiento y disposición de aguas servidas y estrategias de conservación de suelo.</p>
+                          <p>Manejo sustentable de flora y fauna silvestre, residuos sólidos, gestión del agua tanto
+                            para uso doméstico como tratamiento y disposición de aguas servidas y estrategias de
+                            conservación de suelo.</p>
                           <q-toggle v-model="eval_gestion_ambiental.aplica">
                             <span>{{ eval_gestion_ambiental.aplica ? 'Aplica' : 'No aplica' }}</span>
                           </q-toggle>
@@ -1492,7 +1485,8 @@
                   </q-card>
                 </q-expansion-item>
 
-                <q-expansion-item expand-separator label="Procesos de gobernanza del proyecto en la organización o el proyecto">
+                <q-expansion-item expand-separator
+                                  label="Procesos de gobernanza del proyecto en la organización o el proyecto">
                   <q-card>
                     <q-card-section>
                       <div class="row">
@@ -1997,13 +1991,12 @@
                 </q-expansion-item>
 
 
-
-                <q-expansion-item expand-separator label="eval_buen_gobierno_externo">
+                <q-expansion-item expand-separator label="Procesos de buen gobierno en el territorio">
                   <q-card>
                     <q-card-section>
                       <div class="row">
                         <div class="col">
-                          <p>Estrategias para el diálogo de saberes y sistematización del conocimiento generado.</p>
+                          <p>Gobernanza para el acceso al bien común por el medio del buen gobierno.</p>
                           <q-toggle v-model="eval_buen_gobierno_externo.aplica">
                             <span>{{ eval_buen_gobierno_externo.aplica ? 'Aplica' : 'No aplica' }}</span>
                           </q-toggle>
@@ -2363,9 +2356,6 @@
                     </q-card-section>
                   </q-card>
                 </q-expansion-item>
-
-
-
                 <q-expansion-item expand-separator label="Generación de conocimiento">
                   <q-card>
                     <q-card-section>
@@ -2727,15 +2717,12 @@
                     </q-card-section>
                   </q-card>
                 </q-expansion-item>
-
-
-
-                <q-expansion-item expand-separator label="eval_manejo_riesgo">
+                <q-expansion-item expand-separator label="Manejo de riesgo y vulnerabilidad">
                   <q-card>
                     <q-card-section>
                       <div class="row">
                         <div class="col">
-                          <p>Estrategias para el diálogo de saberes y sistematización del conocimiento generado.</p>
+                          <p>Diagnósticos de riesgos y amenazas. Planes de contingencia.</p>
                           <q-toggle v-model="eval_manejo_riesgo.aplica">
                             <span>{{ eval_manejo_riesgo.aplica ? 'Aplica' : 'No aplica' }}</span>
                           </q-toggle>
@@ -3158,15 +3145,13 @@
                     </q-card-section>
                   </q-card>
                 </q-expansion-item>
-
-
-
-                <q-expansion-item expand-separator label="eval_produccion_social_ambiental_amigable">
+                <q-expansion-item expand-separator label="Procesos de producción social y ambiebtalmente amigables">
                   <q-card>
                     <q-card-section>
                       <div class="row">
                         <div class="col">
-                          <p>Estrategias para el diálogo de saberes y sistematización del conocimiento generado.</p>
+                          <p>Generación de procesos productivos adecuados a las condiciones socioecológicas de la
+                            región.</p>
                           <q-toggle v-model="eval_produccion_social_ambiental_amigable.aplica">
                             <span>{{ eval_produccion_social_ambiental_amigable.aplica ? 'Aplica' : 'No aplica' }}</span>
                           </q-toggle>
@@ -3523,13 +3508,13 @@
                 </q-expansion-item>
 
 
-
                 <q-expansion-item expand-separator label="Economía social y solidaria">
                   <q-card>
                     <q-card-section>
                       <div class="row">
                         <div class="col">
-                          <p>Estrategias para el diálogo de saberes y sistematización del conocimiento generado.</p>
+                          <p>Integración vertical y horizontal de las pequeñas economías en cooperativas, talleres
+                            locales y economía circular.</p>
                           <q-toggle v-model="eval_economia_social_solidaria.aplica">
                             <span>{{ eval_economia_social_solidaria.aplica ? 'Aplica' : 'No aplica' }}</span>
                           </q-toggle>
@@ -4022,8 +4007,6 @@
                 </q-expansion-item>
 
 
-
-
               </q-list>
             </div>
 
@@ -4057,11 +4040,11 @@ export default {
       filter: '',
       token: "",
       add_evaluacion_dialog: false,
-      tab: 'mias',
+      tab: 'todas',
       ratingColorsGreens: ['light-green-3', 'light-green-6', 'green', 'green-9', 'green-10'],
       ratingColors: ['red', 'orange', 'yellow', 'green', 'blue'],
-      evaluacion_data_template: {generacion_conocimiento: {aplica: false, test: 0}},
-      evaluacion_data: {generacion_conocimiento: {aplica: false, test: 0}},
+      evaluacion_data_template: {proyecto: undefined},
+      evaluacion_data: {proyecto: undefined},
       datos_proyectos: undefined,
       proyecto_data: undefined,
       nuevo_logro: {nombre: "", fecha: ""},
@@ -4619,85 +4602,85 @@ export default {
         },
       },
       eval_economia_social_solidaria: {
-          aplica: false,
-          cooperacion_colaboracion: {
-            label: "En el proyecto los procesos de organización están basados en la cooperación y trabajo colaborativo",
-            value: 0, options: [
-              "No aplica",
-              "No se reconoce la importancia de fomentar que los procesos de organización se base en la cooperación y trabajo colaborativo",
-              "Se reconoce la importancia de procesos de organización basados en la cooperación y trabajo colaborativo, pero no se llevan a cabo",
-              "Ocasionalmente los procesos de organización se basan en la cooperación y trabajo colaborativo",
-              "Frecuentemente los procesos de organización se basan en la cooperación y trabajo colaborativo",
-              "Los procesos siempre están basados en la cooperación y trabajo colaborativo",
-            ]
-          },
-          intercambio_organizaciones: {
-            label: "El proyecto privilegia intercambios entre organizaciones que practican los principios y valores de la economía social y solidaria",
-            value: 0, options: [
-              "No aplica",
-              "No se reconoce la importancia de intercambios entre organizaciones que practican los principios y valores de la economía social y solidaria",
-              "Se reconoce la importancia del intercambios entre organizaciones que practican los principios y valores de la economía social y solidaria, pero no se privilegian",
-              "De forma ocasional se realiza el intercambio entre organizaciones que practican los principios y valores de la economía social y solidaria",
-              "De forma frecuente se realiza el intercambio entre organizaciones que practican los principios y valores de la economía social y solidaria",
-              "La organización siempre privilegia el intercambio entre organizaciones que practican los principios y valores de la economía social y solidaria",
-            ]
-          },
-          intercambio_local: {
-            label: "En el proyecto se privilegian los procesos de intercambio con los mercados locales (productores locales, artesanos locales)",
-            value: 0, options: [
-              "No aplica",
-              "No se reconoce la importancia de privilegiar los procesos de intercambio con los mercados locales",
-              "Se reconoce la importancia de privilegiar el intercambio con los mercados locales, pero no se realizan",
-              "De forma ocasional se privilegia el intercambio con mercados locales",
-              "De forma frecuente se privilegia el intercambio con mercados locales",
-              "Siempre se privilegian procesos de intercambio con los mercados locales",
-            ]
-          },
-          insumos_locales: {
-            label: "En el proyecto los insumos y servicios son adquiridos con proveedores locales",
-            value: 0, options: [
-              "No aplica",
-              "No se reconoce la importancia de adquirir insumos y servicios con proveedores locales",
-              "Se reconoce la importancia pero los insumos no son adquiridos con proveedores locales",
-              "De forma ocasional se adquieren insumos con proveedores locales",
-              "De forma frecuente se adquieren insumos con proveedores locales",
-              "Los  insumos y servicios siempre  son adquiridos con proveedores locales",
-            ]
-          },
-          autonomia_financiera: {
-            label: "Se cuenta con mecanismos que transiten hacia la autonomía financiera (cajas de ahorro, instituciones de ahorro y préstamo, etc. (Por ejemplo: tandas, préstamos, etc.)",
-            value: 0, options: [
-              "No aplica",
-              "No se reconoce  la importancia de contar con mecanismos que transiten hacia la autonomía financiera",
-              "Se reconoce la importancia de contar con mecanismos para transitar hacia una autonomía financiera, pero no se realizan",
-              "Se cuenta con mecanismos no formales de autonomía financiera (tandas, préstamos familiares, etc)",
-              "Están en proceso de planeación los mecanismos formales de transición hacia una autonomía financiera",
-              "Se cuenta con un programa de mecanismos formales para una autonomía financiera",
-            ]
-          },
-          economia_circular: {
-            label: "Se fomenta la economía circular para aumentar el ciclo de vida de los desechos (emisiones de gases de efecto invernadero, materias primas, etc.)",
-            value: 0, options: [
-              "No aplica",
-              "No se reconoce la importancia de fomentar la economía circular para aumentar el ciclo de vida de los desechos",
-              "Se reconoce la importancia de fomentar la economía circular para reducir el ciclo de vida de los desechos, pero no se llevan a cabo acciones",
-              "Se fomenta la economía circular, pero ocasionalmente se realizan acciones para aumentar el ciclo de vida de los desechos",
-              "Se fomenta la economía circular y frecuentemente se realizan acciones para aumentar el ciclo de vida de los desechos",
-              "Se tiene un programa para fomentar la economía circular para aumentar el ciclo de vida de los desechos,  se realiza su monitoreo y evaluación",
-            ]
-          },
-          monitoreo_emprendimientos: {
-            label: "Se cuenta con un plan de evaluación y monitoreo de los emprendimientos de economía social y solidaria",
-            value: 0, options: [
-              "No aplica",
-              "No se reconoce la importancia de contar con un plan de evaluación y monitoreo de los emprendimientos de economía social y solidaria",
-              "Se reconoce la importancia de contar con un plan de evaluación y monitoreo de los emprendimientos de economía social y solidaria, pero no se ha generado",
-              "El proyecto cuenta con un plan de evaluación y monitoreo de los emprendimientos de economía social y solidaria y se lleva a cabo ocasionalmente",
-              "El proyecto cuenta con un plan de evaluación y monitoreo de los emprendimientos de economía social y solidaria y se lleva a cabo frecuentemente",
-              "Siempre se realizan las acciones del plan de evaluación y monitoreo de los emprendimientos de economía social y solidaria",
-            ]
-          },
+        aplica: false,
+        cooperacion_colaboracion: {
+          label: "En el proyecto los procesos de organización están basados en la cooperación y trabajo colaborativo",
+          value: 0, options: [
+            "No aplica",
+            "No se reconoce la importancia de fomentar que los procesos de organización se base en la cooperación y trabajo colaborativo",
+            "Se reconoce la importancia de procesos de organización basados en la cooperación y trabajo colaborativo, pero no se llevan a cabo",
+            "Ocasionalmente los procesos de organización se basan en la cooperación y trabajo colaborativo",
+            "Frecuentemente los procesos de organización se basan en la cooperación y trabajo colaborativo",
+            "Los procesos siempre están basados en la cooperación y trabajo colaborativo",
+          ]
         },
+        intercambio_organizaciones: {
+          label: "El proyecto privilegia intercambios entre organizaciones que practican los principios y valores de la economía social y solidaria",
+          value: 0, options: [
+            "No aplica",
+            "No se reconoce la importancia de intercambios entre organizaciones que practican los principios y valores de la economía social y solidaria",
+            "Se reconoce la importancia del intercambios entre organizaciones que practican los principios y valores de la economía social y solidaria, pero no se privilegian",
+            "De forma ocasional se realiza el intercambio entre organizaciones que practican los principios y valores de la economía social y solidaria",
+            "De forma frecuente se realiza el intercambio entre organizaciones que practican los principios y valores de la economía social y solidaria",
+            "La organización siempre privilegia el intercambio entre organizaciones que practican los principios y valores de la economía social y solidaria",
+          ]
+        },
+        intercambio_local: {
+          label: "En el proyecto se privilegian los procesos de intercambio con los mercados locales (productores locales, artesanos locales)",
+          value: 0, options: [
+            "No aplica",
+            "No se reconoce la importancia de privilegiar los procesos de intercambio con los mercados locales",
+            "Se reconoce la importancia de privilegiar el intercambio con los mercados locales, pero no se realizan",
+            "De forma ocasional se privilegia el intercambio con mercados locales",
+            "De forma frecuente se privilegia el intercambio con mercados locales",
+            "Siempre se privilegian procesos de intercambio con los mercados locales",
+          ]
+        },
+        insumos_locales: {
+          label: "En el proyecto los insumos y servicios son adquiridos con proveedores locales",
+          value: 0, options: [
+            "No aplica",
+            "No se reconoce la importancia de adquirir insumos y servicios con proveedores locales",
+            "Se reconoce la importancia pero los insumos no son adquiridos con proveedores locales",
+            "De forma ocasional se adquieren insumos con proveedores locales",
+            "De forma frecuente se adquieren insumos con proveedores locales",
+            "Los  insumos y servicios siempre  son adquiridos con proveedores locales",
+          ]
+        },
+        autonomia_financiera: {
+          label: "Se cuenta con mecanismos que transiten hacia la autonomía financiera (cajas de ahorro, instituciones de ahorro y préstamo, etc. (Por ejemplo: tandas, préstamos, etc.)",
+          value: 0, options: [
+            "No aplica",
+            "No se reconoce  la importancia de contar con mecanismos que transiten hacia la autonomía financiera",
+            "Se reconoce la importancia de contar con mecanismos para transitar hacia una autonomía financiera, pero no se realizan",
+            "Se cuenta con mecanismos no formales de autonomía financiera (tandas, préstamos familiares, etc)",
+            "Están en proceso de planeación los mecanismos formales de transición hacia una autonomía financiera",
+            "Se cuenta con un programa de mecanismos formales para una autonomía financiera",
+          ]
+        },
+        economia_circular: {
+          label: "Se fomenta la economía circular para aumentar el ciclo de vida de los desechos (emisiones de gases de efecto invernadero, materias primas, etc.)",
+          value: 0, options: [
+            "No aplica",
+            "No se reconoce la importancia de fomentar la economía circular para aumentar el ciclo de vida de los desechos",
+            "Se reconoce la importancia de fomentar la economía circular para reducir el ciclo de vida de los desechos, pero no se llevan a cabo acciones",
+            "Se fomenta la economía circular, pero ocasionalmente se realizan acciones para aumentar el ciclo de vida de los desechos",
+            "Se fomenta la economía circular y frecuentemente se realizan acciones para aumentar el ciclo de vida de los desechos",
+            "Se tiene un programa para fomentar la economía circular para aumentar el ciclo de vida de los desechos,  se realiza su monitoreo y evaluación",
+          ]
+        },
+        monitoreo_emprendimientos: {
+          label: "Se cuenta con un plan de evaluación y monitoreo de los emprendimientos de economía social y solidaria",
+          value: 0, options: [
+            "No aplica",
+            "No se reconoce la importancia de contar con un plan de evaluación y monitoreo de los emprendimientos de economía social y solidaria",
+            "Se reconoce la importancia de contar con un plan de evaluación y monitoreo de los emprendimientos de economía social y solidaria, pero no se ha generado",
+            "El proyecto cuenta con un plan de evaluación y monitoreo de los emprendimientos de economía social y solidaria y se lleva a cabo ocasionalmente",
+            "El proyecto cuenta con un plan de evaluación y monitoreo de los emprendimientos de economía social y solidaria y se lleva a cabo frecuentemente",
+            "Siempre se realizan las acciones del plan de evaluación y monitoreo de los emprendimientos de economía social y solidaria",
+          ]
+        },
+      },
     }
   },
   computed: {
@@ -4717,7 +4700,67 @@ export default {
   },
   methods: {
     addEvaluacion() {
+      this.token = cookies.get("access_token")
       // aqui va todo el chisme que envia al api la evaluación
+      const evaluacion = {promovente: this.user.pk, proyecto: this.evaluacion_data.proyecto}
+      console.log(evaluacion)
+      axios.post('https://onsses45.maptitude.xyz/api/v1/ce/evaluaciones/', evaluacion,
+        {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
+        console.log(response)
+        // los datos del id vienen en response.data.id
+        const evaluacion = response.data.id
+        console.log(this.eval_integridad_territorial)
+        if (this.eval_integridad_territorial.aplica) {
+          const integridad_territorial = {
+            aplica: true,
+            evaluacion: evaluacion,
+            alineado_programas_ordenamiento: this.eval_integridad_territorial.alineado_programas_ordenamiento.value,
+            alineado_programas_ordenamiento_comunitario: this.eval_integridad_territorial.alineado_programas_ordenamiento_comunitario.value,
+            aporta_beneficios_comunidad: this.eval_integridad_territorial.aporta_beneficios_comunidad.value
+            // falta revisar los campos adicionales raros
+          }
+          axios.post('https://onsses45.maptitude.xyz/api/v1/ce/integridad-territorial/', integridad_territorial,
+            {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
+              console.log(response)
+          }).catch(error => console.log(error))
+        }
+        if (this.eval_identidad_biocultural.aplica) {
+          const integridad_territorial = {
+            aplica: true,
+            evaluacion: evaluacion,
+            fomenta_lengua_local: this.eval_identidad_biocultural.fomenta_lengua_local.value,
+            participacion_celebraciones_locales: this.eval_identidad_biocultural.participacion_celebraciones_locales.value,
+            participacion_intercambio_saberes_locales: this.eval_identidad_biocultural.participacion_intercambio_saberes_locales.value,
+            conservacion_patrimonio_biocultural: this.eval_identidad_biocultural.conservacion_patrimonio_biocultural.value,
+            promocion_practicas_tradicionales: this.eval_identidad_biocultural.promocion_practicas_tradicionales.value,
+          }
+          axios.post('https://onsses45.maptitude.xyz/api/v1/ce/integridad-territorial/', integridad_territorial,
+            {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
+              console.log(response)
+          }).catch(error => console.log(error))
+        }
+        if (this.eval_gestion_ambiental.aplica) {
+          const integridad_territorial = {
+            aplica: true,
+            evaluacion: evaluacion,
+            gestion_agua: this.eval_gestion_ambiental.gestion_agua.value,
+            gestion_residuos_solidos: this.eval_gestion_ambiental.gestion_residuos_solidos.value,
+            gestion_residuos_peligrosos: this.eval_gestion_ambiental.gestion_residuos_peligrosos.value,
+            materiales_regionales: this.eval_gestion_ambiental.materiales_regionales.value,
+            materiales_amigables_ambiente: this.eval_gestion_ambiental.materiales_amigables_ambiente.value,
+            certificacion_manejo_ambiental: this.eval_gestion_ambiental.certificacion_manejo_ambiental.value,
+            programa_manejo_flora: this.eval_gestion_ambiental.programa_manejo_flora.value,
+            programa_manejo_ambiental_avalado: this.eval_gestion_ambiental.programa_manejo_ambiental_avalado.value,
+            estrategia_trafico_especies_riesgo: this.eval_gestion_ambiental.estrategia_trafico_especies_riesgo.value,
+            monitoreo_gestion_ambiental: this.eval_gestion_ambiental.monitoreo_gestion_ambiental.value,
+          }
+          axios.post('https://onsses45.maptitude.xyz/api/v1/ce/integridad-territorial/', integridad_territorial,
+            {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
+              console.log(response)
+          }).catch(error => console.log(error))
+        }
+
+      }).catch(error => console.log(error))
     },
     closeAddEvaluacionDialog() {
       this.add_evaluacion_dialog = false
