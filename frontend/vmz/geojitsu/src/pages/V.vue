@@ -11,9 +11,6 @@
           <q-tabs align="center" class="bg-white text-grey-9">
             <div name="logos" class="no-padding">
               <div class="row justify-center">
-                <div class="col-auto center q-px-md">
-                  <img src="https://repvmz.maptitude.xyz/media/images/1.original.png" height="50px">
-                </div>
                 <div class="col-auto q-px-md">
                   <img src="https://repvmz.maptitude.xyz/media/images/2.original.png" height="50px">
                 </div>

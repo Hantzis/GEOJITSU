@@ -1,6 +1,4 @@
 <template>
-
-
   <div>
     <div v-for="item of page_data" :key="item.id">
       <div v-if="item.meta.slug === urlPath">
@@ -16,8 +14,6 @@
             <h5>{{ block.value  }}</h5>
           </div>
         </div>
-
-
       </div>
     </div>
 

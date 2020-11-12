@@ -288,7 +288,6 @@
           <div class="row full-width">
             <div class="col full-width">
               <div v-for="block of homeData.contenido" :key="block.id">
-                {{ block }}
                 <div v-if="block.type === 'image'">
                   <div v-html="block.value"></div>
                 </div>
@@ -685,7 +684,6 @@ export default {
     }
   },
   mounted() {
-
     this.loadingBar = this.$refs.bar
     axios.get('statics/zapopan.geojson').then(res => {
       console.log(res.data.features)
@@ -699,7 +697,6 @@ export default {
       this.loadingBar.stop()
       if (!this.auth_logged) {
         this.bienvenida_dialog = true
-
       }
     })
   }

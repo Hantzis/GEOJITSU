@@ -38,7 +38,7 @@
                 <q-item-section>Crear cuenta</q-item-section>
               </q-item>
               <q-item v-if="auth_logged" dense clickable v-close-popup style="padding: 0;"
-                      @click="profile_dialog = true">
+                      @click="create_account_dialog = true">
                 <q-avatar>
                   <q-icon name="mdi-account"/>
                 </q-avatar>
@@ -53,7 +53,6 @@
                 </q-avatar>
                 <q-item-section>{{ pagina.title }}</q-item-section>
               </q-item>
-
             </q-list>
           </q-menu>
         </q-btn>
@@ -569,7 +568,7 @@
 
     <q-footer elevated class="bg-grey-10 text-grey-4">
       <q-toolbar style="min-height: 24px; font-size: 14px;">
-        <span class="ellipsis">Consejo Municipal Contra Violencia Contra las Mujeres</span>
+        <span class="ellipsis">Instituto Municipal de las Mujeres Zapopanas para la Igualdad Sustantiva</span>
         <q-space/>
         <span class="no-wrap">
         <a style="text-decoration: none" class="text-grey-4 no-underline" href="https://saeba.click"
