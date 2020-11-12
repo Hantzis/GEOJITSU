@@ -133,7 +133,7 @@
       </q-tab-panels>
     </q-card>
 
-    <q-dialog ref="add_evaluacion_dialog" full-width full-height v-model="add_evaluacion_dialog" persistent>
+    <q-dialog ref="add_evaluacion_dialog" full-width v-model="add_evaluacion_dialog" persistent>
       <q-card>
         <q-card-section class="row items-center">
           <q-avatar icon="mdi-chart-timeline" color="primary" text-color="white"/>
@@ -141,7 +141,16 @@
           <q-btn icon="close" flat round dense @click="closeAddEvaluacionDialog"/>
         </q-card-section>
         <q-separator/>
-        <q-card-section style="max-height: 86vh" class="scroll">
+        <q-card-section class="scroll">
+          <div class="q-py-xs">
+            <p></p>
+            <p>Para el proceso de evaluación (autoevaluación), vas a encontrar los indicadores de cada uno de
+              estos criterios, (en total serán 53) que serán valorados según una escala de lickert del 1 al 5
+              expresadas con estrellas de izquierda a derecha. Al posicionarse en cada estrella aparecerá una
+              leyenda que la describe. Solo se puede seleccionar una estrella por indicador. (ver instructivo para
+              detalles).</p>
+            <p></p>
+          </div>
           <q-form ref="form_add" autocomplete="off" greedy>
             <div class="row q-py-xs">
               <q-select
@@ -155,29 +164,24 @@
                 map-options
                 option-value="id"
                 option-label="nombre_proyecto"
-                :rules="[val => !!val || 'Estado obligatorio']"
+                :rules="[val => !!val || 'Proyecto obligatorio']"
               />
             </div>
-
             <div class="row q-py-xs">
               <div class="col-3 q-pr-md">
-
               </div>
               <div class="col-3 q-pr-md">
-
               </div>
               <div class="col-3 q-pr-md">
-
               </div>
               <div class="col-3">
-
               </div>
             </div>
 
             <div class="row q-py-xs">
               <q-list bordered class="rounded-borders" style="width: 100%;">
-
-                <q-expansion-item expand-separator label="Integridad territorial">
+                <q-expansion-item expand-separator header-class="bg-grey-7 text-white" expand-icon-class="text-white"
+                                  label="Integridad territorial">
                   <q-card>
                     <q-card-section>
                       <div class="row">
@@ -193,8 +197,8 @@
 
                     <q-card-section v-if="eval_integridad_territorial.aplica" class="align-center">
                       <q-list bordered class="rounded-borders">
-                        <q-expansion-item
-                          :label="eval_integridad_territorial.alineado_programas_ordenamiento.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_integridad_territorial.alineado_programas_ordenamiento.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -203,7 +207,7 @@
                                   v-model="eval_integridad_territorial.alineado_programas_ordenamiento.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
@@ -263,8 +267,8 @@
                           </q-card>
                         </q-expansion-item>
                         <q-separator/>
-                        <q-expansion-item
-                          :label="eval_integridad_territorial.alineado_programas_ordenamiento_comunitario.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_integridad_territorial.alineado_programas_ordenamiento_comunitario.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -272,7 +276,7 @@
                                   v-model="eval_integridad_territorial.alineado_programas_ordenamiento_comunitario.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
@@ -332,8 +336,8 @@
                           </q-card>
                         </q-expansion-item>
                         <q-separator/>
-                        <q-expansion-item
-                          :label="eval_integridad_territorial.aporta_beneficios_comunidad.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_integridad_territorial.aporta_beneficios_comunidad.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -341,7 +345,7 @@
                                   v-model="eval_integridad_territorial.aporta_beneficios_comunidad.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
@@ -406,7 +410,8 @@
                   </q-card>
                 </q-expansion-item>
 
-                <q-expansion-item expand-separator label="Identidad biocultural">
+                <q-expansion-item expand-separator header-class="bg-grey-7 text-white" expand-icon-class="text-white"
+                                  label="Identidad biocultural">
                   <q-card>
                     <q-card-section>
                       <div class="row">
@@ -421,8 +426,8 @@
 
                     <q-card-section v-if="eval_identidad_biocultural.aplica" class="align-center">
                       <q-list bordered class="rounded-borders">
-                        <q-expansion-item
-                          :label="eval_identidad_biocultural.fomenta_lengua_local.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_identidad_biocultural.fomenta_lengua_local.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -431,7 +436,7 @@
                                   v-model="eval_identidad_biocultural.fomenta_lengua_local.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
@@ -490,8 +495,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_identidad_biocultural.participacion_celebraciones_locales.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_identidad_biocultural.participacion_celebraciones_locales.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -500,7 +505,7 @@
                                   v-model="eval_identidad_biocultural.participacion_celebraciones_locales.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
@@ -559,8 +564,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_identidad_biocultural.participacion_intercambio_saberes_locales.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_identidad_biocultural.participacion_intercambio_saberes_locales.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -569,7 +574,7 @@
                                   v-model="eval_identidad_biocultural.participacion_intercambio_saberes_locales.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
@@ -628,8 +633,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_identidad_biocultural.conservacion_patrimonio_biocultural.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_identidad_biocultural.conservacion_patrimonio_biocultural.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -638,7 +643,7 @@
                                   v-model="eval_identidad_biocultural.conservacion_patrimonio_biocultural.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
@@ -697,8 +702,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_identidad_biocultural.promocion_practicas_tradicionales.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_identidad_biocultural.promocion_practicas_tradicionales.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -707,7 +712,7 @@
                                   v-model="eval_identidad_biocultural.promocion_practicas_tradicionales.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
@@ -772,7 +777,8 @@
                   </q-card>
                 </q-expansion-item>
 
-                <q-expansion-item expand-separator label="Gestión ambiental">
+                <q-expansion-item expand-separator header-class="bg-grey-7 text-white" expand-icon-class="text-white"
+                                  label="Gestión ambiental">
                   <q-card>
                     <q-card-section>
                       <div class="row">
@@ -789,8 +795,8 @@
 
                     <q-card-section v-if="eval_gestion_ambiental.aplica" class="align-center">
                       <q-list bordered class="rounded-borders">
-                        <q-expansion-item
-                          :label="eval_gestion_ambiental.gestion_agua.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_gestion_ambiental.gestion_agua.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -858,8 +864,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_gestion_ambiental.gestion_residuos_solidos.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_gestion_ambiental.gestion_residuos_solidos.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -927,8 +933,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_gestion_ambiental.gestion_residuos_peligrosos.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_gestion_ambiental.gestion_residuos_peligrosos.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -996,8 +1002,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_gestion_ambiental.materiales_regionales.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_gestion_ambiental.materiales_regionales.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -1065,8 +1071,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_gestion_ambiental.materiales_amigables_ambiente.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_gestion_ambiental.materiales_amigables_ambiente.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -1134,8 +1140,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_gestion_ambiental.certificacion_manejo_ambiental.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_gestion_ambiental.certificacion_manejo_ambiental.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -1203,8 +1209,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_gestion_ambiental.programa_manejo_flora.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_gestion_ambiental.programa_manejo_flora.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -1272,8 +1278,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_gestion_ambiental.programa_manejo_ambiental_avalado.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_gestion_ambiental.programa_manejo_ambiental_avalado.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -1341,8 +1347,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_gestion_ambiental.estrategia_trafico_especies_riesgo.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_gestion_ambiental.estrategia_trafico_especies_riesgo.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -1410,8 +1416,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_gestion_ambiental.monitoreo_gestion_ambiental.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_gestion_ambiental.monitoreo_gestion_ambiental.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -1485,7 +1491,7 @@
                   </q-card>
                 </q-expansion-item>
 
-                <q-expansion-item expand-separator
+                <q-expansion-item expand-separator header-class="bg-grey-7 text-white" expand-icon-class="text-white"
                                   label="Procesos de gobernanza del proyecto en la organización o el proyecto">
                   <q-card>
                     <q-card-section>
@@ -1501,8 +1507,8 @@
 
                     <q-card-section v-if="eval_buen_gobierno_interno.aplica" class="align-center">
                       <q-list bordered class="rounded-borders">
-                        <q-expansion-item
-                          :label="eval_buen_gobierno_interno.regulacion_actores_externos.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_buen_gobierno_interno.regulacion_actores_externos.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -1570,8 +1576,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_buen_gobierno_interno.decisiones_internas_colectivas.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_buen_gobierno_interno.decisiones_internas_colectivas.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -1639,8 +1645,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_buen_gobierno_interno.acuerdos_comunes_resolucion_conflictos.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_buen_gobierno_interno.acuerdos_comunes_resolucion_conflictos.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -1708,8 +1714,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_buen_gobierno_interno.espacios_participacion.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_buen_gobierno_interno.espacios_participacion.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -1777,8 +1783,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_buen_gobierno_interno.incorpora_cosmovision_local.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_buen_gobierno_interno.incorpora_cosmovision_local.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -1846,8 +1852,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_buen_gobierno_interno.mecanismos_rendicion_cuentas.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_buen_gobierno_interno.mecanismos_rendicion_cuentas.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -1915,8 +1921,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_buen_gobierno_interno.monitoreo_gestion_gobernanza.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_buen_gobierno_interno.monitoreo_gestion_gobernanza.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -1991,7 +1997,8 @@
                 </q-expansion-item>
 
 
-                <q-expansion-item expand-separator label="Procesos de buen gobierno en el territorio">
+                <q-expansion-item expand-separator header-class="bg-grey-7 text-white" expand-icon-class="text-white"
+                                  label="Procesos de buen gobierno en el territorio">
                   <q-card>
                     <q-card-section>
                       <div class="row">
@@ -2006,8 +2013,8 @@
 
                     <q-card-section v-if="eval_buen_gobierno_externo.aplica" class="align-center">
                       <q-list bordered class="rounded-borders">
-                        <q-expansion-item
-                          :label="eval_buen_gobierno_externo.participacion_activa_reglamentos.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_buen_gobierno_externo.participacion_activa_reglamentos.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -2075,8 +2082,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_buen_gobierno_externo.participacion_equitativa_reglamentos.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_buen_gobierno_externo.participacion_equitativa_reglamentos.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -2144,8 +2151,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_buen_gobierno_externo.participacion_previa_libre_informada.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_buen_gobierno_externo.participacion_previa_libre_informada.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -2213,8 +2220,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_buen_gobierno_externo.participacion_otros_actores.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_buen_gobierno_externo.participacion_otros_actores.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -2282,8 +2289,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_buen_gobierno_externo.monitoreo_gestion_gobernanza.label"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_buen_gobierno_externo.monitoreo_gestion_gobernanza.label"
                         >
                           <q-card>
                             <q-card-section>
@@ -2356,7 +2363,8 @@
                     </q-card-section>
                   </q-card>
                 </q-expansion-item>
-                <q-expansion-item expand-separator label="Generación de conocimiento">
+                <q-expansion-item expand-separator header-class="bg-grey-7 text-white" expand-icon-class="text-white"
+                                  label="Generación de conocimiento">
                   <q-card>
                     <q-card-section>
                       <div class="row">
@@ -2371,8 +2379,8 @@
 
                     <q-card-section v-if="eval_generacion_conocimiento.aplica" class="align-center">
                       <q-list bordered class="rounded-borders">
-                        <q-expansion-item
-                          label="Formación de investigadores comunitarios"
+                        <q-expansion-item header-class="bg-grey-4"
+                                          label="Formación de investigadores comunitarios"
                         >
                           <q-card>
                             <q-card-section>
@@ -2441,8 +2449,8 @@
                           </q-card>
                         </q-expansion-item>
                         <q-separator/>
-                        <q-expansion-item
-                          :label="eval_generacion_conocimiento.inovacion_saberes_locales.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_generacion_conocimiento.inovacion_saberes_locales.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -2450,7 +2458,7 @@
                                   v-model="eval_generacion_conocimiento.inovacion_saberes_locales.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
@@ -2508,8 +2516,8 @@
                           </q-card>
                         </q-expansion-item>
                         <q-separator/>
-                        <q-expansion-item
-                          :label="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -2517,7 +2525,7 @@
                                   v-model="eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
@@ -2578,8 +2586,8 @@
                         </q-expansion-item>
 
                         <q-separator/>
-                        <q-expansion-item
-                          :label="eval_generacion_conocimiento.eventos_intercambio_saberes.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_generacion_conocimiento.eventos_intercambio_saberes.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -2587,7 +2595,7 @@
                                   v-model="eval_generacion_conocimiento.eventos_intercambio_saberes.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
@@ -2646,8 +2654,8 @@
                         </q-expansion-item>
 
                         <q-separator/>
-                        <q-expansion-item
-                          :label="eval_generacion_conocimiento.monitoreo_generacion_conocimiento.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_generacion_conocimiento.monitoreo_generacion_conocimiento.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -2655,7 +2663,7 @@
                                   v-model="eval_generacion_conocimiento.monitoreo_generacion_conocimiento.value"
                                   size="3.5em"
                                   color="grey"
-                                  :color-selected="ratingColorsGreens"
+                                  :color-selected="ratingColors"
                                 >
                                   <template v-slot:tip-1>
                                     <q-tooltip max-width="76%" anchor="top middle" self="bottom middle"
@@ -2717,7 +2725,8 @@
                     </q-card-section>
                   </q-card>
                 </q-expansion-item>
-                <q-expansion-item expand-separator label="Manejo de riesgo y vulnerabilidad">
+                <q-expansion-item expand-separator header-class="bg-grey-7 text-white" expand-icon-class="text-white"
+                                  label="Manejo de riesgo y vulnerabilidad">
                   <q-card>
                     <q-card-section>
                       <div class="row">
@@ -2732,8 +2741,8 @@
 
                     <q-card-section v-if="eval_manejo_riesgo.aplica" class="align-center">
                       <q-list bordered class="rounded-borders">
-                        <q-expansion-item
-                          :label="eval_manejo_riesgo.alineado_diagnostico_riesgo.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_manejo_riesgo.alineado_diagnostico_riesgo.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -2800,8 +2809,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_manejo_riesgo.programa_contingencia_riesgo.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_manejo_riesgo.programa_contingencia_riesgo.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -2868,8 +2877,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_manejo_riesgo.participa_comites_proteccion_civil.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_manejo_riesgo.participa_comites_proteccion_civil.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -2936,8 +2945,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_manejo_riesgo.fondo_ahorro_contingencia.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_manejo_riesgo.fondo_ahorro_contingencia.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -3004,8 +3013,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_manejo_riesgo.programas_capacitacion_riesgo.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_manejo_riesgo.programas_capacitacion_riesgo.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -3072,8 +3081,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_manejo_riesgo.monitoreo_gestion_riesgo.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_manejo_riesgo.monitoreo_gestion_riesgo.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -3145,7 +3154,8 @@
                     </q-card-section>
                   </q-card>
                 </q-expansion-item>
-                <q-expansion-item expand-separator label="Procesos de producción social y ambiebtalmente amigables">
+                <q-expansion-item expand-separator header-class="bg-grey-7 text-white" expand-icon-class="text-white"
+                                  label="Procesos de producción social y ambiebtalmente amigables">
                   <q-card>
                     <q-card-section>
                       <div class="row">
@@ -3161,8 +3171,8 @@
 
                     <q-card-section v-if="eval_produccion_social_ambiental_amigable.aplica" class="align-center">
                       <q-list bordered class="rounded-borders">
-                        <q-expansion-item
-                          :label="eval_produccion_social_ambiental_amigable.insumos_bajo_impacto_ambiental.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_produccion_social_ambiental_amigable.insumos_bajo_impacto_ambiental.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -3229,8 +3239,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_produccion_social_ambiental_amigable.tecnologia_respetuosa_naturaleza.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_produccion_social_ambiental_amigable.tecnologia_respetuosa_naturaleza.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -3297,8 +3307,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_produccion_social_ambiental_amigable.respeta_saberes_locales.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_produccion_social_ambiental_amigable.respeta_saberes_locales.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -3365,8 +3375,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_produccion_social_ambiental_amigable.privilegia_trabajo_local.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_produccion_social_ambiental_amigable.privilegia_trabajo_local.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -3433,8 +3443,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_produccion_social_ambiental_amigable.monitoreo_estrategias_produccion.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_produccion_social_ambiental_amigable.monitoreo_estrategias_produccion.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -3508,7 +3518,8 @@
                 </q-expansion-item>
 
 
-                <q-expansion-item expand-separator label="Economía social y solidaria">
+                <q-expansion-item expand-separator header-class="bg-grey-7 text-white" expand-icon-class="text-white"
+                                  label="Economía social y solidaria">
                   <q-card>
                     <q-card-section>
                       <div class="row">
@@ -3524,8 +3535,8 @@
 
                     <q-card-section v-if="eval_economia_social_solidaria.aplica" class="align-center">
                       <q-list bordered class="rounded-borders">
-                        <q-expansion-item
-                          :label="eval_economia_social_solidaria.cooperacion_colaboracion.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_economia_social_solidaria.cooperacion_colaboracion.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -3592,8 +3603,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_economia_social_solidaria.intercambio_organizaciones.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_economia_social_solidaria.intercambio_organizaciones.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -3660,8 +3671,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_economia_social_solidaria.intercambio_local.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_economia_social_solidaria.intercambio_local.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -3728,8 +3739,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_economia_social_solidaria.insumos_locales.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_economia_social_solidaria.insumos_locales.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -3796,8 +3807,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_economia_social_solidaria.autonomia_financiera.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_economia_social_solidaria.autonomia_financiera.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -3864,8 +3875,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_economia_social_solidaria.economia_circular.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_economia_social_solidaria.economia_circular.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -3932,8 +3943,8 @@
                             </q-card-section>
                           </q-card>
                         </q-expansion-item>
-                        <q-expansion-item
-                          :label="eval_economia_social_solidaria.monitoreo_emprendimientos.label">
+                        <q-expansion-item header-class="bg-grey-4"
+                                          :label="eval_economia_social_solidaria.monitoreo_emprendimientos.label">
                           <q-card>
                             <q-card-section>
                               <div class="row justify-center">
@@ -4014,11 +4025,11 @@
           <div class="row justify-end q-py-md">
             <div class="col-auto q-pr-xs">
               <q-btn @click="closeAddEvaluacionDialog()" color="grey-7"
-                     label="Cancelar" no-caps class=""/>
+                     label="Cancelar" no-caps/>
             </div>
             <div class="col-auto q-pl-xs">
               <q-btn @click="addEvaluacion()" color="green"
-                     label="Guardar" no-caps class=""/>
+                     label="Agregar evaluación" no-caps :disabled="!evaluacion_data.proyecto"/>
             </div>
           </div>
         </q-card-section>
@@ -4041,8 +4052,7 @@ export default {
       token: "",
       add_evaluacion_dialog: false,
       tab: 'todas',
-      ratingColorsGreens: ['light-green-3', 'light-green-6', 'green', 'green-9', 'green-10'],
-      ratingColors: ['red', 'orange', 'yellow', 'green', 'blue'],
+      ratingColors: ['light-green-3', 'light-green-6', 'green', 'green-9', 'green-10'],
       evaluacion_data_template: {proyecto: undefined},
       evaluacion_data: {proyecto: undefined},
       datos_proyectos: undefined,
@@ -4702,14 +4712,14 @@ export default {
     addEvaluacion() {
       this.token = cookies.get("access_token")
       // aqui va todo el chisme que envia al api la evaluación
-      const evaluacion = {promovente: this.user.pk, proyecto: this.evaluacion_data.proyecto}
-      console.log(evaluacion)
-      axios.post('https://onsses45.maptitude.xyz/api/v1/ce/evaluaciones/', evaluacion,
+      const nueva_evaluacion = {promovente: this.user.pk, proyecto: this.evaluacion_data.proyecto}
+      console.log("nueva_evaluacion", nueva_evaluacion)
+      axios.post('https://onsses45.maptitude.xyz/api/v1/ce/evaluaciones/', nueva_evaluacion,
         {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
         console.log(response)
         // los datos del id vienen en response.data.id
         const evaluacion = response.data.id
-        console.log(this.eval_integridad_territorial)
+        console.log("evaluacion", evaluacion)
         if (this.eval_integridad_territorial.aplica) {
           const integridad_territorial = {
             aplica: true,
@@ -4721,11 +4731,11 @@ export default {
           }
           axios.post('https://onsses45.maptitude.xyz/api/v1/ce/integridad-territorial/', integridad_territorial,
             {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
-              console.log(response)
+            console.log(response)
           }).catch(error => console.log(error))
         }
         if (this.eval_identidad_biocultural.aplica) {
-          const integridad_territorial = {
+          const identidad_biocultural = {
             aplica: true,
             evaluacion: evaluacion,
             fomenta_lengua_local: this.eval_identidad_biocultural.fomenta_lengua_local.value,
@@ -4734,13 +4744,13 @@ export default {
             conservacion_patrimonio_biocultural: this.eval_identidad_biocultural.conservacion_patrimonio_biocultural.value,
             promocion_practicas_tradicionales: this.eval_identidad_biocultural.promocion_practicas_tradicionales.value,
           }
-          axios.post('https://onsses45.maptitude.xyz/api/v1/ce/integridad-territorial/', integridad_territorial,
+          axios.post('https://onsses45.maptitude.xyz/api/v1/ce/identidad-biocultural/', identidad_biocultural,
             {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
-              console.log(response)
+            console.log(response)
           }).catch(error => console.log(error))
         }
         if (this.eval_gestion_ambiental.aplica) {
-          const integridad_territorial = {
+          const gestion_ambiental = {
             aplica: true,
             evaluacion: evaluacion,
             gestion_agua: this.eval_gestion_ambiental.gestion_agua.value,
@@ -4754,13 +4764,112 @@ export default {
             estrategia_trafico_especies_riesgo: this.eval_gestion_ambiental.estrategia_trafico_especies_riesgo.value,
             monitoreo_gestion_ambiental: this.eval_gestion_ambiental.monitoreo_gestion_ambiental.value,
           }
-          axios.post('https://onsses45.maptitude.xyz/api/v1/ce/integridad-territorial/', integridad_territorial,
+          axios.post('https://onsses45.maptitude.xyz/api/v1/ce/gestion-ambiental/', gestion_ambiental,
             {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
-              console.log(response)
+            console.log(response)
           }).catch(error => console.log(error))
         }
-
-      }).catch(error => console.log(error))
+        if (this.eval_buen_gobierno_interno.aplica) {
+          const buen_gobierno_interno = {
+            aplica: true,
+            evaluacion: evaluacion,
+            regulacion_actores_externos: this.eval_buen_gobierno_interno.regulacion_actores_externos.value,
+            decisiones_internas_colectivas: this.eval_buen_gobierno_interno.decisiones_internas_colectivas.value,
+            acuerdos_comunes_resolucion_conflictos: this.eval_buen_gobierno_interno.acuerdos_comunes_resolucion_conflictos.value,
+            espacios_participacion: this.eval_buen_gobierno_interno.espacios_participacion.value,
+            incorpora_cosmovision_local: this.eval_buen_gobierno_interno.incorpora_cosmovision_local.value,
+            mecanismos_rendicion_cuentas: this.eval_buen_gobierno_interno.mecanismos_rendicion_cuentas.value,
+            monitoreo_gestion_gobernanza: this.eval_buen_gobierno_interno.monitoreo_gestion_gobernanza.value,
+          }
+          axios.post('https://onsses45.maptitude.xyz/api/v1/ce/buen-gobierno-interno/', buen_gobierno_interno,
+            {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
+            console.log(response)
+          }).catch(error => console.log(error))
+        }
+        if (this.eval_buen_gobierno_externo.aplica) {
+          const buen_gobierno_externo = {
+            aplica: true,
+            evaluacion: evaluacion,
+            participacion_activa_reglamentos: this.eval_buen_gobierno_externo.participacion_activa_reglamentos.value,
+            participacion_equitativa_reglamentos: this.eval_buen_gobierno_externo.participacion_equitativa_reglamentos.value,
+            participacion_previa_libre_informada: this.eval_buen_gobierno_externo.participacion_previa_libre_informada.value,
+            participacion_otros_actores: this.eval_buen_gobierno_externo.participacion_otros_actores.value,
+            monitoreo_gestion_gobernanza: this.eval_buen_gobierno_externo.monitoreo_gestion_gobernanza.value,
+          }
+          axios.post('https://onsses45.maptitude.xyz/api/v1/ce/buen-gobierno-externo/', buen_gobierno_externo,
+            {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
+            console.log(response)
+          }).catch(error => console.log(error))
+        }
+        if (this.eval_generacion_conocimiento.aplica) {
+          const generacion_conocimiento = {
+            aplica: true,
+            evaluacion: evaluacion,
+            formacion_investigadores_comunitarios: this.eval_generacion_conocimiento.formacion_investigadores_comunitarios.value,
+            inovacion_saberes_locales: this.eval_generacion_conocimiento.inovacion_saberes_locales.value,
+            gestion_documental_generacion_conocimiento: this.eval_generacion_conocimiento.gestion_documental_generacion_conocimiento.value,
+            eventos_intercambio_saberes: this.eval_generacion_conocimiento.eventos_intercambio_saberes.value,
+            monitoreo_generacion_conocimiento: this.eval_generacion_conocimiento.monitoreo_generacion_conocimiento.value,
+          }
+          axios.post('https://onsses45.maptitude.xyz/api/v1/ce/generacion-conocimiento/', generacion_conocimiento,
+            {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
+            console.log(response)
+          }).catch(error => console.log(error))
+        }
+        if (this.eval_manejo_riesgo.aplica) {
+          const manejo_riesgo = {
+            aplica: true,
+            evaluacion: evaluacion,
+            alineado_diagnostico_riesgo: this.eval_manejo_riesgo.alineado_diagnostico_riesgo.value,
+            programa_contingencia_riesgo: this.eval_manejo_riesgo.programa_contingencia_riesgo.value,
+            participa_comites_proteccion_civil: this.eval_manejo_riesgo.participa_comites_proteccion_civil.value,
+            fondo_ahorro_contingencia: this.eval_manejo_riesgo.fondo_ahorro_contingencia.value,
+            programas_capacitacion_riesgo: this.eval_manejo_riesgo.programas_capacitacion_riesgo.value,
+            monitoreo_gestion_riesgo: this.eval_manejo_riesgo.monitoreo_gestion_riesgo.value,
+          }
+          axios.post('https://onsses45.maptitude.xyz/api/v1/ce/manejo-riesgo/', manejo_riesgo,
+            {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
+            console.log(response)
+          }).catch(error => console.log(error))
+        }
+        if (this.eval_produccion_social_ambiental_amigable.aplica) {
+          const produccion_social_ambiental_amigable = {
+            aplica: true,
+            evaluacion: evaluacion,
+            insumos_bajo_impacto_ambiental: this.eval_produccion_social_ambiental_amigable.insumos_bajo_impacto_ambiental.value,
+            tecnologia_respetuosa_naturaleza: this.eval_produccion_social_ambiental_amigable.tecnologia_respetuosa_naturaleza.value,
+            respeta_saberes_locales: this.eval_produccion_social_ambiental_amigable.respeta_saberes_locales.value,
+            privilegia_trabajo_local: this.eval_produccion_social_ambiental_amigable.privilegia_trabajo_local.value,
+            monitoreo_estrategias_produccion: this.eval_produccion_social_ambiental_amigable.monitoreo_estrategias_produccion.value,
+          }
+          axios.post('https://onsses45.maptitude.xyz/api/v1/ce/produccion-social-ambiental-amigable/', produccion_social_ambiental_amigable,
+            {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
+            console.log(response)
+          }).catch(error => console.log(error))
+        }
+        if (this.eval_economia_social_solidaria.aplica) {
+          const economia_social_solidaria = {
+            aplica: true,
+            evaluacion: evaluacion,
+            cooperacion_colaboracion: this.eval_economia_social_solidaria.cooperacion_colaboracion.value,
+            intercambio_organizaciones: this.eval_economia_social_solidaria.intercambio_organizaciones.value,
+            intercambio_local: this.eval_economia_social_solidaria.intercambio_local.value,
+            insumos_locales: this.eval_economia_social_solidaria.insumos_locales.value,
+            autonomia_financiera: this.eval_economia_social_solidaria.autonomia_financiera.value,
+            economia_circular: this.eval_economia_social_solidaria.economia_circular.value,
+            monitoreo_emprendimientos: this.eval_economia_social_solidaria.monitoreo_emprendimientos.value,
+          }
+          axios.post('https://onsses45.maptitude.xyz/api/v1/ce/economia-social-solidaria/', economia_social_solidaria,
+            {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
+            console.log(response)
+          }).catch(error => console.log(error))
+        }
+      }).finally(() => {
+        this.evaluacion_data = {proyecto: undefined}
+        this.add_evaluacion_dialog = false
+        this.getEvaluaciones()
+      })
+        .catch(error => console.log("error evaluacion", error))
     },
     closeAddEvaluacionDialog() {
       this.add_evaluacion_dialog = false
@@ -4791,7 +4900,7 @@ export default {
       axios.get(`https://onsses45.maptitude.xyz/api/v1/ce/proyectos/?promovente=${this.auth_user.pk}`,
         {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
         this.datos_proyectos = response.data
-        console.log(this.datos_proyectos)
+        console.log("mis proyectos", this.datos_proyectos)
       }).catch(error => {
         console.log(error)
       }).finally(() => {

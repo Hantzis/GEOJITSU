@@ -178,6 +178,15 @@
         </q-card-section>
         <q-separator/>
         <q-card-section style="max-height: 86vh" class="scroll">
+          <div class="q-py-xs">
+            <p></p>
+            <p>El proyecto o caso exitoso es aquel proceso de intervención que tiene claramente definidos sus
+              <strong>objetivos, alcances, logros y metodologías de trabajo para la protección, conservación,
+                restauración o usos sustentable de la naturaleza</strong>.</p>
+            <p>Una organización podrá dar de alta un proyecto que abarque varias acciones o en su caso, varios
+              proyectos si se considera pertinente. (ver instructivo para detalles)</p>
+            <p></p>
+          </div>
           <q-form ref="form_add" autocomplete="off" greedy>
             <div class="row q-py-xs">
               <q-input outlined class="full-width" name="nombre_proyecto" v-model="proyecto_data.nombre_proyecto"
@@ -526,7 +535,8 @@
                     <q-card-section>
                       <div class="row">
                         <div class="col" :align="'right'">
-                          <q-btn no-caps color="green" @click="reconocimientoDialog = true">Agregar reconocimiento</q-btn>
+                          <q-btn no-caps color="green" @click="reconocimientoDialog = true">Agregar reconocimiento
+                          </q-btn>
                         </div>
                       </div>
                     </q-card-section>
@@ -601,7 +611,8 @@
                     <q-card-section>
                       <div class="row">
                         <div class="col" :align="'right'">
-                          <q-btn no-caps color="green" @click="financiamientoDialog = true">Agregar financiamiento</q-btn>
+                          <q-btn no-caps color="green" @click="financiamientoDialog = true">Agregar financiamiento
+                          </q-btn>
                         </div>
                       </div>
                     </q-card-section>
@@ -616,7 +627,8 @@
                               <div class="col-1 " style="text-align: right;">
                                 <div class="row no-wrap">
                                   <!-- <q-btn flat dense @click.stop="console.log(22)" icon="edit" color="primary"></q-btn> -->
-                                  <q-btn flat dense @click.stop="deleteFinanciamiento(idx)" icon="delete" color="red"></q-btn>
+                                  <q-btn flat dense @click.stop="deleteFinanciamiento(idx)" icon="delete"
+                                         color="red"></q-btn>
                                 </div>
                               </div>
                             </div>
@@ -1143,7 +1155,7 @@ export default {
                 item.proyecto = proyecto_id
                 axios.post(`https://onsses45.maptitude.xyz/api/v1/ce/logros/`, item,
                   {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
-                    console.log(response.data)
+                  console.log(response.data)
                 }).catch(error => console.log(error))
               })
             }
@@ -1152,7 +1164,7 @@ export default {
                 item.proyecto = proyecto_id
                 axios.post(`https://onsses45.maptitude.xyz/api/v1/ce/certificaciones/`, item,
                   {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
-                    console.log(response.data)
+                  console.log(response.data)
                 }).catch(error => console.log(error))
               })
             }
@@ -1161,7 +1173,7 @@ export default {
                 item.proyecto = proyecto_id
                 axios.post(`https://onsses45.maptitude.xyz/api/v1/ce/reconocimientos/`, item,
                   {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
-                    console.log(response.data)
+                  console.log(response.data)
                 }).catch(error => console.log(error))
               })
             }
@@ -1170,7 +1182,7 @@ export default {
                 item.proyecto = proyecto_id
                 axios.post(`https://onsses45.maptitude.xyz/api/v1/ce/redes/`, item,
                   {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
-                    console.log(response.data)
+                  console.log(response.data)
                 }).catch(error => console.log(error))
               })
             }
@@ -1179,7 +1191,7 @@ export default {
                 item.proyecto = proyecto_id
                 axios.post(`https://onsses45.maptitude.xyz/api/v1/ce/financiamientos/`, item,
                   {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
-                    console.log(response.data)
+                  console.log(response.data)
                 }).catch(error => console.log(error))
               })
             }
