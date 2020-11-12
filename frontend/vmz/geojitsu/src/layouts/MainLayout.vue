@@ -65,31 +65,41 @@
     </q-header>
     <q-drawer v-model="drawer_left" side="left" elevated overlay behavior="mobile">
       <q-scroll-area style="height: calc(100% - 200px); margin-top: 200px; border-right: 1px solid #ddd">
-        <q-list padding>
-          <q-item to="/" clickable v-ripple exact>
-            <q-item-section avatar>
-              <q-icon name="home"/>
-            </q-item-section>
+        <div class="column fit justify-between" :style="{'min-height': drawerHeight}">
+          <div class="col-auto">
+            <q-list padding>
+              <q-item to="/" clickable v-ripple exact>
+                <q-item-section avatar>
+                  <q-icon name="home"/>
+                </q-item-section>
 
-            <q-item-section>
-              Inicio
-            </q-item-section>
-          </q-item>
+                <q-item-section>
+                  Inicio
+                </q-item-section>
+              </q-item>
 
-          <q-item v-for="pagina of paginas.items" :to="'/v/' + pagina.meta.slug" :key="pagina.id" clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="mdi-information"/>
-            </q-item-section>
-            <q-item-section>
-              {{ pagina.title }}
-            </q-item-section>
-          </q-item>
-
-
-        </q-list>
+              <q-item v-for="pagina of paginas.items" :to="'/v/' + pagina.meta.slug" :key="pagina.id" clickable
+                      v-ripple>
+                <q-item-section avatar>
+                  <q-icon name="mdi-information"/>
+                </q-item-section>
+                <q-item-section>
+                  {{ pagina.title }}
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </div>
+          <div class="col-auto q-py-xs">
+            <q-separator/>
+            <div class="row justify-center q-pt-sm">
+              <div class="col text-center">
+                <img src="statics/logos_principal.png">
+              </div>
+            </div>
+          </div>
+        </div>
       </q-scroll-area>
       <q-img class="absolute-top" src="~assets/material.png" style="height: 200px">
-
         <div v-if="auth_logged" class="bg-transparent">
           <q-avatar size="56px" class="q-mb-sm">
             <img :src="get_gravatar(auth_user.email, 150)" :alt="auth_user.username">
@@ -367,7 +377,7 @@
                      v-model="old_password"
                      :rules="[val => !!val || 'Falta contraseña antigua']"
                      label="Nueva contraseña">
-            <template v-slot:append>
+              <template v-slot:append>
                 <q-icon
                   :name="isPwd ? 'visibility_off' : 'visibility'"
                   class="cursor-pointer"
@@ -499,13 +509,13 @@
                        :rules="[val => !!val || 'Falta contraseña', val => val.length >= 8 || 'Mínimo 8 caracteres']"
                        label="Contraseña">
                 <template v-slot:append>
-                <q-icon
-                  :name="isPwd ? 'visibility_off' : 'visibility'"
-                  class="cursor-pointer"
-                  @click="isPwd = !isPwd"
-                />
-              </template>
-            </q-input>
+                  <q-icon
+                    :name="isPwd ? 'visibility_off' : 'visibility'"
+                    class="cursor-pointer"
+                    @click="isPwd = !isPwd"
+                  />
+                </template>
+              </q-input>
             </div>
             <div class="row q-py-xs">
               <q-input :type="isPwd ? 'password' : 'text'" outlined class="full-width" name="password2"
@@ -513,13 +523,13 @@
                        :rules="[val => !!val || 'Falta confirmación de contraseña', val => val.length >= 8 || 'Mínimo 8 caracteres']"
                        label="Confirmar contraseña">
                 <template v-slot:append>
-                <q-icon
-                  :name="isPwd ? 'visibility_off' : 'visibility'"
-                  class="cursor-pointer"
-                  @click="isPwd = !isPwd"
-                />
-              </template>
-            </q-input>
+                  <q-icon
+                    :name="isPwd ? 'visibility_off' : 'visibility'"
+                    class="cursor-pointer"
+                    @click="isPwd = !isPwd"
+                  />
+                </template>
+              </q-input>
             </div>
             <div
               v-if="new_user_data.password1 && new_user_data.password2 && new_user_data.password1 != new_user_data.password2"
@@ -706,6 +716,9 @@ export default {
     },
     emailExists() {
       return this.registration_response_error.email !== undefined
+    },
+    drawerHeight() {
+      return this.$q.screen.height - 200 + "px"
     },
   },
   methods: {
