@@ -579,11 +579,11 @@
     <q-footer elevated class="bg-grey-10 text-grey-4">
       <q-toolbar style="min-height: 24px; font-size: 14px;">
         <span class="ellipsis">Instituto Municipal de las Mujeres Zapopanas para la Igualdad Sustantiva</span>
-        <q-space/>
+        <!--<q-space/>
         <span class="no-wrap">
         <a style="text-decoration: none" class="text-grey-4 no-underline" href="https://saeba.click"
            target="_blank">2020&nbsp;&copy;&nbsp;saeba.click</a>
-        </span>
+        </span> -->
       </q-toolbar>
     </q-footer>
 

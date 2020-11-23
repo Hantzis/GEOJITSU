@@ -24,7 +24,7 @@
 
       <q-page-container>
         <q-page style="height: inherit; min-height: inherit">
-          <q-input
+          <!-- <q-input
             ref="filter"
             square
             outlined
@@ -43,14 +43,13 @@
             <template v-slot:append>
               <q-icon v-if="filter !== ''" name="clear" class="cursor-pointer" @click="resetFilter"/>
             </template>
-          </q-input>
+          </q-input> -->
 
           <q-tree
             class="q-pt-xs capas-qtree"
             :nodes="capasMapa"
             node-key="value"
             tick-strategy="strict"
-            :selected.sync="capaSeleccionada"
             :ticked.sync="capasTicked"
             :expanded.sync="expanded"
             :filter="filter"
@@ -98,16 +97,11 @@ export default {
   components: {CardCapa},
   data() {
     return {
-      expanded: [],
+      expanded: ["reportes"],
       filter: '',
     }
   },
   watch: {
-    capaSeleccionada() {
-      if (!this.capaSeleccionada) {
-        this.capaSeleccionada = 'conflictos'
-      }
-    },
     expanded() {
       // console.log("expanded", this.expanded)
     },
@@ -116,16 +110,8 @@ export default {
     },
   },
   computed: {
-    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getDrawerCapas', 'capasMapaGetter', 'capaSeleccionadaGetter']),
+    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getDrawerCapas', 'capasMapaGetter']),
 
-    capaSeleccionada: {
-      get() {
-        return this.capaSeleccionadaGetter
-      },
-      set(value) {
-        this.capaSeleccionadaAction(value)
-      }
-    },
     capasTicked: {
       get() {
         let ticked = []
@@ -163,7 +149,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions('geojitsu', ['capaSeleccionadaAction', 'setDrawerCapas', 'setCapasTicked', 'bajarCapaAction', 'subirCapaAction']),
+    ...mapActions('geojitsu', ['setDrawerCapas', 'setCapasTicked', 'bajarCapaAction', 'subirCapaAction']),
     print(value) {
       console.log(value)
     },
@@ -184,6 +170,13 @@ export default {
       this.subirCapaAction(idx)
     }
   },
+  mounted() {
+    console.log("platform", this.$q.screen.width)
+
+    if (this.$q.screen.width < 768) {
+      this.drawerCapas = false;
+    }
+  }
 }
 </script>
 

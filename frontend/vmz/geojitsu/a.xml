@@ -1,0 +1,1188 @@
+        <se:Rule>
+          <se:Name>Alcantarilla abierta</se:Name>
+          <se:Description>
+            <se:Title>Alcantarilla abierta (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>10</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#00ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#de9a39</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Alcantarilla inexistente (necesaria)</se:Name>
+          <se:Description>
+            <se:Title>Alcantarilla inexistente (necesaria) (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>11</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#00ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#fdfd4d</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Árbol frondoso que obstaculiza la iluminación</se:Name>
+          <se:Description>
+            <se:Title>Árbol frondoso que obstaculiza la iluminación (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>17</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#00ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#0d6b18</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Vegetación abundante que obstaculiza la iluminación</se:Name>
+          <se:Description>
+            <se:Title>Vegetación abundante que obstaculiza la iluminación (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>15</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#00ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#b26489</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Banqueta inexistente (necesaria)</se:Name>
+          <se:Description>
+            <se:Title>Banqueta inexistente (necesaria) (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>6</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#00ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#2fc4fa</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Boca de tormenta abierta</se:Name>
+          <se:Description>
+            <se:Title>Boca de tormenta abierta (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>12</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#00ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#2d96e5</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Lampara de luminaria descompuesta</se:Name>
+          <se:Description>
+            <se:Title>Lampara de luminaria descompuesta (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>1</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#00ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#3582c5</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Luminaria inexistente (necesaria)</se:Name>
+          <se:Description>
+            <se:Title>Luminaria inexistente (necesaria) (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>3</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#00ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#0ebf6f</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Parada de transporte inexistente (necesaria)</se:Name>
+          <se:Description>
+            <se:Title>Parada de transporte inexistente (necesaria) (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>21</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#00ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#9e9624</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Parada de transporte invadida por coches</se:Name>
+          <se:Description>
+            <se:Title>Parada de transporte invadida por coches (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>20</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#00ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#fd4eb7</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Parada de transporte oscura</se:Name>
+          <se:Description>
+            <se:Title>Parada de transporte oscura (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>19</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#00ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#181818</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Rampa inexistente</se:Name>
+          <se:Description>
+            <se:Title>Rampa inexistente (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>9</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#00ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#a61875</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Árbol frondoso que obstaculiza el tránsito</se:Name>
+          <se:Description>
+            <se:Title>Árbol frondoso que obstaculiza el tránsito (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>16</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#f0ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#4b0ef4</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Vegetación abundante que obstaculiza el tránsito</se:Name>
+          <se:Description>
+            <se:Title>Vegetación abundante que obstaculiza el tránsito (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>14</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#f0ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#fc3cec</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Banqueta en mal estado</se:Name>
+          <se:Description>
+            <se:Title>Banqueta en mal estado (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>4</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#f0ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#b26489</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Banqueta intransitable (por inclinación de rampa de cochera, obstáculos, tamaño, etc)</se:Name>
+          <se:Description>
+            <se:Title>Banqueta intransitable (por inclinación de rampa de cochera, obstáculos, tamaño, etc) (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>5</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#f0ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#2fc4fa</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Rampa en mal estado</se:Name>
+          <se:Description>
+            <se:Title>Rampa en mal estado (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>7</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#f0ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#2d96e5</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Rampa intransitable (por obstáculos, tamaño o inclinación)</se:Name>
+          <se:Description>
+            <se:Title>Rampa intransitable (por obstáculos, tamaño o inclinación) (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>8</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#f0ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#3582c5</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Boca de tormanta inexistente</se:Name>
+          <se:Description>
+            <se:Title>Boca de tormanta inexistente (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>13</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#f0ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#0ebf6f</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Casa abandonada (descuidada, con vidrios rotos, etc)</se:Name>
+          <se:Description>
+            <se:Title>Casa abandonada (descuidada, con vidrios rotos, etc) (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>22</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#f0ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#69204c</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Coche abandonado (Coches abandonados, Amarillo)</se:Name>
+          <se:Description>
+            <se:Title>Coche abandonado (Coches abandonados, Amarillo) (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>24</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#f0ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#8b236a</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Estructura de luminaria dañana</se:Name>
+          <se:Description>
+            <se:Title>Estructura de luminaria dañana (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>2</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#f0ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#939393</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Parada de transporte no señalizada</se:Name>
+          <se:Description>
+            <se:Title>Parada de transporte no señalizada (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>18</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#f0ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#a61875</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Árbol frondoso que obstaculiza el tránsito</se:Name>
+          <se:Description>
+            <se:Title>Árbol frondoso que obstaculiza el tránsito (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>16</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#f0ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#4b0ef4</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Otro tipo de servicio</se:Name>
+          <se:Description>
+            <se:Title>Otro tipo de servicio (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estado_servicio_id</ogc:PropertyName>
+                <ogc:Literal>1000000</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>circle</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#f0ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#000000</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Grupo de personas percibida como amenazantes</se:Name>
+          <se:Description>
+            <se:Title>Grupo de personas percibida como amenazantes (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>situacion_peligrosa_id</ogc:PropertyName>
+                <ogc:Literal>2</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>square</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#00ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#8c2df1</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Asaltos o robos con violencia frecuentes</se:Name>
+          <se:Description>
+            <se:Title>Asaltos o robos con violencia frecuentes (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>situacion_peligrosa_id</ogc:PropertyName>
+                <ogc:Literal>4</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>square</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#00ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#e9b37a</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Violación</se:Name>
+          <se:Description>
+            <se:Title>Violación (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>situacion_peligrosa_id</ogc:PropertyName>
+                <ogc:Literal>7</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>square</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#00ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#f4f442</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Secuestro de personas (o intento de)</se:Name>
+          <se:Description>
+            <se:Title>Secuestro de personas (o intento de) (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>situacion_peligrosa_id</ogc:PropertyName>
+                <ogc:Literal>10</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>square</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#00ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#8ca65a</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Persona percibida como amenazante</se:Name>
+          <se:Description>
+            <se:Title>Persona percibida como amenazante (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>situacion_peligrosa_id</ogc:PropertyName>
+                <ogc:Literal>1</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>square</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#f0ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#8c2df1</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Asaltos o robos con violencia esporádicos</se:Name>
+          <se:Description>
+            <se:Title>Asaltos o robos con violencia esporádicos (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>situacion_peligrosa_id</ogc:PropertyName>
+                <ogc:Literal>3</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>square</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#f0ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#9f6829</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Robo sin violencia o amenazas. Tomar bienes ajenos sin el consentimiento del propietario</se:Name>
+          <se:Description>
+            <se:Title>Robo sin violencia o amenazas. Tomar bienes ajenos sin el consentimiento del propietario (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>situacion_peligrosa_id</ogc:PropertyName>
+                <ogc:Literal>5</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>square</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#f0ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#6eadc8</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Acoso</se:Name>
+          <se:Description>
+            <se:Title>Acoso (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>situacion_peligrosa_id</ogc:PropertyName>
+                <ogc:Literal>6</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>square</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#f0ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#ef7021</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Venta de drogas</se:Name>
+          <se:Description>
+            <se:Title>Venta de drogas (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>situacion_peligrosa_id</ogc:PropertyName>
+                <ogc:Literal>8</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>square</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#f0ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#e9b37a</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Riñas</se:Name>
+          <se:Description>
+            <se:Title>Riñas (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>situacion_peligrosa_id</ogc:PropertyName>
+                <ogc:Literal>9</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>square</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#f0ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#42ddf4</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>
+        <se:Rule>
+          <se:Name>Otro tipo de situación de peligro</se:Name>
+          <se:Description>
+            <se:Title>Otro tipo de situación de peligro (Resuelto)</se:Title>
+          </se:Description>
+          <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
+            <ogc:And>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>situacion_peligrosa_id</ogc:PropertyName>
+                <ogc:Literal>1000000</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>estatus</ogc:PropertyName>
+                <ogc:Literal>Resuelto</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <se:PointSymbolizer>
+            <se:Graphic>
+              <se:Mark>
+                <se:WellKnownName>square</se:WellKnownName>
+                <se:Fill>
+                  <se:SvgParameter name="fill">#f0ff00</se:SvgParameter>
+                </se:Fill>
+                <se:Stroke>
+                  <se:SvgParameter name="stroke">#232323</se:SvgParameter>
+                  <se:SvgParameter name="stroke-width">3</se:SvgParameter>
+                </se:Stroke>
+              </se:Mark>
+              <se:Size>14</se:Size>
+            </se:Graphic>
+          </se:PointSymbolizer>
+        </se:Rule>

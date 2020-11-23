@@ -14,7 +14,7 @@
               <vl-map @click="clic" ref="olmap" :load-tiles-while-animating="true" :load-tiles-while-interacting="true"
                       data-projection="EPSG:4326"
                       :style="{'min-height': 'inherit', 'max-height': '1px', 'width': '100%', 'background-color': mapaBase.bgcolor}">
-                <vl-view ref="olview" :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation"></vl-view>
+                <vl-view ref="olview" :zoom.sync="zoom" :center.sync="center"></vl-view>
                 <vl-geoloc @update:position="geolocPosition = $event">
                   <template slot-scope="geoloc">
                     <vl-feature v-if="geoloc.position" id="position-feature">
@@ -68,6 +68,7 @@
                   <vl-overlay v-if="position && selectedFeatures.length > 0" :position="position" :auto-pan="true"
                               style="background: white; padding: 8px">
                     <div style="max-width: 300px; min-width: 300px;">
+
                       <q-table
                         class="detalles"
                         style="max-height: 400px; max-width: 300px"
@@ -91,6 +92,10 @@
                           </q-btn>
                         </template>
                       </q-table>
+                      <div class="row q-pt-sm">
+                        <q-select v-model="selectedFeatureInfo.estatus" :options="['Abierto', 'Atendiendo', 'Resuelto']"
+                        label="Estatus" name="estatus" outlined class="full-width" behavior="menu" />
+                      </div>
                     </div>
                   </vl-overlay>
                 </vl-interaction-select>
@@ -350,16 +355,12 @@ export default {
       bienvenida_dialog: false,
       fecha_reporte_marcador: "",
       hora_reporte_marcador: "",
-      zoom: 15,
+      zoom: 13,
       center: [-103.38890075683594, 20.72561197927564],
       center3857: [-11268847.24, 2231060.47],
-      rotation: 0,
       geolocPosition: [-101.22977709999999, 19.6453138],
       conflictos: [],
       loading: false,
-      conflictos_geojson_url: "https://conflictossocioambientales.iies.unam.mx/conflictos/conflictos.geojson",
-      conflictos_features: [],
-      conflictos_selectedFeatures: [],
       selectedFeatures: [],
       selectedFeatureInfo: {},
       conflictos_styles: {},
@@ -391,6 +392,20 @@ export default {
         this.layers = [this.$refs.reportes[0]]
         this.position = transform(this.selectedFeatures[0].geometry.coordinates, 'EPSG:3857', 'EPSG:4326')
         console.log(this.position)
+      } else {
+        this.selectedFeatureInfo = {}
+      }
+    },
+    'selectedFeatureInfo.estatus': function (newVal, oldVal) {
+      if (oldVal && newVal) {
+        this.token = cookies.get("access_token")
+        console.log(oldVal);
+        console.log(newVal);
+        console.log(this.selectedFeatureInfo);
+        axios.patch(`https://repvmz.maptitude.xyz/back/api/v1/reportes/${this.selectedFeatureInfo.id}/`,
+          {estatus: newVal}, {headers: {'Authorization': `Bearer ${this.token}`}})
+          .then(response => {console.log(response)})
+          .catch(error => {console.log(error)})
       }
     },
     'reporte_marcador_data.tipo': function (newVal, oldVal) {
@@ -505,18 +520,18 @@ export default {
     }
   },
   methods: {
-    ...mapActions('geojitsu', ['capasMapaAction', 'setCapaFeatures', 'setCapaTicked', 'setHerramientaActiva', 'setMapkey']),
+    ...mapActions('geojitsu', ['capasMapaAction', 'setCapa', 'setCapaTicked', 'setHerramientaActiva', 'setMapkey']),
     getEntries(properties) {
-      let limpio = []
-      limpio.push(["Fecha", properties.fecha])
-      limpio.push(["Hora", properties.hora])
-      let colonia = properties.colonia_display
-      if (properties.colonia_cp_display) colonia = colonia + " (" + properties.colonia_cp_display + ")"
-      limpio.push(["Colonia", colonia])
-      let calle = properties.calle
-      if (properties.numero) calle = calle + " #" + properties.numero
-      limpio.push(["Calle", calle])
-      if (properties.entre_interseccion) limpio.push(["Calle intersección", properties.entre_interseccion])
+      let limpio = [];
+      limpio.push(["Fecha", properties.fecha]);
+      limpio.push(["Hora", properties.hora]);
+      let colonia = properties.colonia_display;
+      if (properties.colonia_cp_display) colonia = colonia + " (" + properties.colonia_cp_display + ")";
+      limpio.push(["Colonia", colonia]);
+      let calle = properties.calle;
+      if (properties.numero) calle = calle + " #" + properties.numero;
+      limpio.push(["Calle", calle]);
+      if (properties.entre_interseccion) limpio.push(["Calle intersección", properties.entre_interseccion]);
       if (properties.tipo === "Servicios") {
         if (properties.tipo_servicio && properties.tipo_servicio < 1000000) limpio.push(["Tipo de servicio", properties.tipo_servicio_display])
         if (properties.estado_servicio && properties.tipo_servicio < 1000000) limpio.push(["Estado de servicio", properties.estado_servicio_display])
@@ -629,8 +644,8 @@ export default {
     saveReporteMarcador() {
       this.$refs.form_reporte_marcador.validate().then(valid => {
         if (valid) {
-          this.token = cookies.get("access_token")
-          this.reporte_marcador_data.reporta = this.auth_user.pk
+          this.token = cookies.get("access_token");
+          this.reporte_marcador_data.reporta = this.auth_user.pk;
           axios.post(`https://repvmz.maptitude.xyz/back/api/v1/reportes/`, this.reporte_marcador_data,
             {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
             console.log(response.data)

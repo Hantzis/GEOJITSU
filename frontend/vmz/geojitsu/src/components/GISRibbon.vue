@@ -98,12 +98,12 @@
                 </div>
               </div>
             </div>
-            <div class="row justify-between" style="margin-top: 18px;">
+            <div class="row justify-between" style="margin-top: 15px;">
               <div class="col-auto">
                 <div class="row q-px-sm"/>
               </div>
               <div class="col-auto">
-                Principal
+                Herramientas
               </div>
               <div class="col-auto">
                 <div class="row q-px-sm"/>
