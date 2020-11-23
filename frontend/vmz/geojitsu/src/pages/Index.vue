@@ -94,7 +94,7 @@
                       </q-table>
                       <div class="row q-pt-sm">
                         <q-select v-model="selectedFeatureInfo.estatus" :options="['Abierto', 'Atendiendo', 'Resuelto']"
-                        label="Estatus" name="estatus" outlined class="full-width" behavior="menu" />
+                                  label="Estatus" name="estatus" outlined class="full-width" behavior="menu"/>
                       </div>
                     </div>
                   </vl-overlay>
@@ -281,11 +281,11 @@
       </q-card>
     </q-dialog>
 
-    <q-dialog ref="reporte_agregado_dialog" v-model="bienvenida_dialog">
+    <q-dialog style="width: 1000px" ref="reporte_agregado_dialog" v-model="bienvenida_dialog">
       <q-card style="width: 1000px">
         <q-card-section class="row items-center">
-          <q-avatar icon="info" color="red" text-color="white"/>
-          <q-toolbar-title>{{ homeData.title }}</q-toolbar-title>
+          <q-avatar icon="mdi-home" color="red" text-color="white"/>
+          <q-toolbar-title>Ciudad÷Nosotras</q-toolbar-title>
           <q-btn icon="close" flat round dense v-close-popup/>
         </q-card-section>
         <q-separator/>
@@ -302,6 +302,116 @@
                 <div v-if="block.type === 'title'">
                   <h5>{{ block.value }}</h5>
                 </div>
+
+                <q-list bordered class="rounded-borders">
+                  <q-expansion-item
+                    group="somegroup"
+                    expand-separator
+                    icon="perm_identity"
+                    label="Crear cuenta"
+                  >
+                    <q-card>
+                      <q-card-section>
+                        <p>Para poder utilizar esta plataforma es necesario acceder con una cuenta de usuario, si no se
+                          tiene una cuenta es muy sencillo crear una. Para crear una cuenta de usuario hay que ir al
+                          menú principal ubicado en la esquina superior derecha, en la opción Crear cuenta.</p>
+                        <p>Al acceder a la opción crear cuenta, se desplegará un cuadro de dialogo con varios campos que
+                          se deben llenar, estos se detallan a continuación:</p>
+                        <p>Nota: todos los campos son obligatorios excepto los que se especifique lo contrario.</p>
+                        <ul>
+                          <li><strong>Nombre de usuario</strong>: es el identificador (username) a usar para iniciar sesión
+                            posteriormente
+                          </li>
+                          <li><strong>Nombre(s)</strong>: Nombre o nombres, sin apellidos</li>
+                          <li><strong>Apellidos</strong>: Apellidos como constan en el registro civil</li>
+                          <li><strong>Email</strong>: Dirección de correo electrónico actual</li>
+                          <li><strong>Fecha de nacimiento</strong>: Fecha de nacimiento en formato AAAA-MM-DD</li>
+                          <li><strong>Sexo</strong>: Género sexual</li>
+                          <li><strong>Etnia</strong>: En caso de pertenecer a alguna etnia, seleccionarla, de lo contrario omitirla.
+                            (campo no obligatorio)
+                          </li>
+                          <li><strong>Municipio</strong>: Municipio donde se radica actualmente</li>
+                          <li><strong>Colonia</strong>: Colonia donde se radica actualmente</li>
+                          <li><strong>Discapacidades</strong>: Si se tiene algúna (o más) tipo de discapacidad, de lo contrario omitir.
+                            (campo no obligatorio)
+                          </li>
+                          <li><strong>Contraseña</strong>: Contraseña (password) para ingresar a la plataforma</li>
+                          <li><strong>Confirmar Contraseña</strong>: Contraseña (password) para ingresar a la plataforma, debe ser
+                            identica que en campo anterior y se usa una confirmación para asegurar que se ha escrito
+                            correctamente.
+                          </li>
+                        </ul>
+                        <p>Una vez llenados todos los campos, se puede pulsar sobre el botón "Crear cuenta", seguido de lo
+                          cual, la cuenta estará creada y lista para usar.</p>
+
+                      </q-card-section>
+                    </q-card>
+                  </q-expansion-item>
+
+                  <q-expansion-item
+                    group="somegroup"
+                    expand-separator
+                    icon="mdi-account"
+                    label="Ingresar (iniciar sesión)"
+                  >
+                    <q-card>
+                      <q-card-section>
+                        <p>Como ya se menciona en el punto de arriba, es importante tener una cuenta para poder crear reportes, con dicha cuenta se puede ingresar y entonces registrar reportes.</p>
+                        <p>Para ingresar, hay que ir al menú principal ubicado en la esquina superior derecha, en la opción Ingresar.</p>
+                        <p>Una vez ahì se solicitara los datos de acceso de nombre de usuario y contraseña, los cuales fueron elegidos durante el registro.</p>
+                        <p>Si no se recuerda la contraseña, hay que ingresar alguna contraseña que se recuerde, donde si no es exactamente la contraseña, se mostrará un mensaje que indica que la contraseña es incorrecta, y se mostrará también un botón para recuperar la contraseña.</p>
+                        <p>Para recuperar la contraseña hay que pulsar el botón "Restablecer contraseña", el cual mostrará una ventana solicitado la dirección de correo que se utilizó para crear la cuenta. Se debe introducir la dirección de correo y a continuación pulsar el botón "Enviar correo de recuperación". Posteriormente hay que revisar el correo electronico, a donde llegará un enlace para asignar una nueva contraseña. Despues de cambiarla ya se debe poder acceder con la nueva contraseña.</p>
+                      </q-card-section>
+                    </q-card>
+                  </q-expansion-item>
+
+                  <q-expansion-item
+                    group="somegroup"
+                    expand-separator
+                    icon="info"
+                    label="Ver info de un reporte"
+                  >
+                    <q-card>
+                      <q-card-section>
+                        <p>Para poder visualizar la info de un reporte en particular se debe tener seleccionara la herramienta "info" de la barra de herramientas</p>
+                        <p>Teniendo seleccionada la herramienta "info", se puede ir al mapa y dar click sobre cualquier punto para obtener la ficha de los detalles de dicho reporte</p>
+                      </q-card-section>
+                    </q-card>
+                  </q-expansion-item>
+
+                  <q-expansion-item
+                    group="somegroup"
+                    expand-separator
+                    icon="mdi-playlist-plus"
+                    label="Agregar reporte basado en domicilio"
+                  >
+                    <q-card>
+                      <q-card-section>
+                        <p>Se pueden crear reportes a partir de conocer la ubicación de la calle y número del lugar o calles y su calle de intersección.</p>
+                        <p>Para crear un nuevo reporte en este modo hay que seleccionar la herramienta de "Agrear reporte basado en domicilio" de la barra de herramientas.</p>
+                        <p>A continuación hay que llenar el for</p>
+                      </q-card-section>
+                    </q-card>
+                  </q-expansion-item>
+
+                  <q-expansion-item
+                    group="somegroup"
+                    expand-separator
+                    icon="mdi-map-marker-plus"
+                    label="Agregar reporte a partir de un marcador en el mapa"
+                  >
+                    <q-card>
+                      <q-card-section>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos
+                        corrupti
+                        commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
+                        eveniet doloribus ullam aliquid.
+                      </q-card-section>
+                    </q-card>
+                  </q-expansion-item>
+
+                </q-list>
+
               </div>
             </div>
           </div>
@@ -404,8 +514,12 @@ export default {
         console.log(this.selectedFeatureInfo);
         axios.patch(`https://repvmz.maptitude.xyz/back/api/v1/reportes/${this.selectedFeatureInfo.id}/`,
           {estatus: newVal}, {headers: {'Authorization': `Bearer ${this.token}`}})
-          .then(response => {console.log(response)})
-          .catch(error => {console.log(error)})
+          .then(response => {
+            console.log(response)
+          })
+          .catch(error => {
+            console.log(error)
+          })
       }
     },
     'reporte_marcador_data.tipo': function (newVal, oldVal) {

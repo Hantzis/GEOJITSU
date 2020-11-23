@@ -31,14 +31,14 @@
                 </q-avatar>
                 <q-item-section>Salir</q-item-section>
               </q-item>
-              <q-item v-if="!auth_logged" dense clickable v-close-popup style="padding: 0;" @click="openLogin()">
+              <q-item v-if="!auth_logged" dense clickable v-close-popup style="padding: 0;" @click="create_account_dialog = true">
                 <q-avatar>
                   <q-icon name="mdi-account-plus"/>
                 </q-avatar>
                 <q-item-section>Crear cuenta</q-item-section>
               </q-item>
               <q-item v-if="auth_logged" dense clickable v-close-popup style="padding: 0;"
-                      @click="create_account_dialog = true">
+                      @click="profile_dialog = true">
                 <q-avatar>
                   <q-icon name="mdi-account"/>
                 </q-avatar>
@@ -64,7 +64,7 @@
       </q-tabs>
     </q-header>
     <q-drawer v-model="drawer_left" side="left" elevated overlay behavior="mobile">
-      <q-scroll-area style="height: calc(100% - 200px); margin-top: 200px; border-right: 1px solid #ddd">
+      <q-scroll-area style="height: calc(100% - 260px); margin-top: 260px; border-right: 1px solid #ddd">
         <div class="column fit justify-between" :style="{'min-height': drawerHeight}">
           <div class="col-auto">
             <q-list padding>
@@ -99,7 +99,7 @@
           </div>
         </div>
       </q-scroll-area>
-      <q-img class="absolute-top" src="~assets/material.png" style="height: 200px">
+      <q-img class="absolute-top" src="~assets/material.png" style="height: 260px">
         <div v-if="auth_logged" class="bg-transparent">
           <q-avatar size="56px" class="q-mb-sm">
             <img :src="get_gravatar(auth_user.email, 150)" :alt="auth_user.username">
@@ -121,12 +121,13 @@
           <div class="text-weight-bold">Anónimo</div>
           <div>
             <a style="cursor: pointer; margin-right: 8px;" @click="openLogin()">Ingresar</a> |
-            <a style="cursor: pointer; margin-left: 8px;" @click="create_account_dialog = true">Registrar</a>
+            <a style="cursor: pointer; margin-left: 8px;" @click="create_account_dialog = true">Crear cuenta</a>
           </div>
         </div>
         <div class="absolute-bottom bg-transparent">
           <div class="text-right" style="font-size: 20px; font-weight: 300;">Ciudad÷nosotras</div>
           <div class="text-right" style="font-size: 16px; font-weight: 300;">Zapopan para nosotras</div>
+          <p style="margin-bottom: 2px; margin-top: 12px;">Instituto Municipal de las Mujeres Zapopanas para la Igualdad Sustantiva</p>
         </div>
 
       </q-img>
@@ -281,7 +282,7 @@
             <div class="row q-py-xs">
               <q-input disable outlined class="full-width" name="username" v-model="full_user_data.username"
                        :rules="[val => !!val || 'Username obligatorio']"
-                       label="nombre de usuario"/>
+                       label="Nombre de usuario"/>
             </div>
             <div class="row q-py-xs">
               <q-input outlined class="full-width" name="first_name" v-model="full_user_data.first_name"
@@ -375,8 +376,8 @@
           <div class="row q-py-xs">
             <q-input :type="isPwd ? 'password' : 'text'" outlined class="full-width" name="new_password1"
                      v-model="old_password"
-                     :rules="[val => !!val || 'Falta contraseña antigua']"
-                     label="Nueva contraseña">
+                     :rules="[val => !!val || 'Falta contraseña actual']"
+                     label="Contraseña actual">
               <template v-slot:append>
                 <q-icon
                   :name="isPwd ? 'visibility_off' : 'visibility'"
@@ -404,7 +405,7 @@
             <q-input :type="isPwd ? 'password' : 'text'" outlined class="full-width" name="new_password2"
                      v-model="new_password2"
                      :rules="[val => !!val || 'Falta contraseña de confirmación']"
-                     label="Confirmar contraseña">
+                     label="Confirmar contraseña nueva">
               <template v-slot:append>
                 <q-icon
                   :name="isPwd ? 'visibility_off' : 'visibility'"
@@ -718,7 +719,7 @@ export default {
       return this.registration_response_error.email !== undefined
     },
     drawerHeight() {
-      return this.$q.screen.height - 200 + "px"
+      return this.$q.screen.height - 260 + "px"
     },
   },
   methods: {
