@@ -307,14 +307,15 @@
                   <q-expansion-item
                     group="somegroup"
                     expand-separator
-                    icon="perm_identity"
+                    icon="mdi-account-plus"
                     label="Crear cuenta"
                   >
                     <q-card>
                       <q-card-section>
                         <p>Para poder utilizar esta plataforma es necesario acceder con una cuenta de usuario, si no se
                           tiene una cuenta es muy sencillo crear una. Para crear una cuenta de usuario hay que ir al
-                          menú principal ubicado en la esquina superior derecha, en la opción Crear cuenta.</p>
+                          menú principal ubicado en la esquina superior derecha, en la opción <strong>Crear cuenta</strong>.</p>
+                        <img src="statics/bienvenida/crear_cuenta.PNG" width="474">
                         <p>Al acceder a la opción crear cuenta, se desplegará un cuadro de dialogo con varios campos que
                           se deben llenar, estos se detallan a continuación:</p>
                         <p>Nota: todos los campos son obligatorios excepto los que se especifique lo contrario.</p>
@@ -351,16 +352,19 @@
                   <q-expansion-item
                     group="somegroup"
                     expand-separator
-                    icon="mdi-account"
+                    icon="login"
                     label="Ingresar (iniciar sesión)"
                   >
                     <q-card>
                       <q-card-section>
                         <p>Como ya se menciona en el punto de arriba, es importante tener una cuenta para poder crear reportes, con dicha cuenta se puede ingresar y entonces registrar reportes.</p>
-                        <p>Para ingresar, hay que ir al menú principal ubicado en la esquina superior derecha, en la opción Ingresar.</p>
+                        <p>Para ingresar, hay que ir al menú principal ubicado en la esquina superior derecha, en la opción <strong>Ingresar</strong>.</p>
+                        <img src="statics/bienvenida/ingresar_cuenta.PNG" width="474">
                         <p>Una vez ahì se solicitara los datos de acceso de nombre de usuario y contraseña, los cuales fueron elegidos durante el registro.</p>
                         <p>Si no se recuerda la contraseña, hay que ingresar alguna contraseña que se recuerde, donde si no es exactamente la contraseña, se mostrará un mensaje que indica que la contraseña es incorrecta, y se mostrará también un botón para recuperar la contraseña.</p>
+                        <img src="statics/bienvenida/iniciar_sesion_incorrecto.PNG" width="474">
                         <p>Para recuperar la contraseña hay que pulsar el botón "Restablecer contraseña", el cual mostrará una ventana solicitado la dirección de correo que se utilizó para crear la cuenta. Se debe introducir la dirección de correo y a continuación pulsar el botón "Enviar correo de recuperación". Posteriormente hay que revisar el correo electronico, a donde llegará un enlace para asignar una nueva contraseña. Despues de cambiarla ya se debe poder acceder con la nueva contraseña.</p>
+                        <img src="statics/bienvenida/recuperar_contra.PNG" width="474">
                       </q-card-section>
                     </q-card>
                   </q-expansion-item>
@@ -373,8 +377,10 @@
                   >
                     <q-card>
                       <q-card-section>
-                        <p>Para poder visualizar la info de un reporte en particular se debe tener seleccionara la herramienta "info" de la barra de herramientas</p>
-                        <p>Teniendo seleccionada la herramienta "info", se puede ir al mapa y dar click sobre cualquier punto para obtener la ficha de los detalles de dicho reporte</p>
+                        <p>Para poder visualizar la info de un reporte en particular se debe tener seleccionara la herramienta "info" de la barra de herramientas, en la parte superior izquierda.</p>
+                        <img src="statics/bienvenida/info.PNG" width="474">
+                        <br><p>Teniendo seleccionada la herramienta "info", se puede ir al mapa y dar click sobre cualquier punto para obtener la ficha de los detalles de dicho reporte, los cuales se mostraran en una ficha cuya esquina superior izquierda coincide con la ubicación del punto seleccionado</p>
+                        <img src="statics/bienvenida/info_ficha.PNG" width="474">
                       </q-card-section>
                     </q-card>
                   </q-expansion-item>
@@ -389,7 +395,11 @@
                       <q-card-section>
                         <p>Se pueden crear reportes a partir de conocer la ubicación de la calle y número del lugar o calles y su calle de intersección.</p>
                         <p>Para crear un nuevo reporte en este modo hay que seleccionar la herramienta de "Agrear reporte basado en domicilio" de la barra de herramientas.</p>
-                        <p>A continuación hay que llenar el for</p>
+                        <img src="statics/bienvenida/nuevo_domicilio.PNG" width="474">
+                        <p>A continuación hay que llenar el formulario con los datos correspondientes a cada campo, dependiendo de las opciones seleccionadas se iran desplegando nuevos campos acorde a lo previamente seleccionado.</p>
+                        <p>En esta modalidad de registro, la ubicación espacial se logra a partir de los datos del domicilio. Para una mejor precisión es importante escribir el nombre de la calle completo y solo uno de estos dos: el número postal de la ubicación del caso, o una calle cercana que intersecte.</p>
+                        <p>Una vez se ha terminado de llenar los datos, se debe dar clic en el botón <strong>Guardar reporte</strong> y si todo es correcto, se almacenará el registro correspondiente en la base de datos.</p>
+                        <p>Nota: Los reportes nuevos no se reflejan en el mapa inmediatamente, hay que esperar unos segundos para su almacenamiento.</p>
                       </q-card-section>
                     </q-card>
                   </q-expansion-item>
@@ -402,10 +412,13 @@
                   >
                     <q-card>
                       <q-card-section>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos
-                        corrupti
-                        commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-                        eveniet doloribus ullam aliquid.
+                        <p>Se pueden crear reportes a partir de poner un marcador o pin directamente sobre el mapa, en los casos donde resulte más facil ubicar directamente en el mapa esta es la mejor opción.</p>
+                        <p>Para crear un nuevo reporte en este modo hay que seleccionar la herramienta de "Agrear reporte ubicando en el mapa" de la barra de herramientas.</p>
+                        <img src="statics/bienvenida/nuevo_marcador.PNG" width="474">
+                        <p>A continuación hay que llenar el formulario con los datos correspondientes a cada campo, dependiendo de las opciones seleccionadas se iran desplegando nuevos campos acorde a lo previamente seleccionado.</p>
+                        <p>En esta modalidad de registro, Los datos de la ubicación del domicilio se obtienen a partir de una consulta espacial a partir de las coordenadas donde se haya hecho click sobre el mapa, y los datos referentes al domicilio se llenan automaticamente.</p>
+                        <p>Una vez se ha terminado de llenar los datos del reporte, se debe dar clic en el botón <strong>Guardar reporte</strong> y si todo es correcto, se almacenará el registro correspondiente en la base de datos.</p>
+                        <p>Nota: Los reportes nuevos no se reflejan en el mapa inmediatamente, hay que esperar unos segundos para su almacenamiento.</p>
                       </q-card-section>
                     </q-card>
                   </q-expansion-item>

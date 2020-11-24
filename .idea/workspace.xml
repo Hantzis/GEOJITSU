@@ -10,11 +10,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Ayuda.vue" afterDir="false" />
+    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="lun">
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/bienvenida/crear_cuenta.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/bienvenida/info.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/bienvenida/info_ficha.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/bienvenida/ingresar_cuenta.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/bienvenida/iniciar_sesion_incorrecto.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/bienvenida/nuevo_domicilio.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/bienvenida/nuevo_marcador.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/bienvenida/recuperar_contra.PNG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/reflects/geojson_conflictos.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,11 +70,12 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\soporte\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\statics\bienvenida" />
+      <recent name="C:\Users\Nizhi\PycharmProjects\GEOJITSU\frontend\windows-todo\src\boot" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\soporte\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\pages" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Nizhi\PycharmProjects\GEOJITSU\frontend\windows-todo\src\boot" />
     </key>
   </component>
   <component name="RunManager" selected="npm.serve">
@@ -139,8 +147,17 @@
       <workItem from="1592332700175" duration="1412000" />
       <workItem from="1606153820144" duration="1793000" />
       <workItem from="1606159093727" duration="2680000" />
-      <workItem from="1606163157712" duration="6104000" />
+      <workItem from="1606163157712" duration="6834000" />
+      <workItem from="1606235946145" duration="2318000" />
     </task>
+    <task id="LOCAL-00001" summary="lun">
+      <created>1606172535189</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1606172535189</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +175,10 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="lun" />
+    <option name="LAST_COMMIT_MESSAGE" value="lun" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606159573223">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -167,22 +188,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606157370894" />
-    <state width="1877" height="305" key="GridCell.Tab.0.bottom" timestamp="1606170091085">
+    <state width="1877" height="305" key="GridCell.Tab.0.bottom" timestamp="1606173264540">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="305" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606170091085" />
-    <state width="1877" height="305" key="GridCell.Tab.0.center" timestamp="1606170091085">
+    <state width="1877" height="305" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606173264540" />
+    <state width="1877" height="305" key="GridCell.Tab.0.center" timestamp="1606173264540">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="305" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606170091085" />
-    <state width="1877" height="305" key="GridCell.Tab.0.left" timestamp="1606170091085">
+    <state width="1877" height="305" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606173264540" />
+    <state width="1877" height="305" key="GridCell.Tab.0.left" timestamp="1606173264540">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="305" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606170091085" />
-    <state width="1877" height="305" key="GridCell.Tab.0.right" timestamp="1606170091085">
+    <state width="1877" height="305" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606173264540" />
+    <state width="1877" height="305" key="GridCell.Tab.0.right" timestamp="1606173264540">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="305" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606170091085" />
+    <state width="1877" height="305" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606173264540" />
     <state x="184" y="86" key="MergeDialog" timestamp="1606157164558">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -191,6 +212,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="753" y="222" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606163825721" />
+    <state x="552" y="240" key="Vcs.Push.Dialog.v2" timestamp="1606172538459">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="240" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1606172538459" />
     <state x="740" y="233" key="git4idea.branch.GitSmartOperationDialog" timestamp="1606157157846">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
