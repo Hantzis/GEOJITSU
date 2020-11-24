@@ -35,6 +35,10 @@
                 <vl-layer-vector>
                   <vl-source-vector :features.sync="zapopan">
                   </vl-source-vector>
+                  <vl-style-box>
+                    <vl-style-stroke color="black" :width="3"></vl-style-stroke>
+                    <vl-style-fill color="rgba(0,0,0,0.12)"></vl-style-fill>
+                  </vl-style-box>
                 </vl-layer-vector>
 
                 <div :key="mapkey">
@@ -93,17 +97,17 @@
                         </template>
                       </q-table>
                       <div class="row q-pt-sm">
-                        <q-select v-model="selectedFeatureInfo.estatus" :options="['Abierto', 'Atendiendo', 'Resuelto']"
-                                  label="Estatus" name="estatus" outlined class="full-width" behavior="menu"/>
+                        <q-select
+                          :readonly="!(selectedFeatureInfo.tipo === 'Servicios' && this.user_groups.includes(5)) && !(selectedFeatureInfo.tipo === 'Situaciones' && this.user_groups.includes(6))"
+                          v-model="selectedFeatureInfo.estatus"
+                          :options="['Abierto', 'Atendiendo', 'Resuelto']"
+                          label="Estatus" name="estatus" outlined class="full-width" behavior="menu"/>
                       </div>
                     </div>
                   </vl-overlay>
                 </vl-interaction-select>
-
               </vl-map>
-
             </div>
-
           </div>
         </q-page>
       </q-page-container>
@@ -314,13 +318,15 @@
                       <q-card-section>
                         <p>Para poder utilizar esta plataforma es necesario acceder con una cuenta de usuario, si no se
                           tiene una cuenta es muy sencillo crear una. Para crear una cuenta de usuario hay que ir al
-                          menú principal ubicado en la esquina superior derecha, en la opción <strong>Crear cuenta</strong>.</p>
+                          menú principal ubicado en la esquina superior derecha, en la opción <strong>Crear
+                            cuenta</strong>.</p>
                         <img src="statics/bienvenida/crear_cuenta.PNG" width="474">
                         <p>Al acceder a la opción crear cuenta, se desplegará un cuadro de dialogo con varios campos que
                           se deben llenar, estos se detallan a continuación:</p>
                         <p>Nota: todos los campos son obligatorios excepto los que se especifique lo contrario.</p>
                         <ul>
-                          <li><strong>Nombre de usuario</strong>: es el identificador (username) a usar para iniciar sesión
+                          <li><strong>Nombre de usuario</strong>: es el identificador (username) a usar para iniciar
+                            sesión
                             posteriormente
                           </li>
                           <li><strong>Nombre(s)</strong>: Nombre o nombres, sin apellidos</li>
@@ -328,21 +334,25 @@
                           <li><strong>Email</strong>: Dirección de correo electrónico actual</li>
                           <li><strong>Fecha de nacimiento</strong>: Fecha de nacimiento en formato AAAA-MM-DD</li>
                           <li><strong>Sexo</strong>: Género sexual</li>
-                          <li><strong>Etnia</strong>: En caso de pertenecer a alguna etnia, seleccionarla, de lo contrario omitirla.
+                          <li><strong>Etnia</strong>: En caso de pertenecer a alguna etnia, seleccionarla, de lo
+                            contrario omitirla.
                             (campo no obligatorio)
                           </li>
                           <li><strong>Municipio</strong>: Municipio donde se radica actualmente</li>
                           <li><strong>Colonia</strong>: Colonia donde se radica actualmente</li>
-                          <li><strong>Discapacidades</strong>: Si se tiene algúna (o más) tipo de discapacidad, de lo contrario omitir.
+                          <li><strong>Discapacidades</strong>: Si se tiene algúna (o más) tipo de discapacidad, de lo
+                            contrario omitir.
                             (campo no obligatorio)
                           </li>
                           <li><strong>Contraseña</strong>: Contraseña (password) para ingresar a la plataforma</li>
-                          <li><strong>Confirmar Contraseña</strong>: Contraseña (password) para ingresar a la plataforma, debe ser
+                          <li><strong>Confirmar Contraseña</strong>: Contraseña (password) para ingresar a la
+                            plataforma, debe ser
                             identica que en campo anterior y se usa una confirmación para asegurar que se ha escrito
                             correctamente.
                           </li>
                         </ul>
-                        <p>Una vez llenados todos los campos, se puede pulsar sobre el botón "Crear cuenta", seguido de lo
+                        <p>Una vez llenados todos los campos, se puede pulsar sobre el botón "Crear cuenta", seguido de
+                          lo
                           cual, la cuenta estará creada y lista para usar.</p>
 
                       </q-card-section>
@@ -357,13 +367,23 @@
                   >
                     <q-card>
                       <q-card-section>
-                        <p>Como ya se menciona en el punto de arriba, es importante tener una cuenta para poder crear reportes, con dicha cuenta se puede ingresar y entonces registrar reportes.</p>
-                        <p>Para ingresar, hay que ir al menú principal ubicado en la esquina superior derecha, en la opción <strong>Ingresar</strong>.</p>
+                        <p>Como ya se menciona en el punto de arriba, es importante tener una cuenta para poder crear
+                          reportes, con dicha cuenta se puede ingresar y entonces registrar reportes.</p>
+                        <p>Para ingresar, hay que ir al menú principal ubicado en la esquina superior derecha, en la
+                          opción <strong>Ingresar</strong>.</p>
                         <img src="statics/bienvenida/ingresar_cuenta.PNG" width="474">
-                        <p>Una vez ahì se solicitara los datos de acceso de nombre de usuario y contraseña, los cuales fueron elegidos durante el registro.</p>
-                        <p>Si no se recuerda la contraseña, hay que ingresar alguna contraseña que se recuerde, donde si no es exactamente la contraseña, se mostrará un mensaje que indica que la contraseña es incorrecta, y se mostrará también un botón para recuperar la contraseña.</p>
+                        <p>Una vez ahì se solicitara los datos de acceso de nombre de usuario y contraseña, los cuales
+                          fueron elegidos durante el registro.</p>
+                        <p>Si no se recuerda la contraseña, hay que ingresar alguna contraseña que se recuerde, donde si
+                          no es exactamente la contraseña, se mostrará un mensaje que indica que la contraseña es
+                          incorrecta, y se mostrará también un botón para recuperar la contraseña.</p>
                         <img src="statics/bienvenida/iniciar_sesion_incorrecto.PNG" width="474">
-                        <p>Para recuperar la contraseña hay que pulsar el botón "Restablecer contraseña", el cual mostrará una ventana solicitado la dirección de correo que se utilizó para crear la cuenta. Se debe introducir la dirección de correo y a continuación pulsar el botón "Enviar correo de recuperación". Posteriormente hay que revisar el correo electronico, a donde llegará un enlace para asignar una nueva contraseña. Despues de cambiarla ya se debe poder acceder con la nueva contraseña.</p>
+                        <p>Para recuperar la contraseña hay que pulsar el botón "Restablecer contraseña", el cual
+                          mostrará una ventana solicitado la dirección de correo que se utilizó para crear la cuenta. Se
+                          debe introducir la dirección de correo y a continuación pulsar el botón "Enviar correo de
+                          recuperación". Posteriormente hay que revisar el correo electronico, a donde llegará un enlace
+                          para asignar una nueva contraseña. Despues de cambiarla ya se debe poder acceder con la nueva
+                          contraseña.</p>
                         <img src="statics/bienvenida/recuperar_contra.PNG" width="474">
                       </q-card-section>
                     </q-card>
@@ -377,9 +397,13 @@
                   >
                     <q-card>
                       <q-card-section>
-                        <p>Para poder visualizar la info de un reporte en particular se debe tener seleccionara la herramienta "info" de la barra de herramientas, en la parte superior izquierda.</p>
+                        <p>Para poder visualizar la info de un reporte en particular se debe tener seleccionara la
+                          herramienta "info" de la barra de herramientas, en la parte superior izquierda.</p>
                         <img src="statics/bienvenida/info.PNG" width="474">
-                        <br><p>Teniendo seleccionada la herramienta "info", se puede ir al mapa y dar click sobre cualquier punto para obtener la ficha de los detalles de dicho reporte, los cuales se mostraran en una ficha cuya esquina superior izquierda coincide con la ubicación del punto seleccionado</p>
+                        <br>
+                        <p>Teniendo seleccionada la herramienta "info", se puede ir al mapa y dar click sobre cualquier
+                          punto para obtener la ficha de los detalles de dicho reporte, los cuales se mostraran en una
+                          ficha cuya esquina superior izquierda coincide con la ubicación del punto seleccionado</p>
                         <img src="statics/bienvenida/info_ficha.PNG" width="474">
                       </q-card-section>
                     </q-card>
@@ -393,13 +417,23 @@
                   >
                     <q-card>
                       <q-card-section>
-                        <p>Se pueden crear reportes a partir de conocer la ubicación de la calle y número del lugar o calles y su calle de intersección.</p>
-                        <p>Para crear un nuevo reporte en este modo hay que seleccionar la herramienta de "Agrear reporte basado en domicilio" de la barra de herramientas.</p>
+                        <p>Se pueden crear reportes a partir de conocer la ubicación de la calle y número del lugar o
+                          calles y su calle de intersección.</p>
+                        <p>Para crear un nuevo reporte en este modo hay que seleccionar la herramienta de "Agrear
+                          reporte basado en domicilio" de la barra de herramientas.</p>
                         <img src="statics/bienvenida/nuevo_domicilio.PNG" width="474">
-                        <p>A continuación hay que llenar el formulario con los datos correspondientes a cada campo, dependiendo de las opciones seleccionadas se iran desplegando nuevos campos acorde a lo previamente seleccionado.</p>
-                        <p>En esta modalidad de registro, la ubicación espacial se logra a partir de los datos del domicilio. Para una mejor precisión es importante escribir el nombre de la calle completo y solo uno de estos dos: el número postal de la ubicación del caso, o una calle cercana que intersecte.</p>
-                        <p>Una vez se ha terminado de llenar los datos, se debe dar clic en el botón <strong>Guardar reporte</strong> y si todo es correcto, se almacenará el registro correspondiente en la base de datos.</p>
-                        <p>Nota: Los reportes nuevos no se reflejan en el mapa inmediatamente, hay que esperar unos segundos para su almacenamiento.</p>
+                        <p>A continuación hay que llenar el formulario con los datos correspondientes a cada campo,
+                          dependiendo de las opciones seleccionadas se iran desplegando nuevos campos acorde a lo
+                          previamente seleccionado.</p>
+                        <p>En esta modalidad de registro, la ubicación espacial se logra a partir de los datos del
+                          domicilio. Para una mejor precisión es importante escribir el nombre de la calle completo y
+                          solo uno de estos dos: el número postal de la ubicación del caso, o una calle cercana que
+                          intersecte.</p>
+                        <p>Una vez se ha terminado de llenar los datos, se debe dar clic en el botón <strong>Guardar
+                          reporte</strong> y si todo es correcto, se almacenará el registro correspondiente en la base
+                          de datos.</p>
+                        <p>Nota: Los reportes nuevos no se reflejan en el mapa inmediatamente, hay que esperar unos
+                          segundos para su almacenamiento.</p>
                       </q-card-section>
                     </q-card>
                   </q-expansion-item>
@@ -412,13 +446,22 @@
                   >
                     <q-card>
                       <q-card-section>
-                        <p>Se pueden crear reportes a partir de poner un marcador o pin directamente sobre el mapa, en los casos donde resulte más facil ubicar directamente en el mapa esta es la mejor opción.</p>
-                        <p>Para crear un nuevo reporte en este modo hay que seleccionar la herramienta de "Agrear reporte ubicando en el mapa" de la barra de herramientas.</p>
+                        <p>Se pueden crear reportes a partir de poner un marcador o pin directamente sobre el mapa, en
+                          los casos donde resulte más facil ubicar directamente en el mapa esta es la mejor opción.</p>
+                        <p>Para crear un nuevo reporte en este modo hay que seleccionar la herramienta de "Agrear
+                          reporte ubicando en el mapa" de la barra de herramientas.</p>
                         <img src="statics/bienvenida/nuevo_marcador.PNG" width="474">
-                        <p>A continuación hay que llenar el formulario con los datos correspondientes a cada campo, dependiendo de las opciones seleccionadas se iran desplegando nuevos campos acorde a lo previamente seleccionado.</p>
-                        <p>En esta modalidad de registro, Los datos de la ubicación del domicilio se obtienen a partir de una consulta espacial a partir de las coordenadas donde se haya hecho click sobre el mapa, y los datos referentes al domicilio se llenan automaticamente.</p>
-                        <p>Una vez se ha terminado de llenar los datos del reporte, se debe dar clic en el botón <strong>Guardar reporte</strong> y si todo es correcto, se almacenará el registro correspondiente en la base de datos.</p>
-                        <p>Nota: Los reportes nuevos no se reflejan en el mapa inmediatamente, hay que esperar unos segundos para su almacenamiento.</p>
+                        <p>A continuación hay que llenar el formulario con los datos correspondientes a cada campo,
+                          dependiendo de las opciones seleccionadas se iran desplegando nuevos campos acorde a lo
+                          previamente seleccionado.</p>
+                        <p>En esta modalidad de registro, Los datos de la ubicación del domicilio se obtienen a partir
+                          de una consulta espacial a partir de las coordenadas donde se haya hecho click sobre el mapa,
+                          y los datos referentes al domicilio se llenan automaticamente.</p>
+                        <p>Una vez se ha terminado de llenar los datos del reporte, se debe dar clic en el botón
+                          <strong>Guardar reporte</strong> y si todo es correcto, se almacenará el registro
+                          correspondiente en la base de datos.</p>
+                        <p>Nota: Los reportes nuevos no se reflejan en el mapa inmediatamente, hay que esperar unos
+                          segundos para su almacenamiento.</p>
                       </q-card-section>
                     </q-card>
                   </q-expansion-item>
@@ -478,7 +521,7 @@ export default {
       bienvenida_dialog: false,
       fecha_reporte_marcador: "",
       hora_reporte_marcador: "",
-      zoom: 13,
+      zoom: 15,
       center: [-103.38890075683594, 20.72561197927564],
       center3857: [-11268847.24, 2231060.47],
       geolocPosition: [-101.22977709999999, 19.6453138],
@@ -491,6 +534,7 @@ export default {
       tipos_servicio: undefined,
       estados_servicio: undefined,
       situaciones_peligro: undefined,
+      user_groups: [],
       reporte_marcador_data: {
         colonia: undefined, calle: undefined, numero: undefined, entre_interseccion: undefined,
         tipo: undefined, tipo_servicio: undefined, estado_servicio: undefined, estado_servicio_otro: undefined,
@@ -531,7 +575,7 @@ export default {
             console.log(response)
           })
           .catch(error => {
-            console.log(error)
+            //console.log(error)
           })
       }
     },
@@ -676,7 +720,7 @@ export default {
         axios.get(this.capasMapa[capa].url).then(response => {
           this.setCapaFeatures({capa: capa, features: response.data.features})
         }).catch(error => {
-          console.log(error)
+          //console.log(error)
         }).finally(() => {
           this.loadingBar.stop()
           this.setCapaTicked({capa: this.capasMapa[capa], visible: true})
@@ -707,7 +751,9 @@ export default {
                 console.log("reporte", response.data)
               })
           }
-        }).catch(error => console.log(error))
+        }).catch(error => {
+          //console.log(error)
+        })
       }
       if (this.herramientaActiva === 'agregar_marcador') {
         const coord = transform(evt.coordinate, 'EPSG:4326', 'EPSG:3857')
@@ -735,29 +781,39 @@ export default {
                 } else {
                   this.herramientaActiva = 'info'
                 }
-              }).catch(error => console.log(error))
+              }).catch(error => {
+                //console.log(error))
+              })
             }
-          }).catch(error => console.log(error))
+          }).catch(error => {
+          //console.log(error)
+        })
       }
     },
     getColonias() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/colonias/?municipio=120`).then(response => {
         this.colonias = response.data
         console.log("colonias", this.colonias)
-      }).catch(error => console.log(error))
+      }).catch(error => {
+        //console.log(error)
+      })
     },
     getTiposServicio() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/tipos-servicio/`).then(response => {
         this.tipos_servicio = response.data
         console.log("tipos_servicio", this.tipos_servicio)
-      }).catch(error => console.log(error))
+      }).catch(error => {
+        //console.log(error)
+      })
     },
     getEstadosServicio(val) {
       if (val && val < 1000000) {
         axios.get(`https://repvmz.maptitude.xyz/back/api/v1/estados-servicio/?tipo=${val}`).then(response => {
           this.estados_servicio = response.data
           console.log("estados_servicio", this.estados_servicio)
-        }).catch(error => console.log(error))
+        }).catch(error => {
+          //console.log(error)
+        })
       } else {
         this.estados_servicio = undefined
       }
@@ -766,7 +822,9 @@ export default {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/situaciones-peligro/`).then(response => {
         this.situaciones_peligro = response.data
         console.log("situaciones_peligrosas", this.situaciones_peligro)
-      }).catch(error => console.log(error))
+      }).catch(error => {
+        //console.log(error)
+      })
     },
     saveReporteMarcador() {
       this.$refs.form_reporte_marcador.validate().then(valid => {
@@ -796,7 +854,7 @@ export default {
             }
             this.herramientaActiva = 'info'
           }).catch(error => {
-            console.log(error)
+            //console.log(error)
           })
 
 
@@ -826,6 +884,10 @@ export default {
     }
   },
   mounted() {
+    if (this.$q.screen.width < 768) {
+      this.zoom = 13;
+    }
+
     this.loadingBar = this.$refs.bar
     axios.get('statics/zapopan.geojson').then(res => {
       console.log(res.data.features)
@@ -835,7 +897,24 @@ export default {
       this.getColonias()
       this.getTiposServicio()
       this.getSituacionesPeligrosas()
+
+      setTimeout(() => {
+        if (this.auth_user) {
+          const token = cookies.get("access_token")
+          axios.get(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-autenticado/${this.auth_user.pk}/`,
+            {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
+            this.user_groups = response.data.groups
+            console.log("user_groups: ", this.user_groups)
+          }).catch(error => {
+            //console.log(error)
+          })
+        }
+      }, 300);
+
+
     }).finally(() => {
+
+
       this.loadingBar.stop()
       if (!this.auth_logged) {
         this.bienvenida_dialog = true

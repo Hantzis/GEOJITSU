@@ -31,7 +31,8 @@
                 </q-avatar>
                 <q-item-section>Salir</q-item-section>
               </q-item>
-              <q-item v-if="!auth_logged" dense clickable v-close-popup style="padding: 0;" @click="create_account_dialog = true">
+              <q-item v-if="!auth_logged" dense clickable v-close-popup style="padding: 0;"
+                      @click="create_account_dialog = true">
                 <q-avatar>
                   <q-icon name="mdi-account-plus"/>
                 </q-avatar>
@@ -127,7 +128,8 @@
         <div class="absolute-bottom bg-transparent">
           <div class="text-right" style="font-size: 20px; font-weight: 300;">Ciudad÷nosotras</div>
           <div class="text-right" style="font-size: 16px; font-weight: 300;">Zapopan para nosotras</div>
-          <p style="margin-bottom: 2px; margin-top: 12px;">Instituto Municipal de las Mujeres Zapopanas para la Igualdad Sustantiva</p>
+          <p style="margin-bottom: 2px; margin-top: 12px;">Instituto Municipal de las Mujeres Zapopanas para la Igualdad
+            Sustantiva</p>
         </div>
 
       </q-img>
@@ -643,7 +645,7 @@ export default {
   watch: {
     auth_user() {
       if (this.auth_user.pk) {
-        console.log(this.auth_user);
+        // console.log(this.auth_user);
         this.getProfile(this.auth_user.pk)
       }
     },
@@ -673,6 +675,7 @@ export default {
             this.user_fecha_nacimiento = this.full_user_data.fecha_nacimiento.split("-").join('/')
           }
         }).catch(error => {
+          //console.log(error)
         })
       }
     },
@@ -741,25 +744,25 @@ export default {
         this.login_dialog = false
         this.user_fecha_nacimiento = ""
       }).catch(error => {
-        console.log(error && error.response && error.response.status === 401
+        /* console.log(error && error.response && error.response.status === 401
           ? 'Wrong e-mail or password'
           : 'Something went wrong'
-        );
+        ); */
         this.login_failure = true
       })
     },
     logout() {
       this.$auth.logout(
       ).then(() => {
-        console.log('You were logged out')
+        // console.log('You were logged out')
         this.logout_dialog = false
         this.user_fecha_nacimiento = ""
         this.herramientaActiva = "info"
       }).catch(error => {
-        console.log(error && error.response && error.response.status === 401
+        /* console.log(error && error.response && error.response.status === 401
           ? 'Wrong e-mail or password'
           : 'Something went wrong'
-        )
+        ) */
       })
     },
     open_resetpassword_dialog() {
@@ -812,14 +815,14 @@ export default {
                 this.login_password = this.new_user_data.password1
                 this.login()
               }).catch(error => {
-              console.log("registration error", error)
+              // console.log("registration error", error)
               if (error.response) {
                 this.registration_response_error = error.response.data
                 this.$refs.form_register.validate()
               }
             })
           } else {
-            console.log('error submit!!');
+            // console.log('error submit!!');
             return false;
           }
         }
@@ -845,30 +848,40 @@ export default {
     getEtnias() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/etnias/`).then(response => {
         this.etnias = response.data
-      }).catch(error => console.log(error))
+      }).catch(error => {
+        //console.log(error)
+      })
     },
     getMunicipios() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/municipios/`).then(response => {
         this.municipios = response.data
-      }).catch(error => console.log(error))
+      }).catch(error => {
+        //console.log(error)
+      })
     },
     getColonias(municipio) {
       if (municipio) {
         axios.get(`https://repvmz.maptitude.xyz/back/api/v1/colonias/?municipio=${municipio}`).then(response => {
           this.colonias = response.data
-        }).catch(error => console.log(error))
+        }).catch(error => {
+          //console.log(error)
+        })
       }
     },
     getDiscapacidades() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/discapacidades/`).then(response => {
         this.discapacidades = response.data
-      }).catch(error => console.log(error))
+      }).catch(error => {
+        //console.log(error)
+      })
     },
     getPaginas() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/pages/?type=home.StandardPage`).then(response => {
         this.paginas = response.data
-        console.log("paginas", this.paginas)
-      }).catch(error => console.log(error))
+        // console.log("paginas", this.paginas)
+      }).catch(error => {
+        //console.log(error)
+      })
     },
     getProfile(id) {
       const token = cookies.get("access_token");
@@ -879,7 +892,9 @@ export default {
           .then(response => {
             this.profile_dialog = false
             this.$auth.refreshToken().then(response => {
-            }).catch(error => console.log(error))
+            }).catch(error => {
+              //console.log(error)
+            })
           }).then(() => {
           this.cleanRegisterForm()
         })
@@ -896,8 +911,10 @@ export default {
         this.full_user_data.municipio = response.data.municipio
         this.full_user_data.colonia = response.data.colonia
         this.full_user_data.discapacidades = response.data.discapacidades
-        console.log(this.full_user_data)
-      }).catch(error => console.log(error))
+        // console.log(this.full_user_data)
+      }).catch(error => {
+        //console.log(error)
+      })
     },
     updateProfile() {
       const token = cookies.get("access_token")
@@ -913,10 +930,12 @@ export default {
               this.profile_dialog = false
               this.profileupdated_dialog = true
               this.$auth.refreshToken().then(response => {
-              }).catch(error => console.log(error))
+              }).catch(error => {
+                //console.log(error)
+              })
             })
         } else {
-          console.log('error submit!!');
+          // console.log('error submit!!');
           return false;
         }
       });
@@ -935,7 +954,9 @@ export default {
   mounted() {
     if (this.auth_logged) {
       this.$auth.refreshToken().then(response => {
-      }).catch(error => console.log(error))
+      }).catch(error => {
+        //console.log(error)
+      })
     }
     this.getMunicipios()
     this.getEtnias()
