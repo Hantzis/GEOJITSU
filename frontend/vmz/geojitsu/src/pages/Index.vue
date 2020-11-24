@@ -856,12 +856,11 @@ export default {
           }).catch(error => {
             //console.log(error)
           })
-
-
         } else {
           console.log('error submit!!');
           return false;
         }
+      }).catch(error => {
       });
     },
     getPaginaHome() {
@@ -912,9 +911,8 @@ export default {
       }, 300);
 
 
+    }).catch(error => {
     }).finally(() => {
-
-
       this.loadingBar.stop()
       if (!this.auth_logged) {
         this.bienvenida_dialog = true

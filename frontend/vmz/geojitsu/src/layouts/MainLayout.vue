@@ -826,14 +826,14 @@ export default {
             return false;
           }
         }
-      )
+      ).catch(error => {})
     },
     resetPassword() {
       axios.post("https://repvmz.maptitude.xyz/back/api/v1/auth/password/reset/", {email: this.reset_email})
         .then(response => {
           this.resetpassword_dialog = false
           this.resetpassworddone_dialog = true
-        })
+        }).catch(error => {})
     },
     changePassword() {
       const token = cookies.get("access_token");
@@ -843,7 +843,7 @@ export default {
         .then(response => {
           this.changepassword_dialog = false
           this.changepassworddone_dialog = true
-        })
+        }).catch(error => {})
     },
     getEtnias() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/etnias/`).then(response => {
@@ -938,7 +938,7 @@ export default {
           // console.log('error submit!!');
           return false;
         }
-      });
+      }).catch(error => {});
     },
     get_gravatar(email, argsize) {
       let mail = "default@gravatar.com"
