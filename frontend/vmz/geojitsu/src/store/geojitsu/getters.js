@@ -34,3 +34,7 @@ export const getHerramientaActiva = (state) => {
 export const getMapkey = (state) => {
   return state.mapkey
 }
+
+export const getUserGroups = (state) => {
+  return state.userGroups
+}

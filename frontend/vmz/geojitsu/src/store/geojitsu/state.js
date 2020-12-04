@@ -43,6 +43,7 @@ export default function () {
     ],
     herramientaActiva: "info",
     userData: undefined,
+    userGroups: [],
     mapkey: 0,
   }
 }

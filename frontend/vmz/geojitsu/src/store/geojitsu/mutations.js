@@ -35,6 +35,9 @@ export const mapkeyMutation = (state, value) => {
   state.mapkey = value
 }
 
+export const userGroupsMutation = (state, value) => {
+  state.userGroups = value
+}
 
 export const CapasTickedMutation = (state, value) => {
   for (let capa of state.capasMapa) {

@@ -645,8 +645,11 @@ export default {
   watch: {
     auth_user() {
       if (this.auth_user.pk) {
-        // console.log(this.auth_user);
+        console.log(this.auth_user);
+        console.log("si auth_user");
         this.getProfile(this.auth_user.pk)
+      } else {
+        console.log("no auth_user")
       }
     },
     'full_user_data.municipio': function (newVal, oldVal) {
@@ -687,7 +690,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getHerramientaActiva']),
+    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getHerramientaActiva', 'getUserGroups']),
     ...mapGetters('auth', ['logged', 'user']),
     auth_user: {
       get() {
@@ -705,6 +708,14 @@ export default {
       },
       set(value) {
         this.setHerramientaActiva(value)
+      }
+    },
+    userGroups: {
+      get() {
+        return this.getUserGroups
+      },
+      set(value) {
+        this.setUserGroups(value)
       }
     },
     showGISRibbon: {
@@ -726,7 +737,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions('geojitsu', ['GISRibbonIsOpenAction', 'setHerramientaActiva']),
+    ...mapActions('geojitsu', ['GISRibbonIsOpenAction', 'setHerramientaActiva', 'setUserGroups']),
     ...mapActions('auth', ['setUser']),
     openLogin() {
       // this.accountcreated_dialog = false
@@ -826,14 +837,16 @@ export default {
             return false;
           }
         }
-      ).catch(error => {})
+      ).catch(error => {
+      })
     },
     resetPassword() {
       axios.post("https://repvmz.maptitude.xyz/back/api/v1/auth/password/reset/", {email: this.reset_email})
         .then(response => {
           this.resetpassword_dialog = false
           this.resetpassworddone_dialog = true
-        }).catch(error => {})
+        }).catch(error => {
+      })
     },
     changePassword() {
       const token = cookies.get("access_token");
@@ -843,7 +856,8 @@ export default {
         .then(response => {
           this.changepassword_dialog = false
           this.changepassworddone_dialog = true
-        }).catch(error => {})
+        }).catch(error => {
+      })
     },
     getEtnias() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/etnias/`).then(response => {
@@ -856,7 +870,7 @@ export default {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/municipios/`).then(response => {
         this.municipios = response.data
       }).catch(error => {
-        //console.log(error)
+        console.log(error)
       })
     },
     getColonias(municipio) {
@@ -864,7 +878,7 @@ export default {
         axios.get(`https://repvmz.maptitude.xyz/back/api/v1/colonias/?municipio=${municipio}`).then(response => {
           this.colonias = response.data
         }).catch(error => {
-          //console.log(error)
+          console.log(error)
         })
       }
     },
@@ -872,19 +886,19 @@ export default {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/discapacidades/`).then(response => {
         this.discapacidades = response.data
       }).catch(error => {
-        //console.log(error)
+        console.log(error)
       })
     },
     getPaginas() {
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/pages/?type=home.StandardPage`).then(response => {
         this.paginas = response.data
-        // console.log("paginas", this.paginas)
       }).catch(error => {
-        //console.log(error)
+        console.log(error)
       })
     },
     getProfile(id) {
       const token = cookies.get("access_token");
+      /*
       if (this.new_user_data.username) {
         this.full_user_data = this.new_user_data
         axios.patch(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-autenticado/${this.auth_user.pk}/`,
@@ -898,7 +912,7 @@ export default {
           }).then(() => {
           this.cleanRegisterForm()
         })
-      }
+      }*/
       axios.get(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-autenticado/${id}/`,
         {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
         this.full_user_data.username = response.data.username
@@ -911,9 +925,10 @@ export default {
         this.full_user_data.municipio = response.data.municipio
         this.full_user_data.colonia = response.data.colonia
         this.full_user_data.discapacidades = response.data.discapacidades
-        // console.log(this.full_user_data)
+      }).then(response => {
+        this.getUserGroupsData()
       }).catch(error => {
-        //console.log(error)
+        console.log(error)
       })
     },
     updateProfile() {
@@ -938,7 +953,8 @@ export default {
           // console.log('error submit!!');
           return false;
         }
-      }).catch(error => {});
+      }).catch(error => {
+      });
     },
     get_gravatar(email, argsize) {
       let mail = "default@gravatar.com"
@@ -946,6 +962,19 @@ export default {
         mail = email
       }
       return 'https://www.gravatar.com/avatar/' + md5(mail.trim().toLowerCase(), 'hex') + '.jpg?s=' + argsize;
+    },
+    getUserGroupsData() {
+      if (this.auth_user) {
+        const token = cookies.get("access_token")
+        console.log("getUser", this.auth_user)
+        axios.get(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-autenticado/${this.auth_user.pk}/`,
+          {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
+          this.userGroups = response.data.groups
+          console.log("userGroups: ", this.userGroups)
+        }).catch(error => {
+          console.log(error)
+        })
+      }
     },
     testa(val) {
       alert(val);
@@ -962,6 +991,7 @@ export default {
     this.getEtnias()
     this.getDiscapacidades()
     this.getPaginas()
+
   }
 }
 </script>

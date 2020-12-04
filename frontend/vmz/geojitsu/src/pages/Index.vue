@@ -98,7 +98,7 @@
                       </q-table>
                       <div class="row q-pt-sm">
                         <q-select
-                          :readonly="!(selectedFeatureInfo.tipo === 'Servicios' && this.user_groups.includes(5)) && !(selectedFeatureInfo.tipo === 'Situaciones' && this.user_groups.includes(6))"
+                          :readonly="!(selectedFeatureInfo.tipo === 'Servicios' && this.userGroups.includes(5)) && !(selectedFeatureInfo.tipo === 'Situaciones' && this.userGroups.includes(6))"
                           v-model="selectedFeatureInfo.estatus"
                           :options="['Abierto', 'Atendiendo', 'Resuelto']"
                           label="Estatus" name="estatus" outlined class="full-width" behavior="menu"/>
@@ -534,7 +534,6 @@ export default {
       tipos_servicio: undefined,
       estados_servicio: undefined,
       situaciones_peligro: undefined,
-      user_groups: [],
       reporte_marcador_data: {
         colonia: undefined, calle: undefined, numero: undefined, entre_interseccion: undefined,
         tipo: undefined, tipo_servicio: undefined, estado_servicio: undefined, estado_servicio_otro: undefined,
@@ -553,12 +552,17 @@ export default {
     mapaBase() {
       this.$refs["olmap"].updateSize()
     },
+    homeData() {
+      if (this.homeData) {
+        if (!this.auth_logged) {
+          this.bienvenida_dialog = true
+        }
+      }
+    },
     selectedFeatures() {
-      console.log(this.selectedFeatures)
       if (this.selectedFeatures.length > 0 && this.herramientaActiva == 'info') {
         this.layers = [this.$refs.reportes[0]]
         this.position = transform(this.selectedFeatures[0].geometry.coordinates, 'EPSG:3857', 'EPSG:4326')
-        console.log(this.position)
       } else {
         this.selectedFeatureInfo = {}
       }
@@ -623,7 +627,7 @@ export default {
   },
   computed: {
     ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getHerramientaActiva', 'mapaBaseGetter', 'mapasBaseGetter',
-      'capasMapaGetter', 'getDrawerCapas', 'getMapkey']),
+      'capasMapaGetter', 'getDrawerCapas', 'getMapkey', 'getUserGroups']),
     ...mapGetters('auth', ['logged', 'user']),
     auth_user: {
       get() {
@@ -633,6 +637,14 @@ export default {
     auth_logged: {
       get() {
         return this.logged
+      }
+    },
+    userGroups: {
+      get() {
+        return this.getUserGroups
+      },
+      set(value) {
+        this.setUserGroups(value)
       }
     },
     showGISRibbon: {
@@ -691,7 +703,8 @@ export default {
     }
   },
   methods: {
-    ...mapActions('geojitsu', ['capasMapaAction', 'setCapa', 'setCapaTicked', 'setHerramientaActiva', 'setMapkey']),
+    ...mapActions('geojitsu', ['capasMapaAction', 'setCapa', 'setCapaTicked', 'setHerramientaActiva', 'setMapkey',
+      'setUserGroups']),
     getEntries(properties) {
       let limpio = [];
       limpio.push(["Fecha", properties.fecha]);
@@ -739,16 +752,12 @@ export default {
         const coord = transform(evt.coordinate, 'EPSG:4326', 'EPSG:3857')
         const viewResolution = /** @type {number} */ this.$refs.olview.$view.values_.resolution;
         let url = this.$refs.reportes[0].getFeatureInfoUrl(coord, viewResolution, 'EPSG:3857', {'INFO_FORMAT': 'application/json'})
-        console.log(url)
         axios.get(url).then(response => {
-          console.log(response)
-          console.log("aquii", response.data)
           if (response.data.numberReturned > 0) {
             this.selectedFeatures = response.data.features
             axios.get(`https://repvmz.maptitude.xyz/back/api/v1/reportes/${response.data.features[0].id.split(".")[1]}/`)
               .then(response => {
                 this.selectedFeatureInfo = response.data
-                console.log("reporte", response.data)
               })
           }
         }).catch(error => {
@@ -869,18 +878,8 @@ export default {
         .then(response => {
           console.log("response getPagina", response)
           this.homeData = response.data
-          response.data.items.forEach(row => {
-            console.log("row", row)
-          })
         })
     },
-    pointsStyleFunc() {
-      return (feature) => {
-        let img_url = "https://conflictossocioambientales.iies.unam.mx" + feature.values_.tipo[2]
-        let style = new Style({image: new Icon({src: img_url})})
-        return style
-      }
-    }
   },
   mounted() {
     if (this.$q.screen.width < 768) {
@@ -896,27 +895,9 @@ export default {
       this.getColonias()
       this.getTiposServicio()
       this.getSituacionesPeligrosas()
-
-      setTimeout(() => {
-        if (this.auth_user) {
-          const token = cookies.get("access_token")
-          axios.get(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-autenticado/${this.auth_user.pk}/`,
-            {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
-            this.user_groups = response.data.groups
-            console.log("user_groups: ", this.user_groups)
-          }).catch(error => {
-            //console.log(error)
-          })
-        }
-      }, 300);
-
-
     }).catch(error => {
     }).finally(() => {
       this.loadingBar.stop()
-      if (!this.auth_logged) {
-        this.bienvenida_dialog = true
-      }
     })
   }
 }

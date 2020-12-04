@@ -23,6 +23,10 @@ export const setMapkey = ({commit}, payload) => {
   commit('mapkeyMutation', payload)
 }
 
+export const setUserGroups = ({commit}, payload) => {
+  commit('userGroupsMutation', payload)
+}
+
 export const capasMapaAction = ({commit}, payload) => {
   console.log("capasMapaAction", payload)
   commit('capasMapaMutation', payload)
