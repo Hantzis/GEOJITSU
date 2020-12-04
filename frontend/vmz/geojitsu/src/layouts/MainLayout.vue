@@ -671,7 +671,7 @@ export default {
     profile_dialog() {
       if (this.profile_dialog) {
         const token = cookies.get("access_token")
-        axios.get(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-autenticado/${this.auth_user.pk}/`,
+        axios.get(`https://ciudadentrenosotras.maptitude.xyz/back/api/v1/usuarios-autenticado/${this.auth_user.pk}/`,
           {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
           this.full_user_data = response.data
           if (this.full_user_data.fecha_nacimiento) {
@@ -774,6 +774,8 @@ export default {
           ? 'Wrong e-mail or password'
           : 'Something went wrong'
         ) */
+      }).finally(() => {
+        this.userGroups = []
       })
     },
     open_resetpassword_dialog() {
@@ -817,7 +819,7 @@ export default {
       }
       this.$refs.form_register.validate().then(valid => {
           if (valid) {
-            axios.post("https://repvmz.maptitude.xyz/back/api/v1/auth/registration/", this.new_user_data)
+            axios.post("https://ciudadentrenosotras.maptitude.xyz/back/api/v1/auth/registration/", this.new_user_data)
               .then(response => {
                 this.create_account_dialog = false;
                 this.create_account_info_dialog = true;
@@ -841,7 +843,7 @@ export default {
       })
     },
     resetPassword() {
-      axios.post("https://repvmz.maptitude.xyz/back/api/v1/auth/password/reset/", {email: this.reset_email})
+      axios.post("https://ciudadentrenosotras.maptitude.xyz/back/api/v1/auth/password/reset/", {email: this.reset_email})
         .then(response => {
           this.resetpassword_dialog = false
           this.resetpassworddone_dialog = true
@@ -850,7 +852,7 @@ export default {
     },
     changePassword() {
       const token = cookies.get("access_token");
-      axios.post("https://repvmz.maptitude.xyz/back/api/v1/auth/password/change/",
+      axios.post("https://ciudadentrenosotras.maptitude.xyz/back/api/v1/auth/password/change/",
         {old_password: this.old_password, new_password1: this.new_password1, new_password2: this.new_password2},
         {headers: {'Authorization': `Bearer ${token}`}})
         .then(response => {
@@ -860,14 +862,14 @@ export default {
       })
     },
     getEtnias() {
-      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/etnias/`).then(response => {
+      axios.get(`https://ciudadentrenosotras.maptitude.xyz/back/api/v1/etnias/`).then(response => {
         this.etnias = response.data
       }).catch(error => {
         //console.log(error)
       })
     },
     getMunicipios() {
-      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/municipios/`).then(response => {
+      axios.get(`https://ciudadentrenosotras.maptitude.xyz/back/api/v1/municipios/`).then(response => {
         this.municipios = response.data
       }).catch(error => {
         console.log(error)
@@ -875,7 +877,7 @@ export default {
     },
     getColonias(municipio) {
       if (municipio) {
-        axios.get(`https://repvmz.maptitude.xyz/back/api/v1/colonias/?municipio=${municipio}`).then(response => {
+        axios.get(`https://ciudadentrenosotras.maptitude.xyz/back/api/v1/colonias/?municipio=${municipio}`).then(response => {
           this.colonias = response.data
         }).catch(error => {
           console.log(error)
@@ -883,14 +885,14 @@ export default {
       }
     },
     getDiscapacidades() {
-      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/discapacidades/`).then(response => {
+      axios.get(`https://ciudadentrenosotras.maptitude.xyz/back/api/v1/discapacidades/`).then(response => {
         this.discapacidades = response.data
       }).catch(error => {
         console.log(error)
       })
     },
     getPaginas() {
-      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/pages/?type=home.StandardPage`).then(response => {
+      axios.get(`https://ciudadentrenosotras.maptitude.xyz/back/api/v1/pages/?type=home.StandardPage`).then(response => {
         this.paginas = response.data
       }).catch(error => {
         console.log(error)
@@ -901,7 +903,7 @@ export default {
       /*
       if (this.new_user_data.username) {
         this.full_user_data = this.new_user_data
-        axios.patch(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-autenticado/${this.auth_user.pk}/`,
+        axios.patch(`https://ciudadentrenosotras.maptitude.xyz/back/api/v1/usuarios-autenticado/${this.auth_user.pk}/`,
           this.full_user_data, {headers: {'Authorization': `Bearer ${token}`}})
           .then(response => {
             this.profile_dialog = false
@@ -913,7 +915,7 @@ export default {
           this.cleanRegisterForm()
         })
       }*/
-      axios.get(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-autenticado/${id}/`,
+      axios.get(`https://ciudadentrenosotras.maptitude.xyz/back/api/v1/usuarios-autenticado/${id}/`,
         {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
         this.full_user_data.username = response.data.username
         this.full_user_data.first_name = response.data.first_name
@@ -938,7 +940,7 @@ export default {
       }
       this.$refs.form_profile.validate().then(valid => {
         if (valid) {
-          axios.patch(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-autenticado/${this.auth_user.pk}/`,
+          axios.patch(`https://ciudadentrenosotras.maptitude.xyz/back/api/v1/usuarios-autenticado/${this.auth_user.pk}/`,
             this.full_user_data, {headers: {'Authorization': `Bearer ${token}`}})
             .then(response => {
 
@@ -967,7 +969,7 @@ export default {
       if (this.auth_user) {
         const token = cookies.get("access_token")
         console.log("getUser", this.auth_user)
-        axios.get(`https://repvmz.maptitude.xyz/back/api/v1/usuarios-autenticado/${this.auth_user.pk}/`,
+        axios.get(`https://ciudadentrenosotras.maptitude.xyz/back/api/v1/usuarios-autenticado/${this.auth_user.pk}/`,
           {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
           this.userGroups = response.data.groups
           console.log("userGroups: ", this.userGroups)

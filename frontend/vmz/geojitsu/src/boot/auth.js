@@ -21,7 +21,7 @@ export default ({ Vue, router, store }) =>  new VueJwtAuth({
     drivers: {
       http: new AxiosHttpDriver({
         // Your API URL here
-        apiBaseURL: 'https://repvmz.maptitude.xyz/back/api/v1/auth/'
+        apiBaseURL: 'https://ciudadentrenosotras.maptitude.xyz/back/api/v1/auth/'
       })
     }
   }
