@@ -367,20 +367,20 @@ export default {
       console.log(this.herramientaActiva)
     },
     getColonias() {
-      axios.get(`https://ciudadentrenosotras.maptitude.xyz/back/api/v1/colonias/?municipio=120`).then(response => {
+      axios.get(`/back/api/v1/colonias/?municipio=120`).then(response => {
         this.colonias = response.data
         console.log("colonias", this.colonias)
       }).catch(error => console.log(error))
     },
     getTiposServicio() {
-      axios.get(`https://ciudadentrenosotras.maptitude.xyz/back/api/v1/tipos-servicio/`).then(response => {
+      axios.get(`/back/api/v1/tipos-servicio/`).then(response => {
         this.tipos_servicio = response.data
         console.log("tipos_servicio", this.tipos_servicio)
       }).catch(error => console.log(error))
     },
     getEstadosServicio(val) {
       if (val && val < 1000000) {
-        axios.get(`https://ciudadentrenosotras.maptitude.xyz/back/api/v1/estados-servicio/?tipo=${val}`).then(response => {
+        axios.get(`/back/api/v1/estados-servicio/?tipo=${val}`).then(response => {
           this.estados_servicio = response.data
           console.log("estados_servicio", this.estados_servicio)
         }).catch(error => console.log(error))
@@ -389,7 +389,7 @@ export default {
       }
     },
     getSituacionesPeligrosas() {
-      axios.get(`https://ciudadentrenosotras.maptitude.xyz/back/api/v1/situaciones-peligro/`).then(response => {
+      axios.get(`/back/api/v1/situaciones-peligro/`).then(response => {
         this.situaciones_peligro = response.data
         console.log("situaciones_peligrosas", this.situaciones_peligro)
       }).catch(error => console.log(error))
@@ -421,7 +421,7 @@ export default {
                 this.reporte_domicilio_data.reporta = this.auth_user.pk
                 console.log(this.reporte_domicilio_data)
                 this.token = cookies.get("access_token")
-                axios.post(`https://ciudadentrenosotras.maptitude.xyz/back/api/v1/reportes/`, this.reporte_domicilio_data,
+                axios.post(`/back/api/v1/reportes/`, this.reporte_domicilio_data,
                   {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
                   console.log(response.data)
                   this.reporte_agregado_dialog = true
