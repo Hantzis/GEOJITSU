@@ -5,7 +5,7 @@
         <q-btn dense flat round icon="menu" @click="left = !left"/>
 
         <q-toolbar-title>
-          Maptitude XYZ
+          Maptitud XYZ
         </q-toolbar-title>Zoom general
         <q-btn dense flat round icon="help" @click="testa('help')"/>
         <q-btn dense flat round icon="mdi-login" @click="testa('login')"/>
@@ -352,7 +352,7 @@
     <!--- <q-footer elevated class="bg-grey-8 text-white">
       <q-toolbar>
         <q-toolbar-title>
-          2020 &copy; Maptitude XYZ
+          2020 &copy; Maptitud XYZ
         </q-toolbar-title>
       </q-toolbar>
     </q-footer> -->

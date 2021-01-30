@@ -1,11 +1,11 @@
 {
   "name": "geojitsu",
   "version": "0.0.1",
-  "description": "A Quasar Framework app",
+  "description": "GeoJitsu",
   "productName": "GeoJitsu",
-  "cordovaId": "xyz.maptitude.quasar.app",
-  "capacitorId": "xyz.maptitude.quasar.app",
-  "author": "César Benjamín García Martínez <cesar.benjamin@maptitude.xyz>",
+  "cordovaId": "xyz.maptitud.quasar.app",
+  "capacitorId": "xyz.maptitud.quasar.app",
+  "author": "César Benjamín García Martínez <cesar.benjamin@maptitud.xyz>",
   "private": true,
   "scripts": {
     "eslint": "eslint --ext .js,.vue ./",

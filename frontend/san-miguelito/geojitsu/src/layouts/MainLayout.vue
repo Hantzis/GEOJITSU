@@ -5,7 +5,7 @@
         <q-btn dense flat round icon="menu" @click="left = !left"/>
 
         <q-toolbar-title>
-          Maptitude XYZ
+          Maptitud XYZ
         </q-toolbar-title>
         <q-btn v-if="this.$route.path==='/'" dense flat round
                :icon="showGISRibbon ? 'mdi-arrow-collapse-up' : 'mdi-arrow-collapse-down'"
@@ -113,7 +113,7 @@
       <q-toolbar style="min-height: 22px; font-size: 11px;">
           Geojitsu
         <q-space/>
-          2020 &copy; Maptitude XYZ
+          2020 &copy; Maptitud XYZ
       </q-toolbar>
     </q-footer> -->
 

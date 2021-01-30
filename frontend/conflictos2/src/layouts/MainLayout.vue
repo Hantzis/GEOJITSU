@@ -351,7 +351,7 @@
     <!--- <q-footer elevated class="bg-grey-8 text-white">
       <q-toolbar>
         <q-toolbar-title>
-          2020 &copy; Maptitude XYZ
+          2020 &copy; Maptitud XYZ
         </q-toolbar-title>
       </q-toolbar>
     </q-footer> -->

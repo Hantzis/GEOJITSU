@@ -117,9 +117,9 @@ module.exports = function (/* ctx */) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'Maptitude.XYZ',
-        short_name: 'Maptitude',
-        description: 'Maptitude XYZ',
+        name: 'Maptitud.XYZ',
+        short_name: 'Maptitud',
+        description: 'Maptitud XYZ',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
@@ -157,7 +157,7 @@ module.exports = function (/* ctx */) {
     // Full list of options: https://quasar.dev/quasar-cli/developing-cordova-apps/configuring-cordova
     cordova: {
       // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
-      id: 'xyz.maptitude.quasar.app'
+      id: 'xyz.maptitud.quasar.app'
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
