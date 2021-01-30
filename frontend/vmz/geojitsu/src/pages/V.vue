@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     getPaginas() {
-      axios.get("/back/api/v1/pages/?type=home.StandardPage&fields=*")
+      axios.get("https://api.nosotras.zapopan.gob.mx/api/v1/pages/?type=home.StandardPage&fields=*")
         .then(response => {
           console.log("response getPaginas", response)
           console.log("response urlpat", this.urlPath)

@@ -15,6 +15,14 @@
   <component name="ChangeListManager">
     <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/quasar.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/quasar.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/boot/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/boot/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/GISRibbon.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/GISRibbon.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/V.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/V.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -500,7 +508,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.serve">
+  <component name="RunManager" selected="npm.serve vmz">
     <configuration name="rest-api#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -589,17 +597,7 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="serve vcmz" type="js.build_tools.npm">
-      <package-json value="$PROJECT_DIR$/frontend/vcmz/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="serve" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="serve" type="js.build_tools.npm" nameIsGenerated="true">
+    <configuration name="serve vmz" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/frontend/vmz/geojitsu/package.json" />
       <command value="run" />
       <scripts>
@@ -617,8 +615,7 @@
       <item itemvalue="npm.serve casos_exito" />
       <item itemvalue="npm.serve conflictos" />
       <item itemvalue="npm.serve san-miguelito" />
-      <item itemvalue="npm.serve vcmz" />
-      <item itemvalue="npm.serve" />
+      <item itemvalue="npm.serve vmz" />
     </list>
     <recent_temporary>
       <list>
@@ -740,13 +737,7 @@
       <workItem from="1609901598500" duration="843000" />
       <workItem from="1611690754588" duration="1000000" />
       <workItem from="1611868828247" duration="1554000" />
-    </task>
-    <task id="LOCAL-00043" summary="m$">
-      <created>1600558808870</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1600558808870</updated>
+      <workItem from="1612038363128" duration="1938000" />
     </task>
     <task id="LOCAL-00044" summary="m$">
       <created>1600560418121</created>
@@ -1084,7 +1075,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611694690077</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="maptitud">
+      <created>1612038570369</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1612038570370</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1116,6 +1114,7 @@
     <MESSAGE value="mac" />
     <MESSAGE value="m$" />
     <MESSAGE value="Commit Clutch" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit Clutch" />
+    <MESSAGE value="maptitud" />
+    <option name="LAST_COMMIT_MESSAGE" value="maptitud" />
   </component>
 </project>
