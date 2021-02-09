@@ -14,15 +14,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/quasar.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/quasar.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/boot/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/boot/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/GISRibbon.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/GISRibbon.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/V.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/V.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/state.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -737,14 +738,13 @@
       <workItem from="1609901598500" duration="843000" />
       <workItem from="1611690754588" duration="1000000" />
       <workItem from="1611868828247" duration="1554000" />
-      <workItem from="1612038363128" duration="1938000" />
-    </task>
-    <task id="LOCAL-00044" summary="m$">
-      <created>1600560418121</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1600560418121</updated>
+      <workItem from="1612038363128" duration="4020000" />
+      <workItem from="1612127499624" duration="485000" />
+      <workItem from="1612300882935" duration="402000" />
+      <workItem from="1612301316022" duration="5872000" />
+      <workItem from="1612558512408" duration="1261000" />
+      <workItem from="1612798758520" duration="1615000" />
+      <workItem from="1612887787982" duration="1443000" />
     </task>
     <task id="LOCAL-00045" summary="m$">
       <created>1600571986075</created>
@@ -1082,7 +1082,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612038570370</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="maptitud">
+      <created>1612040492662</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1612040492662</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
