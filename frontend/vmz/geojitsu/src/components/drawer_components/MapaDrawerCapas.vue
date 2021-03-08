@@ -46,6 +46,7 @@
           </q-input> -->
 
           <q-tree
+            no-connectors
             class="q-pt-xs capas-qtree"
             :nodes="capasMapa"
             node-key="value"

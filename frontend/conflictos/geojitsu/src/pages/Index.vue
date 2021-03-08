@@ -251,7 +251,7 @@ export default {
     },
     pointsStyleFunc() {
       return (feature) => {
-        let img_url = "https://conflictossocioambientales.iies.unam.mx" + feature.values_.tipo[2]
+        let img_url = "https://conflictossocioambientales.iies.unam.mx" + feature.values_.tipo_icon_url
         let style = new Style({image: new Icon({src: img_url})})
         /*let baseStyle = new Style({
           image: new Circle({
