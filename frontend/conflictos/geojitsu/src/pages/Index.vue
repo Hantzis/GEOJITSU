@@ -2,93 +2,126 @@
   <q-page>
     <q-layout view="lHh Lpr lff" container :style="{height: screenHeight}">
       <q-header>
-        <GISRibbon/>
       </q-header>
 
       <mapa-drawer-capas/>
 
       <q-page-container>
         <q-page>
-          <div class="row">
-            <div class="col" :style="{'min-height': mapHeight}">
-              <vl-map @click="clic" ref="olmap" :load-tiles-while-animating="true" :load-tiles-while-interacting="true"
-                      data-projection="EPSG:4326"
-                      :style="{'min-height': 'inherit', 'max-height': '1px', 'width': '100%', 'background-color': mapaBase.bgcolor}">
-                <vl-view ref="map_view" :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation"></vl-view>
-                <vl-geoloc @update:position="geolocPosition = $event">
-                  <template slot-scope="geoloc">
-                    <vl-feature v-if="geoloc.position" id="position-feature">
-                      <vl-geom-point :coordinates="geoloc.position"></vl-geom-point>
-                      <vl-style-box>
-                        <vl-style-icon
-                          src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png"
-                          :scale="0.1" :anchor="[0.5, 1]"></vl-style-icon>
-                      </vl-style-box>
-                    </vl-feature>
-                  </template>
-                </vl-geoloc>
-                <vl-layer-tile>
-                  <vl-source-xyz
-                    :url="mapaBase.url"
-                    attributions="Mapbox, <a href='https://www.saeba.click' target='_blank'>Saeba</a>"/>
-                </vl-layer-tile>
 
-                <div :key="mapkey">
-                  <div v-for="(capa, idx) of capasMapa" :key="capa.value">
-                    <vl-layer-tile v-if="capa.type==='wms'" :opacity="capa.opacity" :visible="capa.visible">
-                      <vl-source-wms
-                        :url="capa.url"
-                        :format="capa.format"
-                        :server_type="capa.server_type"
-                        :layers="capa.layers"
-                        :attributions="capa.attribution"
-                        :ext-params="capa.params"/>
+          <q-tabs
+            v-model="activeTab"
+            dense
+            class="bg-grey-4 text-grey-7"
+            active-color="grey-9"
+            indicator-color="primary"
+            active-bg-color="grey-1"
+            align="left">
+            <q-tab v-for="(tab, index) in GISRibbonEnabledTabs" :key="index" :name="tab[0]" :label="tab[1].label"
+                   class="q-tab--no-caps tabs-title" @click="showGISRibbon = true"/>
+          </q-tabs>
+
+          <q-tab-panels v-model="activeTab" class="bg-grey-1 text-grey-9">
+
+            <q-tab-panel name="mapa" class="no-padding">
+              <GISRibbon v-show="showGISRibbon"/>
+
+              <q-separator color="grey-5"/>
+
+              <div class="row">
+                <div class="col" :style="{'min-height': mapHeight}">
+                  <vl-map @click="clic" ref="olmap" :load-tiles-while-animating="true"
+                          :load-tiles-while-interacting="true"
+                          data-projection="EPSG:4326"
+                          :style="{'min-height': 'inherit', 'max-height': '1px', 'width': '100%', 'background-color': mapaBase.bgcolor}">
+                    <vl-view ref="map_view" :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation"></vl-view>
+                    <vl-geoloc @update:position="geolocPosition = $event">
+                      <template slot-scope="geoloc">
+                        <vl-feature v-if="geoloc.position" id="position-feature">
+                          <vl-geom-point :coordinates="geoloc.position"></vl-geom-point>
+                          <vl-style-box>
+                            <vl-style-icon
+                              src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png"
+                              :scale="0.1" :anchor="[0.5, 1]"></vl-style-icon>
+                          </vl-style-box>
+                        </vl-feature>
+                      </template>
+                    </vl-geoloc>
+                    <vl-layer-tile>
+                      <vl-source-xyz
+                        :url="mapaBase.url"
+                        attributions="Mapbox, <a href='https://www.saeba.click' target='_blank'>Saeba</a>"/>
                     </vl-layer-tile>
-                    <vl-layer-vector v-if="capa.type==='vector'" :opacity="capa.opacity" :visible="capa.visible">
-                      <vl-source-vector :loaderFactory="loaderFactory(idx)" :features="capa.features"
-                                        :server_type="capa.server_type"
-                                        :attributions="capa.attribution"/>
-                      <vl-style-func :factory="pointsStyleFunc"/>
-                    </vl-layer-vector>
-                  </div>
-                </div>
 
-                <vl-interaction-select :features.sync="conflictos_selectedFeatures">
-                  <vl-overlay v-if="position && conflictos_selectedFeatures.length > 0" :position="position" :auto-pan="true"
-                              style="background: white; padding: 8px">
-                    <div style="max-width: 300px; min-width: 300px;">
-                      <q-table
-                        class="detalles"
-                        style="max-height: 400px; max-width: 300px"
-                        :title="conflictos_selectedFeatures[0].properties.tipo[1] + ' (id:' + conflictos_selectedFeatures[0].properties.pk + ')'"
-                        square
-                        wrap-cells
-                        dense
-                        :rows-per-page-options="[15]"
-                        virtual-scroll
-                        separator="cell"
-                        hide-bottom
-                        :data="getEntries(conflictos_selectedFeatures[0].properties)"
-                      >
-                        <template v-slot:header>
-                          <q-th colspan="2" align="left">
-                            <q-td style="padding: 0">{{ conflictos_selectedFeatures[0].properties.resumen }}</q-td>
-                          </q-th>
-                        </template>
-                        <template v-slot:top-right>
-                          <q-btn flat dense size="sm" style="margin-right: -11px;">
-                            <q-icon name="close" @click="position = undefined; conflictos_selectedFeatures = []"/>
-                          </q-btn>
-                        </template>
-                      </q-table>
+                    <div :key="mapkey">
+                      <div v-for="(capa, idx) of capasMapa" :key="capa.value">
+                        <vl-layer-tile v-if="capa.type==='wms'" :opacity="capa.opacity" :visible="capa.visible">
+                          <vl-source-wms
+                            :url="capa.url"
+                            :format="capa.format"
+                            :server_type="capa.server_type"
+                            :layers="capa.layers"
+                            :attributions="capa.attribution"
+                            :ext-params="capa.params"/>
+                        </vl-layer-tile>
+                        <vl-layer-vector v-if="capa.type==='vector'" :opacity="capa.opacity" :visible="capa.visible">
+                          <vl-source-vector :loaderFactory="loaderFactory(idx)" :features="capa.features"
+                                            :server_type="capa.server_type"
+                                            :attributions="capa.attribution"/>
+                          <vl-style-func :factory="pointsStyleFunc"/>
+                        </vl-layer-vector>
+                      </div>
                     </div>
-                  </vl-overlay>
-                </vl-interaction-select>
-              </vl-map>
 
-            </div>
+                    <vl-interaction-select :features.sync="conflictos_selectedFeatures">
+                      <vl-overlay v-if="position && conflictos_selectedFeatures.length > 0" :position="position"
+                                  :auto-pan="true"
+                                  style="background: white; padding: 8px">
+                        <div style="max-width: 300px; min-width: 300px;">
+                          <q-table
+                            class="detalles"
+                            style="max-height: 400px; max-width: 300px"
+                            :title="conflictos_selectedFeatures[0].properties.tipo[1] + ' (id:' + conflictos_selectedFeatures[0].properties.pk + ')'"
+                            square
+                            wrap-cells
+                            dense
+                            :rows-per-page-options="[15]"
+                            virtual-scroll
+                            separator="cell"
+                            hide-bottom
+                            :data="getEntries(conflictos_selectedFeatures[0].properties)"
+                          >
+                            <template v-slot:header>
+                              <q-th colspan="2" align="left">
+                                <q-td style="padding: 0">{{ conflictos_selectedFeatures[0].properties.resumen }}</q-td>
+                              </q-th>
+                            </template>
+                            <template v-slot:top-right>
+                              <q-btn flat dense size="sm" style="margin-right: -11px;">
+                                <q-icon name="close" @click="position = undefined; conflictos_selectedFeatures = []"/>
+                              </q-btn>
+                            </template>
+                          </q-table>
+                        </div>
+                      </vl-overlay>
+                    </vl-interaction-select>
+                  </vl-map>
+                </div>
+              </div>
 
-          </div>
+            </q-tab-panel>
+
+            <q-tab-panel name="herramientas" class="no-padding">
+              <div class="row q-pa-md">
+                <div class="col">
+                  <p>fjdlksjfk</p>
+                </div>
+              </div>
+            </q-tab-panel>
+
+          </q-tab-panels>
+
+
         </q-page>
       </q-page-container>
     </q-layout>
@@ -123,6 +156,7 @@ export default {
   components: {MapaDrawerCapas, GISRibbon},
   data() {
     return {
+      activeTab: 'mapa',
       loadingBar: undefined,
       clickCoords: undefined,
       position: undefined,
@@ -139,6 +173,11 @@ export default {
       conflictos_styles: {},
       drawer_capas: true,
       mapkey: 0,
+      GISRibbonTabs: {
+        proyecto: {label: "Proyecto", is_enabled: false},
+        mapa: {label: "Mapa", is_enabled: true},
+        herramientas: {label: "Herramientas", is_enabled: true},
+      }
     }
   },
   watch: {
@@ -181,6 +220,9 @@ export default {
     showGISRibbon: {
       get() {
         return this.GISRibbonIsOpenGetter
+      },
+      set(value) {
+        this.GISRibbonIsOpenAction(value)
       }
     },
     mapaBase: {
@@ -210,15 +252,24 @@ export default {
     },
     mapHeight() {
       let ribbon_height = 87
-      if (this.showGISRibbon) ribbon_height = 180
+      if (this.showGISRibbon) ribbon_height = 172
       return this.$q.screen.height - ribbon_height + "px"
     },
     screenHeight() {
       return this.$q.screen.height - 50 + "px"
+    },
+    GISRibbonEnabledTabs() {
+      let enabled_tabs = [];
+      for (let tab of Object.entries(this.GISRibbonTabs)) {
+        if (tab[1].is_enabled) {
+          enabled_tabs.push(tab)
+        }
+      }
+      return enabled_tabs
     }
   },
   methods: {
-    ...mapActions('geojitsu', ['capasMapaAction', 'setCapaFeatures', 'setCapaTicked']),
+    ...mapActions('geojitsu', ['capasMapaAction', 'setCapaFeatures', 'setCapaTicked', 'GISRibbonIsOpenAction']),
     getEntries(properties) {
       let limpio = []
       Object.entries(properties).forEach((row) => {
@@ -227,7 +278,7 @@ export default {
             row[1] = row[1].join(", ")
           }
           row[0] = row[0].split("_").join(" ")
-          if (row[0] === 'secretarias')  row[0] = 'secretarías'
+          if (row[0] === 'secretarias') row[0] = 'secretarías'
           limpio.push(row)
         }
       })

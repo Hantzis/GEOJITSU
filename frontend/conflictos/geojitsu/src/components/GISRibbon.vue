@@ -1,83 +1,21 @@
 <template>
-  <div>
-    <q-tabs
-      v-model="activeTab"
-      dense
-      class="bg-grey-4 text-grey-7"
-      active-color="grey-9"
-      indicator-color="primary"
-      active-bg-color="grey-1"
-      align="left">
-      <q-tab v-for="(tab, index) in GISRibbonEnabledTabs" :key="index" :name="tab[0]" :label="tab[1].label"
-             class="q-tab--no-caps tabs-title" @click="showGISRibbon = true"/>
-    </q-tabs>
+    <div class="row no-wrap bg-grey-1 text-grey-9">
+      <q-separator vertical/>
 
-    <q-tab-panels v-show="showGISRibbon" v-model="activeTab" class="bg-grey-1 text-grey-9">
+      <mapa-bloque-mapa-base/>
 
-      <q-tab-panel name="proyecto" class="no-padding">
-        <div class="row no-wrap">
-          <div class="col-auto">
-            <barra-visualizacion/>
-            <barra-visualizacion/>
-            <div class="row no-wrap">
-              <div class="col">
-                Panel de datos
-              </div>
-              <div class="col">
-                <q-btn dense size="xs" flat icon="mdi-arrow-bottom-right"/>
-              </div>
-            </div>
-          </div>
-          <q-separator vertical style="flex-shrink: 0"/>
-          <div class="col-auto">
-            <barra-visualizacion/>
-            <barra-visualizacion/>
-          </div>
-        </div>
+      <q-separator vertical/>
 
-      </q-tab-panel>
+      <mapa-bloque-capas/>
 
-      <q-tab-panel name="mapa" class="no-padding">
-        <div class="row no-wrap">
-          <q-separator vertical/>
+      <q-separator vertical/>
 
-          <mapa-bloque-principal/>
-
-          <q-separator vertical/>
-
-          <mapa-bloque-seleccion/>
-
-          <q-separator vertical/>
-
-          <mapa-bloque-capas/>
-
-          <q-separator vertical/>
-
-          <mapa-bloque-mapa-base />
-
-          <q-separator vertical/>
-
-        </div>
-
-      </q-tab-panel>
-
-      <q-tab-panel name="herramientas" class="no-padding">
-        <div class="row no-wrap" style="padding: 46.5px;">
-        </div>
-
-      </q-tab-panel>
-
-    </q-tab-panels>
-    <q-separator color="grey-5"/>
-  </div>
+    </div>
 </template>
 
 <script>
 import {mapActions, mapGetters} from 'vuex'
 
-import BarraVisualizacion from "components/gisribbon_components/mapa/BarraVisualizacion";
-import MapaBloquePrincipal from "./gisribbon_components/mapa/MapaBloquePrincipal";
-import MapaBloqueSeleccion from "./gisribbon_components/mapa/MapaBloqueSeleccion";
 import MapaBloqueCapas from "components/gisribbon_components/mapa/MapaBloqueCapas";
 import MapaBloqueMapaBase from "components/gisribbon_components/mapa/MapaBloqueMapaBase";
 
@@ -86,9 +24,6 @@ export default {
   // eslint-disable-next-line vue/no-unused-components
   components: {
     MapaBloqueCapas,
-    MapaBloquePrincipal,
-    MapaBloqueSeleccion,
-    BarraVisualizacion,
     MapaBloqueMapaBase,
   },
   data() {
