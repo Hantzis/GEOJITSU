@@ -14,12 +14,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/GISRibbonBak.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/GISRibbon.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/GISRibbon.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/gisribbon_components/mapa/MapaBloqueCapas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/gisribbon_components/mapa/MapaBloqueCapas.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/gisribbon_components/mapa/MapaBloqueMapaBase.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/gisribbon_components/mapa/MapaBloqueMapaBase.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/layouts/MainLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/layouts/MainLayout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/drawer_components/MapaDrawerCapas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/drawer_components/MapaDrawerCapas.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/pages/Index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -751,14 +747,9 @@
       <workItem from="1614359465504" duration="597000" />
       <workItem from="1614620981887" duration="17000" />
       <workItem from="1615222151236" duration="4472000" />
-      <workItem from="1615316128782" duration="4958000" />
-    </task>
-    <task id="LOCAL-00047" summary="m$">
-      <created>1600712756621</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1600712756621</updated>
+      <workItem from="1615316128782" duration="12823000" />
+      <workItem from="1615393008715" duration="279000" />
+      <workItem from="1615393301350" duration="514000" />
     </task>
     <task id="LOCAL-00048" summary="m$">
       <created>1600714905085</created>
@@ -1096,7 +1087,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615227023525</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="conflictos cambios">
+      <created>1615326551627</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1615326551628</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1129,6 +1127,7 @@
     <MESSAGE value="m$" />
     <MESSAGE value="Commit Clutch" />
     <MESSAGE value="maptitud" />
-    <option name="LAST_COMMIT_MESSAGE" value="maptitud" />
+    <MESSAGE value="conflictos cambios" />
+    <option name="LAST_COMMIT_MESSAGE" value="conflictos cambios" />
   </component>
 </project>

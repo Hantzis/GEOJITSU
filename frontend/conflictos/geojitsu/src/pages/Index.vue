@@ -4,8 +4,6 @@
       <q-header>
       </q-header>
 
-      <mapa-drawer-capas/>
-
       <q-page-container>
         <q-page>
 
@@ -106,8 +104,13 @@
                       </vl-overlay>
                     </vl-interaction-select>
                   </vl-map>
+
                 </div>
               </div>
+
+              <mapa-drawer-capas/>
+
+
 
             </q-tab-panel>
 
