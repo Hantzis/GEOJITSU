@@ -41,18 +41,22 @@
                                 :style="{'min-height': 'inherit', 'max-height': '1px', 'width': '100%', 'background-color': mapaBase.bgcolor}">
                           <vl-view ref="map_view" :zoom.sync="zoom" :center.sync="center"
                                    :rotation.sync="rotation"></vl-view>
+
+                          <!--
                           <vl-geoloc @update:position="geolocPosition = $event">
                             <template slot-scope="geoloc">
                               <vl-feature v-if="geoloc.position" id="position-feature">
                                 <vl-geom-point :coordinates="geoloc.position"></vl-geom-point>
                                 <vl-style-box>
                                   <vl-style-icon
-                                    src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png"
-                                    :scale="0.1" :anchor="[0.5, 1]"></vl-style-icon>
+                                    src="/statics/icons/Map-Marker.png"
+                                    :scale="0.2" :anchor="[0.5, 1]"></vl-style-icon>
                                 </vl-style-box>
                               </vl-feature>
                             </template>
                           </vl-geoloc>
+                          -->
+
                           <vl-layer-tile>
                             <vl-source-xyz
                               :url="mapaBase.url"
@@ -61,7 +65,7 @@
 
                           <div :key="mapkey">
                             <div v-for="(capa, idx) of capasMapa" :key="capa.value">
-                              <vl-layer-tile v-if="capa.type==='wms'" :opacity="capa.opacity" :visible="capa.visible" >
+                              <vl-layer-tile v-if="capa.type==='wms'" :opacity="capa.opacity" :visible="capa.visible">
                                 <vl-source-wms
                                   :url="capa.url"
                                   :format="capa.format"
@@ -74,7 +78,7 @@
                               </vl-layer-tile>
                               <vl-layer-vector v-if="capa.type==='vector'" :opacity="capa.opacity"
                                                :visible="capa.visible">
-                                <vl-source-vector :loaderFactory="loaderFactory(idx)" :features="capa.features"
+                                <vl-source-vector :loaderFactory="loaderFactory(idx)" :url="capa.url"
                                                   :attributions="capa.attribution"/>
                                 <vl-style-func :factory="pointsStyleFunc"/>
                               </vl-layer-vector>
@@ -101,7 +105,8 @@
                                 >
                                   <template v-slot:header>
                                     <q-th colspan="2" align="left">
-                                      <q-td style="padding: 0">{{ conflictos_selectedFeatures[0]['properties']['resumen'] }}
+                                      <q-td style="padding: 0">
+                                        {{ conflictos_selectedFeatures[0]['properties']['resumen'] }}
                                       </q-td>
                                     </q-th>
                                   </template>
@@ -305,16 +310,19 @@ export default {
       return limpio
     },
     loaderFactory(capa) {
-      if (this.capasMapa[capa].features.length == 0) {
+      if (this.capasMapa[capa].features.length === 0) {
         axios.get(this.capasMapa[capa].url).then(response => {
           console.log("geojson", capa, response)
           this.setCapaFeatures({capa: capa, features: response.data.features})
-        }).catch(error => {
-          console.log(error)
-        }).finally(() => {
+        }).then(() => {
           this.loadingBar.stop()
           this.setCapaTicked({capa: this.capasMapa[capa], visible: true})
+        }).catch(error => {
+          console.log(error)
         })
+      } else {
+        if (this.loadingBar)
+          this.loadingBar.stop()
       }
     },
     clic(evt) {
@@ -323,6 +331,7 @@ export default {
     },
     pointsStyleFunc() {
       return (feature) => {
+        console.log(feature)
         let img_url = "https://conflictossocioambientales.iies.unam.mx" + feature.values_.tipo_icon_url
         let style = new Style({image: new Icon({src: img_url})})
         /*let baseStyle = new Style({

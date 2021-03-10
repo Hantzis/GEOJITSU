@@ -12,7 +12,7 @@ export const mapaBaseAction = ({commit}, payload) => {
 }
 
 export const capasMapaAction = ({commit}, payload) => {
-  console.log("capasMapaAction", payload)
+  // console.log("capasMapaAction", payload)
   commit('capasMapaMutation', payload)
 }
 
@@ -46,6 +46,6 @@ export const bajarCapaAction  = ({commit}, payload) => {
 
 
 export const setCapaFeatures = ({commit}, payload) => {
-  console.log("setCapaFeatures", payload)
+  // console.log("setCapaFeatures", payload)
   commit('CapaSetFeaturesMutation', payload)
 }
