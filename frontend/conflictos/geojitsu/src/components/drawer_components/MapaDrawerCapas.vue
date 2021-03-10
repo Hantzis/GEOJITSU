@@ -7,7 +7,7 @@
     :breakpoint="319"
     overlay
   >
-    <q-layout view="lHh lpr lFf" :style="{'min-height': mapHeight, 'max-height': mapHeight}">
+    <q-layout view="lHh lpr lFf" container >
       <q-header>
         <q-bar class="bg-grey-4 text-grey-9">
           <q-icon name="mdi-layers-triple"/>
@@ -20,12 +20,8 @@
             </q-tooltip>
           </q-btn>
         </q-bar>
-      </q-header>
 
-      <q-page-container>
-        <q-page style="height: inherit; min-height: inherit">
-
-          <q-input
+        <q-input
             ref="filter"
             square
             outlined
@@ -33,10 +29,12 @@
             label="Filtrar"
             style="padding-right: 0px;"
             dense
+            data-background-color="red"
+            bg-color="grey-5"
           >
             <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px" anchor="top middle"
                        self="bottom middle">
-              Listar solo las capas que coinciden con la busqueda del filtro
+              Listar las capas que coincidan con la busqueda
             </q-tooltip>
             <template v-slot:prepend>
               <q-icon name="mdi-filter"/>
@@ -46,6 +44,10 @@
             </template>
           </q-input>
 
+      </q-header>
+
+      <q-page-container>
+        <q-page>
           <q-tree
             class="q-pt-xs capas-qtree"
             :nodes="capasMapa"
@@ -159,8 +161,8 @@ export default {
       }
     },
     mapHeight() {
-      let ribbon_height = 93
-      if (this.showGISRibbon) ribbon_height = 180
+      let ribbon_height = 87
+      if (this.showGISRibbon) ribbon_height = 172
       return this.$q.screen.height - ribbon_height + "px"
     },
   },

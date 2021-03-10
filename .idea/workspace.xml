@@ -15,9 +15,37 @@
   <component name="ChangeListManager">
     <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="maptitud">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/babel.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/jsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/jsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/nnn.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/nnn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/assets/quasar-logo-full.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/assets/quasar-logo-full.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/assets/sad.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/assets/sad.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/boot/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/boot/axios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/GISRibbon.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/GISRibbon.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/drawer_components/MapaDrawerCapas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/drawer_components/MapaDrawerCapas.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/gisribbon_components/mapa/BarraVisualizacion.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/gisribbon_components/mapa/BarraVisualizacion.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/gisribbon_components/mapa/BotonBarraHerramientas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/gisribbon_components/mapa/BotonBarraHerramientas.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/gisribbon_components/mapa/MapaBloqueCapas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/gisribbon_components/mapa/MapaBloqueCapas.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/gisribbon_components/mapa/MapaBloqueMapaBase.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/gisribbon_components/mapa/MapaBloqueMapaBase.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/gisribbon_components/mapa/MenuBarraHerramientas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/gisribbon_components/mapa/MenuBarraHerramientas.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/thrash/BarraHerramientasBak.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/thrash/BarraHerramientasBak.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/thrash/BarraHerramientasPrincipal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/thrash/BarraHerramientasPrincipal.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/css/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/css/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/css/quasar.variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/css/quasar.variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/index.template.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/index.template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/layouts/CopyMainLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/layouts/CopyMainLayout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/layouts/MainLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/layouts/MainLayout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/pages/Error404.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/pages/Error404.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/pages/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/geojitsu/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/geojitsu/state.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/drawer_components/MapaDrawerCapas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/drawer_components/MapaDrawerCapas.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/module-example/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/module-example/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/module-example/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/module-example/state.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/store-flag.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/store-flag.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +104,7 @@
     <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.path.for.package.stylelint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.eslint" value="" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.stylelint" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />

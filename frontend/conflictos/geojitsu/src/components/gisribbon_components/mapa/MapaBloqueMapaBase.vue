@@ -2,7 +2,7 @@
   <div class="col-auto">
     <div class="row">
       <div class="col">
-        <div class="row q-pa-xs" style="padding-bottom: 12px;">
+        <div class="row q-pa-xs">
           <q-select outlined name="base" label="Mapa base" :options="mapasBase" v-model="mapaBase"
                     emit-value map-options>
             <template v-slot:prepend>
