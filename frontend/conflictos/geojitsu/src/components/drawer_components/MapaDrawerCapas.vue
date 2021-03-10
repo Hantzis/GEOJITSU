@@ -7,9 +7,9 @@
     :breakpoint="319"
     overlay
   >
-    <q-layout view="lHh lpr lFf" container >
-      <q-header>
-        <q-bar class="bg-grey-4 text-grey-9">
+    <div class="absolute-top">
+      <div style="padding-top: 1px; background-color: #888;">
+        <q-bar class="bg-grey-4 text-grey-9" style="padding-top: 21px; padding-bottom: 21px;">
           <q-icon name="mdi-layers-triple"/>
           <div>Capas</div>
           <q-space/>
@@ -20,65 +20,67 @@
             </q-tooltip>
           </q-btn>
         </q-bar>
+      </div>
 
-        <q-input
-            ref="filter"
-            square
-            outlined
-            v-model="filter"
-            label="Filtrar"
-            style="padding-right: 0px;"
-            dense
-            data-background-color="red"
-            bg-color="grey-5"
-          >
-            <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px" anchor="top middle"
-                       self="bottom middle">
-              Listar las capas que coincidan con la busqueda
-            </q-tooltip>
-            <template v-slot:prepend>
-              <q-icon name="mdi-filter"/>
-            </template>
-            <template v-slot:append>
-              <q-icon v-if="filter !== ''" name="clear" class="cursor-pointer" @click="resetFilter"/>
-            </template>
-          </q-input>
+      <q-input
+        ref="filter"
+        square
+        outlined
+        v-model="filter"
+        label="Filtrar"
+        style="padding-right: 1px; padding-right: 1px;"
+        dense
+      >
+        <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px" anchor="top right"
+                   self="bottom middle">
+          Filtrar capas listadas
+        </q-tooltip>
+        <template v-slot:prepend>
+          <q-icon name="mdi-filter"/>
+        </template>
+        <template v-slot:append>
+          <q-icon v-if="filter !== ''" name="clear" class="cursor-pointer" @click="resetFilter"/>
+        </template>
+      </q-input>
+    </div>
 
-      </q-header>
+    <q-scroll-area style="height: calc(100% - 82px); margin-top: 82px; border-right: 1px solid #ddd">
 
-      <q-page-container>
-        <q-page>
-          <q-tree
-            class="q-pt-xs capas-qtree"
-            :nodes="capasMapa"
-            node-key="value"
-            tick-strategy="strict"
-            :selected.sync="capaSeleccionada"
-            :ticked.sync="capasTicked"
-            :expanded.sync="expanded"
-            :filter="filter"
-            :filter-method="myFilterMethod"
-            selected-color="primary"
-          >
-            <template v-slot:default-header="prop">
-              {{ String(prop.node.label) | truncate(24, '...') }}
-              <q-space/>
-              <q-btn-group flat>
-                <q-btn :disabled="capasMapa.indexOf(prop.node) === 0" dense flat color="grey-8" icon="mdi-chevron-up" size="xs"
-                       @click.stop.prevent="subirCapa(prop.node)"></q-btn>
-                <q-btn :disabled="capasMapa.indexOf(prop.node) === capasMapa.length-1" dense flat color="grey-8" icon="mdi-chevron-down" size="xs"
-                       @click.stop.prevent="bajarCapa(prop.node)"></q-btn>
-                <q-btn :disabled="prop.node.permanent" dense flat color="red" icon="mdi-delete" size="xs" @click.stop.prevent="print('borrar')"></q-btn>
-              </q-btn-group>
-            </template>
-            <template v-slot:default-body="prop">
-              <card-capa :capa="prop.node" />
-            </template>
-          </q-tree>
 
-        </q-page>
-      </q-page-container>
-    </q-layout>
+      <q-tree
+        class="q-pt-xs capas-qtree"
+        :nodes="capasMapa"
+        node-key="value"
+        tick-strategy="strict"
+        :selected.sync="capaSeleccionada"
+        :ticked.sync="capasTicked"
+        :expanded.sync="expanded"
+        :filter="filter"
+        :filter-method="myFilterMethod"
+        selected-color="primary"
+        no-connectors
+      >
+        <template v-slot:default-header="prop">
+          <span class="ellipsis">{{ String(prop.node.label) }}</span>
+          <q-space/>
+          <q-btn-group flat>
+            <q-btn :disabled="capasMapa.indexOf(prop.node) === 0" dense flat color="grey-8" icon="mdi-chevron-up"
+                   size="xs"
+                   @click.stop.prevent="subirCapa(prop.node)"></q-btn>
+            <q-btn :disabled="capasMapa.indexOf(prop.node) === capasMapa.length-1" dense flat color="grey-8"
+                   icon="mdi-chevron-down" size="xs"
+                   @click.stop.prevent="bajarCapa(prop.node)"></q-btn>
+            <q-btn :disabled="prop.node.permanent" dense flat color="red" icon="mdi-delete" size="xs"
+                   @click.stop.prevent="print('borrar')"></q-btn>
+          </q-btn-group>
+        </template>
+        <template v-slot:default-body="prop">
+          <card-capa :capa="prop.node"/>
+        </template>
+      </q-tree>
+
+    </q-scroll-area>
+
   </q-drawer>
 </template>
 

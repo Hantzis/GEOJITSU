@@ -14,7 +14,7 @@ export default function () {
     capaSeleccionada: "conflictos",
     capasMapa: [
       {value: "estados", label: "Estados", type: "wms", url: "https://gs.maptitud.xyz/geoserver/CONFLICTOS/wms?",
-        layers: "CONFLICTOS:estados", visible: true, children: [{}],
+        layers: "CONFLICTOS:estados", visible: false, children: [{}],
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
         opacity: 1, permanent: true,
         server_type: "geoserver",

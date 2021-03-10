@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <q-layout view="lHh Lpr lff" container :style="{height: screenHeight}">
+    <q-layout view="lHh Lpr lff" container :style="{height: mainScreenHeight}">
       <q-header>
       </q-header>
 
@@ -23,7 +23,7 @@
 
             <q-tab-panel name="mapa" class="no-padding">
 
-              <q-layout view="lHh Lpr lff" container :style="{height: screenHeight}">
+              <q-layout view="lHh Lpr lff" container :style="{height: viewScreenHeight}">
                 <q-header>
                   <GISRibbon v-show="showGISRibbon"/>
                 </q-header>
@@ -61,19 +61,20 @@
 
                           <div :key="mapkey">
                             <div v-for="(capa, idx) of capasMapa" :key="capa.value">
-                              <vl-layer-tile v-if="capa.type==='wms'" :opacity="capa.opacity" :visible="capa.visible">
+                              <vl-layer-tile v-if="capa.type==='wms'" :opacity="capa.opacity" :visible="capa.visible" >
                                 <vl-source-wms
                                   :url="capa.url"
                                   :format="capa.format"
                                   :server_type="capa.server_type"
                                   :layers="capa.layers"
                                   :attributions="capa.attribution"
-                                  :ext-params="capa.params"/>
+                                  :ext-params="capa.params"
+                                  :projection="capa.params.crs"
+                                />
                               </vl-layer-tile>
                               <vl-layer-vector v-if="capa.type==='vector'" :opacity="capa.opacity"
                                                :visible="capa.visible">
                                 <vl-source-vector :loaderFactory="loaderFactory(idx)" :features="capa.features"
-                                                  :server_type="capa.server_type"
                                                   :attributions="capa.attribution"/>
                                 <vl-style-func :factory="pointsStyleFunc"/>
                               </vl-layer-vector>
@@ -100,9 +101,7 @@
                                 >
                                   <template v-slot:header>
                                     <q-th colspan="2" align="left">
-                                      <q-td style="padding: 0">{{
-                                          conflictos_selectedFeatures[0].properties.resumen
-                                        }}
+                                      <q-td style="padding: 0">{{ conflictos_selectedFeatures[0]['properties']['resumen'] }}
                                       </q-td>
                                     </q-th>
                                   </template>
@@ -117,7 +116,6 @@
                             </vl-overlay>
                           </vl-interaction-select>
                         </vl-map>
-
                       </div>
                     </div>
 
@@ -273,8 +271,12 @@ export default {
       if (this.showGISRibbon) ribbon_height = 172
       return this.$q.screen.height - ribbon_height + "px"
     },
-    screenHeight() {
-      return this.$q.screen.height - 87 + "px"
+    viewScreenHeight() {
+      return this.$q.screen.height - 86 + "px"
+    },
+
+    mainScreenHeight() {
+      return this.$q.screen.height - 50 + "px"
     },
     GISRibbonEnabledTabs() {
       let enabled_tabs = [];
@@ -305,6 +307,7 @@ export default {
     loaderFactory(capa) {
       if (this.capasMapa[capa].features.length == 0) {
         axios.get(this.capasMapa[capa].url).then(response => {
+          console.log("geojson", capa, response)
           this.setCapaFeatures({capa: capa, features: response.data.features})
         }).catch(error => {
           console.log(error)
