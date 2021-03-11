@@ -16,6 +16,10 @@ export const capasMapaAction = ({commit}, payload) => {
   commit('capasMapaMutation', payload)
 }
 
+export const setSimbologiaTipo = ({commit}, payload) => {
+  commit('simbologiaTipoMutation', payload)
+}
+
 export const capaSeleccionadaAction = ({commit}, payload) => {
   commit('capaSeleccionadaMutation', payload)
 }

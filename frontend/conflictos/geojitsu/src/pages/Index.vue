@@ -78,7 +78,7 @@
                               </vl-layer-tile>
                               <vl-layer-vector v-if="capa.type==='vector'" :opacity="capa.opacity"
                                                :visible="capa.visible">
-                                <vl-source-vector :loaderFactory="loaderFactory(idx)" :url="capa.url"
+                                <vl-source-vector :loaderFactory="loaderFactory(idx)" :features="capa.features"
                                                   :attributions="capa.attribution"/>
                                 <vl-style-func :factory="pointsStyleFunc"/>
                               </vl-layer-vector>
@@ -205,6 +205,10 @@ export default {
     capasMapa() {
       this.mapkey++
     },
+    simbologiaTipo() {
+      this.mapkey++
+      console.log(this.mapkey)
+    },
     mapHeight() {
       this.$refs["olmap"].remount()
     },
@@ -237,13 +241,21 @@ export default {
     }, */
   },
   computed: {
-    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'mapaBaseGetter', 'mapasBaseGetter', 'capasMapaGetter', 'getDrawerCapas']),
+    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'mapaBaseGetter', 'mapasBaseGetter', 'capasMapaGetter', 'getDrawerCapas', 'getSimbologiaTipo']),
     showGISRibbon: {
       get() {
         return this.GISRibbonIsOpenGetter
       },
       set(value) {
         this.GISRibbonIsOpenAction(value)
+      }
+    },
+    simbologiaTipo: {
+      get() {
+        return this.getSimbologiaTipo
+      },
+      set(value) {
+        this.setSimbologiaTipo(value)
       }
     },
     mapaBase: {
@@ -294,7 +306,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('geojitsu', ['capasMapaAction', 'setCapaFeatures', 'setCapaTicked', 'GISRibbonIsOpenAction']),
+    ...mapActions('geojitsu', ['capasMapaAction', 'setCapaFeatures', 'setCapaTicked', 'GISRibbonIsOpenAction', 'setSimbologiaTipo']),
     getEntries(properties) {
       let limpio = []
       Object.entries(properties).forEach((row) => {
@@ -332,6 +344,13 @@ export default {
     pointsStyleFunc() {
       return (feature) => {
         let img_url = "https://conflictossocioambientales.iies.unam.mx" + feature.values_.tipo_icon_url
+        if (this.simbologiaTipo === 'Tipos')
+          img_url = "https://conflictossocioambientales.iies.unam.mx" + feature.values_.tipo_icon_url
+        if (this.simbologiaTipo === 'Organizaciones')
+          img_url = "https://conflictossocioambientales.iies.unam.mx" + feature.values_.organizacion_icon_url
+        if (this.simbologiaTipo === 'Empresas')
+          img_url = "https://conflictossocioambientales.iies.unam.mx" + feature.values_.empresa_icon_url
+
         let style = new Style({image: new Icon({src: img_url})})
         /*let baseStyle = new Style({
           image: new Circle({

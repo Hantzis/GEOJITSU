@@ -14,10 +14,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/gisribbon_components/mapa/MapaBloqueSimbologia.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/index.template.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/index.template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/GISRibbon.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/GISRibbon.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/pages/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/geojitsu/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/geojitsu/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/geojitsu/getters.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/geojitsu/getters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/geojitsu/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/geojitsu/mutations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/geojitsu/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/geojitsu/state.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +71,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/vmz/geojitsu/src/boot" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/gisribbon_components/mapa" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.stylelint" value="true" />
@@ -76,7 +80,7 @@
     <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.path.for.package.stylelint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.stylelint" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -86,19 +90,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/gisribbon_components/mapa" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\boot" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\assets" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\pages" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\assets" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\statics" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\assets" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\components" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\components" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\boot" />
-      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\assets" />
-      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\pages" />
-      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito" />
-      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\geojitsu\src\pages" />
     </key>
   </component>
   <component name="RestClientSettings">
@@ -749,13 +753,6 @@
       <workItem from="1614620981887" duration="17000" />
       <workItem from="1615222151236" duration="3844000" />
     </task>
-    <task id="LOCAL-00047" summary="m$">
-      <created>1600712756621</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1600712756621</updated>
-    </task>
     <task id="LOCAL-00048" summary="m$">
       <created>1600714905085</created>
       <option name="number" value="00048" />
@@ -1092,7 +1089,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615393043761</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="maptitud">
+      <created>1615438909682</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1615438909687</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

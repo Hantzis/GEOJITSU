@@ -10,6 +10,10 @@
 
       <q-separator vertical/>
 
+      <mapa-bloque-simbologia/>
+
+      <q-separator vertical/>
+
     </div>
 </template>
 
@@ -18,6 +22,7 @@ import {mapActions, mapGetters} from 'vuex'
 
 import MapaBloqueCapas from "components/gisribbon_components/mapa/MapaBloqueCapas";
 import MapaBloqueMapaBase from "components/gisribbon_components/mapa/MapaBloqueMapaBase";
+import MapaBloqueSimbologia from "components/gisribbon_components/mapa/MapaBloqueSimbologia";
 
 export default {
   name: "GISRibbon",
@@ -25,6 +30,7 @@ export default {
   components: {
     MapaBloqueCapas,
     MapaBloqueMapaBase,
+    MapaBloqueSimbologia,
   },
   data() {
     return {

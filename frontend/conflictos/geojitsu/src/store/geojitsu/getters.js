@@ -19,6 +19,10 @@ export const capasMapaGetter = (state) => {
   return state.capasMapa
 }
 
+export const getSimbologiaTipo = (state) => {
+  return state.simbologiaTipo
+}
+
 export const capaSeleccionadaGetter = (state) => {
   return state.capaSeleccionada
 }
