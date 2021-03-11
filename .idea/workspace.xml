@@ -13,11 +13,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="maptitud">
-      <change afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/statics/icons/Map-Marker.png" afterDir="false" />
+    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/pages/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/geojitsu/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/geojitsu/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/index.template.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/index.template.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,9 +55,6 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="2dbca653-bc94-436b-9f14-dde494cfc3e5" />
-  </component>
   <component name="JupyterTrust" id="3cd4cfd5-c415-4edb-b92a-61267500af49" />
   <component name="ProjectId" id="1brpjoU3qPMdCHzdMa7TbauiuZY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -79,29 +76,29 @@
     <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.path.for.package.stylelint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.eslint" value="" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.stylelint" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PyCharm 2020.1.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\assets" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\statics" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\assets" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\components" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\components" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\boot" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\assets" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\pages" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\geojitsu\src\pages" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\conflictos\geojitsu\src\statics\icons" />
-      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\conflictos\geojitsu\src" />
-      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\assets" />
-      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\statics" />
-      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\assets" />
     </key>
   </component>
   <component name="RestClientSettings">
@@ -751,8 +748,6 @@
       <workItem from="1614359465504" duration="597000" />
       <workItem from="1614620981887" duration="17000" />
       <workItem from="1615222151236" duration="3844000" />
-      <workItem from="1615404564896" duration="6163000" />
-      <workItem from="1615411998583" duration="5819000" />
     </task>
     <task id="LOCAL-00047" summary="m$">
       <created>1600712756621</created>
@@ -1091,11 +1086,11 @@
       <updated>1612894912551</updated>
     </task>
     <task id="LOCAL-00095" summary="maptitud">
-      <created>1615415030829</created>
+      <created>1615393043759</created>
       <option name="number" value="00095" />
       <option name="presentableId" value="LOCAL-00095" />
       <option name="project" value="LOCAL" />
-      <updated>1615415030829</updated>
+      <updated>1615393043761</updated>
     </task>
     <option name="localTasksCounter" value="96" />
     <servers />
