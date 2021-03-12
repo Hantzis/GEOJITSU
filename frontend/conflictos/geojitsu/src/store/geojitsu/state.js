@@ -4,7 +4,7 @@ export default function () {
     GISRibbonIsOpen: true,
     drawerCapas: true,
     mapaBase: "google-maps",
-    simbologiaTipo: 'Organizaciones',
+    simbologiaTipo: 'Tipos',
     mapasBase: [
       {value: "google-maps", label: "Google Maps", bgcolor: " #8ab4f8", url: "https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}"},
       {value: "google-satellite", label: "Google Satellite", bgcolor: "#2b3c70", url: "http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}"},
@@ -15,7 +15,7 @@ export default function () {
     capaSeleccionada: "conflictos",
     capasMapa: [
       {value: "estados", label: "Estados", type: "wms", url: "https://gs.maptitud.xyz/geoserver/CONFLICTOS/wms?",
-        layers: "CONFLICTOS:estados", visible: false, children: [{}],
+        layers: "CONFLICTOS:estados", visible: true, children: [{}],
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
         opacity: 1, permanent: true,
         server_type: "geoserver",

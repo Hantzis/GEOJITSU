@@ -34,7 +34,7 @@ export default {
   name: "MapaBloqueSimbologia",
   data() {
     return {
-      simbologias: ['Tipo', 'Organizaciones', 'Empresas'],
+      simbologias: ['Tipos', 'Organizaciones', 'Secretarías', 'Empresas'],
     }
   },
   computed: {

@@ -64,7 +64,7 @@
                           </vl-layer-tile>
 
                           <div :key="mapkey">
-                            <div v-for="(capa, idx) of capasMapa" :key="capa.value">
+                            <div v-for="(capa) of capasMapa" :key="capa.value">
                               <vl-layer-tile v-if="capa.type==='wms'" :opacity="capa.opacity" :visible="capa.visible">
                                 <vl-source-wms
                                   :url="capa.url"
@@ -78,7 +78,7 @@
                               </vl-layer-tile>
                               <vl-layer-vector v-if="capa.type==='vector'" :opacity="capa.opacity"
                                                :visible="capa.visible">
-                                <vl-source-vector :loaderFactory="loaderFactory(idx)" :features="capa.features"
+                                <vl-source-vector :features="capa.features"
                                                   :attributions="capa.attribution"/>
                                 <vl-style-func :factory="pointsStyleFunc"/>
                               </vl-layer-vector>
@@ -93,7 +93,7 @@
                                 <q-table
                                   class="detalles"
                                   style="max-height: 400px; max-width: 300px"
-                                  :title="conflictos_selectedFeatures[0].properties.tipo[1] + ' (id:' + conflictos_selectedFeatures[0].properties.pk + ')'"
+                                  :title="conflictos_selectedFeatures[0].properties['tipo_conflicto'] + ' (id:' + conflictos_selectedFeatures[0].id + ')'"
                                   square
                                   wrap-cells
                                   dense
@@ -104,16 +104,22 @@
                                   :data="getEntries(conflictos_selectedFeatures[0].properties)"
                                 >
                                   <template v-slot:header>
-                                    <q-th colspan="2" align="left">
-                                      <q-td style="padding: 0">
-                                        {{ conflictos_selectedFeatures[0]['properties']['resumen'] }}
+                                    <q-tr colspan="2" align="left">
+                                      <q-td v-if="!ver_mas" style="padding: 0">
+                                        {{ conflictos_selectedFeatures[0].properties['resumen'].slice(0, 240)+'... ' }}
+                                        <span @click="ver_mas = true" style="cursor: pointer; font-weight: bold;"> Ver mas</span>
                                       </q-td>
-                                    </q-th>
+                                      <q-td v-if="ver_mas" style="padding: 0">
+                                        {{ conflictos_selectedFeatures[0].properties['resumen'] }}
+                                        <span @click="ver_mas = false" style="cursor: pointer; font-weight: bold;"> Ver menos</span>
+                                      </q-td>
+                                    </q-tr>
+                                    <q-separator style="padding: 10px 0 4px 0;"/>
                                   </template>
                                   <template v-slot:top-right>
                                     <q-btn flat dense size="sm" style="margin-right: -11px;">
                                       <q-icon name="close"
-                                              @click="position = undefined; conflictos_selectedFeatures = []"/>
+                                              @click="position = undefined; conflictos_selectedFeatures = []; ver_mas = false;"/>
                                     </q-btn>
                                   </template>
                                 </q-table>
@@ -181,17 +187,23 @@ export default {
       loadingBar: undefined,
       clickCoords: undefined,
       position: undefined,
+      ver_mas: false,
       zoom: 5.7,
       center: [-102.02, 24.02],
       center3857: [-11268847.24, 2231060.47],
       rotation: 0,
       geolocPosition: [-101.22977709999999, 19.6453138],
-      conflictos: [],
+
       loading: false,
-      conflictos_geojson_url: "https://conflictossocioambientales.iies.unam.mx/conflictos/conflictos.geojson",
-      conflictos_features: [],
+      simbologias: ['Tipos', 'Organizaciones', 'Secretarías', 'Empresas'],
+      simbologiasDict: {
+        'tipo_icon_url': 'Tipos',
+        'organizacion_icon_url': 'Organizaciones',
+        'secretaria_icon_url': 'Secretarías',
+        'empresa_icon_url': 'Empresas'
+      },
       conflictos_selectedFeatures: [],
-      conflictos_styles: {},
+      vectorLayersStyles: {},
       drawer_capas: true,
       mapkey: 0,
       GISRibbonTabs: {
@@ -207,7 +219,6 @@ export default {
     },
     simbologiaTipo() {
       this.mapkey++
-      console.log(this.mapkey)
     },
     mapHeight() {
       this.$refs["olmap"].remount()
@@ -216,8 +227,9 @@ export default {
       this.$refs["olmap"].updateSize()
     },
     conflictos_selectedFeatures() {
+      this.ver_mas = false
       if (this.conflictos_selectedFeatures.length > 0) {
-        //console.log("clic", this.conflictos_selectedFeatures)
+        console.log("clic", this.conflictos_selectedFeatures)
         for (let feat of this.conflictos_selectedFeatures) {
           /*console.log("feat: ", feat)
           console.log("feat coordinates: ", feat.geometry.coordinates)
@@ -231,7 +243,6 @@ export default {
         let featureCoords = turf.featureCollection(collection)
         let cercano = turf.nearestPoint(this.clickCoords, featureCoords)
         this.position = cercano.geometry.coordinates
-
       }
     },
     /* drawerCapas() {
@@ -321,10 +332,10 @@ export default {
       })
       return limpio
     },
+    /*
     loaderFactory(capa) {
       if (this.capasMapa[capa].features.length === 0) {
         axios.get(this.capasMapa[capa].url).then(response => {
-          console.log("geojson", capa, response)
           this.setCapaFeatures({capa: capa, features: response.data.features})
         }).then(() => {
           this.loadingBar.stop()
@@ -332,47 +343,64 @@ export default {
         }).catch(error => {
           console.log(error)
         })
-      } else {
-        if (this.loadingBar)
-          this.loadingBar.stop()
       }
-    },
+    },*/
     clic(evt) {
       console.log("clic event", evt)
       this.clickCoords = evt.coordinate
     },
     pointsStyleFunc() {
       return (feature) => {
-        let img_url = "https://conflictossocioambientales.iies.unam.mx" + feature.values_.tipo_icon_url
-        if (this.simbologiaTipo === 'Tipos')
-          img_url = "https://conflictossocioambientales.iies.unam.mx" + feature.values_.tipo_icon_url
-        if (this.simbologiaTipo === 'Organizaciones')
-          img_url = "https://conflictossocioambientales.iies.unam.mx" + feature.values_.organizacion_icon_url
-        if (this.simbologiaTipo === 'Empresas')
-          img_url = "https://conflictossocioambientales.iies.unam.mx" + feature.values_.empresa_icon_url
-
-        let style = new Style({image: new Icon({src: img_url})})
-        /*let baseStyle = new Style({
-          image: new Circle({
-            radius: 10,
-            fill: new Fill({
-              color: '#fff',
-            }),
-            stroke: new Stroke({
-              color: '#F44336',
-            }),
-          }),
-          text: new Text({
-            text: "yeet", // get feature property
-          }),
-        }) */
-        return style
+        if (!this.simbologiaTipo) {
+          this.simbologiaTipo = 'Tipos'
+        }
+        return this.vectorLayersStyles['conflictos'][this.simbologiaTipo][feature.id_]
       }
+    },
+    preloadGeoJSONLayers() {
+      this.capasMapa.forEach((capa, index) => {
+        if (capa.server_type === 'geojson') {
+          axios.get(capa.url).then(response => {
+            this.vectorLayersStyles[capa.value] = {}
+            this.vectorLayersStyles[capa.value]['Tipos'] = {}
+            this.vectorLayersStyles[capa.value]['Organizaciones'] = {}
+            this.vectorLayersStyles[capa.value]['Secretarías'] = {}
+            this.vectorLayersStyles[capa.value]['Empresas'] = {}
+            this.setCapaFeatures({capa: index, features: response.data.features})
+            if (response.data.features) {
+              if (response.data.features.length) {
+                response.data.features.forEach(feature => {
+                  // console.log("feature.properties", feature.id, feature.properties)
+                  Object.entries(feature.properties).forEach(property => {
+                    if (property[0].endsWith('icon_url')) {
+                      // console.log("property", property[0])
+                      // console.log("capa.value", capa.value)
+                      this.vectorLayersStyles[capa.value]['Tipos'][feature.id] = new Style({image: new Icon({src: 'https://conflictossocioambientales.iies.unam.mx' + feature.properties.tipo_icon_url})})
+                      this.vectorLayersStyles[capa.value]['Organizaciones'][feature.id] = new Style({image: new Icon({src: 'https://conflictossocioambientales.iies.unam.mx' + feature.properties.organizacion_icon_url})})
+                      this.vectorLayersStyles[capa.value]['Secretarías'][feature.id] = new Style({image: new Icon({src: 'https://conflictossocioambientales.iies.unam.mx' + feature.properties.secretaria_icon_url})})
+                      this.vectorLayersStyles[capa.value]['Empresas'][feature.id] = new Style({image: new Icon({src: 'https://conflictossocioambientales.iies.unam.mx' + feature.properties.empresa_icon_url})})
+                    }
+                  })
+                })
+              }
+            }
+            console.log("styles", this.vectorLayersStyles)
+          }).then(() => {
+            this.setCapaTicked({capa: this.capasMapa[index], visible: true})
+          }).catch(error => {
+            console.log(error)
+          })
+        }
+      })
     }
   },
+
+
   mounted() {
     this.loadingBar = this.$refs.bar
     this.loadingBar.start()
+    this.preloadGeoJSONLayers()
+    this.loadingBar.stop()
   }
 }
 </script>
