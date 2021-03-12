@@ -17,6 +17,8 @@
             align="left">
             <q-tab v-for="(tab, index) in GISRibbonEnabledTabs" :key="index" :name="tab[0]" :label="tab[1].label"
                    class="q-tab--no-caps tabs-title" @click="showGISRibbon = true"/>
+            <q-route-tab no-caps v-for="pagina of paginas.items" :to="'/v/' + pagina.meta.slug" :label="pagina.title"
+                     :key="pagina.id"/>
           </q-tabs>
 
           <q-tab-panels v-model="activeTab" class="bg-grey-1 text-grey-9">
@@ -189,6 +191,8 @@ export default {
       clickCoords: undefined,
       position: undefined,
       ver_mas: false,
+      paginaInicioID: 0,
+      paginas: [],
       zoom: 5.7,
       center: [-102.02, 24.02],
       center3857: [-11268847.24, 2231060.47],
@@ -208,9 +212,8 @@ export default {
       drawer_capas: true,
       mapkey: 0,
       GISRibbonTabs: {
-        proyecto: {label: "Proyecto", is_enabled: false},
         mapa: {label: "Mapa", is_enabled: true},
-        herramientas: {label: "Herramientas", is_enabled: true},
+        herramientas: {label: "Herramientas", is_enabled: false},
       }
     }
   },
@@ -336,9 +339,9 @@ export default {
             row[0] = 'Fecha de registro'
             const ds = row[1].split('-')
             const d = new Date(ds[0], ds[1], ds[2]);
-            const ye = new Intl.DateTimeFormat('es', { year: 'numeric' }).format(d);
-            const mo = new Intl.DateTimeFormat('es', { month: 'short' }).format(d);
-            const da = new Intl.DateTimeFormat('es', { day: '2-digit' }).format(d);
+            const ye = new Intl.DateTimeFormat('es', {year: 'numeric'}).format(d);
+            const mo = new Intl.DateTimeFormat('es', {month: 'short'}).format(d);
+            const da = new Intl.DateTimeFormat('es', {day: '2-digit'}).format(d);
             row[1] = `${da} de ${mo} de ${ye}`
           }
           if (row[0] === 'fecha_inicio') row[0] = 'Fecha de inicio'
@@ -352,19 +355,6 @@ export default {
       })
       return limpio
     },
-    /*
-    loaderFactory(capa) {
-      if (this.capasMapa[capa].features.length === 0) {
-        axios.get(this.capasMapa[capa].url).then(response => {
-          this.setCapaFeatures({capa: capa, features: response.data.features})
-        }).then(() => {
-          this.loadingBar.stop()
-          this.setCapaTicked({capa: this.capasMapa[capa], visible: true})
-        }).catch(error => {
-          console.log(error)
-        })
-      }
-    },*/
     clic(evt) {
       console.log("clic event", evt)
       this.clickCoords = evt.coordinate
@@ -412,7 +402,33 @@ export default {
           })
         }
       })
-    }
+    },
+    getPaginas() {
+      axios.get(`https://conflictossocioambientales.iies.unam.mx/back/api/v1/wagtail/pages/?type=conflictos.Inicio`).then(response => {
+        if (response.data.meta.total_count === 1) {
+          console.log("Si", response.data.items[0]['id'])
+          const inicioID = Promise.resolve(response.data.items[0]['id'])
+          inicioID.then(id => {
+            axios.get(`https://conflictossocioambientales.iies.unam.mx/back/api/v1/wagtail/pages/?child_of=${id}`).then(response => {
+              this.paginas = response.data
+              console.log("paginas", this.paginas)
+
+              /*
+              this.paginas.items.forEach(item => {
+                console.log(item)
+                console.log(item.meta.slug)
+                this.GISRibbonTabs[item.meta.slug] = {label: item.title, is_enabled: true}
+              }) */
+              console.log("this.GISRibbonTabs", this.GISRibbonTabs)
+            })
+          })
+        } else {
+          Promise.reject("No hay página de inicio")
+        }
+      }).catch(error => {
+        console.log(error)
+      })
+    },
   },
 
 
@@ -420,6 +436,9 @@ export default {
     this.loadingBar = this.$refs.bar
     this.loadingBar.start()
     this.preloadGeoJSONLayers()
+    console.log("fin preload")
+    this.getPaginas()
+    console.log("fin get paginas")
     this.loadingBar.stop()
   }
 }
