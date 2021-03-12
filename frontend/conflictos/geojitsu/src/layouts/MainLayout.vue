@@ -25,32 +25,6 @@
                 </q-avatar>
                 <q-item-section>Acerca de</q-item-section>
               </q-item>
-              <q-item dense clickable v-close-popup style="padding: 0;">
-                <q-avatar>
-                  <q-icon name="mdi-clippy"/>
-                </q-avatar>
-                <q-item-section>Ayuda</q-item-section>
-              </q-item>
-              <q-separator/>
-              <q-item dense clickable v-close-popup style="padding: 0;">
-                <q-avatar>
-                  <q-icon name="login"/>
-                </q-avatar>
-                <q-item-section>Ingresar</q-item-section>
-              </q-item>
-              <q-item dense clickable v-close-popup style="padding: 0;">
-                <q-avatar>
-                  <q-icon name="logout"/>
-                </q-avatar>
-                <q-item-section>Salir</q-item-section>
-              </q-item>
-              <q-separator/>
-              <q-item dense clickable v-close-popup style="padding: 0;">
-                <q-avatar>
-                  <q-icon name="mdi-cog"/>
-                </q-avatar>
-                <q-item-section>Ajustes</q-item-section>
-              </q-item>
             </q-list>
           </q-menu>
         </q-btn>
