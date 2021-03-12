@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col">
         <div class="row q-pa-xs">
-          <q-select outlined name="simbologia" label="Simbología" :options="simbologias" v-model="simbologiaTipo">
+          <q-select style="min-width: 215px;" outlined name="simbologia" label="Simbología conflictos" :options="simbologias" v-model="simbologiaTipo">
             <template v-slot:prepend>
               <q-icon name="mdi-map-marker"/>
             </template>

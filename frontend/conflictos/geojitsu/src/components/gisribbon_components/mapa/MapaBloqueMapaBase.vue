@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col">
         <div class="row q-pa-xs">
-          <q-select outlined name="base" label="Mapa base" :options="mapasBase" v-model="mapaBase"
+          <q-select style="min-width: 255px;" outlined name="base" label="Mapa base" :options="mapasBase" v-model="mapaBase"
                     emit-value map-options>
             <template v-slot:prepend>
               <q-icon name="mdi-layers-outline"/>

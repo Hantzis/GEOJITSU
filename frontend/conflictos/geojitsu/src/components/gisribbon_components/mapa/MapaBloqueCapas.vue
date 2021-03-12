@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col">
         <div class="row q-pa-xs">
-          <q-select outlined name="archivo" label="Capa seleccionada" :options="capasMapa" v-model="capaSeleccionada" emit-value
+          <q-select style="min-width: 278px;" outlined name="archivo" label="Capa seleccionada" :options="capasMapa" v-model="capaSeleccionada" emit-value
                     map-options>
             <template v-slot:prepend>
               <q-icon name="mdi-layers-triple"/>

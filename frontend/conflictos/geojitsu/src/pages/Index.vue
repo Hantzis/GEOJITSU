@@ -104,17 +104,18 @@
                                   :data="getEntries(conflictos_selectedFeatures[0].properties)"
                                 >
                                   <template v-slot:header>
-                                    <q-tr colspan="2" align="left">
-                                      <q-td v-if="!ver_mas" style="padding: 0">
-                                        {{ conflictos_selectedFeatures[0].properties['resumen'].slice(0, 240)+'... ' }}
+                                    <q-tr align="left">
+                                      <q-td v-if="!ver_mas" colspan="2">
+                                        {{ conflictos_selectedFeatures[0].properties['resumen'].slice(0, 240) + '...' }}
                                         <span @click="ver_mas = true" style="cursor: pointer; font-weight: bold;"> Ver mas</span>
+                                        <q-separator/>
                                       </q-td>
-                                      <q-td v-if="ver_mas" style="padding: 0">
+                                      <q-td v-if="ver_mas" colspan="2">
                                         {{ conflictos_selectedFeatures[0].properties['resumen'] }}
                                         <span @click="ver_mas = false" style="cursor: pointer; font-weight: bold;"> Ver menos</span>
+                                        <q-separator/>
                                       </q-td>
                                     </q-tr>
-                                    <q-separator style="padding: 10px 0 4px 0;"/>
                                   </template>
                                   <template v-slot:top-right>
                                     <q-btn flat dense size="sm" style="margin-right: -11px;">
@@ -321,7 +322,26 @@ export default {
     getEntries(properties) {
       let limpio = []
       Object.entries(properties).forEach((row) => {
-        if (row[1] && row[1].length > 0 && row[0] !== 'resumen' && row[0] !== 'tipo' && row[0] !== 'pk' && row[0] !== 'bibliografia') {
+        const esconder = ['pk', 'resumen', 'tipo', 'publicaciones_texto', 'publicaciones', 'bibliografia',
+          'estados', 'municipios', 'secretarias', 'organizaciones', 'empresas', 'pueblos_originarios']
+        if (row[1] && row[1].length && !esconder.includes(row[0])
+          && !row[0].endsWith('icon_url') && !row[0].endsWith('nombre_texto')) {
+          if (row[0] === 'estados_nombre_lista') row[0] = 'Estados'
+          if (row[0] === 'municipios_nombre_lista') row[0] = 'Municipios'
+          if (row[0] === 'empresas_nombre_lista') row[0] = 'Empresas'
+          if (row[0] === 'organizaciones_nombre_lista') row[0] = 'Organizaciones'
+          if (row[0] === 'secretarias_nombre_lista') row[0] = 'Secretarías'
+          if (row[0] === 'publicaciones_lista') row[0] = 'Publicaciones'
+          if (row[0] === 'fecha_registro') {
+            row[0] = 'Fecha de registro'
+            const ds = row[1].split('-')
+            const d = new Date(ds[0], ds[1], ds[2]);
+            const ye = new Intl.DateTimeFormat('es', { year: 'numeric' }).format(d);
+            const mo = new Intl.DateTimeFormat('es', { month: 'short' }).format(d);
+            const da = new Intl.DateTimeFormat('es', { day: '2-digit' }).format(d);
+            row[1] = `${da} de ${mo} de ${ye}`
+          }
+          if (row[0] === 'fecha_inicio') row[0] = 'Fecha de inicio'
           if (Array.isArray(row[1])) {
             row[1] = row[1].join(", ")
           }
