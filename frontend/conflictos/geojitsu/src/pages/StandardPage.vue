@@ -1,6 +1,5 @@
 <template>
   <div>
-    <p>jujuju</p>
     <div v-for="item of page_data" :key="item.id">
       <div v-if="item.meta.slug === urlPath">
         <h4 style="margin: 12px 0 22px 0;">{{ item.title }}</h4>

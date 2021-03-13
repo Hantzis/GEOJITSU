@@ -153,6 +153,7 @@
                 <div class="row q-pa-md">
                   <div class="col">
                     <p>{{ pagina.meta.slug }}</p>
+                    <router-view/>
                   </div>
                 </div>
               </q-tab-panel>
