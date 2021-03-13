@@ -15,10 +15,10 @@
             indicator-color="primary"
             active-bg-color="grey-1"
             align="left">
-            <q-tab v-for="(tab, index) in GISRibbonEnabledTabs" :key="index" :name="tab[0]" :label="tab[1].label"
-                   class="q-tab--no-caps tabs-title" @click="showGISRibbon = true"/>
-            <q-route-tab no-caps v-for="pagina of paginas.items" :to="'/v/' + pagina.meta.slug" :label="pagina.title"
-                     :key="pagina.id"/>
+            <q-route-tab no-caps v-for="tab of GISRibbonTabs" :key="tab.value" :name="tab.value"
+                         :label="tab.label" :to="tab.value === 'mapa' ? '/' : '/' + tab.value"/>
+            <q-route-tab no-caps v-for="pagina of paginas.items" :to="'/' + pagina.meta.slug"
+                         :label="pagina.title" :key="pagina.id"/>
           </q-tabs>
 
           <q-tab-panels v-model="activeTab" class="bg-grey-1 text-grey-9">
@@ -138,16 +138,26 @@
                   </q-page>
                 </q-page-container>
               </q-layout>
-
             </q-tab-panel>
 
             <q-tab-panel name="herramientas" class="no-padding">
               <div class="row q-pa-md">
                 <div class="col">
-                  <p>fjdlksjfk</p>
+                  <p>herramientas</p>
                 </div>
               </div>
             </q-tab-panel>
+
+            <div v-if="paginas.items">
+              <q-tab-panel v-for="pagina of paginas.items" :key="pagina.id" :name="pagina.meta.slug" class="no-padding">
+                <div class="row q-pa-md">
+                  <div class="col">
+                    <p>{{ pagina.meta.slug }}</p>
+                  </div>
+                </div>
+              </q-tab-panel>
+            </div>
+
 
           </q-tab-panels>
 
@@ -211,10 +221,10 @@ export default {
       vectorLayersStyles: {},
       drawer_capas: true,
       mapkey: 0,
-      GISRibbonTabs: {
-        mapa: {label: "Mapa", is_enabled: true},
-        herramientas: {label: "Herramientas", is_enabled: false},
-      }
+      GISRibbonTabs: [
+        {value: 'mapa', label: "Mapa", is_enabled: true},
+        {value: 'herramientas', label: "Herramientas", is_enabled: false},
+      ]
     }
   },
   watch: {
@@ -412,13 +422,6 @@ export default {
             axios.get(`https://conflictossocioambientales.iies.unam.mx/back/api/v1/wagtail/pages/?child_of=${id}`).then(response => {
               this.paginas = response.data
               console.log("paginas", this.paginas)
-
-              /*
-              this.paginas.items.forEach(item => {
-                console.log(item)
-                console.log(item.meta.slug)
-                this.GISRibbonTabs[item.meta.slug] = {label: item.title, is_enabled: true}
-              }) */
               console.log("this.GISRibbonTabs", this.GISRibbonTabs)
             })
           })
@@ -430,14 +433,15 @@ export default {
       })
     },
   },
-
-
+  beforeMount() {
+    this.getPaginas()
+  },
   mounted() {
     this.loadingBar = this.$refs.bar
     this.loadingBar.start()
+
     this.preloadGeoJSONLayers()
     console.log("fin preload")
-    this.getPaginas()
     console.log("fin get paginas")
     this.loadingBar.stop()
   }
