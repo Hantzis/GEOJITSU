@@ -10,31 +10,36 @@ export default function () {
         value: "google-maps",
         label: "Google Maps",
         bgcolor: " #8ab4f8",
-        url: "https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}"
+        url: "https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}",
+        attribution: "Google"
       },
       {
         value: "google-satellite",
         label: "Google Satellite",
         bgcolor: "#2b3c70",
-        url: "http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}"
+        url: "http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}",
+        attribution: "Google"
       },
       {
         value: "google-hybrid",
         label: "Google Hybrid",
         bgcolor: "#2b3c70",
-        url: "https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}"
+        url: "https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
+        attribution: "Google"
       },
       {
         value: "google-terrain",
         label: "Google Terrain",
         bgcolor: "#000000",
-        url: "https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}"
+        url: "https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}",
+        attribution: "Google"
       },
       {
         value: "OpenStreetMap-Standard",
         label: "OpenStreetMap Standard",
         bgcolor: "#aad3df",
-        url: "http://a.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        url: "http://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        attribution: "OpenStreetMap"
       },
     ],
     capaSeleccionada: "conflictos",

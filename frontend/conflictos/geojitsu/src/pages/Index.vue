@@ -62,7 +62,7 @@
                           <vl-layer-tile>
                             <vl-source-xyz
                               :url="mapaBase.url"
-                              attributions="Mapbox, <a href='https://www.saeba.click' target='_blank'>Saeba</a>"/>
+                              :attributions="`${mapaBase.attribution}, <a href='https://www.saeba.click' target='_blank'>Saeba</a>`"/>
                           </vl-layer-tile>
 
                           <div :key="mapkey">
@@ -149,14 +149,17 @@
             </q-tab-panel>
 
             <q-tab-panel name="metodologia" class="no-padding">
-              <q-layout view="lHh Lpr lff" container :style="{height: viewScreenHeight}">
+              <q-layout container :style="{height: viewScreenHeight}">
                 <q-header></q-header>
                 <q-page-container>
                   <q-page>
                     <q-separator color="grey-5"/>
                     <div class="column fit justify-between">
                       <div class="col q-pa-md">
-                        <p>metodología</p>
+                        <h3 style="margin-top: 12px;">{{ paginasData['metodologia'].title }}</h3>
+                        <div v-for="data of paginasData['metodologia'].cuerpo" :key="data.id">
+                          <div v-html="data.value"></div>
+                        </div>
                       </div>
                     </div>
                   </q-page>
@@ -165,18 +168,40 @@
             </q-tab-panel>
 
             <q-tab-panel name="agradecimiento" class="no-padding">
-              <div class="row q-pa-md">
-                <div class="col">
-                  <p>agradecimiento</p>
-                </div>
-              </div>
+              <q-layout container :style="{height: viewScreenHeight}">
+                <q-header></q-header>
+                <q-page-container>
+                  <q-page>
+                    <q-separator color="grey-5"/>
+                    <div class="column fit justify-between">
+                      <div class="col q-pa-md">
+                        <h3 style="margin-top: 12px;">{{ paginasData['agradecimiento'].title }}</h3>
+                        <div v-for="data of paginasData['agradecimiento'].cuerpo" :key="data.id">
+                          <div v-html="data.value"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </q-page>
+                </q-page-container>
+              </q-layout>
             </q-tab-panel>
             <q-tab-panel name="tablero" class="no-padding">
-              <div class="row q-pa-md">
-                <div class="col">
-                  <p>tablero</p>
-                </div>
-              </div>
+              <q-layout container :style="{height: viewScreenHeight}">
+                <q-header></q-header>
+                <q-page-container>
+                  <q-page>
+                    <q-separator color="grey-5"/>
+                    <div class="column fit justify-between">
+                      <div class="col q-pa-md">
+                        <h3 style="margin-top: 12px;">{{ paginasData['tablero'].title }}</h3>
+                        <div v-for="data of paginasData['tablero'].cuerpo" :key="data.id">
+                          <div v-html="data.value"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </q-page>
+                </q-page-container>
+              </q-layout>
             </q-tab-panel>
 
 
@@ -224,6 +249,11 @@ export default {
       ver_mas: false,
       paginaInicioID: 0,
       paginas: [],
+      paginasData: {
+        metodologia: {id: 6, title: "Metodologia", meta: {}},
+        agradecimiento: {id: 5, title: "Agradecimiento", meta: {}},
+        tablero: {id: 7, title: "Tablero", meta: {}}
+      },
       zoom: 5.7,
       center: [-102.02, 24.02],
       center3857: [-11268847.24, 2231060.47],
@@ -313,9 +343,13 @@ export default {
           }
         }
         if (!base) base = {
-          bgcolor: "#75cff0",
-          url: "https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoibml6aGlzYWViYSIsImEiOiJjanZwZXNpeWYwZDcxNDlwOXVhejg1Yno3In0.kqEaQSkVaFMpKKtx0FyNRA"
+          value: "OpenStreetMap-Standard",
+          label: "OpenStreetMap Standard",
+          bgcolor: "#aad3df",
+          url: "http://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          attribution: "OpenStreetMap"
         }
+        console.log("base", base)
         return base
       }
     },
@@ -330,16 +364,15 @@ export default {
       }
     },
     mapHeight() {
-      let ribbon_height = 87
-      if (this.showGISRibbon) ribbon_height = 172
+      let ribbon_height = 87 + 24
+      if (this.showGISRibbon) ribbon_height = 172 + 24
       return this.$q.screen.height - ribbon_height + "px"
     },
     viewScreenHeight() {
-      return this.$q.screen.height - 86 + "px"
+      return this.$q.screen.height - (86 + 24) + "px"
     },
-
     mainScreenHeight() {
-      return this.$q.screen.height - 50 + "px"
+      return this.$q.screen.height - (50 + 24) + "px"
     },
     GISRibbonEnabledTabs() {
       let enabled_tabs = [];
@@ -443,7 +476,14 @@ export default {
             axios.get(`https://conflictossocioambientales.iies.unam.mx/back/api/v1/wagtail/pages/?child_of=${id}`).then(response => {
               this.paginas = response.data
               console.log("paginas", this.paginas)
-              console.log("this.GISRibbonTabs", this.GISRibbonTabs)
+              this.paginas.items.forEach(pagina => {
+                console.log("pagina", pagina)
+                axios.get(`https://conflictossocioambientales.iies.unam.mx/back/api/v1/wagtail/pages/${pagina.id}/`).then(response => {
+                  console.log("response", response.data)
+                  this.paginasData[response.data.meta.slug] = response.data
+                  console.log("this.paginasData", this.paginasData)
+                })
+              })
             })
           })
         } else {

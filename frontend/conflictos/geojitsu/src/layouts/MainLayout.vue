@@ -95,7 +95,7 @@
 
         <q-card-section style="max-height: 50vh" class="scroll">
           <div v-for="item of paginaInicio.cuerpo" :key="item.id">
-            <div v-if="item.type=='paragraph_block'" v-html="item.value"></div>
+            <div v-if="item.type==='paragraph_block'" v-html="item.value"></div>
           </div>
         </q-card-section>
 
