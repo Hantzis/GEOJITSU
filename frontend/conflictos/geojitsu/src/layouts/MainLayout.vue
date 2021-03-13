@@ -19,7 +19,7 @@
         <q-btn dense flat round icon="mdi-dots-vertical">
           <q-menu content-style="border-radius: 2px;">
             <q-list style="min-width: 130px;">
-              <q-item dense clickable v-close-popup style="padding: 0;">
+              <q-item dense clickable v-close-popup style="padding: 0;" @click="inicioDialog=true">
                 <q-avatar>
                   <q-icon name="info"/>
                 </q-avatar>
@@ -82,6 +82,31 @@
       <router-view/>
     </q-page-container>
 
+    <q-dialog v-model="inicioDialog">
+      <q-card>
+        <q-card-section class="row items-center no-wrap ">
+          <q-avatar icon="mdi-map" color="black" text-color="white" style="margin-right: 14px; align-self: end;"/>
+          <div class="text-h6">{{ paginaInicio.title }}</div>
+          <q-space/>
+          <q-btn icon="close" flat round dense v-close-popup @click="inicioDialog=false" style="align-self: start;"/>
+        </q-card-section>
+
+        <q-separator/>
+
+        <q-card-section style="max-height: 50vh" class="scroll">
+          <div v-for="item of paginaInicio.cuerpo" :key="item.id">
+            <div v-if="item.type=='paragraph_block'" v-html="item.value"></div>
+          </div>
+        </q-card-section>
+
+        <q-separator/>
+
+        <q-card-actions align="right">
+          <q-btn unelevated no-caps label="Cerrar" color="green" v-close-popup/>
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+
     <!---
     <q-footer elevated class="bg-grey-9 text-grey-4">
       <q-toolbar style="min-height: 22px; font-size: 11px;">
@@ -101,12 +126,12 @@ import {mapActions} from 'vuex'
 export default {
   data() {
     return {
+      inicioDialog: false,
       left: false,
     }
   },
   computed: {
-    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter']),
-
+    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getPaginaInicio']),
     showGISRibbon: {
       get() {
         return this.GISRibbonIsOpenGetter
@@ -114,14 +139,25 @@ export default {
       set(value) {
         this.GISRibbonIsOpenAction(value)
       }
-    }
+    },
+    paginaInicio: {
+      get() {
+        return this.getPaginaInicio
+      },
+      set(value) {
+        this.setPaginaInicio(value)
+      }
+    },
   },
   methods: {
-    ...mapActions('geojitsu', ['GISRibbonIsOpenAction']),
+    ...mapActions('geojitsu', ['GISRibbonIsOpenAction', 'setPaginaInicio']),
     testa(val) {
       alert(val);
     },
   },
+  mounted() {
+    this.inicioDialog = true
+  }
 }
 </script>
 

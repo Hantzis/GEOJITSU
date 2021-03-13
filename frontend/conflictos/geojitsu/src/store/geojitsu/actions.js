@@ -20,6 +20,10 @@ export const setSimbologiaTipo = ({commit}, payload) => {
   commit('simbologiaTipoMutation', payload)
 }
 
+export const setPaginaInicio = ({commit}, payload) => {
+  commit('paginaInicioMutation', payload)
+}
+
 export const capaSeleccionadaAction = ({commit}, payload) => {
   commit('capaSeleccionadaMutation', payload)
 }

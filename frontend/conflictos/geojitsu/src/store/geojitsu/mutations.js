@@ -11,6 +11,10 @@ export const mapaBaseMutation = (state, value) => {
   state.mapaBase = value
 }
 
+export const paginaInicioMutation = (state, value) => {
+  state.paginaInicio = value
+}
+
 export const simbologiaTipoMutation = (state, value) => {
   state.simbologiaTipo = value
 }

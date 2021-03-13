@@ -993,7 +993,6 @@ export default {
     this.getEtnias()
     this.getDiscapacidades()
     this.getPaginas()
-
   }
 }
 </script>

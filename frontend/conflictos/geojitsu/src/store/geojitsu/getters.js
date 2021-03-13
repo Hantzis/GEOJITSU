@@ -23,6 +23,10 @@ export const getSimbologiaTipo = (state) => {
   return state.simbologiaTipo
 }
 
+export const getPaginaInicio = (state) => {
+  return state.paginaInicio
+}
+
 export const capaSeleccionadaGetter = (state) => {
   return state.capaSeleccionada
 }
