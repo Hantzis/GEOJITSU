@@ -17,7 +17,7 @@
             align="left">
             <q-route-tab no-caps v-for="tab of GISRibbonTabs" :key="tab.value" :name="tab.value"
                          :label="tab.label" :to="tab.value === 'mapa' ? '/' : '/' + tab.value"/>
-            <q-route-tab no-caps v-for="pagina of paginas.items" :to="'/' + pagina.meta.slug"
+            <q-route-tab no-caps v-for="pagina of paginas.items" :to="'/tab/' + pagina.meta.slug"
                          :label="pagina.title" :key="pagina.id"/>
           </q-tabs>
 
