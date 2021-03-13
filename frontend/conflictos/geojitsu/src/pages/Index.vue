@@ -15,16 +15,16 @@
             indicator-color="primary"
             active-bg-color="grey-1"
             align="left">
-            <q-route-tab no-caps v-for="tab of GISRibbonTabs" :key="tab.value" :name="tab.value"
-                         :label="tab.label" :to="tab.value === 'mapa' ? '/' : '/' + tab.value"/>
-            <q-route-tab no-caps v-for="pagina of paginas.items" :to="'/tab/' + pagina.meta.slug"
-                         :label="pagina.title" :key="pagina.id"/>
+            <q-route-tab no-caps v-for="tab of GISRibbonTabs.filter(val => val.is_enabled === true)" :key="tab.value"
+                         :name="tab.value"
+                         :label="tab.label" :to="tab.value === 'mapa' ? '/' : tab.value"/>
+            <q-route-tab no-caps v-for="pagina of paginas.items" :key="pagina.meta.slug" :name="pagina.meta.slug"
+                         :label="pagina.title" :to="pagina.meta.slug"/>
           </q-tabs>
 
           <q-tab-panels v-model="activeTab" class="bg-grey-1 text-grey-9">
 
             <q-tab-panel name="mapa" class="no-padding">
-
               <q-layout view="lHh Lpr lff" container :style="{height: viewScreenHeight}">
                 <q-header>
                   <GISRibbon v-show="showGISRibbon"/>
@@ -148,16 +148,36 @@
               </div>
             </q-tab-panel>
 
-            <div v-if="paginas.items">
-              <q-tab-panel v-for="pagina of paginas.items" :key="pagina.id" :name="pagina.meta.slug" class="no-padding">
-                <div class="row q-pa-md">
-                  <div class="col">
-                    <p>{{ pagina.meta.slug }}</p>
-                    <router-view/>
-                  </div>
+            <q-tab-panel name="metodologia" class="no-padding">
+              <q-layout view="lHh Lpr lff" container :style="{height: viewScreenHeight}">
+                <q-header></q-header>
+                <q-page-container>
+                  <q-page>
+                    <q-separator color="grey-5"/>
+                    <div class="column fit justify-between">
+                      <div class="col q-pa-md">
+                        <p>metodología</p>
+                      </div>
+                    </div>
+                  </q-page>
+                </q-page-container>
+              </q-layout>
+            </q-tab-panel>
+
+            <q-tab-panel name="agradecimiento" class="no-padding">
+              <div class="row q-pa-md">
+                <div class="col">
+                  <p>agradecimiento</p>
                 </div>
-              </q-tab-panel>
-            </div>
+              </div>
+            </q-tab-panel>
+            <q-tab-panel name="tablero" class="no-padding">
+              <div class="row q-pa-md">
+                <div class="col">
+                  <p>tablero</p>
+                </div>
+              </div>
+            </q-tab-panel>
 
 
           </q-tab-panels>

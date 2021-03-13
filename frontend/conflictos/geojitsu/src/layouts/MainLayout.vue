@@ -5,7 +5,7 @@
         <q-btn dense flat round icon="menu" @click="left = !left"/>
 
         <q-toolbar-title>
-          Maptitude XYZ
+          Conflictos Sociambientales de México
         </q-toolbar-title>
         <q-btn v-if="this.$route.path==='/'" dense flat round
                :icon="showGISRibbon ? 'mdi-chevron-up' : 'mdi-chevron-down'"
@@ -115,6 +115,17 @@
           2020 &copy; Maptitude XYZ
       </q-toolbar>
     </q-footer> -->
+
+    <q-footer elevated class="bg-grey-10 text-grey-4">
+      <q-toolbar style="min-height: 24px; font-size: 14px;">
+        <span class="ellipsis">Maptitud</span>
+        <q-space/>
+        <span class="no-wrap">
+        <a style="text-decoration: none" class="text-grey-4 no-underline" href="https://saeba.click"
+           target="_blank">2020&nbsp;&copy;&nbsp;saeba.click</a>
+        </span>
+      </q-toolbar>
+    </q-footer>
 
   </q-layout>
 </template>
