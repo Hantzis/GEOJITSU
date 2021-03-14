@@ -27,7 +27,9 @@
             <q-tab-panel name="mapa" class="no-padding">
               <q-layout view="lHh Lpr lff" container :style="{height: viewScreenHeight}">
                 <q-header>
+                  <q-scroll-area horizontal style="height: 85px;" class="bg-grey-1">
                   <GISRibbon v-show="showGISRibbon"/>
+                  </q-scroll-area>
                 </q-header>
 
                 <q-page-container>
