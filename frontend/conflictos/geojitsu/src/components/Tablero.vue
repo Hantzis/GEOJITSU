@@ -9,7 +9,8 @@
       </div>
       <div class="col">
         <q-select style="width: 240px;" outlined name="municipios" emit-value map-options multiple clearable
-                  use-chips use-input option-label="municipio_estado_nombre" option-value="id" :readonly="!estadosOptionsSelected"
+                  use-chips use-input option-label="municipio_estado_nombre" option-value="id"
+                  :readonly="!estadosOptionsSelected"
                   @filter="filterMunicipios" label="Municipios" @input="municipiosChange"
                   v-model="municipiosOptionsSelected" :options="municipiosOptionsFiltered"/>
       </div>
@@ -39,14 +40,41 @@ export default {
     estadosChange(evt) {
       console.log(evt)
       console.log(this.estadosOptionsSelected)
-      axios.get('https://conflictossocioambientales.iies.unam.mx/back/api/v1/municipio-estado/').then(response => {
-      console.log("municipios", response)
-      this.municipiosOptions = response.data
-      this.municipiosOptionsFiltered = response.data
-    })
+      if (this.municipiosOptionsSelected) {
+        if (this.municipiosOptionsSelected.length) {
+          console.log("this.municipiosOptionsSelected", this.municipiosOptionsSelected)
+          axios.get(`https://conflictossocioambientales.iies.unam.mx/back/api/v1/municipio-estado/?municipio_entidadfederativa__in=${this.estadosOptionsSelected.toString()}`).then(response => {
+            console.log("municipios", response.data)
+            this.municipiosOptions = response.data
+            this.municipiosOptionsFiltered = response.data
+
+            this.municipiosOptionsSelected = this.municipiosOptionsSelected
+              .filter(municipio => {
+                //return this.municipiosOptions.municipio = municipio
+                const mun = obj => obj.municipio === municipio;
+                return mun
+              })
+          })
+        }
+      }
+      if (this.estadosOptionsSelected) {
+        axios.get(`https://conflictossocioambientales.iies.unam.mx/back/api/v1/municipio-estado/?municipio_entidadfederativa__in=${this.estadosOptionsSelected.toString()}`).then(response => {
+          console.log("municipios", response)
+          this.municipiosOptions = response.data
+          this.municipiosOptionsFiltered = response.data
+        })
+      } else {
+        this.municipiosOptionsSelected = null
+      }
     },
     municipiosChange() {
       console.log(this.municipiosOptionsSelected)
+      if (this.municipiosOptionsSelected) {
+        if (this.municipiosOptionsSelected.length === 0) {
+          this.municipiosOptionsSelected = null
+          console.log("null", this.municipiosOptionsSelected)
+        }
+      }
     },
     filterEstados(val, update) {
       update(() => {
