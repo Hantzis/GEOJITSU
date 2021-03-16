@@ -9,7 +9,7 @@
       </div>
       <div class="col">
         <q-select style="width: 240px;" outlined name="municipios" emit-value map-options multiple clearable
-                  use-chips use-input option-label="municipio_nombre" option-value="id" :readonly="!estadosOptionsSelected"
+                  use-chips use-input option-label="municipio_estado_nombre" option-value="id" :readonly="!estadosOptionsSelected"
                   @filter="filterMunicipios" label="Municipios" @input="municipiosChange"
                   v-model="municipiosOptionsSelected" :options="municipiosOptionsFiltered"/>
       </div>
@@ -39,6 +39,11 @@ export default {
     estadosChange(evt) {
       console.log(evt)
       console.log(this.estadosOptionsSelected)
+      axios.get('https://conflictossocioambientales.iies.unam.mx/back/api/v1/municipio-estado/').then(response => {
+      console.log("municipios", response)
+      this.municipiosOptions = response.data
+      this.municipiosOptionsFiltered = response.data
+    })
     },
     municipiosChange() {
       console.log(this.municipiosOptionsSelected)
@@ -52,7 +57,7 @@ export default {
     filterMunicipios(val, update) {
       update(() => {
         const needle = val.toLowerCase()
-        this.municipiosOptionsFiltered = this.municipiosOptions.filter(v => v.municipio_nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().indexOf(needle) > -1)
+        this.municipiosOptionsFiltered = this.municipiosOptions.filter(v => v.municipio_estado_nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().indexOf(needle) > -1)
       })
     },
   },
