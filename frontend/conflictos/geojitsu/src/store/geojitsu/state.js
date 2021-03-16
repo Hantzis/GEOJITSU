@@ -2,7 +2,7 @@ export default function () {
   return {
     //
     GISRibbonIsOpen: true,
-    drawerCapas: true,
+    drawerCapas: false,
     mapaBase: "google-maps",
     simbologiaTipo: 'Tipos',
     mapasBase: [

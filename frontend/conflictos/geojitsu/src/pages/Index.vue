@@ -111,12 +111,14 @@
                                 >
                                   <template v-slot:header>
                                     <q-tr align="left">
-                                      <q-td v-if="!ver_mas" colspan="2" style="border-bottom-width: 1px; padding-top: 14px;">
+                                      <q-td v-if="!ver_mas" colspan="2"
+                                            style="border-bottom-width: 1px; padding-top: 14px;">
                                         {{ conflictos_selectedFeatures[0].properties['resumen'].slice(0, 240) + '...' }}
                                         <span @click="ver_mas = true" style="cursor: pointer; font-weight: bold;"> Ver mas</span>
                                         <div v-html="getPublicaciones(conflictos_selectedFeatures[0].properties)"></div>
                                       </q-td>
-                                      <q-td v-if="ver_mas" colspan="2" style="border-bottom-width: 1px; padding-top: 14px;">
+                                      <q-td v-if="ver_mas" colspan="2"
+                                            style="border-bottom-width: 1px; padding-top: 14px;">
                                         {{ conflictos_selectedFeatures[0].properties['resumen'] }}
                                         <span @click="ver_mas = false" style="cursor: pointer; font-weight: bold;"> Ver menos</span>
                                         <div v-html="getPublicaciones(conflictos_selectedFeatures[0].properties)"></div>
@@ -280,7 +282,6 @@ export default {
       },
       conflictos_selectedFeatures: [],
       vectorLayersStyles: {},
-      drawer_capas: true,
       mapkey: 0,
       GISRibbonTabs: [
         {value: 'mapa', label: "Mapa", is_enabled: true},
@@ -500,7 +501,11 @@ export default {
             }
           }).then(() => {
             this.setCapaTicked({capa: this.capasMapa[index], visible: true})
-
+            if (this.$q.screen.width < 768) {
+              this.drawerCapas = false;
+            } else {
+              this.drawerCapas = true;
+            }
           }).catch(error => {
             console.log(error)
           })
