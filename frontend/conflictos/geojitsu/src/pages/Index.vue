@@ -17,7 +17,8 @@
             align="left">
             <q-route-tab no-caps v-for="tab of GISRibbonTabs.filter(val => val.is_enabled === true)" :key="tab.value"
                          :name="tab.value"
-                         :label="tab.label" :to="tab.value === 'mapa' ? '/' : tab.value"/>
+                         :label="tab.label" :to="tab.value === 'mapa' ? '/' : tab.value"
+                         @click="tab.value === 'mapa' ? showGISRibbon = true : showGISRibbon = showGISRibbon"/>
             <q-route-tab no-caps v-for="pagina of paginas.items" :key="pagina.meta.slug" :name="pagina.meta.slug"
                          :label="pagina.title" :to="pagina.meta.slug"/>
           </q-tabs>
@@ -27,8 +28,9 @@
             <q-tab-panel name="mapa" class="no-padding">
               <q-layout view="lHh Lpr lff" container :style="{height: viewScreenHeight}">
                 <q-header>
-                  <q-scroll-area horizontal style="height: 85px;" class="bg-grey-1">
-                  <GISRibbon v-show="showGISRibbon"/>
+                  <q-scroll-area horizontal :style="[showGISRibbon ? {height: '85px'} : {height: '0'}]"
+                                 class="bg-grey-1">
+                    <GISRibbon v-show="showGISRibbon"/>
                   </q-scroll-area>
                 </q-header>
 
@@ -109,15 +111,15 @@
                                 >
                                   <template v-slot:header>
                                     <q-tr align="left">
-                                      <q-td v-if="!ver_mas" colspan="2">
+                                      <q-td v-if="!ver_mas" colspan="2" style="border-bottom-width: 1px; padding-top: 14px;">
                                         {{ conflictos_selectedFeatures[0].properties['resumen'].slice(0, 240) + '...' }}
                                         <span @click="ver_mas = true" style="cursor: pointer; font-weight: bold;"> Ver mas</span>
-                                        <q-separator/>
+                                        <div v-html="getPublicaciones(conflictos_selectedFeatures[0].properties)"></div>
                                       </q-td>
-                                      <q-td v-if="ver_mas" colspan="2">
+                                      <q-td v-if="ver_mas" colspan="2" style="border-bottom-width: 1px; padding-top: 14px;">
                                         {{ conflictos_selectedFeatures[0].properties['resumen'] }}
                                         <span @click="ver_mas = false" style="cursor: pointer; font-weight: bold;"> Ver menos</span>
-                                        <q-separator/>
+                                        <div v-html="getPublicaciones(conflictos_selectedFeatures[0].properties)"></div>
                                       </q-td>
                                     </q-tr>
                                   </template>
@@ -195,9 +197,14 @@
                     <q-separator color="grey-5"/>
                     <div class="column fit justify-between">
                       <div class="col q-pa-md">
-                        <h3 style="margin-top: 12px;">{{ paginasData['tablero'].title }}</h3>
-                        <div v-for="data of paginasData['tablero'].cuerpo" :key="data.id">
-                          <div v-html="data.value"></div>
+                        <div class="row">
+                          <h3 style="margin-top: 12px;">{{ paginasData['tablero'].title }}</h3>
+                          <div v-for="data of paginasData['tablero'].cuerpo" :key="data.id">
+                            <div v-html="data.value"></div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <tablero/>
                         </div>
                       </div>
                     </div>
@@ -236,12 +243,13 @@ import Style from 'ol/style/Style'
 import Icon from 'ol/style/Icon'
 import MapaDrawerCapas from "components/drawer_components/MapaDrawerCapas";
 import {Point as turfPoint, Coord as turfCoord, FeatureCollection as turfFeatureCollection} from '@turf/helpers'
+import Tablero from "components/Tablero";
 
 Vue.use(VueLayers)
 
 export default {
   name: 'PageIndex',
-  components: {MapaDrawerCapas, GISRibbon},
+  components: {Tablero, MapaDrawerCapas, GISRibbon},
   data() {
     return {
       activeTab: 'mapa',
@@ -288,7 +296,9 @@ export default {
       this.mapkey++
     },
     mapHeight() {
-      this.$refs["olmap"].remount()
+      if (this.$refs["olmap"]) {
+        this.$refs["olmap"].remount()
+      }
     },
     mapaBase() {
       this.$refs["olmap"].updateSize()
@@ -297,11 +307,6 @@ export default {
       this.ver_mas = false
       if (this.conflictos_selectedFeatures.length > 0) {
         console.log("clic", this.conflictos_selectedFeatures)
-        for (let feat of this.conflictos_selectedFeatures) {
-          /*console.log("feat: ", feat)
-          console.log("feat coordinates: ", feat.geometry.coordinates)
-          console.log("this.clickCoords: ", this.clickCoords)*/
-        }
         let collection = []
         for (let point of this.conflictos_selectedFeatures[0].geometry.coordinates) {
           let a = turf.point(point)
@@ -311,12 +316,7 @@ export default {
         let cercano = turf.nearestPoint(this.clickCoords, featureCoords)
         this.position = cercano.geometry.coordinates
       }
-    },
-    /* drawerCapas() {
-      setTimeout(() => {
-        this.$refs["olmap"].remount()
-      }, 400);
-    }, */
+    }
   },
   computed: {
     ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'mapaBaseGetter', 'mapasBaseGetter', 'capasMapaGetter', 'getDrawerCapas', 'getSimbologiaTipo']),
@@ -351,7 +351,6 @@ export default {
           url: "http://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
           attribution: "OpenStreetMap"
         }
-        console.log("base", base)
         return base
       }
     },
@@ -363,6 +362,9 @@ export default {
     drawerCapas: {
       get() {
         return this.getDrawerCapas
+      },
+      set(value) {
+        this.setDrawerCapas(value)
       }
     },
     mapHeight() {
@@ -387,20 +389,56 @@ export default {
     }
   },
   methods: {
-    ...mapActions('geojitsu', ['capasMapaAction', 'setCapaFeatures', 'setCapaTicked', 'GISRibbonIsOpenAction', 'setSimbologiaTipo']),
+    ...mapActions('geojitsu', ['capasMapaAction', 'setCapaFeatures', 'setCapaTicked', 'GISRibbonIsOpenAction',
+      'setDrawerCapas', 'setSimbologiaTipo']),
+    getPublicaciones(properties) {
+      let publicaciones = properties.publicaciones_lista
+      if (publicaciones) {
+        if (publicaciones.length > 0) {
+          let pub = `<ul style="padding-left: 10px;">`
+          publicaciones.forEach(el => {
+            let year, numero, paginas, url, doi
+            el["año"] ? year = ` (${el["año"]})` : year = ''
+            el.numero ? numero = ` (${el.numero})` : numero = ''
+            el.paginas ? paginas = `, pp. ${el.paginas}` : paginas = ''
+            el.url ? url = ` <a href="${el.url}" target="_blank">[Link]</a>` : ''
+            el.doi ? doi = ` <a href="https://doi.org/${el.doi}" target="_blank">DOI ${el.doi}</a>` : doi = ''
+            const li = `<li>${el.autores} ${year} <em>${el.titulo_articulo}</em>, ${el.titulo_publicacion} ${numero} ${paginas} ${url} ${doi}</li>`
+            pub += li
+          })
+          pub += "</ul>"
+          return pub
+        }
+      }
+      return ''
+    },
     getEntries(properties) {
       let limpio = []
+      const esconder = ['pk', 'resumen', 'tipo', 'publicaciones_texto', 'publicaciones_lista', 'bibliografia',
+        'estados', 'municipios', 'municipios_nombre_lista', 'municipios_estado_nombre_lista', 'secretarias', 'organizaciones', 'empresas', 'pueblos_originarios', 'publicaciones']
+      if (properties.estados.length > 1)
+        esconder.push('municipios_nombre_texto')
+      if (properties.estados.length === 1)
+        esconder.push('municipios_estado_nombre_texto')
+      if (properties.estados.length === 0)
+        esconder.push('municipios_nombre_texto')
       Object.entries(properties).forEach((row) => {
-        const esconder = ['pk', 'resumen', 'tipo', 'publicaciones_texto', 'publicaciones', 'bibliografia',
-          'estados', 'municipios', 'secretarias', 'organizaciones', 'empresas', 'pueblos_originarios']
         if (row[1] && row[1].length && !esconder.includes(row[0])
-          && !row[0].endsWith('icon_url') && !row[0].endsWith('nombre_texto')) {
-          if (row[0] === 'estados_nombre_lista') row[0] = 'Estados'
-          if (row[0] === 'municipios_nombre_lista') row[0] = 'Municipios'
-          if (row[0] === 'empresas_nombre_lista') row[0] = 'Empresas'
-          if (row[0] === 'organizaciones_nombre_lista') row[0] = 'Organizaciones'
-          if (row[0] === 'secretarias_nombre_lista') row[0] = 'Secretarías'
-          if (row[0] === 'publicaciones_lista') row[0] = 'Publicaciones'
+          && !row[0].endsWith('icon_url') && !row[0].endsWith('nombre_lista')) {
+          if (row[0] === 'tipo_conflicto') row[0] = 'Tipo de conflicto'
+          if (row[0] === 'estados_nombre_texto' && properties.estados.length > 1) row[0] = 'Estados'
+          if (row[0] === 'estados_nombre_texto' && properties.estados.length === 1) row[0] = 'Estado'
+          if (row[0] === 'municipios_nombre_texto' && properties.municipios.length > 1) row[0] = 'Municipios'
+          if (row[0] === 'municipios_nombre_texto' && properties.municipios.length === 1) row[0] = 'Municipio'
+          if (row[0] === 'municipios_estado_nombre_texto' && properties.municipios.length > 1) row[0] = 'Municipios'
+          if (row[0] === 'municipios_estado_nombre_texto' && properties.municipios.length === 1) row[0] = 'Municipio'
+          if (row[0] === 'empresas_nombre_texto' && properties.empresas.length > 1) row[0] = 'Empresas'
+          if (row[0] === 'empresas_nombre_texto' && properties.empresas.length === 1) row[0] = 'Empresa'
+          if (row[0] === 'organizaciones_nombre_texto' && properties.organizaciones.length > 1) row[0] = 'Organizaciones'
+          if (row[0] === 'organizaciones_nombre_texto' && properties.organizaciones.length === 1) row[0] = 'Organización'
+          if (row[0] === 'secretarias_nombre_texto' && properties.secretarias.length > 1) row[0] = 'Secretarías'
+          if (row[0] === 'secretarias_nombre_texto' && properties.secretarias.length === 1) row[0] = 'Secretaría'
+          if (row[0] === 'pueblos_originarios_nombre_texto') row[0] = 'Pueblos originarios'
           if (row[0] === 'fecha_registro') {
             row[0] = 'Fecha de registro'
             const ds = row[1].split('-')
@@ -410,12 +448,15 @@ export default {
             const da = new Intl.DateTimeFormat('es', {day: '2-digit'}).format(d);
             row[1] = `${da} de ${mo} de ${ye}`
           }
-          if (row[0] === 'fecha_inicio') row[0] = 'Fecha de inicio'
-          if (Array.isArray(row[1])) {
-            row[1] = row[1].join(", ")
+          if (row[0] === 'fecha_inicio') {
+            row[0] = 'Fecha de inicio'
+            const ds = row[1].split('-')
+            const d = new Date(ds[0], ds[1], ds[2]);
+            const ye = new Intl.DateTimeFormat('es', {year: 'numeric'}).format(d);
+            const mo = new Intl.DateTimeFormat('es', {month: 'short'}).format(d);
+            const da = new Intl.DateTimeFormat('es', {day: '2-digit'}).format(d);
+            row[1] = `${da} de ${mo} de ${ye}`
           }
-          row[0] = row[0].split("_").join(" ")
-          if (row[0] === 'secretarias') row[0] = 'secretarías'
           limpio.push(row)
         }
       })
@@ -446,11 +487,8 @@ export default {
             if (response.data.features) {
               if (response.data.features.length) {
                 response.data.features.forEach(feature => {
-                  // console.log("feature.properties", feature.id, feature.properties)
                   Object.entries(feature.properties).forEach(property => {
                     if (property[0].endsWith('icon_url')) {
-                      // console.log("property", property[0])
-                      // console.log("capa.value", capa.value)
                       this.vectorLayersStyles[capa.value]['Tipos'][feature.id] = new Style({image: new Icon({src: 'https://conflictossocioambientales.iies.unam.mx' + feature.properties.tipo_icon_url})})
                       this.vectorLayersStyles[capa.value]['Organizaciones'][feature.id] = new Style({image: new Icon({src: 'https://conflictossocioambientales.iies.unam.mx' + feature.properties.organizacion_icon_url})})
                       this.vectorLayersStyles[capa.value]['Secretarías'][feature.id] = new Style({image: new Icon({src: 'https://conflictossocioambientales.iies.unam.mx' + feature.properties.secretaria_icon_url})})
@@ -460,9 +498,9 @@ export default {
                 })
               }
             }
-            console.log("styles", this.vectorLayersStyles)
           }).then(() => {
             this.setCapaTicked({capa: this.capasMapa[index], visible: true})
+
           }).catch(error => {
             console.log(error)
           })
@@ -472,18 +510,13 @@ export default {
     getPaginas() {
       axios.get(`https://conflictossocioambientales.iies.unam.mx/back/api/v1/wagtail/pages/?type=conflictos.Inicio`).then(response => {
         if (response.data.meta.total_count === 1) {
-          console.log("Si", response.data.items[0]['id'])
           const inicioID = Promise.resolve(response.data.items[0]['id'])
           inicioID.then(id => {
             axios.get(`https://conflictossocioambientales.iies.unam.mx/back/api/v1/wagtail/pages/?child_of=${id}`).then(response => {
               this.paginas = response.data
-              console.log("paginas", this.paginas)
               this.paginas.items.forEach(pagina => {
-                console.log("pagina", pagina)
                 axios.get(`https://conflictossocioambientales.iies.unam.mx/back/api/v1/wagtail/pages/${pagina.id}/`).then(response => {
-                  console.log("response", response.data)
                   this.paginasData[response.data.meta.slug] = response.data
-                  console.log("this.paginasData", this.paginasData)
                 })
               })
             })
@@ -497,15 +530,13 @@ export default {
     },
   },
   beforeMount() {
+
     this.getPaginas()
   },
   mounted() {
     this.loadingBar = this.$refs.bar
     this.loadingBar.start()
-
     this.preloadGeoJSONLayers()
-    console.log("fin preload")
-    console.log("fin get paginas")
     this.loadingBar.stop()
   }
 }

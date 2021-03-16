@@ -1,20 +1,13 @@
 <template>
-    <div class="row no-wrap bg-grey-1 text-grey-9">
-      <q-separator vertical/>
-
-      <mapa-bloque-mapa-base/>
-
-      <q-separator vertical/>
-
-      <mapa-bloque-capas/>
-
-      <q-separator vertical/>
-
-      <mapa-bloque-simbologia/>
-
-      <q-separator vertical/>
-
-    </div>
+  <div class="row no-wrap bg-grey-1 text-grey-9">
+    <q-separator vertical/>
+    <mapa-bloque-capas/>
+    <q-separator vertical/>
+    <mapa-bloque-simbologia/>
+    <q-separator vertical/>
+    <mapa-bloque-mapa-base/>
+    <q-separator vertical/>
+  </div>
 </template>
 
 <script>

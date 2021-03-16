@@ -34,39 +34,13 @@
 
     <q-drawer v-model="left" side="left" elevated overlay behavior="mobile">
       <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
-        <q-list padding>
-          <q-item to="/" clickable v-ripple exact>
-            <q-item-section avatar>
-              <q-icon name="home"/>
-            </q-item-section>
-
-            <q-item-section>
-              Mapa
-            </q-item-section>
-
-          </q-item>
-
-          <q-item to="acerca" clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="mdi-information"/>
-            </q-item-section>
-
-            <q-item-section>
-              Acerca de
-            </q-item-section>
-          </q-item>
-
-          <q-item to="metodologia" clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="mdi-file-edit"/>
-            </q-item-section>
-
-            <q-item-section>
-              Metodología
-            </q-item-section>
-          </q-item>
-
-        </q-list>
+        <div class="q-pa-md">
+          <div class="text-h6">{{ paginaInicio.title }}</div>
+          <p></p>
+          <div v-for="item of paginaInicio.cuerpo" :key="item.id">
+            <div v-if="item.type==='paragraph_block'" v-html="item.value"></div>
+          </div>
+        </div>
       </q-scroll-area>
       <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
         <div class="absolute-bottom bg-transparent">

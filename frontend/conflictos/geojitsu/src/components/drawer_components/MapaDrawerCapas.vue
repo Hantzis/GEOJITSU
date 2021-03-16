@@ -45,8 +45,6 @@
     </div>
 
     <q-scroll-area style="height: calc(100% - 82px); margin-top: 82px; border-right: 1px solid #ddd">
-
-
       <q-tree
         class="q-pt-xs capas-qtree"
         :nodes="capasMapa"
@@ -114,9 +112,6 @@ export default {
         this.capaSeleccionada = 'conflictos'
       }
     },
-    expanded() {
-      // console.log("expanded", this.expanded)
-    },
     ticked() {
       // console.log("ticked", this.ticked)
     },
@@ -161,12 +156,7 @@ export default {
       get() {
         return this.capasMapaGetter
       }
-    },
-    mapHeight() {
-      let ribbon_height = 87
-      if (this.showGISRibbon) ribbon_height = 172
-      return this.$q.screen.height - ribbon_height + "px"
-    },
+    }
   },
   methods: {
     ...mapActions('geojitsu', ['capaSeleccionadaAction', 'setDrawerCapas', 'setCapasTicked', 'bajarCapaAction', 'subirCapaAction']),
