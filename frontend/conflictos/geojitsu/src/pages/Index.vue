@@ -200,14 +200,12 @@
                     <div class="column fit justify-between">
                       <div class="col q-pa-md">
                         <div class="row">
-                          <h3 style="margin-top: 12px;">{{ paginasData['tablero'].title }}</h3>
+                          <h3 style="margin-top: 12px; margin-bottom: 18px;">{{ paginasData['tablero'].title }}</h3>
                           <div v-for="data of paginasData['tablero'].cuerpo" :key="data.id">
                             <div v-html="data.value"></div>
                           </div>
                         </div>
-                        <div class="row">
-                          <tablero/>
-                        </div>
+                        <tablero/>
                       </div>
                     </div>
                   </q-page>
