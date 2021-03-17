@@ -1,48 +1,81 @@
 <template>
   <div>
-    <div class="row full-width">
-      <div class="col-sm-6 col-xs-12 q-pa-sm">
-        <q-select dense class="full-width" outlined name="estados" emit-value map-options multiple clearable
-                  use-chips use-input option-label="entidadfederativa_nombre" option-value="id"
-                  @filter="filterEstados" label="Estados" @input="estadosChange"
-                  v-model="estadosOptionsSelected" :options="estadosOptionsFiltered"/>
-      </div>
-      <div class="col-sm-6 col-xs-12 q-pa-sm">
-        <q-select dense class="full-width" outlined name="municipios" emit-value map-options multiple clearable
-                  use-chips use-input option-label="municipio_estado_nombre" option-value="id"
-                  :readonly="!estadosOptionsSelected"
-                  @filter="filterMunicipios" label="Municipios" @input="municipiosChange"
-                  v-model="municipiosOptionsSelected" :options="municipiosOptionsFiltered"/>
-      </div>
-    </div>
-    <div class="row full-width">
-      <div class="col-sm-6 col-xs-12 q-pa-sm">
-        <q-select dense class="full-width" outlined name="organizaciones" emit-value map-options multiple clearable
-                  use-chips use-input option-label="organizacion_nombre" option-value="id"
-                  @filter="filterOrganizaciones" label="Organizaciones"
-                  v-model="organizacionesOptionsSelected" :options="organizacionesOptionsFiltered"/>
-      </div>
-      <div class="col-sm-6 col-xs-12 q-pa-sm">
-        <q-select dense class="full-width" outlined name="empresas" emit-value map-options multiple clearable
-                  use-chips use-input option-label="empresa_nombre" option-value="id"
-                  @filter="filterEmpresas" label="Empresas"
-                  v-model="empresasOptionsSelected" :options="empresasOptionsFiltered"/>
-      </div>
-    </div>
-    <div class="row full-width">
-      <div class="col-sm-6 col-xs-12 q-pa-sm">
-        <q-select dense class="full-width" outlined name="secretarias" emit-value map-options multiple clearable
-                  use-chips use-input option-label="secretaria_nombre" option-value="id"
-                  @filter="filterSecretarias" label="Secretarías"
-                  v-model="secretariasOptionsSelected" :options="secretariasOptionsFiltered"/>
-      </div>
-      <div class="col-sm-6 col-xs-12 q-pa-sm">
-        <q-select dense class="full-width" outlined name="pueblos" emit-value map-options multiple clearable
-                  use-chips use-input option-label="pueblo_nombre" option-value="id"
-                  @filter="filterPueblos" label="Pueblos originarios"
-                  v-model="pueblosOptionsSelected" :options="pueblosOptionsFiltered"/>
-      </div>
-    </div>
+
+    <q-tabs
+      v-model="tab"
+      indicator-color="primary"
+      align="left"
+      :breakpoint="0"
+      no-caps
+      inline-label
+    >
+      <q-tab name="graficas" icon="mdi-chart-pie" label="Gráficas"/>
+      <q-tab name="filtros" icon="mdi-filter" label="Filtros"/>
+    </q-tabs>
+
+    <q-tab-panels v-model="tab" class="shadow-2 rounded-borders">
+      <q-tab-panel name="graficas">
+        <div class="text-h6">Graficas</div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      </q-tab-panel>
+
+      <q-tab-panel name="filtros">
+        <div class="text-h6">Filtros</div>
+
+        <div class="row full-width">
+          <div class="col-sm-6 col-xs-12 q-pa-sm">
+            <q-select class="full-width" outlined name="estados" emit-value map-options multiple clearable
+                      use-chips use-input option-label="entidadfederativa_nombre" option-value="id"
+                      @filter="filterEstados" label="Estados" @input="estadosChange"
+                      v-model="estadosOptionsSelected" :options="estadosOptionsFiltered"/>
+          </div>
+          <div class="col-sm-6 col-xs-12 q-pa-sm">
+            <q-select class="full-width" outlined name="municipios" emit-value map-options multiple clearable
+                      use-chips use-input option-label="municipio_estado_nombre" option-value="id"
+                      :readonly="!estadosOptionsSelected"
+                      @filter="filterMunicipios" label="Municipios" @input="municipiosChange"
+                      v-model="municipiosOptionsSelected" :options="municipiosOptionsFiltered"/>
+          </div>
+        </div>
+        <div class="row full-width">
+          <div class="col-sm-6 col-xs-12 q-pa-sm">
+            <q-select class="full-width" outlined name="organizaciones" emit-value map-options multiple clearable
+                      use-chips use-input option-label="organizacion_nombre" option-value="id"
+                      @filter="filterOrganizaciones" label="Organizaciones"
+                      v-model="organizacionesOptionsSelected" :options="organizacionesOptionsFiltered"/>
+          </div>
+          <div class="col-sm-6 col-xs-12 q-pa-sm">
+            <q-select class="full-width" outlined name="empresas" emit-value map-options multiple clearable
+                      use-chips use-input option-label="empresa_nombre" option-value="id"
+                      @filter="filterEmpresas" label="Empresas"
+                      v-model="empresasOptionsSelected" :options="empresasOptionsFiltered"/>
+          </div>
+        </div>
+        <div class="row full-width">
+          <div class="col-sm-6 col-xs-12 q-pa-sm">
+            <q-select class="full-width" outlined name="secretarias" emit-value map-options multiple clearable
+                      use-chips use-input option-label="secretaria_nombre" option-value="id"
+                      @filter="filterSecretarias" label="Secretarías"
+                      v-model="secretariasOptionsSelected" :options="secretariasOptionsFiltered"/>
+          </div>
+          <div class="col-sm-6 col-xs-12 q-pa-sm">
+            <q-select class="full-width" outlined name="pueblos" emit-value map-options multiple clearable
+                      use-chips use-input option-label="pueblo_nombre" option-value="id"
+                      @filter="filterPueblos" label="Pueblos originarios"
+                      v-model="pueblosOptionsSelected" :options="pueblosOptionsFiltered"/>
+          </div>
+        </div>
+
+        <div class="row q-pa-sm">
+          <q-space/>
+          <q-btn label="Limpiar filtros" color="grey-6" style="margin-right: 12px;"></q-btn>
+          <q-btn label="Filtrar" color="green"></q-btn>
+        </div>
+
+      </q-tab-panel>
+    </q-tab-panels>
+
+
   </div>
 </template>
 
@@ -54,6 +87,7 @@ export default {
   components: {},
   data() {
     return {
+      tab: 'graficas',
       estadosFilter: '',
       estadosOptions: [],
       estadosOptionsFiltered: [],
