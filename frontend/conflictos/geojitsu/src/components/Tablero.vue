@@ -4,7 +4,7 @@
       <div class="col q-pr-md">
         <q-select style="width: 240px;" outlined name="estados" emit-value map-options multiple clearable
                   use-chips use-input option-label="entidadfederativa_nombre" option-value="id"
-                  @filter="filterEstados" label="Estados" @input="estadosChange($event)"
+                  @filter="filterEstados" label="Estados" @input="estadosChange"
                   v-model="estadosOptionsSelected" :options="estadosOptionsFiltered"/>
       </div>
       <div class="col">
@@ -37,34 +37,35 @@ export default {
     }
   },
   methods: {
-    estadosChange(evt) {
-      console.log(evt)
-      console.log(this.estadosOptionsSelected)
+    estadosChange() {
       if (this.municipiosOptionsSelected) {
-        if (this.municipiosOptionsSelected.length) {
-          console.log("this.municipiosOptionsSelected", this.municipiosOptionsSelected)
+        if (this.municipiosOptionsSelected.length && this.estadosOptionsSelected) {
           axios.get(`https://conflictossocioambientales.iies.unam.mx/back/api/v1/municipio-estado/?municipio_entidadfederativa__in=${this.estadosOptionsSelected.toString()}`).then(response => {
-            console.log("municipios", response.data)
             this.municipiosOptions = response.data
             this.municipiosOptionsFiltered = response.data
-
-            this.municipiosOptionsSelected = this.municipiosOptionsSelected
+            this.municipiosOptionsSelected = this.municipiosOptions
               .filter(municipio => {
-                //return this.municipiosOptions.municipio = municipio
-                const mun = obj => obj.municipio === municipio;
-                return mun
-              })
+                return this.municipiosOptionsSelected.includes(municipio.id)
+              }).map(mun => mun.id)
           })
+        } else {
+          console.log("estados sin elementos")
+          this.estadosOptionsSelected = null
+          this.municipiosOptions = null
+          this.municipiosOptionsFiltered = null
+          this.municipiosOptionsSelected = null
         }
       }
-      if (this.estadosOptionsSelected) {
+      if (this.estadosOptionsSelected != null) {
         axios.get(`https://conflictossocioambientales.iies.unam.mx/back/api/v1/municipio-estado/?municipio_entidadfederativa__in=${this.estadosOptionsSelected.toString()}`).then(response => {
-          console.log("municipios", response)
           this.municipiosOptions = response.data
           this.municipiosOptionsFiltered = response.data
         })
       } else {
+        this.estadosOptionsSelected = null
         this.municipiosOptionsSelected = null
+        this.municipiosOptions = null
+        this.municipiosOptionsFiltered = null
       }
     },
     municipiosChange() {
