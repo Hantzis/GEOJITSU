@@ -172,7 +172,8 @@ export default {
       pueblosOptionsFiltered: [],
       pueblosOptionsSelected: null,
       datosTabla: [],
-      datosGraficas: [],
+      datosTablaTodos: [],
+      datosGraficasTodos: [],
       filterTabla: '',
       visibleColumns: ['tipo_conflicto', 'estados_nombre_texto',
         'secretarias_nombre_texto',
@@ -278,40 +279,68 @@ export default {
       this.pueblosOptionsSelected = null
     },
     filtrarDatos() {
-
       const filtros = []
       console.log("filtrarDatos")
-      if (this.tiposOptionsSelected)
-        filtros.push("tipo__in=" + this.tiposOptionsSelected)
-      if (this.estadosOptionsSelected)
-        filtros.push("estados__in=" + this.estadosOptionsSelected)
-      if (this.municipiosOptionsSelected)
-        filtros.push("municipios__in=" + this.municipiosOptionsSelected)
-      if (this.organizacionesOptionsSelected)
+      console.log("this.tiposOptionsSelected", this.tiposOptionsSelected)
+
+      if (Array.isArray(this.tiposOptionsSelected)) {
+        if (this.tiposOptionsSelected.length > 0)
+          filtros.push("tipo__in=" + this.tiposOptionsSelected)
+      }
+      if (Array.isArray(this.estadosOptionsSelected)) {
+        if (this.estadosOptionsSelected.length > 0)
+          filtros.push("estados__in=" + this.estadosOptionsSelected)
+      }
+      if (Array.isArray(this.municipiosOptionsSelected)) {
+        if (this.municipiosOptionsSelected.length > 0)
+          filtros.push("municipios__in=" + this.municipiosOptionsSelected)
+      }
+      if (Array.isArray(this.organizacionesOptionsSelected)) {
+        if (this.organizacionesOptionsSelected.length > 0)
         filtros.push("organizaciones__in=" + this.organizacionesOptionsSelected)
-      if (this.empresasOptionsSelected)
-        filtros.push("empresas__in=" + this.empresasOptionsSelected)
-      if (this.secretariasOptionsSelected)
-        filtros.push("secretarias__in=" + this.secretariasOptionsSelected)
-      if (this.pueblosOptionsSelected)
-        filtros.push("pueblos__in=" + this.pueblosOptionsSelected)
-      const query = "?" + filtros.join("&")
-      console.log("filtros", filtros)
-      console.log("query", query)
-      this.loadingBar.start()
-      axios.get(`https://conflictossocioambientales.iies.unam.mx/back/api/v1/datos-tabla/${query}`,
-        {cancelToken: this.CancelToken.token}).then(response => {
-        this.datosTabla = response.data
-        console.log("this.datosTabla", this.datosTabla)
-      }).then(() => {
+      }
+      if (Array.isArray(this.empresasOptionsSelected)) {
+        if (this.empresasOptionsSelected.length > 0)
+          filtros.push("empresas__in=" + this.empresasOptionsSelected)
+      }
+      if (Array.isArray(this.secretariasOptionsSelected)) {
+        if (this.secretariasOptionsSelected.length > 0)
+          filtros.push("secretarias__in=" + this.secretariasOptionsSelected)
+      }
+      if (Array.isArray(this.pueblosOptionsSelected)) {
+        if (this.pueblosOptionsSelected.length > 0)
+          filtros.push("pueblos__in=" + this.pueblosOptionsSelected)
+      }
+      let query = "?" + filtros.join("&")
+      if (query === "?" || query === "") {
+        this.loadingBar.start()
+        this.datosGraficas = this.datosGraficasTodos
+        this.datosTabla = this.datosTablaTodos
+        this.loadingBar.stop()
+      } else {
+        this.loadingBar.start()
         this.CancelToken.cancel("Nuevo filtro");
-        this.loadingBar.stop()
-        this.tab = 'datos'
-        console.log("then")
-      }).catch(error => {
-        console.log("catch", error)
-        this.loadingBar.stop()
-      })
+        axios.get(`https://conflictossocioambientales.iies.unam.mx/back/api/v1/datos-graficas/${query}`,
+        ).then(response => {
+          this.datosGraficas = response.data
+          console.log("this.datosGraficas", this.datosGraficas)
+        }).then(() => {
+          console.log("then graficas")
+        }).catch(error => {
+          console.log("catch", error)
+          this.loadingBar.stop()
+        })
+        axios.get(`https://conflictossocioambientales.iies.unam.mx/back/api/v1/datos-tabla/${query}`,
+        ).then(response => {
+          this.datosTabla = response.data
+          console.log("this.datosTabla", this.datosTabla)
+          this.tab = 'graficas'
+          this.loadingBar.stop()
+        }).catch(error => {
+          console.log("catch", error)
+          this.loadingBar.stop()
+        })
+      }
     },
     filterTipos(val, update) {
       update(() => {
@@ -366,7 +395,7 @@ export default {
           this.municipiosOptionsSelected = null
         }
       }
-    }
+    },
   },
   mounted() {
     this.loadingBar = this.$refs.bar
@@ -375,12 +404,24 @@ export default {
     axios.get('https://conflictossocioambientales.iies.unam.mx/back/api/v1/datos-tabla/',
       {cancelToken: this.CancelToken.token}).then(response => {
       this.datosTabla = response.data
+      this.datosTablaTodos = response.data
       console.log("this.datosTabla", this.datosTabla)
+    }).then(() => {
+      axios.get(`https://conflictossocioambientales.iies.unam.mx/back/api/v1/datos-graficas/`,
+        {cancelToken: this.CancelToken.token}).then(response => {
+        this.datosGraficas = response.data
+        this.datosGraficasTodos = response.data
+        console.log("this.datosGraficas", this.datosGraficas)
+      }).then(() => {
+        console.log("then datosGraficas")
+      })
     }).then(() => {
       this.loadingBar.stop()
     }).catch(() => {
       this.loadingBar.stop()
     })
+
+
     axios.get('https://conflictossocioambientales.iies.unam.mx/back/api/v1/conflicto-tipo/')
       .then(response => {
         this.tiposOptions = response.data
