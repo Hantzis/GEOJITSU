@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <q-tabs
       v-model="tab"
       indicator-color="primary"
@@ -10,6 +9,7 @@
       inline-label
     >
       <q-tab name="graficas" icon="mdi-chart-pie" label="Gráficas"/>
+      <q-tab name="datos" icon="mdi-table" label="Datos"/>
       <q-tab name="filtros" icon="mdi-filter" label="Filtros"/>
     </q-tabs>
 
@@ -19,9 +19,57 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
       </q-tab-panel>
 
+      <q-tab-panel name="datos">
+        <div class="text-h6 q-pb-sm">Datos</div>
+        <q-table
+          title="Treats"
+          :data="datosTabla"
+          :columns="tablaColumnas"
+          row-key="name"
+          :visible-columns="visibleColumns"
+          :rows-per-page-label="'Registros por página'"
+          :filter="filterTabla"
+        >
+          <template v-slot:top>
+
+            <q-space/>
+
+            <q-input class="q-pr-md" outlined dense debounce="300" v-model="filterTabla" placeholder="Buscar">
+              <template v-slot:append>
+                <q-icon name="buscar"/>
+              </template>
+            </q-input>
+
+            <q-select
+              v-model="visibleColumns"
+              multiple
+              outlined
+              dense
+              options-dense
+              :display-value="$q.lang.table.columns"
+              emit-value
+              map-options
+              :options="tablaColumnas"
+              option-value="name"
+              options-cover
+              style="min-width: 150px"
+            />
+          </template>
+
+        </q-table>
+      </q-tab-panel>
+
       <q-tab-panel name="filtros">
         <div class="text-h6">Filtros</div>
 
+        <div class="row full-width">
+          <div class="col-12 q-pa-sm">
+            <q-select class="full-width" outlined name="tipo" emit-value map-options multiple clearable
+                      use-chips use-input option-label="conflictotipo_nombre" option-value="id"
+                      @filter="filterTipos" label="Tipos"
+                      v-model="tiposOptionsSelected" :options="tiposOptionsFiltered"/>
+          </div>
+        </div>
         <div class="row full-width">
           <div class="col-sm-6 col-xs-12 q-pa-sm">
             <q-select class="full-width" outlined name="estados" emit-value map-options multiple clearable
@@ -68,14 +116,21 @@
 
         <div class="row q-pa-sm">
           <q-space/>
-          <q-btn label="Limpiar filtros" color="grey-6" style="margin-right: 12px;"></q-btn>
-          <q-btn label="Filtrar" color="green"></q-btn>
+          <q-btn label="Limpiar filtros" color="grey-6" style="margin-right: 12px;"
+                 @click.stop="limpiarFiltros"></q-btn>
+          <q-btn label="Filtrar" color="green" @click.stop="filtrarDatos"></q-btn>
         </div>
 
       </q-tab-panel>
     </q-tab-panels>
 
-
+    <q-ajax-bar
+      ref="bar"
+      position="top"
+      color="primary"
+      size="4px"
+      skip-hijack
+    />
   </div>
 </template>
 
@@ -88,6 +143,10 @@ export default {
   data() {
     return {
       tab: 'graficas',
+      tiposFilter: '',
+      tiposOptions: [],
+      tiposOptionsFiltered: [],
+      tiposOptionsSelected: null,
       estadosFilter: '',
       estadosOptions: [],
       estadosOptionsFiltered: [],
@@ -112,6 +171,61 @@ export default {
       pueblosOptions: [],
       pueblosOptionsFiltered: [],
       pueblosOptionsSelected: null,
+      datosTabla: [],
+      datosGraficas: [],
+      filterTabla: '',
+      visibleColumns: ['tipo_conflicto', 'estados_nombre_texto',
+        'secretarias_nombre_texto',
+        'pueblos_originarios_nombre_texto'],
+      tablaColumnas: [
+        {name: 'tipo_conflicto', align: 'left', label: 'Típo de conflicto', field: 'tipo_conflicto', sortable: true},
+        {name: 'estados_nombre_texto', align: 'left', label: 'Estados', field: 'estados_nombre_texto', sortable: true},
+        {
+          name: 'municipios_estado_nombre_texto',
+          align: 'left',
+          label: 'Municipios',
+          field: 'municipios_estado_nombre_texto',
+          sortable: true
+        },
+        {
+          name: 'organizaciones_nombre_texto',
+          align: 'left',
+          label: 'Organizaciones',
+          field: 'organizaciones_nombre_texto',
+          sortable: true
+        },
+        {
+          name: 'empresas_nombre_texto',
+          align: 'left',
+          label: 'Empresas',
+          field: 'empresas_nombre_texto',
+          sortable: true
+        },
+        {
+          name: 'secretarias_nombre_texto',
+          align: 'left',
+          label: 'Secretarías',
+          field: 'secretarias_nombre_texto',
+          sortable: true
+        },
+        {
+          name: 'pueblos_originarios_nombre_texto',
+          align: 'left',
+          label: 'Pueblos originarios',
+          field: 'pueblos_originarios_nombre_texto',
+          sortable: true
+        },
+        {
+          name: 'publicaciones_lista',
+          align: 'left',
+          label: 'Publicaciones',
+          field: row => row.publicaciones_lista.url,
+          sortable: true
+        },
+      ],
+      loadingBar: undefined,
+      source: undefined,
+      CancelToken: undefined,
     }
   },
   methods: {
@@ -153,6 +267,57 @@ export default {
           console.log("null", this.municipiosOptionsSelected)
         }
       }
+    },
+    limpiarFiltros() {
+      this.tiposOptionsSelected = null
+      this.estadosOptionsSelected = null
+      this.municipiosOptionsSelected = null
+      this.organizacionesOptionsSelected = null
+      this.empresasOptionsSelected = null
+      this.secretariasOptionsSelected = null
+      this.pueblosOptionsSelected = null
+    },
+    filtrarDatos() {
+
+      const filtros = []
+      console.log("filtrarDatos")
+      if (this.tiposOptionsSelected)
+        filtros.push("tipo__in=" + this.tiposOptionsSelected)
+      if (this.estadosOptionsSelected)
+        filtros.push("estados__in=" + this.estadosOptionsSelected)
+      if (this.municipiosOptionsSelected)
+        filtros.push("municipios__in=" + this.municipiosOptionsSelected)
+      if (this.organizacionesOptionsSelected)
+        filtros.push("organizaciones__in=" + this.organizacionesOptionsSelected)
+      if (this.empresasOptionsSelected)
+        filtros.push("empresas__in=" + this.empresasOptionsSelected)
+      if (this.secretariasOptionsSelected)
+        filtros.push("secretarias__in=" + this.secretariasOptionsSelected)
+      if (this.pueblosOptionsSelected)
+        filtros.push("pueblos__in=" + this.pueblosOptionsSelected)
+      const query = "?" + filtros.join("&")
+      console.log("filtros", filtros)
+      console.log("query", query)
+      this.loadingBar.start()
+      axios.get(`https://conflictossocioambientales.iies.unam.mx/back/api/v1/datos-tabla/${query}`,
+        {cancelToken: this.CancelToken.token}).then(response => {
+        this.datosTabla = response.data
+        console.log("this.datosTabla", this.datosTabla)
+      }).then(() => {
+        this.CancelToken.cancel("Nuevo filtro");
+        this.loadingBar.stop()
+        this.tab = 'datos'
+        console.log("then")
+      }).catch(error => {
+        console.log("catch", error)
+        this.loadingBar.stop()
+      })
+    },
+    filterTipos(val, update) {
+      update(() => {
+        const needle = val.toLowerCase()
+        this.tiposOptionsFiltered = this.tiposOptions.filter(v => v.conflictotipo_nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase().indexOf(needle) > -1)
+      })
     },
     filterEstados(val, update) {
       update(() => {
@@ -203,7 +368,24 @@ export default {
       }
     }
   },
-  created() {
+  mounted() {
+    this.loadingBar = this.$refs.bar
+    this.loadingBar.start()
+    this.CancelToken = axios.CancelToken.source();
+    axios.get('https://conflictossocioambientales.iies.unam.mx/back/api/v1/datos-tabla/',
+      {cancelToken: this.CancelToken.token}).then(response => {
+      this.datosTabla = response.data
+      console.log("this.datosTabla", this.datosTabla)
+    }).then(() => {
+      this.loadingBar.stop()
+    }).catch(() => {
+      this.loadingBar.stop()
+    })
+    axios.get('https://conflictossocioambientales.iies.unam.mx/back/api/v1/conflicto-tipo/')
+      .then(response => {
+        this.tiposOptions = response.data
+        this.tiposOptionsFiltered = response.data
+      })
     axios.get('https://conflictossocioambientales.iies.unam.mx/back/api/v1/entidad-federativa/')
       .then(response => {
         this.estadosOptions = response.data
@@ -229,11 +411,7 @@ export default {
         this.pueblosOptions = response.data
         this.pueblosOptionsFiltered = response.data
       })
-
   },
-  mounted() {
-
-  }
 }
 </script>
 
