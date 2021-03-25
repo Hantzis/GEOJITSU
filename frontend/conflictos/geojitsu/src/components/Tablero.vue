@@ -17,7 +17,7 @@
       <q-tab-panel name="graficas">
         <div class="text-h6">Graficas</div>
 
-        <div v-if="datosGraficas" class="row justify-between content-center">
+        <div v-if="Object.entries(datosGraficas).length > 0" class="row justify-between content-center">
           <conflictos-pie-chart :title="'Tipo'" :dataGrafica="datosGraficas.tipos"/>
           <conflictos-pie-chart :title="'Estados'" :dataGrafica="datosGraficas.estados"/>
           <conflictos-pie-chart :title="'Municipios'" :dataGrafica="datosGraficas.municipios"/>
@@ -27,7 +27,7 @@
           <conflictos-pie-chart :title="'Pueblos originarios'" :dataGrafica="datosGraficas.pueblos"/>
         </div>
 
-        <div v-if="!datosGraficas"  class="row justify-between content-center">
+        <div v-if="datosGraficas.length < 1"  class="row justify-between content-center">
           <p>cargando info</p>
         </div>
 
@@ -192,7 +192,7 @@ export default {
       pueblosOptionsSelected: null,
       datosTabla: [],
       datosTablaTodos: [],
-      datosGraficas: [],
+      datosGraficas: {},
       datosGraficasTodos: [],
       filterTabla: '',
       visibleColumns: ['tipo_conflicto', 'estados_nombre_texto',

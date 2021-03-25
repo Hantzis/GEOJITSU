@@ -8,7 +8,10 @@
       <q-separator inset/>
 
       <q-card-section>
-        <pie-chart v-if="dataGrafica" :chart-data="chartData" :opciones="options"></pie-chart>
+        {{ dataGrafica }}
+        <!--
+        <pie-chart v-if="chartData.datasets.data.length > 0" :chart-data="chartData" :options="options"></pie-chart>
+        -->
       </q-card-section>
 
     </q-card>
@@ -19,19 +22,19 @@
 import PieChart from "components/PieChart";
 
 export default {
-  components: {PieChart},
+  components: {},
   name: "ConflictosPieChart",
   props: {
     title: String,
     dataGrafica: Array
   },
-  data() {
+  data() {options
     return {
       options: {
         responsive: true,
         maintainAspectRatio: false
       },
-      opciones: [],
+      etiquetas: [],
       datos: [],
       chartData: {
         labels: [],
@@ -51,11 +54,11 @@ export default {
   },
   mounted() {
     this.dataGrafica.forEach(val => {
-      this.opciones.push(Object.entries(val)[0][0])
+      this.etiquetas.push(Object.entries(val)[0][0])
       this.datos.push(Object.entries(val)[0][1])
     })
-    this.chartData.labels = this.opciones
-    this.chartData.datasets.data = this.opciones
+    this.chartData.labels = this.etiquetas
+    this.chartData.datasets.data = this.datos
   },
 }
 </script>

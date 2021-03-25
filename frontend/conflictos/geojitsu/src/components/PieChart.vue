@@ -4,14 +4,13 @@ const { reactiveProp } = mixins
 
 export default {
   name: "PieChart",
-  extends: Pie,
-  mixins: [reactiveProp],
+  mixins: [Pie, reactiveProp],
   props: {
-    opciones: Object,
+    options: Object,
   },
   mounted() {
-    console.log("chartData, opciones", this.chartData, this.opciones)
-    this.renderChart(this.chartData, this.opciones)
+    console.log("chartData, opciones", this.chartData, this.options)
+    this.renderChart(this.chartData, this.options)
   }
 }
 </script>
