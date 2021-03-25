@@ -16,7 +16,17 @@
     <q-tab-panels v-model="tab" class="shadow-2 rounded-borders">
       <q-tab-panel name="graficas">
         <div class="text-h6">Graficas</div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+
+        <div class="row justify-between content-center">
+          <conflictos-pie-chart :title="'Tipo'" :data="datosGraficas.tipos"/>
+          <conflictos-pie-chart :title="'Estados'" :data="datosGraficas.estados"/>
+          <conflictos-pie-chart :title="'Municipios'" :data="datosGraficas.municipios"/>
+          <conflictos-pie-chart :title="'Organizaciones'" :data="datosGraficas.organizaciones"/>
+          <conflictos-pie-chart :title="'Empresas'" :data="datosGraficas.empresas"/>
+          <conflictos-pie-chart :title="'Secretarías'" :data="datosGraficas.secretarias"/>
+          <conflictos-pie-chart :title="'Pueblos originarios'" :data="datosGraficas.pueblos"/>
+        </div>
+
       </q-tab-panel>
 
       <q-tab-panel name="datos">
@@ -136,12 +146,16 @@
 
 <script>
 import axios from 'axios'
+import ConflictosPieChart from "components/ConflictosPieChart";
 
 export default {
   name: "Tablero",
-  components: {},
+  components: {
+    ConflictosPieChart
+  },
   data() {
     return {
+
       tab: 'graficas',
       tiposFilter: '',
       tiposOptions: [],
@@ -173,6 +187,7 @@ export default {
       pueblosOptionsSelected: null,
       datosTabla: [],
       datosTablaTodos: [],
+      datosGraficas: [],
       datosGraficasTodos: [],
       filterTabla: '',
       visibleColumns: ['tipo_conflicto', 'estados_nombre_texto',
@@ -297,7 +312,7 @@ export default {
       }
       if (Array.isArray(this.organizacionesOptionsSelected)) {
         if (this.organizacionesOptionsSelected.length > 0)
-        filtros.push("organizaciones__in=" + this.organizacionesOptionsSelected)
+          filtros.push("organizaciones__in=" + this.organizacionesOptionsSelected)
       }
       if (Array.isArray(this.empresasOptionsSelected)) {
         if (this.empresasOptionsSelected.length > 0)
@@ -457,5 +472,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

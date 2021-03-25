@@ -17,10 +17,12 @@
     "@quasar/extras": "^1.9.19",
     "@turf/turf": "^6.3.0",
     "axios": "^0.21.1",
+    "chart.js": "^2.9.4",
     "quasar": "^1.15.5",
     "topojson-client": "^3.1.0",
     "topojson-server": "^3.0.1",
     "topojson-simplify": "^3.0.3",
+    "vue-chartjs": "^3.5.1",
     "vue-truncate-filter": "^1.1.7",
     "vuelayers": "^0.11.27"
   },
