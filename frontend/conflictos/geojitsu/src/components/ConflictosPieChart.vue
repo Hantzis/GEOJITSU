@@ -8,7 +8,7 @@
       <q-separator inset/>
 
       <q-card-section>
-        <pie-chart :chart-data="datos" :opciones="opciones"></pie-chart>
+        <pie-chart v-if="dataGrafica" :chart-data="chartData" :opciones="options"></pie-chart>
       </q-card-section>
 
     </q-card>
@@ -23,12 +23,26 @@ export default {
   name: "ConflictosPieChart",
   props: {
     title: String,
-    data: Array
+    dataGrafica: Array
   },
   data() {
     return {
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      },
       opciones: [],
       datos: [],
+      chartData: {
+        labels: [],
+        datasets: [
+          {
+            label: 'Data One',
+            backgroundColor: '#9ff879',
+            data: []
+          }
+        ]
+      }
     }
   },
   methods: {
@@ -36,10 +50,12 @@ export default {
     },
   },
   mounted() {
-    this.data.forEach(val => {
+    this.dataGrafica.forEach(val => {
       this.opciones.push(Object.entries(val)[0][0])
       this.datos.push(Object.entries(val)[0][1])
     })
+    this.chartData.labels = this.opciones
+    this.chartData.datasets.data = this.opciones
   },
 }
 </script>

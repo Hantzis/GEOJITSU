@@ -17,15 +17,20 @@
       <q-tab-panel name="graficas">
         <div class="text-h6">Graficas</div>
 
-        <div class="row justify-between content-center">
-          <conflictos-pie-chart :title="'Tipo'" :data="datosGraficas.tipos"/>
-          <conflictos-pie-chart :title="'Estados'" :data="datosGraficas.estados"/>
-          <conflictos-pie-chart :title="'Municipios'" :data="datosGraficas.municipios"/>
-          <conflictos-pie-chart :title="'Organizaciones'" :data="datosGraficas.organizaciones"/>
-          <conflictos-pie-chart :title="'Empresas'" :data="datosGraficas.empresas"/>
-          <conflictos-pie-chart :title="'Secretarías'" :data="datosGraficas.secretarias"/>
-          <conflictos-pie-chart :title="'Pueblos originarios'" :data="datosGraficas.pueblos"/>
+        <div v-if="datosGraficas" class="row justify-between content-center">
+          <conflictos-pie-chart :title="'Tipo'" :dataGrafica="datosGraficas.tipos"/>
+          <conflictos-pie-chart :title="'Estados'" :dataGrafica="datosGraficas.estados"/>
+          <conflictos-pie-chart :title="'Municipios'" :dataGrafica="datosGraficas.municipios"/>
+          <conflictos-pie-chart :title="'Organizaciones'" :dataGrafica="datosGraficas.organizaciones"/>
+          <conflictos-pie-chart :title="'Empresas'" :dataGrafica="datosGraficas.empresas"/>
+          <conflictos-pie-chart :title="'Secretarías'" :dataGrafica="datosGraficas.secretarias"/>
+          <conflictos-pie-chart :title="'Pueblos originarios'" :dataGrafica="datosGraficas.pueblos"/>
         </div>
+
+        <div v-if="!datosGraficas"  class="row justify-between content-center">
+          <p>cargando info</p>
+        </div>
+
 
       </q-tab-panel>
 

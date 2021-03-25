@@ -7,11 +7,10 @@ export default {
   extends: Pie,
   mixins: [reactiveProp],
   props: {
-    opciones: Array,
-    datos: Array
+    opciones: Object,
   },
   mounted() {
-    console.log("this.datos, this.opciones", this.datos, this.opciones)
+    console.log("chartData, opciones", this.chartData, this.opciones)
     this.renderChart(this.chartData, this.opciones)
   }
 }
