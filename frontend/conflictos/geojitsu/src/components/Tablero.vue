@@ -17,6 +17,9 @@
       <q-tab-panel name="graficas">
         <div class="text-h6">Graficas</div>
 
+        <p>{{ Object.entries(datosGraficas).length > 0 }}</p>
+        <p>{{ Object.entries(datosGraficas).length }}</p>
+
         <div v-if="Object.entries(datosGraficas).length > 0" class="row justify-between content-center">
           <conflictos-pie-chart :title="'Tipo'" :dataGrafica="datosGraficas.tipos"/>
           <conflictos-pie-chart :title="'Estados'" :dataGrafica="datosGraficas.estados"/>
@@ -331,6 +334,7 @@ export default {
         if (this.pueblosOptionsSelected.length > 0)
           filtros.push("pueblos__in=" + this.pueblosOptionsSelected)
       }
+      this.datosGraficas = {}
       let query = "?" + filtros.join("&")
       if (query === "?" || query === "") {
         this.loadingBar.start()
