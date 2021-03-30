@@ -8,7 +8,7 @@
       <q-separator inset/>
 
       <q-card-section>
-        <pie-chart v-if="loaded && dataGrafica.length > 0" :chart-data="chartData"></pie-chart>
+        <pie-chart v-if="loaded && dataGrafica.length > 0" :chart-data="chartData" :options="options"></pie-chart>
       </q-card-section>
 
     </q-card>
@@ -40,6 +40,9 @@ export default {
       ],
       loaded: false,
       options: {
+        legend: {
+          display: false
+        },
         responsive: true,
         maintainAspectRatio: false
       },
