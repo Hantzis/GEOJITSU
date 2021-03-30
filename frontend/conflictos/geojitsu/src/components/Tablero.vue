@@ -30,7 +30,7 @@
           <conflictos-pie-chart :title="'Pueblos originarios'" :dataGrafica="datosGraficas.pueblos"/>
         </div>
 
-        <div v-if="datosGraficas.length < 1"  class="row justify-between content-center">
+        <div v-if="datosGraficas.length < 1" class="row justify-between content-center">
           <p>cargando info</p>
         </div>
 
@@ -284,11 +284,9 @@ export default {
       }
     },
     municipiosChange() {
-      console.log(this.municipiosOptionsSelected)
       if (this.municipiosOptionsSelected) {
         if (this.municipiosOptionsSelected.length === 0) {
           this.municipiosOptionsSelected = null
-          console.log("null", this.municipiosOptionsSelected)
         }
       }
     },
@@ -303,9 +301,6 @@ export default {
     },
     filtrarDatos() {
       const filtros = []
-      console.log("filtrarDatos")
-      console.log("this.tiposOptionsSelected", this.tiposOptionsSelected)
-
       if (Array.isArray(this.tiposOptionsSelected)) {
         if (this.tiposOptionsSelected.length > 0)
           filtros.push("tipo__in=" + this.tiposOptionsSelected)
@@ -347,21 +342,16 @@ export default {
         axios.get(`https://conflictossocioambientales.iies.unam.mx/back/api/v1/datos-graficas/${query}`,
         ).then(response => {
           this.datosGraficas = response.data
-          console.log("this.datosGraficas", this.datosGraficas)
         }).then(() => {
-          console.log("then graficas")
         }).catch(error => {
-          console.log("catch", error)
           this.loadingBar.stop()
         })
         axios.get(`https://conflictossocioambientales.iies.unam.mx/back/api/v1/datos-tabla/${query}`,
         ).then(response => {
           this.datosTabla = response.data
-          console.log("this.datosTabla", this.datosTabla)
           this.tab = 'graficas'
           this.loadingBar.stop()
         }).catch(error => {
-          console.log("catch", error)
           this.loadingBar.stop()
         })
       }
@@ -429,15 +419,11 @@ export default {
       {cancelToken: this.CancelToken.token}).then(response => {
       this.datosTabla = response.data
       this.datosTablaTodos = response.data
-      console.log("this.datosTabla", this.datosTabla)
     }).then(() => {
       axios.get(`https://conflictossocioambientales.iies.unam.mx/back/api/v1/datos-graficas/`,
         {cancelToken: this.CancelToken.token}).then(response => {
         this.datosGraficas = response.data
         this.datosGraficasTodos = response.data
-        console.log("this.datosGraficas", this.datosGraficas)
-      }).then(() => {
-        console.log("then datosGraficas")
       })
     }).then(() => {
       this.loadingBar.stop()
