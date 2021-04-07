@@ -324,6 +324,7 @@ export default {
         'empresa_icon_url': 'Empresas'
       },
       conflictos_selectedFeatures: [],
+      selectedFeatures: [],
       vectorLayersStyles: {},
       mapkey: 0,
       GISRibbonTabs: [
