@@ -43,6 +43,13 @@ export default {
         legend: {
           display: false
         },
+        tooltips: {
+          callbacks: {
+            label: (item, data) => {
+              return "juju"
+            }
+          }
+        },
         responsive: true,
         maintainAspectRatio: false
       },
