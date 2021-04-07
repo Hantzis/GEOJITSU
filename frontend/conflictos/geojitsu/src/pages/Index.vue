@@ -91,7 +91,7 @@
                             </div>
                           </div>
 
-                          <vl-interaction-select :features.sync="conflictos_selectedFeatures">
+                          <vl-interaction-select v-if="capaSeleccionada=='conflictos'" :features.sync="conflictos_selectedFeatures">
                             <vl-overlay v-if="position && conflictos_selectedFeatures.length > 0" :position="position"
                                         :auto-pan="true"
                                         style="background: white; padding: 8px">
@@ -318,13 +318,22 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'mapaBaseGetter', 'mapasBaseGetter', 'capasMapaGetter', 'getDrawerCapas', 'getSimbologiaTipo']),
+    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'mapaBaseGetter', 'mapasBaseGetter', 'capasMapaGetter',
+      'getDrawerCapas', 'getSimbologiaTipo', 'capaSeleccionadaGetter']),
     showGISRibbon: {
       get() {
         return this.GISRibbonIsOpenGetter
       },
       set(value) {
         this.GISRibbonIsOpenAction(value)
+      }
+    },
+    capaSeleccionada: {
+      get() {
+        return this.capaSeleccionadaGetter
+      },
+      set(value) {
+        this.capaSeleccionadaAction(value)
       }
     },
     simbologiaTipo: {
@@ -389,7 +398,7 @@ export default {
   },
   methods: {
     ...mapActions('geojitsu', ['capasMapaAction', 'setCapaFeatures', 'setCapaTicked', 'GISRibbonIsOpenAction',
-      'setDrawerCapas', 'setSimbologiaTipo']),
+      'setDrawerCapas', 'setSimbologiaTipo', 'capaSeleccionadaAction']),
     getPublicaciones(properties) {
       let publicaciones = properties.publicaciones_lista
       if (publicaciones) {
@@ -463,6 +472,7 @@ export default {
     },
     clic(evt) {
       console.log("clic event", evt)
+      console.log("this.capaSeleccionada", this.capaSeleccionada)
       this.clickCoords = evt.coordinate
     },
     pointsStyleFunc() {
