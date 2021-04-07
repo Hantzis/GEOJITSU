@@ -9,7 +9,6 @@ export default {
     options: Object,
   },
   mounted() {
-    console.log("chartData, opciones", this.chartData, this.options)
     this.renderChart(this.chartData, this.options)
   }
 }

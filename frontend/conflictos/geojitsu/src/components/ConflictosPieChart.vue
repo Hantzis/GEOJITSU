@@ -46,7 +46,7 @@ export default {
         tooltips: {
           callbacks: {
             label: (item, data) => {
-              return "juju"
+              return `${data.labels[item.index]}: ${data.datasets[0].data[item.index]} (${Number((data.datasets[0].data[item.index]/data.datasets[0].data.reduce((a, b) => a + b)*100).toFixed(1))}%)`
             }
           }
         },
@@ -71,10 +71,6 @@ export default {
     },
   },
   watch: {
-    chartData() {
-      console.log("this.chartData", this.chartData)
-      console.log("this.chartData len", this.chartData.datasets[0].data.length)
-    },
     dataGrafica() {
       this.loaded = false
       if (this.dataGrafica) {

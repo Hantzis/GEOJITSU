@@ -57,14 +57,6 @@ export default {
   },
   methods: {
     ...mapActions('geojitsu', ['GISRibbonIsOpenAction']),
-    onMainClick(e) {
-      console.log(e);
-      console.log("onMainClick")
-    },
-    onItemClick(e) {
-      console.log(e);
-      console.log("onItemClick")
-    }
   }
 }
 </script>

@@ -48,8 +48,7 @@
     },
     methods: {
       onMainClick() {
-        console.log("hola")
-        return
+        return false
       }
     }
   }
