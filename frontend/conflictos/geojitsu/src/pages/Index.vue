@@ -91,8 +91,53 @@
                             </div>
                           </div>
 
-                          <vl-interaction-select v-if="capaSeleccionada=='conflictos'" :features.sync="conflictos_selectedFeatures">
+                          <vl-interaction-select v-if="capaSeleccionada!='conflictos'" :features.sync="selectedFeatures">
                             <vl-overlay v-if="position && conflictos_selectedFeatures.length > 0" :position="position"
+                                        :auto-pan="true"
+                                        style="background: white; padding: 8px">
+                              <div style="max-width: 300px; min-width: 300px;">
+                                <q-table
+                                  class="detalles"
+                                  style="max-height: 400px; max-width: 300px"
+                                  :title="selectedFeatures[0].properties['tipo_conflicto'] + ' (id:' + selectedFeatures[0].id + ')'"
+                                  square
+                                  wrap-cells
+                                  dense
+                                  :rows-per-page-options="[15]"
+                                  virtual-scroll
+                                  separator="cell"
+                                  hide-bottom
+                                  :data="getEntries(selectedFeatures[0].properties)"
+                                >
+                                  <template v-slot:header>
+                                    <q-tr align="left">
+                                      <q-td v-if="!ver_mas" colspan="2"
+                                            style="border-bottom-width: 1px; padding-top: 14px;">
+                                        {{ selectedFeatures[0].properties['resumen'].slice(0, 240) + '...' }}
+                                        <span @click="ver_mas = true" style="cursor: pointer; font-weight: bold;"> Ver mas</span>
+                                        <div v-html="getPublicaciones(selectedFeatures[0].properties)"></div>
+                                      </q-td>
+                                      <q-td v-if="ver_mas" colspan="2"
+                                            style="border-bottom-width: 1px; padding-top: 14px;">
+                                        {{ selectedFeatures[0].properties['resumen'] }}
+                                        <span @click="ver_mas = false" style="cursor: pointer; font-weight: bold;"> Ver menos</span>
+                                        <div v-html="getPublicaciones(conflictos_selectedFeatures[0].properties)"></div>
+                                      </q-td>
+                                    </q-tr>
+                                  </template>
+                                  <template v-slot:top-right>
+                                    <q-btn flat dense size="sm" style="margin-right: -11px;">
+                                      <q-icon name="close"
+                                              @click="position = undefined; selectedFeatures = []; ver_mas = false;"/>
+                                    </q-btn>
+                                  </template>
+                                </q-table>
+                              </div>
+                            </vl-overlay>
+                          </vl-interaction-select>
+
+                          <vl-interaction-select v-if="capaSeleccionada=='conflictos'" :features.sync="conflictos_selectedFeatures">
+                            <vl-overlay v-if="position && selectedFeatures.length > 0" :position="position"
                                         :auto-pan="true"
                                         style="background: white; padding: 8px">
                               <div style="max-width: 300px; min-width: 300px;">
