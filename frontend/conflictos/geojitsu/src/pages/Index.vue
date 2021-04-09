@@ -91,7 +91,7 @@
                             </div>
                           </div>
 
-                          <vl-interaction-select v-if="capaSeleccionada!='conflictos'"
+                          <vl-interaction-select v-if="capaSeleccionada!=='conflictos'"
                                                  :features.sync="selectedFeatures">
                             <vl-overlay v-if="position && selectedFeatures.length > 0" :position="position"
                                         :auto-pan="true"
@@ -139,7 +139,7 @@
                           </vl-interaction-select>
 
                           <vl-interaction-select v-if="capaSeleccionada==='conflictos'"
-                                                 :features.sync="conflictos_selectedFeatures" :layers="['conflictos']">
+                                                 :features.sync="conflictos_selectedFeatures">
                             <vl-overlay v-if="position && selectedFeatures.length > 0" :position="position"
                                         :auto-pan="true"
                                         style="background: white; padding: 8px">
@@ -356,18 +356,21 @@ export default {
     },
     conflictos_selectedFeatures() {
       this.ver_mas = false
+      console.log("this.conflictos_selectedFeatures", this.conflictos_selectedFeatures)
       if (this.conflictos_selectedFeatures.length > 0) {
         if (this.capaSeleccionada === 'conflictos') {
-          console.log("clic", this.conflictos_selectedFeatures)
+          console.log("si")
+          console.log("clic conflictos_selectedFeatures", this.conflictos_selectedFeatures)
           let collection = []
-          for (let point of this.conflictos_selectedFeatures[0].geometry.coordinates) {
-            let a = turf.point(point)
-            collection.push(a)
-          }
+          this.conflictos_selectedFeatures[0].geometry.coordinates.forEach(point => {
+            collection.push(turf.point(point))
+          })
+          console.log("collection", collection)
           let featureCoords = turf.featureCollection(collection)
           let cercano = turf.nearestPoint(this.clickCoords, featureCoords)
           this.position = cercano.geometry.coordinates
         } else {
+          console.log("no")
           this.conflictos_selectedFeatures = []
           this.position = undefined
         }
@@ -528,11 +531,13 @@ export default {
       return limpio
     },
     clic(evt) {
-      console.log("clic event", evt)
-      console.log("this.capaSeleccionada", this.capaSeleccionada)
-      console.log("this.selectedFeatures", this.selectedFeatures)
-      console.log("this.position", this.position)
       this.clickCoords = evt.coordinate
+      if (this.capaSeleccionada !== 'conflictos') {
+        console.log("clic event", evt)
+        console.log("this.capaSeleccionada", this.capaSeleccionada)
+        console.log("this.selectedFeatures", this.selectedFeatures)
+        console.log("this.position", this.position)
+      }
     },
     pointsStyleFunc() {
       return (feature) => {
