@@ -91,11 +91,13 @@
                             </div>
                           </div>
 
-                          <vl-interaction-select v-if="capaSeleccionada!='conflictos'" :features.sync="selectedFeatures">
-                            <vl-overlay v-if="position && conflictos_selectedFeatures.length > 0" :position="position"
+                          <vl-interaction-select v-if="capaSeleccionada!='conflictos'"
+                                                 :features.sync="selectedFeatures">
+                            <vl-overlay v-if="position && selectedFeatures.length > 0" :position="position"
                                         :auto-pan="true"
                                         style="background: white; padding: 8px">
                               <div style="max-width: 300px; min-width: 300px;">
+
                                 <q-table
                                   class="detalles"
                                   style="max-height: 400px; max-width: 300px"
@@ -136,7 +138,8 @@
                             </vl-overlay>
                           </vl-interaction-select>
 
-                          <vl-interaction-select v-if="capaSeleccionada=='conflictos'" :features.sync="conflictos_selectedFeatures">
+                          <vl-interaction-select v-if="capaSeleccionada==='conflictos'"
+                                                 :features.sync="conflictos_selectedFeatures" :layers="['conflictos']">
                             <vl-overlay v-if="position && selectedFeatures.length > 0" :position="position"
                                         :auto-pan="true"
                                         style="background: white; padding: 8px">
@@ -348,18 +351,26 @@ export default {
     mapaBase() {
       this.$refs["olmap"].updateSize()
     },
+    selectedFeatures() {
+      //
+    },
     conflictos_selectedFeatures() {
       this.ver_mas = false
       if (this.conflictos_selectedFeatures.length > 0) {
-        console.log("clic", this.conflictos_selectedFeatures)
-        let collection = []
-        for (let point of this.conflictos_selectedFeatures[0].geometry.coordinates) {
-          let a = turf.point(point)
-          collection.push(a)
+        if (this.capaSeleccionada === 'conflictos') {
+          console.log("clic", this.conflictos_selectedFeatures)
+          let collection = []
+          for (let point of this.conflictos_selectedFeatures[0].geometry.coordinates) {
+            let a = turf.point(point)
+            collection.push(a)
+          }
+          let featureCoords = turf.featureCollection(collection)
+          let cercano = turf.nearestPoint(this.clickCoords, featureCoords)
+          this.position = cercano.geometry.coordinates
+        } else {
+          this.conflictos_selectedFeatures = []
+          this.position = undefined
         }
-        let featureCoords = turf.featureCollection(collection)
-        let cercano = turf.nearestPoint(this.clickCoords, featureCoords)
-        this.position = cercano.geometry.coordinates
       }
     }
   },
@@ -519,6 +530,8 @@ export default {
     clic(evt) {
       console.log("clic event", evt)
       console.log("this.capaSeleccionada", this.capaSeleccionada)
+      console.log("this.selectedFeatures", this.selectedFeatures)
+      console.log("this.position", this.position)
       this.clickCoords = evt.coordinate
     },
     pointsStyleFunc() {
