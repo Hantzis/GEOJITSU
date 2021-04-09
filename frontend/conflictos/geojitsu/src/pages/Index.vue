@@ -140,7 +140,7 @@
 
                           <vl-interaction-select v-if="capaSeleccionada==='conflictos'"
                                                  :features.sync="conflictos_selectedFeatures">
-                            <vl-overlay v-if="position && selectedFeatures.length > 0" :position="position"
+                            <vl-overlay v-if="position && conflictos_selectedFeatures.length > 0" :position="position"
                                         :auto-pan="true"
                                         style="background: white; padding: 8px">
                               <div style="max-width: 300px; min-width: 300px;">
@@ -367,8 +367,12 @@ export default {
           })
           console.log("collection", collection)
           let featureCoords = turf.featureCollection(collection)
+          console.log("featureCoords", featureCoords)
+
           let cercano = turf.nearestPoint(this.clickCoords, featureCoords)
+          console.log("cercano", cercano)
           this.position = cercano.geometry.coordinates
+          console.log("this.position", this.position)
         } else {
           console.log("no")
           this.conflictos_selectedFeatures = []
