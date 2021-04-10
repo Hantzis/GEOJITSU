@@ -43,25 +43,10 @@
                       <div class="col" :style="{'min-height': mapHeight}">
                         <vl-map @click="clic" ref="olmap" :load-tiles-while-animating="true"
                                 :load-tiles-while-interacting="true"
-                                data-projection="EPSG:4326"
+                                :data-projection="'EPSG:4326'"
                                 :style="{'min-height': 'inherit', 'max-height': '1px', 'width': '100%', 'background-color': mapaBase.bgcolor}">
                           <vl-view ref="map_view" :zoom.sync="zoom" :center.sync="center"
                                    :rotation.sync="rotation"></vl-view>
-
-                          <!--
-                          <vl-geoloc @update:position="geolocPosition = $event">
-                            <template slot-scope="geoloc">
-                              <vl-feature v-if="geoloc.position" id="position-feature">
-                                <vl-geom-point :coordinates="geoloc.position"></vl-geom-point>
-                                <vl-style-box>
-                                  <vl-style-icon
-                                    src="/statics/icons/Map-Marker.png"
-                                    :scale="0.2" :anchor="[0.5, 1]"></vl-style-icon>
-                                </vl-style-box>
-                              </vl-feature>
-                            </template>
-                          </vl-geoloc>
-                          -->
 
                           <vl-layer-tile>
                             <vl-source-xyz
@@ -70,16 +55,16 @@
                           </vl-layer-tile>
 
                           <div :key="mapkey">
-                            <div v-for="(capa) of capasMapa" :key="capa.value">
+                            <div v-for="capa of capasMapa" :key="capa.value">
                               <vl-layer-tile v-if="capa.type==='wms'" :opacity="capa.opacity" :visible="capa.visible">
                                 <vl-source-wms
+                                  :ref="capa.value"
                                   :url="capa.url"
-                                  :format="capa.format"
                                   :server_type="capa.server_type"
+                                  :format="capa.format"
                                   :layers="capa.layers"
                                   :attributions="capa.attribution"
                                   :ext-params="capa.params"
-                                  :projection="capa.params.crs"
                                 />
                               </vl-layer-tile>
                               <vl-layer-vector v-if="capa.type==='vector'" :opacity="capa.opacity"
@@ -90,53 +75,6 @@
                               </vl-layer-vector>
                             </div>
                           </div>
-
-                          <vl-interaction-select v-if="capaSeleccionada!=='conflictos'"
-                                                 :features.sync="selectedFeatures">
-                            <vl-overlay v-if="position && selectedFeatures.length > 0" :position="position"
-                                        :auto-pan="true"
-                                        style="background: white; padding: 8px">
-                              <div style="max-width: 300px; min-width: 300px;">
-
-                                <q-table
-                                  class="detalles"
-                                  style="max-height: 400px; max-width: 300px"
-                                  :title="selectedFeatures[0].properties['tipo_conflicto'] + ' (id:' + selectedFeatures[0].id + ')'"
-                                  square
-                                  wrap-cells
-                                  dense
-                                  :rows-per-page-options="[15]"
-                                  virtual-scroll
-                                  separator="cell"
-                                  hide-bottom
-                                  :data="getEntries(selectedFeatures[0].properties)"
-                                >
-                                  <template v-slot:header>
-                                    <q-tr align="left">
-                                      <q-td v-if="!ver_mas" colspan="2"
-                                            style="border-bottom-width: 1px; padding-top: 14px;">
-                                        {{ selectedFeatures[0].properties['resumen'].slice(0, 240) + '...' }}
-                                        <span @click="ver_mas = true" style="cursor: pointer; font-weight: bold;"> Ver mas</span>
-                                        <div v-html="getPublicaciones(selectedFeatures[0].properties)"></div>
-                                      </q-td>
-                                      <q-td v-if="ver_mas" colspan="2"
-                                            style="border-bottom-width: 1px; padding-top: 14px;">
-                                        {{ selectedFeatures[0].properties['resumen'] }}
-                                        <span @click="ver_mas = false" style="cursor: pointer; font-weight: bold;"> Ver menos</span>
-                                        <div v-html="getPublicaciones(conflictos_selectedFeatures[0].properties)"></div>
-                                      </q-td>
-                                    </q-tr>
-                                  </template>
-                                  <template v-slot:top-right>
-                                    <q-btn flat dense size="sm" style="margin-right: -11px;">
-                                      <q-icon name="close"
-                                              @click="position = undefined; selectedFeatures = []; ver_mas = false;"/>
-                                    </q-btn>
-                                  </template>
-                                </q-table>
-                              </div>
-                            </vl-overlay>
-                          </vl-interaction-select>
 
                           <vl-interaction-select v-if="capaSeleccionada==='conflictos'"
                                                  :features.sync="conflictos_selectedFeatures">
@@ -183,6 +121,43 @@
                               </div>
                             </vl-overlay>
                           </vl-interaction-select>
+
+
+                          <vl-interaction-select v-if="capaSeleccionada!=='conflictos'" :active="false"
+                                                 :features.sync="selectedFeatures[0]">
+                            <vl-overlay v-if="position && selectedFeatures.length > 0" :position="position"
+                                        :auto-pan="true"
+                                        style="background: white; padding: 8px">
+                              <div style="max-width: 300px; min-width: 300px;">
+
+                                <q-table
+                                  class="detalles"
+                                  style="max-height: 400px; max-width: 300px"
+                                  :title="''"
+                                  square
+                                  wrap-cells
+                                  dense
+                                  :rows-per-page-options="[15]"
+                                  virtual-scroll
+                                  separator="cell"
+                                  hide-bottom
+                                  :data="getWMSEntries(selectedFeatures)"
+                                >
+                                  <template v-slot:header>
+                                    <div></div>
+                                  </template>
+                                  <template v-slot:top-right>
+                                    <q-btn flat dense size="sm" style="margin-right: -11px;">
+                                      <q-icon name="close"
+                                              @click="position = undefined; selectedFeatures = []; ver_mas = false;"/>
+                                    </q-btn>
+                                  </template>
+                                </q-table>
+                              </div>
+                            </vl-overlay>
+                          </vl-interaction-select>
+
+
                         </vl-map>
                       </div>
                     </div>
@@ -282,6 +257,7 @@
 import {mapGetters, mapActions} from 'vuex'
 import axios from 'axios'
 import * as turf from '@turf/turf'
+import * as olProj from 'ol/proj';
 
 import Vue from 'vue'
 import VueLayers from 'vuelayers'
@@ -353,6 +329,12 @@ export default {
     },
     selectedFeatures() {
       //
+      if (this.selectedFeatures.length > 0) {
+        if (!!this.selectedFeatures[0].properties['tipo_conflicto'] && this.capaSeleccionada !== 'conflictos') {
+          this.selectedFeatures = []
+          console.log("limpiar")
+        }
+      }
     },
     conflictos_selectedFeatures() {
       this.ver_mas = false
@@ -484,6 +466,17 @@ export default {
       }
       return ''
     },
+    getWMSEntries(features) {
+      let limpio = []
+      console.log("aqui", limpio)
+      console.log("features[0].properties", features)
+      if (features.length > 0) {
+        return Object.entries(features[0].properties)
+      } else {
+        return []
+      }
+
+    },
     getEntries(properties) {
       let limpio = []
       const esconder = ['pk', 'resumen', 'tipo', 'publicaciones_texto', 'publicaciones_lista', 'bibliografia',
@@ -536,11 +529,32 @@ export default {
     },
     clic(evt) {
       this.clickCoords = evt.coordinate
+      this.position = evt.coordinate // solo al tener los datos
+
+      console.log("this.capaSeleccionada ", this.capaSeleccionada )
       if (this.capaSeleccionada !== 'conflictos') {
         console.log("clic event", evt)
         console.log("this.capaSeleccionada", this.capaSeleccionada)
         console.log("this.selectedFeatures", this.selectedFeatures)
         console.log("this.position", this.position)
+
+        const coord = olProj.transform(evt.coordinate, 'EPSG:4326', 'EPSG:3857')
+        const viewResolution = this.$refs['map_view'].$view.getResolution();
+        const viewProjection = this.$refs['map_view'].$view.getProjection();
+        let url = this.$refs[this.capaSeleccionada][0].getFeatureInfoUrl(coord, viewResolution, 'EPSG:3857', {'INFO_FORMAT': 'application/json'})
+
+        console.log("url", url)
+
+        axios.get(url).then(response => {
+          console.log("response", response)
+          if (response.data.numberReturned > 0) {
+            this.selectedFeatures = response.data.features
+            console.log("selectedFeatures", selectedFeatures)
+          }
+        }).catch(error => {
+          //console.log(error)
+        })
+
       }
     },
     pointsStyleFunc() {
