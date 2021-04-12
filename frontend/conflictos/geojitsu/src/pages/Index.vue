@@ -133,7 +133,7 @@
 
                           <vl-interaction-select v-if="capaSeleccionada!=='conflictos'" :active="false"
                                                  :features.sync="selectedFeatures.features">
-                            <vl-overlay v-if="position && selectedFeatures" :position="position"
+                            <vl-overlay v-if="position && selectedFeatures.features" :position="position"
                                         :auto-pan="true"
                                         style="background: white; padding: 8px">
                               <div style="max-width: 300px; min-width: 300px;">
@@ -335,6 +335,11 @@ export default {
     mapaBase() {
       this.$refs["olmap"].updateSize()
     },
+    capaSeleccionada() {
+      this.position = undefined
+      this.conflictos_selectedFeatures = []
+      this.selectedFeatures = []
+    },
     conflictos_selectedFeatures() {
       this.ver_mas = false
       if (this.conflictos_selectedFeatures.length > 0) {
@@ -532,29 +537,40 @@ export default {
       return limpio
     },
     clic(evt) {
+      this.selectedFeatures = []
+
       this.clickCoords = evt.coordinate
       this.position = evt.coordinate // solo al tener los datos
 
       console.log("this.capaSeleccionada ", this.capaSeleccionada)
+
       if (this.capaSeleccionada !== 'conflictos') {
-
-        const coord = olProj.transform(evt.coordinate, 'EPSG:4326', 'EPSG:3857')
-        const viewResolution = this.$refs['map_view'].$view.getResolution();
-        const viewProjection = this.$refs['map_view'].$view.getProjection();
-        let url = this.$refs[this.capaSeleccionada][0].getFeatureInfoUrl(coord, viewResolution, 'EPSG:3857', {'INFO_FORMAT': 'application/json'})
-
-        console.log("url", url)
-
-        axios.get(url).then(response => {
-          console.log("response", response)
-          if (response.data.numberReturned > 0) {
-            this.selectedFeatures = response.data
-            console.log("selectedFeatures", this.selectedFeatures)
+        let visible = false
+        this.capasMapa.forEach(capa => {
+          if (this.capaSeleccionada === capa.value) {
+            visible = capa.visible
           }
-        }).catch(error => {
-          //console.log(error)
         })
-
+        if (visible) {
+          const coord = olProj.transform(evt.coordinate, 'EPSG:4326', 'EPSG:3857')
+          const viewResolution = this.$refs['map_view'].$view.getResolution();
+          const viewProjection = this.$refs['map_view'].$view.getProjection();
+          let url = this.$refs[this.capaSeleccionada][0].getFeatureInfoUrl(coord, viewResolution, 'EPSG:3857', {'INFO_FORMAT': 'application/json'})
+          axios.get(url).then(response => {
+            console.log("response", response)
+            if (response.data.numberReturned > 0) {
+              this.selectedFeatures = response.data
+              console.log("selectedFeatures", this.selectedFeatures)
+            } else {
+              this.selectedFeatures = []
+              this.position = undefined
+            }
+          }).catch(error => { /* console.log(error) */
+          })
+        } else {
+          this.position = undefined
+          this.selectedFeatures = []
+        }
       }
     },
     pointsStyleFunc() {
