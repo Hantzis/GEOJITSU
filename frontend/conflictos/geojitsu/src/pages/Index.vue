@@ -76,6 +76,15 @@
                             </div>
                           </div>
 
+                          <vl-layer-vector v-if="selectedFeatures.features > 0">
+                            <vl-source-vector :features.sync="selectedFeatures.features" attributions="Vector"/>
+                            <!-- <vl-style-func :factory="pointsStyleFunc"/>
+                            <vl-style-box>
+                              <vl-style-stroke color="green" :width="3"></vl-style-stroke>
+                              <vl-style-fill color="rgba(255,255,255,0.5)"></vl-style-fill>
+                            </vl-style-box> -->
+                          </vl-layer-vector>
+
                           <vl-interaction-select v-if="capaSeleccionada==='conflictos'"
                                                  :features.sync="conflictos_selectedFeatures">
                             <vl-overlay v-if="position && conflictos_selectedFeatures.length > 0" :position="position"
@@ -122,10 +131,9 @@
                             </vl-overlay>
                           </vl-interaction-select>
 
-
                           <vl-interaction-select v-if="capaSeleccionada!=='conflictos'" :active="false"
-                                                 :features.sync="selectedFeatures[0]">
-                            <vl-overlay v-if="position && selectedFeatures.length > 0" :position="position"
+                                                 :features.sync="selectedFeatures.features">
+                            <vl-overlay v-if="position && selectedFeatures" :position="position"
                                         :auto-pan="true"
                                         style="background: white; padding: 8px">
                               <div style="max-width: 300px; min-width: 300px;">
@@ -133,7 +141,7 @@
                                 <q-table
                                   class="detalles"
                                   style="max-height: 400px; max-width: 300px"
-                                  :title="''"
+                                  :title="getCapaTitle(capaSeleccionada)"
                                   square
                                   wrap-cells
                                   dense
@@ -149,7 +157,7 @@
                                   <template v-slot:top-right>
                                     <q-btn flat dense size="sm" style="margin-right: -11px;">
                                       <q-icon name="close"
-                                              @click="position = undefined; selectedFeatures = []; ver_mas = false;"/>
+                                              @click="closeWMSInfo()"/>
                                     </q-btn>
                                   </template>
                                 </q-table>
@@ -327,36 +335,18 @@ export default {
     mapaBase() {
       this.$refs["olmap"].updateSize()
     },
-    selectedFeatures() {
-      //
-      if (this.selectedFeatures.length > 0) {
-        if (!!this.selectedFeatures[0].properties['tipo_conflicto'] && this.capaSeleccionada !== 'conflictos') {
-          this.selectedFeatures = []
-          console.log("limpiar")
-        }
-      }
-    },
     conflictos_selectedFeatures() {
       this.ver_mas = false
-      console.log("this.conflictos_selectedFeatures", this.conflictos_selectedFeatures)
       if (this.conflictos_selectedFeatures.length > 0) {
         if (this.capaSeleccionada === 'conflictos') {
-          console.log("si")
-          console.log("clic conflictos_selectedFeatures", this.conflictos_selectedFeatures)
           let collection = []
           this.conflictos_selectedFeatures[0].geometry.coordinates.forEach(point => {
             collection.push(turf.point(point))
           })
-          console.log("collection", collection)
           let featureCoords = turf.featureCollection(collection)
-          console.log("featureCoords", featureCoords)
-
           let cercano = turf.nearestPoint(this.clickCoords, featureCoords)
-          console.log("cercano", cercano)
           this.position = cercano.geometry.coordinates
-          console.log("this.position", this.position)
         } else {
-          console.log("no")
           this.conflictos_selectedFeatures = []
           this.position = undefined
         }
@@ -445,6 +435,10 @@ export default {
   methods: {
     ...mapActions('geojitsu', ['capasMapaAction', 'setCapaFeatures', 'setCapaTicked', 'GISRibbonIsOpenAction',
       'setDrawerCapas', 'setSimbologiaTipo', 'capaSeleccionadaAction']),
+    closeWMSInfo() {
+      this.selectedFeatures = [];
+      this.position = undefined;
+    },
     getPublicaciones(properties) {
       let publicaciones = properties.publicaciones_lista
       if (publicaciones) {
@@ -466,12 +460,22 @@ export default {
       }
       return ''
     },
-    getWMSEntries(features) {
-      let limpio = []
-      console.log("aqui", limpio)
-      console.log("features[0].properties", features)
-      if (features.length > 0) {
-        return Object.entries(features[0].properties)
+    getCapaTitle(capaSeleccionada) {
+      console.log("capaSeleccionada", capaSeleccionada)
+      let title = ""
+      this.capasMapa.forEach(capa => {
+        if (capa.value === capaSeleccionada) {
+          console.log(capa.label)
+          title = capa.label
+        }
+      })
+      return title
+    },
+    getWMSEntries(selectedFeatures) {
+      console.log("aqui", selectedFeatures)
+      console.log("selectedFeatures", selectedFeatures)
+      if (selectedFeatures.features) {
+        return Object.entries(selectedFeatures.features[0].properties)
       } else {
         return []
       }
@@ -531,12 +535,8 @@ export default {
       this.clickCoords = evt.coordinate
       this.position = evt.coordinate // solo al tener los datos
 
-      console.log("this.capaSeleccionada ", this.capaSeleccionada )
+      console.log("this.capaSeleccionada ", this.capaSeleccionada)
       if (this.capaSeleccionada !== 'conflictos') {
-        console.log("clic event", evt)
-        console.log("this.capaSeleccionada", this.capaSeleccionada)
-        console.log("this.selectedFeatures", this.selectedFeatures)
-        console.log("this.position", this.position)
 
         const coord = olProj.transform(evt.coordinate, 'EPSG:4326', 'EPSG:3857')
         const viewResolution = this.$refs['map_view'].$view.getResolution();
@@ -548,8 +548,8 @@ export default {
         axios.get(url).then(response => {
           console.log("response", response)
           if (response.data.numberReturned > 0) {
-            this.selectedFeatures = response.data.features
-            console.log("selectedFeatures", selectedFeatures)
+            this.selectedFeatures = response.data
+            console.log("selectedFeatures", this.selectedFeatures)
           }
         }).catch(error => {
           //console.log(error)
