@@ -50,33 +50,33 @@
 
                           <vl-layer-tile>
                             <vl-source-xyz :key="mapaBase.value"
-                              :url="mapaBase.url"
-                              :attributions="`${mapaBase.attribution}, <a href='https://www.saeba.click' target='_blank'>Saeba</a>`"/>
+                                           :url="mapaBase.url"
+                                           :attributions="`${mapaBase.attribution}, <a href='https://www.saeba.click' target='_blank'>Saeba</a>`"/>
                           </vl-layer-tile>
 
-                            <div :key="mapkey">
+                          <div :key="mapkey">
 
-                              <div v-for="capa of capasMapa" :key="capa.value">
-                                <vl-layer-tile v-if="capa.type==='wms'" :opacity="capa.opacity" :visible="capa.visible">
-                                  <vl-source-wms
-                                    :ref="capa.value"
-                                    :url="capa.url"
-                                    :server_type="capa.server_type"
-                                    :format="capa.format"
-                                    :layers="capa.layers"
-                                    :attributions="capa.attribution"
-                                    :ext-params="capa.params"
-                                  />
-                                </vl-layer-tile>
-                                <vl-layer-vector v-if="capa.type==='vector'" :opacity="capa.opacity"
-                                                 :visible="capa.visible">
-                                  <vl-source-vector :features="capa.features"
-                                                    :attributions="capa.attribution"/>
-                                  <vl-style-func :factory="pointsStyleFunc"/>
+                            <div v-for="capa of capasMapa" :key="capa.value">
+                              <vl-layer-tile v-if="capa.type==='wms'" :opacity="capa.opacity" :visible="capa.visible">
+                                <vl-source-wms
+                                  :ref="capa.value"
+                                  :url="capa.url"
+                                  :server_type="capa.server_type"
+                                  :format="capa.format"
+                                  :layers="capa.layers"
+                                  :attributions="capa.attribution"
+                                  :ext-params="capa.params"
+                                />
+                              </vl-layer-tile>
+                              <vl-layer-vector v-if="capa.type==='vector'" :opacity="capa.opacity"
+                                               :visible="capa.visible">
+                                <vl-source-vector :features="capa.features"
+                                                  :attributions="capa.attribution"/>
+                                <vl-style-func :factory="pointsStyleFunc"/>
 
-                                </vl-layer-vector>
-                              </div>
+                              </vl-layer-vector>
                             </div>
+                          </div>
 
                           <vl-layer-vector v-if="selectedFeatures.features" :visible="!!selectedFeatures.features">
                             <vl-source-vector :features="selectedFeatures.features" :projection="'EPSG:3857'"/>

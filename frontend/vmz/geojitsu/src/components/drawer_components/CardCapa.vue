@@ -36,7 +36,7 @@
     <q-tab-panels v-model="tab" animated>
       <q-tab-panel name="simbologia">
         <p class="text-h6">Simbología</p>
-        <img :src="capa.url + 'SERVICE=WMS&REQUEST=GetLegendGraphic&VERSION=1.3.0&FORMAT=image/png&LAYER=' + capa.layers">
+        <img :src="capa.url + 'SERVICE=WMS&REQUEST=GetLegendGraphic&VERSION=' + capa.url + '&FORMAT=image/png&LAYER=' + capa.layers">
       </q-tab-panel>
 
       <q-tab-panel name="alarms">

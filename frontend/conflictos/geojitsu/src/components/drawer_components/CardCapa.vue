@@ -23,29 +23,41 @@
       indicator-color="primary"
       align="justify"
     >
-      <q-tab name="mails" dense icon="mdi-texture"/>
-      <q-tab name="alarms" dense icon="mdi-information"/>
-      <q-tab name="movies" dense icon="mdi-filter"/>
-      <q-tab name="alarms2" dense icon="mdi-cog"/>
-      <q-tab name="movies3" dense icon="mdi-cloud-download"/>
+      <q-tab name="simbologia" dense icon="mdi-texture"/>
+      <q-tab name="metadatos" dense icon="mdi-information"/>
+      <q-tab name="filtrado" dense icon="mdi-filter" disable/>
+      <q-tab name="ajustes" dense icon="mdi-cog" disable/>
+      <q-tab name="descarga" dense icon="mdi-cloud-download"/>
     </q-tabs>
 
     <q-separator/>
 
     <q-tab-panels v-model="tab" animated>
-      <q-tab-panel name="mails">
+      <q-tab-panel name="simbologia">
         <p class="text-h6">Simbología</p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        <img v-if="capa.type==='wms'" :src="capa.url + 'SERVICE=WMS&REQUEST=GetLegendGraphic&VERSION=' + capa.url + '&FORMAT=image/png&LAYER=' + capa.layers">
       </q-tab-panel>
 
-      <q-tab-panel name="alarms">
+      <q-tab-panel name="metadatos">
         <p class="text-h6">Metadatos</p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        "Aún no se cuentan con metadatos para esta capa."
       </q-tab-panel>
 
-      <q-tab-panel name="movies">
+      <q-tab-panel name="filtrado">
         <p class="text-h6">Filtrado</p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      </q-tab-panel>
+
+      <q-tab-panel name="ajustes">
+        <p class="text-h6">Ajustes</p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      </q-tab-panel>
+
+      <q-tab-panel name="descarga">
+        <p class="text-h6">Descarga</p>
+        <q-btn v-if="capa.type==='wms' && capa.url.endsWith('?')" label="Descargar datos" type="a" no-caps :href="`${capa.url}service=WFS&version=1.1.1&request=GetFeature&typeName=${capa.layers}&outputFormat=SHAPE-ZIP`"/>
+        <q-btn v-if="capa.type==='wms' && !capa.url.endsWith('?')" label="Descargar datos" type="a" no-caps :href="`${capa.url}?service=WFS&version=1.1.1&request=GetFeature&typeName=${capa.layers}&outputFormat=SHAPE-ZIP`"/>
+        <q-btn v-if="capa.type==='vector'" label="Descargar datos" @click.stop="saveGeoJSON(capa)" />
       </q-tab-panel>
     </q-tab-panels>
 
@@ -59,6 +71,7 @@
 
 <script>
 import {mapActions, mapGetters} from "vuex";
+import { saveAs } from 'file-saver';
 
 export default {
   name: "CardCapa",
@@ -87,6 +100,9 @@ export default {
   },
   methods: {
     ...mapActions('geojitsu', ['setCapaOpacity']),
+    saveGeoJSON(capa) {
+      saveAs(`${capa.features}`, `${capa.value}.${capa.server_type}`)
+    }
   },
   props: ['capa'],
   created() {
