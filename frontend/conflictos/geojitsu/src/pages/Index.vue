@@ -79,40 +79,30 @@
 
                           <vl-layer-vector v-if="selectedFeatures.features" :visible="!!selectedFeatures.features">
                             <vl-source-vector :features="selectedFeatures.features" :projection="'EPSG:3857'"/>
-                            <!-- <vl-style-func :factory="pointsStyleFunc"/> -->
                             <vl-style-box>
-                              <vl-style-stroke color="black" :width="1"></vl-style-stroke>
+                              <vl-style-stroke color="black" :width="2"></vl-style-stroke>
                               <vl-style-fill color="rgba(255,255,0,0.3)"></vl-style-fill>
                             </vl-style-box>
                           </vl-layer-vector>
-
-                          <vl-interaction-select v-if="capaSeleccionada==='conflictos'"
-                                                 :features.sync="conflictos_selectedFeatures">
-
+                          <vl-interaction-select v-if="capaSeleccionada==='conflictos'" :features.sync="conflictos_selectedFeatures">
                             <vl-style-box>
-
-                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo == 'Tipos'" :scale="1.2"
-                                             :anchor="[0.5, 0.5]"
+                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo == 'Tipos'" :scale="1.2" :anchor="[0.5, 0.5]"
                                              :src="`https://conflictossocioambientales.iies.unam.mx/${conflictos_selectedFeatures[0].properties['tipo_icon_url']}`">
                               </vl-style-icon>
-                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo == 'Organizaciones'" :scale="1.2"
-                                             :anchor="[0.5, 0.5]"
+                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo == 'Organizaciones'" :scale="1.2" :anchor="[0.5, 0.5]"
                                              :src="`https://conflictossocioambientales.iies.unam.mx/${conflictos_selectedFeatures[0].properties['organizacion_icon_url']}`">
                               </vl-style-icon>
-                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo == 'Secretarías'" :scale="1.2"
-                                             :anchor="[0.5, 0.5]"
+                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo == 'Secretarías'" :scale="1.2" :anchor="[0.5, 0.5]"
                                              :src="`https://conflictossocioambientales.iies.unam.mx/${conflictos_selectedFeatures[0].properties['secretaria_icon_url']}`">
                               </vl-style-icon>
-                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo == 'Empresas'" :scale="1.2"
-                                             :anchor="[0.5, 0.5]"
+                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo == 'Empresas'" :scale="1.2" :anchor="[0.5, 0.5]"
                                              :src="`https://conflictossocioambientales.iies.unam.mx/${conflictos_selectedFeatures[0].properties['empresa_icon_url']}`">
                               </vl-style-icon>
                             </vl-style-box>
-
-                            <vl-style-box style="z-index: 9999">
-                              <vl-style-circle :radius="30" style="z-index: 9999">
+                            <vl-style-box>
+                              <vl-style-circle :radius="30">
                                 <vl-style-stroke color="black" :width="2"></vl-style-stroke>
-                                <vl-style-fill color="rgba(255,255,0,0.3)"></vl-style-fill>
+                                <vl-style-fill color="rgba(255,255,0,0.5)"></vl-style-fill>
                               </vl-style-circle>
                             </vl-style-box>
 
