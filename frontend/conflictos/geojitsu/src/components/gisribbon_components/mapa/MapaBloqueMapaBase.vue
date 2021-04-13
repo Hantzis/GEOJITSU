@@ -38,6 +38,11 @@ export default {
       bloqueIsEnabled: false,
     }
   },
+  watch: {
+    mapaBase() {
+      //console.log(this.mapaBase)
+    }
+  },
   computed: {
     ...mapGetters('geojitsu', ['mapasBaseGetter', 'mapaBaseGetter']),
     mapasBase: {

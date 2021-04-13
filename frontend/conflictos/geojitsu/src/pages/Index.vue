@@ -50,8 +50,8 @@
 
                           <vl-layer-tile>
                             <vl-source-xyz
-                              :url="mapaBase.url"
-                              :attributions="`${mapaBase.attribution}, <a href='https://www.saeba.click' target='_blank'>Saeba</a>`"/>
+                              :url.sync="mapaBase.url"
+                              :attributions.sync="`${mapaBase.attribution}, <a href='https://www.saeba.click' target='_blank'>Saeba</a>`"/>
                           </vl-layer-tile>
 
                           <div :key="mapkey">
@@ -351,6 +351,7 @@ export default {
       }
     },
     mapaBase() {
+      console.log(this.mapaBase)
       this.$refs["olmap"].updateSize()
     },
     capaSeleccionada() {
