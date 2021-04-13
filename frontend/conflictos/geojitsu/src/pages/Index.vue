@@ -116,11 +116,6 @@
                               </vl-style-circle>
                             </vl-style-box>
 
-
-
-
-
-
                             <vl-overlay v-if="position && conflictos_selectedFeatures.length > 0" :position="position"
                                         :auto-pan="true"
                                         style="background: white; padding: 8px">
