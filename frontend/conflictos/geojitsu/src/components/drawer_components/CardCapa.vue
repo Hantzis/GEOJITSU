@@ -77,7 +77,7 @@ export default {
   name: "CardCapa",
   data() {
     return {
-      tab: 'mails',
+      tab: 'simbologia',
       smallStep: 0.3,
       capaIndex: undefined
     }

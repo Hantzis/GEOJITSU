@@ -45,7 +45,7 @@ export default function () {
     capaSeleccionada: "conflictos",
     capasMapa: [
       {
-        value: "estados", label: "Estados", type: "wms", url: "https://gs.maptitud.xyz/geoserver/CONFLICTOS/wms?",
+        value: "estados", label: "Estados", type: "wms", url: "https://conflictossocioambientales.iies.unam.mx/geoserver/CONFLICTOS/wms?",
         layers: "CONFLICTOS:estados", visible: true, children: [{}],
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
         opacity: 1, permanent: true,
@@ -56,7 +56,7 @@ export default function () {
         }
       },
       {
-        value: "municipios", label: "Municipios", type: "wms", url: "https://gs.maptitud.xyz/geoserver/CONFLICTOS/wms?",
+        value: "municipios", label: "Municipios", type: "wms", url: "https://conflictossocioambientales.iies.unam.mx/geoserver/CONFLICTOS/wms?",
         layers: "CONFLICTOS:municipios", visible: false, children: [{}],
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
         opacity: 0.8, permanent: true,
@@ -70,7 +70,7 @@ export default function () {
         value: "anpnov17gw",
         label: "Áreas naturales protegidas",
         type: "wms",
-        url: "https://gs.maptitud.xyz/geoserver/CONFLICTOS/wms?",
+        url: "https://conflictossocioambientales.iies.unam.mx/geoserver/CONFLICTOS/wms?",
         layers: "CONFLICTOS:anpnov17gw",
         visible: false,
         children: [{}],
@@ -84,7 +84,7 @@ export default function () {
         }
       },
       {
-        value: "cue250kgw", label: "Cuencas", type: "wms", url: "https://gs.maptitud.xyz/geoserver/CONFLICTOS/wms?",
+        value: "cue250kgw", label: "Cuencas", type: "wms", url: "https://conflictossocioambientales.iies.unam.mx/geoserver/CONFLICTOS/wms?",
         layers: "CONFLICTOS:cue250kgw", visible: false, children: [{}],
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
         opacity: 0.4, permanent: true,
@@ -98,7 +98,7 @@ export default function () {
         value: "ecort08gw",
         label: "Ecorregiones",
         type: "wms",
-        url: "https://gs.maptitud.xyz/geoserver/CONFLICTOS/wms?",
+        url: "https://conflictossocioambientales.iies.unam.mx/geoserver/CONFLICTOS/wms?",
         layers: "CONFLICTOS:ecort08gw",
         visible: false,
         children: [{}],
@@ -115,7 +115,7 @@ export default function () {
         value: "hidro4mgw",
         label: "Corrientes de agua",
         type: "wms",
-        url: "https://gs.maptitud.xyz/geoserver/CONFLICTOS/wms?",
+        url: "https://conflictossocioambientales.iies.unam.mx/geoserver/CONFLICTOS/wms?",
         layers: "CONFLICTOS:hidro4mgw",
         visible: false,
         children: [{}],
