@@ -18,7 +18,7 @@
             <q-route-tab no-caps v-for="tab of GISRibbonTabs.filter(val => val.is_enabled === true)" :key="tab.value"
                          :name="tab.value"
                          :label="tab.label" :to="tab.value === 'mapa' ? '/' : tab.value"
-                         @click="tab.value === 'mapa' ? showGISRibbon = true : showGISRibbon = !!showGISRibbon"/>
+                         @click="tab.value === 'mapa' ? showGISRibbon = true : showGISRibbon = showGISRibbon"/>
             <q-route-tab no-caps v-for="pagina of paginas.items" :key="pagina.meta.slug" :name="pagina.meta.slug"
                          :label="pagina.title" :to="pagina.meta.slug"/>
           </q-tabs>
@@ -49,33 +49,34 @@
                                    :rotation.sync="rotation"></vl-view>
 
                           <vl-layer-tile>
-                            <vl-source-xyz
-                              :url.sync="mapaBase.url"
-                              :attributions.sync="`${mapaBase.attribution}, <a href='https://www.saeba.click' target='_blank'>Saeba</a>`"/>
+                            <vl-source-xyz :key="mapaBase.value"
+                              :url="mapaBase.url"
+                              :attributions="`${mapaBase.attribution}, <a href='https://www.saeba.click' target='_blank'>Saeba</a>`"/>
                           </vl-layer-tile>
 
-                          <div :key="mapkey">
-                            <div v-for="capa of capasMapa" :key="capa.value">
-                              <vl-layer-tile v-if="capa.type==='wms'" :opacity="capa.opacity" :visible="capa.visible">
-                                <vl-source-wms
-                                  :ref="capa.value"
-                                  :url="capa.url"
-                                  :server_type="capa.server_type"
-                                  :format="capa.format"
-                                  :layers="capa.layers"
-                                  :attributions="capa.attribution"
-                                  :ext-params="capa.params"
-                                />
-                              </vl-layer-tile>
-                              <vl-layer-vector v-if="capa.type==='vector'" :opacity="capa.opacity"
-                                               :visible="capa.visible">
-                                <vl-source-vector :features="capa.features"
-                                                  :attributions="capa.attribution"/>
-                                <vl-style-func :factory="pointsStyleFunc"/>
+                            <div :key="mapkey">
 
-                              </vl-layer-vector>
+                              <div v-for="capa of capasMapa" :key="capa.value">
+                                <vl-layer-tile v-if="capa.type==='wms'" :opacity="capa.opacity" :visible="capa.visible">
+                                  <vl-source-wms
+                                    :ref="capa.value"
+                                    :url="capa.url"
+                                    :server_type="capa.server_type"
+                                    :format="capa.format"
+                                    :layers="capa.layers"
+                                    :attributions="capa.attribution"
+                                    :ext-params="capa.params"
+                                  />
+                                </vl-layer-tile>
+                                <vl-layer-vector v-if="capa.type==='vector'" :opacity="capa.opacity"
+                                                 :visible="capa.visible">
+                                  <vl-source-vector :features="capa.features"
+                                                    :attributions="capa.attribution"/>
+                                  <vl-style-func :factory="pointsStyleFunc"/>
+
+                                </vl-layer-vector>
+                              </div>
                             </div>
-                          </div>
 
                           <vl-layer-vector v-if="selectedFeatures.features" :visible="!!selectedFeatures.features">
                             <vl-source-vector :features="selectedFeatures.features" :projection="'EPSG:3857'"/>
@@ -84,18 +85,25 @@
                               <vl-style-fill color="rgba(255,255,0,0.3)"></vl-style-fill>
                             </vl-style-box>
                           </vl-layer-vector>
-                          <vl-interaction-select v-if="capaSeleccionada==='conflictos'" :features.sync="conflictos_selectedFeatures">
+                          <vl-interaction-select v-if="capaSeleccionada==='conflictos'"
+                                                 :features.sync="conflictos_selectedFeatures">
                             <vl-style-box>
-                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo === 'Tipos'" :scale="1.2" :anchor="[0.5, 0.5]"
+                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo == 'Tipos'"
+                                             :scale="1.2" :anchor="[0.5, 0.5]"
                                              :src="`https://conflictossocioambientales.iies.unam.mx/${conflictos_selectedFeatures[0].properties['tipo_icon_url']}`">
                               </vl-style-icon>
-                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo === 'Organizaciones'" :scale="1.2" :anchor="[0.5, 0.5]"
-                                             :src="`https://conflictossocioambientales.iies.unam.mx/${conflictos_selectedFeatures[0].properties['organizacion_icon_url']}`">
+                              <vl-style-icon
+                                v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo == 'Organizaciones'"
+                                :scale="1.2" :anchor="[0.5, 0.5]"
+                                :src="`https://conflictossocioambientales.iies.unam.mx/${conflictos_selectedFeatures[0].properties['organizacion_icon_url']}`">
                               </vl-style-icon>
-                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo === 'Secretarías'" :scale="1.2" :anchor="[0.5, 0.5]"
-                                             :src="`https://conflictossocioambientales.iies.unam.mx/${conflictos_selectedFeatures[0].properties['secretaria_icon_url']}`">
+                              <vl-style-icon
+                                v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo == 'Secretarías'"
+                                :scale="1.2" :anchor="[0.5, 0.5]"
+                                :src="`https://conflictossocioambientales.iies.unam.mx/${conflictos_selectedFeatures[0].properties['secretaria_icon_url']}`">
                               </vl-style-icon>
-                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo === 'Empresas'" :scale="1.2" :anchor="[0.5, 0.5]"
+                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo == 'Empresas'"
+                                             :scale="1.2" :anchor="[0.5, 0.5]"
                                              :src="`https://conflictossocioambientales.iies.unam.mx/${conflictos_selectedFeatures[0].properties['empresa_icon_url']}`">
                               </vl-style-icon>
                             </vl-style-box>
@@ -124,7 +132,7 @@
                                   :data="getEntries(conflictos_selectedFeatures[0].properties)"
                                 >
                                   <template v-slot:header>
-                                    <q-tr>
+                                    <q-tr align="left">
                                       <q-td v-if="!ver_mas" colspan="2"
                                             style="border-bottom-width: 1px; padding-top: 14px;">
                                         {{ conflictos_selectedFeatures[0].properties['resumen'].slice(0, 240) + '...' }}
@@ -254,7 +262,7 @@
                             <div v-html="data.value"></div>
                           </div>
                         </div>
-                        <tablero></tablero>
+                        <tablero/>
                       </div>
                     </div>
                   </q-page>
@@ -283,14 +291,16 @@
 import {mapGetters, mapActions} from 'vuex'
 import axios from 'axios'
 import * as turf from '@turf/turf'
+import * as olProj from 'ol/proj';
 
 import Vue from 'vue'
 import VueLayers from 'vuelayers'
 import 'vuelayers/lib/style.css'
-import GISRibbon from "components/GISRibbon";
+import GISRibbon from "components/GISRibbon"; // needs css-loader
 import Style from 'ol/style/Style'
 import Icon from 'ol/style/Icon'
 import MapaDrawerCapas from "components/drawer_components/MapaDrawerCapas";
+import {Point as turfPoint, Coord as turfCoord, FeatureCollection as turfFeatureCollection} from '@turf/helpers'
 import Tablero from "components/Tablero";
 
 Vue.use(VueLayers)
@@ -349,18 +359,12 @@ export default {
       }
     },
     mapaBase() {
-      console.log(this.mapaBase)
       this.$refs["olmap"].updateSize()
     },
     capaSeleccionada() {
       this.position = undefined
       this.conflictos_selectedFeatures = []
       this.selectedFeatures = []
-    },
-    selectedFeatures() {
-      if (this.selectedFeatures.features) {
-        console.log("selectedFeatures.features", this.selectedFeatures.features)
-      }
     },
     conflictos_selectedFeatures() {
       this.ver_mas = false
@@ -416,7 +420,7 @@ export default {
           }
         }
         if (!base) base = {
-          value: "OpenStreetMap-Standard",
+          value: "OpenStreetMap-Standard-base",
           label: "OpenStreetMap Standard",
           bgcolor: "#aad3df",
           url: "http://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -585,8 +589,7 @@ export default {
               this.selectedFeatures = []
               this.position = undefined
             }
-          }).catch(error => {
-            console.log(error)
+          }).catch(error => { /* console.log(error) */
           })
         } else {
           this.position = undefined
@@ -628,7 +631,11 @@ export default {
             }
           }).then(() => {
             this.setCapaTicked({capa: this.capasMapa[index], visible: true})
-            this.drawerCapas = this.$q.screen.width >= 768;
+            if (this.$q.screen.width < 768) {
+              this.drawerCapas = false;
+            } else {
+              this.drawerCapas = true;
+            }
           }).catch(error => {
             console.log(error)
           })
