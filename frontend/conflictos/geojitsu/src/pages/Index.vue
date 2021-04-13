@@ -287,7 +287,7 @@ import * as turf from '@turf/turf'
 import Vue from 'vue'
 import VueLayers from 'vuelayers'
 import 'vuelayers/lib/style.css'
-import GISRibbon from "components/GISRibbon"; // needs css-loader
+import GISRibbon from "components/GISRibbon";
 import Style from 'ol/style/Style'
 import Icon from 'ol/style/Icon'
 import MapaDrawerCapas from "components/drawer_components/MapaDrawerCapas";
