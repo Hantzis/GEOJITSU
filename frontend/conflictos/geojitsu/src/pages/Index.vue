@@ -45,7 +45,7 @@
                                 :load-tiles-while-interacting="true"
                                 :data-projection="'EPSG:4326'"
                                 :style="{'min-height': 'inherit', 'max-height': '1px', 'width': '100%', 'background-color': mapaBase.bgcolor}">
-                          <vl-view ref="map_view" :zoom.sync="zoom" :center.sync="center"
+                          <vl-view ref="map_view" :zoom.sync="zoom" :center.sync="center" :projection="'EPSG:4326'"
                                    :rotation.sync="rotation"></vl-view>
 
                           <vl-layer-tile>
@@ -76,13 +76,14 @@
                             </div>
                           </div>
 
-                          <vl-layer-vector v-if="selectedFeatures.features > 0">
-                            <vl-source-vector :features.sync="selectedFeatures.features" attributions="Vector"/>
-                            <!-- <vl-style-func :factory="pointsStyleFunc"/>
+                          <vl-layer-vector v-if="selectedFeatures.features" :visible="true">
+                            <vl-source-vector :features="selectedFeatures.features" attributions="Vector" :projection="'EPSG:3857'"/>
+                            <!-- <vl-style-func :factory="pointsStyleFunc"/> -->
                             <vl-style-box>
-                              <vl-style-stroke color="green" :width="3"></vl-style-stroke>
-                              <vl-style-fill color="rgba(255,255,255,0.5)"></vl-style-fill>
-                            </vl-style-box> -->
+                              <vl-style-stroke color="black" :width="1"></vl-style-stroke>
+                              <vl-style-fill color="rgba(255,255,0,0.3)"></vl-style-fill>
+                            </vl-style-box>
+
                           </vl-layer-vector>
 
                           <vl-interaction-select v-if="capaSeleccionada==='conflictos'"
@@ -164,7 +165,6 @@
                               </div>
                             </vl-overlay>
                           </vl-interaction-select>
-
 
                         </vl-map>
                       </div>
@@ -340,6 +340,11 @@ export default {
       this.conflictos_selectedFeatures = []
       this.selectedFeatures = []
     },
+    selectedFeatures() {
+      if (this.selectedFeatures.features) {
+        console.log("selectedFeatures.features", this.selectedFeatures.features)
+      }
+    },
     conflictos_selectedFeatures() {
       this.ver_mas = false
       if (this.conflictos_selectedFeatures.length > 0) {
@@ -466,23 +471,18 @@ export default {
       return ''
     },
     getCapaTitle(capaSeleccionada) {
-      console.log("capaSeleccionada", capaSeleccionada)
       let title = ""
       this.capasMapa.forEach(capa => {
         if (capa.value === capaSeleccionada) {
-          console.log(capa.label)
           title = capa.label
         }
       })
       return title
     },
     getWMSEntries(selectedFeatures) {
-      console.log("aqui", selectedFeatures)
-      console.log("selectedFeatures", selectedFeatures)
-      if (selectedFeatures.features) {
+      console.log(selectedFeatures)
+      if (selectedFeatures.features.length > 0) {
         return Object.entries(selectedFeatures.features[0].properties)
-      } else {
-        return []
       }
 
     },
@@ -537,12 +537,10 @@ export default {
       return limpio
     },
     clic(evt) {
+      this.position = undefined
       this.selectedFeatures = []
-
       this.clickCoords = evt.coordinate
-      this.position = evt.coordinate // solo al tener los datos
 
-      console.log("this.capaSeleccionada ", this.capaSeleccionada)
 
       if (this.capaSeleccionada !== 'conflictos') {
         let visible = false
@@ -552,15 +550,17 @@ export default {
           }
         })
         if (visible) {
-          const coord = olProj.transform(evt.coordinate, 'EPSG:4326', 'EPSG:3857')
           const viewResolution = this.$refs['map_view'].$view.getResolution();
           const viewProjection = this.$refs['map_view'].$view.getProjection();
-          let url = this.$refs[this.capaSeleccionada][0].getFeatureInfoUrl(coord, viewResolution, 'EPSG:3857', {'INFO_FORMAT': 'application/json'})
+          console.log(evt.coordinate)
+          console.log(viewResolution)
+          console.log(viewProjection)
+          let url = this.$refs[this.capaSeleccionada][0].getFeatureInfoUrl(evt.coordinate, viewResolution, viewProjection, {'INFO_FORMAT': 'application/json'})
+          console.log(url)
           axios.get(url).then(response => {
-            console.log("response", response)
             if (response.data.numberReturned > 0) {
               this.selectedFeatures = response.data
-              console.log("selectedFeatures", this.selectedFeatures)
+              this.position = evt.coordinate
             } else {
               this.selectedFeatures = []
               this.position = undefined
