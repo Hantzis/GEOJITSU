@@ -18,7 +18,7 @@
             <q-route-tab no-caps v-for="tab of GISRibbonTabs.filter(val => val.is_enabled === true)" :key="tab.value"
                          :name="tab.value"
                          :label="tab.label" :to="tab.value === 'mapa' ? '/' : tab.value"
-                         @click="tab.value === 'mapa' ? showGISRibbon = true : showGISRibbon = showGISRibbon"/>
+                         @click="tab.value === 'mapa' ? showGISRibbon = true : showGISRibbon = !!showGISRibbon"/>
             <q-route-tab no-caps v-for="pagina of paginas.items" :key="pagina.meta.slug" :name="pagina.meta.slug"
                          :label="pagina.title" :to="pagina.meta.slug"/>
           </q-tabs>
@@ -86,16 +86,16 @@
                           </vl-layer-vector>
                           <vl-interaction-select v-if="capaSeleccionada==='conflictos'" :features.sync="conflictos_selectedFeatures">
                             <vl-style-box>
-                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo == 'Tipos'" :scale="1.2" :anchor="[0.5, 0.5]"
+                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo === 'Tipos'" :scale="1.2" :anchor="[0.5, 0.5]"
                                              :src="`https://conflictossocioambientales.iies.unam.mx/${conflictos_selectedFeatures[0].properties['tipo_icon_url']}`">
                               </vl-style-icon>
-                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo == 'Organizaciones'" :scale="1.2" :anchor="[0.5, 0.5]"
+                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo === 'Organizaciones'" :scale="1.2" :anchor="[0.5, 0.5]"
                                              :src="`https://conflictossocioambientales.iies.unam.mx/${conflictos_selectedFeatures[0].properties['organizacion_icon_url']}`">
                               </vl-style-icon>
-                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo == 'Secretarías'" :scale="1.2" :anchor="[0.5, 0.5]"
+                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo === 'Secretarías'" :scale="1.2" :anchor="[0.5, 0.5]"
                                              :src="`https://conflictossocioambientales.iies.unam.mx/${conflictos_selectedFeatures[0].properties['secretaria_icon_url']}`">
                               </vl-style-icon>
-                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo == 'Empresas'" :scale="1.2" :anchor="[0.5, 0.5]"
+                              <vl-style-icon v-if="conflictos_selectedFeatures.length>0 && simbologiaTipo === 'Empresas'" :scale="1.2" :anchor="[0.5, 0.5]"
                                              :src="`https://conflictossocioambientales.iies.unam.mx/${conflictos_selectedFeatures[0].properties['empresa_icon_url']}`">
                               </vl-style-icon>
                             </vl-style-box>
@@ -124,7 +124,7 @@
                                   :data="getEntries(conflictos_selectedFeatures[0].properties)"
                                 >
                                   <template v-slot:header>
-                                    <q-tr align="left">
+                                    <q-tr>
                                       <q-td v-if="!ver_mas" colspan="2"
                                             style="border-bottom-width: 1px; padding-top: 14px;">
                                         {{ conflictos_selectedFeatures[0].properties['resumen'].slice(0, 240) + '...' }}
@@ -254,7 +254,7 @@
                             <div v-html="data.value"></div>
                           </div>
                         </div>
-                        <tablero/>
+                        <tablero></tablero>
                       </div>
                     </div>
                   </q-page>
@@ -283,7 +283,6 @@
 import {mapGetters, mapActions} from 'vuex'
 import axios from 'axios'
 import * as turf from '@turf/turf'
-import * as olProj from 'ol/proj';
 
 import Vue from 'vue'
 import VueLayers from 'vuelayers'
@@ -292,7 +291,6 @@ import GISRibbon from "components/GISRibbon"; // needs css-loader
 import Style from 'ol/style/Style'
 import Icon from 'ol/style/Icon'
 import MapaDrawerCapas from "components/drawer_components/MapaDrawerCapas";
-import {Point as turfPoint, Coord as turfCoord, FeatureCollection as turfFeatureCollection} from '@turf/helpers'
 import Tablero from "components/Tablero";
 
 Vue.use(VueLayers)
@@ -587,7 +585,8 @@ export default {
               this.selectedFeatures = []
               this.position = undefined
             }
-          }).catch(error => { /* console.log(error) */
+          }).catch(error => {
+            console.log(error)
           })
         } else {
           this.position = undefined
@@ -629,11 +628,7 @@ export default {
             }
           }).then(() => {
             this.setCapaTicked({capa: this.capasMapa[index], visible: true})
-            if (this.$q.screen.width < 768) {
-              this.drawerCapas = false;
-            } else {
-              this.drawerCapas = true;
-            }
+            this.drawerCapas = this.$q.screen.width >= 768;
           }).catch(error => {
             console.log(error)
           })

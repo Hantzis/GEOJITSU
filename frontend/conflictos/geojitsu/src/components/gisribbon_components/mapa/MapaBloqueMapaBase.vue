@@ -40,7 +40,7 @@ export default {
   },
   watch: {
     mapaBase() {
-      //console.log(this.mapaBase)
+      console.log(this.mapaBase)
     }
   },
   computed: {
