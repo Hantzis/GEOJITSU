@@ -45,10 +45,10 @@ export default function () {
     capaSeleccionada: "conflictos",
     capasMapa: [
       {
-        value: "estados", label: "Estados", type: "wms", url: "https://conflictossocioambientales.iies.unam.mx/geoserver/CONFLICTOS/wms?",
-        layers: "CONFLICTOS:estados", visible: true, children: [{}],
+        value: "municipios", label: "Municipios", type: "wms", url: "https://conflictossocioambientales.iies.unam.mx/geoserver/CONFLICTOS/wms?",
+        layers: "CONFLICTOS:municipios", visible: true, children: [{}],
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
-        opacity: 1, permanent: true,
+        opacity: 0.8, permanent: true,
         server_type: "geoserver",
         format: "image/png8",
         params: {
@@ -56,10 +56,10 @@ export default function () {
         }
       },
       {
-        value: "municipios", label: "Municipios", type: "wms", url: "https://conflictossocioambientales.iies.unam.mx/geoserver/CONFLICTOS/wms?",
-        layers: "CONFLICTOS:municipios", visible: false, children: [{}],
+        value: "estados", label: "Estados", type: "wms", url: "https://conflictossocioambientales.iies.unam.mx/geoserver/CONFLICTOS/wms?",
+        layers: "CONFLICTOS:estados", visible: true, children: [{}],
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
-        opacity: 0.8, permanent: true,
+        opacity: 1, permanent: true,
         server_type: "geoserver",
         format: "image/png8",
         params: {

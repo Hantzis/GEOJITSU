@@ -15,8 +15,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="maptitud">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/ConflictosPieChart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/ConflictosPieChart.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/Tablero.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/Tablero.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/pages/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/geojitsu/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/geojitsu/state.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -749,42 +749,14 @@
       <workItem from="1615222151236" duration="3844000" />
       <workItem from="1616643964286" duration="250000" />
       <workItem from="1616644235036" duration="12953000" />
-      <workItem from="1617058866450" duration="4518000" />
-    </task>
-    <task id="LOCAL-00057" summary="m$">
-      <created>1603169884271</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1603169884271</updated>
-    </task>
-    <task id="LOCAL-00058" summary="m$">
-      <created>1603226605445</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1603226605445</updated>
-    </task>
-    <task id="LOCAL-00059" summary="m$">
-      <created>1603307036955</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1603307036955</updated>
-    </task>
-    <task id="LOCAL-00060" summary="m$">
-      <created>1603308690594</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1603308690594</updated>
-    </task>
-    <task id="LOCAL-00061" summary="m$">
-      <created>1603350128585</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1603350128585</updated>
+      <workItem from="1617058866450" duration="8856000" />
+      <workItem from="1617810724181" duration="7675000" />
+      <workItem from="1617990298000" duration="631000" />
+      <workItem from="1617991413885" duration="60000" />
+      <workItem from="1617991492777" duration="3000" />
+      <workItem from="1617991507588" duration="1489000" />
+      <workItem from="1617993424384" duration="233000" />
+      <workItem from="1618620459552" duration="3090000" />
     </task>
     <task id="LOCAL-00062" summary="m$">
       <created>1603408956511</created>
@@ -1094,7 +1066,42 @@
       <option name="project" value="LOCAL" />
       <updated>1616714244955</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="maptitud">
+      <created>1617065686483</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1617065686485</updated>
+    </task>
+    <task id="LOCAL-00107" summary="maptitud">
+      <created>1617066299280</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1617066299280</updated>
+    </task>
+    <task id="LOCAL-00108" summary="maptitud">
+      <created>1617810745216</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1617810745216</updated>
+    </task>
+    <task id="LOCAL-00109" summary="maptitud">
+      <created>1617989066250</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1617989066250</updated>
+    </task>
+    <task id="LOCAL-00110" summary="maptitud">
+      <created>1617989774949</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1617989774949</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1128,5 +1135,17 @@
     <MESSAGE value="Commit Clutch" />
     <MESSAGE value="maptitud" />
     <option name="LAST_COMMIT_MESSAGE" value="maptitud" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/geojitsu/state.js</url>
+          <line>7</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

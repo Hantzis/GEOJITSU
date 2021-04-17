@@ -347,6 +347,9 @@ export default {
     }
   },
   watch: {
+    capaSeleccionada() {
+      console.log("this.capaSeleccionada", this.capaSeleccionada)
+    },
     capasMapa() {
       this.mapkey++
     },
@@ -366,9 +369,13 @@ export default {
       this.conflictos_selectedFeatures = []
       this.selectedFeatures = []
     },
+    position() {
+      this.position ? false : this.ver_mas = false
+    },
     conflictos_selectedFeatures() {
-      this.ver_mas = false
+
       if (this.conflictos_selectedFeatures.length > 0) {
+
         if (this.capaSeleccionada === 'conflictos') {
           let collection = []
           this.conflictos_selectedFeatures[0].geometry.coordinates.forEach(point => {
@@ -665,7 +672,6 @@ export default {
     },
   },
   beforeMount() {
-
     this.getPaginas()
   },
   mounted() {
