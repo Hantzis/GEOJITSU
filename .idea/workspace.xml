@@ -16,7 +16,6 @@
     <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="maptitud">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/pages/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/geojitsu/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/geojitsu/state.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -502,7 +501,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.serve conflictos">
+  <component name="RunManager" selected="Django Server.SERVER">
     <configuration name="rest-api#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -757,6 +756,15 @@
       <workItem from="1617991507588" duration="1489000" />
       <workItem from="1617993424384" duration="233000" />
       <workItem from="1618620459552" duration="3090000" />
+      <workItem from="1621728554944" duration="872000" />
+      <workItem from="1622350191580" duration="7606000" />
+      <workItem from="1622425475592" duration="2393000" />
+      <workItem from="1622641993161" duration="6335000" />
+      <workItem from="1622735488687" duration="4983000" />
+      <workItem from="1624177314806" duration="12761000" />
+      <workItem from="1624506280121" duration="606000" />
+      <workItem from="1624664697496" duration="8201000" />
+      <workItem from="1624834075356" duration="4403000" />
     </task>
     <task id="LOCAL-00062" summary="m$">
       <created>1603408956511</created>
@@ -1142,8 +1150,22 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/frontend/conflictos/geojitsu/src/store/geojitsu/state.js</url>
           <line>7</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue</url>
+          <line>699</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue</url>
+          <line>694</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue</url>
+          <line>720</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
