@@ -347,9 +347,6 @@ export default {
     }
   },
   watch: {
-    capaSeleccionada() {
-      console.log("this.capaSeleccionada", this.capaSeleccionada)
-    },
     capasMapa() {
       this.mapkey++
     },
