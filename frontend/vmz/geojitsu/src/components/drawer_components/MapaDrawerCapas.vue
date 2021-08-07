@@ -172,8 +172,6 @@ export default {
     }
   },
   mounted() {
-    //console.log("platform", this.$q.screen.width)
-
     if (this.$q.screen.width < 768) {
       this.drawerCapas = false;
     }

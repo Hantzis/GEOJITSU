@@ -16,16 +16,10 @@
         </div>
       </div>
     </div>
-
   </div>
-
-
 </template>
 
 <script>
-import axios from 'axios'
-
-
 export default {
   name: "Acerca",
   props: ['page_data'],
