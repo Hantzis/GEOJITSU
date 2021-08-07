@@ -73,7 +73,6 @@
                                 <vl-source-vector :features="capa.features"
                                                   :attributions="capa.attribution"/>
                                 <vl-style-func :factory="pointsStyleFunc"/>
-
                               </vl-layer-vector>
                             </div>
                           </div>
@@ -509,7 +508,6 @@ export default {
       if (selectedFeatures.features.length > 0) {
         return Object.entries(selectedFeatures.features[0].properties)
       }
-
     },
     cambio(event) {
       console.log(event)
@@ -588,6 +586,7 @@ export default {
           axios.get(url).then(response => {
             if (response.data.numberReturned > 0) {
               this.selectedFeatures = response.data
+              console.log("this.selectedFeatures", this.selectedFeatures)
               this.position = evt.coordinate
             } else {
               this.selectedFeatures = []

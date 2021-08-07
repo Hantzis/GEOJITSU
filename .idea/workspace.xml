@@ -13,9 +13,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="maptitud">
+    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/pages/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/boot/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/boot/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/state.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -501,7 +503,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Django Server.SERVER">
+  <component name="RunManager" selected="npm.serve vmz">
     <configuration name="rest-api#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -604,7 +606,6 @@
       <item itemvalue="Django Server.SERVER" />
       <item itemvalue="HTTP Request.rest-api#1" />
       <item itemvalue="HTTP Request.rest-api_1#1" />
-      <item itemvalue="Node.js.quasar build -m electron" />
       <item itemvalue="npm.serve casos_exito" />
       <item itemvalue="npm.serve conflictos" />
       <item itemvalue="npm.serve san-miguelito" />
@@ -765,13 +766,8 @@
       <workItem from="1624506280121" duration="606000" />
       <workItem from="1624664697496" duration="8201000" />
       <workItem from="1624834075356" duration="4403000" />
-    </task>
-    <task id="LOCAL-00062" summary="m$">
-      <created>1603408956511</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1603408956511</updated>
+      <workItem from="1625951185318" duration="5353000" />
+      <workItem from="1628311118659" duration="228000" />
     </task>
     <task id="LOCAL-00063" summary="m$">
       <created>1603953454201</created>
@@ -1109,7 +1105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617989774949</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="maptitud">
+      <created>1625951319059</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1625951319059</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

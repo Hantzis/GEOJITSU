@@ -767,7 +767,7 @@ export default {
       if (this.herramientaActiva === 'agregar_marcador') {
         const coord = transform(evt.coordinate, 'EPSG:4326', 'EPSG:3857')
         const viewResolution = this.$refs.olview.$view.values_.resolution;
-        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${evt.coordinate[1]},${evt.coordinate[0]}&key=AIzaSyAPJOFYKRav1z3IxoK-URalWtPY4KKTAb0`)
+        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${evt.coordinate[1]},${evt.coordinate[0]}&key=AIzaSyBfz9LE4NZ52byNPAQ_6iOJ8j0eMv4TtdA`)
           .then(response => {
             console.log("response", response)
             if (response.data.results.length > 0) {
