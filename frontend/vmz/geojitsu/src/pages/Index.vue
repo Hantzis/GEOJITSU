@@ -573,7 +573,7 @@ export default {
         console.log(oldVal);
         console.log(newVal);
         console.log(this.selectedFeatureInfo);
-        axios.patch(`https://api-nosotras.inmujereszapopan.gob.mx/api/v1/reportes/${this.selectedFeatureInfo.id}/`,
+        axios.patch(`https://api.zapopanentrenosotras.com/api/v1/reportes/${this.selectedFeatureInfo.id}/`,
           {estatus: newVal}, {headers: {'Authorization': `Bearer ${this.token}`}})
           .then(response => {
             console.log(response)
@@ -694,7 +694,7 @@ export default {
       }
     },
     mapHeight() {
-      let ribbon_height = 99 + 24
+      let ribbon_height = 99 + 25
       if (this.showGISRibbon) ribbon_height = 192 + 24
       return this.$q.screen.height - ribbon_height + "px"
     },
@@ -755,7 +755,7 @@ export default {
         axios.get(url).then(response => {
           if (response.data.numberReturned > 0) {
             this.selectedFeatures = response.data.features
-            axios.get(`https://api-nosotras.inmujereszapopan.gob.mx/api/v1/reportes/${response.data.features[0].id.split(".")[1]}/`)
+            axios.get(`https://api.zapopanentrenosotras.com/api/v1/reportes/${response.data.features[0].id.split(".")[1]}/`)
               .then(response => {
                 this.selectedFeatureInfo = response.data
               })
@@ -800,7 +800,7 @@ export default {
       }
     },
     getColonias() {
-      axios.get(`https://api-nosotras.inmujereszapopan.gob.mx/api/v1/colonias/?municipio=120`).then(response => {
+      axios.get(`https://api.zapopanentrenosotras.com/api/v1/colonias/?municipio=120`).then(response => {
         this.colonias = response.data
         console.log("colonias", this.colonias)
       }).catch(error => {
@@ -808,7 +808,7 @@ export default {
       })
     },
     getTiposServicio() {
-      axios.get(`https://api-nosotras.inmujereszapopan.gob.mx/api/v1/tipos-servicio/`).then(response => {
+      axios.get(`https://api.zapopanentrenosotras.com/api/v1/tipos-servicio/`).then(response => {
         this.tipos_servicio = response.data
         console.log("tipos_servicio", this.tipos_servicio)
       }).catch(error => {
@@ -817,7 +817,7 @@ export default {
     },
     getEstadosServicio(val) {
       if (val && val < 1000000) {
-        axios.get(`https://api-nosotras.inmujereszapopan.gob.mx/api/v1/estados-servicio/?tipo=${val}`).then(response => {
+        axios.get(`https://api.zapopanentrenosotras.com/api/v1/estados-servicio/?tipo=${val}`).then(response => {
           this.estados_servicio = response.data
           console.log("estados_servicio", this.estados_servicio)
         }).catch(error => {
@@ -828,7 +828,7 @@ export default {
       }
     },
     getSituacionesPeligrosas() {
-      axios.get(`https://api-nosotras.inmujereszapopan.gob.mx/api/v1/situaciones-peligro/`).then(response => {
+      axios.get(`https://api.zapopanentrenosotras.com/api/v1/situaciones-peligro/`).then(response => {
         this.situaciones_peligro = response.data
         console.log("situaciones_peligrosas", this.situaciones_peligro)
       }).catch(error => {
@@ -840,7 +840,7 @@ export default {
         if (valid) {
           this.token = cookies.get("access_token");
           this.reporte_marcador_data.reporta = this.auth_user.pk;
-          axios.post(`https://api-nosotras.inmujereszapopan.gob.mx/api/v1/reportes/`, this.reporte_marcador_data,
+          axios.post(`https://api.zapopanentrenosotras.com/api/v1/reportes/`, this.reporte_marcador_data,
             {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
             console.log(response.data)
             this.agregarreportemarcador_dialog = false
@@ -873,8 +873,8 @@ export default {
       });
     },
     getPaginaHome() {
-      // axios.get("https://api-nosotras.inmujereszapopan.gob.mx/api/v1/pages/?type=home.HomePage")
-      axios.get("https://api-nosotras.inmujereszapopan.gob.mx/api/v1/pages/3/")
+      // axios.get("https://api.zapopanentrenosotras.com/api/v1/pages/?type=home.HomePage")
+      axios.get("https://api.zapopanentrenosotras.com/api/v1/pages/3/")
         .then(response => {
           console.log("response getPagina", response)
           this.homeData = response.data
