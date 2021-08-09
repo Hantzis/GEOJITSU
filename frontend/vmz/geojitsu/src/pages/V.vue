@@ -49,12 +49,7 @@ export default {
     getPaginas() {
       axios.get("https://api.zapopanentrenosotras.com/api/v1/pages/?type=home.StandardPage&fields=*")
         .then(response => {
-          console.log("response getPaginas", response)
-          console.log("response urlpat", this.urlPath)
           this.pageData = response.data.items
-          response.data.items.forEach(row => {
-            console.log("row", row)
-          })
         })
     },
     getPagina(slug) {

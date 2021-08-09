@@ -570,17 +570,8 @@ export default {
     'selectedFeatureInfo.estatus': function (newVal, oldVal) {
       if (oldVal && newVal) {
         this.token = cookies.get("access_token")
-        console.log(oldVal);
-        console.log(newVal);
-        console.log(this.selectedFeatureInfo);
         axios.patch(`https://api.zapopanentrenosotras.com/api/v1/reportes/${this.selectedFeatureInfo.id}/`,
           {estatus: newVal}, {headers: {'Authorization': `Bearer ${this.token}`}})
-          .then(response => {
-            console.log(response)
-          })
-          .catch(error => {
-            //console.log(error)
-          })
       }
     },
     'reporte_marcador_data.tipo': function (newVal, oldVal) {
@@ -588,18 +579,12 @@ export default {
       this.reporte_marcador_data.estado_servicio_otro = undefined
       this.reporte_marcador_data.situacion_peligrosa = undefined
       this.reporte_marcador_data.situacion_peligrosa_otra = undefined
-      console.log(this.reporte_marcador_data)
     },
     'reporte_marcador_data.tipo_servicio': function (newVal, oldVal) {
       if (newVal) {
         this.reporte_marcador_data.estado_servicio = undefined
         this.getEstadosServicio(newVal)
       }
-    },
-    'reporte_marcador_data.colonia': function (newVal, oldVal) {
-      console.log(newVal)
-      console.log(oldVal)
-      console.log(this.reporte_marcador_data.colonia)
     },
     agregarreportemarcador_dialog() {
       if (this.agregarreportemarcador_dialog === false) {
@@ -742,13 +727,8 @@ export default {
     },
     clic(evt) {
       this.selectedFeatures = []
-      console.log("clic event", evt)
-      console.log("clic event", evt.coordinate)
-      console.log("herramientaActiva", this.herramientaActiva)
       this.clickCoords = evt.coordinate
       if (this.herramientaActiva === 'info') {
-        console.log(this.$refs.olview)
-        console.log(this.$refs.olview.$view.values_.resolution)
         const coord = transform(evt.coordinate, 'EPSG:4326', 'EPSG:3857')
         const viewResolution = /** @type {number} */ this.$refs.olview.$view.values_.resolution;
         let url = this.$refs.reportes[0].getFeatureInfoUrl(coord, viewResolution, 'EPSG:3857', {'INFO_FORMAT': 'application/json'})
@@ -769,11 +749,9 @@ export default {
         const viewResolution = this.$refs.olview.$view.values_.resolution;
         axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${evt.coordinate[1]},${evt.coordinate[0]}&key=AIzaSyBfz9LE4NZ52byNPAQ_6iOJ8j0eMv4TtdA`)
           .then(response => {
-            console.log("response", response)
             if (response.data.results.length > 0) {
               this.reporte_marcador_data.ubicacion = `SRID=4326;POINT (${evt.coordinate[0]} ${evt.coordinate[1]})`
               const addr = response.data.results[0].address_components
-              console.log("addr", addr)
               if (addr[0].types[0] === 'street_number') {
                 this.reporte_marcador_data.numero = parseInt(addr[0].long_name)
               }
@@ -782,7 +760,6 @@ export default {
               }
               let url = this.$refs.colonias_zapopan[0].getFeatureInfoUrl(coord, viewResolution, 'EPSG:3857', {'INFO_FORMAT': 'application/json'})
               axios.get(url).then(response => {
-                console.log(response)
                 if (response.data.features.length > 0) {
                   const col = response.data.features[0]
                   this.reporte_marcador_data.colonia = parseInt(col.id.split(".")[1])
@@ -802,7 +779,6 @@ export default {
     getColonias() {
       axios.get(`https://api.zapopanentrenosotras.com/api/v1/colonias/?municipio=120`).then(response => {
         this.colonias = response.data
-        console.log("colonias", this.colonias)
       }).catch(error => {
         //console.log(error)
       })
@@ -810,7 +786,6 @@ export default {
     getTiposServicio() {
       axios.get(`https://api.zapopanentrenosotras.com/api/v1/tipos-servicio/`).then(response => {
         this.tipos_servicio = response.data
-        console.log("tipos_servicio", this.tipos_servicio)
       }).catch(error => {
         //console.log(error)
       })
@@ -819,7 +794,6 @@ export default {
       if (val && val < 1000000) {
         axios.get(`https://api.zapopanentrenosotras.com/api/v1/estados-servicio/?tipo=${val}`).then(response => {
           this.estados_servicio = response.data
-          console.log("estados_servicio", this.estados_servicio)
         }).catch(error => {
           //console.log(error)
         })
@@ -830,7 +804,6 @@ export default {
     getSituacionesPeligrosas() {
       axios.get(`https://api.zapopanentrenosotras.com/api/v1/situaciones-peligro/`).then(response => {
         this.situaciones_peligro = response.data
-        console.log("situaciones_peligrosas", this.situaciones_peligro)
       }).catch(error => {
         //console.log(error)
       })
@@ -842,7 +815,6 @@ export default {
           this.reporte_marcador_data.reporta = this.auth_user.pk;
           axios.post(`https://api.zapopanentrenosotras.com/api/v1/reportes/`, this.reporte_marcador_data,
             {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
-            console.log(response.data)
             this.agregarreportemarcador_dialog = false
             this.reporte_agregado_dialog = true
             this.reporte_marcador_data = {
@@ -876,7 +848,6 @@ export default {
       // axios.get("https://api.zapopanentrenosotras.com/api/v1/pages/?type=home.HomePage")
       axios.get("https://api.zapopanentrenosotras.com/api/v1/pages/3/")
         .then(response => {
-          console.log("response getPagina", response)
           this.homeData = response.data
         })
     },
@@ -888,7 +859,6 @@ export default {
 
     this.loadingBar = this.$refs.bar
     axios.get('statics/zapopan.geojson').then(res => {
-      console.log(res.data.features)
       this.zapopan = res.data.features
     }).then(() => {
       this.getPaginaHome()

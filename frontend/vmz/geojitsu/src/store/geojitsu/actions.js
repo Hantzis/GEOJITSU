@@ -28,7 +28,6 @@ export const setUserGroups = ({commit}, payload) => {
 }
 
 export const capasMapaAction = ({commit}, payload) => {
-  console.log("capasMapaAction", payload)
   commit('capasMapaMutation', payload)
 }
 
@@ -60,8 +59,6 @@ export const bajarCapaAction  = ({commit}, payload) => {
   commit('BajarCapaMutation', payload)
 }
 
-
 export const setCapaFeatures = ({commit}, payload) => {
-  console.log("setCapaFeatures", payload)
   commit('CapaSetFeaturesMutation', payload)
 }

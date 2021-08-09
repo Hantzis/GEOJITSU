@@ -48,8 +48,20 @@
                     </template>
                   </q-btn-toggle>
                   <q-btn-group unelevated v-if="!auth_logged">
-                    <q-btn unelevated dense size="lg" disable icon="mdi-playlist-plus"/>
-                    <q-btn unelevated dense size="lg" disable icon="mdi-map-marker-plus"/>
+                    <q-btn unelevated dense size="lg" disable icon="mdi-playlist-plus">
+                      <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px"
+                                 anchor="top middle"
+                                 self="bottom middle">
+                        Necesita iniciar sesión para usar esta función
+                      </q-tooltip>
+                    </q-btn>
+                    <q-btn unelevated dense size="lg" disable icon="mdi-map-marker-plus">
+                      <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px"
+                                 anchor="top middle"
+                                 self="bottom middle">
+                        Necesita iniciar sesión para usar esta función
+                      </q-tooltip>
+                    </q-btn>
                   </q-btn-group>
                   <q-btn-toggle
                     @click="showHerramientaActiva()"
@@ -364,25 +376,22 @@ export default {
   methods: {
     ...mapActions('geojitsu', ['GISRibbonIsOpenAction', 'setHerramientaActiva', 'setMapkey']),
     showHerramientaActiva() {
-      console.log(this.herramientaActiva)
+      // console.log(this.herramientaActiva)
     },
     getColonias() {
       axios.get(`https://api.zapopanentrenosotras.com/api/v1/colonias/?municipio=120`).then(response => {
         this.colonias = response.data
-        console.log("colonias", this.colonias)
       }).catch(error => console.log(error))
     },
     getTiposServicio() {
       axios.get(`https://api.zapopanentrenosotras.com/api/v1/tipos-servicio/`).then(response => {
         this.tipos_servicio = response.data
-        console.log("tipos_servicio", this.tipos_servicio)
       }).catch(error => console.log(error))
     },
     getEstadosServicio(val) {
       if (val && val < 1000000) {
         axios.get(`https://api.zapopanentrenosotras.com/api/v1/estados-servicio/?tipo=${val}`).then(response => {
           this.estados_servicio = response.data
-          console.log("estados_servicio", this.estados_servicio)
         }).catch(error => console.log(error))
       } else {
         this.estados_servicio = undefined
@@ -391,7 +400,6 @@ export default {
     getSituacionesPeligrosas() {
       axios.get(`https://api.zapopanentrenosotras.com/api/v1/situaciones-peligro/`).then(response => {
         this.situaciones_peligro = response.data
-        console.log("situaciones_peligrosas", this.situaciones_peligro)
       }).catch(error => console.log(error))
     },
     saveReporteDomicilio() {
@@ -413,17 +421,13 @@ export default {
 
           axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${domicilio}&key=AIzaSyBfz9LE4NZ52byNPAQ_6iOJ8j0eMv4TtdA`)
             .then(response => {
-              console.log("API", response)
-
               if (response.data.results[0]) {
                 let punto = response.data.results[0].geometry.location
                 this.reporte_domicilio_data.ubicacion = `SRID=4326;POINT (${punto.lng} ${punto.lat})`
                 this.reporte_domicilio_data.reporta = this.auth_user.pk
-                console.log(this.reporte_domicilio_data)
                 this.token = cookies.get("access_token")
                 axios.post(`https://api.zapopanentrenosotras.com/api/v1/reportes/`, this.reporte_domicilio_data,
                   {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
-                  console.log(response.data)
                   this.reporte_agregado_dialog = true
                   this.agregarreportedomicilio_dialog = false
                   this.reporte_domicilio_data = {
@@ -442,27 +446,15 @@ export default {
                     hora: ""
                   }
                   this.herramientaActiva = 'info'
-                }).catch(error => {
-                  console.log(error)
                 })
               }
-
-
-            }).then(() => {
-            console.log("despues")
-
-          }).catch(error => {
-            console.log(error)
-          }).finally(() => {
-          })
+            })
         } else {
           console.log('error submit!!');
           return false;
         }
       });
-
     }
-
   },
   watch: {
     agregarreportedomicilio_dialog() {
@@ -485,8 +477,6 @@ export default {
       this.reporte_domicilio_data.situacion_peligrosa_otra = undefined
     },
     'reporte_domicilio_data.tipo_servicio': function (newVal, oldVal) {
-      console.log(newVal)
-      console.log(oldVal)
       if (newVal) {
         this.reporte_domicilio_data.estado_servicio = undefined
         this.getEstadosServicio(newVal)

@@ -41,16 +41,6 @@ export default {
       const slug = this.$route.fullPath.split("/")[2]
       return slug
     },
-  },
-  methods: {
-    getPagina(slug) {
-      console.log("getPagina", slug)
-      console.log("getPagina", this.page_data)
-    }
-  },
-  mounted() {
-    console.log(this.$route)
-    console.log("pageadta", this.page_data)
   }
 }
 </script>
