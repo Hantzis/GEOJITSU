@@ -172,11 +172,9 @@ export default {
       this.drawerCapas = false;
     }
     axios.get('https://api.zapopanentrenosotras.com/api/v1/tipos-servicio/').then(response => {
-      console.log("response", response.data)
       this.servicios = response.data
     })
     axios.get('https://api.zapopanentrenosotras.com/api/v1/situaciones-peligro/').then(response => {
-      console.log("response", response.data)
       this.situaciones = response.data
     })
 

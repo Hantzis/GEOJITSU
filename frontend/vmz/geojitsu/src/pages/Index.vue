@@ -46,6 +46,7 @@
                     <vl-layer-tile v-if="capa.type==='wms' && capa.tiled===true" :opacity="capa.opacity"
                                    :visible="capa.visible">
                       <vl-source-wms
+                        :key="capa.params.cql_filter"
                         :ref="capa.value"
                         :url="capa.url"
                         :format="capa.format"
@@ -728,6 +729,7 @@ export default {
     refreshMap() {
       console.log("refresh", this.capasMapa)
       this.$refs['olmap'].refresh()
+      this.$refs['olmap'].remount()
     },
     clic(evt) {
       this.selectedFeatures = []

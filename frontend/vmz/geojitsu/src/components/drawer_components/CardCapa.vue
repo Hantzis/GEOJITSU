@@ -162,7 +162,6 @@ export default {
       this.setCapaCQLFilter({capa: this.capasMapa.indexOf(this.capa), filtro: filtro})
 
       this.showFilterDialog = false
-      console.log("capa", this.capa)
       this.$emit('update')
     }
   },
@@ -176,7 +175,6 @@ export default {
   props: ['capa', 'servicios', 'situaciones'],
   created() {
     this.capaIndex = this.capasMapa.indexOf(this.capa)
-    console.log("capa", this.capa)
   },
   updated() {
     this.capaIndex = this.capasMapa.indexOf(this.capa)
