@@ -33,10 +33,10 @@
                     attributions="Mapbox, <a href='https://www.saeba.click' target='_blank'>Saeba</a>"/>
                 </vl-layer-tile>
                 <vl-layer-vector>
-                  <vl-source-vector :features.sync="zapopan">
+                  <vl-source-vector url="/statics/zapopan.geojson">
                   </vl-source-vector>
                   <vl-style-box>
-                    <vl-style-stroke color="black" :width="3"></vl-style-stroke>
+                    <vl-style-stroke color="blue" :width="3"></vl-style-stroke>
                     <vl-style-fill color="rgba(44,55,0,0.05)"></vl-style-fill>
                   </vl-style-box>
                 </vl-layer-vector>
@@ -98,7 +98,7 @@
                       </q-table>
                       <div class="row q-pt-sm">
                         <q-select
-                          :readonly="!(selectedFeatureInfo.tipo === 'Servicios' && this.userGroups.includes(5)) && !(selectedFeatureInfo.tipo === 'Situaciones' && this.userGroups.includes(6))"
+                          :readonly="!(selectedFeatureInfo.tipo === 'Servicios' && this.userGroups.includes(4)) && !(selectedFeatureInfo.tipo === 'Situaciones' && this.userGroups.includes(5))"
                           v-model="selectedFeatureInfo.estatus"
                           :options="['Abierto', 'Atendiendo', 'Resuelto']"
                           label="Estatus" name="estatus" outlined class="full-width" behavior="menu"/>
@@ -521,8 +521,8 @@ export default {
       bienvenida_dialog: false,
       fecha_reporte_marcador: "",
       hora_reporte_marcador: "",
-      zoom: 15,
-      center: [-103.38890075683594, 20.72561197927564],
+      zoom: 12,
+      center: [-103.38890075683594, 20.683],
       center3857: [-11268847.24, 2231060.47],
       geolocPosition: [-101.22977709999999, 19.6453138],
       conflictos: [],
@@ -856,19 +856,14 @@ export default {
     if (this.$q.screen.width < 768) {
       this.zoom = 13;
     }
-
     this.loadingBar = this.$refs.bar
-    axios.get('statics/zapopan.geojson').then(res => {
-      this.zapopan = res.data.features
-    }).then(() => {
-      this.getPaginaHome()
-      this.getColonias()
-      this.getTiposServicio()
-      this.getSituacionesPeligrosas()
-    }).catch(error => {
-    }).finally(() => {
-      this.loadingBar.stop()
-    })
+    this.loadingBar.stop()
+    this.getPaginaHome()
+    this.getColonias()
+    this.getTiposServicio()
+    this.getSituacionesPeligrosas()
+    this.loadingBar.stop()
+
   }
 }
 </script>
