@@ -15,7 +15,12 @@
   <component name="ChangeListManager">
     <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/src/store/geojitsu/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/src/store/geojitsu/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/src/store/geojitsu/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/src/store/geojitsu/mutations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/drawer_components/CardCapa.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/drawer_components/CardCapa.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/drawer_components/MapaDrawerCapas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/drawer_components/MapaDrawerCapas.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/state.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -501,7 +506,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.build vmz">
+  <component name="RunManager" selected="npm.serve vmz">
     <configuration name="rest-api#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -776,14 +781,8 @@
       <workItem from="1624664697496" duration="8201000" />
       <workItem from="1624834075356" duration="4403000" />
       <workItem from="1625951185318" duration="5353000" />
-      <workItem from="1628311118659" duration="32306000" />
-    </task>
-    <task id="LOCAL-00066" summary="Commit Clutch">
-      <created>1604014846496</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1604014846496</updated>
+      <workItem from="1628311118659" duration="33145000" />
+      <workItem from="1628607403445" duration="11315000" />
     </task>
     <task id="LOCAL-00067" summary="Commit Clutch">
       <created>1604018509265</created>
@@ -1121,7 +1120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628553137040</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="zapopanentrenosotras">
+      <created>1628555160371</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1628555160371</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1179,6 +1185,12 @@
           <url>file://$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue</url>
           <line>725</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/drawer_components/CardCapa.vue</url>
+          <line>123</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

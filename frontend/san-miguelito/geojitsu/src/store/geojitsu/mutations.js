@@ -38,6 +38,10 @@ export const CapaOpacityMutation = (state, value) => {
   state.capasMapa[value.capa].opacity = value.value
 }
 
+export const CapaCQLFilterMutation = (state, value) => {
+  state.capasMapa[value.capa].params.cql_filter = value.filtro
+}
+
 export const SubirCapaMutation = (state, value) => {
   state.capasMapa.splice(value - 1, 0, state.capasMapa.splice(value, 1)[0])
   const tempCapas = state.capasMapa

@@ -5,7 +5,7 @@
         <GISRibbon/>
       </q-header>
 
-      <mapa-drawer-capas/>
+      <mapa-drawer-capas @update="refreshMap()"/>
 
       <q-page-container>
         <q-page>
@@ -724,6 +724,10 @@ export default {
           this.setCapaTicked({capa: this.capasMapa[capa], visible: true})
         })
       }
+    },
+    refreshMap() {
+      console.log("refresh", this.capasMapa)
+      this.$refs['olmap'].refresh()
     },
     clic(evt) {
       this.selectedFeatures = []

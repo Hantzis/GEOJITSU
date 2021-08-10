@@ -24,6 +24,7 @@ export default function () {
         tiled: false,
         params: {
           crs: "EPSG:4326",
+          cql_filter: null,
         }
       },
       {
@@ -35,8 +36,10 @@ export default function () {
         server_type: "geoserver",
         format: "image/png8",
         tiled: true,
+
         params: {
           crs: "EPSG:4326",
+          cql_filter: null,
         }
       },
     ],

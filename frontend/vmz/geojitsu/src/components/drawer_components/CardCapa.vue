@@ -1,61 +1,108 @@
 <template>
-  <q-card square class="capas-qcard text-grey-10">
-    <div v-if="capa.server_type === 'geoserver'">
-      <q-img :src="String(capa.url).slice(0, -1) + '/reflect?layers=' + capa.layers + ''">
-        <div class="absolute-bottom" style="background: initial">
-          <q-slider v-model="opacityStep" dense label :label-value="parseInt(opacityStep * 100) + '%'"
-                    color="primary" label-color="primary" :min="0.0" :max="1" :step="0.05"/>
-        </div>
-      </q-img>
-    </div>
-    <div v-if="capa.server_type === 'geojson'">
-      <q-img :src="'/statics/reflects/geojson_' + capa.value + '.png'">
-        <div class="absolute-bottom" style="background: initial">
-          <q-slider v-model="opacityStep" dense label :label-value="parseInt(opacityStep * 100) + '%'"
-                    color="primary" label-color="primary" :min="0.0" :max="1" :step="0.05"/>
-        </div>
-      </q-img>
-    </div>
-    <q-tabs
-      v-model="tab"
-      class="text-grey"
-      active-color="black"
-      indicator-color="grey-13"
-      align="left"
-      dense
-    >
-      <q-tab name="simbologia" dense icon="mdi-texture"/>
-      <!-- <q-tab name="alarms" dense icon="mdi-information"/>
-      <q-tab name="movies" dense icon="mdi-filter"/>
-      <q-tab name="alarms2" dense icon="mdi-cog"/>
-      <q-tab name="movies3" dense icon="mdi-cloud-download"/> -->
-    </q-tabs>
+  <div>
+    <q-card square class="capas-qcard text-grey-10">
+      <div v-if="capa.server_type === 'geoserver'">
+        <q-img :src="String(capa.url).slice(0, -1) + '/reflect?layers=' + capa.layers + ''">
+          <div class="absolute-bottom" style="background: initial">
+            <q-slider v-model="opacityStep" dense label :label-value="parseInt(opacityStep * 100) + '%'"
+                      color="primary" label-color="primary" :min="0.0" :max="1" :step="0.05"/>
+          </div>
+        </q-img>
+      </div>
+      <div v-if="capa.server_type === 'geojson'">
+        <q-img :src="'/statics/reflects/geojson_' + capa.value + '.png'">
+          <div class="absolute-bottom" style="background: initial">
+            <q-slider v-model="opacityStep" dense label :label-value="parseInt(opacityStep * 100) + '%'"
+                      color="primary" label-color="primary" :min="0.0" :max="1" :step="0.05"/>
+          </div>
+        </q-img>
+      </div>
+      <q-tabs
+        v-model="tab"
+        class="text-grey"
+        active-color="black"
+        indicator-color="grey-13"
+        align="left"
+        dense
+      >
+        <q-tab name="simbologia" dense icon="mdi-texture"/>
+        <q-tab :disable="capa.value!=='reportes'" name="filtro" dense icon="mdi-filter"/>
+        <!--<q-tab name="movies" dense icon="mdi-filter"/>
+        <q-tab name="alarms2" dense icon="mdi-cog"/>
+        <q-tab name="movies3" dense icon="mdi-cloud-download"/> -->
+      </q-tabs>
 
-    <q-separator/>
+      <q-separator/>
 
-    <q-tab-panels v-model="tab" animated>
-      <q-tab-panel name="simbologia">
-        <p class="text-h6">Simbología</p>
-        <img :src="capa.url + 'SERVICE=WMS&REQUEST=GetLegendGraphic&VERSION=' + capa.url + '&FORMAT=image/png&LAYER=' + capa.layers">
-      </q-tab-panel>
+      <q-tab-panels v-model="tab" animated>
+        <q-tab-panel name="simbologia">
+          <p class="text-h6">Simbología</p>
+          <img
+            :src="capa.url + 'SERVICE=WMS&REQUEST=GetLegendGraphic&VERSION=1.3.0&FORMAT=image/png&LAYER=' + capa.layers"/>
+        </q-tab-panel>
 
-      <q-tab-panel name="alarms">
-        <p class="text-h6">Metadatos</p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </q-tab-panel>
+        <q-tab-panel name="filtro">
+          <q-btn :disable="capa.value!=='reportes'" class="full-width" no-caps color="primary"
+                 @click="showFilterDialog=true">Aplicar filtro
+          </q-btn>
+        </q-tab-panel>
 
-      <q-tab-panel name="movies">
-        <p class="text-h6">Filtrado</p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </q-tab-panel>
-    </q-tab-panels>
+      </q-tab-panels>
 
-    <q-separator/>
-    <q-card-section>
-      <span style="font-weight: 300; font-size: 17px;">{{ capa.label }}</span>
-    </q-card-section>
+      <q-separator/>
+      <q-card-section>
+        <span style="font-weight: 300; font-size: 17px;">{{ capa.label }}</span>
+      </q-card-section>
 
-  </q-card>
+    </q-card>
+
+    <q-dialog v-model="showFilterDialog">
+      <q-card style="width: 560px;">
+        <q-card-section class="row items-center">
+          <q-avatar icon="mdi-filter" color="primary" text-color="white"/>
+          <q-toolbar-title>Aplicar filtro</q-toolbar-title>
+          <q-btn icon="close" flat round dense v-close-popup/>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section class="row items-center">
+          <div class="row full-width">
+            <div class="col full-width">
+              <q-form ref="form_reporte_marcador" autocomplete="off" greedy>
+                <div class="row q-py-xs">
+                  <q-select class="full-width" outlined name="tipo" v-model="tipo"
+                            :options="['Servicios', 'Situaciones']"
+                            label="Tipo"
+                  />
+                </div>
+                <div class="row q-py-xs"> </div>
+                <div v-if="tipo==='Servicios'" class="row q-py-xs">
+                  <q-select class="full-width" outlined name="servicio" v-model="servicio"
+                            :options="servicios"
+                            label="Servicio"
+                            emit-value map-options option-value="id" option-label="nombre"/>
+                </div>
+                <div v-if="tipo==='Situaciones'" class="row q-py-xs">
+                  <q-select class="full-width" outlined name="situacion" v-model="situacion"
+                            :options="situaciones"
+                            label="Situación"
+                            emit-value map-options option-value="id" option-label="nombre"/>
+                </div>
+              </q-form>
+            </div>
+          </div>
+        </q-card-section>
+        <q-separator/>
+        <q-card-section class="row items-center">
+          <div class="row full-width">
+            <div class="col full-width">
+              <q-btn @click="aplicarFiltro()" no-caps color="green"
+                     label="Aceptar" class="full-width"/>
+            </div>
+          </div>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+  </div>
 </template>
 
 <script>
@@ -66,6 +113,10 @@ export default {
   data() {
     return {
       tab: 'simbologia',
+      tipo: undefined,
+      servicio: undefined,
+      situacion: undefined,
+      showFilterDialog: false,
       smallStep: 0.3,
       capaIndex: undefined
     }
@@ -84,14 +135,48 @@ export default {
       set(value) {
         this.setCapaOpacity({capa: this.capasMapa.indexOf(this.capa), value: value})
       }
+    },
+    cqlFilter: {
+      get() {
+        return this.capasMapaGetter[this.capasMapa.indexOf(this.capa)].params.cql_filter
+      },
+      set(value) {
+        this.setCapaCQLFilter({capa: this.capasMapa.indexOf(this.capa), filtro: value})
+      }
     }
   },
   methods: {
-    ...mapActions('geojitsu', ['setCapaOpacity']),
+    ...mapActions('geojitsu', ['setCapaOpacity', 'setCapaCQLFilter']),
+    aplicarFiltro() {
+      let filtro
+      if (this.tipo === 'Servicios') {
+        filtro = 'tipo_servicio_id=' + this.servicio
+      }
+
+      if (this.tipo === 'Situaciones') {
+        filtro = 'situacion_peligrosa_id=' + this.situacion
+      }
+
+      //this.cqlFilter = filtro
+
+      this.setCapaCQLFilter({capa: this.capasMapa.indexOf(this.capa), filtro: filtro})
+
+      this.showFilterDialog = false
+      console.log("capa", this.capa)
+      this.$emit('update')
+    }
   },
-  props: ['capa'],
+  watch: {
+    showFilterDialog() {
+      if (!this.showFilterDialog) {
+        this.tipo = undefined; this.servicio = undefined; this.situacion = undefined;
+      }
+    }
+  },
+  props: ['capa', 'servicios', 'situaciones'],
   created() {
     this.capaIndex = this.capasMapa.indexOf(this.capa)
+    console.log("capa", this.capa)
   },
   updated() {
     this.capaIndex = this.capasMapa.indexOf(this.capa)
