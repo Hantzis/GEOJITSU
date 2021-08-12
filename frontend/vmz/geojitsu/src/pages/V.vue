@@ -12,10 +12,10 @@
             <div name="logos" class="no-padding">
               <div class="row justify-center">
                 <div class="col-auto q-px-md">
-                  <img src="https://api-nosotras.inmujereszapopan.gob.mx/media/images/2.original.png" height="50px">
+                  <img src="https://api.zapopanentrenosotras.com/media/images/2.original.png" height="50px">
                 </div>
                 <div class="col-auto q-px-md">
-                  <img src="https://api-nosotras.inmujereszapopan.gob.mx/media/images/3.original.png" height="50px">
+                  <img src="https://api.zapopanentrenosotras.com/media/images/3.original.png" height="50px">
                 </div>
               </div>
             </div>

@@ -15,11 +15,14 @@
   <component name="ChangeListManager">
     <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/src/store/geojitsu/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/src/store/geojitsu/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/src/store/geojitsu/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/src/store/geojitsu/mutations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/mutations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/V.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/V.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/icons/favicon-128x128.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/icons/favicon-128x128.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/icons/favicon-16x16.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/icons/favicon-16x16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/icons/favicon-32x32.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/icons/favicon-32x32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/icons/favicon-96x96.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/icons/favicon-96x96.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/icons/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/icons/favicon.ico" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -505,7 +508,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.serve vmz">
+  <component name="RunManager" selected="npm.build:pwa vmz">
     <configuration name="rest-api#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -562,11 +565,21 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="build vmz" type="js.build_tools.npm">
+    <configuration name="build vmz spa" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/frontend/vmz/geojitsu/package.json" />
       <command value="run" />
       <scripts>
-        <script value="build" />
+        <script value="build:spa" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="build:pwa vmz" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/frontend/vmz/geojitsu/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build:pwa" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -618,11 +631,13 @@
       <item itemvalue="Django Server.SERVER" />
       <item itemvalue="HTTP Request.rest-api#1" />
       <item itemvalue="HTTP Request.rest-api_1#1" />
+      <item itemvalue="Node.js.quasar build -m electron" />
       <item itemvalue="npm.serve casos_exito" />
       <item itemvalue="npm.serve conflictos" />
       <item itemvalue="npm.serve san-miguelito" />
       <item itemvalue="npm.serve vmz" />
-      <item itemvalue="npm.build vmz" />
+      <item itemvalue="npm.build vmz spa" />
+      <item itemvalue="npm.build:pwa vmz" />
     </list>
     <recent_temporary>
       <list>
@@ -781,14 +796,8 @@
       <workItem from="1624834075356" duration="4403000" />
       <workItem from="1625951185318" duration="5353000" />
       <workItem from="1628311118659" duration="33145000" />
-      <workItem from="1628607403445" duration="11718000" />
-    </task>
-    <task id="LOCAL-00068" summary="Commit Clutch">
-      <created>1604027001174</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1604027001174</updated>
+      <workItem from="1628607403445" duration="15365000" />
+      <workItem from="1628716186250" duration="2701000" />
     </task>
     <task id="LOCAL-00069" summary="Commit Clutch">
       <created>1604041179951</created>
@@ -1126,7 +1135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628634990918</updated>
     </task>
-    <option name="localTasksCounter" value="117" />
+    <task id="LOCAL-00117" summary="filtros reportes">
+      <created>1628635343598</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1628635343598</updated>
+    </task>
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1160,7 +1176,8 @@
     <MESSAGE value="Commit Clutch" />
     <MESSAGE value="maptitud" />
     <MESSAGE value="zapopanentrenosotras" />
-    <option name="LAST_COMMIT_MESSAGE" value="zapopanentrenosotras" />
+    <MESSAGE value="filtros reportes" />
+    <option name="LAST_COMMIT_MESSAGE" value="filtros reportes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1188,7 +1205,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/drawer_components/CardCapa.vue</url>
           <line>123</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>

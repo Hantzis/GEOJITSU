@@ -12,7 +12,8 @@
     "lint": "vue-cli-service lint",
     "test": "echo \"No test specified\" && exit 0",
     "serve": "quasar dev --modern",
-    "build": "quasar build --modern"
+    "build:spa": "quasar build --modern",
+    "build:pwa": "quasar build --modern -m pwa"
   },
   "dependencies": {
     "@mspiderv/vuejwtauth": "^1.2.2",

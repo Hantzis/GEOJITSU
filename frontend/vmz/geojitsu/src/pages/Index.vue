@@ -46,7 +46,7 @@
                     <vl-layer-tile v-if="capa.type==='wms' && capa.tiled===true" :opacity="capa.opacity"
                                    :visible="capa.visible">
                       <vl-source-wms
-                        :key="capa.params.cql_filter"
+                        :key="mapkey"
                         :ref="capa.value"
                         :url="capa.url"
                         :format="capa.format"
@@ -77,7 +77,7 @@
                       <q-table
                         class="detalles"
                         style="max-height: 400px; max-width: 300px"
-                        :title="selectedFeatureInfo.tipo"
+                        :title="`${selectedFeatureInfo.tipo} (${selectedFeatureInfo.id})`"
                         square
                         wrap-cells
                         dense
@@ -728,8 +728,10 @@ export default {
     },
     refreshMap() {
       console.log("refresh", this.capasMapa)
+      this.mapkey++
       this.$refs['olmap'].refresh()
       this.$refs['olmap'].remount()
+
     },
     clic(evt) {
       this.selectedFeatures = []
