@@ -14,9 +14,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/.eslintignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/.eslintrc.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/.npmrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/.vscode/settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/postcss.config.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/public/icons/favicon-128x128.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/public/icons/favicon-16x16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/public/icons/favicon-32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/public/icons/favicon-96x96.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/quasar.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/assets/quasar-logo-vertical.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/boot/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/boot/axios.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/boot/i18n.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/misc/EssentialLink.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/misc/ExampleComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/misc/models.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/css/app.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/css/quasar.variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/env.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/i18n/en-US/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/i18n/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/layouts/MainLayout.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/ErrorNotFound.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/IndexPage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/MapaPage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/quasar.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/router/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/router/routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/shims-vue.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/stores/example-store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/stores/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/stores/store-flag.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/drawer_components/MapaDrawerCapas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/drawer_components/MapaDrawerCapas.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/pages/Index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,49 +96,44 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JupyterTrust" id="3cd4cfd5-c415-4edb-b92a-61267500af49" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="1brpjoU3qPMdCHzdMa7TbauiuZY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mariadb" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.standard" value="true" />
-    <property name="node.js.detected.package.stylelint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.standard" value="project" />
-    <property name="node.js.path.for.package.stylelint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.standard" value="" />
-    <property name="node.js.selected.package.stylelint" value="" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PyCharm 2020.1.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Niji/PycharmProjects/GEOJITSU/frontend/inecc-vulnerabilidad/src/pages",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "ts.external.directory.path": "C:\\Users\\Niji\\PycharmProjects\\GEOJITSU\\frontend\\inecc-vulnerabilidad\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\inecc-vulnerabilidad\src\pages" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\conflictos\geojitsu\src\components" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\boot" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\assets" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\pages" />
-      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\inecc-vulnerabilidad\src\components\misc" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\assets" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\statics" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\assets" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\components" />
-      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\components" />
     </key>
   </component>
   <component name="RestClientSettings">
@@ -502,16 +538,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.serve conflictos">
-    <configuration name="rest-api#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="rest-api_1#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="quasar build -m electron" type="NodeJSConfigurationType" application-parameters="build -m electron" path-to-js-file="$USER_HOME$/AppData/Roaming/npm/node_modules/@quasar/cli/bin/quasar" working-dir="$PROJECT_DIR$/frontend/geojitsu">
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="npm.dev inecc">
     <configuration name="SERVER" type="Python.DjangoServer" factoryName="Django server">
       <module name="GEOJITSU" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -559,43 +586,11 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="serve casos_exito" type="js.build_tools.npm">
-      <package-json value="$PROJECT_DIR$/frontend/casos_exito/package.json" />
+    <configuration name="dev inecc" type="js.build_tools.npm" temporary="true">
+      <package-json value="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/package.json" />
       <command value="run" />
       <scripts>
-        <script value="serve" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="serve conflictos" type="js.build_tools.npm">
-      <package-json value="$PROJECT_DIR$/frontend/conflictos/geojitsu/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="serve" />
-      </scripts>
-      <arguments value="--modern" />
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="serve san-miguelito" type="js.build_tools.npm">
-      <package-json value="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="serve" />
-      </scripts>
-      <arguments value="--modern" />
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="serve vmz" type="js.build_tools.npm">
-      <package-json value="$PROJECT_DIR$/frontend/vmz/geojitsu/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="serve" />
+        <script value="dev" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -603,18 +598,11 @@
     </configuration>
     <list>
       <item itemvalue="Django Server.SERVER" />
-      <item itemvalue="HTTP Request.rest-api#1" />
-      <item itemvalue="HTTP Request.rest-api_1#1" />
-      <item itemvalue="Node.js.quasar build -m electron" />
-      <item itemvalue="npm.serve casos_exito" />
-      <item itemvalue="npm.serve conflictos" />
-      <item itemvalue="npm.serve san-miguelito" />
-      <item itemvalue="npm.serve vmz" />
+      <item itemvalue="npm.dev inecc" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.rest-api_1#1" />
-        <item itemvalue="HTTP Request.rest-api#1" />
+        <item itemvalue="npm.dev inecc" />
       </list>
     </recent_temporary>
   </component>
@@ -750,6 +738,7 @@
       <workItem from="1615316128782" duration="12823000" />
       <workItem from="1615393008715" duration="279000" />
       <workItem from="1615393301350" duration="514000" />
+      <workItem from="1683403827506" duration="10972000" />
     </task>
     <task id="LOCAL-00048" summary="m$">
       <created>1600714905085</created>
@@ -1120,7 +1109,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="mac" />
@@ -1129,5 +1117,17 @@
     <MESSAGE value="maptitud" />
     <MESSAGE value="conflictos cambios" />
     <option name="LAST_COMMIT_MESSAGE" value="conflictos cambios" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/frontend/conflictos/geojitsu/src/layouts/MainLayout.vue</url>
+          <line>60</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
