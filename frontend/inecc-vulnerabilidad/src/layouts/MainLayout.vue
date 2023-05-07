@@ -14,11 +14,7 @@
         <q-toolbar-title>
           Escenarios de Vulnerabilidad
         </q-toolbar-title>
-        <q-tabs
-          v-model="tab"
-          no-caps
-          style="margin-right: -10px;"
-        >
+        <q-tabs v-model="tab" no-caps style="margin-right: -12px;">
           <q-route-tab :to="'/mapa'" label="Mapa"/>
           <q-route-tab :to="'/acerca-de'" label="Acerca de"/>
           <q-route-tab :to="'/prueba'" label="Prueba"/>

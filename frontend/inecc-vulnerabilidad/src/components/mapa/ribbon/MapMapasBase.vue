@@ -3,7 +3,8 @@
     <div class="row">
       <div class="col">
         <div class="row q-pa-xs">
-          <q-select outlined name="base" label="Mapa base" :options="mapStore.mapasBase" v-model="mapaBase"
+          <q-select outlined name="base" label="Mapa base"
+                    :options="mapStore.mapasBase" v-model="mapStore.mapaBase"
                     emit-value map-options>
             <template v-slot:prepend>
               <q-icon name="mdi-layers-outline"/>
@@ -29,15 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import {reactive} from "vue";
-import {useMapStore} from "stores/map-store"
-
+import {useMapStore} from 'stores/map-store'
 const mapStore = useMapStore()
-const mapaBase = reactive({})
-
-
 </script>
 
-<style scoped lang="css">
-
-</style>
