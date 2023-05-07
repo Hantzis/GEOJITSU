@@ -37,7 +37,7 @@ export const useMapStore = defineStore('map-store', {
     capaSeleccionada: 'estados',
   }),
   getters: {
-    doubleCount: (state) => 1,
+    doubleCount: (state) => state ? 1 : 0,
   },
   actions: {
     increment() {

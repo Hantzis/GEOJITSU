@@ -7,7 +7,7 @@
                     :options="mapStore.mapasBase" v-model="mapStore.mapaBase"
                     emit-value map-options>
             <template v-slot:prepend>
-              <q-icon name="mdi-layers-outline"/>
+              <q-icon name="mdi-layers"/>
             </template>
           </q-select>
         </div>
