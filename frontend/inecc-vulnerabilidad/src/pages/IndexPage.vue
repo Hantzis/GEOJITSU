@@ -1,8 +1,6 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <q-btn label="Button" color="accent" no-caps outline />
-    <q-btn label="Button"  no-caps glossy />
-    <q-btn label="Button" color="gobmx-verde" no-caps />
+    <p> prueba </p>
   </q-page>
 </template>
 

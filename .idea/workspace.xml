@@ -14,50 +14,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/.eslintignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/.eslintrc.cjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/.npmrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/.vscode/extensions.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/.vscode/settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/postcss.config.cjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/public/icons/favicon-128x128.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/public/icons/favicon-16x16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/public/icons/favicon-32x32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/public/icons/favicon-96x96.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/quasar.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/assets/quasar-logo-vertical.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/boot/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/boot/axios.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/boot/i18n.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/misc/EssentialLink.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/misc/ExampleComponent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/misc/models.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/css/app.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/css/quasar.variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/env.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/i18n/en-US/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/i18n/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/layouts/MainLayout.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/ErrorNotFound.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/IndexPage.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/MapaPage.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/quasar.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/router/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/router/routes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/shims-vue.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/stores/example-store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/stores/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/stores/store-flag.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/mapa/ribbon/MapCapas.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/mapa/ribbon/MapMapasBase.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/mapa/ribbon/MapRibbon.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/stores/map-store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/layouts/MainLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/layouts/MainLayout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/IndexPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/IndexPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/MapaPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/MapaPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/router/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/router/routes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +39,7 @@
         <option value="JavaScript File" />
         <option value="Vue Single File Component" />
         <option value="Python Script" />
+        <option value="Vue Composition API Component" />
       </list>
     </option>
   </component>
@@ -109,7 +76,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Niji/PycharmProjects/GEOJITSU/frontend/inecc-vulnerabilidad/src/pages",
+    "last_opened_file_path": "C:/Users/Niji/PycharmProjects/GEOJITSU/frontend/inecc-vulnerabilidad/src/stores",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -118,22 +85,27 @@
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "ts.external.directory.path": "C:\\Users\\Niji\\PycharmProjects\\GEOJITSU\\frontend\\inecc-vulnerabilidad\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "vue.recent.templates": [
+      "Vue Composition API Component"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\inecc-vulnerabilidad\src\stores" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\inecc-vulnerabilidad\src\pages" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\conflictos\geojitsu\src\components" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\boot" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\assets" />
-      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\inecc-vulnerabilidad\src\components\mapa\ribbon" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\inecc-vulnerabilidad\src\components\misc" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\assets" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\statics" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\assets" />
-      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\components" />
     </key>
   </component>
   <component name="RestClientSettings">
@@ -1124,7 +1096,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/frontend/conflictos/geojitsu/src/layouts/MainLayout.vue</url>
           <line>60</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
