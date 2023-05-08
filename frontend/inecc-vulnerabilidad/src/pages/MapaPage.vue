@@ -47,10 +47,7 @@
                 <ol-rotate-control/>
                 <ol-zoom-control/>
                 <ol-zoomslider-control/>
-                <ol-zoomtoextent-control
-                  :extent="[23.906, 42.812, 46.934, 34.597]"
-                  tipLabel="Fit to Turkey"
-                />
+
 
 
                 <ol-tile-layer>

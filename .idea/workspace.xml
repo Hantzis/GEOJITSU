@@ -14,10 +14,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="dibujar capas">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/mapa/capas/MapDrawerCapas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/mapa/capas/MapDrawerCapas.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/MapaPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/MapaPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/stores/map-store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/stores/map-store.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -705,14 +702,7 @@
       <workItem from="1615393008715" duration="279000" />
       <workItem from="1615393301350" duration="514000" />
       <workItem from="1683403827506" duration="10972000" />
-      <workItem from="1683456689574" duration="32827000" />
-    </task>
-    <task id="LOCAL-00053" summary="m$">
-      <created>1602976593493</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1602976593494</updated>
+      <workItem from="1683456689574" duration="33105000" />
     </task>
     <task id="LOCAL-00054" summary="m$">
       <created>1603070432345</created>
@@ -1050,7 +1040,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683514344781</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="dibujar capas">
+      <created>1683533814077</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1683533814077</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
