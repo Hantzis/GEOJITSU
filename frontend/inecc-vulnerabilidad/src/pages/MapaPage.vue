@@ -7,6 +7,7 @@
 
 
       <!-- mapa drawer capas -->
+      <map-drawer-capas/>
 
       <q-page-container class="no-scroll">
         <q-page>
@@ -44,6 +45,7 @@
 import {ref, onMounted, computed} from 'vue'
 import {useQuasar} from 'quasar'
 import MapRibbon from 'components/mapa/ribbon/MapRibbon.vue'
+import MapDrawerCapas from "components/mapa/capas/MapDrawerCapas.vue";
 
 const $q = useQuasar()
 
@@ -57,13 +59,11 @@ const screenHeight = computed(() => {
 })
 
 const mapHeight = computed(() => {
-  return $q.screen.lt.md ? $q.screen.height - 136 + 'px' : $q.screen.height - 136 + 'px'
+  return $q.screen.lt.md ? $q.screen.height - 135 + 'px' : $q.screen.height - 135 + 'px'
 })
 
 onMounted(() => {
-  console.log('onMounted')
   const scroll = document.querySelector('.scroll')
-  console.log("scroll", scroll)
 })
 
 </script>

@@ -35,6 +35,7 @@ export const useMapStore = defineStore('map-store', {
       }
       ],
     capaSeleccionada: 'estados',
+    showDrawerCapas: false,
   }),
   getters: {
     doubleCount: (state) => state ? 1 : 0,

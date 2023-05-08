@@ -4,7 +4,7 @@
       <div class="col">
         <div class="row q-pa-xs">
           <q-select outlined name="base" label="Capa seleccionada"
-                    :options="mapStore.mapasBase" v-model="mapStore.mapaBase"
+                    :options="mapStore.capasMapa" v-model="mapStore.capaSeleccionada"
                     emit-value map-options>
             <template v-slot:prepend>
               <q-icon name="mdi-layers"/>
@@ -21,7 +21,7 @@
         Capas
       </div>
       <div class="col-auto">
-        <q-btn dense size="xs" flat icon="mdi-arrow-bottom-right" @click="drawerCapas = !drawerCapas"
+        <q-btn dense size="xs" flat icon="mdi-arrow-bottom-right" @click="toggleShowDrawerCapas"
                style="border-radius: 0; margin-bottom: 0; margin-right: 1px;"/>
       </div>
     </div>
@@ -31,5 +31,10 @@
 <script setup lang="ts">
 import {useMapStore} from 'stores/map-store'
 const mapStore = useMapStore()
+
+const toggleShowDrawerCapas = () => {
+  console.log('toggleShowDrawerCapas', mapStore.showDrawerCapas)
+  mapStore.showDrawerCapas = !mapStore.showDrawerCapas
+}
 </script>
 

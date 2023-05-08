@@ -13,14 +13,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="inecc">
-      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/boot/openlayers.ts" afterDir="false" />
+    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="dibujar mapa">
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/mapa/capas/MapCardCapa.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/mapa/capas/MapDrawerCapas.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/quasar.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/quasar.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/drawer_components/MapaDrawerCapas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/conflictos/geojitsu/src/components/drawer_components/MapaDrawerCapas.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/boot/openlayers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/boot/openlayers.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/mapa/ribbon/MapCapas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/mapa/ribbon/MapCapas.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/layouts/MainLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/layouts/MainLayout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/IndexPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/IndexPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/MapaPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/MapaPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/stores/map-store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/stores/map-store.ts" afterDir="false" />
     </list>
@@ -710,14 +709,7 @@
       <workItem from="1615393008715" duration="279000" />
       <workItem from="1615393301350" duration="514000" />
       <workItem from="1683403827506" duration="10972000" />
-      <workItem from="1683456689574" duration="3331000" />
-    </task>
-    <task id="LOCAL-00050" summary="m$">
-      <created>1600884143052</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1600884143052</updated>
+      <workItem from="1683456689574" duration="17201000" />
     </task>
     <task id="LOCAL-00051" summary="m$">
       <created>1601152966937</created>
@@ -1055,7 +1047,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683443057342</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="dibujar mapa">
+      <created>1683485640063</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1683485640064</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1089,7 +1088,8 @@
     <MESSAGE value="maptitud" />
     <MESSAGE value="conflictos cambios" />
     <MESSAGE value="inecc" />
-    <option name="LAST_COMMIT_MESSAGE" value="inecc" />
+    <MESSAGE value="dibujar mapa" />
+    <option name="LAST_COMMIT_MESSAGE" value="dibujar mapa" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
