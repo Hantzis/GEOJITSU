@@ -3,7 +3,7 @@
     <div class=" q-pr-md q-py-sm">
       <q-card square class="capas-qcard text-grey-10">
         <div v-if="capa.server_type === 'geoserver'">
-          <q-img :src="String(capa.url).slice(0, -1) + '/reflect?layers=' + capa.layers + '&format=image/png'">
+          <q-img :src="capa.url + '/reflect?layers=' + capa.layers + '&format=image/png'">
             <div class="absolute-bottom" style="background: initial">
               <q-slider v-model="opacityStep" dense label :label-value="(Math.floor(opacityStep * 100)) + '%'"
                         color="primary" label-color="primary" :min="0.0" :max="1" :step="0.05"/>

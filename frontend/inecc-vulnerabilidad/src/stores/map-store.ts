@@ -13,7 +13,27 @@ export const useMapStore = defineStore('map-store', {
     ],
     mapaBase: 'mapbox-streets-v11',
     capasMapa: [
-      {value: 'estados', label: 'Estados', type: 'wms', url: 'https://gs.maptitud.xyz/geoserver/CONFLICTOS/wms?',
+      {value: 'municipios', label: 'Municipios', type: 'wms', url: 'https://gs.maptitud.xyz/geoserver/CONFLICTOS/wms',
+        layers: 'CONFLICTOS:municipios', visible: false, children: [{}],
+        attribution: ', <a href="https://www.inegi.gob.mx" target="_blank">INEGI</a>',
+        opacity: 0.8, permanent: true,
+        server_type: 'geoserver',
+        format: 'image/png8',
+        params: {
+          crs: 'EPSG:4326',
+        }
+      },
+      {value: 'vahinu_actual', label: 'VAHINU Actual', type: 'wms', url: 'https://gs.maptitud.xyz/geoserver/INECC/wms',
+        layers: 'INECC:vahinu_actual', visible: true, children: [{}],
+        attribution: ', <a href="https://www.inecc.gob.mx" target="_blank">INECC</a>',
+        opacity: 1, permanent: true,
+        server_type: 'geoserver',
+        format: 'image/png8',
+        params: {
+          crs: 'EPSG:4326',
+        }
+      },
+      {value: 'estados', label: 'Estados', type: 'wms', url: 'https://gs.maptitud.xyz/geoserver/CONFLICTOS/wms',
         layers: 'CONFLICTOS:estados', visible: true, children: [{}],
         attribution: ', <a href="https://www.inegi.gob.mx" target="_blank">INEGI</a>',
         opacity: 1, permanent: true,
@@ -23,18 +43,8 @@ export const useMapStore = defineStore('map-store', {
           crs: 'EPSG:4326',
         }
       },
-      {value: 'municipios', label: 'Municipios', type: 'wms', url: 'https://gs.maptitud.xyz/geoserver/CONFLICTOS/wms?',
-        layers: 'CONFLICTOS:municipios', visible: false, children: [{}],
-        attribution: ', <a href="https://www.inegi.gob.mx" target="_blank">INEGI</a>',
-        opacity: 0.8, permanent: true,
-        server_type: 'geoserver',
-        format: 'image/png8',
-        params: {
-          crs: 'EPSG:4326',
-        }
-      }
       ],
-    capaSeleccionada: 'estados',
+    capaSeleccionada: 'vahinu_actual',
     showDrawerCapas: false,
   }),
   getters: {

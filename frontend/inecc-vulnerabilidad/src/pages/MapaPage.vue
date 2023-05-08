@@ -32,6 +32,15 @@
                 <ol-tile-layer>
                   <ol-source-osm/>
                 </ol-tile-layer>
+                <ol-tile-layer v-for="layer in mapStore.capasMapa" :key="layer.value">
+                  <ol-source-tile-wms
+                    :url="layer.url"
+                    :layers="layer.layers"
+                    :serverType="layer.server_type"
+                    :transition="0"
+                  />
+                </ol-tile-layer>
+
               </ol-map>
             </div>
           </div>
@@ -46,12 +55,14 @@ import {ref, onMounted, computed} from 'vue'
 import {useQuasar} from 'quasar'
 import MapRibbon from 'components/mapa/ribbon/MapRibbon.vue'
 import MapDrawerCapas from "components/mapa/capas/MapDrawerCapas.vue";
+import {useMapStore} from 'stores/map-store'
 
 const $q = useQuasar()
+const mapStore = useMapStore()
 
-const center = ref([-102, 26]);
+const center = ref([-102, 24]);
 const projection = ref('EPSG:4326');
-const zoom = ref(8);
+const zoom = ref(6);
 const rotation = ref(0);
 
 const screenHeight = computed(() => {

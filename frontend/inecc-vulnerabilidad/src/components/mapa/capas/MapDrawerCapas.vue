@@ -2,10 +2,10 @@
   <q-drawer
     elevated
     v-model="mapStore.showDrawerCapas"
-    show-if-above
+
     side="right"
     :breakpoint="319"
-    overlay
+
   >
     <q-layout view="lHh lpr lFf" container :style="{'min-height': mapHeight, 'max-height': mapHeight}">
       <q-header>
@@ -111,7 +111,6 @@ const print = (msg: string) => {
 }
 
 const shrinkName = (name: string) => {
-  console.log("shrinkName name", name)
   if (name) {
     return name.length > 25 ? name.substring(0, 25) + '...' : name
   } else {
