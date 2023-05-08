@@ -14,7 +14,7 @@ export const useMapStore = defineStore('map-store', {
     mapaBase: 'mapbox-streets-v11',
     capasMapa: [
       {value: 'municipios', label: 'Municipios', type: 'wms', url: 'https://gs.maptitud.xyz/geoserver/CONFLICTOS/wms',
-        layers: 'CONFLICTOS:municipios', visible: false, children: [{}],
+        layers: 'CONFLICTOS:municipios', visible: true, children: [{}],
         attribution: ', <a href="https://www.inegi.gob.mx" target="_blank">INEGI</a>',
         opacity: 0.8, permanent: true,
         server_type: 'geoserver',
@@ -54,5 +54,8 @@ export const useMapStore = defineStore('map-store', {
     increment() {
       this.counter++;
     },
+    updateTickedCapas(payload: any) {
+      console.log("updateTickedCapas", payload)
+    }
   },
 });

@@ -13,9 +13,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="dibujar mapa">
+    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="dibujar capas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/mapa/capas/MapCardCapa.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/mapa/capas/MapCardCapa.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/mapa/capas/MapDrawerCapas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/mapa/capas/MapDrawerCapas.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/MapaPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/MapaPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/stores/map-store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/stores/map-store.ts" afterDir="false" />
@@ -706,14 +705,7 @@
       <workItem from="1615393008715" duration="279000" />
       <workItem from="1615393301350" duration="514000" />
       <workItem from="1683403827506" duration="10972000" />
-      <workItem from="1683456689574" duration="19624000" />
-    </task>
-    <task id="LOCAL-00052" summary="m$">
-      <created>1601225107817</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1601225107817</updated>
+      <workItem from="1683456689574" duration="32827000" />
     </task>
     <task id="LOCAL-00053" summary="m$">
       <created>1602976593493</created>
@@ -1051,7 +1043,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683506549240</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="dibujar capas">
+      <created>1683514344781</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1683514344781</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1086,7 +1085,8 @@
     <MESSAGE value="conflictos cambios" />
     <MESSAGE value="inecc" />
     <MESSAGE value="dibujar mapa" />
-    <option name="LAST_COMMIT_MESSAGE" value="dibujar mapa" />
+    <MESSAGE value="dibujar capas" />
+    <option name="LAST_COMMIT_MESSAGE" value="dibujar capas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -57,7 +57,7 @@
             color="grey-8"
             selected="primary"
             no-connectors
-            node-key="label"
+            node-key="value"
             tick-strategy="strict"
             selected-color="primary"
           >
@@ -89,7 +89,7 @@
 
 <script setup lang="ts">
 import {useMapStore} from 'stores/map-store'
-import {computed, ref} from 'vue'
+import {computed, ref, watch} from 'vue'
 import {useQuasar} from "quasar";
 import MapCardCapa from "components/mapa/capas/MapCardCapa.vue";
 
@@ -99,6 +99,7 @@ const $q = useQuasar()
 const filter = ref(null)
 const inputFilter = ref('')
 const expanded = ref([])
+const ticked = ref([])
 
 const resetFilter = () => {
   inputFilter.value = ''
@@ -117,6 +118,14 @@ const shrinkName = (name: string) => {
     return ''
   }
 }
+
+watch(ticked, (currentValue, oldValue) => {
+  console.log('ticked', currentValue, oldValue)
+})
+
+watch(expanded, (currentValue, oldValue) => {
+  console.log('expanded', currentValue, oldValue)
+})
 
 const subirCapa = (capa: any) => {
   const index = mapStore.capasMapa.indexOf(capa)
