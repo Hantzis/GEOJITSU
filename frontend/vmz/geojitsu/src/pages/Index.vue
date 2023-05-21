@@ -363,7 +363,7 @@ export default {
     },
     'selectedFeatureInfo.estatus': function (newVal, oldVal) {
       if (oldVal && newVal) {
-        this.token = cookies.get("access_token")
+        this.token = cookies.get("auth_token")
         console.log(oldVal);
         console.log(newVal);
         console.log(this.selectedFeatureInfo);
@@ -632,7 +632,7 @@ export default {
     saveReporteMarcador() {
       this.$refs.form_reporte_marcador.validate().then(valid => {
         if (valid) {
-          this.token = cookies.get("access_token");
+          this.token = cookies.get("auth_token");
           this.reporte_marcador_data.reporta = this.auth_user.pk;
           axios.post(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/reportes/`, this.reporte_marcador_data,
             {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {

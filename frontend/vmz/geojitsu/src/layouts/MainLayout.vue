@@ -849,7 +849,7 @@ export default {
       if (this.auth_user.pk) {
         console.log(this.auth_user);
         console.log("si auth_user");
-        this.getProfile(this.auth_user.pk)
+        // this.getProfile(this.auth_user.pk)
       } else {
         console.log("no auth_user")
       }
@@ -879,7 +879,8 @@ export default {
     },
     profile_dialog() {
       if (this.profile_dialog) {
-        const token = cookies.get("access_token")
+        const token = cookies.get("auth_token")
+        console.log("cookies token: " + token)
         axios.get(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/usuarios-autenticado/${this.auth_user.pk}/`,
           {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
           this.full_user_data = response.data
@@ -964,10 +965,6 @@ export default {
         this.login_dialog = false
         this.user_fecha_nacimiento = ""
       }).catch(error => {
-        /* console.log(error && error.response && error.response.status === 401
-          ? 'Wrong e-mail or password'
-          : 'Something went wrong'
-        ); */
         console.log("catch login", error)
         this.login_failure = true
       })
@@ -1068,7 +1065,7 @@ export default {
       })
     },
     changePassword() {
-      const token = cookies.get("access_token");
+      const token = cookies.get("auth_token");
       axios.post("https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/auth/password/change/",
         {old_password: this.old_password, new_password1: this.new_password1, new_password2: this.new_password2},
         {headers: {'Authorization': `Bearer ${token}`}})
@@ -1116,22 +1113,8 @@ export default {
       })
     },
     getProfile(id) {
-      const token = cookies.get("access_token");
-      /*
-      if (this.new_user_data.username) {
-        this.full_user_data = this.new_user_data
-        axios.patch(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/usuarios-autenticado/${this.auth_user.pk}/`,
-          this.full_user_data, {headers: {'Authorization': `Bearer ${token}`}})
-          .then(response => {
-            this.profile_dialog = false
-            this.$auth.refreshToken().then(response => {
-            }).catch(error => {
-              //console.log(error)
-            })
-          }).then(() => {
-          this.cleanRegisterForm()
-        })
-      }*/
+      const token = cookies.get("auth_token");
+      console.log("cookies token getProfile", token)
       axios.get(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/usuarios-autenticado/${id}/`,
         {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
         this.full_user_data.username = response.data.username
@@ -1151,7 +1134,7 @@ export default {
       })
     },
     updateProfile() {
-      const token = cookies.get("access_token")
+      const token = cookies.get("auth_token")
       if (this.full_user_data.discapacidades === null) {
         this.full_user_data.discapacidades = []
       }
@@ -1184,7 +1167,7 @@ export default {
     },
     getUserGroupsData() {
       if (this.auth_user) {
-        const token = cookies.get("access_token")
+        const token = cookies.get("auth_token")
         console.log("getUser", this.auth_user)
         axios.get(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/usuarios-autenticado/${this.auth_user.pk}/`,
           {headers: {'Authorization': `Bearer ${token}`}}).then(response => {

@@ -1,16 +1,3 @@
-// import something here
-
-// "async" is optional;
-// more info on params: https://quasar.dev/quasar-cli/cli-documentation/boot-files#Anatomy-of-a-boot-file
-//export default async (/* { app, router, Vue ... } */) => {
-  // something to do
-//}
-//import Vue from 'vue'
-//import Router from '../router'
-//const router = Router()
-
-//console.log(router)
-
 import { VueJwtAuth, AxiosHttpDriver } from '@mspiderv/vuejwtauth'
 
 export default ({ Vue, router, store }) =>  new VueJwtAuth({
@@ -21,11 +8,10 @@ export default ({ Vue, router, store }) =>  new VueJwtAuth({
     drivers: {
       http: new AxiosHttpDriver({
         // Your API URL here
-        apiBaseURL: 'https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/auth'
+        apiBaseURL: 'https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/auth/'
       })
     }
   }
 })
 
 
-//Vue.prototype.$auth = jwtauth

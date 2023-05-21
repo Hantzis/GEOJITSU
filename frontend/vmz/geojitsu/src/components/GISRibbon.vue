@@ -409,7 +409,7 @@ export default {
             if (col.id === this.reporte_domicilio_data.colonia)
               domicilio += `${col.nombre}, `
           domicilio += 'Zapopan'
-          this.token = cookies.get("access_token")
+          this.token = cookies.get("auth_token")
 
           axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${domicilio}&key=AIzaSyAPJOFYKRav1z3IxoK-URalWtPY4KKTAb0`)
             .then(response => {
@@ -420,7 +420,7 @@ export default {
                 this.reporte_domicilio_data.ubicacion = `SRID=4326;POINT (${punto.lng} ${punto.lat})`
                 this.reporte_domicilio_data.reporta = this.auth_user.pk
                 console.log(this.reporte_domicilio_data)
-                this.token = cookies.get("access_token")
+                this.token = cookies.get("auth_token")
                 axios.post(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/reportes/`, this.reporte_domicilio_data,
                   {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
                   console.log(response.data)

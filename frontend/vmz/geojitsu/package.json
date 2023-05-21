@@ -20,6 +20,7 @@
     "@quasar/extras": "^1.16.4",
     "@turf/turf": "^6.5.0",
     "axios": "^0.18.0",
+    "browser-cookies": "^1.2.0",
     "crypto-md5": "^1.0.0",
     "quasar": "^1.22.10",
     "vue-truncate-filter": "^1.1.7",
