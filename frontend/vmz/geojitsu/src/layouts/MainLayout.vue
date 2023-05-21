@@ -847,9 +847,9 @@ export default {
   watch: {
     auth_user() {
       if (this.auth_user.pk) {
-        console.log(this.auth_user);
-        console.log("si auth_user");
-        // this.getProfile(this.auth_user.pk)
+        setTimeout(() => {
+          this.getProfile(this.auth_user.pk)
+        }, 200)
       } else {
         console.log("no auth_user")
       }
@@ -879,8 +879,7 @@ export default {
     },
     profile_dialog() {
       if (this.profile_dialog) {
-        const token = cookies.get("auth_token")
-        console.log("cookies token: " + token)
+        const token = cookies.get("auth_token") || this.auth_token
         axios.get(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/usuarios-autenticado/${this.auth_user.pk}/`,
           {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
           this.full_user_data = response.data
@@ -888,7 +887,7 @@ export default {
             this.user_fecha_nacimiento = this.full_user_data.fecha_nacimiento.split("-").join('/')
           }
         }).catch(error => {
-          //console.log(error)
+          console.log(error)
         })
       }
     },
@@ -901,7 +900,7 @@ export default {
   },
   computed: {
     ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getHerramientaActiva', 'getUserGroups']),
-    ...mapGetters('auth', ['logged', 'user']),
+    ...mapGetters('auth', ['logged', 'user', 'token']),
     auth_user: {
       get() {
         return this.user
@@ -910,6 +909,11 @@ export default {
     auth_logged: {
       get() {
         return this.logged
+      }
+    },
+    auth_token: {
+      get() {
+        return this.token
       }
     },
     herramientaActiva: {
@@ -960,27 +964,20 @@ export default {
           password: this.login_password
         }, true
       ).then(response => {
-        console.log("then login", response)
-        console.log('You were logged in')
         this.login_dialog = false
         this.user_fecha_nacimiento = ""
       }).catch(error => {
-        console.log("catch login", error)
         this.login_failure = true
       })
     },
     logout() {
       this.$auth.logout(
       ).then(() => {
-        // console.log('You were logged out')
         this.logout_dialog = false
         this.user_fecha_nacimiento = ""
         this.herramientaActiva = "info"
       }).catch(error => {
-        /* console.log(error && error.response && error.response.status === 401
-          ? 'Wrong e-mail or password'
-          : 'Something went wrong'
-        ) */
+        console.log(error)
       }).finally(() => {
         this.userGroups = []
       })
@@ -1035,14 +1032,13 @@ export default {
                 this.login_password = this.new_user_data.password1
                 this.login()
               }).catch(error => {
-              // console.log("registration error", error)
+              console.log("registration error", error)
               if (error.response) {
                 this.registration_response_error = error.response.data
                 this.$refs.form_register.validate()
               }
             })
           } else {
-            // console.log('error submit!!');
             return false;
           }
         }
@@ -1053,7 +1049,6 @@ export default {
       axios.get("https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/pages/?type=home.HomePage&fields=*")
         .then(response => {
           this.homeData = response.data.items[0]
-          console.log("response homeData", this.homeData)
         })
     },
     resetPassword() {
@@ -1079,7 +1074,7 @@ export default {
       axios.get(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/etnias/`).then(response => {
         this.etnias = response.data
       }).catch(error => {
-        //console.log(error)
+        console.log(error)
       })
     },
     getMunicipios() {
@@ -1113,8 +1108,7 @@ export default {
       })
     },
     getProfile(id) {
-      const token = cookies.get("auth_token");
-      console.log("cookies token getProfile", token)
+      const token = cookies.get("auth_token") || this.auth_token
       axios.get(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/usuarios-autenticado/${id}/`,
         {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
         this.full_user_data.username = response.data.username
@@ -1127,7 +1121,7 @@ export default {
         this.full_user_data.municipio = response.data.municipio
         this.full_user_data.colonia = response.data.colonia
         this.full_user_data.discapacidades = response.data.discapacidades
-      }).then(response => {
+      }).then(() => {
         this.getUserGroupsData()
       }).catch(error => {
         console.log(error)
@@ -1148,11 +1142,10 @@ export default {
               this.profileupdated_dialog = true
               this.$auth.refreshToken().then(response => {
               }).catch(error => {
-                //console.log(error)
+                console.log(error)
               })
             })
         } else {
-          // console.log('error submit!!');
           return false;
         }
       }).catch(error => {
@@ -1168,11 +1161,9 @@ export default {
     getUserGroupsData() {
       if (this.auth_user) {
         const token = cookies.get("auth_token")
-        console.log("getUser", this.auth_user)
         axios.get(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/usuarios-autenticado/${this.auth_user.pk}/`,
           {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
           this.userGroups = response.data.groups
-          console.log("userGroups: ", this.userGroups)
         }).catch(error => {
           console.log(error)
         })
@@ -1183,18 +1174,11 @@ export default {
     },
   },
   mounted() {
-    if (this.auth_logged) {
-      this.$auth.refreshToken().then(response => {
-      }).catch(error => {
-        //console.log(error)
-      })
-    }
     this.getPaginaHome()
     this.getMunicipios()
     this.getEtnias()
     this.getDiscapacidades()
     this.getPaginas()
-
   }
 }
 </script>

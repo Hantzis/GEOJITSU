@@ -15,9 +15,9 @@ export default function () {
     capasMapa: [
       {
         value: "colonias_zapopan", label: "Colonias Zapopan", type: "wms",
-        url: "https://gs.maptitud.xyz/geoserver/wms?",
-        layers: "VMZ:colonias_zapopan", visible: true, children: [{}],
-        attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>INEGI</a>",
+        url: "https://catalina.maptitud.xyz/geoserver/wms?",
+        layers: "IMMZIS:zen_colonias_zapopan", visible: true, children: [{}],
+        attribution: ", <a href='http://www.ine.gob.mx' target='_blank'>INE</a>",
         opacity: 1.0, permanent: true,
         server_type: "geoserver",
         format: "image/png8",
@@ -28,8 +28,8 @@ export default function () {
       },
       {
         value: "reportes", label: "Reportes", type: "wms",
-        url: "https://gs.maptitud.xyz/geoserver/wms?",
-        layers: "VMZ:reportes", visible: true, children: [{}],
+        url: "https://catalina.maptitud.xyz/geoserver/wms?",
+        layers: "IMMZIS:zen_reportes", visible: true, children: [{}],
         attribution: ", <a href='http://www.inegi.gob.mx' target='_blank'>IMMZIS</a>",
         opacity: 1.0, permanent: true,
         server_type: "geoserver",

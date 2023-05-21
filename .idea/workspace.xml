@@ -15,12 +15,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="inicio de corrección jwt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/boot/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/boot/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/GISRibbon.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/GISRibbon.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/capas.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/capas.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/state.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -711,14 +709,7 @@
       <workItem from="1683456689574" duration="35772000" />
       <workItem from="1684108582420" duration="1758000" />
       <workItem from="1684629763923" duration="1195000" />
-      <workItem from="1684631193024" duration="16811000" />
-    </task>
-    <task id="LOCAL-00057" summary="m$">
-      <created>1603169884271</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1603169884271</updated>
+      <workItem from="1684631193024" duration="23462000" />
     </task>
     <task id="LOCAL-00058" summary="m$">
       <created>1603226605445</created>
@@ -1056,7 +1047,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684638785864</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="inicio de corrección jwt">
+      <created>1684651319025</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1684651319025</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

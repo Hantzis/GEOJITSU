@@ -98,7 +98,7 @@
                       </q-table>
                       <div class="row q-pt-sm">
                         <q-select
-                          :readonly="!(selectedFeatureInfo.tipo === 'Servicios' && this.userGroups.includes(5)) && !(selectedFeatureInfo.tipo === 'Situaciones' && this.userGroups.includes(6))"
+                          :readonly="!(selectedFeatureInfo.tipo === 'Servicios' && this.userGroups.includes(4)) && !(selectedFeatureInfo.tipo === 'Situaciones' && this.userGroups.includes(5))"
                           v-model="selectedFeatureInfo.estatus"
                           :options="['Abierto', 'Atendiendo', 'Resuelto']"
                           label="Estatus" name="estatus" outlined class="full-width" behavior="menu"/>
@@ -322,8 +322,8 @@ export default {
       reporte_agregado_dialog: false,
       fecha_reporte_marcador: "",
       hora_reporte_marcador: "",
-      zoom: 15,
-      center: [-103.38890075683594, 20.72561197927564],
+      zoom: 13,
+      center: [-103.3810, 20.6930],
       center3857: [-11268847.24, 2231060.47],
       geolocPosition: [-101.22977709999999, 19.6453138],
       conflictos: [],
@@ -422,7 +422,7 @@ export default {
   computed: {
     ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getHerramientaActiva', 'mapaBaseGetter', 'mapasBaseGetter',
       'capasMapaGetter', 'getDrawerCapas', 'getMapkey', 'getUserGroups']),
-    ...mapGetters('auth', ['logged', 'user']),
+    ...mapGetters('auth', ['logged', 'user', 'token']),
     auth_user: {
       get() {
         return this.user
@@ -431,6 +431,11 @@ export default {
     auth_logged: {
       get() {
         return this.logged
+      }
+    },
+    auth_token: {
+      get() {
+        return this.token
       }
     },
     userGroups: {
