@@ -15,10 +15,16 @@
   <component name="ChangeListManager">
     <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="dibujar capas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/quasar.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/quasar.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/mapa/capas/MapCardCapa.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/mapa/capas/MapCardCapa.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/MapaPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/MapaPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/quasar.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/quasar.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/boot/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/boot/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/GISRibbon.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/GISRibbon.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/V.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/V.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/capas.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/capas.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/state.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -505,7 +511,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.serve">
     <configuration name="SERVER" type="Python.DjangoServer" factoryName="Django server">
       <module name="GEOJITSU" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -553,21 +559,11 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/package.json" />
+    <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/vmz/geojitsu/package.json" />
       <command value="run" />
       <scripts>
-        <script value="build" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="dev inecc" type="js.build_tools.npm" temporary="true">
-      <package-json value="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="dev" />
+        <script value="serve" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -575,13 +571,11 @@
     </configuration>
     <list>
       <item itemvalue="Django Server.SERVER" />
-      <item itemvalue="npm.build" />
-      <item itemvalue="npm.dev inecc" />
+      <item itemvalue="npm.serve" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
-        <item itemvalue="npm.dev inecc" />
+        <item itemvalue="npm.serve" />
       </list>
     </recent_temporary>
   </component>
@@ -720,13 +714,8 @@
       <workItem from="1683403827506" duration="10972000" />
       <workItem from="1683456689574" duration="35772000" />
       <workItem from="1684108582420" duration="1758000" />
-    </task>
-    <task id="LOCAL-00055" summary="m$">
-      <created>1603111311675</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1603111311676</updated>
+      <workItem from="1684629763923" duration="1195000" />
+      <workItem from="1684631193024" duration="5943000" />
     </task>
     <task id="LOCAL-00056" summary="m$">
       <created>1603163482005</created>
@@ -1064,7 +1053,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683533873050</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="dibujar capas">
+      <created>1684629788798</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1684629788799</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

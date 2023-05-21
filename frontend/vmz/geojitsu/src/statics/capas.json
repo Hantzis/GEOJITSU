@@ -4,7 +4,7 @@
       "value": "colonias_zapopan",
       "label": "Colonias Zapopan",
       "type": "wms",
-      "url": "https://gs.maptitude.xyz/geoserver/wms?",
+      "url": "https://gs.maptitud.xyz/geoserver/wms?",
       "layers": "VMZ:colonias_zapopan",
       "visible": true,
       "children": [
@@ -22,7 +22,7 @@
       "value": "reportes",
       "label": "Reportes (Servicios y Situaciones)",
       "type": "wms",
-      "url": "https://gs.maptitude.xyz/geoserver/wms?",
+      "url": "https://gs.maptitud.xyz/geoserver/wms?",
       "layers": "VMZ:reportes",
       "visible": true,
       "children": [

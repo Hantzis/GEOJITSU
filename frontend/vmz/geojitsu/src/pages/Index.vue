@@ -285,204 +285,7 @@
       </q-card>
     </q-dialog>
 
-    <q-dialog style="width: 1000px" ref="reporte_agregado_dialog" v-model="bienvenida_dialog">
-      <q-card style="width: 1000px">
-        <q-card-section class="row items-center">
-          <q-avatar icon="mdi-home" color="red" text-color="white"/>
-          <q-toolbar-title>Ciudad÷Nosotras</q-toolbar-title>
-          <q-btn icon="close" flat round dense v-close-popup/>
-        </q-card-section>
-        <q-separator/>
-        <q-card-section class="row items-center">
-          <div class="row full-width">
-            <div class="col full-width">
-              <div v-for="block of homeData.contenido" :key="block.id">
-                <div v-if="block.type === 'image'">
-                  <div v-html="block.value"></div>
-                </div>
-                <div v-if="block.type === 'paragraph'">
-                  <span v-html="block.value"></span>
-                </div>
-                <div v-if="block.type === 'title'">
-                  <h5>{{ block.value }}</h5>
-                </div>
 
-                <q-list bordered class="rounded-borders">
-                  <q-expansion-item
-                    group="somegroup"
-                    expand-separator
-                    icon="mdi-account-plus"
-                    label="Crear cuenta"
-                  >
-                    <q-card>
-                      <q-card-section>
-                        <p>Para poder utilizar esta plataforma es necesario acceder con una cuenta de usuario, si no se
-                          tiene una cuenta es muy sencillo crear una. Para crear una cuenta de usuario hay que ir al
-                          menú principal ubicado en la esquina superior derecha, en la opción <strong>Crear
-                            cuenta</strong>.</p>
-                        <img src="statics/bienvenida/crear_cuenta.PNG" width="474">
-                        <p>Al acceder a la opción crear cuenta, se desplegará un cuadro de dialogo con varios campos que
-                          se deben llenar, estos se detallan a continuación:</p>
-                        <p>Nota: todos los campos son obligatorios excepto los que se especifique lo contrario.</p>
-                        <ul>
-                          <li><strong>Nombre de usuario</strong>: es el identificador (username) a usar para iniciar
-                            sesión
-                            posteriormente
-                          </li>
-                          <li><strong>Nombre(s)</strong>: Nombre o nombres, sin apellidos</li>
-                          <li><strong>Apellidos</strong>: Apellidos como constan en el registro civil</li>
-                          <li><strong>Email</strong>: Dirección de correo electrónico actual</li>
-                          <li><strong>Fecha de nacimiento</strong>: Fecha de nacimiento en formato AAAA-MM-DD</li>
-                          <li><strong>Sexo</strong>: Género sexual</li>
-                          <li><strong>Etnia</strong>: En caso de pertenecer a alguna etnia, seleccionarla, de lo
-                            contrario omitirla.
-                            (campo no obligatorio)
-                          </li>
-                          <li><strong>Municipio</strong>: Municipio donde se radica actualmente</li>
-                          <li><strong>Colonia</strong>: Colonia donde se radica actualmente</li>
-                          <li><strong>Discapacidades</strong>: Si se tiene algúna (o más) tipo de discapacidad, de lo
-                            contrario omitir.
-                            (campo no obligatorio)
-                          </li>
-                          <li><strong>Contraseña</strong>: Contraseña (password) para ingresar a la plataforma</li>
-                          <li><strong>Confirmar Contraseña</strong>: Contraseña (password) para ingresar a la
-                            plataforma, debe ser
-                            identica que en campo anterior y se usa una confirmación para asegurar que se ha escrito
-                            correctamente.
-                          </li>
-                        </ul>
-                        <p>Una vez llenados todos los campos, se puede pulsar sobre el botón "Crear cuenta", seguido de
-                          lo
-                          cual, la cuenta estará creada y lista para usar.</p>
-
-                      </q-card-section>
-                    </q-card>
-                  </q-expansion-item>
-
-                  <q-expansion-item
-                    group="somegroup"
-                    expand-separator
-                    icon="login"
-                    label="Ingresar (iniciar sesión)"
-                  >
-                    <q-card>
-                      <q-card-section>
-                        <p>Como ya se menciona en el punto de arriba, es importante tener una cuenta para poder crear
-                          reportes, con dicha cuenta se puede ingresar y entonces registrar reportes.</p>
-                        <p>Para ingresar, hay que ir al menú principal ubicado en la esquina superior derecha, en la
-                          opción <strong>Ingresar</strong>.</p>
-                        <img src="statics/bienvenida/ingresar_cuenta.PNG" width="474">
-                        <p>Una vez ahì se solicitara los datos de acceso de nombre de usuario y contraseña, los cuales
-                          fueron elegidos durante el registro.</p>
-                        <p>Si no se recuerda la contraseña, hay que ingresar alguna contraseña que se recuerde, donde si
-                          no es exactamente la contraseña, se mostrará un mensaje que indica que la contraseña es
-                          incorrecta, y se mostrará también un botón para recuperar la contraseña.</p>
-                        <img src="statics/bienvenida/iniciar_sesion_incorrecto.PNG" width="474">
-                        <p>Para recuperar la contraseña hay que pulsar el botón "Restablecer contraseña", el cual
-                          mostrará una ventana solicitado la dirección de correo que se utilizó para crear la cuenta. Se
-                          debe introducir la dirección de correo y a continuación pulsar el botón "Enviar correo de
-                          recuperación". Posteriormente hay que revisar el correo electronico, a donde llegará un enlace
-                          para asignar una nueva contraseña. Despues de cambiarla ya se debe poder acceder con la nueva
-                          contraseña.</p>
-                        <img src="statics/bienvenida/recuperar_contra.PNG" width="474">
-                      </q-card-section>
-                    </q-card>
-                  </q-expansion-item>
-
-                  <q-expansion-item
-                    group="somegroup"
-                    expand-separator
-                    icon="info"
-                    label="Ver info de un reporte"
-                  >
-                    <q-card>
-                      <q-card-section>
-                        <p>Para poder visualizar la info de un reporte en particular se debe tener seleccionara la
-                          herramienta "info" de la barra de herramientas, en la parte superior izquierda.</p>
-                        <img src="statics/bienvenida/info.PNG" width="474">
-                        <br>
-                        <p>Teniendo seleccionada la herramienta "info", se puede ir al mapa y dar click sobre cualquier
-                          punto para obtener la ficha de los detalles de dicho reporte, los cuales se mostraran en una
-                          ficha cuya esquina superior izquierda coincide con la ubicación del punto seleccionado</p>
-                        <img src="statics/bienvenida/info_ficha.PNG" width="474">
-                      </q-card-section>
-                    </q-card>
-                  </q-expansion-item>
-
-                  <q-expansion-item
-                    group="somegroup"
-                    expand-separator
-                    icon="mdi-playlist-plus"
-                    label="Agregar reporte basado en domicilio"
-                  >
-                    <q-card>
-                      <q-card-section>
-                        <p>Se pueden crear reportes a partir de conocer la ubicación de la calle y número del lugar o
-                          calles y su calle de intersección.</p>
-                        <p>Para crear un nuevo reporte en este modo hay que seleccionar la herramienta de "Agrear
-                          reporte basado en domicilio" de la barra de herramientas.</p>
-                        <img src="statics/bienvenida/nuevo_domicilio.PNG" width="474">
-                        <p>A continuación hay que llenar el formulario con los datos correspondientes a cada campo,
-                          dependiendo de las opciones seleccionadas se iran desplegando nuevos campos acorde a lo
-                          previamente seleccionado.</p>
-                        <p>En esta modalidad de registro, la ubicación espacial se logra a partir de los datos del
-                          domicilio. Para una mejor precisión es importante escribir el nombre de la calle completo y
-                          solo uno de estos dos: el número postal de la ubicación del caso, o una calle cercana que
-                          intersecte.</p>
-                        <p>Una vez se ha terminado de llenar los datos, se debe dar clic en el botón <strong>Guardar
-                          reporte</strong> y si todo es correcto, se almacenará el registro correspondiente en la base
-                          de datos.</p>
-                        <p>Nota: Los reportes nuevos no se reflejan en el mapa inmediatamente, hay que esperar unos
-                          segundos para su almacenamiento.</p>
-                      </q-card-section>
-                    </q-card>
-                  </q-expansion-item>
-
-                  <q-expansion-item
-                    group="somegroup"
-                    expand-separator
-                    icon="mdi-map-marker-plus"
-                    label="Agregar reporte a partir de un marcador en el mapa"
-                  >
-                    <q-card>
-                      <q-card-section>
-                        <p>Se pueden crear reportes a partir de poner un marcador o pin directamente sobre el mapa, en
-                          los casos donde resulte más facil ubicar directamente en el mapa esta es la mejor opción.</p>
-                        <p>Para crear un nuevo reporte en este modo hay que seleccionar la herramienta de "Agrear
-                          reporte ubicando en el mapa" de la barra de herramientas.</p>
-                        <img src="statics/bienvenida/nuevo_marcador.PNG" width="474">
-                        <p>A continuación hay que llenar el formulario con los datos correspondientes a cada campo,
-                          dependiendo de las opciones seleccionadas se iran desplegando nuevos campos acorde a lo
-                          previamente seleccionado.</p>
-                        <p>En esta modalidad de registro, Los datos de la ubicación del domicilio se obtienen a partir
-                          de una consulta espacial a partir de las coordenadas donde se haya hecho click sobre el mapa,
-                          y los datos referentes al domicilio se llenan automaticamente.</p>
-                        <p>Una vez se ha terminado de llenar los datos del reporte, se debe dar clic en el botón
-                          <strong>Guardar reporte</strong> y si todo es correcto, se almacenará el registro
-                          correspondiente en la base de datos.</p>
-                        <p>Nota: Los reportes nuevos no se reflejan en el mapa inmediatamente, hay que esperar unos
-                          segundos para su almacenamiento.</p>
-                      </q-card-section>
-                    </q-card>
-                  </q-expansion-item>
-
-                </q-list>
-
-              </div>
-            </div>
-          </div>
-        </q-card-section>
-        <q-separator/>
-        <q-card-section class="row items-center">
-          <div class="row full-width">
-            <div class="col full-width">
-              <q-btn @click="bienvenida_dialog = false" no-caps color="green"
-                     label="Entendido" class="full-width"/>
-            </div>
-          </div>
-        </q-card-section>
-      </q-card>
-    </q-dialog>
 
   </q-page>
 </template>
@@ -515,10 +318,8 @@ export default {
       loadingBar: undefined,
       clickCoords: undefined,
       position: undefined,
-      homeData: "",
       agregarreportemarcador_dialog: false,
       reporte_agregado_dialog: false,
-      bienvenida_dialog: false,
       fecha_reporte_marcador: "",
       hora_reporte_marcador: "",
       zoom: 15,
@@ -552,13 +353,6 @@ export default {
     mapaBase() {
       this.$refs["olmap"].updateSize()
     },
-    homeData() {
-      if (this.homeData) {
-        if (!this.auth_logged) {
-          this.bienvenida_dialog = true
-        }
-      }
-    },
     selectedFeatures() {
       if (this.selectedFeatures.length > 0 && this.herramientaActiva === 'info') {
         this.layers = [this.$refs.reportes[0]]
@@ -573,7 +367,7 @@ export default {
         console.log(oldVal);
         console.log(newVal);
         console.log(this.selectedFeatureInfo);
-        axios.patch(`https://api-nosotras.inmujereszapopan.gob.mx/api/v1/reportes/${this.selectedFeatureInfo.id}/`,
+        axios.patch(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/reportes/${this.selectedFeatureInfo.id}/`,
           {estatus: newVal}, {headers: {'Authorization': `Bearer ${this.token}`}})
           .then(response => {
             console.log(response)
@@ -755,7 +549,7 @@ export default {
         axios.get(url).then(response => {
           if (response.data.numberReturned > 0) {
             this.selectedFeatures = response.data.features
-            axios.get(`https://api-nosotras.inmujereszapopan.gob.mx/api/v1/reportes/${response.data.features[0].id.split(".")[1]}/`)
+            axios.get(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/reportes/${response.data.features[0].id.split(".")[1]}/`)
               .then(response => {
                 this.selectedFeatureInfo = response.data
               })
@@ -800,7 +594,7 @@ export default {
       }
     },
     getColonias() {
-      axios.get(`https://api-nosotras.inmujereszapopan.gob.mx/api/v1/colonias/?municipio=120`).then(response => {
+      axios.get(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/colonias/?municipio=120`).then(response => {
         this.colonias = response.data
         console.log("colonias", this.colonias)
       }).catch(error => {
@@ -808,7 +602,7 @@ export default {
       })
     },
     getTiposServicio() {
-      axios.get(`https://api-nosotras.inmujereszapopan.gob.mx/api/v1/tipos-servicio/`).then(response => {
+      axios.get(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/tipos-servicio/`).then(response => {
         this.tipos_servicio = response.data
         console.log("tipos_servicio", this.tipos_servicio)
       }).catch(error => {
@@ -817,7 +611,7 @@ export default {
     },
     getEstadosServicio(val) {
       if (val && val < 1000000) {
-        axios.get(`https://api-nosotras.inmujereszapopan.gob.mx/api/v1/estados-servicio/?tipo=${val}`).then(response => {
+        axios.get(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/estados-servicio/?tipo=${val}`).then(response => {
           this.estados_servicio = response.data
           console.log("estados_servicio", this.estados_servicio)
         }).catch(error => {
@@ -828,7 +622,7 @@ export default {
       }
     },
     getSituacionesPeligrosas() {
-      axios.get(`https://api-nosotras.inmujereszapopan.gob.mx/api/v1/situaciones-peligro/`).then(response => {
+      axios.get(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/situaciones-peligro/`).then(response => {
         this.situaciones_peligro = response.data
         console.log("situaciones_peligrosas", this.situaciones_peligro)
       }).catch(error => {
@@ -840,7 +634,7 @@ export default {
         if (valid) {
           this.token = cookies.get("access_token");
           this.reporte_marcador_data.reporta = this.auth_user.pk;
-          axios.post(`https://api-nosotras.inmujereszapopan.gob.mx/api/v1/reportes/`, this.reporte_marcador_data,
+          axios.post(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/reportes/`, this.reporte_marcador_data,
             {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
             console.log(response.data)
             this.agregarreportemarcador_dialog = false
@@ -872,14 +666,6 @@ export default {
       }).catch(error => {
       });
     },
-    getPaginaHome() {
-      // axios.get("https://api-nosotras.inmujereszapopan.gob.mx/api/v1/pages/?type=home.HomePage")
-      axios.get("https://api-nosotras.inmujereszapopan.gob.mx/api/v1/pages/3/")
-        .then(response => {
-          console.log("response getPagina", response)
-          this.homeData = response.data
-        })
-    },
   },
   mounted() {
     if (this.$q.screen.width < 768) {
@@ -891,7 +677,7 @@ export default {
       console.log(res.data.features)
       this.zapopan = res.data.features
     }).then(() => {
-      this.getPaginaHome()
+
       this.getColonias()
       this.getTiposServicio()
       this.getSituacionesPeligrosas()
