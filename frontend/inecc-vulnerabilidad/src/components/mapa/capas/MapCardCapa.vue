@@ -73,7 +73,7 @@ const tab = ref('simbologia')
 const mapStore = useMapStore()
 const props = defineProps({
   capa: {
-    type: Object, required: true, default(rawProps: any) {
+    type: Object, required: true, default(rawProps: object) {
       return {...rawProps}
     }
   }

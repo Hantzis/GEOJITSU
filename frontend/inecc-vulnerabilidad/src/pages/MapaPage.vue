@@ -49,6 +49,25 @@
                 <ol-zoomslider-control/>
 
 
+                <ol-overlay :position="[-102, 25]">
+                  <template v-slot="slotProps">
+                    <div class="overlay-content">
+                      Hello world!<br/>
+                      Position: {{ slotProps.position }}
+                      <q-card>
+                        <q-card-section>
+                          <q-card-title>
+                            <div class="text-h6">Card Title</div>
+                          </q-card-title>
+                          <q-card-main>
+                            <div class="text-subtitle2">Card content</div>
+                          </q-card-main>
+                        </q-card-section>
+                      </q-card>
+                    </div>
+                  </template>
+                </ol-overlay>
+
 
                 <ol-tile-layer>
                   <ol-source-osm/>
@@ -58,8 +77,7 @@
                   <div v-for="layer in mapStore.capasMapa" :key="layer.value">
                     <ol-tile-layer
                       :opacity="layer.opacity"
-                      :visible="layer.visible"
-                      :key="layer.opacity">
+                      :visible="layer.visible">
                       <ol-source-tile-wms
                         :url="layer.url"
                         :layers="layer.layers"
@@ -68,7 +86,6 @@
                     </ol-tile-layer>
                   </div>
                 </div>
-
 
               </ol-map>
             </div>
@@ -114,13 +131,13 @@ watch(mapStore.capasMapa, async (currentValue, oldValue) => {
   mapkey.value++
 
   /*
-  olmap.value.map.getLayers().forEach(layer => {
-    console.log("layer", layer)
-    const source  = layer.getSource()
-    console.log("source", source)
-    source.refresh()
+    olmap.value.map.getLayers().forEach(layer => {
+      console.log("layer", layer)
+      const source  = layer.getSource()
+      console.log("source", source)
+      source.refresh()
 
-  })
+    })
   */
 
 
