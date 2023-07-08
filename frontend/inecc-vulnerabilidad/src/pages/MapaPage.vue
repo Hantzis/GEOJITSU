@@ -29,9 +29,7 @@
                   :rotation="rotation"
                   :zoom="zoom"
                   :projection="projection"
-
                 />
-
                 <ol-attribution-control
                   collapsible
                   collapsed="false"/>
@@ -47,8 +45,6 @@
                 <ol-rotate-control/>
                 <ol-zoom-control/>
                 <ol-zoomslider-control/>
-
-
                 <ol-overlay :position="[-102, 25]">
                   <template v-slot="slotProps">
                     <div class="overlay-content">

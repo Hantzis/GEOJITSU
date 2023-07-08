@@ -13,9 +13,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="inicio de corrección jwt">
+    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/MapaPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/pages/MapaPage.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +31,6 @@
         <option value="JavaScript File" />
         <option value="Vue Single File Component" />
         <option value="Python Script" />
-        <option value="Vue Composition API Component" />
       </list>
     </option>
   </component>
@@ -64,40 +63,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Niji/PycharmProjects/GEOJITSU/frontend/inecc-vulnerabilidad/src/boot&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Niji\\PycharmProjects\\GEOJITSU\\frontend\\inecc-vulnerabilidad\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;vue.recent.templates&quot;: [
-      &quot;Vue Composition API Component&quot;
-    ]
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\cesar.benjamin\\PycharmProjects\\GEOJITSU\\frontend\\inecc-vulnerabilidad\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\inecc-vulnerabilidad\src\boot" />
-      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\inecc-vulnerabilidad\src\stores" />
-      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\inecc-vulnerabilidad\src\pages" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\conflictos\geojitsu\src\components" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\boot" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\assets" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\pages" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\inecc-vulnerabilidad\src\components\mapa\ribbon" />
-      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\inecc-vulnerabilidad\src\components\misc" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\assets" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\statics" />
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\assets" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\components" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\components" />
     </key>
   </component>
   <component name="RestClientSettings">
@@ -502,7 +491,16 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="rest-api#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="rest-api_1#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="quasar build -m electron" type="NodeJSConfigurationType" application-parameters="build -m electron" path-to-js-file="$USER_HOME$/AppData/Roaming/npm/node_modules/@quasar/cli/bin/quasar" working-dir="$PROJECT_DIR$/frontend/geojitsu">
+      <method v="2" />
+    </configuration>
     <configuration name="SERVER" type="Python.DjangoServer" factoryName="Django server">
       <module name="GEOJITSU" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -550,17 +548,49 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/frontend/vmz/geojitsu/package.json" />
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/package.json" />
       <command value="run" />
       <scripts>
-        <script value="build" />
+        <script value="dev" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="serve casos_exito" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/frontend/casos_exito/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="serve conflictos" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/frontend/conflictos/geojitsu/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <arguments value="--modern" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="serve san-miguelito" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/frontend/san-miguelito/geojitsu/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <arguments value="--modern" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="serve vmz" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/frontend/vmz/geojitsu/package.json" />
       <command value="run" />
       <scripts>
@@ -572,13 +602,20 @@
     </configuration>
     <list>
       <item itemvalue="Django Server.SERVER" />
-      <item itemvalue="npm.build" />
-      <item itemvalue="npm.serve" />
+      <item itemvalue="HTTP Request.rest-api#1" />
+      <item itemvalue="HTTP Request.rest-api_1#1" />
+      <item itemvalue="Node.js.quasar build -m electron" />
+      <item itemvalue="npm.serve casos_exito" />
+      <item itemvalue="npm.serve conflictos" />
+      <item itemvalue="npm.serve san-miguelito" />
+      <item itemvalue="npm.serve vmz" />
+      <item itemvalue="npm.dev" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
-        <item itemvalue="npm.serve" />
+        <item itemvalue="npm.dev" />
+        <item itemvalue="HTTP Request.rest-api_1#1" />
+        <item itemvalue="HTTP Request.rest-api#1" />
       </list>
     </recent_temporary>
   </component>
@@ -714,11 +751,85 @@
       <workItem from="1615316128782" duration="12823000" />
       <workItem from="1615393008715" duration="279000" />
       <workItem from="1615393301350" duration="514000" />
-      <workItem from="1683403827506" duration="10972000" />
-      <workItem from="1683456689574" duration="35772000" />
-      <workItem from="1684108582420" duration="1758000" />
-      <workItem from="1684629763923" duration="1195000" />
-      <workItem from="1684631193024" duration="26644000" />
+      <workItem from="1688780223094" duration="646000" />
+      <workItem from="1688781968400" duration="2268000" />
+    </task>
+    <task id="LOCAL-00048" summary="m$">
+      <created>1600714905085</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1600714905085</updated>
+    </task>
+    <task id="LOCAL-00049" summary="m$">
+      <created>1600816148155</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1600816148156</updated>
+    </task>
+    <task id="LOCAL-00050" summary="m$">
+      <created>1600884143052</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1600884143052</updated>
+    </task>
+    <task id="LOCAL-00051" summary="m$">
+      <created>1601152966937</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1601152966937</updated>
+    </task>
+    <task id="LOCAL-00052" summary="m$">
+      <created>1601225107817</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1601225107817</updated>
+    </task>
+    <task id="LOCAL-00053" summary="m$">
+      <created>1602976593493</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1602976593494</updated>
+    </task>
+    <task id="LOCAL-00054" summary="m$">
+      <created>1603070432345</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1603070432345</updated>
+    </task>
+    <task id="LOCAL-00055" summary="m$">
+      <created>1603111311675</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1603111311676</updated>
+    </task>
+    <task id="LOCAL-00056" summary="m$">
+      <created>1603163482005</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1603163482005</updated>
+    </task>
+    <task id="LOCAL-00057" summary="m$">
+      <created>1603169884271</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1603169884271</updated>
+    </task>
+    <task id="LOCAL-00058" summary="m$">
+      <created>1603226605445</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1603226605445</updated>
     </task>
     <task id="LOCAL-00059" summary="m$">
       <created>1603307036955</created>
@@ -986,84 +1097,7 @@
       <option name="project" value="LOCAL" />
       <updated>1615326551628</updated>
     </task>
-    <task id="LOCAL-00097" summary="inecc">
-      <created>1683427883033</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1683427883033</updated>
-    </task>
-    <task id="LOCAL-00098" summary="inecc">
-      <created>1683443057342</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1683443057342</updated>
-    </task>
-    <task id="LOCAL-00099" summary="dibujar mapa">
-      <created>1683485640063</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1683485640064</updated>
-    </task>
-    <task id="LOCAL-00100" summary="dibujar mapa">
-      <created>1683506549238</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1683506549240</updated>
-    </task>
-    <task id="LOCAL-00101" summary="dibujar capas">
-      <created>1683514344781</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1683514344781</updated>
-    </task>
-    <task id="LOCAL-00102" summary="dibujar capas">
-      <created>1683533814077</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1683533814077</updated>
-    </task>
-    <task id="LOCAL-00103" summary="dibujar capas">
-      <created>1683533873050</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1683533873050</updated>
-    </task>
-    <task id="LOCAL-00104" summary="dibujar capas">
-      <created>1684629788798</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1684629788799</updated>
-    </task>
-    <task id="LOCAL-00105" summary="inicio de corrección jwt">
-      <created>1684638785864</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1684638785864</updated>
-    </task>
-    <task id="LOCAL-00106" summary="inicio de corrección jwt">
-      <created>1684651319025</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1684651319025</updated>
-    </task>
-    <task id="LOCAL-00107" summary="inicio de corrección jwt">
-      <created>1684704461609</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1684704461609</updated>
-    </task>
-    <option name="localTasksCounter" value="108" />
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1096,21 +1130,6 @@
     <MESSAGE value="Commit Clutch" />
     <MESSAGE value="maptitud" />
     <MESSAGE value="conflictos cambios" />
-    <MESSAGE value="inecc" />
-    <MESSAGE value="dibujar mapa" />
-    <MESSAGE value="dibujar capas" />
-    <MESSAGE value="inicio de corrección jwt" />
-    <option name="LAST_COMMIT_MESSAGE" value="inicio de corrección jwt" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/frontend/conflictos/geojitsu/src/layouts/MainLayout.vue</url>
-          <line>60</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <option name="LAST_COMMIT_MESSAGE" value="conflictos cambios" />
   </component>
 </project>
