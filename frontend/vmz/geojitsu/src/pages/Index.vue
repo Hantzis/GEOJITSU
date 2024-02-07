@@ -409,11 +409,17 @@ export default {
     },
     'selectedFeatureInfo.estatus': function (newVal, oldVal) {
       if (oldVal && newVal) {
-        this.token = cookies.get("auth_token")
+        const token = cookies.get("auth_token")
+        const formData = new FormData()
+        formData.append("estatus", newVal)
         axios.patch(`https://api.zapopanentrenosotras.com/rest/v1/reportes/${this.selectedFeatureInfo.id}/`,
-          {estatus: newVal}, {headers: {'Authorization': `Bearer ${this.token}`}})
-          .then(response => {
-            //console.log(response)
+          formData, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((response) => {
+            console.log(response)
             this.showEvidenciaAtencionForm = true
           })
           .catch(error => {
