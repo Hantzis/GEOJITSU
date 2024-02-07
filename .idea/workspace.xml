@@ -13,9 +13,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="conflictos cambios">
+    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/mapa/capas/MapCardCapa.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inecc-vulnerabilidad/src/components/mapa/capas/MapCardCapa.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1034,7 +1034,7 @@
       <option name="project" value="LOCAL" />
       <updated>1615326551628</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1067,6 +1067,7 @@
     <MESSAGE value="Commit Clutch" />
     <MESSAGE value="maptitud" />
     <MESSAGE value="conflictos cambios" />
-    <option name="LAST_COMMIT_MESSAGE" value="conflictos cambios" />
+    <MESSAGE value="domiclio evidencia" />
+    <option name="LAST_COMMIT_MESSAGE" value="domiclio evidencia" />
   </component>
 </project>

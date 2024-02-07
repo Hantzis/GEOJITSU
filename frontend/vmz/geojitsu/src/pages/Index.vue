@@ -73,7 +73,6 @@
                               style="background: white; padding: 8px">
                     <div style="max-width: 300px; min-width: 300px;">
 
-
                       <q-table
                         class="detalles"
                         style="max-height: 400px; max-width: 300px"
@@ -113,7 +112,7 @@
 
                       <div class="row q-pt-sm">
                         <q-select
-                          :readonly="!(selectedFeatureInfo.tipo === 'Servicios' && this.userGroups.includes(4)) && !(selectedFeatureInfo.tipo === 'Situaciones' && this.userGroups.includes(5))"
+                          :readonly="(!(selectedFeatureInfo.tipo === 'Servicios' && this.userGroups.includes(4)) && !(selectedFeatureInfo.tipo === 'Situaciones' && this.userGroups.includes(5)))"
                           v-model="selectedFeatureInfo.estatus"
                           :options="['Abierto', 'Atendiendo', 'Resuelto']"
                           label="Estatus" name="estatus" outlined class="full-width" behavior="menu"/>
@@ -402,6 +401,7 @@ export default {
           {estatus: newVal}, {headers: {'Authorization': `Bearer ${this.token}`}})
           .then(response => {
             //console.log(response)
+            // abrir dialogo para adjuntar evidencia
           })
           .catch(error => {
             //console.log(error)
