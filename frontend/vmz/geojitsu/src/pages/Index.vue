@@ -105,7 +105,8 @@
                       </div>
 
                       <div class="row q-pt-sm">
-                        <q-btn dense no-caps class="full-width" v-if="selectedFeatureInfo.evidencia_atencion">
+                        <q-btn dense no-caps class="full-width" v-if="selectedFeatureInfo.evidencia_atencion"
+                        @click="showEvidenciaAtencion=true">
                           Evidencia atención
                         </q-btn>
                       </div>
