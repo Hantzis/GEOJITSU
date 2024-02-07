@@ -150,6 +150,17 @@
       </q-card>
     </q-dialog>
 
+    <q-dialog v-model="showEvidenciaAtencionForm">
+      <q-card>
+        <q-card-section>
+          <q-form>
+            <q-file outlined v-model="evidencia_atencion" label="Evidencia atención" />
+            <q-btn :disable="!evidencia_atencion" @click="saveEvidenciaAtencion" label="Guardar" color="green" />
+          </q-form>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
     <q-dialog ref="agregarreportemarcador_dialog" v-model="agregarreportemarcador_dialog" persistent>
       <q-card style="width: 680px">
         <q-card-section class="row items-center">
@@ -368,12 +379,14 @@ export default {
       estados_servicio: undefined,
       situaciones_peligro: undefined,
       evidencia_reporte: undefined,
+      evidencia_atencion: undefined,
       reporte_marcador_data: {
         colonia: undefined, calle: undefined, numero: undefined, entre_interseccion: null,
         tipo: undefined, tipo_servicio: undefined, estado_servicio: undefined, estado_servicio_otro: undefined,
         situacion_peligrosa: undefined, situacion_peligrosa_otra: undefined, comentarios: null,
         fecha: "", hora: "", ubicacion: undefined,
-      }
+      },
+      showEvidenciaAtencionForm: false,
     }
   },
   watch: {
@@ -401,7 +414,7 @@ export default {
           {estatus: newVal}, {headers: {'Authorization': `Bearer ${this.token}`}})
           .then(response => {
             //console.log(response)
-            // abrir dialogo para adjuntar evidencia
+            this.showEvidenciaAtencionForm = true
           })
           .catch(error => {
             //console.log(error)
@@ -530,7 +543,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('geojitsu', ['capasMapaAction', 'setCapa', 'setCapaTicked', 'setHerramientaActiva', 'setMapkey',
+    ...mapActions('geojitsu', ['capasMapaAction', 'setCapaTicked', 'setHerramientaActiva', 'setMapkey',
       'setUserGroups']),
     ...mapActions('auth', ['login', 'logout', 'setToken']),
     getEntries(properties) {
@@ -555,6 +568,25 @@ export default {
       }
       if (properties.comentarios) limpio.push(["Comentarios", properties.comentarios])
       return limpio
+    },
+    saveEvidenciaAtencion() {
+      const token = cookies.get("auth_token");
+      const formData = new FormData();
+      formData.append("evidencia_atencion", this.evidencia_atencion);
+      axios.patch(`https://api.zapopanentrenosotras.com/rest/v1/reportes/${this.selectedFeatureInfo.id}/`,
+        formData, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+        .then(response => {
+          //console.log(response)
+          this.showEvidenciaAtencionForm = false
+        })
+        .catch(error => {
+          //console.log(error)
+        })
     },
     loaderFactory(capa) {
       if (this.capasMapa[capa].features.length === 0) {

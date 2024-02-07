@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-// import example from './module-example'
 import auth from '@mspiderv/vuejwtauth/src/store'
 import geojitsu from './geojitsu'
 
