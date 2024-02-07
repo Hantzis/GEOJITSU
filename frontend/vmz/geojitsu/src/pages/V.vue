@@ -12,10 +12,10 @@
             <div name="logos" class="no-padding">
               <div class="row justify-center">
                 <div class="col-auto q-px-md">
-                  <img src="https://api.zapopanentrenosotras.maptitud.xyz/media/images/2.original.png" height="50px">
+                  <img src="https://api.zapopanentrenosotras.com/media/images/2.original.png" height="50px">
                 </div>
                 <div class="col-auto q-px-md">
-                  <img src="https://api.zapopanentrenosotras.maptitud.xyz/media/images/3.original.png" height="50px">
+                  <img src="https://api.zapopanentrenosotras.com/media/images/3.original.png" height="50px">
                 </div>
               </div>
             </div>
@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     getPaginas() {
-      axios.get("https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/pages/?type=home.StandardPage&fields=*")
+      axios.get("https://api.zapopanentrenosotras.com/rest/v1/pages/?type=home.StandardPage&fields=*")
         .then(response => {
           console.log("response getPaginas", response)
           console.log("response urlpat", this.urlPath)

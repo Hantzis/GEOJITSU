@@ -73,6 +73,7 @@
                               style="background: white; padding: 8px">
                     <div style="max-width: 300px; min-width: 300px;">
 
+
                       <q-table
                         class="detalles"
                         style="max-height: 400px; max-width: 300px"
@@ -97,6 +98,20 @@
                         </template>
                       </q-table>
                       <div class="row q-pt-sm">
+                        <q-btn dense no-caps class="full-width" v-if="selectedFeatureInfo.evidencia_reporte"
+                        :color="selectedFeatureInfo.estatus === 'Abierto' ? 'accent' : 'green'"
+                        @click="showEvidenciaReporte=true">
+                          Fotografía reporte
+                        </q-btn>
+                      </div>
+
+                      <div class="row q-pt-sm">
+                        <q-btn dense no-caps class="full-width" v-if="selectedFeatureInfo.evidencia_atencion">
+                          Evidencia atención
+                        </q-btn>
+                      </div>
+
+                      <div class="row q-pt-sm">
                         <q-select
                           :readonly="!(selectedFeatureInfo.tipo === 'Servicios' && this.userGroups.includes(4)) && !(selectedFeatureInfo.tipo === 'Situaciones' && this.userGroups.includes(5))"
                           v-model="selectedFeatureInfo.estatus"
@@ -120,11 +135,28 @@
       skip-hijack
     />
 
+    <q-dialog v-model="showEvidenciaReporte" full-width >
+      <q-card>
+        <q-card-section>
+          <q-img :src="selectedFeatureInfo.evidencia_reporte" />
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
+    <q-dialog v-model="showEvidenciaAtencion" full-width >
+      <q-card>
+        <q-card-section>
+          <q-img :src="selectedFeatureInfo.evidencia_atencion" />
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
     <q-dialog ref="agregarreportemarcador_dialog" v-model="agregarreportemarcador_dialog" persistent>
       <q-card style="width: 680px">
         <q-card-section class="row items-center">
           <q-avatar icon="mdi-map-marker-plus" color="pink" text-color="white"/>
           <q-toolbar-title>Agregar reporte</q-toolbar-title>
+          <!-- localización -->
           <q-btn icon="close" flat round dense v-close-popup/>
         </q-card-section>
         <q-separator/>
@@ -241,10 +273,15 @@
                        v-model="reporte_marcador_data.comentarios"
                        label="Comentarios adicionales"/>
             </div>
+            <div class="row q-py-xs">
+              <q-file v-model="evidencia_reporte" label="Adjuntar evidencia (opcional)"
+                      name="evidencia_reporte" class="full-width" clearable outlined accept=".jpg, image/*">
+                <template v-slot:prepend>
+                  <q-icon name="attach_file"/>
+                </template>
+              </q-file>
+            </div>
           </q-form>
-          <div v-if="false" class="row q-px-xs">
-            <p class="text-red">Las contraseñas no coinciden</p>
-          </div>
           <br/>
           <div class="row">
             <div class="col">
@@ -291,16 +328,12 @@
 <script>
 import {mapGetters, mapActions} from 'vuex'
 import axios from 'axios'
-import * as turf from '@turf/turf'
 
 import Vue from 'vue'
 import VueLayers from 'vuelayers'
 import 'vuelayers/lib/style.css'
 import GISRibbon from "components/GISRibbon"; // needs css-loader
-import Style from 'ol/style/Style'
-import Icon from 'ol/style/Icon'
 import MapaDrawerCapas from "components/drawer_components/MapaDrawerCapas";
-import {Point as turfPoint, Coord as turfCoord, FeatureCollection as turfFeatureCollection} from '@turf/helpers'
 import {transform} from 'ol/proj';
 import cookies from 'browser-cookies'
 
@@ -317,6 +350,8 @@ export default {
       clickCoords: undefined,
       position: undefined,
       agregarreportemarcador_dialog: false,
+      showEvidenciaReporte: false,
+      showEvidenciaAtencion: false,
       reporte_agregado_dialog: false,
       fecha_reporte_marcador: "",
       hora_reporte_marcador: "",
@@ -333,11 +368,12 @@ export default {
       tipos_servicio: undefined,
       estados_servicio: undefined,
       situaciones_peligro: undefined,
+      evidencia_reporte: undefined,
       reporte_marcador_data: {
-        colonia: undefined, calle: undefined, numero: undefined, entre_interseccion: undefined,
+        colonia: undefined, calle: undefined, numero: undefined, entre_interseccion: null,
         tipo: undefined, tipo_servicio: undefined, estado_servicio: undefined, estado_servicio_otro: undefined,
-        situacion_peligrosa: undefined, situacion_peligrosa_otra: undefined, comentarios: undefined,
-        fecha: "", hora: "", ubicacion: undefined
+        situacion_peligrosa: undefined, situacion_peligrosa_otra: undefined, comentarios: null,
+        fecha: "", hora: "", ubicacion: undefined,
       }
     }
   },
@@ -362,7 +398,7 @@ export default {
     'selectedFeatureInfo.estatus': function (newVal, oldVal) {
       if (oldVal && newVal) {
         this.token = cookies.get("auth_token")
-        axios.patch(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/reportes/${this.selectedFeatureInfo.id}/`,
+        axios.patch(`https://api.zapopanentrenosotras.com/rest/v1/reportes/${this.selectedFeatureInfo.id}/`,
           {estatus: newVal}, {headers: {'Authorization': `Bearer ${this.token}`}})
           .then(response => {
             //console.log(response)
@@ -393,9 +429,9 @@ export default {
         this.fecha_reporte_marcador = ""
         this.hora_reporte_marcador = ""
         this.reporte_marcador_data = {
-          colonia: undefined, calle: undefined, numero: undefined, entre_interseccion: undefined,
+          colonia: undefined, calle: undefined, numero: undefined, entre_interseccion: null,
           tipo: undefined, tipo_servicio: undefined, estado_servicio: undefined, estado_servicio_otro: undefined,
-          situacion_peligrosa: undefined, situacion_peligrosa_otra: undefined, comentarios: undefined,
+          situacion_peligrosa: undefined, situacion_peligrosa_otra: undefined, comentarios: null,
           fecha: "", hora: "", ubicacion: undefined
         }
       }
@@ -542,7 +578,7 @@ export default {
         axios.get(url).then(response => {
           if (response.data.numberReturned > 0) {
             this.selectedFeatures = response.data.features
-            axios.get(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/reportes/${response.data.features[0].id.split(".")[1]}/`)
+            axios.get(`https://api.zapopanentrenosotras.com/rest/v1/reportes/${response.data.features[0].id.split(".")[1]}/`)
               .then(response => {
                 this.selectedFeatureInfo = response.data
               })
@@ -584,14 +620,14 @@ export default {
       }
     },
     getColonias() {
-      axios.get(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/colonias/?municipio=120`).then(response => {
+      axios.get(`https://api.zapopanentrenosotras.com/rest/v1/colonias/?municipio=120`).then(response => {
         this.colonias = response.data
       }).catch(error => {
         //console.log(error)
       })
     },
     getTiposServicio() {
-      axios.get(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/tipos-servicio/`).then(response => {
+      axios.get(`https://api.zapopanentrenosotras.com/rest/v1/tipos-servicio/`).then(response => {
         this.tipos_servicio = response.data
       }).catch(error => {
         //console.log(error)
@@ -599,7 +635,7 @@ export default {
     },
     getEstadosServicio(val) {
       if (val && val < 1000000) {
-        axios.get(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/estados-servicio/?tipo=${val}`).then(response => {
+        axios.get(`https://api.zapopanentrenosotras.com/rest/v1/estados-servicio/?tipo=${val}`).then(response => {
           this.estados_servicio = response.data
         }).catch(error => {
           //console.log(error)
@@ -609,7 +645,7 @@ export default {
       }
     },
     getSituacionesPeligrosas() {
-      axios.get(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/situaciones-peligro/`).then(response => {
+      axios.get(`https://api.zapopanentrenosotras.com/rest/v1/situaciones-peligro/`).then(response => {
         this.situaciones_peligro = response.data
       }).catch(error => {
         //console.log(error)
@@ -618,10 +654,50 @@ export default {
     saveReporteMarcador() {
       this.$refs.form_reporte_marcador.validate().then(valid => {
         if (valid) {
-          this.token = cookies.get("auth_token");
+          const token = cookies.get("auth_token");
+
+          console.log("token", this.token)
           this.reporte_marcador_data.reporta = this.auth_user.pk;
-          axios.post(`https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/reportes/`, this.reporte_marcador_data,
-            {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
+          const formData = new FormData();
+          formData.append("reporta", this.reporte_marcador_data.reporta);
+          formData.append("ubicacion", this.reporte_marcador_data.ubicacion);
+          formData.append("colonia", this.reporte_marcador_data.colonia);
+          formData.append("calle", this.reporte_marcador_data.calle);
+          formData.append("numero", this.reporte_marcador_data.numero);
+          formData.append("entre_interseccion", this.reporte_marcador_data.entre_interseccion);
+          formData.append("tipo", this.reporte_marcador_data.tipo);
+          if (this.reporte_marcador_data.tipo === "Servicios") {
+            formData.append("tipo_servicio", this.reporte_marcador_data.tipo_servicio);
+            if (this.reporte_marcador_data.tipo_servicio < 1000000) {
+              formData.append("estado_servicio", this.reporte_marcador_data.estado_servicio);
+            } else {
+              formData.append("estado_servicio_otro", this.reporte_marcador_data.estado_servicio_otro);
+            }
+          } else {
+            formData.append("situacion_peligrosa", this.reporte_marcador_data.situacion_peligrosa);
+            if (this.reporte_marcador_data.situacion_peligrosa < 1000000) {
+              formData.append("situacion_peligrosa", this.reporte_marcador_data.situacion_peligrosa);
+            } else {
+              formData.append("situacion_peligrosa_otra", this.reporte_marcador_data.situacion_peligrosa_otra);
+            }
+          }
+          formData.append("comentarios", this.reporte_marcador_data.comentarios);
+          formData.append("fecha", this.reporte_marcador_data.fecha);
+          formData.append("hora", this.reporte_marcador_data.hora);
+          formData.append("estatus", 'Abierto');
+
+
+          if (this.evidencia_reporte) {
+            formData.append("evidencia_reporte", this.evidencia_reporte);
+          }
+
+          axios.post(`https://api.zapopanentrenosotras.com/rest/v1/reportes/`, formData,
+            {
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'multipart/form-data',
+              }
+            }).then(response => {
             this.agregarreportemarcador_dialog = false
             this.reporte_agregado_dialog = true
             this.reporte_marcador_data = {

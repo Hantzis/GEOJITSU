@@ -8,7 +8,7 @@ export default ({ Vue, router, store }) =>  new VueJwtAuth({
     drivers: {
       http: new AxiosHttpDriver({
         // Your API URL here
-        apiBaseURL: 'https://api.zapopanentrenosotras.maptitud.xyz/rest/v1/auth/'
+        apiBaseURL: 'https://api.zapopanentrenosotras.com/rest/v1/auth/'
       })
     }
   }
