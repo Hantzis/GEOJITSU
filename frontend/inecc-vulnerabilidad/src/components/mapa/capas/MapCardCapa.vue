@@ -81,7 +81,7 @@ const props = defineProps({
 const capa = ref(props.capa)
 
 const capaIndex = computed(() => {
-  console.log("capa.value: ", capa.value)
+  console.log('capa.value: ', capa.value)
   return mapStore.capasMapa.indexOf(capa.value)
   //return mapStore.capasMapa.findIndex((capa) => capa.value === props.capa.value)
 })
