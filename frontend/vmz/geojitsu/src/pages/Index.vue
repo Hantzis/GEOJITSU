@@ -656,7 +656,6 @@ export default {
         if (valid) {
           const token = cookies.get("auth_token");
 
-          console.log("token", this.token)
           this.reporte_marcador_data.reporta = this.auth_user.pk;
           const formData = new FormData();
           formData.append("reporta", this.reporte_marcador_data.reporta);
@@ -685,7 +684,6 @@ export default {
           formData.append("fecha", this.reporte_marcador_data.fecha);
           formData.append("hora", this.reporte_marcador_data.hora);
           formData.append("estatus", 'Abierto');
-
 
           if (this.evidencia_reporte) {
             formData.append("evidencia_reporte", this.evidencia_reporte);

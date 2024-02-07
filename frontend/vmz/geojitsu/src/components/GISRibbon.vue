@@ -246,6 +246,14 @@
                        v-model="reporte_domicilio_data.comentarios"
                        label="Comentarios adicionales"/>
             </div>
+            <div class="row q-py-xs">
+              <q-file v-model="evidencia_reporte" label="Adjuntar evidencia (opcional)"
+                      name="evidencia_reporte" class="full-width" clearable outlined accept=".jpg, image/*">
+                <template v-slot:prepend>
+                  <q-icon name="attach_file"/>
+                </template>
+              </q-file>
+            </div>
           </q-form>
           <div v-if="false" class="row q-px-xs">
             <p class="text-red">Las contraseñas no coinciden</p>
@@ -316,10 +324,11 @@ export default {
       hora_reporte_domicilio: "",
       agregarreportedomicilio_dialog: false,
       reporte_agregado_dialog: false,
+      evidencia_reporte: undefined,
       reporte_domicilio_data: {
-        colonia: undefined, calle: undefined, numero: undefined, entre_interseccion: undefined,
+        colonia: undefined, calle: undefined, numero: undefined, entre_interseccion: null,
         tipo: undefined, tipo_servicio: undefined, estado_servicio: undefined, estado_servicio_otro: undefined,
-        situacion_peligrosa: undefined, situacion_peligrosa_otra: undefined, comentarios: undefined,
+        situacion_peligrosa: undefined, situacion_peligrosa_otra: undefined, comentarios: null,
         fecha: "", hora: ""
       }
     }
@@ -410,7 +419,7 @@ export default {
             if (col.id === this.reporte_domicilio_data.colonia)
               domicilio += `${col.nombre}, `
           domicilio += 'Zapopan'
-          this.token = cookies.get("auth_token")
+
 
           axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${domicilio}&key=AIzaSyAPJOFYKRav1z3IxoK-URalWtPY4KKTAb0`)
             .then(response => {
@@ -421,9 +430,50 @@ export default {
                 this.reporte_domicilio_data.ubicacion = `SRID=4326;POINT (${punto.lng} ${punto.lat})`
                 this.reporte_domicilio_data.reporta = this.auth_user.pk
                 console.log(this.reporte_domicilio_data)
-                this.token = cookies.get("auth_token")
+                const token = cookies.get("auth_token");
+
+                this.reporte_marcador_data.reporta = this.auth_user.pk;
+                const formData = new FormData();
+
+                formData.append("reporta", this.reporte_marcador_data.reporta);
+                formData.append("ubicacion", this.reporte_marcador_data.ubicacion);
+                formData.append("colonia", this.reporte_marcador_data.colonia);
+                formData.append("calle", this.reporte_marcador_data.calle);
+                formData.append("numero", this.reporte_marcador_data.numero);
+                formData.append("entre_interseccion", this.reporte_marcador_data.entre_interseccion);
+                formData.append("tipo", this.reporte_marcador_data.tipo);
+                if (this.reporte_marcador_data.tipo === "Servicios") {
+                  formData.append("tipo_servicio", this.reporte_marcador_data.tipo_servicio);
+                  if (this.reporte_marcador_data.tipo_servicio < 1000000) {
+                    formData.append("estado_servicio", this.reporte_marcador_data.estado_servicio);
+                  } else {
+                    formData.append("estado_servicio_otro", this.reporte_marcador_data.estado_servicio_otro);
+                  }
+                } else {
+                  formData.append("situacion_peligrosa", this.reporte_marcador_data.situacion_peligrosa);
+                  if (this.reporte_marcador_data.situacion_peligrosa < 1000000) {
+                    formData.append("situacion_peligrosa", this.reporte_marcador_data.situacion_peligrosa);
+                  } else {
+                    formData.append("situacion_peligrosa_otra", this.reporte_marcador_data.situacion_peligrosa_otra);
+                  }
+                }
+                formData.append("comentarios", this.reporte_marcador_data.comentarios);
+                formData.append("fecha", this.reporte_marcador_data.fecha);
+                formData.append("hora", this.reporte_marcador_data.hora);
+                formData.append("estatus", 'Abierto');
+
+
+                if (this.evidencia_reporte) {
+                  formData.append("evidencia_reporte", this.evidencia_reporte);
+                }
+
                 axios.post(`https://api.zapopanentrenosotras.com/rest/v1/reportes/`, this.reporte_domicilio_data,
-                  {headers: {'Authorization': `Bearer ${this.token}`}}).then(response => {
+                  {
+                    headers: {
+                      'Authorization': `Bearer ${token}`,
+                      'Content-Type': 'multipart/form-data',
+                    }
+                  }).then(response => {
                   console.log(response.data)
                   this.reporte_agregado_dialog = true
                   this.agregarreportedomicilio_dialog = false
@@ -448,7 +498,6 @@ export default {
                 })
               }
 
-
             }).then(() => {
             console.log("despues")
 
@@ -461,9 +510,7 @@ export default {
           return false;
         }
       });
-
     }
-
   },
   watch: {
     agregarreportedomicilio_dialog() {
@@ -472,9 +519,9 @@ export default {
         this.fecha_reporte_domicilio = ""
         this.hora_reporte_domicilio = ""
         this.reporte_domicilio_data = {
-          colonia: undefined, calle: undefined, numero: undefined, entre_interseccion: undefined,
+          colonia: undefined, calle: undefined, numero: undefined, entre_interseccion: null,
           tipo: undefined, tipo_servicio: undefined, estado_servicio: undefined, estado_servicio_otro: undefined,
-          situacion_peligrosa: undefined, situacion_peligrosa_otra: undefined, comentarios: undefined,
+          situacion_peligrosa: undefined, situacion_peligrosa_otra: undefined, comentarios: null,
           fecha: "", hora: ""
         }
       }
