@@ -7,6 +7,10 @@ export const setUserData = ({commit}, payload) => {
   commit('UserData', payload)
 }
 
+export const setUserIsStaff = ({commit}, payload) => {
+  commit('isUserStaffMutation', payload)
+}
+
 export const GISRibbonIsOpenAction = ({commit}, payload) => {
   commit('GISRibbonIsOpenMutation', payload)
 }

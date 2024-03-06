@@ -96,6 +96,13 @@
                           </q-btn>
                         </template>
                       </q-table>
+
+                      <div class="row q-pt-sm">
+                        <q-btn dense no-caps class="full-width" v-if="this.is_user_staff && !selectedFeatureInfo.evidencia_reporte"
+                        @click="showEvidenciaRegistroForm=true">
+                          Agregar evidencia reporte
+                        </q-btn>
+                      </div>
                       <div class="row q-pt-sm">
                         <q-btn dense no-caps class="full-width" v-if="selectedFeatureInfo.evidencia_reporte"
                         :color="selectedFeatureInfo.estatus === 'Abierto' ? 'accent' : 'green'"
@@ -161,6 +168,19 @@
         </q-card-section>
       </q-card>
     </q-dialog>
+
+    <q-dialog v-model="showEvidenciaRegistroForm">
+      <q-card>
+        <q-card-section>
+          <q-form>
+            <q-file outlined v-model="evidencia_reporte_staff" label="Evidencia atención" />
+            <q-btn :disable="!evidencia_reporte_staff" @click="saveEvidenciaStaff" label="Guardar" color="green" />
+          </q-form>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
+
 
     <q-dialog ref="agregarreportemarcador_dialog" v-model="agregarreportemarcador_dialog" persistent>
       <q-card style="width: 680px">
@@ -361,6 +381,7 @@ export default {
       clickCoords: undefined,
       position: undefined,
       agregarreportemarcador_dialog: false,
+      showEvidenciaRegistroForm: false,
       showEvidenciaReporte: false,
       showEvidenciaAtencion: false,
       reporte_agregado_dialog: false,
@@ -379,6 +400,7 @@ export default {
       tipos_servicio: undefined,
       estados_servicio: undefined,
       situaciones_peligro: undefined,
+      evidencia_reporte_staff: undefined,
       evidencia_reporte: undefined,
       evidencia_atencion: undefined,
       reporte_marcador_data: {
@@ -469,8 +491,16 @@ export default {
   },
   computed: {
     ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getHerramientaActiva', 'mapaBaseGetter', 'mapasBaseGetter',
-      'capasMapaGetter', 'getDrawerCapas', 'getMapkey', 'getUserGroups']),
+      'capasMapaGetter', 'getDrawerCapas', 'getMapkey', 'getUserGroups', 'getIsUserStaff']),
     ...mapGetters('auth', ['logged', 'user', 'token']),
+    is_user_staff: {
+      get() {
+        return this.getIsUserStaff
+      },
+      set(value) {
+        this.setUserIsStaff(value)
+      }
+    },
     auth_user: {
       get() {
         return this.user
@@ -551,10 +581,11 @@ export default {
   },
   methods: {
     ...mapActions('geojitsu', ['capasMapaAction', 'setCapaTicked', 'setHerramientaActiva', 'setMapkey',
-      'setUserGroups']),
+      'setUserGroups', 'setUserIsStaff']),
     ...mapActions('auth', ['login', 'logout', 'setToken']),
     getEntries(properties) {
       let limpio = [];
+      limpio.push(["ID", properties.id]);
       limpio.push(["Fecha", properties.fecha]);
       limpio.push(["Hora", properties.hora]);
       let colonia = properties.colonia_display;
@@ -595,6 +626,26 @@ export default {
           //console.log(error)
         })
     },
+    saveEvidenciaStaff() {
+      const token = cookies.get("auth_token");
+      const formData = new FormData();
+      formData.append("evidencia_reporte", this.evidencia_reporte_staff);
+      axios.patch(`https://api.zapopanentrenosotras.com/rest/v1/reportes/${this.selectedFeatureInfo.id}/`,
+        formData, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+        .then(response => {
+          //console.log(response)
+          this.showEvidenciaRegistroForm = false
+        })
+        .catch(error => {
+          //console.log(error)
+        })
+    },
+
     loaderFactory(capa) {
       if (this.capasMapa[capa].features.length === 0) {
         axios.get(this.capasMapa[capa].url).then(response => {

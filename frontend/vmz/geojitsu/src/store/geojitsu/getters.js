@@ -7,6 +7,10 @@ export const GISRibbonIsOpenGetter = (state) => {
   return state.GISRibbonIsOpen
 }
 
+export const getIsUserStaff = (state) => {
+  return state.isUserStaff
+}
+
 export const mapasBaseGetter = (state) => {
   return state.mapasBase
 }

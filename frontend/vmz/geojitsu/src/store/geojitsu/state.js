@@ -44,5 +44,6 @@ export default function () {
     userData: undefined,
     userGroups: [],
     mapkey: 0,
+    isUserStaff: false,
   }
 }

@@ -883,6 +883,7 @@ export default {
         axios.get(`https://api.zapopanentrenosotras.com/rest/v1/usuarios-autenticado/${this.auth_user.pk}/`,
           {headers: {'Authorization': `Bearer ${token}`}}).then(response => {
           this.full_user_data = response.data
+          this.is_user_staff = response.data.is_staff
           if (this.full_user_data.fecha_nacimiento) {
             this.user_fecha_nacimiento = this.full_user_data.fecha_nacimiento.split("-").join('/')
           }
@@ -899,8 +900,16 @@ export default {
     },
   },
   computed: {
-    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getHerramientaActiva', 'getUserGroups']),
+    ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getHerramientaActiva', 'getUserGroups', 'getIsUserStaff']),
     ...mapGetters('auth', ['logged', 'user', 'token']),
+    is_user_staff: {
+      get() {
+        return this.getIsUserStaff
+      },
+      set(value) {
+        this.setUserIsStaff(value)
+      }
+    },
     auth_user: {
       get() {
         return this.user
@@ -951,7 +960,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions('geojitsu', ['GISRibbonIsOpenAction', 'setHerramientaActiva', 'setUserGroups']),
+    ...mapActions('geojitsu', ['GISRibbonIsOpenAction', 'setHerramientaActiva', 'setUserGroups', 'setUserIsStaff']),
     ...mapActions('auth', ['setUser']),
     openLogin() {
       // this.accountcreated_dialog = false
@@ -1121,6 +1130,7 @@ export default {
         this.full_user_data.municipio = response.data.municipio
         this.full_user_data.colonia = response.data.colonia
         this.full_user_data.discapacidades = response.data.discapacidades
+        this.is_user_staff = response.data.is_staff
       }).then(() => {
         this.getUserGroupsData()
       }).catch(error => {

@@ -7,6 +7,10 @@ export const userData = (state, value) => {
   state.userData = value
 }
 
+export const isUserStaffMutation = (state, value) => {
+  state.isUserStaff = value
+}
+
 export const GISRibbonIsOpenMutation = (state, is_open) => {
   state.GISRibbonIsOpen = is_open
 }
