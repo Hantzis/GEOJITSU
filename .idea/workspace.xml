@@ -13,13 +13,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="">
+    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="q">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/a.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/GISRibbon.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/GISRibbon.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/drawer_components/CardCapa.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/drawer_components/CardCapa.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/getters.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/getters.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/mutations.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/state.js" afterDir="false" />
     </list>
@@ -50,9 +50,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="1brpjoU3qPMdCHzdMa7TbauiuZY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -61,6 +61,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "node.js.detected.package.eslint": "true",
@@ -80,7 +81,7 @@
       <recent name="C:\Users\Nizhi\PycharmProjects\GEOJITSU\frontend\windows-todo\src\boot" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.serve">
     <configuration name="quasar build -m electron" type="NodeJSConfigurationType" application-parameters="build -m electron" path-to-js-file="$USER_HOME$/AppData/Roaming/npm/node_modules/@quasar/cli/bin/quasar" working-dir="$PROJECT_DIR$/frontend/geojitsu">
       <method v="2" />
     </configuration>
@@ -139,8 +140,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.serve" />
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.serve" />
       </list>
     </recent_temporary>
@@ -148,7 +149,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-d68999036c7f-b11f5e8da5ad-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.14475.56" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PY-241.14494.241" />
+        <option value="bundled-python-sdk-0509580d9d50-28c9f5db9ffe-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.14494.241" />
       </set>
     </attachedChunks>
   </component>
@@ -168,8 +170,18 @@
       <workItem from="1589655452685" duration="8049000" />
       <workItem from="1589687582190" duration="19658000" />
       <workItem from="1592332700175" duration="1412000" />
-      <workItem from="1709666334450" duration="5860000" />
+      <workItem from="1709666334450" duration="6176000" />
+      <workItem from="1713204191906" duration="2898000" />
     </task>
+    <task id="LOCAL-00001" summary="q">
+      <option name="closed" value="true" />
+      <created>1709744942240</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1709744942241</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,5 +197,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="q" />
+    <option name="LAST_COMMIT_MESSAGE" value="q" />
   </component>
 </project>

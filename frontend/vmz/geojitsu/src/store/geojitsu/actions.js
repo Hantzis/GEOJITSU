@@ -56,6 +56,11 @@ export const setCapaOpacity = ({commit}, payload) => {
   commit('CapaOpacityMutation', payload)
 }
 
+export const setCapaCQLFilter = ({commit}, payload) => {
+  console.log("aqui setCapaCQLFilter")
+  commit('CapaCQLFilterMutation', payload)
+}
+
 export const subirCapaAction  = ({commit}, payload) => {
   commit('SubirCapaMutation', payload)
 }

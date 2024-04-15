@@ -5,7 +5,7 @@
         <GISRibbon/>
       </q-header>
 
-      <mapa-drawer-capas/>
+      <mapa-drawer-capas @update="refreshMap()"/>
 
       <q-page-container>
         <q-page>
@@ -46,6 +46,7 @@
                     <vl-layer-tile v-if="capa.type==='wms' && capa.tiled===true" :opacity="capa.opacity"
                                    :visible="capa.visible">
                       <vl-source-wms
+                        :key="mapkey"
                         :ref="capa.value"
                         :url="capa.url"
                         :format="capa.format"
@@ -76,7 +77,7 @@
                       <q-table
                         class="detalles"
                         style="max-height: 400px; max-width: 300px"
-                        :title="selectedFeatureInfo.tipo"
+                        :title="`${selectedFeatureInfo.tipo} (${selectedFeatureInfo.id})`"
                         square
                         wrap-cells
                         dense
@@ -657,6 +658,12 @@ export default {
           this.setCapaTicked({capa: this.capasMapa[capa], visible: true})
         })
       }
+    },
+    refreshMap() {
+      console.log("refresh", this.capasMapa)
+      this.mapkey++
+      this.$refs['olmap'].refresh()
+      this.$refs['olmap'].remount()
     },
     clic(evt) {
       this.selectedFeatures = []

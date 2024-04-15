@@ -24,6 +24,7 @@ export default function () {
         tiled: false,
         params: {
           crs: "EPSG:4326",
+          cql_filter: null,
         }
       },
       {
@@ -37,6 +38,7 @@ export default function () {
         tiled: true,
         params: {
           crs: "EPSG:4326",
+          cql_filter: null,
         }
       },
     ],
