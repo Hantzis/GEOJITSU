@@ -61,14 +61,16 @@
               {{ String(prop.node.label) | truncate(24, '...') }}
               <q-space/>
               <q-btn-group flat>
-                <q-btn :disabled="capasMapa.indexOf(prop.node) === 0" dense flat color="grey-8" icon="mdi-chevron-up" size="xs"
+                <q-btn :disabled="capasMapa.indexOf(prop.node) === 0" dense flat color="grey-8" icon="mdi-chevron-up"
+                       size="xs"
                        @click.stop.prevent="subirCapa(prop.node)"></q-btn>
-                <q-btn :disabled="capasMapa.indexOf(prop.node) === capasMapa.length-1" dense flat color="grey-8" icon="mdi-chevron-down" size="xs"
+                <q-btn :disabled="capasMapa.indexOf(prop.node) === capasMapa.length-1" dense flat color="grey-8"
+                       icon="mdi-chevron-down" size="xs"
                        @click.stop.prevent="bajarCapa(prop.node)"></q-btn>
               </q-btn-group>
             </template>
             <template v-slot:default-body="prop">
-              <card-capa :capa="prop.node" />
+              <card-capa :capa="prop.node" :servicios="servicios" :situaciones="situaciones" @update="$emit('update')"/>
             </template>
           </q-tree>
 
@@ -81,6 +83,7 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 import Vue from 'vue'
+import axios from 'axios'
 import CardCapa from "components/drawer_components/CardCapa";
 
 /** Vue Filters Start */
@@ -100,19 +103,12 @@ export default {
     return {
       expanded: ["reportes"],
       filter: '',
+      servicios: [],
+      situaciones: [],
     }
-  },
-  watch: {
-    expanded() {
-      // console.log("expanded", this.expanded)
-    },
-    ticked() {
-      // console.log("ticked", this.ticked)
-    },
   },
   computed: {
     ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getDrawerCapas', 'capasMapaGetter']),
-
     capasTicked: {
       get() {
         let ticked = []
@@ -144,8 +140,8 @@ export default {
       }
     },
     mapHeight() {
-      let ribbon_height = 93
-      if (this.showGISRibbon) ribbon_height = 180
+      let ribbon_height = 98
+      if (this.showGISRibbon) ribbon_height = 189
       return this.$q.screen.height - ribbon_height + "px"
     },
   },
@@ -172,11 +168,16 @@ export default {
     }
   },
   mounted() {
-    //console.log("platform", this.$q.screen.width)
-
     if (this.$q.screen.width < 768) {
       this.drawerCapas = false;
     }
+    axios.get('https://api.zapopanentrenosotras.com/rest/v1/tipos-servicio/').then(response => {
+      this.servicios = response.data
+    })
+    axios.get('https://api.zapopanentrenosotras.com/rest/v1/situaciones-peligro/').then(response => {
+      this.situaciones = response.data
+    })
+
   }
 }
 </script>

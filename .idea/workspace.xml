@@ -13,15 +13,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="q">
+    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="domiclio evidencia">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/GISRibbon.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/GISRibbon.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/drawer_components/CardCapa.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/drawer_components/CardCapa.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/mutations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/state.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/drawer_components/MapaDrawerCapas.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/drawer_components/MapaDrawerCapas.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,23 +29,47 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
+        <option value="Python Script" />
       </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="meh" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JupyterTrust" id="8c0006e2-9678-43bd-9248-182e5da57afa" />
+  <component name="JupyterTrust" id="3cd4cfd5-c415-4edb-b92a-61267500af49" />
+  <component name="KubernetesApiProvider">{
+  &quot;contexts&quot;: [
+    {
+      &quot;name&quot;: &quot;docker-desktop&quot;
+    }
+  ],
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="KubernetesSettings">
+    <option name="contextName" value="docker-desktop" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
+  &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="1brpjoU3qPMdCHzdMa7TbauiuZY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -59,35 +77,444 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.build.executor": "Run",
-    "npm.serve (1).executor": "Run",
-    "npm.serve.executor": "Run",
-    "ts.external.directory.path": "/Applications/PyCharm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore_missing_gitignore&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.serve.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Niji\\PycharmProjects\\GEOJITSU\\frontend\\inecc-vulnerabilidad\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\conflictos\geojitsu\src\components" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\boot" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\assets" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\pages" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Nizhi\PycharmProjects\GEOJITSU\frontend\windows-todo\src\boot" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\assets" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\statics" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\assets" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\src\components" />
+      <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\casos_exito\components" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.serve">
-    <configuration name="quasar build -m electron" type="NodeJSConfigurationType" application-parameters="build -m electron" path-to-js-file="$USER_HOME$/AppData/Roaming/npm/node_modules/@quasar/cli/bin/quasar" working-dir="$PROJECT_DIR$/frontend/geojitsu">
-      <method v="2" />
-    </configuration>
-    <configuration name="quasar dev" type="NodeJSConfigurationType" application-parameters="serve --modern" path-to-js-file="$USER_HOME$/AppData/Roaming/npm/node_modules/@quasar/cli/bin/quasar" working-dir="$PROJECT_DIR$/frontend/geojitsu">
-      <method v="2" />
-    </configuration>
+  <component name="RestClientSettings">
+    <option name="REQUEST_HISTORY">
+      <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz/api/v1/casos_exito/proyectos/2" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz/api/v1/casos_exito/proyectos/1" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz/api/v1/casos_exito/proyectos/" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz" />
+          <option name="urlPath" value="api/v1/casos_exito/proyectos/" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="admin" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="unam2020" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz" />
+          <option name="urlPath" value="api/v1/casos_exito/estados/" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="admin" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="unam2020" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz" />
+          <option name="urlPath" value="api/v1/estados/" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="admin" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="unam2020" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz/api/v1/generate_token/" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="admin" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="unam2020" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;username&quot;: &quot;admin&quot;,&#10;  &quot;password&quot;: &quot;unam2020&quot;&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz/api/v1/generate_token/" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="admin" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="unam2020" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="Content-Type: application/json&#10;&#10;{&#10;  &quot;username&quot;: &quot;admin&quot;,&#10;  &quot;password&quot;: &quot;unam2020&quot;&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz/api/v1/generate_token/" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="admin" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="unam2020" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;username&quot;: &quot;admin&quot;,&#10;  &quot;password&quot;: &quot;unam2020&quot;&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz/api/v1/generate_token/" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="admin" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="unam2020" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz" />
+          <option name="urlPath" value="api/v1/generate_token/" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="admin" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="unam2020" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz" />
+          <option name="urlPath" value="api/v1/generate_token/" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="admin" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="dsad" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz" />
+          <option name="urlPath" value="api/v1/generate_token/" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="admin" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://onsses45.maptitude.xyz" />
+          <option name="urlPath" value="api/v1/generate_token/" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="npm.build">
     <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
       <module name="GEOJITSU" />
       <option name="ENV_FILES" value="" />
@@ -118,29 +545,22 @@
       <scripts>
         <script value="build" />
       </scripts>
-      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v12.22.12/bin/node" />
+      <node-interpreter value="project" />
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="serve" type="js.build_tools.npm" temporary="true">
+    <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/frontend/vmz/geojitsu/package.json" />
       <command value="run" />
       <scripts>
         <script value="serve" />
       </scripts>
-      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v12.22.12/bin/node" />
+      <node-interpreter value="project" />
       <envs />
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="Node.js.quasar dev" />
-      <item itemvalue="Node.js.quasar build -m electron" />
-      <item itemvalue="npm.build" />
-      <item itemvalue="npm.serve" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.serve" />
         <item itemvalue="npm.build" />
         <item itemvalue="npm.serve" />
       </list>
@@ -170,22 +590,494 @@
       <workItem from="1589655452685" duration="8049000" />
       <workItem from="1589687582190" duration="19658000" />
       <workItem from="1592332700175" duration="1412000" />
-      <workItem from="1709666334450" duration="6176000" />
-      <workItem from="1713204191906" duration="2898000" />
+      <workItem from="1594159199700" duration="935000" />
+      <workItem from="1594232138027" duration="1439000" />
+      <workItem from="1595365903270" duration="3195000" />
+      <workItem from="1595380471741" duration="572000" />
+      <workItem from="1597184837251" duration="22428000" />
+      <workItem from="1597272331629" duration="11708000" />
+      <workItem from="1597422000538" duration="24673000" />
+      <workItem from="1597598602646" duration="28321000" />
+      <workItem from="1597694350451" duration="5077000" />
+      <workItem from="1597702267622" duration="42929000" />
+      <workItem from="1598036186884" duration="58565000" />
+      <workItem from="1598295165945" duration="20848000" />
+      <workItem from="1598391206978" duration="11749000" />
+      <workItem from="1598404944897" duration="20804000" />
+      <workItem from="1598508930607" duration="25311000" />
+      <workItem from="1598719702251" duration="9272000" />
+      <workItem from="1598740724472" duration="4452000" />
+      <workItem from="1598917361978" duration="2675000" />
+      <workItem from="1599074522500" duration="5543000" />
+      <workItem from="1599255707362" duration="1274000" />
+      <workItem from="1599261876798" duration="156000" />
+      <workItem from="1599267459323" duration="28000" />
+      <workItem from="1599270071276" duration="80000" />
+      <workItem from="1599275853229" duration="10008000" />
+      <workItem from="1599342162600" duration="16842000" />
+      <workItem from="1599449991772" duration="706000" />
+      <workItem from="1599492846159" duration="12226000" />
+      <workItem from="1599591785848" duration="2076000" />
+      <workItem from="1599697882756" duration="19000" />
+      <workItem from="1599788161028" duration="829000" />
+      <workItem from="1599898529836" duration="8648000" />
+      <workItem from="1600108698259" duration="3904000" />
+      <workItem from="1600127829533" duration="2053000" />
+      <workItem from="1600190805816" duration="1627000" />
+      <workItem from="1600228033576" duration="22457000" />
+      <workItem from="1600359186780" duration="25579000" />
+      <workItem from="1600473998874" duration="813000" />
+      <workItem from="1600475399092" duration="100717000" />
+      <workItem from="1600881467226" duration="15406000" />
+      <workItem from="1600980249383" duration="18464000" />
+      <workItem from="1601300602731" duration="3718000" />
+      <workItem from="1601666372087" duration="296000" />
+      <workItem from="1601666693715" duration="618000" />
+      <workItem from="1601674763907" duration="595000" />
+      <workItem from="1601675862526" duration="1029000" />
+      <workItem from="1601677635847" duration="610000" />
+      <workItem from="1601679263559" duration="752000" />
+      <workItem from="1601682937123" duration="935000" />
+      <workItem from="1601687385047" duration="2703000" />
+      <workItem from="1601872722823" duration="638000" />
+      <workItem from="1601942574884" duration="1733000" />
+      <workItem from="1601996315580" duration="1113000" />
+      <workItem from="1602020666081" duration="3360000" />
+      <workItem from="1602108520675" duration="2491000" />
+      <workItem from="1602128090699" duration="3277000" />
+      <workItem from="1602287226490" duration="4974000" />
+      <workItem from="1602468462749" duration="1949000" />
+      <workItem from="1602605902965" duration="59000" />
+      <workItem from="1602797650161" duration="15083000" />
+      <workItem from="1602870267778" duration="2094000" />
+      <workItem from="1602903277107" duration="13640000" />
+      <workItem from="1603065400655" duration="313000" />
+      <workItem from="1603065772287" duration="8900000" />
+      <workItem from="1603103448409" duration="34049000" />
+      <workItem from="1603214926899" duration="42293000" />
+      <workItem from="1603393725247" duration="6538000" />
+      <workItem from="1603405164930" duration="2957000" />
+      <workItem from="1603479653879" duration="326000" />
+      <workItem from="1603725994054" duration="1762000" />
+      <workItem from="1603913750745" duration="3993000" />
+      <workItem from="1603948614934" duration="20591000" />
+      <workItem from="1604023412489" duration="7125000" />
+      <workItem from="1604126980411" duration="18421000" />
+      <workItem from="1604359615295" duration="347000" />
+      <workItem from="1604360231370" duration="9239000" />
+      <workItem from="1604378832154" duration="24303000" />
+      <workItem from="1604452946390" duration="1154000" />
+      <workItem from="1604460206999" duration="9735000" />
+      <workItem from="1604525488164" duration="16951000" />
+      <workItem from="1604779890086" duration="29882000" />
+      <workItem from="1604905754454" duration="28454000" />
+      <workItem from="1604993830988" duration="2899000" />
+      <workItem from="1607361805269" duration="48000" />
+      <workItem from="1609350158930" duration="5987000" />
+      <workItem from="1609362425450" duration="1377000" />
+      <workItem from="1609463630266" duration="3633000" />
+      <workItem from="1609555133094" duration="591000" />
+      <workItem from="1609556205022" duration="667000" />
+      <workItem from="1609564102022" duration="143000" />
+      <workItem from="1609564269859" duration="69000" />
+      <workItem from="1609715838012" duration="1304000" />
+      <workItem from="1609728743360" duration="438000" />
+      <workItem from="1609783510307" duration="2543000" />
+      <workItem from="1609899284870" duration="1300000" />
+      <workItem from="1609901598500" duration="843000" />
+      <workItem from="1611690754588" duration="1000000" />
+      <workItem from="1611868828247" duration="1554000" />
+      <workItem from="1612038363128" duration="4020000" />
+      <workItem from="1612127499624" duration="485000" />
+      <workItem from="1612300882935" duration="402000" />
+      <workItem from="1612301316022" duration="5872000" />
+      <workItem from="1612558512408" duration="1261000" />
+      <workItem from="1612798758520" duration="1615000" />
+      <workItem from="1612887787982" duration="5311000" />
+      <workItem from="1612979712659" duration="1763000" />
+      <workItem from="1613059533191" duration="2214000" />
+      <workItem from="1613685056402" duration="2489000" />
+      <workItem from="1613704554629" duration="1213000" />
+      <workItem from="1614096535428" duration="41000" />
+      <workItem from="1614355968992" duration="1204000" />
+      <workItem from="1614359465504" duration="597000" />
+      <workItem from="1614620981887" duration="17000" />
+      <workItem from="1615222151236" duration="4472000" />
+      <workItem from="1615316128782" duration="12823000" />
+      <workItem from="1615393008715" duration="279000" />
+      <workItem from="1615393301350" duration="514000" />
+      <workItem from="1688780223094" duration="646000" />
+      <workItem from="1688781968400" duration="2268000" />
+      <workItem from="1706573257810" duration="13000" />
+      <workItem from="1706579495212" duration="115000" />
+      <workItem from="1706585718809" duration="17000" />
+      <workItem from="1706585755045" duration="33000" />
+      <workItem from="1707276930053" duration="4896000" />
+      <workItem from="1707282020247" duration="4112000" />
+      <workItem from="1709133922718" duration="812000" />
+      <workItem from="1709786911327" duration="2137000" />
+      <workItem from="1709823104314" duration="1206000" />
+      <workItem from="1709946598776" duration="982000" />
+      <workItem from="1713337986563" duration="2851000" />
     </task>
-    <task id="LOCAL-00001" summary="q">
-      <option name="closed" value="true" />
-      <created>1709744942240</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
+    <task id="LOCAL-00048" summary="m$">
+      <created>1600714905085</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
       <option name="project" value="LOCAL" />
-      <updated>1709744942241</updated>
+      <updated>1600714905085</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00049" summary="m$">
+      <created>1600816148155</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1600816148156</updated>
+    </task>
+    <task id="LOCAL-00050" summary="m$">
+      <created>1600884143052</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1600884143052</updated>
+    </task>
+    <task id="LOCAL-00051" summary="m$">
+      <created>1601152966937</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1601152966937</updated>
+    </task>
+    <task id="LOCAL-00052" summary="m$">
+      <created>1601225107817</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1601225107817</updated>
+    </task>
+    <task id="LOCAL-00053" summary="m$">
+      <created>1602976593493</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1602976593494</updated>
+    </task>
+    <task id="LOCAL-00054" summary="m$">
+      <created>1603070432345</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1603070432345</updated>
+    </task>
+    <task id="LOCAL-00055" summary="m$">
+      <created>1603111311675</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1603111311676</updated>
+    </task>
+    <task id="LOCAL-00056" summary="m$">
+      <created>1603163482005</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1603163482005</updated>
+    </task>
+    <task id="LOCAL-00057" summary="m$">
+      <created>1603169884271</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1603169884271</updated>
+    </task>
+    <task id="LOCAL-00058" summary="m$">
+      <created>1603226605445</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1603226605445</updated>
+    </task>
+    <task id="LOCAL-00059" summary="m$">
+      <created>1603307036955</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1603307036955</updated>
+    </task>
+    <task id="LOCAL-00060" summary="m$">
+      <created>1603308690594</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1603308690594</updated>
+    </task>
+    <task id="LOCAL-00061" summary="m$">
+      <created>1603350128585</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1603350128585</updated>
+    </task>
+    <task id="LOCAL-00062" summary="m$">
+      <created>1603408956511</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1603408956511</updated>
+    </task>
+    <task id="LOCAL-00063" summary="m$">
+      <created>1603953454201</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1603953454202</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Commit Clutch">
+      <created>1603998688160</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1603998688160</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Commit Clutch">
+      <created>1604013421088</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1604013421089</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Commit Clutch">
+      <created>1604014846496</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1604014846496</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Commit Clutch">
+      <created>1604018509265</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1604018509266</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Commit Clutch">
+      <created>1604027001174</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1604027001174</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Commit Clutch">
+      <created>1604041179951</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1604041179951</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Commit Clutch">
+      <created>1604163812290</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1604163812291</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Commit Clutch">
+      <created>1604382455428</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1604382455429</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Commit Clutch">
+      <created>1604389964669</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1604389964670</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Commit Clutch">
+      <created>1604427189435</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1604427189435</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Commit Clutch">
+      <created>1604427652294</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1604427652294</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Commit Clutch">
+      <created>1604445557537</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1604445557538</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Commit Clutch">
+      <created>1604465590153</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1604465590154</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Commit Clutch">
+      <created>1604502255877</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1604502255877</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Commit Clutch">
+      <created>1604587381653</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1604587381654</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Commit Clutch">
+      <created>1604811149411</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1604811149412</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Commit Clutch">
+      <created>1604858879292</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1604858879292</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Commit Clutch">
+      <created>1604861710443</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1604861710443</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Commit Clutch">
+      <created>1604905812717</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1604905812718</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Commit Clutch">
+      <created>1604950803715</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1604950803715</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Commit Clutch">
+      <created>1604960237975</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1604960237975</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Commit Clutch">
+      <created>1604967617107</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1604967617108</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Commit Clutch">
+      <created>1604967894929</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1604967894929</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Commit Clutch">
+      <created>1604972042057</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1604972042058</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Commit Clutch">
+      <created>1604984144022</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1604984144023</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Commit Clutch">
+      <created>1607112496989</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1607112496990</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Commit Clutch">
+      <created>1607118858909</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1607118858910</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Commit Clutch">
+      <created>1611694690077</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1611694690077</updated>
+    </task>
+    <task id="LOCAL-00092" summary="maptitud">
+      <created>1612038570369</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1612038570370</updated>
+    </task>
+    <task id="LOCAL-00093" summary="maptitud">
+      <created>1612040492662</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1612040492662</updated>
+    </task>
+    <task id="LOCAL-00094" summary="maptitud">
+      <created>1612894912551</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1612894912551</updated>
+    </task>
+    <task id="LOCAL-00095" summary="maptitud">
+      <created>1615227023525</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1615227023525</updated>
+    </task>
+    <task id="LOCAL-00096" summary="conflictos cambios">
+      <created>1615326551627</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1615326551628</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -199,7 +1091,12 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="q" />
-    <option name="LAST_COMMIT_MESSAGE" value="q" />
+    <MESSAGE value="mac" />
+    <MESSAGE value="m$" />
+    <MESSAGE value="Commit Clutch" />
+    <MESSAGE value="maptitud" />
+    <MESSAGE value="conflictos cambios" />
+    <MESSAGE value="domiclio evidencia" />
+    <option name="LAST_COMMIT_MESSAGE" value="domiclio evidencia" />
   </component>
 </project>
