@@ -15,16 +15,15 @@ export default function () {
     capasMapa: [
       {
         value: "colonias_zapopan", label: "Colonias Zapopan", type: "wms",
-        url: "https://catalina.maptitud.xyz/geoserver/wms?",
-        layers: "IMMZIS:zen_colonias_zapopan", visible: true, children: [{}],
+        url: "https://development.demo.geonode.org/geoserver/wms?",
+        layers: "geonode:coloniasmex_ine2025", visible: true, children: [{}],
         attribution: ", <a href='http://www.ine.gob.mx' target='_blank'>INE</a>",
         opacity: 1.0, permanent: true,
         server_type: "geoserver",
         format: "image/png8",
         tiled: false,
         params: {
-          crs: "EPSG:4326",
-          cql_filter: null,
+          CQL_FILTER: "cve_ent='14' AND cve_mun='120'",
         }
       },
       {

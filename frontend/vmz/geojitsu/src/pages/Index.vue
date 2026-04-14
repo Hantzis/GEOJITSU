@@ -33,7 +33,7 @@
                     attributions="Mapbox, <a href='https://www.saeba.click' target='_blank'>Saeba</a>"/>
                 </vl-layer-tile>
                 <vl-layer-vector>
-                  <vl-source-vector :features.sync="zapopan">
+                  <vl-source-vector url="https://development.demo.geonode.org/geoserver/ows?service=WMS&version=1.1.1&request=GetFeatureInfo&layers=geonode:mgenmex_municipios&query_layers=geonode:mgenmex_municipios&styles=geonode:mgenmex_municipios&x=51&y=51&height=101&width=101&srs=EPSG:3857&bbox=-11528274.230741149,2360353.554394476,-11512833.951027544,2375793.8341080816&feature_count=10&info_format=application%2Fjson">
                   </vl-source-vector>
                   <vl-style-box>
                     <vl-style-stroke color="black" :width="3"></vl-style-stroke>
@@ -388,7 +388,7 @@ export default {
       reporte_agregado_dialog: false,
       fecha_reporte_marcador: "",
       hora_reporte_marcador: "",
-      zoom: 13,
+      zoom: 12,
       center: [-103.3810, 20.6930],
       center3857: [-11268847.24, 2231060.47],
       geolocPosition: [-101.22977709999999, 19.6453138],
@@ -833,7 +833,8 @@ export default {
     }
 
     this.loadingBar = this.$refs.bar
-    axios.get('statics/zapopan.geojson').then(res => {
+    // axios.get('statics/zapopan.geojson').then(res => {
+    axios.get('https://development.demo.geonode.org/geoserver/ows?service=WMS&version=1.1.1&request=GetFeatureInfo&layers=geonode:mgenmex_municipios&query_layers=geonode:mgenmex_municipios&styles=geonode:mgenmex_municipios&x=51&y=51&height=101&width=101&srs=EPSG:3857&bbox=-11528274.230741149,2360353.554394476,-11512833.951027544,2375793.8341080816&feature_count=10&info_format=application%2Fjson&format=image%2Fpng').then(res => {
       this.zapopan = res.data.features
     }).then(() => {
 
