@@ -559,7 +559,7 @@ export default {
   computed: {
     ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getHerramientaActiva', 'mapaBaseGetter', 'mapasBaseGetter',
       'capasMapaGetter', 'getDrawerCapas', 'getMapkey', 'getUserGroups', 'getIsUserStaff']),
-    ...mapGetters('auth', ['logged', 'user', 'token']),
+    // ...mapGetters('auth', ['logged', 'user', 'token']),
     is_user_staff: {
       get() {
         return this.getIsUserStaff
@@ -649,7 +649,7 @@ export default {
   methods: {
     ...mapActions('geojitsu', ['capasMapaAction', 'setCapaTicked', 'setHerramientaActiva', 'setMapkey',
       'setUserGroups', 'setUserIsStaff']),
-    ...mapActions('auth', ['login', 'logout', 'setToken']),
+    // ...mapActions('auth', ['login', 'logout', 'setToken']),
     getEntries(properties) {
       let limpio = [];
       limpio.push(["ID", properties.id]);

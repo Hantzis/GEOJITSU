@@ -966,7 +966,7 @@ export default {
   },
   methods: {
     ...mapActions('geojitsu', ['GISRibbonIsOpenAction', 'setHerramientaActiva', 'setUserGroups', 'setUserIsStaff']),
-    ...mapActions('auth', ['setUser']),
+    // ...mapActions('auth', ['setUser']),
     openLogin() {
       // this.accountcreated_dialog = false
       this.login_dialog = true
