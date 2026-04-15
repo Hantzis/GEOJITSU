@@ -783,8 +783,8 @@
         <span class="ellipsis">Instituto Municipal de las Mujeres Zapopanas para la Igualdad Sustantiva</span>
         <q-space/>
         <span class="no-wrap">
-        <a style="text-decoration: none" class="text-grey-4 no-underline" href="https://saeba.click"
-           target="_blank">2020&nbsp;&copy;&nbsp;saeba.click
+        <a style="text-decoration: none" class="text-grey-4 no-underline" href="https://cesarbenjamin.net"
+           target="_blank">2020 - 2026&nbsp;&copy;&nbsp;cesarbenjamin.net
          <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px" anchor="top middle"
                      self="bottom middle">
             Desarrollo: César Benjamín

@@ -70,7 +70,12 @@
               </q-btn-group>
             </template>
             <template v-slot:default-body="prop">
-              <card-capa :capa="prop.node" :servicios="servicios" :situaciones="situaciones" @update="$emit('update')"/>
+              <card-capa
+                :capa="prop.node" :servicios="servicios" :situaciones="situaciones"
+                :strokeServicios="strokeServicios"
+                :strokeSituaciones="strokeSituaciones"
+                @update="$emit('update')"
+              />
             </template>
           </q-tree>
 
@@ -98,6 +103,7 @@ Vue.filter('truncate', function (text, length, suffix) {
 
 export default {
   name: "MapaDrawerCapas",
+  props: ['strokeServicios', 'strokeSituaciones'],
   components: {CardCapa},
   data() {
     return {

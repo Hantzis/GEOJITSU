@@ -5,13 +5,18 @@
         <GISRibbon/>
       </q-header>
 
-      <mapa-drawer-capas @update="refreshMap()"/>
+      <mapa-drawer-capas
+        @update="refreshMap()"
+        :strokeServicios="strokeServicios"
+        :strokeSituaciones="strokeSituaciones"
+      />
 
       <q-page-container>
         <q-page>
           <div class="row">
             <div class="col" :style="{'min-height': mapHeight}">
-              <vl-map @click="clic" ref="olmap" :load-tiles-while-animating="true" :load-tiles-while-interacting="true"
+              <vl-map @click="onClickInMap" ref="olmap" :load-tiles-while-animating="true"
+                      :load-tiles-while-interacting="true"
                       data-projection="EPSG:4326"
                       :style="{'min-height': 'inherit', 'max-height': '1px', 'width': '100%', 'background-color': mapaBase.bgcolor}">
                 <vl-view ref="olview" :zoom.sync="zoom" :center.sync="center"></vl-view>
@@ -33,7 +38,8 @@
                     attributions="Mapbox, <a href='https://www.saeba.click' target='_blank'>Saeba</a>"/>
                 </vl-layer-tile>
                 <vl-layer-vector>
-                  <vl-source-vector url="https://development.demo.geonode.org/geoserver/ows?service=WMS&version=1.1.1&request=GetFeatureInfo&layers=geonode:mgenmex_municipios&query_layers=geonode:mgenmex_municipios&styles=geonode:mgenmex_municipios&x=51&y=51&height=101&width=101&srs=EPSG:3857&bbox=-11528274.230741149,2360353.554394476,-11512833.951027544,2375793.8341080816&feature_count=10&info_format=application%2Fjson">
+                  <vl-source-vector
+                    url="https://development.demo.geonode.org/geoserver/ows?service=WMS&version=1.1.1&request=GetFeatureInfo&layers=geonode:mgenmex_municipios&query_layers=geonode:mgenmex_municipios&styles=geonode:mgenmex_municipios&x=51&y=51&height=101&width=101&srs=EPSG:3857&bbox=-11528274.230741149,2360353.554394476,-11512833.951027544,2375793.8341080816&feature_count=10&info_format=application%2Fjson">
                   </vl-source-vector>
                   <vl-style-box>
                     <vl-style-stroke color="black" :width="3"></vl-style-stroke>
@@ -66,69 +72,80 @@
                         :attributions="capa.attribution"
                         :ext-params="capa.params"/>
                     </vl-layer-image>
+                    <vl-layer-vector-tile
+                      v-if="capa.type==='mvt'"
+                      :opacity="capa.opacity"
+                      :visible="capa.visible"
+                    >
+                      <vl-source-vector-tile
+                        :url="buildMVTUrl(capa)"
+                        :format="mvtFormat"
+                      />
+                      <vl-style-func :factory="() => styleReportes"/>
+                    </vl-layer-vector-tile>
                   </div>
                 </div>
 
-                <vl-interaction-select :features.sync="selectedFeatures" :layers="this.layers">
-                  <vl-overlay v-if="position && selectedFeatures.length > 0" :position="position" :auto-pan="true"
-                              style="background: white; padding: 8px">
-                    <div style="max-width: 300px; min-width: 300px;">
+                <vl-overlay v-if="position && selectedFeatures.length > 0" :position="position" :auto-pan="true"
+                            style="background: white; padding: 8px">
+                  <div style="max-width: 300px; min-width: 300px;">
 
-                      <q-table
-                        class="detalles"
-                        style="max-height: 400px; max-width: 300px"
-                        :title="`${selectedFeatureInfo.tipo} (${selectedFeatureInfo.id})`"
-                        square
-                        wrap-cells
-                        dense
-                        :rows-per-page-options="[15]"
-                        virtual-scroll
-                        separator="cell"
-                        hide-bottom
-                        :data="getEntries(selectedFeatureInfo)"
-                      >
-                        <template v-slot:header>
-                          <q-th colspan="2" style="padding: 0">
-                          </q-th>
-                        </template>
-                        <template v-slot:top-right>
-                          <q-btn flat dense size="sm" style="margin-right: -11px;">
-                            <q-icon name="close" @click="position = undefined; selectedFeatures = []"/>
-                          </q-btn>
-                        </template>
-                      </q-table>
-
-                      <div class="row q-pt-sm">
-                        <q-btn dense no-caps class="full-width" v-if="this.is_user_staff && !selectedFeatureInfo.evidencia_reporte"
-                        @click="showEvidenciaRegistroForm=true">
-                          Agregar evidencia reporte
+                    <q-table
+                      class="detalles"
+                      style="max-height: 400px; max-width: 300px"
+                      :title="`${selectedFeatureInfo.tipo} (${selectedFeatureInfo.id})`"
+                      square
+                      wrap-cells
+                      dense
+                      :rows-per-page-options="[15]"
+                      virtual-scroll
+                      separator="cell"
+                      hide-bottom
+                      :data="getEntries(selectedFeatureInfo)"
+                    >
+                      <template v-slot:header>
+                        <q-th colspan="2" style="padding: 0">
+                        </q-th>
+                      </template>
+                      <template v-slot:top-right>
+                        <q-btn flat dense size="sm" style="margin-right: -11px;">
+                          <q-icon name="close" @click="position = undefined; selectedFeatures = []"/>
                         </q-btn>
-                      </div>
-                      <div class="row q-pt-sm">
-                        <q-btn dense no-caps class="full-width" v-if="selectedFeatureInfo.evidencia_reporte"
-                        :color="selectedFeatureInfo.estatus === 'Abierto' ? 'accent' : 'green'"
-                        @click="showEvidenciaReporte=true">
-                          Fotografía reporte
-                        </q-btn>
-                      </div>
+                      </template>
+                    </q-table>
 
-                      <div class="row q-pt-sm">
-                        <q-btn dense no-caps class="full-width" v-if="selectedFeatureInfo.evidencia_atencion"
-                        @click="showEvidenciaAtencion=true">
-                          Evidencia atención
-                        </q-btn>
-                      </div>
-
-                      <div class="row q-pt-sm">
-                        <q-select
-                          :readonly="(!(selectedFeatureInfo.tipo === 'Servicios' && this.userGroups.includes(4)) && !(selectedFeatureInfo.tipo === 'Situaciones' && this.userGroups.includes(5)))"
-                          v-model="selectedFeatureInfo.estatus"
-                          :options="['Abierto', 'Atendiendo', 'Resuelto']"
-                          label="Estatus" name="estatus" outlined class="full-width" behavior="menu"/>
-                      </div>
+                    <div class="row q-pt-sm">
+                      <q-btn dense no-caps class="full-width"
+                             v-if="this.is_user_staff && !selectedFeatureInfo.evidencia_reporte"
+                             @click="showEvidenciaRegistroForm=true">
+                        Agregar evidencia reporte
+                      </q-btn>
                     </div>
-                  </vl-overlay>
-                </vl-interaction-select>
+                    <div class="row q-pt-sm">
+                      <q-btn dense no-caps class="full-width" v-if="selectedFeatureInfo.evidencia_reporte"
+                             :color="selectedFeatureInfo.estatus === 'Abierto' ? 'accent' : 'green'"
+                             @click="showEvidenciaReporte=true">
+                        Fotografía reporte
+                      </q-btn>
+                    </div>
+
+                    <div class="row q-pt-sm">
+                      <q-btn dense no-caps class="full-width" v-if="selectedFeatureInfo.evidencia_atencion"
+                             @click="showEvidenciaAtencion=true">
+                        Evidencia atención
+                      </q-btn>
+                    </div>
+
+                    <div class="row q-pt-sm">
+                      <q-select
+                        :readonly="(!(selectedFeatureInfo.tipo === 'Servicios' && this.userGroups.includes(4)) && !(selectedFeatureInfo.tipo === 'Situaciones' && this.userGroups.includes(5)))"
+                        v-model="selectedFeatureInfo.estatus"
+                        :options="['Abierto', 'Atendiendo', 'Resuelto']"
+                        label="Estatus" name="estatus" outlined class="full-width" behavior="menu"/>
+                    </div>
+                  </div>
+                </vl-overlay>
+
               </vl-map>
             </div>
           </div>
@@ -143,18 +160,18 @@
       skip-hijack
     />
 
-    <q-dialog v-model="showEvidenciaReporte" full-width >
+    <q-dialog v-model="showEvidenciaReporte" full-width>
       <q-card>
         <q-card-section>
-          <q-img :src="selectedFeatureInfo.evidencia_reporte" />
+          <q-img :src="selectedFeatureInfo.evidencia_reporte"/>
         </q-card-section>
       </q-card>
     </q-dialog>
 
-    <q-dialog v-model="showEvidenciaAtencion" full-width >
+    <q-dialog v-model="showEvidenciaAtencion" full-width>
       <q-card>
         <q-card-section>
-          <q-img :src="selectedFeatureInfo.evidencia_atencion" />
+          <q-img :src="selectedFeatureInfo.evidencia_atencion"/>
         </q-card-section>
       </q-card>
     </q-dialog>
@@ -163,8 +180,8 @@
       <q-card>
         <q-card-section>
           <q-form>
-            <q-file outlined v-model="evidencia_atencion" label="Evidencia atención" />
-            <q-btn :disable="!evidencia_atencion" @click="saveEvidenciaAtencion" label="Guardar" color="green" />
+            <q-file outlined v-model="evidencia_atencion" label="Evidencia atención"/>
+            <q-btn :disable="!evidencia_atencion" @click="saveEvidenciaAtencion" label="Guardar" color="green"/>
           </q-form>
         </q-card-section>
       </q-card>
@@ -174,13 +191,12 @@
       <q-card>
         <q-card-section>
           <q-form>
-            <q-file outlined v-model="evidencia_reporte_staff" label="Evidencia atención" />
-            <q-btn :disable="!evidencia_reporte_staff" @click="saveEvidenciaStaff" label="Guardar" color="green" />
+            <q-file outlined v-model="evidencia_reporte_staff" label="Evidencia atención"/>
+            <q-btn :disable="!evidencia_reporte_staff" @click="saveEvidenciaStaff" label="Guardar" color="green"/>
           </q-form>
         </q-card-section>
       </q-card>
     </q-dialog>
-
 
 
     <q-dialog ref="agregarreportemarcador_dialog" v-model="agregarreportemarcador_dialog" persistent>
@@ -241,7 +257,7 @@
               <q-select class="full-width" outlined name="colonia" v-model="reporte_marcador_data.colonia"
                         :options="colonias"
                         label="Colonia" :rules="[val => !!val || 'Colonia obligatoria']"
-                        emit-value map-options option-value="id" option-label="nombre"/>
+                        emit-value map-options option-value="nombre" option-label="nombre"/>
             </div>
             <div class="row q-py-xs">
               <q-input outlined class="full-width" name="calle" v-model="reporte_marcador_data.calle"
@@ -368,6 +384,8 @@ import GISRibbon from "components/GISRibbon"; // needs css-loader
 import MapaDrawerCapas from "components/drawer_components/MapaDrawerCapas";
 import {transform} from 'ol/proj';
 import cookies from 'browser-cookies'
+import MVT from 'ol/format/MVT'
+import {Style, Circle, Fill, Stroke, RegularShape} from 'ol/style'
 
 Vue.use(VueLayers)
 
@@ -376,6 +394,51 @@ export default {
   components: {MapaDrawerCapas, GISRibbon},
   data() {
     return {
+      clickRequestId: 0,
+      ignoreNextEstatusChange: false,
+      mvtFormat: new MVT(),
+      // 🔑 Stroke por ID (SERVICIOS)
+      strokeServicios: {
+        10: '#de9a39',
+        11: '#fdfd4d',
+        17: '#0d6b18',
+        15: '#b26489',
+        6: '#2fc4fa',
+        12: '#2d96e5',
+        1: '#3582c5',
+        3: '#0ebf6f',
+        21: '#9e9624',
+        20: '#fd4eb7',
+        19: '#181818',
+        9: '#a61875',
+        16: '#4b0ef4',
+        4: '#b26489',
+        5: '#2fc4fa',
+        7: '#2d96e5',
+        8: '#3582c5',
+        13: '#0ebf6f',
+        22: '#69204c',
+        23: '#69201c',
+        24: '#8b236a',
+        2: '#939393',
+        18: '#a61875',
+        1000000: '#000000'
+      },
+
+      // 🔑 Stroke por ID (SITUACIONES)
+      strokeSituaciones: {
+        2: '#8c2df1',
+        4: '#e9b37a',
+        7: '#f4f442',
+        10: '#8ca65a',
+        1: '#8c2df1',
+        3: '#9f6829',
+        5: '#6eadc8',
+        6: '#ef7021',
+        8: '#e9b37a',
+        9: '#42ddf4',
+        1000000: '#232323'
+      },
       zapopan: [],
       layers: [],
       loadingBar: undefined,
@@ -423,33 +486,36 @@ export default {
     mapaBase() {
       this.$refs["olmap"].updateSize()
     },
-    selectedFeatures() {
-      if (this.selectedFeatures.length > 0 && this.herramientaActiva === 'info') {
-        this.layers = [this.$refs.reportes[0]]
-        this.position = transform(this.selectedFeatures[0].geometry.coordinates, 'EPSG:3857', 'EPSG:4326')
-      } else {
-        this.selectedFeatureInfo = {}
-      }
-    },
     'selectedFeatureInfo.estatus': function (newVal, oldVal) {
-      if (oldVal && newVal) {
-        const token = cookies.get("auth_token")
-        const formData = new FormData()
-        formData.append("estatus", newVal)
-        axios.patch(`https://api.zapopanentrenosotras.com/rest/v1/reportes/${this.selectedFeatureInfo.id}/`,
-          formData, {
+
+      // 🔴 ignorar cambio por carga de feature
+      if (this.ignoreNextEstatusChange) {
+        this.ignoreNextEstatusChange = false
+        return
+      }
+
+      // 🔴 ignorar si no hay cambio real
+      if (!oldVal || !newVal || oldVal === newVal) return
+
+      const token = cookies.get("auth_token")
+      const formData = new FormData()
+      formData.append("estatus", newVal)
+
+      axios.patch(
+        `https://api.zapopanentrenosotras.com/rest/v1/reportes/${this.selectedFeatureInfo.id}/`,
+        formData,
+        {
           headers: {
-            'Authorization': `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
             'Content-Type': 'multipart/form-data'
           }
-        }).then((response) => {
-            console.log(response)
-            this.showEvidenciaAtencionForm = true
-          })
-          .catch(error => {
-            //console.log(error)
-          })
-      }
+        }
+      )
+        .then(() => {
+          this.showEvidenciaAtencionForm = true
+        })
+        .catch(() => {
+        })
     },
     'reporte_marcador_data.tipo': function (newVal, oldVal) {
       this.reporte_marcador_data.estado_servicio = undefined
@@ -589,9 +655,9 @@ export default {
       limpio.push(["ID", properties.id]);
       limpio.push(["Fecha", properties.fecha]);
       limpio.push(["Hora", properties.hora]);
-      let colonia = properties.colonia_display;
-      if (properties.colonia_cp_display) colonia = colonia + " (" + properties.colonia_cp_display + ")";
-      limpio.push(["Colonia", colonia]);
+      // let colonia = properties.colonia_display;
+      // if (properties.colonia_cp_display) colonia = colonia + " (" + properties.colonia_cp_display + ")";
+      limpio.push(["Colonia", properties.colonia]);
       let calle = properties.calle;
       if (properties.numero) calle = calle + " #" + properties.numero;
       limpio.push(["Calle", calle]);
@@ -646,7 +712,6 @@ export default {
           //console.log(error)
         })
     },
-
     loaderFactory(capa) {
       if (this.capasMapa[capa].features.length === 0) {
         axios.get(this.capasMapa[capa].url).then(response => {
@@ -665,60 +730,144 @@ export default {
       this.$refs['olmap'].refresh()
       this.$refs['olmap'].remount()
     },
-    clic(evt) {
-      this.selectedFeatures = []
+    onClickInMap(evt) {
       this.clickCoords = evt.coordinate
+
       if (this.herramientaActiva === 'info') {
-        const coord = transform(evt.coordinate, 'EPSG:4326', 'EPSG:3857')
-        const viewResolution = /** @type {number} */ this.$refs.olview.$view.values_.resolution;
-        let url = this.$refs.reportes[0].getFeatureInfoUrl(coord, viewResolution, 'EPSG:3857', {'INFO_FORMAT': 'application/json'})
-        axios.get(url).then(response => {
-          if (response.data.numberReturned > 0) {
-            this.selectedFeatures = response.data.features
-            axios.get(`https://api.zapopanentrenosotras.com/rest/v1/reportes/${response.data.features[0].id.split(".")[1]}/`)
-              .then(response => {
-                this.selectedFeatureInfo = response.data
-              })
+        this.clickRequestId++
+        const currentRequest = this.clickRequestId
+
+        const map = this.$refs.olmap.$map
+
+        let found = null
+
+        map.forEachFeatureAtPixel(evt.pixel, (feature) => {
+          // 🔴 VALIDAR que sea un feature real de tus reportes
+          const tipo = feature.get('tipo')
+          const id = feature.get('id') || feature.getId()
+
+          if (tipo && id) {
+            found = feature
+            return true
           }
-        }).catch(error => {
-          //console.log(error)
+
+          return false
         })
+
+        if (!found) {
+          this.selectedFeatures = []
+          this.selectedFeatureInfo = {}
+          this.position = null
+          return
+        }
+
+        this.selectedFeatures = [found]
+
+        const geometry = found.getGeometry()
+        let coords = null
+
+        if (geometry && typeof geometry.getCoordinates === 'function') {
+          coords = geometry.getCoordinates()
+        } else if (geometry && typeof geometry.getFlatCoordinates === 'function') {
+          const flat = geometry.getFlatCoordinates()
+          if (flat && flat.length >= 2) {
+            coords = [flat[0], flat[1]]
+          }
+        }
+
+        if (coords) {
+          this.position = transform(coords, 'EPSG:3857', 'EPSG:4326')
+        } else {
+          this.position = null
+        }
+
+        const rawId = found.get('id') || found.getId()
+
+        if (!rawId) {
+          this.selectedFeatureInfo = {}
+          this.selectedFeatures = []
+          this.position = null
+          return
+        }
+
+        let id = rawId
+
+        if (typeof rawId === 'string' && rawId.includes('.')) {
+          id = rawId.split('.').pop()
+        }
+
+        // 🔴 VALIDACIÓN FINAL
+        if (!id || isNaN(parseInt(id))) {
+          this.selectedFeatureInfo = {}
+          this.selectedFeatures = []
+          this.position = null
+          return
+        }
+
+        id = parseInt(id)
+
+        axios.get(`https://api.zapopanentrenosotras.com/rest/v1/reportes/${id}/`)
+          .then(res => {
+
+            // 🔴 IGNORA respuestas viejas
+            if (currentRequest !== this.clickRequestId) return
+
+            this.ignoreNextEstatusChange = true
+            this.selectedFeatureInfo = res.data
+          })
+          .catch(() => {
+            if (currentRequest !== this.clickRequestId) return
+            this.selectedFeatureInfo = {}
+          })
+
+        return
       }
+
       if (this.herramientaActiva === 'agregar_marcador') {
         const coord = transform(evt.coordinate, 'EPSG:4326', 'EPSG:3857')
-        const viewResolution = this.$refs.olview.$view.values_.resolution;
+        const viewResolution = this.$refs.olview.$view.values_.resolution
+
         axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${evt.coordinate[1]},${evt.coordinate[0]}&key=AIzaSyAPJOFYKRav1z3IxoK-URalWtPY4KKTAb0`)
           .then(response => {
             if (response.data.results.length > 0) {
               this.reporte_marcador_data.ubicacion = `SRID=4326;POINT (${evt.coordinate[0]} ${evt.coordinate[1]})`
+
               const addr = response.data.results[0].address_components
-              if (addr[0].types[0] === 'street_number') {
+
+              if (addr[0] && addr[0].types[0] === 'street_number') {
                 this.reporte_marcador_data.numero = parseInt(addr[0].long_name)
               }
-              if (addr[1].types[0] === 'route') {
+
+              if (addr[1] && addr[1].types[0] === 'route') {
                 this.reporte_marcador_data.calle = addr[1].long_name
               }
-              let url = this.$refs.colonias_zapopan[0].getFeatureInfoUrl(coord, viewResolution, 'EPSG:3857', {'INFO_FORMAT': 'application/json'})
+
+              const url = this.$refs.colonias_zapopan[0].getFeatureInfoUrl(
+                coord,
+                viewResolution,
+                'EPSG:3857',
+                {'INFO_FORMAT': 'application/json'}
+              )
+
               axios.get(url).then(response => {
                 if (response.data.features.length > 0) {
                   const col = response.data.features[0]
-                  this.reporte_marcador_data.colonia = parseInt(col.id.split(".")[1])
+                  // this.reporte_marcador_data.colonia = parseInt(col.id.split('.').pop())
+                  this.reporte_marcador_data.colonia = col.properties.nombre
                   this.agregarreportemarcador_dialog = true
                 } else {
-                  this.herramientaActiva = 'info'
+                  this.setHerramientaActiva('info')
                 }
-              }).catch(error => {
-                //console.log(error))
+              }).catch(() => {
               })
             }
-          }).catch(error => {
-          //console.log(error)
+          }).catch(() => {
         })
       }
     },
     getColonias() {
-      axios.get(`https://api.zapopanentrenosotras.com/rest/v1/colonias/?municipio=120`).then(response => {
-        this.colonias = response.data
+      axios.get(`https://development.demo.geonode.org/geoserver/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=geonode:coloniasmex_ine2025&outputFormat=application/json&CQL_FILTER=cve_ent=%2714%27%20AND%20cve_mun=%27120%27`).then(response => {
+        this.colonias = response.data.features.map(f => f.properties)
       }).catch(error => {
         //console.log(error)
       })
@@ -826,6 +975,89 @@ export default {
       }).catch(error => {
       });
     },
+    buildMVTUrl(capa) {
+      let url = capa.url
+
+      const p = capa.params
+
+      const query = []
+
+      if (p.tipo) query.push(`tipo=${p.tipo}`)
+      if (p.servicio) query.push(`servicio=${p.servicio}`)
+      if (p.situacion) query.push(`situacion=${p.situacion}`)
+
+      if (query.length > 0) {
+        url += '?' + query.join('&')
+      }
+
+      return url
+    },
+
+    // 🎨 FILL EXACTO SEGÚN SLD
+    getFill(feature) {
+      const estatus = feature.get('estatus')
+      const semaforo = (feature.get('color_semaforo') || '').toLowerCase()
+
+      // prioridad por estatus
+      if (estatus === 'Atendiendo') return '#ffffff'
+      if (estatus === 'Resuelto') return '#00ff00'
+
+      // abierto depende del semáforo
+      if (semaforo === 'rojo') return '#ff0000'
+      if (semaforo === 'amarillo') return '#f0ff00'
+
+      return '#999999'
+    },
+
+    // 🧠 STYLE PRINCIPAL (equivalente al SLD)
+    styleReportes(feature) {
+      const tipo = feature.get('tipo')
+      const estado = feature.get('estado_servicio_id')
+      const situacion = feature.get('situacion_peligrosa_id')
+
+      const fill = this.getFill(feature)
+
+      // 🔲 SITUACIONES → cuadrado
+      if (tipo === 'Situaciones') {
+        const stroke = this.strokeSituaciones[situacion] || '#000000'
+        return this.square(fill, stroke)
+      }
+
+      // 🔴 SERVICIOS → círculo
+      const stroke = this.strokeServicios[estado] || '#000000'
+      return this.circle(fill, stroke)
+    },
+
+    // 🔴 helper círculo
+    circle(fill, stroke) {
+      return new Style({
+        image: new Circle({
+          radius: 7,
+          fill: new Fill({color: fill}),
+          stroke: new Stroke({
+            color: stroke,
+            width: 2
+          })
+        })
+      })
+    },
+
+    // 🔲 helper cuadrado
+    square(fill, stroke) {
+      return new Style({
+        image: new RegularShape({
+          points: 4,
+          radius: 10,
+          angle: Math.PI / 4,
+          fill: new Fill({color: fill}),
+          stroke: new Stroke({
+            color: stroke,
+            width: 2
+          })
+        })
+      })
+    }
+
   },
   mounted() {
     if (this.$q.screen.width < 768) {

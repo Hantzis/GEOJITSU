@@ -82,3 +82,7 @@ export const BajarCapaMutation = (state, value) => {
 export const CapaSetFeaturesMutation = (state, value) => {
   state.capasMapa[value.capa].features = value.features
 }
+
+export const CapaParamsMutation = (state, value) => {
+  state.capasMapa[value.capa].params = value.params
+}

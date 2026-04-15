@@ -2,12 +2,16 @@
   <div>
     <q-card square class="capas-qcard text-grey-10">
       <div v-if="capa.server_type === 'geoserver'">
-        <q-img :src="String(capa.url).slice(0, -1) + '/reflect?layers=' + capa.layers + ''">
-          <div class="absolute-bottom" style="background: initial">
-            <q-slider v-model="opacityStep" dense label :label-value="parseInt(opacityStep * 100) + '%'"
-                      color="primary" label-color="primary" :min="0.0" :max="1" :step="0.05"/>
-          </div>
-        </q-img>
+        <div class="q-pa-sm ">
+          <q-slider v-model="opacityStep" dense label :label-value="parseInt(opacityStep * 100) + '%'"
+                    color="primary" label-color="primary" :min="0.0" :max="1" :step="0.05"/>
+        </div>
+      </div>
+      <div v-if="capa.server_type === 'mvt'">
+        <div class="q-pa-sm ">
+          <q-slider v-model="opacityStep" dense label :label-value="parseInt(opacityStep * 100) + '%'"
+                    color="primary" label-color="primary" :min="0.0" :max="1" :step="0.05"/>
+        </div>
       </div>
       <div v-if="capa.server_type === 'geojson'">
         <q-img :src="'/statics/reflects/geojson_' + capa.value + '.png'">
@@ -17,6 +21,8 @@
           </div>
         </q-img>
       </div>
+
+
       <q-tabs
         v-model="tab"
         class="text-grey"
@@ -37,11 +43,27 @@
       <q-tab-panels v-model="tab" animated>
         <q-tab-panel name="simbologia">
           <p class="text-h6">Simbología</p>
+
+          <!-- 🟢 MVT (tu caso reportes) -->
+          <reportes-map-legend
+            v-if="capa.type === 'mvt' && capa.value === 'reportes'"
+            :servicios="servicios"
+            :situaciones="situaciones"
+            :strokeServicios="strokeServicios"
+            :strokeSituaciones="strokeSituaciones"
+            :filtro="capa.params"
+          />
+
+          <!-- 🔵 WMS (todo lo demás) -->
           <img
-            :src="capa.url + 'SERVICE=WMS&REQUEST=GetLegendGraphic&VERSION=1.3.0&FORMAT=image/png&LAYER=' + capa.layers"/>
+            v-else
+            :src="capa.url + 'SERVICE=WMS&REQUEST=GetLegendGraphic&VERSION=1.3.0&FORMAT=image/png&LAYER=' + capa.layers"
+          />
+
         </q-tab-panel>
 
         <q-tab-panel name="filtro">
+          <p class="text-h6">Filtro</p>
           <q-btn :disable="capa.value!=='reportes'" class="full-width" no-caps color="primary"
                  @click="showFilterDialog=true">Aplicar filtro
           </q-btn>
@@ -49,10 +71,12 @@
 
       </q-tab-panels>
 
+      <!--
       <q-separator/>
       <q-card-section>
         <span style="font-weight: 300; font-size: 17px;">{{ capa.label }}</span>
       </q-card-section>
+      -->
 
     </q-card>
 
@@ -74,7 +98,7 @@
                             label="Tipo"
                   />
                 </div>
-                <div class="row q-py-xs"> </div>
+                <div class="row q-py-xs"></div>
                 <div v-if="tipo==='Servicios'" class="row q-py-xs">
                   <q-select class="full-width" outlined name="servicio" v-model="servicio"
                             :options="servicios"
@@ -107,6 +131,7 @@
 
 <script>
 import {mapActions, mapGetters} from "vuex";
+import ReportesMapLegend from "components/drawer_components/ReportesMapLegend";
 
 export default {
   name: "CardCapa",
@@ -146,20 +171,32 @@ export default {
     }
   },
   methods: {
-    ...mapActions('geojitsu', ['setCapaOpacity', 'setCapaCQLFilter']),
+    ...mapActions('geojitsu', ['setCapaOpacity', 'setCapaCQLFilter', 'setCapaParams']),
     aplicarFiltro() {
-      let filtro
+
+      const idx = this.capasMapa.indexOf(this.capa)
+
+      let params = {
+        tipo: null,
+        servicio: null,
+        situacion: null
+      }
+
       if (this.tipo === 'Servicios') {
-        filtro = 'tipo_servicio_id=' + this.servicio
+        params.tipo = 'Servicios'
+        params.servicio = this.servicio
       }
 
       if (this.tipo === 'Situaciones') {
-        filtro = 'situacion_peligrosa_id=' + this.situacion
+        params.tipo = 'Situaciones'
+        params.situacion = this.situacion
       }
 
-      //this.cqlFilter = filtro
-
-      this.setCapaCQLFilter({capa: this.capasMapa.indexOf(this.capa), filtro: filtro})
+      // 🔥 actualizar capa MVT
+      this.setCapaParams({
+        capa: idx,
+        params: params
+      })
 
       this.showFilterDialog = false
       this.$emit('update')
@@ -174,7 +211,14 @@ export default {
       }
     }
   },
-  props: ['capa', 'servicios', 'situaciones'],
+  props: [
+    'capa',
+    'servicios',
+    'situaciones',
+    'strokeServicios',
+    'strokeSituaciones'
+  ],
+  components: {ReportesMapLegend},
   created() {
     this.capaIndex = this.capasMapa.indexOf(this.capa)
   },

@@ -74,3 +74,7 @@ export const setCapaFeatures = ({commit}, payload) => {
   console.log("setCapaFeatures", payload)
   commit('CapaSetFeaturesMutation', payload)
 }
+
+export const setCapaParams = ({ commit }, payload) => {
+  commit('CapaParamsMutation', payload)
+}
