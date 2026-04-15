@@ -786,7 +786,7 @@
         <a style="text-decoration: none" class="text-grey-4 no-underline" href="https://cesarbenjamin.net"
            target="_blank">2020 - 2026&nbsp;&copy;&nbsp;cesarbenjamin.net
          <q-tooltip content-class="bg-black no-border-radius" content-style="font-size: 16px" anchor="top middle"
-                     self="bottom middle">
+                    self="bottom middle">
             Desarrollo: César Benjamín
           </q-tooltip>
         </a>
@@ -987,13 +987,14 @@ export default {
     logout() {
       this.$auth.logout(
       ).then(() => {
-        this.logout_dialog = false
-        this.user_fecha_nacimiento = ""
-        this.herramientaActiva = "info"
+        // pass
       }).catch(error => {
         console.log(error)
       }).finally(() => {
         this.userGroups = []
+        this.logout_dialog = false
+        this.user_fecha_nacimiento = ""
+        this.herramientaActiva = "info"
       })
     },
     open_resetpassword_dialog() {
