@@ -880,7 +880,9 @@ export default {
     getColonias() {
       axios.get('statics/colonias_zapopan.geojson')
         .then(response => {
-          this.colonias = response.data.features.map(f => f.properties)
+          this.colonias = response.data.features
+            .map(f => f.properties)
+            .sort((a, b) => a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' }))
         })
         .catch(() => {
         })
@@ -1076,20 +1078,10 @@ export default {
 
     this.loadingBar = this.$refs.bar
 
-    this.$nextTick(() => {
-      setTimeout(() => {
-        const layerRef = this.$refs.layerColonias
-
-        if (layerRef && layerRef.$layer) {
-          const source = layerRef.$layer.getSource()
-          this.colonias = source.getFeatures().map(f => f.getProperties())
-
-          this.getTiposServicio()
-          this.getSituacionesPeligrosas()
-          this.loadingBar.stop()
-        }
-      }, 200) // 👈 clave
-    })
+    this.getColonias()
+    this.getTiposServicio()
+    this.getSituacionesPeligrosas()
+    this.loadingBar.stop()
   }
 }
 </script>

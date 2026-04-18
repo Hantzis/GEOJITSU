@@ -194,7 +194,7 @@
               <q-select class="full-width" outlined name="colonia" v-model="reporte_domicilio_data.colonia"
                         :options="colonias"
                         label="Colonia" :rules="[val => !!val || 'Colonia obligatoria']"
-                        emit-value map-options option-value="id" option-label="nombre"/>
+                        emit-value map-options option-value="nombre" option-label="nombre"/>
             </div>
             <div class="row q-py-xs">
               <q-input outlined class="full-width" name="calle" v-model="reporte_domicilio_data.calle"
@@ -388,9 +388,14 @@ export default {
     showHerramientaActiva() {
     },
     getColonias() {
-      axios.get(`https://api.zapopanentrenosotras.com/rest/v1/colonias/?municipio=120`).then(response => {
-        this.colonias = response.data
-      }).catch(error => console.log(error))
+      axios.get('statics/colonias_zapopan.geojson')
+        .then(response => {
+          this.colonias = response.data.features
+            .map(f => f.properties)
+            .sort((a, b) => a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' }))
+        })
+        .catch(() => {
+        })
     },
     getTiposServicio() {
       axios.get(`https://api.zapopanentrenosotras.com/rest/v1/tipos-servicio/`).then(response => {
@@ -420,45 +425,43 @@ export default {
           } else if (this.reporte_domicilio_data.entre_interseccion) {
             domicilio += `${this.reporte_domicilio_data.entre_interseccion}, `
           }
-          for (let col of this.colonias)
-            if (col.id === this.reporte_domicilio_data.colonia)
-              domicilio += `${col.nombre}, `
+          domicilio += `${this.reporte_domicilio_data.colonia}, `
           domicilio += 'Zapopan'
           axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${domicilio}&key=AIzaSyAPJOFYKRav1z3IxoK-URalWtPY4KKTAb0`)
             .then(response => {
               if (response.data.results[0]) {
                 let punto = response.data.results[0].geometry.location
                 this.reporte_domicilio_data.ubicacion = `SRID=4326;POINT (${punto.lng} ${punto.lat})`
-                this.reporte_domicilio_data.reporta = this.auth_user.pk
                 const token = cookies.get("auth_token");
-                this.reporte_marcador_data.reporta = this.auth_user.pk;
+                this.reporte_domicilio_data.reporta = this.auth_user.pk;
+                console.log("reporta", this.reporte_domicilio_data.reporta)
                 const formData = new FormData();
 
-                formData.append("reporta", this.reporte_marcador_data.reporta);
-                formData.append("ubicacion", this.reporte_marcador_data.ubicacion);
-                formData.append("colonia", this.reporte_marcador_data.colonia);
-                formData.append("calle", this.reporte_marcador_data.calle);
-                formData.append("numero", this.reporte_marcador_data.numero);
-                formData.append("entre_interseccion", this.reporte_marcador_data.entre_interseccion);
-                formData.append("tipo", this.reporte_marcador_data.tipo);
-                if (this.reporte_marcador_data.tipo === "Servicios") {
-                  formData.append("tipo_servicio", this.reporte_marcador_data.tipo_servicio);
-                  if (this.reporte_marcador_data.tipo_servicio < 1000000) {
-                    formData.append("estado_servicio", this.reporte_marcador_data.estado_servicio);
+                formData.append("reporta", this.reporte_domicilio_data.reporta);
+                formData.append("ubicacion", this.reporte_domicilio_data.ubicacion);
+                formData.append("colonia", this.reporte_domicilio_data.colonia);
+                formData.append("calle", this.reporte_domicilio_data.calle);
+                formData.append("numero", this.reporte_domicilio_data.numero);
+                formData.append("entre_interseccion", this.reporte_domicilio_data.entre_interseccion);
+                formData.append("tipo", this.reporte_domicilio_data.tipo);
+                if (this.reporte_domicilio_data.tipo === "Servicios") {
+                  formData.append("tipo_servicio", this.reporte_domicilio_data.tipo_servicio);
+                  if (this.reporte_domicilio_data.tipo_servicio < 1000000) {
+                    formData.append("estado_servicio", this.reporte_domicilio_data.estado_servicio);
                   } else {
-                    formData.append("estado_servicio_otro", this.reporte_marcador_data.estado_servicio_otro);
+                    formData.append("estado_servicio_otro", this.reporte_domicilio_data.estado_servicio_otro);
                   }
                 } else {
-                  formData.append("situacion_peligrosa", this.reporte_marcador_data.situacion_peligrosa);
-                  if (this.reporte_marcador_data.situacion_peligrosa < 1000000) {
-                    formData.append("situacion_peligrosa", this.reporte_marcador_data.situacion_peligrosa);
+                  formData.append("situacion_peligrosa", this.reporte_domicilio_data.situacion_peligrosa);
+                  if (this.reporte_domicilio_data.situacion_peligrosa < 1000000) {
+                    formData.append("situacion_peligrosa", this.reporte_domicilio_data.situacion_peligrosa);
                   } else {
-                    formData.append("situacion_peligrosa_otra", this.reporte_marcador_data.situacion_peligrosa_otra);
+                    formData.append("situacion_peligrosa_otra", this.reporte_domicilio_data.situacion_peligrosa_otra);
                   }
                 }
-                formData.append("comentarios", this.reporte_marcador_data.comentarios);
-                formData.append("fecha", this.reporte_marcador_data.fecha);
-                formData.append("hora", this.reporte_marcador_data.hora);
+                formData.append("comentarios", this.reporte_domicilio_data.comentarios);
+                formData.append("fecha", this.reporte_domicilio_data.fecha);
+                formData.append("hora", this.reporte_domicilio_data.hora);
                 formData.append("estatus", 'Abierto');
 
 
