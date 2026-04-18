@@ -56,7 +56,7 @@
 
           <!-- 🔵 WMS (todo lo demás) -->
           <img
-            v-else
+            v-if="capa.type === 'wms'"
             :src="capa.url + 'SERVICE=WMS&REQUEST=GetLegendGraphic&VERSION=1.3.0&FORMAT=image/png&LAYER=' + capa.layers"
           />
 

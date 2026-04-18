@@ -32,7 +32,6 @@ export const setUserGroups = ({commit}, payload) => {
 }
 
 export const capasMapaAction = ({commit}, payload) => {
-  console.log("capasMapaAction", payload)
   commit('capasMapaMutation', payload)
 }
 
@@ -57,7 +56,6 @@ export const setCapaOpacity = ({commit}, payload) => {
 }
 
 export const setCapaCQLFilter = ({commit}, payload) => {
-  console.log("aqui setCapaCQLFilter")
   commit('CapaCQLFilterMutation', payload)
 }
 
@@ -71,7 +69,6 @@ export const bajarCapaAction  = ({commit}, payload) => {
 
 
 export const setCapaFeatures = ({commit}, payload) => {
-  console.log("setCapaFeatures", payload)
   commit('CapaSetFeaturesMutation', payload)
 }
 

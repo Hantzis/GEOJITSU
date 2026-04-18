@@ -37,9 +37,33 @@
                     :url="mapaBase.url"
                     attributions="Mapbox, <a href='https://www.saeba.click' target='_blank'>Saeba</a>"/>
                 </vl-layer-tile>
-                <vl-layer-vector>
+
+                <vl-layer-vector ref="layerColonias">
                   <vl-source-vector
-                    url="https://development.demo.geonode.org/geoserver/ows?service=WMS&version=1.1.1&request=GetFeatureInfo&layers=geonode:mgenmex_municipios&query_layers=geonode:mgenmex_municipios&styles=geonode:mgenmex_municipios&x=51&y=51&height=101&width=101&srs=EPSG:3857&bbox=-11528274.230741149,2360353.554394476,-11512833.951027544,2375793.8341080816&feature_count=10&info_format=application%2Fjson">
+                    url="statics/colonias_zapopan.geojson">
+                  </vl-source-vector>
+
+                  <!-- base blanca -->
+                  <vl-style-box>
+                    <vl-style-stroke color="white" :width="2"></vl-style-stroke>
+                  </vl-style-box>
+
+                  <!-- línea gris punteada + texto -->
+                  <vl-style-box>
+                    <vl-style-stroke
+                      color="#777"
+                      :width="1.5"
+                      :lineDash="[8,8]"
+                    ></vl-style-stroke>
+
+                    <vl-style-fill color="rgba(255,255,255,0.05)"></vl-style-fill>
+
+                  </vl-style-box>
+                </vl-layer-vector>
+
+                <vl-layer-vector ref="layerZapopan">
+                  <vl-source-vector
+                    url="statics/zapopan.geojson">
                   </vl-source-vector>
                   <vl-style-box>
                     <vl-style-stroke color="black" :width="3"></vl-style-stroke>
@@ -529,9 +553,6 @@ export default {
         this.getEstadosServicio(newVal)
       }
     },
-    'reporte_marcador_data.colonia': function (newVal, oldVal) {
-      console.log(this.reporte_marcador_data.colonia)
-    },
     agregarreportemarcador_dialog() {
       if (this.agregarreportemarcador_dialog === false) {
         this.herramientaActiva = 'info'
@@ -686,11 +707,9 @@ export default {
           }
         })
         .then(response => {
-          //console.log(response)
           this.showEvidenciaAtencionForm = false
         })
         .catch(error => {
-          //console.log(error)
         })
     },
     saveEvidenciaStaff() {
@@ -705,11 +724,9 @@ export default {
           }
         })
         .then(response => {
-          //console.log(response)
           this.showEvidenciaRegistroForm = false
         })
         .catch(error => {
-          //console.log(error)
         })
     },
     loaderFactory(capa) {
@@ -717,7 +734,6 @@ export default {
         axios.get(this.capasMapa[capa].url).then(response => {
           this.setCapaFeatures({capa: capa, features: response.data.features})
         }).catch(error => {
-          //console.log(error)
         }).finally(() => {
           this.loadingBar.stop()
           this.setCapaTicked({capa: this.capasMapa[capa], visible: true})
@@ -725,19 +741,17 @@ export default {
       }
     },
     refreshMap() {
-      console.log("refresh", this.capasMapa)
       this.mapkey++
       this.$refs['olmap'].refresh()
       this.$refs['olmap'].remount()
     },
     onClickInMap(evt) {
       this.clickCoords = evt.coordinate
+      const map = this.$refs.olmap.$map
 
       if (this.herramientaActiva === 'info') {
         this.clickRequestId++
         const currentRequest = this.clickRequestId
-
-        const map = this.$refs.olmap.$map
 
         let found = null
 
@@ -824,8 +838,6 @@ export default {
       }
 
       if (this.herramientaActiva === 'agregar_marcador') {
-        const coord = transform(evt.coordinate, 'EPSG:4326', 'EPSG:3857')
-        const viewResolution = this.$refs.olview.$view.values_.resolution
 
         axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${evt.coordinate[1]},${evt.coordinate[0]}&key=AIzaSyAPJOFYKRav1z3IxoK-URalWtPY4KKTAb0`)
           .then(response => {
@@ -842,41 +854,41 @@ export default {
                 this.reporte_marcador_data.calle = addr[1].long_name
               }
 
-              const url = this.$refs.colonias_zapopan[0].getFeatureInfoUrl(
-                coord,
-                viewResolution,
-                'EPSG:3857',
-                {'INFO_FORMAT': 'application/json'}
-              )
+              let coloniaFeature = null
+              const coloniasLayer = this.$refs.layerColonias.$layer
 
-              axios.get(url).then(response => {
-                if (response.data.features.length > 0) {
-                  const col = response.data.features[0]
-                  // this.reporte_marcador_data.colonia = parseInt(col.id.split('.').pop())
-                  this.reporte_marcador_data.colonia = col.properties.nombre
-                  this.agregarreportemarcador_dialog = true
-                } else {
-                  this.setHerramientaActiva('info')
+              map.forEachFeatureAtPixel(evt.pixel, (feature, layer) => {
+                if (layer === coloniasLayer) {
+                  coloniaFeature = feature
+                  return true
                 }
-              }).catch(() => {
+                return false
               })
+
+              if (coloniaFeature) {
+                this.reporte_marcador_data.colonia = coloniaFeature.values_.nombre
+                this.agregarreportemarcador_dialog = true
+              } else {
+                this.setHerramientaActiva('info')
+              }
+
             }
-          }).catch(() => {
+          }).catch((error) => {
         })
       }
     },
     getColonias() {
-      axios.get(`https://development.demo.geonode.org/geoserver/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=geonode:coloniasmex_ine2025&outputFormat=application/json&CQL_FILTER=cve_ent=%2714%27%20AND%20cve_mun=%27120%27`).then(response => {
-        this.colonias = response.data.features.map(f => f.properties)
-      }).catch(error => {
-        //console.log(error)
-      })
+      axios.get('statics/colonias_zapopan.geojson')
+        .then(response => {
+          this.colonias = response.data.features.map(f => f.properties)
+        })
+        .catch(() => {
+        })
     },
     getTiposServicio() {
       axios.get(`https://api.zapopanentrenosotras.com/rest/v1/tipos-servicio/`).then(response => {
         this.tipos_servicio = response.data
       }).catch(error => {
-        //console.log(error)
       })
     },
     getEstadosServicio(val) {
@@ -884,7 +896,6 @@ export default {
         axios.get(`https://api.zapopanentrenosotras.com/rest/v1/estados-servicio/?tipo=${val}`).then(response => {
           this.estados_servicio = response.data
         }).catch(error => {
-          //console.log(error)
         })
       } else {
         this.estados_servicio = undefined
@@ -894,7 +905,6 @@ export default {
       axios.get(`https://api.zapopanentrenosotras.com/rest/v1/situaciones-peligro/`).then(response => {
         this.situaciones_peligro = response.data
       }).catch(error => {
-        //console.log(error)
       })
     },
     saveReporteMarcador() {
@@ -967,7 +977,6 @@ export default {
             this.$refs.olview.remount()
 
           }).catch(error => {
-            //console.log(error)
           })
         } else {
           return false;
@@ -975,6 +984,7 @@ export default {
       }).catch(error => {
       });
     },
+
     buildMVTUrl(capa) {
       let url = capa.url
 
@@ -1065,18 +1075,12 @@ export default {
     }
 
     this.loadingBar = this.$refs.bar
-    // axios.get('statics/zapopan.geojson').then(res => {
-    axios.get('https://development.demo.geonode.org/geoserver/ows?service=WMS&version=1.1.1&request=GetFeatureInfo&layers=geonode:mgenmex_municipios&query_layers=geonode:mgenmex_municipios&styles=geonode:mgenmex_municipios&x=51&y=51&height=101&width=101&srs=EPSG:3857&bbox=-11528274.230741149,2360353.554394476,-11512833.951027544,2375793.8341080816&feature_count=10&info_format=application%2Fjson&format=image%2Fpng').then(res => {
-      this.zapopan = res.data.features
-    }).then(() => {
 
-      this.getColonias()
-      this.getTiposServicio()
-      this.getSituacionesPeligrosas()
-    }).catch(error => {
-    }).finally(() => {
-      this.loadingBar.stop()
-    })
+    const colonias_source = this.$refs.layerColonias.$layer.getSource()
+    this.colonias = colonias_source.getFeatures().map(f => f.getProperties())
+    this.getTiposServicio()
+    this.getSituacionesPeligrosas()
+    this.loadingBar.stop()
   }
 }
 </script>

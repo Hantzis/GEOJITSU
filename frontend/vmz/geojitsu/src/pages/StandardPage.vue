@@ -44,14 +44,9 @@ export default {
   },
   methods: {
     getPagina(slug) {
-      console.log("getPagina", slug)
-      console.log("getPagina", this.page_data)
+      // console.log("getPagina", slug)
     }
   },
-  mounted() {
-    console.log(this.$route)
-    console.log("pageadta", this.page_data)
-  }
 }
 </script>
 

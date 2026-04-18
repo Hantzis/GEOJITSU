@@ -1047,7 +1047,6 @@ export default {
                 this.login_password = this.new_user_data.password1
                 this.login()
               }).catch(error => {
-              console.log("registration error", error)
               if (error.response) {
                 this.registration_response_error = error.response.data
                 this.$refs.form_register.validate()

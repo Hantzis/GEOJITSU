@@ -386,7 +386,6 @@ export default {
   methods: {
     ...mapActions('geojitsu', ['GISRibbonIsOpenAction', 'setHerramientaActiva', 'setMapkey']),
     showHerramientaActiva() {
-      // console.log(this.herramientaActiva)
     },
     getColonias() {
       axios.get(`https://api.zapopanentrenosotras.com/rest/v1/colonias/?municipio=120`).then(response => {
@@ -427,12 +426,10 @@ export default {
           domicilio += 'Zapopan'
           axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${domicilio}&key=AIzaSyAPJOFYKRav1z3IxoK-URalWtPY4KKTAb0`)
             .then(response => {
-              console.log("API", response)
               if (response.data.results[0]) {
                 let punto = response.data.results[0].geometry.location
                 this.reporte_domicilio_data.ubicacion = `SRID=4326;POINT (${punto.lng} ${punto.lat})`
                 this.reporte_domicilio_data.reporta = this.auth_user.pk
-                console.log(this.reporte_domicilio_data)
                 const token = cookies.get("auth_token");
                 this.reporte_marcador_data.reporta = this.auth_user.pk;
                 const formData = new FormData();
@@ -476,7 +473,6 @@ export default {
                       'Content-Type': 'multipart/form-data',
                     }
                   }).then(response => {
-                  console.log(response.data)
                   this.reporte_agregado_dialog = true
                   this.agregarreportedomicilio_dialog = false
                   this.reporte_domicilio_data = {
@@ -501,14 +497,13 @@ export default {
               }
 
             }).then(() => {
-            console.log("despues")
+            //console.log("despues")
 
           }).catch(error => {
             console.log(error)
           }).finally(() => {
           })
         } else {
-          console.log('error submit!!');
           return false;
         }
       });
@@ -535,8 +530,6 @@ export default {
       this.reporte_domicilio_data.situacion_peligrosa_otra = undefined
     },
     'reporte_domicilio_data.tipo_servicio': function (newVal, oldVal) {
-      console.log(newVal)
-      console.log(oldVal)
       if (newVal) {
         this.reporte_domicilio_data.estado_servicio = undefined
         this.getEstadosServicio(newVal)
