@@ -1076,11 +1076,20 @@ export default {
 
     this.loadingBar = this.$refs.bar
 
-    const colonias_source = this.$refs.layerColonias.$layer.getSource()
-    this.colonias = colonias_source.getFeatures().map(f => f.getProperties())
-    this.getTiposServicio()
-    this.getSituacionesPeligrosas()
-    this.loadingBar.stop()
+    this.$nextTick(() => {
+      setTimeout(() => {
+        const layerRef = this.$refs.layerColonias
+
+        if (layerRef && layerRef.$layer) {
+          const source = layerRef.$layer.getSource()
+          this.colonias = source.getFeatures().map(f => f.getProperties())
+
+          this.getTiposServicio()
+          this.getSituacionesPeligrosas()
+          this.loadingBar.stop()
+        }
+      }, 200) // 👈 clave
+    })
   }
 }
 </script>

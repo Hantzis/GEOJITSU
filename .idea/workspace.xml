@@ -10,20 +10,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="mejorar el manejo del cierre de sesión y la limpieza de datos del usuario">
-      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/colonias_zapopan.fgb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/colonias_zapopan.geojson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/statics/zapopan.fgb" afterDir="false" />
+    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="mejorar la gestión de capas y eliminar registros de consola innecesarios">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/GISRibbon.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/GISRibbon.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/drawer_components/CardCapa.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/components/drawer_components/CardCapa.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/layouts/MainLayout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Ayuda.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Ayuda.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/StandardPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/StandardPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/V.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/V.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/store/geojitsu/state.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +176,7 @@
       <workItem from="1776229267891" duration="113000" />
       <workItem from="1776229672975" duration="314000" />
       <workItem from="1776230121620" duration="5045000" />
-      <workItem from="1776472160619" duration="5409000" />
+      <workItem from="1776472160619" duration="5831000" />
     </task>
     <task id="LOCAL-00001" summary="mejorar el manejo del cierre de sesión y la limpieza de datos del usuario">
       <option name="closed" value="true" />
@@ -197,7 +186,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776240172051</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="mejorar la gestión de capas y eliminar registros de consola innecesarios">
+      <option name="closed" value="true" />
+      <created>1776488445291</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1776488445291</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,7 +213,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="mejorar el manejo del cierre de sesión y la limpieza de datos del usuario" />
-    <option name="LAST_COMMIT_MESSAGE" value="mejorar el manejo del cierre de sesión y la limpieza de datos del usuario" />
+    <MESSAGE value="mejorar la gestión de capas y eliminar registros de consola innecesarios" />
+    <option name="LAST_COMMIT_MESSAGE" value="mejorar la gestión de capas y eliminar registros de consola innecesarios" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
