@@ -10,7 +10,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="mejorar la gestión de capas y eliminar registros de consola innecesarios">
+    <list default="true" id="e40d3e5d-4750-4b04-bd10-9e9e9b8f7056" name="Default Changelist" comment="mejorar la gestión de autenticación y optimizar la carga de colonias en los componentes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue" afterDir="false" />
     </list>
@@ -63,25 +63,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "token",
-    "last_opened_file_path": "C:/Users/Niji/PycharmProjects/GEOJITSU/frontend/vmz/geojitsu/src/statics",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.build.executor": "Run",
-    "npm.serve.executor": "Run",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PyCharm 2023.3.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;token&quot;,
+    &quot;ignore_missing_gitignore&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Niji/PycharmProjects/GEOJITSU/frontend/vmz/geojitsu/src/statics&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.serve.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PyCharm 2023.3.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Niji\PycharmProjects\GEOJITSU\frontend\vmz\geojitsu\src\statics" />
@@ -91,7 +92,7 @@
       <recent name="C:\Users\Nizhi\PycharmProjects\GEOJITSU\frontend\windows-todo\src\boot" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.serve">
+  <component name="RunManager">
     <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
       <module name="GEOJITSU" />
       <option name="ENV_FILES" value="" />
@@ -118,34 +119,19 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/frontend/vmz/geojitsu/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="build" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/frontend/vmz/geojitsu/package.json" />
       <command value="run" />
       <scripts>
         <script value="serve" />
       </scripts>
-      <node-interpreter value="project" />
+      <node-interpreter value="$PROJECT_DIR$/../../../../Program Files/nodejs/node" />
       <envs />
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="npm.build" />
-      <item itemvalue="npm.serve" />
-    </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.serve" />
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.serve" />
       </list>
     </recent_temporary>
@@ -176,7 +162,8 @@
       <workItem from="1776229267891" duration="113000" />
       <workItem from="1776229672975" duration="314000" />
       <workItem from="1776230121620" duration="5045000" />
-      <workItem from="1776472160619" duration="5831000" />
+      <workItem from="1776472160619" duration="9258000" />
+      <workItem from="1776792959834" duration="700000" />
     </task>
     <task id="LOCAL-00001" summary="mejorar el manejo del cierre de sesión y la limpieza de datos del usuario">
       <option name="closed" value="true" />
@@ -194,7 +181,23 @@
       <option name="project" value="LOCAL" />
       <updated>1776488445291</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="mejorar la gestión de capas y optimizar la carga de datos en Index.vue">
+      <option name="closed" value="true" />
+      <created>1776488862632</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1776488862632</updated>
+    </task>
+    <task id="LOCAL-00004" summary="mejorar la gestión de autenticación y optimizar la carga de colonias en los componentes">
+      <option name="closed" value="true" />
+      <created>1776496436455</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1776496436455</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,7 +217,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="mejorar el manejo del cierre de sesión y la limpieza de datos del usuario" />
     <MESSAGE value="mejorar la gestión de capas y eliminar registros de consola innecesarios" />
-    <option name="LAST_COMMIT_MESSAGE" value="mejorar la gestión de capas y eliminar registros de consola innecesarios" />
+    <MESSAGE value="mejorar la gestión de capas y optimizar la carga de datos en Index.vue" />
+    <MESSAGE value="mejorar la gestión de autenticación y optimizar la carga de colonias en los componentes" />
+    <option name="LAST_COMMIT_MESSAGE" value="mejorar la gestión de autenticación y optimizar la carga de colonias en los componentes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -225,7 +230,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/frontend/vmz/geojitsu/src/pages/Index.vue</url>
-          <line>987</line>
+          <line>995</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

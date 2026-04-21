@@ -580,7 +580,7 @@ export default {
   computed: {
     ...mapGetters('geojitsu', ['GISRibbonIsOpenGetter', 'getHerramientaActiva', 'mapaBaseGetter', 'mapasBaseGetter',
       'capasMapaGetter', 'getDrawerCapas', 'getMapkey', 'getUserGroups', 'getIsUserStaff']),
-    // ...mapGetters('auth', ['logged', 'user', 'token']),
+    ...mapGetters('auth', ['logged', 'user', 'token']),
     is_user_staff: {
       get() {
         return this.getIsUserStaff
@@ -912,9 +912,13 @@ export default {
     saveReporteMarcador() {
       this.$refs.form_reporte_marcador.validate().then(valid => {
         if (valid) {
+          alert("valid")
           const token = cookies.get("auth_token");
+          console.log("token", token)
+          console.log("this.auth_user", this.auth_user)
 
           this.reporte_marcador_data.reporta = this.auth_user.pk;
+          console.log("this.reporte_marcador_data.reporta", this.reporte_marcador_data.reporta)
           const formData = new FormData();
           formData.append("reporta", this.reporte_marcador_data.reporta);
           formData.append("ubicacion", this.reporte_marcador_data.ubicacion);
@@ -946,6 +950,8 @@ export default {
           if (this.evidencia_reporte) {
             formData.append("evidencia_reporte", this.evidencia_reporte);
           }
+
+          console.log("formData", formData)
 
           axios.post(`https://api.zapopanentrenosotras.com/rest/v1/reportes/`, formData,
             {
